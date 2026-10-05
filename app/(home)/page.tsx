@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { APP_URL, DEMO_URL, GITHUB_URL, NPM_URL } from '@/lib/site';
+import { APP_URL, DEMO_URL, GITHUB_URL, MEDUSAPOS_URL, NPM_URL, TALLYUI_URL } from '@/lib/site';
 
 export const metadata: Metadata = { alternates: { canonical: '/' } };
 
@@ -120,8 +120,9 @@ export default function HomePage() {
 
       <footer className="flex flex-wrap items-center justify-between gap-4 border-t border-fd-border py-6 text-sm text-fd-muted-foreground">
         <p>
-          MIT licensed. Built on{' '}
-          <a href="https://github.com/TallyUI/tallyui" className="underline">TallyUI</a>.
+          MIT licensed. Built with{' '}
+          <a href={TALLYUI_URL} className="underline">Tally UI</a>. For Medusa, see{' '}
+          <a href={MEDUSAPOS_URL} className="underline">MedusaPOS</a>.
         </p>
         <div className="flex flex-wrap gap-4">
           <a href={GITHUB_URL} className="underline">GitHub</a>

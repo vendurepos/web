@@ -7,6 +7,10 @@ export const DEMO_URL = 'https://demo.vendurepos.com/demo';
 // The product's source (app and Vendure plugin).
 export const GITHUB_URL = 'https://github.com/vendurepos/app';
 export const NPM_URL = 'https://www.npmjs.com/package/@vendurepos/plugin';
+// The UI toolkit this app is built with.
+export const TALLYUI_URL = 'https://tallyui.com';
+// The sibling open-source POS, for Medusa.
+export const MEDUSAPOS_URL = 'https://medusapos.com';
 export const SITE_NAME = 'VendurePOS';
 export const SITE_DESCRIPTION =
   'Open-source point of sale for Vendure. Sell from the browser, keep selling offline, and every sale lands in Vendure once, as a normal order.';
