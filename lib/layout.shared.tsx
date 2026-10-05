@@ -1,5 +1,5 @@
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
-import { APP_URL, GITHUB_URL, SITE_NAME } from '@/lib/site';
+import { APP_URL, DEMO_URL, GITHUB_URL, SITE_NAME } from '@/lib/site';
 
 export const gitConfig = {
   user: 'vendurepos',
@@ -15,7 +15,8 @@ export function baseOptions(): BaseLayoutProps {
     githubUrl: GITHUB_URL,
     links: [
       { text: 'Docs', url: '/docs' },
-      { text: 'Open the POS', url: APP_URL, external: true },
+      { text: 'Live demo', url: DEMO_URL, external: true },
+      { text: 'Try with your store', url: APP_URL, external: true },
     ],
   };
 }

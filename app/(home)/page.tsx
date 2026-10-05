@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { APP_URL, GITHUB_URL, NPM_URL } from '@/lib/site';
+import { APP_URL, DEMO_URL, GITHUB_URL, NPM_URL } from '@/lib/site';
 
 export const metadata: Metadata = { alternates: { canonical: '/' } };
 
@@ -67,10 +67,16 @@ export default function HomePage() {
             Quick start
           </Link>
           <a
+            href={DEMO_URL}
+            className="rounded-md border border-fd-border px-6 py-3 hover:bg-fd-accent"
+          >
+            Live demo
+          </a>
+          <a
             href={APP_URL}
             className="rounded-md border border-fd-border px-6 py-3 hover:bg-fd-accent"
           >
-            Open the POS
+            Try with your store
           </a>
           <a
             href={GITHUB_URL}

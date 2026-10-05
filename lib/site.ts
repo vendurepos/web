@@ -2,6 +2,8 @@
 export const SITE_URL = 'https://vendurepos.com';
 // The hosted POS (vendurepos/app QUICKSTART names this origin for CORS since app#108).
 export const APP_URL = 'https://app.vendurepos.com';
+// The hosted live demo: /demo signs in to a demo Vendure store on its own, so one click opens a working till.
+export const DEMO_URL = 'https://demo.vendurepos.com/demo';
 // The product's source (app and Vendure plugin).
 export const GITHUB_URL = 'https://github.com/vendurepos/app';
 export const NPM_URL = 'https://www.npmjs.com/package/@vendurepos/plugin';
