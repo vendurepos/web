@@ -130,6 +130,7 @@ export default function HomePage() {
         <div className="flex flex-wrap gap-4">
           <a href={GITHUB_URL} className="underline">GitHub</a>
           <a href={NPM_URL} className="underline">npm</a>
+          <Link href="/docs/changelog" className="underline">Changelog</Link>
         </div>
       </footer>
     </main>

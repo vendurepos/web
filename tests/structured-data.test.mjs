@@ -58,3 +58,19 @@ test('docs page has a three-item BreadcrumbList ending at the page', () => {
     item: 'https://vendurepos.com/docs/quick-start',
   });
 });
+
+test('changelog page is built, in the sitemap, and its breadcrumb ends at Changelog', () => {
+  const data = blocks('docs/changelog.html');
+  assert.equal(data.length, 1);
+  assert.equal(data[0]['@type'], 'BreadcrumbList');
+  assert.deepEqual(data[0].itemListElement[2], {
+    '@type': 'ListItem',
+    position: 3,
+    name: 'Changelog',
+    item: 'https://vendurepos.com/docs/changelog',
+  });
+  const sitemap = readFileSync(join('.next/server/app', 'sitemap.xml.body'), 'utf8');
+  assert.ok(sitemap.includes('<loc>https://vendurepos.com/docs/changelog</loc>'));
+  const home = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
+  assert.ok(home.includes('href="/docs/changelog"'));
+});
