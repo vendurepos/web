@@ -1,3 +1,8 @@
 @import 'tailwindcss';
 @import 'fumadocs-ui/css/neutral.css';
 @import 'fumadocs-ui/css/preset.css';
+
+/* Fumadocs' light muted text (#737373) is 4.19:1 on cards; #666 keeps it above WCAG AA's 4.5:1 on every neutral surface. */
+:root:not(.dark) {
+  --color-fd-muted-foreground: hsl(0, 0%, 40%);
+}
