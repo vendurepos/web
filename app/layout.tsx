@@ -3,6 +3,7 @@ import './global.css';
 import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/site';
+import { Analytics } from '@/components/analytics';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -24,6 +25,7 @@ export default function Layout({ children }: LayoutProps<'/'>) {
     <html lang="en" className={inter.className} suppressHydrationWarning>
       <body className="flex flex-col min-h-screen">
         <RootProvider>{children}</RootProvider>
+        <Analytics />
       </body>
     </html>
   );
