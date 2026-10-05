@@ -1,0 +1,27 @@
+---
+title: Overview
+description: What VendurePOS is, what it needs, and where it stands.
+---
+
+VendurePOS is an open-source point of sale for [Vendure](https://vendure.io). The till runs in the browser and signs in to your own Vendure store with an administrator account. A server plugin, [@vendurepos/plugin](https://www.npmjs.com/package/@vendurepos/plugin), records each sale as a Vendure order. It is built on [TallyUI](https://github.com/TallyUI/tallyui).
+
+## How a sale reaches Vendure
+
+The till syncs your catalogue and store settings to a local database. A completed sale is queued on the till and sent to the plugin's `/tally/v1/commands` route. The plugin creates the order at the till's price with the `tally-pos` payment settled and the `tally-in-store` fulfilment delivered, and stock comes down through Vendure's own allocation. If the till is offline, sales wait and are sent when it reconnects; a resend never makes a second order.
+
+## Requirements
+
+- Vendure 3.6 or later on Postgres (tested on 3.7.3). MySQL, MariaDB and SQLite are not supported.
+- The [@vendurepos/plugin](https://www.npmjs.com/package/@vendurepos/plugin) package on npm, added to your Vendure config.
+- A web till for now. The app is pre-release: expect changes before 1.0.
+
+## Next steps
+
+<Cards>
+  <Card title="Quick start" href="/docs/quick-start">
+    Install the plugin and make your first sale.
+  </Card>
+  <Card title="Source on GitHub" href="https://github.com/vendurepos/app">
+    The app and the Vendure plugin, MIT licensed.
+  </Card>
+</Cards>
