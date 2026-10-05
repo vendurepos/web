@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { APP_URL, DEMO_URL, GITHUB_URL, MEDUSAPOS_URL, NPM_URL, TALLYUI_URL } from '@/lib/site';
+import { JsonLd } from '@/components/json-ld';
+import { homeJsonLd } from '@/lib/structured-data';
 
 export const metadata: Metadata = { alternates: { canonical: '/' } };
 
@@ -47,6 +49,7 @@ const features = [
 export default function HomePage() {
   return (
     <main className="max-w-5xl mx-auto w-full px-4">
+      <JsonLd data={homeJsonLd()} />
       <section className="pt-20 pb-16 text-center">
         <span className="rounded-md border border-fd-border px-2 py-0.5 text-sm text-fd-muted-foreground">
           Pre-release · plugin 0.1.0
