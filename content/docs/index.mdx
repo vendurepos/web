@@ -1,24 +1,27 @@
 ---
-title: Getting Started
-description: MedusaPOS documentation
+title: Overview
+description: What VendurePOS is, what it needs, and where it stands.
 ---
 
-MedusaPOS is an open source point of sale application for [MedusaJS](https://medusajs.com).
+VendurePOS is an open-source point of sale for [Vendure](https://vendure.io). The till runs in the browser and signs in to your own Vendure store with an administrator account. A server plugin, [@vendurepos/plugin](https://www.npmjs.com/package/@vendurepos/plugin), records each sale as a Vendure order. It is built on [TallyUI](https://github.com/TallyUI/tallyui).
 
-Built on [TallyUI](https://github.com/TallyUI/tallyui) — composable UI primitives for POS systems.
+## How a sale reaches Vendure
 
-## Features
+The till syncs your catalogue and store settings to a local database. A completed sale is queued on the till and sent to the plugin's `/tally/v1/commands` route. The plugin creates the order at the till's price with the `tally-pos` payment settled and the `tally-in-store` fulfilment delivered, and stock comes down through Vendure's own allocation. If the till is offline, sales wait and are sent when it reconnects; a resend never makes a second order.
 
-- **Multi-platform** — iOS, Android, Web, and Desktop from a single codebase
-- **Local-first** — Works offline with RxDB, syncs when connected
-- **Modular** — Built on TallyUI's composable architecture
-- **Open source** — MIT licensed
+## Requirements
 
-## Status
+- Vendure 3.6 or later on Postgres (tested on 3.7.3). MySQL, MariaDB and SQLite are not supported.
+- The [@vendurepos/plugin](https://www.npmjs.com/package/@vendurepos/plugin) package on npm, added to your Vendure config.
+- A web till for now. The app is pre-release: expect changes before 1.0.
 
-MedusaPOS is currently in **beta**. We're working toward an MVP release.
+## Next steps
 
-## Links
-
-- [GitHub](https://github.com/medusapos)
-- [Live Demo](https://demo.medusapos.com)
+<Cards>
+  <Card title="Quick start" href="/docs/quick-start">
+    Install the plugin and make your first sale.
+  </Card>
+  <Card title="Source on GitHub" href="https://github.com/vendurepos/app">
+    The app and the Vendure plugin, MIT licensed.
+  </Card>
+</Cards>

@@ -1,16 +1,21 @@
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
+import { APP_URL, GITHUB_URL, SITE_NAME } from '@/lib/site';
 
 export const gitConfig = {
-  user: 'medusapos',
-  repo: 'app',
+  user: 'vendurepos',
+  repo: 'web',
   branch: 'main',
 };
 
 export function baseOptions(): BaseLayoutProps {
   return {
     nav: {
-      title: 'MedusaPOS',
+      title: SITE_NAME,
     },
-    githubUrl: `https://github.com/${gitConfig.user}/${gitConfig.repo}`,
+    githubUrl: GITHUB_URL,
+    links: [
+      { text: 'Docs', url: '/docs' },
+      { text: 'Open the POS', url: APP_URL, external: true },
+    ],
   };
 }

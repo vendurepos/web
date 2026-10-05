@@ -1,6 +1,19 @@
 import { RootProvider } from 'fumadocs-ui/provider/next';
 import './global.css';
 import { Inter } from 'next/font/google';
+import type { Metadata } from 'next';
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/site';
+
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: 'VendurePOS: open-source point of sale for Vendure',
+    template: '%s | VendurePOS',
+  },
+  description: SITE_DESCRIPTION,
+  openGraph: { siteName: SITE_NAME, type: 'website', url: '/' },
+  twitter: { card: 'summary_large_image' },
+};
 
 const inter = Inter({
   subsets: ['latin'],
