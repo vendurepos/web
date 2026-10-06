@@ -53,3 +53,16 @@ test('every home feature and demo row cites a vendurepos/app test', () => {
   }
   assert.ok(count >= 16, `Expected at least 16 feature and demo rows, found ${count}`);
 });
+
+test('hero puts the live demo first, as the primary button', () => {
+  const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
+  const demo = '<a href="https://demo.vendurepos.com/demo" class="rounded-md bg-fd-primary px-6 py-3 text-fd-primary-foreground hover:bg-fd-primary/90">Live demo</a>';
+  const quickStart = '<a class="rounded-md border border-fd-border px-6 py-3 hover:bg-fd-accent" href="/docs/quick-start">Quick start</a>';
+  const tryStore = '<a href="https://app.vendurepos.com" class="rounded-md border border-fd-border px-6 py-3 hover:bg-fd-accent">Try with your store</a>';
+  assert.ok(html.includes(demo));
+  assert.ok(html.includes(quickStart));
+  assert.ok(html.includes(tryStore));
+  assert.ok(html.indexOf(demo) < html.indexOf(quickStart));
+  assert.ok(html.indexOf(quickStart) < html.indexOf(tryStore));
+  assert.equal(Array.from(html.matchAll(/class="rounded-md bg-fd-primary/g)).length, 1);
+});
