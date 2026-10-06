@@ -44,6 +44,70 @@ const features = [
     description:
       'Keyboard-wedge scanners work out of the box, matched against a barcode field you choose on your product variants.',
   },
+  {
+    // apps/pos/e2e/demo.spec.ts ("a demo cashier parks a sale, sells another, then resumes the parked one")
+    title: 'Park a sale, resume it later',
+    description:
+      'Park the cart to serve the next customer, then resume it from Parked. A parked cart stays on the till over a reload.',
+  },
+  {
+    // apps/pos/e2e/demo.spec.ts ("a demo cashier changes a line's price and sells at it"); apps/pos/lib/price-edit-setting.test.ts
+    title: 'Change a line price',
+    description:
+      'Reprice a line in the cart and sell at that price, with tax on the new price. It stays off on a till until you turn it on in Settings.',
+  },
+  {
+    // apps/pos/e2e/sign-in.spec.ts ("a sale to a searched customer, and one to a new customer, land on those customers in Vendure"); apps/pos/e2e/demo.spec.ts ("a demo visitor attaches a customer and sees it on the receipt")
+    title: 'Customers at the till',
+    description:
+      'Search your Vendure customers or add a new one from the cart. The order lands on that customer, and the receipt names them.',
+  },
+  {
+    // apps/pos/e2e/sign-in.spec.ts ("a discounted sale: line and order discounts, paid, and applied by the plugin with the receipt's totals")
+    title: 'Line and order discounts',
+    description:
+      "Discount a line or the whole sale. The plugin applies the same discounts, and the order in Vendure matches the receipt's totals.",
+  },
+];
+
+// What the live demo shows next to a real store. Each row names the vendurepos/app tests behind it, like the features above.
+const demoParity = [
+  {
+    // apps/pos/e2e/demo.spec.ts ("the demo signs in with one click, sells, runs a register day, ..."); apps/pos/e2e/sign-in.spec.ts ("Print receipt prints the receipt alone through the browser")
+    capability: 'Sell for cash and print the receipt',
+    demo: 'Yes',
+    store: 'Yes',
+  },
+  {
+    // apps/pos/e2e/demo.spec.ts ("the demo signs in with one click, sells, runs a register day, ..."); apps/pos/e2e/sign-in.spec.ts ("a register day: open with a float, ...")
+    capability: 'Open and close a register with a Z report',
+    demo: 'Yes',
+    store: 'Yes',
+  },
+  {
+    // apps/pos/e2e/demo.spec.ts ("a demo cashier parks a sale, ..."); parked carts stay on the till in both (apps/pos/lib/orders-db.ts, order_drafts)
+    capability: 'Park and resume a sale',
+    demo: 'Yes',
+    store: 'Yes',
+  },
+  {
+    // apps/pos/e2e/demo.spec.ts ("a demo cashier changes a line's price and sells at it"); apps/pos/lib/price-edit-setting.test.ts ("off by default on a real store, on in the demo")
+    capability: 'Change a line price',
+    demo: 'Yes, on from the start',
+    store: 'Yes, once you turn it on for the till in Settings',
+  },
+  {
+    // apps/pos/e2e/demo.spec.ts ("a demo visitor attaches a customer and sees it on the receipt"); apps/pos/e2e/sign-in.spec.ts ("a sale to a searched customer, ...")
+    capability: 'Attach a customer to the sale',
+    demo: 'Yes, from sample customers',
+    store: 'Yes, from your Vendure customers',
+  },
+  {
+    // apps/pos/e2e/demo.spec.ts (the first test asserts no request leaves the page's origin); apps/pos/e2e/offline.spec.ts; packages/vendure-plugin/test/replay.e2e.ts
+    capability: 'Sales reach Vendure, once each, even offline',
+    demo: 'No: the demo store lives in your browser, and nothing leaves the page',
+    store: 'Yes',
+  },
 ];
 
 export default function HomePage() {
@@ -99,6 +163,35 @@ export default function HomePage() {
               <p className="mt-2 text-sm text-fd-muted-foreground">{feature.description}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="pb-16">
+        <h2 className="mb-6 text-2xl font-bold tracking-tight">Live demo or your own store</h2>
+        <p className="mb-4 text-fd-muted-foreground">
+          The <a href={DEMO_URL} className="underline">live demo</a> is the till signed in
+          to a simulated store in your browser, with nothing to install. This is what it
+          shows today.
+        </p>
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-sm">
+            <thead>
+              <tr className="border-b border-fd-border">
+                <th scope="col" className="py-2 pr-4 font-semibold">At the till</th>
+                <th scope="col" className="py-2 pr-4 font-semibold">Live demo</th>
+                <th scope="col" className="py-2 font-semibold">Your Vendure store</th>
+              </tr>
+            </thead>
+            <tbody>
+              {demoParity.map((row) => (
+                <tr key={row.capability} className="border-b border-fd-border align-top">
+                  <th scope="row" className="py-2 pr-4 font-medium">{row.capability}</th>
+                  <td className="py-2 pr-4 text-fd-muted-foreground">{row.demo}</td>
+                  <td className="py-2 text-fd-muted-foreground">{row.store}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </section>
 
