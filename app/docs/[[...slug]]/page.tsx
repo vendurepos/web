@@ -1,4 +1,5 @@
 import { getPageImage, source } from '@/lib/source';
+import { SITE_NAME } from '@/lib/site';
 import { DocsBody, DocsDescription, DocsPage, DocsTitle } from 'fumadocs-ui/layouts/docs/page';
 import { notFound } from 'next/navigation';
 import { getMDXComponents } from '@/mdx-components';
@@ -54,6 +55,9 @@ export async function generateMetadata(props: PageProps<'/docs/[[...slug]]'>): P
     description: page.data.description,
     alternates: { canonical: page.url },
     openGraph: {
+      siteName: SITE_NAME,
+      type: 'article',
+      url: page.url,
       images: getPageImage(page).url,
     },
   };
