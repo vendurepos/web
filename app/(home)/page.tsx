@@ -127,18 +127,18 @@ export default function HomePage() {
           and every sale lands in Vendure once, as a normal order at the till's price.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <Link
-            href="/docs/quick-start"
-            className="rounded-md bg-fd-primary px-6 py-3 text-fd-primary-foreground hover:bg-fd-primary/90"
-          >
-            Quick start
-          </Link>
           <a
             href={DEMO_URL}
-            className="rounded-md border border-fd-border px-6 py-3 hover:bg-fd-accent"
+            className="rounded-md bg-fd-primary px-6 py-3 text-fd-primary-foreground hover:bg-fd-primary/90"
           >
             Live demo
           </a>
+          <Link
+            href="/docs/quick-start"
+            className="rounded-md border border-fd-border px-6 py-3 hover:bg-fd-accent"
+          >
+            Quick start
+          </Link>
           <a
             href={APP_URL}
             className="rounded-md border border-fd-border px-6 py-3 hover:bg-fd-accent"
