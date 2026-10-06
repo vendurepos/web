@@ -1,1 +1,1 @@
-{ "title": "VendurePOS", "pages": ["index", "quick-start", "changelog"] }
+{ "title": "VendurePOS", "pages": ["index", "quick-start", "plugin-setup", "connect-a-till", "at-the-till", "troubleshooting", "limitations", "changelog"] }
