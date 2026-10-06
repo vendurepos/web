@@ -1,0 +1,39 @@
+---
+title: Limitations
+description: What VendurePOS does not do yet.
+---
+{/* Sources: vendurepos/app 41d722d README.md (Known limitations); packages/vendure-plugin/README.md at plugin-v0.3.0; @tallyui/components 3.3.0. */}
+
+- Pre-release: expect changes before 1.0.
+
+- Web till only for now.
+
+- Refunds and returns: not yet.
+
+- Coupon codes: not yet.
+  Line and order discounts work at the till.
+
+- Card payments are taken on a separate terminal and confirmed on the till.
+  The till does not talk to the terminal.
+
+- Prices and stock: an open till picks up a price change within about a minute
+  and a stock change within about five minutes.
+
+- Sales take stock from the channel's default stock location.
+  The till cannot pick a location.
+
+- One browser tab per till.
+
+- Private browser windows that give a site no storage,
+  such as Safari's, cannot run the till.
+
+- The manager's approval on register close is a typed name,
+  not a verified sign-in.
+
+- Postgres only.
+  MySQL, MariaDB and SQLite are not supported.
+
+- The till does not add fees, shipping charges or custom lines.
+
+- Device keys need plugin 0.2.0 or later, which is not yet on npm;
+  see [Plugin setup](/docs/plugin-setup).

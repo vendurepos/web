@@ -1,0 +1,82 @@
+---
+title: Troubleshooting
+description: Sync status, selling offline, orders that need attention, and sign-in problems.
+---
+{/* Sources: vendurepos/app 41d722d; packages/vendure-plugin/README.md at plugin-v0.3.0; @tallyui/components 3.3.0. */}
+
+## Check whether a sale has reached the store
+
+The till keeps the catalogue in a local database in your browser and sells with the network off.
+Each sale waits on the till until the store is reachable, then lands in Vendure once,
+never twice, at the POS price, paid and fulfilled.
+
+Read the sync status in the header:
+
+- `N orders waiting to send`, with ` · sending…` while sending.
+- `Closing — waiting for N orders` while a close waits for them.
+- `N orders need attention` opens the orders list.
+
+Open **Orders** to see the till's recent sales with a status: **Waiting to sync**,
+**Synced** or **Not accepted**. Sales the store refused appear under **Needs attention**
+with a **Retry**. Choose **Back to sale** to return without losing your cart.
+
+## Act on a header notice
+
+- "The store refused the orders (reason). They are kept; send them again once the store is fixed."
+  Fix the store, then choose **Send again**.
+- "The store's VendurePOS plugin isn't answering. Orders are kept and retried."
+  Check that `/tally/v1/info` and `/tally/v1/commands` reach the plugin through the store's proxy.
+- "N orders keep failing at the store. They are kept and retried."
+- "The store refused this sign-in. Sign in again below; orders are kept."
+  Sign in again in the bar that appears.
+- "This store's VendurePOS plugin is missing or out of date. Install or update it, then this till continues."
+  Run plugin 0.1.0 or later, apply its schema changes and restart Vendure.
+- "Can't reach the store's settings yet. Retrying…"
+  The till takes no sale until it has read the store's settings.
+
+## Refresh prices and stock
+
+An open till picks up a price change made in Vendure within about a minute and a
+stock change within about five minutes. Each product shows its stock "as of" the last check.
+
+To pull the whole catalogue fresh, sign out and sign in again. Signing out removes
+the local catalogue but never the orders. Unsent orders and the register wait on
+that device for the next sign-in to the same store and channel.
+Sign out waits while a sale is saving ("Sign out waits until the sale is saved.")
+or the register is closing.
+
+## Sell while offline
+
+Once the catalogue has synced, everything at the till works offline except
+customer search and adding a customer, which need a connection to the store.
+
+## Resolve a sale the store kept part-way
+
+A sale marked `needs_admin` answers 409 until an admin resolves it through the
+Admin API with SuperAdmin access. List these sales with `tallyNeedsAdminCommands`.
+Resolve one with `tallyResolveNeedsAdmin`, using `applied` or `rejected` as the
+resolution and a note:
+
+```graphql
+mutation {
+  tallyResolveNeedsAdmin(commandId: "command-id", resolution: applied, note: "checked the till") {
+    id
+    status
+  }
+}
+```
+
+Send a rejection with the sale's channel token (`vendure-token`).
+An order flagged `tallyRejected` counts as never placed: leave it out of register
+and sales figures, and use the till's **Retry** for the sale that counts.
+
+## Check browser storage
+
+If the local database cannot start, the till shows the error with a **Reload** button.
+Private windows that give a site no storage, such as Safari's, cannot run the till.
+
+## Fix CORS, 401 or plain-http store problems
+
+Follow [Troubleshoot in the quick start](/docs/quick-start#9-troubleshoot).
+A till served over https talks only to https stores; `http://localhost` and
+`http://127.0.0.1` are allowed for development.

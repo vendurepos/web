@@ -1,0 +1,81 @@
+---
+title: At the till
+description: Open the register, take a sale, split a payment, add a customer and close the day.
+---
+{/* Sources: vendurepos/app 41d722d; @tallyui/components 3.3.0. */}
+
+## Open the register
+
+After the catalogue and settings load, enter the cash you counted into
+**Cash in the drawer to start** and press **Open register**.
+After the first day, the field starts with the cash counted at the last close.
+You can use the cart before opening the register; paying waits for it.
+
+## Find and add products
+
+Tap a product in the catalogue, search, or scan with a keyboard-wedge barcode scanner.
+A scan looks up the barcode field, then the SKU. A code with no product shows `No products match "<code>".`
+
+In **Settings → Scanner**, set **Shortest barcode the scanner reads** from 4 to 32 characters.
+A shorter fast burst is treated as typing. On a narrow screen, use the **Products** and cart tabs.
+
+## Apply a discount or change a price
+
+Choose **Discount** on a cart line, or **Order discount** for the whole sale.
+Choose **Price** on a cart line to change its price.
+This is a per-till setting: **Settings → Prices**, **Price changes: On/Off**
+("Let cashiers change a line's price in the cart").
+
+## Park a sale for later
+
+Choose **Park** to keep the cart for later. The button then reads **Parked (n)**,
+where you can resume or discard a parked sale.
+
+## Add a customer
+
+Choose **Add customer**, then search by name or email, or add a new customer.
+Choose **Remove** to take them off. The customer prints on the receipt.
+Searching and adding need a connection to the store: "Connect to search or add customers."
+
+## Take payment
+
+Choose **Pay cash**, **Pay by card** or **Split** in the cart.
+
+- For cash, choose a quick amount or type an amount. Quick amounts are the total,
+  then the next whole 5, 10 and 50 above it. The till shows the change; choose **Complete sale**.
+- For card, take the total on your separate card terminal, then press **Card payment approved**.
+- For a split payment, take part cash and part card. Change comes only from cash;
+  the order records both payments.
+
+Choose **Back to the cart** to leave the tender before any payment.
+
+## Print the receipt and start again
+
+Choose **Print receipt** to open the browser's print dialog and print the receipt alone.
+Choose **New sale** to start the next one.
+
+## Check the register during the day
+
+Open **Register** to see the sales this session and what is expected in the drawer.
+Record **Paid in / out** with a reason. You can undo an entry with **Undo**.
+
+## Count the drawer and close the day
+
+In **Register**, choose **Close register**. Under **Count the drawer**, enter the counted cash and
+other tenders, then choose **Close register**. **Back to selling** returns to the sale.
+
+If the count difference is over the till's limit, closing needs a manager's name.
+Set the limit in **Settings → Register**: "Count difference that needs a manager's approval";
+empty means no approval. The manager's name is typed, not verified.
+
+**Register closed** shows `Closure #n`. Choose **Print the Z report**, then **Done**.
+
+The Z report lists:
+
+- Opened and closed times, number of sales and sales total.
+- Opening float and sales per tender (**Cash**, **Card**).
+- Tax per rate: net, tax and gross.
+- Paid in/out entries.
+- Expected, counted and the difference per tender.
+- The approver's name when there is one.
+- How many orders were still syncing at close.

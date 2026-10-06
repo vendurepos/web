@@ -1,0 +1,67 @@
+---
+title: Connect a till
+description: Sign a till in to your store with a staff account or a device key.
+---
+{/* Sources: vendurepos/app 41d722d; packages/vendure-plugin/README.md at plugin-v0.3.0; @tallyui/components 3.3.0. */}
+
+## Open your till
+
+Open [app.vendurepos.com](https://app.vendurepos.com). On **Sign in to Vendure**,
+choose **Email and password** or **Device key**.
+Use one browser tab per till: a second tab is told the till is open in another tab.
+
+## Enter your store details
+
+Enter the store URL; a trailing `/admin-api` is accepted.
+Enter the channel token. For staff sign-in it is optional: blank means the default channel.
+
+For **Barcode field (optional)**, enter the name of an existing single text
+`ProductVariant` custom field, such as `barcode`, to use for scanning. Leave it blank to turn this off.
+The barcode field is set when signing in; **Settings** shows the field you chose.
+
+## Sign in with a staff account
+
+Choose **Email and password** and sign in as a Vendure administrator who can read
+the channel's catalogue and settings and has `TallyPosSell` (plugin 0.2.0+) or `CreateOrder`.
+
+## Create and use a device key
+
+You need plugin 0.2.0 or later and Vendure's React Dashboard.
+See [Plugin setup](/docs/plugin-setup) for installation.
+
+1. Add `'api-key'` to `authOptions.tokenMethod`:
+
+   ```ts
+   tokenMethod: ['bearer', 'cookie', 'api-key'],
+   ```
+
+2. In the Dashboard, switch to the till's channel first. A key works only in the
+   channel it was created in, and the dialog names that channel.
+3. Go to **System → API keys → New POS till key** and name the key after the device.
+   This creates or extends the `vendurepos-pos-till` role with `TallyPosSell` and
+   the reads a till needs, creates the key with that role and shows the key once.
+4. On the till, choose **Device key**, paste the key and the till's channel token, and sign in.
+
+The till shows the key's name on receipts as `Till: <name>`.
+Rotate or delete a key on its own page in the Dashboard.
+Signing out forgets the key on that device; it does not revoke it.
+A till whose key is revoked asks for a new one and keeps its cart.
+
+## Make the key button available in a pnpm project
+
+For pnpm projects, the Dashboard build does not find the button unless its Vite
+plugin points at your `node_modules`:
+
+```ts
+vendureDashboardPlugin({
+  // ...your existing options
+  pluginPackageScanner: { nodeModulesRoot: path.resolve(__dirname, 'node_modules') },
+}),
+```
+
+npm projects need nothing extra.
+
+## Fix a sign-in problem
+
+See the [quick start's troubleshooting steps](/docs/quick-start#9-troubleshoot)
+and [Troubleshooting](/docs/troubleshooting).

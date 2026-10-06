@@ -210,7 +210,8 @@ export default function HomePage() {
         </ul>
         <p className="mt-4 text-fd-muted-foreground">
           The <Link href="/docs/quick-start" className="underline">quick start</Link>{' '}
-          walks through the plugin, the migration, CORS and your first sale.
+          walks through the plugin, the migration, CORS and your first sale. See{' '}
+          <Link href="/docs/limitations" className="underline">what it does not do yet</Link>.
         </p>
       </section>
 
@@ -223,6 +224,7 @@ export default function HomePage() {
         <div className="flex flex-wrap gap-4">
           <a href={GITHUB_URL} className="underline">GitHub</a>
           <a href={NPM_URL} className="underline">npm</a>
+          <Link href="/docs/limitations" className="underline">Limitations</Link>
           <Link href="/docs/changelog" className="underline">Changelog</Link>
         </div>
       </footer>
