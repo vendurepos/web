@@ -3,6 +3,9 @@ title: Limitations
 description: What VendurePOS does not do yet.
 ---
 {/* Sources: vendurepos/app 41d722d README.md (Known limitations); packages/vendure-plugin/README.md at plugin-v0.3.0; @tallyui/components 3.3.0. */}
+{/* Refunds and returns: absence at vendurepos/app 41d722d. git grep -i refund over apps/pos finds only zero refund counters (lib/demo/store.ts:180, lib/z-report.test.ts:12-16); docs/adr/0003-register-commands.md:134 says perpetualRefundsTotalMinor is 0 until refunds exist, and :203-204 that refunds stay out of every figure. */}
+{/* Coupon codes: absence at vendurepos/app 41d722d. git grep -i -E "coupon|promotion" over apps/pos finds nothing; docs/adr/0002-order-path-vendure-plugin.md:343 keeps server promotions off POS orders (packages/vendure-plugin/test/promotions.e2e.ts). Line and order discounts: apps/pos/lib/sale-cart.tsx (DiscountForm, DiscountChips). */}
+{/* Fees, shipping charges and custom lines: absence at vendurepos/app 41d722d. git grep -i -E "\bfees?\b|shipping|surcharge|custom ?(item|line)" over apps/pos/app and apps/pos/lib, tests and lib/demo excluded, finds nothing; only the in-browser demo server (apps/pos/lib/demo/store.ts:145-151) handles them. */}
 
 - Pre-release: expect changes before 1.0.
 
