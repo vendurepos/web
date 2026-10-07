@@ -37,3 +37,18 @@ test('home links the limitations page', () => {
   const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
   assert.ok(html.includes('href="/docs/limitations"'));
 });
+
+test('changelog lists 0.3.0, 0.2.0 and 0.1.0 newest first', () => {
+  const html = readFileSync(join('.next/server/app', 'docs/changelog.html'), 'utf8');
+  const v030 = html.indexOf('0.3.0 (2026-10-06)');
+  const v020 = html.indexOf('0.2.0 (2026-10-06)');
+  const v010 = html.indexOf('0.1.0 (2026-10-01)');
+  assert.ok(v030 >= 0);
+  assert.ok(v020 >= 0);
+  assert.ok(v010 >= 0);
+  assert.ok(v030 < v020);
+  assert.ok(v020 < v010);
+  assert.ok(html.includes('TALLY-CUSTOM-ITEM'));
+  assert.ok(html.includes('tallyEnsurePosTillRole'));
+  assert.doesNotMatch(html, /Unreleased/);
+});
