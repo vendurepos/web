@@ -3,15 +3,14 @@ title: Limitations
 description: What VendurePOS does not do yet.
 ---
 {/* Sources: vendurepos/app 41d722d README.md (Known limitations); packages/vendure-plugin/README.md at plugin-v0.3.0; @tallyui/components 3.3.0. */}
-{/* Refunds and returns: absence at vendurepos/app 41d722d. git grep -i refund over apps/pos finds only zero refund counters (lib/demo/store.ts:180, lib/z-report.test.ts:12-16); docs/adr/0003-register-commands.md:134 says perpetualRefundsTotalMinor is 0 until refunds exist, and :203-204 that refunds stay out of every figure. */}
-{/* Coupon codes: absence at vendurepos/app 41d722d. git grep -i -E "coupon|promotion" over apps/pos finds nothing; docs/adr/0002-order-path-vendure-plugin.md:343 keeps server promotions off POS orders (packages/vendure-plugin/test/promotions.e2e.ts). Line and order discounts: apps/pos/lib/sale-cart.tsx (DiscountForm, DiscountChips). */}
-{/* Fees, shipping charges and custom lines: absence at vendurepos/app 41d722d. git grep -i -E "\bfees?\b|shipping|surcharge|custom ?(item|line)" over apps/pos/app and apps/pos/lib, tests and lib/demo excluded, finds nothing; only the in-browser demo server (apps/pos/lib/demo/store.ts:145-151) handles them. */}
+{/* Refunds: vendurepos/app@7055af2 docs/V2-PARITY.md:90 (Refunds: Partial; the plugin applies order.refund, the till's refund flow in the app is missing). No source mentions returns. */}
+{/* Coupon codes: vendurepos/app@7055af2 docs/V2-PARITY.md:91 (Promotions and coupon codes: Missing) and docs/adr/0002-order-path-vendure-plugin.md:343 (no server promotions on POS orders). Line and order discounts: apps/pos/lib/sale-cart.tsx:65 (DiscountForm), :89 and :139 (DiscountChips). */}
 
 - Pre-release: expect changes before 1.0.
 
 - Web till only for now.
 
-- Refunds and returns: not yet.
+- Refunds: not yet.
 
 - Coupon codes: not yet.
   Line and order discounts work at the till.
@@ -35,8 +34,6 @@ description: What VendurePOS does not do yet.
 
 - Postgres only.
   MySQL, MariaDB and SQLite are not supported.
-
-- The till does not add fees, shipping charges or custom lines.
 
 - Device keys need plugin 0.2.0 or later, which is not yet on npm;
   see [Plugin setup](/docs/plugin-setup).
