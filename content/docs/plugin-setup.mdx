@@ -3,6 +3,7 @@ title: Plugin setup
 description: Install @vendurepos/plugin, the settings it needs, and what it adds to your store.
 ---
 {/* Sources: vendurepos/app 41d722d; packages/vendure-plugin/README.md at plugin-v0.3.0. */}
+{/* The till does not add fees, shipping or custom lines: absence at vendurepos/app 41d722d. git grep -i -E "\bfees?\b|shipping|surcharge|custom ?(item|line)" over apps/pos/app and apps/pos/lib, tests and lib/demo excluded, finds nothing; only the in-browser demo server (apps/pos/lib/demo/store.ts:145-151) handles them. */}
 
 ## Check your store
 

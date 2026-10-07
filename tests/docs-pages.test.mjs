@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
 const blockPattern = /<script type="application\/ld\+json">([\s\S]*?)<\/script>/g;
@@ -51,4 +51,18 @@ test('changelog lists 0.3.0, 0.2.0 and 0.1.0 newest first', () => {
   assert.ok(html.includes('TALLY-CUSTOM-ITEM'));
   assert.ok(html.includes('tallyEnsurePosTillRole'));
   assert.doesNotMatch(html, /Unreleased/);
+});
+
+test('llms text carries no MDX comments', () => {
+  const full = readFileSync(join('.next/server/app', 'llms-full.txt.body'), 'utf8');
+  const directory = join('.next/server/app', 'llms.mdx/docs');
+  const files = readdirSync(directory).filter((file) => file.endsWith('.body'));
+  assert.ok(files.length >= 7);
+  const texts = [full, ...files.map((file) => readFileSync(join(directory, file), 'utf8'))];
+  for (const text of texts) {
+    assert.ok(!text.includes('{/*'));
+    assert.ok(!text.includes('absence at vendurepos/app'));
+  }
+  assert.ok(full.includes('# Limitations'));
+  assert.ok(full.includes('plugins: [/* your existing plugins, */ TallyPosPlugin],'));
 });

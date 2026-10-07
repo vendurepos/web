@@ -18,10 +18,13 @@ export function getPageImage(page: InferPageType<typeof source>) {
   };
 }
 
+// MDX comments are maintainer notes (source citations) and stay out of the llms text.
+const mdxComment = /^\{\/\*[\s\S]*?\*\/\}[ \t]*\n?/gm;
+
 export async function getLLMText(page: InferPageType<typeof source>) {
   const processed = await page.data.getText('processed');
 
   return `# ${page.data.title}
 
-${processed}`;
+${processed.replace(mdxComment, '')}`;
 }
