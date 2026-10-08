@@ -32,3 +32,35 @@ jobs:
       - run: pnpm types:check
       - run: pnpm build
       - run: pnpm test
+
+  # Crawl the built site and fail on any broken internal link (marketing backlog item 87).
+  links:
+    name: Internal links
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      NEXT_TELEMETRY_DISABLED: 1
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - name: Start the built site
+        run: |
+          pnpm start --port 3000 > /tmp/next-start.log 2>&1 &
+          for _ in {1..30}; do
+            if curl -sf -o /dev/null http://localhost:3000/; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/next-start.log
+          exit 1
+      - name: Check internal links
+        run: pnpm links:check
