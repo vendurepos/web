@@ -12,6 +12,10 @@ updates:
       npm-minor-patch:
         patterns: ['*']
         update-types: [minor, patch]
+    # TypeScript 7 removed baseUrl (TS5102, #21); lift this when the tsconfig migrates.
+    ignore:
+      - dependency-name: typescript
+        versions: ['>=7']
   - package-ecosystem: github-actions
     directory: /
     schedule:
