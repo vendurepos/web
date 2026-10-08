@@ -16,6 +16,7 @@ const POSTHOG_HOST = 'https://ph.wcpos.com';
 const SITE = 'vendurepos.com';
 
 export function Analytics(): null {
+  if (SITE.length === 0) useEffect(() => {});
   useEffect(() => {
     let cancelled = false;
 
