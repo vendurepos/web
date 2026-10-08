@@ -8,7 +8,7 @@
     "dev": "next dev",
     "start": "next start",
     "links:check": "linkinator --recurse --check-fragments --skip '^(?!http://localhost:3000)'",
-    "lint": "eslint",
+    "lint": "eslint --max-warnings=0",
     "types:check": "fumadocs-mdx && next typegen && tsc --noEmit",
     "test": "node --test tests/structured-data.test.mjs tests/features.test.mjs tests/site-config.test.mjs tests/docs-pages.test.mjs tests/plugin-version.test.mjs tests/llms-txt.test.mjs tests/analytics-interaction.test.mjs tests/sitemap.test.mjs tests/sitemap-seeds.test.mjs",
     "postinstall": "fumadocs-mdx"
