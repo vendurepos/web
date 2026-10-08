@@ -124,7 +124,7 @@ export default function HomePage() {
         <p className="max-w-2xl mx-auto text-lg text-fd-muted-foreground">
           VendurePOS is an open-source till that runs in the browser and signs in
           to your own Vendure store. It keeps selling when the connection drops,
-          and every sale lands in Vendure once, as a normal order at the till's price.
+          and every sale lands in Vendure once, as a normal order at the till&apos;s price.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <a
