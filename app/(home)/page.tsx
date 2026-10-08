@@ -113,7 +113,6 @@ const demoParity = [
 export default function HomePage() {
   return (
     <main className="max-w-5xl mx-auto w-full px-4">
-      <img src="/x.png" />
       <JsonLd data={homeJsonLd()} />
       <section className="pt-20 pb-16 text-center">
         <span className="rounded-md border border-fd-border px-2 py-0.5 text-sm text-fd-muted-foreground">
