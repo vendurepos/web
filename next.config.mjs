@@ -28,6 +28,11 @@ const config = {
         source: '/docs/:path*.mdx',
         destination: '/llms.mdx/docs/:path*',
       },
+      // iOS and crawlers ask for /apple-touch-icon.png by name (marketing backlog item 84).
+      {
+        source: '/apple-touch-icon.png',
+        destination: '/apple-icon.png',
+      },
     ];
   },
 };
