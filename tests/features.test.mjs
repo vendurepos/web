@@ -21,7 +21,7 @@ test('home has the demo parity table', () => {
   assert.ok(html.includes('>Live demo</th>'));
   assert.ok(html.includes('>Your Vendure store</th>'));
   assert.equal(Array.from(html.matchAll(/<th scope="col"/g)).length, 3);
-  assert.equal(Array.from(html.matchAll(/<th scope="row"/g)).length, 6);
+  assert.equal(Array.from(html.matchAll(/<th scope="row"/g)).length, 7);
 });
 
 test('home names split payment', () => {
