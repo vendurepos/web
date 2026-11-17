@@ -24,10 +24,13 @@ test('home has the demo parity table', () => {
   assert.equal(Array.from(html.matchAll(/<th scope="row"/g)).length, 6);
 });
 
-test('home claims no split tender', () => {
+test('home names split payment', () => {
   const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
-  // vendurepos/app README lists split tender under "Known limitations".
-  assert.doesNotMatch(html, /split (?:tender|payment)/i);
+  // vendurepos/app 1404f42 apps/pos/e2e/sign-in.spec.ts: a split sale, part cash and part card.
+  const start = html.indexOf('Cash, card and receipts');
+  assert.ok(start >= 0);
+  const card = html.slice(start, html.indexOf('</p>', start));
+  assert.match(card, /split/i);
 });
 
 test('docs index and quick start link the live demo', () => {
@@ -74,11 +77,14 @@ test('the two proof claims link their tests', () => {
   assert.equal(Array.from(html.matchAll(/<a\b[^>]*\bhref="https:\/\/github\.com\/vendurepos\/app\/blob\/main\//g)).length, 2);
 });
 
-test('before you start names refunds and coupon codes as not yet', () => {
+test('before you start gates refunds on the plugin and names coupon codes as not yet', () => {
   const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
-  const item = '<li>Not yet: refunds and coupon codes. Line and order discounts work at the till.</li>';
+  // vendurepos/app 1404f42 plugin CHANGELOG.md:8, :21; apps/pos/lib/discount-total-matrix.test.ts:171-178.
   const heading = html.indexOf('Before you start');
-  assert.ok(html.includes(item));
-  assert.ok(heading >= 0 && heading < html.indexOf(item));
-  assert.ok(html.indexOf(item) < html.indexOf('href="/docs/limitations"'));
+  const end = html.indexOf('href="/docs/limitations"', heading);
+  assert.ok(heading >= 0 && end > heading);
+  const block = html.slice(heading, end);
+  assert.match(block, /Coupon codes are not supported yet/);
+  assert.match(block, /Refunds at the till\s+need the plugin release after 0\.3\.0, and the live demo has them\./);
+  assert.doesNotMatch(block, /Not yet: refunds/i);
 });

@@ -1,81 +1,139 @@
 ---
 title: At the till
-description: Open the register, take a sale, split a payment, add a customer and close the day.
+description: Open the register, sell with charges and open sales, take or split a payment, refund a till sale and close the day.
 ---
-{/* Sources: vendurepos/app 41d722d; @tallyui/components 3.3.0. */}
+{/* Sources: vendurepos/app 1404f42 (app.vendurepos.com production, 17 Nov 2026); plugin CHANGELOG at 1404f42; customer note: plugin CHANGELOG.md:6 ("kept as one public order note"), vendurepos/app#284 ("public to the customer"). */}
+
+Some steps depend on the store's VendurePOS plugin. With no plugin, or one too old to sell,
+the till shows "This store's VendurePOS plugin is missing or out of date.
+Install or update it, then this till continues."
 
 ## Open the register
 
-After the catalogue and settings load, enter the cash you counted into
-**Cash in the drawer to start** and press **Open register**.
-After the first day, the field starts with the cash counted at the last close.
-You can use the cart before opening the register; paying waits for it.
+After the catalogue and settings load, enter the opening float you counted and open the register.
+You can fill the cart first. Until the register is open, the open-register card takes the place of **Checkout**.
 
 ## Find and add products
 
-Tap a product in the catalogue, search, or scan with a keyboard-wedge barcode scanner.
-A scan looks up the barcode field, then the SKU. A code with no product shows `No products match "<code>".`
+Tap a product, or type in the "Search or scan barcode / SKU" box.
+You can also scan with a barcode scanner or the camera.
+A code with no product shows "No products match" with the code.
+On a narrow screen, switch between **Products** and the cart with the tabs.
 
-In **Settings → Scanner**, set **Shortest barcode the scanner reads** from 4 to 32 characters.
-A shorter fast burst is treated as typing. On a narrow screen, use the **Products** and cart tabs.
+## Discount or change a price
 
-## Apply a discount or change a price
+Tap a line's quantity to open its keypad. It holds **Discount**, **Price** and **Remove**.
+Choose **Order discount** under the lines to discount the whole sale.
+If this till allows price changes, tap a line's price for a keypad with quick discounts.
 
-Choose **Discount** on a cart line, or **Order discount** for the whole sale.
-Choose **Price** on a cart line to change its price.
-This is a per-till setting: **Settings → Prices**, **Price changes: On/Off**
-("Let cashiers change a line's price in the cart").
+## Add a charge
 
-## Park a sale for later
+Choose **Add charge**, then **Custom item**, **Fee** or **Shipping**.
+Enter a **Name** and an **Amount**, pick a **Tax class** if you need one, and choose **Apply**.
+Choose **Remove** beside a fee or a shipping charge to take it off.
+A sale takes one shipping charge: "This store takes one shipping charge per order."
+**Checkout** needs at least one product; charges alone can't be sold.
 
-Choose **Park** to keep the cart for later. The button then reads **Parked (n)**,
-where you can resume or discard a parked sale.
+Charges need plugin 0.3.0. On an older plugin the cart shows no **Add charge**.
 
-## Add a customer
+## Open sales, park and the customer
 
-Choose **Add customer**, then search by name or email, or add a new customer.
-Choose **Remove** to take them off. The customer prints on the receipt.
-Searching and adding need a connection to the store: "Connect to search or add customers."
+Each open sale is a tab under the cart. Choose **New** to start another sale, and tap a tab to go back to one.
+
+Choose **Park** to set a sale aside. The button then reads **Parked (n)**.
+Open it to resume or discard a parked sale. Parked sales are still there after a reload.
+
+A sale starts with **Guest** as the customer. Tap **Guest** to search the store's customers and pick one.
+Tap the cross beside the name to remove them. The customer prints on the receipt.
+
+## Order details
+
+The ⋮ beside **Checkout** opens **Order details**.
+**Void** drops the sale from the till. Nothing has been sent to the store.
+A sale that is partly paid can't be voided.
+
+Type a **Customer note** to send with the order. The store keeps it as a public note in the order's history, so the customer can see it too.
+The note needs a plugin release after 0.3.0, which is not out yet. The live demo already has it.
+Without it, **Order details** shows no note.
 
 ## Take payment
 
-Choose **Pay cash**, **Pay by card** or **Split** in the cart.
+Choose **Checkout**, which shows the total.
+On a wide screen the payment pane takes the place of the products, and the cart shows **Paid** and **Remaining**.
+On a narrow screen the payment pane fills the cart tab.
 
-- For cash, choose a quick amount or type an amount. Quick amounts are the total,
-  then the next whole 5, 10 and 50 above it. The till shows the change; choose **Complete sale**.
-- For card, take the total on your separate card terminal, then press **Card payment approved**.
-- For a split payment, take part cash and part card. Change comes only from cash;
-  the order records both payments.
+Pick cash or card. Type the amount on the keypad, or tap a quick amount, then take the payment.
+The keypad has no decimal key: 5, 0, 0 is 5.00.
+For card, take the payment on your own card terminal, then record it on the till.
+When the total is paid, complete the sale. For cash, the till shows the change.
+A scan while you take payment shows "Finish this sale before scanning the next item."
 
-Choose **Back to the cart** to leave the tender before any payment.
+To split between cash and card, take part in cash, then pick card.
+The pane types in what is left. The order keeps both payments.
 
-## Print the receipt and start again
+To split evenly, choose **Split**, then **2 ways** up to **6 ways**.
+The pane shows which part you are on, such as "1 of 2", and its amount. **Don't split** clears the split.
 
-Choose **Print receipt** to open the browser's print dialog and print the receipt alone.
-Choose **New sale** to start the next one.
+## Receipt and next sale
+
+The receipt lists each payment and the change.
+**Print receipt** opens the browser's print dialog and prints the receipt alone.
+**New sale** starts the next one.
+If your till is set not to show the receipt after each sale, it shows "Sale complete" and an empty cart.
+
+## Refund a sale
+
+Refunds at the till need a plugin release after 0.3.0, which is not out yet. The live demo already has them.
+Without it, an order shows no **Refund items**.
+On plugin 0.3.0, refund in the Vendure Dashboard.
+A refund made there on a POS order stays Pending until someone settles it by hand.
+
+Open **Orders**, choose **This till** and open the sale. Only sales made on a till can be refunded.
+With the register closed, the order shows "Open the register to refund this order."
+
+Choose **Refund items**. Each line shows how many are left to refund. Enter how many to refund.
+**Put the items back in stock** is on unless you switch it off.
+Enter a **Reason**, check the amount, and choose **Refund**.
+The till shows "Refunded … to the original payment." A cash refund lowers the cash expected in the drawer.
+
+If the store doesn't answer, don't hand back cash. Choose **Send again**; a refund is never made twice.
+
+A till key's role needs the `TallyPosRefund` permission, and the till role preset leaves it out.
+Without it, the till shows "This account can't refund.
+Ask the store's admin to add the TallyPosRefund permission to its role."
 
 ## Check the register during the day
 
-Open **Register** to see the sales this session and what is expected in the drawer.
-Record **Paid in / out** with a reason. You can undo an entry with **Undo**.
+**Register ›** in the bar opens the **Register** panel.
+It shows the cash in the drawer, this session's sales and other tenders, and prints an X-report.
+
+**Reports** opens on the drawer card: opening float plus cash sales is what is expected in the drawer.
+**Print X-report** prints the figures so far. The register stays open.
+
+Tap your name in the bar for your cashier sheet. It shows "Your sales today" and "In the drawer".
+Choose **Pay in** or **Pay out** to record cash in or out, with an amount and a reason.
+**Hand over** signs you out and leaves the drawer open for the next account.
 
 ## Count the drawer and close the day
 
-In **Register**, choose **Close register**. Under **Count the drawer**, enter the counted cash and
-other tenders, then choose **Close register**. **Back to selling** returns to the sale.
+Choose **Close register** in your cashier sheet, or close from the **Register** panel.
+Finish the sale in progress first. Otherwise the till says "Finish or cancel the sale in progress first."
+Count the cash, enter it, and close.
 
-If the count difference is over the till's limit, closing needs a manager's name.
-Set the limit in **Settings → Register**: "Count difference that needs a manager's approval";
-empty means no approval. The manager's name is typed, not verified.
+If the difference is over this till's limit, **Manager approval** asks for the manager's name.
+The name is recorded as typed, not verified. **Cancel** leaves the count unchanged.
 
-**Register closed** shows `Closure #n`. Choose **Print the Z report**, then **Done**.
+The closure shows the expected and counted cash. Print the Z report there, then finish.
+While orders are still sending, the till shows "Closing — waiting for" and the number of orders.
+**Closures** in your cashier sheet lists past closures and reprints a Z report as a copy.
 
 The Z report lists:
 
-- Opened and closed times, number of sales and sales total.
-- Opening float and sales per tender (**Cash**, **Card**).
+- The closure number, the store, and the opened and closed times.
+- The number of sales and the sales total.
+- The opening float and the sales per tender, cash and card.
 - Tax per rate: net, tax and gross.
-- Paid in/out entries.
-- Expected, counted and the difference per tender.
-- The approver's name when there is one.
+- Paid in, paid out and other drawer entries, with their reasons.
+- Expected, counted and the variance per tender.
+- The approver's name, when there is one.
 - How many orders were still syncing at close.
