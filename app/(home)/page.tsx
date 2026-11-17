@@ -123,6 +123,10 @@ const demoParity = [
   },
 ];
 
+// Column headings of the demo table; also the data-label each cell shows when the rows stack on phones (app/global.css).
+const DEMO_COLUMN = 'Live demo';
+const STORE_COLUMN = 'Your Vendure store';
+
 export default function HomePage() {
   return (
     <main className="max-w-5xl mx-auto w-full px-4">
@@ -216,20 +220,20 @@ export default function HomePage() {
           shows today.
         </p>
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-sm">
+          <table data-stack="" className="w-full text-left text-sm">
             <thead>
               <tr className="border-b border-fd-border">
                 <th scope="col" className="py-2 pr-4 font-semibold">At the till</th>
-                <th scope="col" className="py-2 pr-4 font-semibold">Live demo</th>
-                <th scope="col" className="py-2 font-semibold">Your Vendure store</th>
+                <th scope="col" className="py-2 pr-4 font-semibold">{DEMO_COLUMN}</th>
+                <th scope="col" className="py-2 font-semibold">{STORE_COLUMN}</th>
               </tr>
             </thead>
             <tbody>
               {demoParity.map((row) => (
                 <tr key={row.capability} className="border-b border-fd-border align-top">
                   <th scope="row" className="py-2 pr-4 font-medium">{row.capability}</th>
-                  <td className="py-2 pr-4 text-fd-muted-foreground">{row.demo}</td>
-                  <td className="py-2 text-fd-muted-foreground">{row.store}</td>
+                  <td data-label={DEMO_COLUMN} className="py-2 pr-4 text-fd-muted-foreground">{row.demo}</td>
+                  <td data-label={STORE_COLUMN} className="py-2 text-fd-muted-foreground">{row.store}</td>
                 </tr>
               ))}
             </tbody>
