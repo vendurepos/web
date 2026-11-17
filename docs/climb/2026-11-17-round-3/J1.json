@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 7, "worst_defect": "The home page never shows the till: no screenshot or image of the product anywhere above or below the fold, so a visitor who half knows Vendure has to read ten text cards or leave the site (Live demo) just to see what 'an open-source till that runs in the browser' looks like; Vendure itself is never explained or linked on the home page either.", "where": "home.desktop.01 / home.phone.01 hero and 'What it does today'"},
+    "C2": {"score": 8, "worst_defect": "The quick start names two hosts for the till, 'The hosted POS is live at https://app.vendurepos.com. https://vendurepos.vercel.app serves the same build.', and step 5 tells stores to keep allowing the vercel.app origin, which makes a newcomer wonder which address is the official one and reads like an unfinished migration.", "where": "quick-start.desktop.01 intro paragraph; quick-start.desktop.02 step 5"},
+    "C3": {"score": 7, "worst_defect": "Step 4 'Enable bearer authentication' is one line of required config buried under optional material (API keys, the New POS till key dialog, sign-in with Device key, a pnpm Vite-plugin fix), so the required path and the optional device-key path are mixed in one numbered step; step 8 then lists the same Vendure checks twice (in the paragraph and again under 'Check it worked').", "where": "quick-start.desktop.02 step 4; quick-start.desktop.03 step 8"},
+    "C4": {"score": 8, "worst_defect": "Changelog entries cite internal references that go nowhere for a reader: '(ADR 0005)', '(ADR 0004)', '(#116)', '(#117)' appear as plain unlinked text, and terms like 'order.create v5' are never explained in the docs.", "where": "changelog.desktop.01, 0.3.0 and 0.2.0 sections"},
+    "C5": {"score": 7, "worst_defect": "The home page is entirely text: ten identical grey cards in a 2x5 grid plus a table, with no image, icon or visual anchor, so it reads like a generic docs template rather than a product page; the docs sidebar's grey panel also stops at about 900 px, leaving a white strip below it in the full-page captures.", "where": "home.desktop.01 cards; docs.desktop.01 / quick-start.desktop.01 sidebar bottom"},
+    "C6": {"score": 8, "worst_defect": "The tax-strategy table on the phone breaks inline code mid-identifier: 'taxOptions.orderTax / CalculationStrategy', 'new OrderLevelTax / CalculationStrategy()' and '( pricesIncludeTax: / false )' wrap across lines with split pills and stray parentheses.", "where": "quick-start.phone.05 bottom and quick-start.phone.06 top"},
+    "C7": {"score": 8, "worst_defect": "The share card uses a pink/purple accent and a hollow-circle mark that appear nowhere on the monochrome site, so the logo looks like a placeholder; the 404 page also reuses the home meta description instead of its own.", "where": "og-image.png; tech.json pages.not-found.*.description"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "A first-time visitor from search never sees the product: the home page has no screenshot of the till, so in the first minute it is only text cards and four equally weighted buttons, and the only way to see the till is to leave for the demo.",
+    "where": "home.desktop.01 and home.phone.01, hero section",
+    "fix": "Put one real screenshot of the till (cart and catalogue, in light and dark) directly under the hero buttons, linked to the live demo, with a one-line note that Vendure is an open-source headless commerce platform."
+  },
+  "mean": 7.6
+}
