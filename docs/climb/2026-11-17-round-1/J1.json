@@ -1,0 +1,48 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {
+      "score": 7,
+      "worst_defect": "The home page has no picture of the till at all: under 'Point of sale for Vendure' a newcomer gets a paragraph, four equal-looking buttons ('Live demo', 'Quick start', 'Try with your store', 'GitHub') and ten text-only cards. They must leave the site to see what the product looks like, and the cards use jargon such as 'idempotency ledger', 'Z report' and 'Keyboard-wedge'. 'Vendure' itself is never explained or linked in the hero.",
+      "where": "home.desktop.01 and home.phone.01 (hero and 'What it does today' grid)"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The strongest proof claim, 'Our acceptance run makes 25 sales, 20 of them offline, and checks that Vendure holds exactly 25 orders', has no link to the test, a run log or CI. Neither does 'The same sale sent 200 times makes one order', so both read as assertion rather than evidence. Otherwise the limits are stated plainly: the Pre-release badge, the Limitations page and the demo/your-store table.",
+      "where": "home.desktop.01, cards 'Keeps selling offline' and 'Every sale lands once'"
+    },
+    "C3": {
+      "score": 7,
+      "worst_defect": "The home hero's 'Try with your store' button and the nav link with the same label go straight to https://app.vendurepos.com, before the visitor has installed the plugin, run the migration and opened CORS. Following the obvious button leads to a till that cannot connect. Inside the quick start, step 3 also gives no single command to run: the reader must write two TypeScript entry files and run them 'with your project's existing TypeScript runner'.",
+      "where": "home.desktop.01 hero buttons and header nav; quick-start.desktop.01 step 3"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Quick start step 3 says 'Do not also run the plugin's bundled migrations ... the README describes that alternative', which sends readers off-site even though the site's own Plugin setup page documents the bundled migrations. The Changelog also cites 'ADR 0005', 'ADR 0004', '#116' and '#117' as plain text with no links, which means nothing to a reader.",
+      "where": "quick-start.desktop.01 (end of step 3); changelog.desktop.01"
+    },
+    "C5": {
+      "score": 7,
+      "worst_defect": "Below the hero the home page is one long uniform 2x5 grid of identical grey text cards, then a plain table and a bullet list. There is no image, icon or visual anchor anywhere, so the page reads as a default docs template rather than a product page. Dark mode holds up.",
+      "where": "home.desktop.01 and home.desktop-dark ('What it does today' grid)"
+    },
+    "C6": {
+      "score": 7,
+      "worst_defect": "The quick-start tax table on phone cuts off its answer column at the screen edge ('taxOptions.orderTaxCalc', 'new OrderLevelTaxCalcul', 'DefaultOrderTaxCalculati') with no visible scroll cue, so the one value the step asks you to choose cannot be read. Wide code blocks clip the same way, for example the import lines in step 2. The sticky 'On this page' bar also starts with an empty ring that looks like a loading spinner.",
+      "where": "quick-start.phone.05 and quick-start.phone.06 (step 6 table); quick-start.phone.02; top bar on every docs phone.01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The share card repeats itself: the title 'Point of sale for Vendure' is followed by 'Open-source point of sale for Vendure. ...', and the card shows no product image. The 404 page also reuses the home meta description. Speed is good (Lighthouse 98/93) and llms.txt, the search API, sitemap, robots and the 404 status all work.",
+      "where": "og-image.png; tech.json pages['not-found.desktop'].description"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "A first-time visitor arriving from 'Vendure point of sale' never sees the product. The home page is all text: a hero paragraph, four equal-weight buttons and ten jargon-heavy grey cards. Deciding whether this is worth a look means leaving for the demo, and 'Try with your store' sits next to 'Live demo' as if it were just as easy, though it needs the plugin installed first.",
+    "where": "home.desktop.01 and home.phone.01 (hero to the end of the 'What it does today' grid)",
+    "fix": "Put a screenshot of the till mid-sale (cart, tender, receipt) directly under the hero buttons and link it to the demo. Demote 'Try with your store' out of the hero, or relabel it 'Open the till (plugin required)'."
+  },
+  "mean": 7.6
+}

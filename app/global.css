@@ -31,3 +31,8 @@ figure.shiki .fd-scroll-container,
 .dark .prose div.overflow-auto:has(> table) {
   --scroll-shadow: rgb(0 0 0 / 45%);
 }
+
+/* Long code tokens in docs tables clipped on phones in climb round 1. */
+.prose table :is(td, th) code {
+  overflow-wrap: anywhere;
+}
