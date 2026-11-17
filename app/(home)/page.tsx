@@ -218,6 +218,7 @@ export default function HomePage() {
             on npm, added to your Vendure config.
           </li>
           <li>A web till for now. The app is pre-release: expect changes before 1.0.</li>
+          <li>Not yet: refunds and coupon codes. Line and order discounts work at the till.</li>
         </ul>
         <p className="mt-4 text-fd-muted-foreground">
           The <Link href="/docs/quick-start" className="underline">quick start</Link>{' '}
