@@ -140,11 +140,15 @@ for the store-wide strategy. `/tally/v1/info` advertises the actual rounding.
 
 ## 7. Prepare the channel and stock, then restart Vendure
 
-Assign the products
-and stock locations to the channel you will use, with a usable default stock
-location. Check its currency, `pricesIncludeTax`, default tax zone and enabled
-tax rates (including a zero rate where appropriate). Keep the manual
-fulfilment handler enabled. The plugin wraps your store's
+{/* Layout only: upstream's step 7 is one paragraph; same words. Keep when re-porting. */}
+
+- Assign the products and stock locations to the channel you will use, with a
+  usable default stock location.
+- Check its currency, `pricesIncludeTax`, default tax zone and enabled tax rates
+  (including a zero rate where appropriate).
+- Keep the manual fulfilment handler enabled.
+
+**How POS sales take stock.** The plugin wraps your store's
 `catalogOptions.stockLocationStrategy`, so POS sales take stock where it
 allocates, across several locations if it splits a line; any quantity it
 leaves unallocated comes from the channel's default stock location. Short
@@ -168,6 +172,10 @@ If your store uses `@vendure/email-plugin`, swap its order-confirmation handler 
 
 Open `https://app.vendurepos.com`, then:
 
+{/* Layout only: lettered so the list does not echo the step numbers; same words. Keep when re-porting. */}
+
+<div className="steps-lettered">
+
 1. Enter the store URL (for example `https://store.example.com`; a trailing
    `/admin-api` is accepted), your administrator email and password.
 2. Enter the optional channel token to select a channel; leave it blank for
@@ -184,6 +192,8 @@ Open `https://app.vendurepos.com`, then:
    `tally-pos` payment, delivered fulfilment, stock reduction and `tallySaleAt`.
 9. To try offline sales, sync first, disconnect while the POS stays open,
    sell, then reconnect and let orders drain.
+
+</div>
 
 {/* Not part of the port; a checklist of the checks named in step 8 above. Keep it when re-porting. */}
 
