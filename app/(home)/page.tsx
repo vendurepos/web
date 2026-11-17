@@ -40,10 +40,10 @@ const features = [
       "Open a register with a counted float, record cash movements, and close it with a Z report that prints the closure's own figures.",
   },
   {
-    // apps/pos/e2e/sign-in.spec.ts
+    // apps/pos/e2e/sign-in.spec.ts at 1404f42 ("a split sale, part cash and part card, is applied by the plugin with both payments")
     title: 'Cash, card and receipts',
     description:
-      'Take cash with change, or record a payment already taken on your own card terminal. Print the receipt from the browser.',
+      'Take cash with change, or record a payment already taken on your own card terminal. Split a payment between cash and card, and print the receipt from the browser.',
   },
   {
     // apps/pos/lib/use-wedge-scanner.test.ts; apps/pos/lib/barcode-field.test.ts
@@ -243,7 +243,11 @@ export default function HomePage() {
             on npm, added to your Vendure config.
           </li>
           <li>A web till for now. The app is pre-release: expect changes before 1.0.</li>
-          <li>Not yet: refunds and coupon codes. Line and order discounts work at the till.</li>
+          {/* vendurepos/app@1404f42 packages/vendure-plugin/CHANGELOG.md:8 (Unreleased: till refunds), :21 (0.3.0 is the latest release); apps/pos/lib/discount-total-matrix.test.ts:171-178 (the till applies no coupons). */}
+          <li>
+            Coupon codes are not supported yet; line and order discounts work. Refunds at the till
+            need the plugin release after 0.3.0, and the live demo has them.
+          </li>
         </ul>
         <p className="mt-4 text-fd-muted-foreground">
           The <Link href="/docs/quick-start" className="underline">quick start</Link>{' '}
