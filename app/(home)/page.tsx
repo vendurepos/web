@@ -110,9 +110,15 @@ const demoParity = [
     store: 'Yes, from your Vendure customers',
   },
   {
-    // apps/pos/e2e/demo.spec.ts (the first test asserts no request leaves the page's origin); apps/pos/e2e/offline.spec.ts; packages/vendure-plugin/test/replay.e2e.ts
+    // apps/pos/e2e/demo.spec.ts:628 ("a demo cashier refunds a mug from the order sheet; ..."); packages/vendure-plugin/CHANGELOG.md:8,9,21 (order.refund v1 is Unreleased, 0.3.0 is the latest release; before it an admin refund of a POS order stays Pending until settled by hand)
+    capability: 'Refund a sale at the till',
+    demo: 'Yes',
+    store: 'Not yet: it needs the plugin release after 0.3.0. Until then, refund in the Vendure Dashboard and settle it by hand',
+  },
+  {
+    // apps/pos/e2e/demo.spec.ts:779-781 (the first test asserts no request leaves the page's origin except DEMO_CAPTURE_URL); apps/pos/lib/demo/analytics.ts:3-16,24-36 (anonymous events to ph.wcpos.com on demo.vendurepos.com only, credentials: 'omit', no cookie or storage); apps/pos/e2e/offline.spec.ts; packages/vendure-plugin/test/replay.e2e.ts
     capability: 'Sales reach Vendure, once each, even offline',
-    demo: 'No: the demo store lives in your browser, and nothing leaves the page',
+    demo: 'No: the demo store lives in your browser. All it sends is anonymous usage events to ph.wcpos.com, with no cookie',
     store: 'Yes',
   },
 ];
