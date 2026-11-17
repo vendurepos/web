@@ -1,5 +1,6 @@
 import { defineConfig, defineDocs } from 'fumadocs-mdx/config';
 import { metaSchema, pageSchema } from 'fumadocs-core/source/schema';
+import { rehypeCodeDefaultOptions } from 'fumadocs-core/mdx-plugins';
 
 // You can customise Zod schemas for frontmatter and `meta.json` here
 // see https://fumadocs.dev/docs/mdx/collections
@@ -19,6 +20,15 @@ export const docs = defineDocs({
 export default defineConfig({
   mdxOptions: {
     rehypeCodeOptions: {
+      transformers: [
+        ...(rehypeCodeDefaultOptions.transformers ?? []),
+        {
+          name: 'data-language',
+          pre(node) {
+            node.properties['data-language'] = this.options.lang;
+          },
+        },
+      ],
       // fumadocs' default themes, restated because the options type requires them.
       themes: { light: 'github-light', dark: 'github-dark' },
       // github-light's red, grey, orange and green fall below WCAG AA (4.5:1) on the

@@ -6,3 +6,28 @@
 :root:not(.dark) {
   --color-fd-muted-foreground: hsl(0, 0%, 40%);
 }
+
+figure.shiki .fd-scroll-container {
+  --scroll-cover: var(--color-fd-card);
+}
+
+.prose div.overflow-auto:has(> table) {
+  --scroll-cover: var(--color-fd-background);
+}
+
+figure.shiki .fd-scroll-container,
+.prose div.overflow-auto:has(> table) {
+  --scroll-shadow: rgb(0 0 0 / 12%);
+  background:
+    linear-gradient(to right, var(--scroll-cover) 12px, transparent) left center / 32px 100%,
+    linear-gradient(to left, var(--scroll-cover) 12px, transparent) right center / 32px 100%,
+    linear-gradient(to right, var(--scroll-shadow), transparent) left center / 12px 100%,
+    linear-gradient(to left, var(--scroll-shadow), transparent) right center / 12px 100%;
+  background-repeat: no-repeat;
+  background-attachment: local, local, scroll, scroll;
+}
+
+.dark figure.shiki .fd-scroll-container,
+.dark .prose div.overflow-auto:has(> table) {
+  --scroll-shadow: rgb(0 0 0 / 45%);
+}
