@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, statSync } from 'node:fs';
 
 const html = readFileSync('.next/server/app/docs/at-the-till.html', 'utf8');
 const source = readFileSync('content/docs/at-the-till.mdx', 'utf8');
@@ -31,4 +31,23 @@ test('at the till states the plugin gate for refunds', () => {
 test('at the till says the customer note is public', () => {
   // vendurepos/app 1404f42 plugin CHANGELOG.md:6: kept as one public order note.
   assert.match(html, /public note in the order/);
+});
+
+test('at the till shows the payment and cashier screens in their sections', () => {
+  const section = (id) => {
+    const start = html.indexOf(`id="${id}"`);
+    const end = html.indexOf('<h2', start);
+    assert.ok(start >= 0 && end > start, id);
+    return html.slice(start, end);
+  };
+  const shows = (part, file) => part.includes(`/till/${file}`) || part.includes(`%2Ftill%2F${file}`);
+  for (const [id, name] of [['take-payment', 'payment'], ['check-the-register-during-the-day', 'cashier']]) {
+    for (const scheme of ['light', 'dark']) assert.ok(shows(section(id), `${name}-${scheme}.png`), `${name}-${scheme}`);
+  }
+});
+
+test('at the till screenshots are each at most 400 KB', () => {
+  for (const file of ['payment-light', 'payment-dark', 'cashier-light', 'cashier-dark']) {
+    assert.ok(statSync(`public/till/${file}.png`).size <= 400 * 1024, file);
+  }
 });
