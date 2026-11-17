@@ -82,6 +82,16 @@ test("troubleshooting gives the plugin requirement in the quick start's terms", 
   assert.doesNotMatch(text, /Run plugin 0\.1\.0 or later/);
 });
 
+test('troubleshooting lists the header notices the till shows at app 1404f42', () => {
+  const html = readFileSync(join('.next/server/app', 'docs/troubleshooting.html'), 'utf8')
+    .replace(/&#x27;|&#39;|&apos;/g, "'");
+  assert.doesNotMatch(html, /isn't answering/);
+  assert.doesNotMatch(html, /keep failing/);
+  assert.ok(html.includes("Till updates aren't reaching the online store"));
+  assert.ok(html.includes('The store refused this account'));
+  assert.ok(html.includes('id="act-on-a-header-notice"'));
+});
+
 test('limitations describes stock allocation as the quick start does', () => {
   const text = readFileSync('content/docs/limitations.mdx', 'utf8');
   assert.ok(text.includes("Vendure's stock allocation strategy"));

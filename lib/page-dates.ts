@@ -15,7 +15,7 @@ export const PAGE_DATE_FALLBACK: Record<string, string> = {
   'content/docs/notifications.mdx': '2026-11-17T12:00:00+01:00',
   'content/docs/plugin-setup.mdx': '2026-10-07T19:39:48+02:00',
   'content/docs/quick-start.mdx': '2026-10-07T19:39:48+02:00',
-  'content/docs/troubleshooting.mdx': '2026-10-06T13:05:00+02:00',
+  'content/docs/troubleshooting.mdx': '2026-11-17T12:00:00+01:00',
 };
 
 function git(args: string[]): string {
