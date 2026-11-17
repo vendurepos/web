@@ -89,5 +89,6 @@ test('connect a till says where your data goes', () => {
   const section = html.slice(start, end < 0 ? undefined : end);
   assert.match(section, /localStorage|this browser/);
   assert.match(section, /never saves the password/);
+  assert.match(section, /Building it yourself needs your own RxDB Premium\s+licence token/);
   assert.doesNotMatch(section.replace(/<[^>]+>/g, ' '), /\b(secure|safe|private|trusted)\b/i);
 });

@@ -34,7 +34,7 @@ Signing out deletes the catalogue but never the sales database, so unsent sales 
 Every request in the till's code goes to that store URL, except on the public demo at demo.vendurepos.com:
 it posts anonymous demo events to ph.wcpos.com with no cookie and nothing stored. The page loads scripts only from its own host, cannot be shown inside another site, and may connect to any `https://` address.
 
-The till's source is [MIT-licensed](https://github.com/vendurepos/app) and builds to static files. Its install needs an RxDB Premium
+The till's source is [MIT-licensed](https://github.com/vendurepos/app) and builds to static files. Building it yourself needs your own RxDB Premium
 licence token in `RXDB_PREMIUM`; then run `pnpm build:web` in `apps/pos` and serve `apps/pos/dist` from your own host.
 Your store must then allow that origin in its CORS settings, the same way it allows `https://app.vendurepos.com`.
 
