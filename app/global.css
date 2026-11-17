@@ -72,3 +72,12 @@ figure.shiki .fd-scroll-container,
     margin-top: 0.25rem;
   }
 }
+
+/* Phones: wrap docs code lines; round-5 judges saw quick-start code cut off at 390 px. */
+@media (max-width: 639px) {
+  figure.shiki pre {
+    width: auto;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+  }
+}
