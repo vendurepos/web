@@ -80,3 +80,14 @@ test('limitations describes stock allocation as the quick start does', () => {
   assert.doesNotMatch(text, /channel's default stock location/);
   assert.ok(text.includes('The till cannot pick a location for a sale.'));
 });
+
+test('connect a till says where your data goes', () => {
+  const html = readFileSync(join('.next/server/app', 'docs/connect-a-till.html'), 'utf8');
+  const start = html.search(/<h2[^>]*>(?:(?!<\/h2>)[\s\S])*Where your data goes/);
+  assert.ok(start >= 0);
+  const end = html.indexOf('<h2', start + 3);
+  const section = html.slice(start, end < 0 ? undefined : end);
+  assert.match(section, /localStorage|this browser/);
+  assert.match(section, /never saves the password/);
+  assert.doesNotMatch(section.replace(/<[^>]+>/g, ' '), /\b(secure|safe|private|trusted)\b/i);
+});
