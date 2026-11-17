@@ -30,7 +30,9 @@ with a **Retry**. Choose **Back to sale** to return without losing your cart.
 - "The store refused this sign-in. Sign in again below; orders are kept."
   Sign in again in the bar that appears.
 - "This store's VendurePOS plugin is missing or out of date. Install or update it, then this till continues."
-  Run plugin 0.1.0 or later, apply its schema changes and restart Vendure.
+  The store must advertise `order.create` v4 and register v1, as every plugin release from 0.1.0
+  does. Install the current release as in [the quick start](/docs/quick-start#1-install-the-plugin),
+  apply its schema changes and restart Vendure; the till retries.
 - "Can't reach the store's settings yet. Retrying…"
   The till takes no sale until it has read the store's settings.
 
