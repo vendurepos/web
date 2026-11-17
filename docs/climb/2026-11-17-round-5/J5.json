@@ -1,0 +1,48 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero gives four buttons of near-equal weight ('Live demo', 'Quick start', 'Try with your store', 'GitHub'), and on a phone they wrap 2+2. 'Try with your store' sends a visitor to app.vendurepos.com, which cannot work until the plugin is installed; the warning about that is a small grey line underneath.",
+      "where": "home.desktop.01 hero CTAs; home.phone.01"
+    },
+    "C2": {
+      "score": 6,
+      "worst_defect": "The site asks you to type a Vendure administrator email and password into a hosted app ('Open https://app.vendurepos.com ... your administrator email and password'), and even mentions a second host ('https://vendurepos.vercel.app serves the same build'). Nowhere does it say who runs that host, that credentials go only to your store, or whether you can self-host the till. That is the first question I would ask before recommending it to a client.",
+      "where": "quick-start step 8 and intro paragraph (quick-start.desktop.01/03); connect-a-till 'Open your till'"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 3 offers three ways to migrate (a tsx generate script, 'npx vendure migrate', or 'the plugin's bundled migrations' described in the README) without saying which one to pick. Step 8 also nests its own list numbered 1–9 directly above the '9. Troubleshoot' heading, so step numbers collide.",
+      "where": "quick-start.desktop.01 step 3; quick-start.desktop.03 step 8/9"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "The hero screenshot shows an 'Add charge' button, and the 0.3.0 changelog adds fees, shipping and custom lines, but 'At the till' never explains how a cashier adds a charge, shipping or a custom item. On top of that, troubleshooting is split between quick-start step 9 (with CSP jargon: 'adds http: to connect-src and img-src') and the Troubleshooting page.",
+      "where": "home.desktop.01 screenshot; at-the-till.txt; changelog 0.3.0; quick-start step 9"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "On docs pages the grey left sidebar ends at about 900 px, leaving a white band below it, next to the content column. The hero product screenshot is scaled down so far that its UI text (prices, 'Checkout €59.59') can barely be read even on desktop.",
+      "where": "docs.desktop.01, limitations.desktop.01, quick-start.desktop.01 left column below the theme toggle; home.desktop.01 hero image"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "At 390 px code blocks cut off mid-token behind a fade (\"import { TallyPosPlugin } from '@vendurepos/\", \"plugins: [... */ Tall\"), so the key config line can only be read by scrolling sideways. The hero till screenshot is also unreadable at phone width.",
+      "where": "quick-start.phone.02, quick-start.phone.05; home.phone.01"
+    },
+    "C7": {
+      "score": 8,
+      "worst_defect": "The 404 page reuses the home meta description ('Open-source point of sale for Vendure. Sell from the browser…'). The share card is text only, with a pink outline-circle mark and a dashed rule that appear nowhere on the monochrome site, and no product image.",
+      "where": "tech.json not-found.desktop description; og-image.png"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The recommended path is to sign in to the hosted app.vendurepos.com (or a vercel.app mirror) with a Vendure administrator's email and password. The site never says who operates that host, that credentials and orders go straight from the browser to your own store, or how to run the till yourself. A sceptical adviser would stop there.",
+    "where": "quick-start.desktop.01 intro and quick-start.desktop.03 step 8; connect-a-till 'Open your till'",
+    "fix": "Add a short 'Where your data goes' note to the Overview and quick start step 8: the till is a static app, credentials and orders go only from the browser to your store, nothing is sent to vendurepos.com. Link to how to self-host the till from the MIT source, or state plainly that self-hosting is not documented yet."
+  },
+  "mean": 7.6
+}

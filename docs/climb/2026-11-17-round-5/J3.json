@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; text/home.txt"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/plugin-setup.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Staff-account setup omits ReadCustomer and CreateCustomer and describes catalogue/settings permissions generically, leaving the explicit till permission list buried in the changelog.",
+      "where": "text/quick-start.txt, step 4; text/connect-a-till.txt, 'Sign in with a staff account'; text/changelog.txt, 0.2.0"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "The needs_admin recovery section supplies an applied mutation but never explains what to inspect or when to choose applied versus rejected.",
+      "where": "text/troubleshooting.txt, 'Resolve a sale the store kept part-way'; shots/troubleshooting.desktop.02.jpg"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.desktop.02.jpg; shots/home.desktop-dark.jpg; shots/plugin-setup.desktop.02.jpg"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The home page's demo-versus-own-store comparison retains three narrow columns on the phone, forcing labels and explanations into cramped multiline cells.",
+      "where": "shots/home.phone.*.jpg, demo/store comparison table"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "tech.json; text/endpoint_llms_txt.txt; text/endpoint_llms_full_txt.txt; shots/og-image.png; shots/not-found.desktop.01.jpg"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "A developer resolving a partially kept sale must guess whether applied or rejected is appropriate because the recovery instructions provide neither decision rules nor the checks required before resolving it.",
+    "where": "text/troubleshooting.txt, 'Resolve a sale the store kept part-way'; text/endpoint_llms_full_txt.txt, corresponding section",
+    "fix": "Document the checks on the existing order and the conditions for choosing each resolution, including what each outcome changes. Add a copyable tallyNeedsAdminCommands query exposing the information needed for that decision."
+  },
+  "mean": 8.4
+}

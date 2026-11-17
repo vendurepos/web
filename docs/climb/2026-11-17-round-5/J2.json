@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "Four buttons of near-equal weight (\"Live demo\", \"Quick start\", \"Try with your store\", \"GitHub\") wrap 2+2 on the phone, and the hero image of the till below them is too small to read at 390 px: the product names, cart lines and total can't be made out, so on a phone between customers I can't see what my staff would be looking at.", "where": "home.phone.01 (buttons and hero screenshot)"},
+    "C2": {"score": 8, "worst_defect": "The offline promise (\"Sales made with the network off wait on the till\", \"Unsent orders ... wait on that device\") never says what happens to unsent sales if that browser's data is cleared or the device breaks before it reconnects, and Limitations doesn't say either; that is the first risk I'd ask about.", "where": "home.desktop.01 'Keeps selling offline'; text/troubleshooting.txt 'Refresh prices and stock'; text/limitations.txt"},
+    "C3": {"score": 8, "worst_defect": "The quick start opens with two addresses for the till (\"The hosted POS is live at https://app.vendurepos.com. https://vendurepos.vercel.app serves the same build.\") and step 5 says to keep allowing the vercel one, so it's unclear which address staff should bookmark at the counter.", "where": "quick-start.desktop.01 intro paragraph; quick-start.desktop.02 step 5"},
+    "C4": {"score": 7, "worst_defect": "At the till is all text with no pictures of the till, and the site's own hero screenshot doesn't match it: the screenshot shows \"Add charge\" and \"Checkout €59.59\" buttons, while At the till says \"Choose Pay cash, Pay by card or Split in the cart\" and never mentions Add charge, custom items or shipping (which Plugin setup says 0.3.0 added).", "where": "home.desktop.01 hero screenshot vs at-the-till.desktop.01 'Take payment'; plugin-setup.desktop.01 'Version 0.3.0 lets the plugin record fees, shipping and custom lines'"},
+    "C5": {"score": 8, "worst_defect": "On every docs page the grey left sidebar panel stops at about 900 px, and below it the left column turns into a lighter empty band beside the content. The Overview page also offers Quick start twice in a row (the 'Next steps' card and the next-page card under it).", "where": "quick-start.desktop.01, at-the-till.desktop.01, troubleshooting.desktop.01 (left column below y≈900); docs.desktop.01 bottom"},
+    "C6": {"score": 8, "worst_defect": "Code blocks on the phone cut lines off at the right edge, so you have to scroll sideways to read them (\"import { TallyPosPlugin } from '@vendurepos/\", \"origin: ['https://app.vendurepos.com', 'ht\"). The 'on this page' bar on every docs page starts with a half-drawn circle that looks like a loading spinner.", "where": "quick-start.phone.02, quick-start.phone.04; docs.phone.01 / at-the-till.phone.01 top bar"},
+    "C7": {"score": 9, "worst_defect": "The 404 page reuses the home page's marketing meta description (\"Open-source point of sale for Vendure. Sell from the browser...\"). The share card is text only: it repeats \"Point of sale for Vendure\" in the title and the first line, and its purple accent appears nowhere on the site.", "where": "tech.json pages.not-found.*.description; og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "Refunds are plainly listed as \"not yet\", but no page tells staff what to do when a customer brings something back today. A returned item at the counter is the first moment where my staff would be stuck, and neither At the till nor Limitations gives a workaround or says how it affects the drawer count and Z report.",
+    "where": "text/limitations.txt 'Refunds: not yet.'; home.desktop.02 'Not yet: refunds and coupon codes.'; at-the-till.desktop.01-02 (no returns section)",
+    "fix": "Add a short 'A customer wants a refund' line to At the till and Limitations that says what to do today (for example, refund the order in the Vendure Dashboard and record any cash handed back with Paid out so the drawer count still matches)."
+  },
+  "mean": 8.0
+}
