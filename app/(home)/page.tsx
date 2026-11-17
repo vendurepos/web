@@ -13,12 +13,14 @@ const features = [
     title: 'Keeps selling offline',
     description:
       'Sales made with the network off wait on the till and go to Vendure when it reconnects. Our acceptance run makes 25 sales, 20 of them offline, and checks that Vendure holds exactly 25 orders.',
+    test: { label: 'Read the acceptance test', path: 'apps/pos/e2e/offline.spec.ts' },
   },
   {
     // packages/vendure-plugin/test/replay.e2e.ts
     title: 'Every sale lands once',
     description:
       'Each sale carries its own id, and the Vendure plugin records it in one transaction with an idempotency ledger. The same sale sent 200 times makes one order.',
+    test: { label: 'Read the 200-send test', path: 'packages/vendure-plugin/test/replay.e2e.ts' },
   },
   {
     // apps/pos/e2e/offline.spec.ts; packages/vendure-plugin/test/price-strategy.e2e.ts
@@ -165,6 +167,11 @@ export default function HomePage() {
             <div key={feature.title} className="rounded-lg border border-fd-border bg-fd-card p-5">
               <h3 className="font-semibold">{feature.title}</h3>
               <p className="mt-2 text-sm text-fd-muted-foreground">{feature.description}</p>
+              {feature.test && (
+                <a href={`${GITHUB_URL}/blob/main/${feature.test.path}`} className="mt-3 inline-block text-sm underline">
+                  {feature.test.label}
+                </a>
+              )}
             </div>
           ))}
         </div>

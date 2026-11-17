@@ -66,3 +66,10 @@ test('hero puts the live demo first, as the primary button', () => {
   assert.ok(html.indexOf(quickStart) < html.indexOf(tryStore));
   assert.equal(Array.from(html.matchAll(/class="rounded-md bg-fd-primary/g)).length, 1);
 });
+
+test('the two proof claims link their tests', () => {
+  const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
+  assert.match(html, /<a href="https:\/\/github\.com\/vendurepos\/app\/blob\/main\/apps\/pos\/e2e\/offline\.spec\.ts"[^>]*>Read the acceptance test<\/a>/);
+  assert.match(html, /<a href="https:\/\/github\.com\/vendurepos\/app\/blob\/main\/packages\/vendure-plugin\/test\/replay\.e2e\.ts"[^>]*>Read the 200-send test<\/a>/);
+  assert.equal(Array.from(html.matchAll(/<a\b[^>]*\bhref="https:\/\/github\.com\/vendurepos\/app\/blob\/main\//g)).length, 2);
+});
