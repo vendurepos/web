@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The precise claims about 25 sales and 200 resends have no accompanying link to the acceptance evidence.",
+      "where": "text/home.txt, What it does today"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Staff setup describes catalogue and settings access without giving the exact permission list; the concrete POS role permissions are buried in the changelog.",
+      "where": "text/plugin-setup.txt; text/connect-a-till.txt; text/changelog.txt, 0.2.0"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "Partial-sale recovery names tallyNeedsAdminCommands and shows a resolution mutation, but supplies neither a listing query nor the checks needed to choose applied versus rejected.",
+      "where": "text/troubleshooting.txt, Resolve a sale the store kept part-way"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.desktop.02.jpg; shots/home.desktop-dark.jpg; desktop documentation screenshots"
+    },
+    "C6": {
+      "score": 7,
+      "worst_defect": "The quick-start tax table splits orderTaxCalculationStrategy and DefaultOrderTaxCalculationStrategy across multiple lines inside identifiers, making the configuration difficult to read.",
+      "where": "shots/quick-start.phone.05.jpg; shots/quick-start.phone.06.jpg"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The full machine-readable documentation retains raw Cards, Card and Callout component markup instead of consistently using plain Markdown.",
+      "where": "text/endpoint_llms_full_txt.txt"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "The recovery instructions leave the developer to determine when a partially retained sale should be resolved as applied or rejected.",
+    "where": "text/troubleshooting.txt, Resolve a sale the store kept part-way",
+    "fix": "Add a runnable tallyNeedsAdminCommands query and explain how to identify and inspect the associated order, payment and stock effects. State the conditions for each resolution and when the cashier should use Retry."
+  },
+  "mean": 8.1
+}
