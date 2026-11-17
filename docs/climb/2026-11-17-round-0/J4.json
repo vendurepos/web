@@ -1,0 +1,48 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {
+      "score": 7,
+      "worst_defect": "The home page never shows the product: no screenshot of the till anywhere, so the hero is a headline, a paragraph and four equal-weight buttons, followed by ten identical grey text cards. On phone the four buttons wrap 2+2 with unequal widths ('Live demo' | 'Quick start' over 'Try with your store' | 'GitHub').",
+      "where": "home.desktop.01 (hero, 'What it does today' grid); home.phone.01 (button rows)"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "Internal project vocabulary leaks into user docs, which makes the site look unfinished: the step heading '6. Choose tax rounding for your pricing mode (ADR-048)' points to an ADR the reader cannot open, the changelog is full of '(ADR 0005)', '(#116)', and the plugin is called 'TallyPosPlugin' on a site branded VendurePOS.",
+      "where": "quick-start.desktop.02 (step 6 heading); changelog.desktop.01; quick-start.desktop.01 (step 2 heading)"
+    },
+    "C3": {
+      "score": 7,
+      "worst_defect": "The payoff step '8. Sign in and make a sale' is two dense paragraphs with no screenshots and no checklist. What success looks like ('check Vendure for the POS prices, settled tally-pos payment, delivered fulfilment, stock reduction and tallySaleAt') is buried mid-sentence, and the tally-pos chip breaks across lines.",
+      "where": "quick-start.desktop.03 (step 8); quick-start.phone.07"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "On the Overview page, 'Next steps' is a 2-column grid of three cards, which leaves 'Source on GitHub' orphaned, and directly below it the pager card 'Quick start ›' repeats the 'Quick start' card above. Elsewhere, troubleshooting messages are quoted sentences run inline in bullets ('Missing / old plugin: “This store's VendurePOS plugin is missing…” means the store must advertise order.create v4…'), which is hard to scan.",
+      "where": "docs.desktop.01 (Next steps + pager); quick-start.desktop.03 (9. Troubleshoot)"
+    },
+    "C5": {
+      "score": 6,
+      "worst_defect": "In 'What it does today', 10 cards sit in a 3-column grid, so 'Line and order discounts' is orphaned alone in row 4 with two empty slots beside it. The same fault shows in dark mode. Also, inline code chips split mid-token across lines ('tally-' / 'pos' in Overview, 'connect-' / 'src' in quick-start step 9), and the plugin-setup migrations code line is clipped at the right edge ('TallyPosV…').",
+      "where": "home.desktop.01 (row 4 of the card grid); home.desktop-dark.jpg; docs.desktop.01; quick-start.desktop.03; plugin-setup.desktop.01"
+    },
+    "C6": {
+      "score": 5,
+      "worst_defect": "On a 390 px screen, every code block that scrolls sideways draws its copy button on top of the code ('@vendurepos/' under the icon in step 2, '@vendure/core' in step 3, 'api-key' in step 4), with no fade or other scroll hint. The step-6 tax table clips its right column to 'taxOptions.orderTaxCalc' / 'new OrderLevelTaxCalcul' while the left column wraps '(pricesIncludeTax: false)' over three lines.",
+      "where": "quick-start.phone.02, quick-start.phone.03, quick-start.phone.05 (tax table); also plugin-setup.phone.03, troubleshooting.phone.03"
+    },
+    "C7": {
+      "score": 8,
+      "worst_defect": "The share card does not match the site. It uses a magenta accent, a dashed rule and a hollow-ring logo that appear nowhere on the monochrome site, it repeats the headline in its subtitle ('Point of sale for Vendure' / 'Open-source point of sale for Vendure'), and it shows no product image. Search results all carry the same breadcrumb, 'VendurePOS', instead of the section name.",
+      "where": "og-image.png; text/endpoint_api_search_query_offline.txt"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C6",
+    "defect": "In the quick start on phone, the copy button sits on top of the code in every code block wider than the screen, the code is cut off with no scroll hint, and the step-6 tax table clips its right column. The page a developer copies from is the hardest one to read on a phone.",
+    "where": "quick-start.phone.02 / .03 / .05",
+    "fix": "Reserve right padding in code blocks equal to the copy button's width, or move the button into a small header bar, and add a right-edge fade on overflow. On narrow screens, make the 2-column tax table stack as label/value rows."
+  },
+  "mean": 6.9
+}

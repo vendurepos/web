@@ -1,0 +1,48 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {
+      "score": 7,
+      "worst_defect": "The home page is all text: there is no picture of the till anywhere, and it never says what Vendure is (the hero says 'signs in to your own Vendure store' and the word Vendure has no link or gloss). So a visitor from search can't see the product or place it without leaving for the demo. The four equal buttons ('Live demo', 'Quick start', 'Try with your store', 'GitHub') add to that, and 'Try with your store' goes straight to app.vendurepos.com with no hint that the plugin has to be installed first.",
+      "where": "home.desktop.01 hero and button row; home.phone.01; tech.json home.desktop links ('Try with your store' -> https://app.vendurepos.com)"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The headline proof, 'Our acceptance run makes 25 sales, 20 of them offline, and checks that Vendure holds exactly 25 orders', and 'The same sale sent 200 times makes one order' link to no test, CI run or source. They read as assertions you have to take on trust. Otherwise the limits are stated plainly (the Limitations page, and the demo-vs-store table saying 'No: ... nothing leaves the page').",
+      "where": "home.desktop.01, cards 'Keeps selling offline' and 'Every sale lands once'"
+    },
+    "C3": {
+      "score": 7,
+      "worst_defect": "Step 3 gives two TypeScript snippets and then just says 'Run this TypeScript entry with your project's existing TypeScript runner'. There is no file name to save them under and no command to run them. Step 8's success check ('check Vendure for the POS prices, settled tally-pos payment, delivered fulfilment, stock reduction and tallySaleAt') sits in the middle of a paragraph, not in a checklist.",
+      "where": "quick-start.desktop.01 (step 3); quick-start.desktop.03 (step 8)"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "The docs cite internal references a reader cannot follow: the step 6 heading says 'Choose tax rounding for your pricing mode (ADR-048)', and the changelog cites 'ADR 0005', 'ADR 0004', '#116' and '#117' with no links. The VendurePOS docs also name things TallyPosPlugin, TallyPosSell and /tally/v1 without ever saying why the names differ.",
+      "where": "quick-start.desktop.02 step 6 heading; changelog.desktop.01; quick-start.desktop.01 step 2 'Add TallyPosPlugin'"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The ten-card 'What it does today' grid leaves 'Line and order discounts' alone on a fourth row, with two empty columns beside it (the dark-mode home has the same gap). Docs Overview 'Next steps' does the same with 'Source on GitHub' alone under two cards.",
+      "where": "home.desktop.01 (bottom-left card); home.desktop-dark.jpg; docs.desktop.01 'Next steps'"
+    },
+    "C6": {
+      "score": 7,
+      "worst_defect": "On phone, the copy button sits on top of the code text: it covers '@vendurepos/' in the import line and 'api-key' in the tokenMethod line. Code blocks and the tax-strategy table are cut off at the right edge ('taxOptions.orderTaxCalc', 'new OrderLevelTaxCalcul'), so the reader has to scroll them sideways.",
+      "where": "quick-start.phone.02 (first code block); quick-start.phone.03 (tokenMethod with 'api-key'); quick-start.phone.05 (tax table)"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The 404 page reuses the home page's marketing meta description ('Open-source point of sale for Vendure. Sell from the browser...'). The share card's subtitle repeats its own title ('Point of sale for Vendure' / 'Open-source point of sale for Vendure') and shows nothing of the product. Otherwise this surface is strong: Lighthouse 98-100, llms.txt, sitemap, robots, JSON-LD, and a real 404 status.",
+      "where": "tech.json pages.not-found.desktop.description; og-image.png"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "A first-time visitor never sees the product. The home page has no screenshot of the till and no one-line explanation of what Vendure is, so the only way to find out what VendurePOS looks like is to leave for the demo. The four equal-weight buttons, one of which ('Try with your store') drops you on a sign-in screen that needs the plugin already installed, leave the next step unclear.",
+    "where": "home.desktop.01 and home.phone.01, hero",
+    "fix": "Put one screenshot of the till (cart and tender screen) under the hero buttons, and add a short gloss such as 'Vendure, the open-source headless commerce framework' linked to vendure.io. Then demote 'Try with your store' to a text link labelled 'needs the plugin', next to Quick start."
+  },
+  "mean": 7.6
+}

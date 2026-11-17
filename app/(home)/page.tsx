@@ -156,7 +156,7 @@ export default function HomePage() {
 
       <section className="pb-16">
         <h2 className="mb-6 text-2xl font-bold tracking-tight">What it does today</h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2">
           {features.map((feature) => (
             <div key={feature.title} className="rounded-lg border border-fd-border bg-fd-card p-5">
               <h3 className="font-semibold">{feature.title}</h3>
