@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 7, "worst_defect": "The home page never shows the till itself: the hero is a headline, a paragraph and four equal-weight buttons (Live demo, Quick start, Try with your store, GitHub), then ten text cards, so a shop owner cannot see in five seconds what the staff will be looking at; the second card also leads with developer words ('idempotency ledger', 'The same sale sent 200 times').", "where": "home.desktop.01 hero and 'What it does today' grid; home.phone.01"},
+    "C2": {"score": 7, "worst_defect": "The biggest gaps for a shop ('Refunds: not yet.', 'Coupon codes: not yet', 'The till does not talk to the terminal') appear only on the Limitations page; the home page's 'What it does today' and 'Before you start' never mention refunds, so an owner reading the home page alone would assume returns work. Troubleshooting also says 'Run plugin 0.1.0 or later' while every install line pins 0.3.0 and device keys need 0.2.0.", "where": "home.desktop.01-02 vs limitations.desktop.01; troubleshooting.desktop.01 'Act on a header notice'"},
+    "C3": {"score": 7, "worst_defect": "Step 3 gives no command to run: it asks the developer to write two TypeScript files (generateMigration, then runMigrations) and run them 'with your project's existing TypeScript runner', then sends them to 'the README' for the bundled-migration alternative although the site's own Plugin setup page covers it; step 6 is titled with an unexplained internal reference '(ADR-048)'.", "where": "quick-start.desktop.01-02, steps 3 and 6"},
+    "C4": {"score": 7, "worst_defect": "'At the till', the one page my staff would read, is all text with no screenshot of a single screen (Open register, Pay cash, Close register, the Z report), and Troubleshooting mixes staff-facing header notices with a SuperAdmin GraphQL mutation ('tallyResolveNeedsAdmin') on the same page with no 'ask your developer' split.", "where": "at-the-till.desktop.01-02; troubleshooting.desktop.01-02 'Resolve a sale the store kept part-way'"},
+    "C5": {"score": 7, "worst_defect": "The ten-card feature grid leaves 'Line and order discounts' alone on a fourth row with two empty slots beside it, and on every docs page the grey sidebar panel stops at 900 px, leaving a lighter strip down the left below it.", "where": "home.desktop.01 (and home.desktop-dark); docs.desktop.01, quick-start.desktop.01, at-the-till.desktop.01 left column below y=900"},
+    "C6": {"score": 7, "worst_defect": "On a 390 px phone the copy-to-clipboard button sits on top of the code it belongs to ('@vendure/core' and \"'api-key'\" are covered), and the tax-strategy table is cut off at the right edge ('taxOptions.orderTaxCalc', 'new OrderLevelTaxCalcul').", "where": "quick-start.phone.02, quick-start.phone.03, quick-start.phone.05"},
+    "C7": {"score": 9, "worst_defect": "The 404 page reuses the home page meta description ('Open-source point of sale for Vendure. Sell from the browser…') and the share card is text only with no picture of the product; otherwise titles, JSON-LD breadcrumbs, llms.txt, search, sitemap and Lighthouse 99/98 are solid.", "where": "tech.json not-found.desktop description; og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "Nowhere on the site, neither the home page nor 'At the till', is there a picture of the till: the cart, the pay screen, the offline/sync notice or the Z report. A shop owner deciding whether two staff can sell with this tomorrow has to open the demo to find out, and has nothing to print or show the staff.",
+    "where": "home.desktop.01 / home.phone.01 hero; at-the-till.desktop.01",
+    "fix": "Put one screenshot of the till mid-sale (cart and Pay buttons) under the home hero, and add small screenshots to 'At the till' for Open register, Take payment and the Z report."
+  },
+  "mean": 7.3
+}
