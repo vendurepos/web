@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The homepage says the demo sends nothing off-page, but Connect a till documents anonymous demo events sent to ph.wcpos.com.",
+      "where": "shots/home.desktop.02.jpg, comparison table; text/connect-a-till.txt, Where your data goes"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The pnpm Dashboard setup snippet uses path.resolve without its import and omits the configuration filename and rebuild step.",
+      "where": "shots/connect-a-till.desktop.02.jpg, Make the key button available in a pnpm project"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "Partial-sale recovery provides an applied mutation without explaining which order, payment and stock checks determine whether applied or rejected is appropriate.",
+      "where": "text/troubleshooting.txt, Resolve a sale the store kept part-way; text/endpoint_llms_full_txt.txt, same section"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.desktop.02.jpg; shots/home.desktop-dark.jpg; shots/quick-start.desktop.01.jpg"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The homepage comparison retains three narrow columns on phone, wrapping simple feature labels such as opening and closing a register into four lines.",
+      "where": "shots/home.phone.03.jpg, Live demo or your own store"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "tech.json; text/endpoint_llms_txt.txt; text/endpoint_llms_full_txt.txt; text/endpoint_api_search_query_offline.txt; shots/og-image.png; shots/not-found.desktop.01.jpg"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "The needs_admin recovery instructions leave the developer to decide whether a partially recorded sale should be marked applied or rejected without a reconciliation procedure.",
+    "where": "text/troubleshooting.txt, Resolve a sale the store kept part-way; shots/troubleshooting.desktop.01.jpg and shots/troubleshooting.desktop.02.jpg",
+    "fix": "Add a short decision procedure identifying the order, payment and stock state to inspect before choosing either resolution. Include the listing query and the expected state after resolution and any retry."
+  },
+  "mean": 8.3
+}

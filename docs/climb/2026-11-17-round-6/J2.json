@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero offers four equal-weight buttons ('Live demo', 'Quick start', 'Try with your store', 'GitHub'), and 'Try with your store' opens the app even though the line under the buttons says your store needs the plugin first, so a shop owner can't tell which one is theirs. On the phone, the till screenshot below is shrunk so far that product names and prices can't be read.", "where": "home.desktop.01 hero buttons; home.phone.01 hero screenshot"},
+    "C2": {"score": 7, "worst_defect": "The 'Live demo or your own store' table has no refund row, although the demo refunds at the till and a real store on plugin 0.3.0 can't. A Dashboard refund on a POS order 'stays Pending until someone settles it by hand', and that only appears deep in At the till, with no date for the 'release after 0.3.0, which is not out yet'.", "where": "home.desktop.02 comparison table; text/at-the-till.txt 'Refund a sale'"},
+    "C3": {"score": 8, "worst_defect": "Step 8 has staff sign in with 'your administrator email and password'. The safer per-till device key comes after the troubleshooting section as 'Optional', so the default path puts an admin login on the shop counter.", "where": "quick-start.desktop.03 step 8a; quick-start.desktop.04 'Optional: a device key for each till'"},
+    "C4": {"score": 7, "worst_defect": "The same till message is worded two ways. Quick start quotes 'Sales aren't reaching the online store. Keep selling: they're saved on this till and will send by themselves.', but Troubleshooting's notice list doesn't contain it and says 'The store's VendurePOS plugin isn't answering.' Troubleshooting also lists 'N orders keep failing at the store. They are kept and retried.' with no action, next to a GraphQL admin mutation a cashier can't use.", "where": "quick-start.desktop.03-04 section 9; troubleshooting.desktop.01 'Act on a header notice'"},
+    "C5": {"score": 8, "worst_defect": "On long docs pages the grey sidebar panel stops at about y=900, with the GitHub and theme bar at its bottom, and the page continues below with an empty left column. The ten identical grey feature cards on the home page read as one long uniform wall.", "where": "at-the-till.desktop.01 and quick-start.desktop.01 left column; home.desktop.01-02 'What it does today'"},
+    "C6": {"score": 8, "worst_defect": "The three-column 'Live demo or your own store' table is squeezed on 390 px: 'Open and close a register with a Z report' wraps to four lines and 'Yes, once you turn it on for the till in Settings' breaks across slices. The hero till screenshot is illegible at phone width.", "where": "home.phone.03-04 comparison table; home.phone.01 screenshot"},
+    "C7": {"score": 9, "worst_defect": "The share card repeats itself, with the title 'Point of sale for Vendure' followed by 'Open-source point of sale for Vendure…', and shows no picture of the till. Otherwise the technical surface is clean: Lighthouse 98/100/100/100, llms.txt, sitemap, a search API that answers 'offline', and a real 404.", "where": "og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The home page's 'Live demo or your own store' table is where a shop owner checks what their own store gets, and it leaves out refunds. The demo refunds at the till; a real store on the released plugin 0.3.0 can't, and Dashboard refunds stay 'Pending until someone settles it by hand'. A shop owner who tries the demo will think staff can take returns tomorrow.",
+    "where": "home.desktop.02 / home.phone.03-04 comparison table; text/at-the-till.txt 'Refund a sale'",
+    "fix": "Add a table row 'Refund a sale at the till | Yes | Not yet: needs the plugin release after 0.3.0; refund in the Vendure Dashboard and settle it there'. Link it to a short how-to for settling that Pending refund."
+  },
+  "mean": 7.9
+}
