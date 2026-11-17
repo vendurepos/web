@@ -3,7 +3,7 @@ title: Limitations
 description: What VendurePOS does not do yet.
 ---
 {/* Sources: vendurepos/app 41d722d README.md (Known limitations); packages/vendure-plugin/README.md at plugin-v0.3.0; @tallyui/components 3.3.0. */}
-{/* Refunds: vendurepos/app@7055af2 docs/V2-PARITY.md:90 (Refunds: Partial; the plugin applies order.refund, the till's refund flow in the app is missing). No source mentions returns. */}
+{/* Refunds: vendurepos/app@1404f42 packages/vendure-plugin/CHANGELOG.md:8 (Unreleased: order.refund v1, a till refunds a till sale), :9 (before it, an admin refund of a POS order stayed Pending until settled by hand), :21 (0.3.0 is the latest release); apps/pos/e2e/demo.spec.ts ('a demo cashier refunds a mug from the order sheet'). No source mentions returns. */}
 {/* Coupon codes: vendurepos/app@7055af2 docs/V2-PARITY.md:91 (Promotions and coupon codes: Missing) and docs/adr/0002-order-path-vendure-plugin.md:343 (no server promotions on POS orders). Line and order discounts: apps/pos/lib/sale-cart.tsx:65 (DiscountForm), :89 and :139 (DiscountChips). */}
 {/* Stock: vendurepos/app packages/vendure-plugin/test/stock-locations.e2e.ts ('two POS lines of the same variant allocate from where the stock is'); quick start step 7. The app README's "default stock location" line is out of date (vendurepos/app#35 tracks choosing a location). */}
 
@@ -11,7 +11,8 @@ description: What VendurePOS does not do yet.
 
 - Web till only for now.
 
-- Refunds: not yet.
+- Refunds at the till work in the live demo. A store needs the plugin release after 0.3.0;
+  until then, refund in the Vendure Dashboard and settle the refund by hand.
 
 - Coupon codes: not yet.
   Line and order discounts work at the till.
