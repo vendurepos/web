@@ -23,7 +23,7 @@ test('inline code in docs tables wraps only as a last resort', () => {
 
 test('table code breaks at word boundaries', () => {
   const html = readFileSync('.next/server/app/docs/quick-start.html', 'utf8');
-  assert.match(html, /taxOptions\.<wbr\s*\/?\s*>order<wbr\s*\/?\s*>Tax<wbr\s*\/?\s*>Calculation<wbr\s*\/?\s*>Strategy/);
+  assert.match(html, /tax<wbr\s*\/?\s*>Options\.<wbr\s*\/?\s*>order<wbr\s*\/?\s*>Tax<wbr\s*\/?\s*>Calculation<wbr\s*\/?\s*>Strategy/);
   for (const [block] of html.matchAll(/<pre\b[^>]*>[\s\S]*?<\/pre>/g)) {
     assert.doesNotMatch(block, /<wbr\b/);
   }
