@@ -6,6 +6,7 @@ test('site-owned docs code lines fit 80 columns', () => {
   const files = [
     'content/docs/plugin-setup.mdx',
     'content/docs/connect-a-till.mdx',
+    'content/docs/notifications.mdx',
     'content/docs/troubleshooting.mdx',
   ];
   const violations = [];

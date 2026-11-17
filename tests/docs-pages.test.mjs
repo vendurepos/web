@@ -8,6 +8,7 @@ const pages = [
   ['plugin-setup', 'Plugin setup'],
   ['connect-a-till', 'Connect a till'],
   ['at-the-till', 'At the till'],
+  ['notifications', 'Notifications'],
   ['troubleshooting', 'Troubleshooting'],
   ['limitations', 'Limitations'],
 ];
@@ -36,6 +37,13 @@ for (const [slug, title] of pages) {
 test('home links the limitations page', () => {
   const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
   assert.ok(html.includes('href="/docs/limitations"'));
+});
+
+test('notifications shows the empty sheet, the plugin notice and the plugin setup link', () => {
+  const html = readFileSync(join('.next/server/app', 'docs/notifications.html'), 'utf8');
+  assert.ok(html.includes('No notifications'));
+  assert.ok(html.includes('Update the VendurePOS plugin'));
+  assert.ok(html.includes('href="/docs/plugin-setup"'));
 });
 
 test('changelog lists 0.3.0, 0.2.0 and 0.1.0 newest first', () => {
