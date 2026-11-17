@@ -21,7 +21,7 @@ export default defineConfig({
   mdxOptions: {
     rehypeCodeOptions: {
       transformers: [
-        ...rehypeCodeDefaultOptions.transformers,
+        ...(rehypeCodeDefaultOptions.transformers ?? []),
         {
           name: 'data-language',
           pre(node) {
