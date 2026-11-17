@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 7, "worst_defect": "The home page never says what Vendure is: the hero says the till \"signs in to your own Vendure store\", and nothing on the page explains Vendure or links to it. The only link to Vendure is on the docs Overview. On top of that, four near-equal buttons (Live demo / Quick start / Try with your store / GitHub) leave a newcomer unsure whether \"Try with your store\" or \"Quick start\" comes first.", "where": "home/desktop/01 hero and button row; home/phone/01"},
+    "C2": {"score": 8, "worst_defect": "The 'Live demo or your own store' table leaves out refunds, the one till feature the demo has and a real store on plugin 0.3.0 lacks. A visitor only learns this from the fine print further down (\"Refunds at the till need the plugin release after 0.3.0, and the live demo has them\"). At the till also says the customer note \"needs a plugin release after 0.3.0, which is not out yet. The live demo already has it\", so the demo shows more than a real install gets.", "where": "home/desktop/02 comparison table vs 'Before you start' list; at-the-till/desktop/01 Order details"},
+    "C3": {"score": 8, "worst_defect": "Step 3 gives three ways to create the schema: a hand-written tsx generate-migration.ts + run-migrations.ts, \"npx vendure migrate\", and \"the plugin's bundled migrations... the README describes that alternative\" (Plugin setup shows a fourth listing). It also warns \"Do not also run\" both, so the single most error-prone step has no one obvious path.", "where": "quick-start/desktop/01 step 3; plugin-setup/desktop/01 'Configure the plugin and migrations'"},
+    "C4": {"score": 8, "worst_defect": "The changelog reads like internal notes rather than user docs: unlinked references such as \"(ADR 0005)\", \"(#116)\" and \"(#117)\", plus protocol detail like \"GET /tally/v1/info advertises order.create 1–5\", with no plain-language summary of what each release means for a store.", "where": "changelog/desktop/01 and changelog/phone/01"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' is ten identical text-only grey cards in a 2-column grid. The two proven headline claims (offline, lands once) look the same as minor items like 'Park a sale', so the section reads as a long undifferentiated wall.", "where": "home/desktop/01 bottom to home/desktop/02 top"},
+    "C6": {"score": 8, "worst_defect": "The hero product screenshot is the full desktop till shrunk to about 350 px wide. Product names, prices and the cart are illegible on a phone, so the one visual that shows what the product is tells a phone visitor nothing.", "where": "home/phone/01 screenshot under 'A sale in progress on the live demo till.'"},
+    "C7": {"score": 9, "worst_defect": "The 404 page reuses the home page's meta description (\"Open-source point of sale for Vendure. Sell from the browser...\") and logs a console 404. The search API snippets also return raw markdown backticks (\"`/tally/v1/commands`\").", "where": "tech.json pages.not-found.desktop.description; text/endpoint_api_search_query_offline.txt"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "A visitor arriving from a 'Vendure point of sale' search who only half knows Vendure gets no one-line explanation or link on the home page. The whole pitch (\"signs in to your own Vendure store\", \"lands in Vendure once, as a normal order\") assumes the visitor already runs Vendure. With four equal-weight buttons and no explanation, a newcomer can't tell whether this is for them.",
+    "where": "home/desktop/01 and home/phone/01 hero paragraph",
+    "fix": "In the hero sentence, call Vendure \"the open-source TypeScript commerce framework\" and link it to vendure.io. Make 'Live demo' the single primary button, with 'Quick start' as the only secondary one."
+  },
+  "mean": 8.0
+}

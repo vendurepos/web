@@ -1,0 +1,48 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "Home never says who should NOT use it or how it compares to Shopify POS / Square / Lightspeed; a client weighing tills gets no 'not for you if' section, and the hero spreads weight across four equal CTAs",
+      "where": "home.desktop.01, home.phone.01"
+    },
+    "C2": {
+      "score": 6,
+      "worst_defect": "Home comparison table says the live demo sends nothing: \"the demo store lives in your browser, and nothing leaves the page\", while Connect a till says the demo \"posts anonymous demo events to ph.wcpos.com\"; footer says \"MIT licensed\" but self-building \"needs your own RxDB Premium licence token in RXDB_PREMIUM\", which home and Limitations omit",
+      "where": "home.desktop.02 / home.phone.04 vs connect-a-till.desktop.01 / connect-a-till.phone.01"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Quick start's \"Missing / old plugin\" check still names \"order.create v4 and register v1\" though 0.3.0 ships order.create v5, and the demo shows refunds that a real store cannot get (\"Refunds at the till need the plugin release after 0.3.0\")",
+      "where": "quick-start.desktop.03-04, home.desktop.02"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "Changelog reads as internal notes (\"ADR 0005\", \"order.create v5\") with \"Tally UI\" vs \"TallyUI\" spelled two ways; troubleshooting repeats the stale \"order.create v4\"; two app hosts (app.vendurepos.com, vendurepos.vercel.app) with no word on who runs them",
+      "where": "changelog.desktop.01, troubleshooting text, connect-a-till.desktop.01"
+    },
+    "C5": {
+      "score": 7,
+      "worst_defect": "On docs desktop slices the grey sidebar panel stops around y≈900 and the column below is bare white, so pages look unfinished; og-image logo is a hollow empty circle",
+      "where": "quick-start.desktop.01, docs.desktop.01, limitations.desktop.01, og-image.png"
+    },
+    "C6": {
+      "score": 7,
+      "worst_defect": "Home comparison table is squeezed into three narrow columns at 390 px, cell text stacks a word or two per line and is hard to scan; quick-start phone capture is clipped at \"Optional: a device key for\"",
+      "where": "home.phone.03-04, quick-start.phone.09"
+    },
+    "C7": {
+      "score": 8,
+      "worst_defect": "404 page reuses the home meta description and logs \"Failed to load resource: 404\" with no search box to recover; og-image is generic",
+      "where": "not-found.desktop.01, not-found.phone.01, og-image.png"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "Privacy claim contradicted: home table says of the demo \"nothing leaves the page\" while Connect a till says it \"posts anonymous demo events to ph.wcpos.com\"; together with \"MIT licensed\" hiding the RxDB Premium licence needed to self-build, a sceptic stops trusting the honesty claims",
+    "where": "home.desktop.02 / home.phone.04 vs connect-a-till.desktop.01",
+    "fix": "Change the home cell to \"No: the demo store lives in your browser; only anonymous usage events go to ph.wcpos.com\", and add a Limitations bullet plus a footer note that building the till yourself needs a paid RxDB Premium licence"
+  },
+  "mean": 7.29
+}

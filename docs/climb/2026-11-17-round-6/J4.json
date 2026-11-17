@@ -1,0 +1,48 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero offers four calls to action: 'Live demo' is solid, but 'Quick start', 'Try with your store' and 'GitHub' are three ghost buttons of equal weight. 'Try with your store' then needs the caption below to explain that it won't work until the plugin is installed, so the next click is less obvious than it should be.",
+      "where": "home/desktop/01 hero button row; home/phone/01"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The 'Before you start' list crams two unrelated limits into one bullet ('Coupon codes are not supported yet; line and order discounts work. Refunds at the till need the plugin release after 0.3.0, and the live demo has them.'). It points at an unnamed future release instead of giving a version or a date.",
+      "where": "home/desktop/02 'Before you start' 4th bullet; limitations/desktop/01 3rd bullet"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 3 runs two scripts, the tsx runner, an alternative CLI path ('npx vendure migrate'), a config edit and a warning about bundled migrations inside one five-sentence paragraph between two code blocks. The step most likely to go wrong has no sub-steps and no visible success check, unlike step 8's 'Check it worked'.",
+      "where": "quick-start/desktop/01 (step 3, the paragraph starting 'Run it with npx tsx …')"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "'At the till' is a UI walkthrough of about 12 sections that names on-screen controls in bold ('Order discount', 'Add charge', 'Parked (n)', the '⋮ beside Checkout') with no screenshot of the till anywhere. The reader has to picture every control. The Overview page also ends with a 'Quick start' card directly above a full-width 'Quick start >' pager card, so the same link appears twice in a row.",
+      "where": "at-the-till/desktop/01–03; docs/desktop/01 and docs/phone/02 'Next steps'"
+    },
+    "C5": {
+      "score": 7,
+      "worst_defect": "The 'Live demo or your own store' comparison table has unbalanced columns. 'Live demo' takes about 430 px while the first column wraps 'Sales reach Vendure, once each, even offline' onto two lines, and the third column starts at roughly two-thirds width. The ten 'What it does today' cards are also identical flat grey boxes, so the two proof cards with test links ('Read the 200-send test') get no more weight than 'Barcode scanners'.",
+      "where": "home/desktop/02 table; home/desktop/01–02 feature grid"
+    },
+    "C6": {
+      "score": 7,
+      "worst_defect": "At 390 px the hero screenshot is the full desktop till scaled down to about 650 px wide, so product names, prices and cart totals render at about 4 px and the main visual proof becomes unreadable texture. Lower down, the 3-column comparison table squeezes 'Open and close a register with a Z report' onto four lines. Code blocks soft-wrap inside string literals: \"'./vendure-\" breaks before \"config';\".",
+      "where": "home/phone/01 screenshot; home/phone/03 table; quick-start/phone/02–03 code blocks"
+    },
+    "C7": {
+      "score": 8,
+      "worst_defect": "The share card is a dark text slab: the headline is followed by a description that repeats it ('Open-source point of sale for Vendure…'), a dashed purple rule, and a magenta hollow-circle 'VendurePOS' mark. That pink brand and logo appear nowhere on the site, and the card has no product image. The 404 page also reuses the home meta description.",
+      "where": "og-image.png; tech.json not-found.desktop description"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C6",
+    "defect": "On a phone, the home page's only product visual is the desktop till scaled down to 390 px. Every label, price and total is unreadably small, so the first thing a phone visitor sees as proof is a grey-and-orange blur, and below it the comparison table and code blocks are squeezed in the same way.",
+    "where": "home/phone/01 ('A sale in progress on the live demo till.')",
+    "fix": "Use a phone-specific image (<picture> with a media query) that crops the screenshot to the cart and checkout panel, or uses the till's narrow layout, at about 2x so text stays at least 11 px on screen."
+  },
+  "mean": 7.6
+}
