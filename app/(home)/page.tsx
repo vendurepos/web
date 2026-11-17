@@ -1,10 +1,15 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { APP_URL, DEMO_URL, GITHUB_URL, MEDUSAPOS_URL, NPM_URL, PLUGIN_VERSION, TALLYUI_URL } from '@/lib/site';
 import { JsonLd } from '@/components/json-ld';
 import { homeJsonLd } from '@/lib/structured-data';
 
 export const metadata: Metadata = { alternates: { canonical: '/' } };
+
+// Captured from the public demo (demo.vendurepos.com/demo); retake when the till UI changes.
+const TILL_ALT =
+  'The VendurePOS till mid-sale: a product grid on the left, and a cart of three items totalling €59.59 with a Checkout button on the right.';
 
 // Each claim is backed by a test in vendurepos/app; the file is named in the comment beside it. Add a feature here only with its test.
 const features = [
@@ -158,6 +163,26 @@ export default function HomePage() {
           Your own store needs the plugin on your Vendure server first: the{' '}
           <Link href="/docs/quick-start" className="underline">quick start</Link> sets it up.
         </p>
+        <figure className="mt-12">
+          <Image
+            src="/till/sale-light.png"
+            width={2880}
+            height={1800}
+            priority
+            sizes="(min-width: 1024px) 1024px, 100vw"
+            className="block dark:hidden rounded-lg border border-fd-border"
+            alt={TILL_ALT}
+          />
+          <Image
+            src="/till/sale-dark.png"
+            width={2880}
+            height={1800}
+            sizes="(min-width: 1024px) 1024px, 100vw"
+            className="hidden dark:block rounded-lg border border-fd-border"
+            alt={TILL_ALT}
+          />
+          <figcaption className="mt-3 text-sm text-fd-muted-foreground">A sale in progress on the live demo till.</figcaption>
+        </figure>
       </section>
 
       <section className="pb-16">
