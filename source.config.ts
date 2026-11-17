@@ -3,6 +3,7 @@ import { metaSchema, pageSchema } from 'fumadocs-core/source/schema';
 import { rehypeCodeDefaultOptions } from 'fumadocs-core/mdx-plugins';
 import rehypeTableCodeBreaks from './lib/rehype-table-code-breaks';
 import rehypeShortCodeNowrap from './lib/rehype-short-code-nowrap';
+import rehypeStackCodeTables from './lib/rehype-stack-code-tables';
 
 // You can customise Zod schemas for frontmatter and `meta.json` here
 // see https://fumadocs.dev/docs/mdx/collections
@@ -21,7 +22,7 @@ export const docs = defineDocs({
 
 export default defineConfig({
   mdxOptions: {
-    rehypePlugins: (v) => [...v, rehypeTableCodeBreaks, rehypeShortCodeNowrap],
+    rehypePlugins: (v) => [...v, rehypeTableCodeBreaks, rehypeShortCodeNowrap, rehypeStackCodeTables],
     rehypeCodeOptions: {
       transformers: [
         ...(rehypeCodeDefaultOptions.transformers ?? []),
