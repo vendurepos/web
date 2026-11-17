@@ -73,3 +73,10 @@ test("troubleshooting gives the plugin requirement in the quick start's terms", 
   assert.ok(text.includes('/docs/quick-start#1-install-the-plugin'));
   assert.doesNotMatch(text, /Run plugin 0\.1\.0 or later/);
 });
+
+test('limitations describes stock allocation as the quick start does', () => {
+  const text = readFileSync('content/docs/limitations.mdx', 'utf8');
+  assert.ok(text.includes("Vendure's stock allocation strategy"));
+  assert.doesNotMatch(text, /channel's default stock location/);
+  assert.ok(text.includes('The till cannot pick a location for a sale.'));
+});
