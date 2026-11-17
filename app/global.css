@@ -32,7 +32,7 @@ figure.shiki .fd-scroll-container,
   --scroll-shadow: rgb(0 0 0 / 45%);
 }
 
-/* Long code tokens in docs tables clipped on phones in climb round 1. */
+/* Prevent phone clipping in docs tables; word breaks come from lib/rehype-table-code-breaks.ts. */
 .prose table :is(td, th) code {
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
