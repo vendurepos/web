@@ -73,3 +73,12 @@ test('the two proof claims link their tests', () => {
   assert.match(html, /<a href="https:\/\/github\.com\/vendurepos\/app\/blob\/main\/packages\/vendure-plugin\/test\/replay\.e2e\.ts"[^>]*>Read the 200-send test<\/a>/);
   assert.equal(Array.from(html.matchAll(/<a\b[^>]*\bhref="https:\/\/github\.com\/vendurepos\/app\/blob\/main\//g)).length, 2);
 });
+
+test('before you start names refunds and coupon codes as not yet', () => {
+  const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
+  const item = '<li>Not yet: refunds and coupon codes. Line and order discounts work at the till.</li>';
+  const heading = html.indexOf('Before you start');
+  assert.ok(html.includes(item));
+  assert.ok(heading >= 0 && heading < html.indexOf(item));
+  assert.ok(html.indexOf(item) < html.indexOf('href="/docs/limitations"'));
+});
