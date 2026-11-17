@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero gives four equal-sized buttons ('Live demo', 'Quick start', 'Try with your store', 'GitHub'). A non-developer can't tell 'Quick start' from 'Try with your store', and only the small line underneath ('Your own store needs the plugin on your Vendure server first') says the second one needs the developer first.", "where": "home.desktop.01 hero buttons; home.phone.01 (buttons wrap 2+2)"},
+    "C2": {"score": 8, "worst_defect": "The site never says what counter hardware works beyond keyboard-wedge scanners. Receipts only 'open the browser's print dialog', with no word on thermal receipt printers or whether the cash drawer opens, and Limitations is silent on both, so the limits a shop owner needs most are missing from the honest list.", "where": "limitations.desktop.01; at-the-till.txt 'Print the receipt and start again'; home 'Cash, card and receipts' card"},
+    "C3": {"score": 8, "worst_defect": "Step 8 'Sign in and make a sale' packs sign-in fields, the barcode field, the opening float, the sale, the tender, the Vendure checks and an offline test into two dense paragraphs before the 'Check it worked' list. Step 4 'Enable bearer authentication' also carries the optional device-key flow and a pnpm Vite tweak, so the main path is hard to follow.", "where": "quick-start.desktop.02 (step 4), quick-start.desktop.03 (step 8); quick-start.phone.07-08"},
+    "C4": {"score": 7, "worst_defect": "Troubleshooting lists the header notice \"N orders keep failing at the store. They are kept and retried.\" with no action at all, and the next fix for a stuck sale is a SuperAdmin GraphQL mutation. Nothing tells a cashier or owner what to do or when to call the developer.", "where": "troubleshooting.desktop.01 'Act on a header notice' bullet 3 and 'Resolve a sale the store kept part-way'"},
+    "C5": {"score": 7, "worst_defect": "Nowhere on the site is there a single picture of the till. The home page is text plus ten identical grey feature cards and a table, so the page has a flat wall-of-cards hierarchy and a shop owner never sees the screen their staff would use.", "where": "home.desktop.01 'What it does today' grid; home.desktop-dark"},
+    "C6": {"score": 8, "worst_defect": "On every docs page the phone 'on this page' bar starts with an empty grey ring ('◌ Open the register') that reads as a loading spinner. Code lines are also cut off at the right edge (e.g. \"import { TallyPosPlugin } from '@vendurepos/\"), with only a faint fade to show they scroll.", "where": "at-the-till.phone.01, docs.phone.01 top bar; quick-start.phone.02 code blocks"},
+    "C7": {"score": 9, "worst_defect": "The 404 page reuses the home page meta description ('Open-source point of sale for Vendure. Sell from the browser…') instead of its own. The share card is plain text with an empty-circle logo and no pre-release marker.", "where": "tech.json pages.not-found.desktop.description; og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A shop owner can't learn from the site whether their counter hardware works. Only keyboard-wedge scanners are covered. Receipts go through 'the browser's print dialog', and nothing is said about thermal receipt printers, a cash drawer opening on a cash sale, or whether a print dialog appears on every sale. Limitations, the page meant to answer 'what does it not do', doesn't mention any of it.",
+    "where": "limitations.desktop.01 / limitations.phone.01; at-the-till 'Print the receipt and start again'",
+    "fix": "Add a short 'At the counter' block to Limitations (and link it from At the till) saying plainly what works: scanners (keyboard-wedge), receipt printers (any printer the browser can print to, with the paper width tested), cash drawer (opens or not), card terminal (separate, not connected)."
+  },
+  "mean": 7.9
+}

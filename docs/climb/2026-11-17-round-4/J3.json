@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "The quantified acceptance-run claim links to test source, without a dated run result identifying the tested plugin version.",
+      "where": "text/home.txt, 'Keeps selling offline'; tech.json, home.desktop.links"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Staff setup says to grant catalogue/settings reads and TallyPosSell, but omits the explicit permission list including ReadCustomer and CreateCustomer that appears only in the changelog.",
+      "where": "text/quick-start.txt, step 4; text/connect-a-till.txt; shots/changelog.desktop.01.jpg, 0.2.0"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "The needs_admin recovery recipe offers applied and rejected without explaining what order, payment, fulfilment or stock state justifies either choice.",
+      "where": "text/troubleshooting.txt, 'Resolve a sale the store kept part-way'"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "Ten similarly styled gray feature cards give the primary reliability claims and secondary conveniences nearly equal visual weight, making the long feature section monotonous to scan.",
+      "where": "shots/home.desktop.01.jpg, 'What it does today'; shots/home.desktop-dark.jpg"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The three-column demo comparison remains cramped on phone, with short feature labels and explanations wrapping into tall, narrow blocks.",
+      "where": "shots/home.phone.03.jpg, 'Live demo or your own store'"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "llms-full.txt emits subsection titles such as 'Check your store [#check-your-store]' as plain lines rather than Markdown headings, weakening its machine-readable hierarchy.",
+      "where": "text/endpoint_llms_full_txt.txt, Plugin setup and Quick start sections"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "Recovering a needs_admin sale requires choosing applied or rejected without documented decision criteria, leaving a developer to guess during a potentially money-sensitive recovery.",
+    "where": "text/troubleshooting.txt, 'Resolve a sale the store kept part-way'",
+    "fix": "Add a short checklist explaining which persisted order, payment, fulfilment and stock states justify each resolution. State what each resolution changes and when the till should retry."
+  },
+  "mean": 8.4
+}

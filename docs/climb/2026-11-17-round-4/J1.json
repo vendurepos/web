@@ -1,0 +1,48 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {
+      "score": 7,
+      "worst_defect": "The home page never shows the till: the hero is a headline, a paragraph and four similar-weight buttons ('Live demo', 'Quick start', 'Try with your store', 'GitHub'), then ten identical grey text cards, with no screenshot of the POS anywhere, and nothing says in plain words what Vendure is (only the docs Overview links it). A visitor from search cannot picture the product without leaving for the demo.",
+      "where": "home.desktop.01 hero and 'What it does today' grid; home.phone.01"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "Naming is inconsistent: the product is VendurePOS, but the code and docs use 'TallyPosPlugin', 'tally-pos', '/tally/v1/commands' and 'TallyPosSell', and the footer says 'Built with Tally UI' while the Overview says 'built on TallyUI'. Nothing explains the relationship, so a newcomer wonders whose product this is.",
+      "where": "home.desktop.02 footer; docs.desktop.01 intro; quick-start.desktop.01 step 2 heading"
+    },
+    "C3": {
+      "score": 7,
+      "worst_defect": "Step '4. Enable bearer authentication' packs the optional device-key setup (a second tokenMethod block, the System → API keys → New POS till key dialog, a three-bullet list, and a pnpm Vite-plugin snippet) into a required step. Step 3 also offers two migration routes (TS entry or 'npx vendure migrate'), so the shortest path to a first sale is hard to pick out.",
+      "where": "quick-start.desktop.02 (step 4), quick-start.desktop.01 (step 3)"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The Changelog is internal developer notes rather than user-facing release notes: 'advertises order.create 1–5 (ADR 0005)', '(#116)', 'POS_TILL_PERMISSIONS', with references to ADRs and issues a reader cannot follow from the site.",
+      "where": "changelog.desktop.01, 0.3.0 and 0.2.0 sections"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The home page is visually flat: below the hero it is a 2x5 grid of identical grey bordered text cards with no icons, imagery or visual break, then a plain table. On long docs pages the grey sidebar panel stops at about 900 px, leaving the page background under it.",
+      "where": "home.desktop.01 'What it does today' grid; quick-start.desktop.01 / plugin-setup.desktop.01 left sidebar bottom edge"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "On phone the tax table breaks code identifiers mid-word ('new OrderLevelTax' / 'CalculationStrategy()', 'taxOptions.orderTax' / 'CalculationStrategy'), and most quick-start code blocks are cut off at the right edge ('@vendurepos/', 'Tall'), so you have to scroll sideways to read them.",
+      "where": "quick-start.phone.05-06 (step 6 table), quick-start.phone.02 code blocks"
+    },
+    "C7": {
+      "score": 8,
+      "worst_defect": "The docs landing page's title is the generic 'Overview | VendurePOS', and the 404 page reuses the home meta description. The share card is only text plus an empty outlined circle as the logo, with no product visual.",
+      "where": "tech.json docs.desktop title; tech.json not-found description; og-image.png"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "No picture of the till anywhere on the home page (or in the docs): a first-time visitor reads ten text cards about registers, Z reports and parked carts but never sees what the product looks like, so deciding whether it is worth a click means leaving the site for the demo.",
+    "where": "home.desktop.01 / home.phone.01, between the hero buttons and 'What it does today'",
+    "fix": "Add one screenshot of the till mid-sale (cart, products, tender) under the hero buttons, linked to the live demo. Also add a half-line to the hero: 'Vendure is an open-source TypeScript commerce platform'."
+  },
+  "mean": 7.7
+}
