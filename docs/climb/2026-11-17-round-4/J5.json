@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The home page has no picture of the till: the hero, all ten 'What it does today' cards and the demo comparison table are text, so a buyer comparing it with Shopify POS or Square cannot see what the till looks like without leaving for the demo.", "where": "home/desktop/01, home/phone/01-03"},
+    "C2": {"score": 6, "worst_defect": "The site asks you to type a Vendure administrator email and password into a hosted third-party origin ('Open https://app.vendurepos.com ... your administrator email and password') and to allow that origin in CORS with credentials: true, yet no page says who runs app.vendurepos.com (or the second origin vendurepos.vercel.app), whether credentials or orders pass through it, or how to host the till yourself. Nor does the site say who maintains the project: the only provenance is 'Built with Tally UI'.", "where": "quick-start/desktop/01 (hosted POS paragraph) and 03 (step 8); quick-start/desktop/02 step 5; docs/desktop/01; home/desktop/02 footer"},
+    "C3": {"score": 8, "worst_defect": "Step 8 makes the reader verify the sale twice. A long paragraph already says 'check Vendure for the POS prices, settled tally-pos payment, delivered fulfilment, stock reduction and tallySaleAt', then 'Check it worked.' repeats the same five checks as a list. Step 3 also offers two migration routes and defers the second to 'the README'.", "where": "quick-start/desktop/03 (step 8), quick-start/desktop/01 (step 3)"},
+    "C4": {"score": 7, "worst_defect": "Plugin setup says 'Version 0.3.0 lets the plugin record fees, shipping and custom lines', and the changelog describes order.create v5 custom lines, shipping and surcharges in ADR jargon ('ADR 0005', 'shipping_single'). But At the till and the home feature list never say whether or how a cashier adds a fee, a shipping charge or a custom item, so the claimed capability cannot be traced to the till.", "where": "plugin-setup/desktop/01; changelog/desktop/01; at-the-till text"},
+    "C5": {"score": 8, "worst_defect": "On every docs page the grey sidebar panel stops at about 900 px, leaving the lower left of the page bare beside continuing content. Separately, the home page is ten identical grey text cards with no visual anchor, which reads as a template rather than a product.", "where": "docs/desktop/01 and quick-start/desktop/01 (sidebar ends at y~900); home/desktop/01 card grid"},
+    "C6": {"score": 8, "worst_defect": "Code blocks do not wrap on a 390 px screen, so key lines are cut off mid-token ('from '@vendurepos/', 'TallyP', 'new DefaultTa'). The tax table breaks code into 'OrderLevelTax / CalculationStrategy()'. The sticky 'On this page' bar uses an empty circle that reads as a loading spinner.", "where": "quick-start/phone/02, 05, 06; quick-start/phone/01 header bar"},
+    "C7": {"score": 9, "worst_defect": "The share card uses a pink and purple palette with a hollow-circle 'logo' that appears nowhere on the monochrome site. The SoftwareApplication JSON-LD has no softwareVersion although the site advertises 'plugin 0.3.0'.", "where": "og-image.png; tech.json home.desktop jsonLd"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "Setting up a real store means typing a Vendure admin password into app.vendurepos.com and whitelisting that origin (plus vendurepos.vercel.app) with credentials in CORS. No page says who operates the hosted till, what data reaches it, or whether you can serve the till from your own domain, and the site names no maintainer. A sceptical adviser would stop a client here.",
+    "where": "quick-start/desktop/01 (hosted POS paragraph), quick-start/desktop/02 (step 5 CORS), quick-start/desktop/03 (step 8 sign-in)",
+    "fix": "Add a short 'Where your data goes' block to the Overview and the top of the quick start: the hosted till is a static build that talks only to your store, nothing is sent to vendurepos servers, it is run by <named maintainer>, and you can self-host it with <link>."
+  },
+  "mean": 7.7
+}
