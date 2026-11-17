@@ -152,6 +152,10 @@ export default function HomePage() {
             GitHub
           </a>
         </div>
+        <p className="mt-4 text-sm text-fd-muted-foreground">
+          Your own store needs the plugin on your Vendure server first: the{' '}
+          <Link href="/docs/quick-start" className="underline">quick start</Link> sets it up.
+        </p>
       </section>
 
       <section className="pb-16">
