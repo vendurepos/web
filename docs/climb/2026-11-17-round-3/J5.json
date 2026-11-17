@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 7, "worst_defect": "A point-of-sale landing page with no picture of the till anywhere: the hero is a headline, a paragraph and four equal-weight buttons (\"Live demo\", \"Quick start\", \"Try with your store\", \"GitHub\"), then ten identical text cards. Unlike Shopify POS, Square or Lightspeed pages, you have to click away to see what the cashier screen looks like.", "where": "home.desktop.01 / home.phone.01 (hero and 'What it does today')"},
+    "C2": {"score": 7, "worst_defect": "The home page's 'What it does today' and 'Before you start' never say that it has no refunds, no coupon codes and no integrated card terminal, which rule it out for most real shops. Those only appear behind the small 'See what it does not do yet' link on the Limitations page, so the home page reads as complete when it is not.", "where": "home.desktop.01-02 vs limitations.desktop.01 ('Refunds: not yet.', 'Coupon codes: not yet.', 'The till does not talk to the terminal.')"},
+    "C3": {"score": 8, "worst_defect": "Step 3 asks the developer to write two TypeScript entry files and run them 'with your project's existing TypeScript runner' without naming a command. It then says 'the README describes that alternative' with no link to that README (quick-start's link list has no README URL, while plugin-setup does link it).", "where": "quick-start.desktop.01 (step 3, last paragraph) / text/quick-start.txt"},
+    "C4": {"score": 7, "worst_defect": "The changelog and Plugin setup sell 0.3.0 as 'lets the plugin record fees, shipping and custom lines', but no user-facing page (At the till, home, Limitations) says whether or how the till uses them. Changelog entries also cite '(ADR 0005)', '#116' and '#117' as plain text with no links.", "where": "changelog.desktop.01 (0.3.0 entries) and plugin-setup.desktop.01 vs at-the-till.desktop.01"},
+    "C5": {"score": 8, "worst_defect": "On every docs page, the desktop sidebar's grey panel stops at about 900 px, and the page below it turns plain. The result is a visible step in the left column next to long content.", "where": "quick-start.desktop.01, docs.desktop.01, limitations.desktop.01 (left column at y≈900)"},
+    "C6": {"score": 8, "worst_defect": "The tax-rounding table on phone breaks code identifiers mid-word inside pill backgrounds ('taxOptions.orderTax / CalculationStrategy', 'new OrderLevelTax / CalculationStrategy()', '(pricesIncludeTax: / false)'). It is the hardest part of setup to read on a 390 px screen.", "where": "quick-start.phone.05-06 (step 6 table)"},
+    "C7": {"score": 8, "worst_defect": "The 404 page's meta description is the home page's marketing line ('Open-source point of sale for Vendure. Sell from the browser…'), and it has a console 404 error. The share card is a text-only dark card whose logo is a hollow circle placeholder.", "where": "tech.json not-found.desktop/phone description and consoleErrors; og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The home page lists ten things it does but none of the dealbreakers a shop owner checks first: no refunds, no coupon codes, and card payments keyed in by hand from a separate terminal. A buyer comparing it with Square or Shopify POS learns this only by finding the Limitations page, which looks like burying the limits.",
+    "where": "home.desktop.01-02 ('What it does today', 'Before you start') vs limitations.desktop.01",
+    "fix": "Add one line under 'Before you start' (or a short 'Not yet' card beside the feature grid): 'Not yet: refunds, coupon codes, integrated card terminals (card is recorded from your own terminal).', linked to Limitations."
+  },
+  "mean": 7.6
+}

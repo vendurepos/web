@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 7, "worst_defect": "The home page has no picture of the till: the hero is a heading, a paragraph and four same-sized buttons ('Live demo', 'Quick start', 'Try with your store', 'GitHub'), then ten text cards. A shop owner can't see what staff would use at the counter without leaving for the demo.", "where": "home.desktop.01 and home.phone.01 (hero and 'What it does today')"},
+    "C2": {"score": 8, "worst_defect": "Neither the home page nor the Limitations page says which counter hardware works. 'Print the receipt from the browser' never says whether a thermal receipt printer or cash drawer works, or which tablets and browsers are supported. 'Refunds: not yet' sits only on Limitations, behind the small 'what it does not do yet' link at the bottom of the home page.", "where": "home.desktop.01 card 'Cash, card and receipts'; limitations.desktop.01; home.desktop.02 'Before you start'"},
+    "C3": {"score": 8, "worst_defect": "Quick start step 8, 'Sign in and make a sale', packs sign-in, the opening float, scanning, tender, printing and the offline test into one dense paragraph. The optional device-key setup takes up most of step 4 ahead of the main path.", "where": "quick-start.desktop.03 (step 8 paragraph 'Wait for the catalogue and settings...'); quick-start.desktop.02 (step 4)"},
+    "C4": {"score": 8, "worst_defect": "Selling offline, the owner's main worry, has no page of its own. It is a two-line section, 'Sell while offline', inside Troubleshooting. 'At the till' never says what staff see when the connection drops, or what happens to unsent sales if the browser data is cleared. The changelog is written for developers ('order.create v5 ... (ADR 0005)', 'lineTax: { none: true, classes: true }').", "where": "troubleshooting.desktop.01 'Sell while offline'; at-the-till.desktop.01; changelog.desktop.01"},
+    "C5": {"score": 7, "worst_defect": "The whole site is text and grey boxes, with no product image, icon or illustration anywhere. On the home page the 'Live demo or your own store' table has a narrow first column that wraps 'Sales reach Vendure, once each, even offline' while the 'Live demo' column holds wide empty space.", "where": "home.desktop.01 (cards and comparison table); home.desktop-dark.jpg"},
+    "C6": {"score": 8, "worst_defect": "On the phone, the quick-start code blocks are cut off at the right edge and need sideways scrolling ('import { TallyPosPlugin } from '@vendurepos/', 'pluginPackageScanner: { nodeM'). Inline code chips break mid-word with broken borders: 'taxOptions.orderTax / CalculationStrategy' in the tax table, plus 'tally-in- / store' and 'vendurepos- / pos-till'.", "where": "quick-start.phone.02, quick-start.phone.04, quick-start.phone.05, quick-start.phone.07"},
+    "C7": {"score": 9, "worst_defect": "The share card shows only text ('Point of sale for Vendure' over the meta description) and no product image, so a shared link looks like any docs page. The 404 page offers no search box. Everything else is clean: Lighthouse 98/95, SEO 100, llms.txt, sitemap and search API all answer.", "where": "og-image.png; not-found.desktop.01"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "Nowhere on the site, home page or 'At the till' docs, is there a picture of the till. A shop owner asking 'can my staff sell with this tomorrow?' only gets paragraphs about buttons ('Pay cash', 'Close register', 'Print the Z report') and has to open the demo to see anything.",
+    "where": "home.desktop.01 / home.phone.01 hero; at-the-till.desktop.01",
+    "fix": "Add one screenshot of the till mid-sale (cart, tender buttons, sync status in the header) under the hero buttons, and a screenshot of the Z report in 'Count the drawer and close the day'."
+  },
+  "mean": 7.9
+}
