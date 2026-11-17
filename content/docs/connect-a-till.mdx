@@ -55,7 +55,9 @@ plugin points at your `node_modules`:
 ```ts
 vendureDashboardPlugin({
   // ...your existing options
-  pluginPackageScanner: { nodeModulesRoot: path.resolve(__dirname, 'node_modules') },
+  pluginPackageScanner: {
+    nodeModulesRoot: path.resolve(__dirname, 'node_modules')
+  },
 }),
 ```
 

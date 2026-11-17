@@ -59,7 +59,11 @@ resolution and a note:
 
 ```graphql
 mutation {
-  tallyResolveNeedsAdmin(commandId: "command-id", resolution: applied, note: "checked the till") {
+  tallyResolveNeedsAdmin(
+    commandId: "command-id",
+    resolution: applied,
+    note: "checked the till"
+  ) {
     id
     status
   }
