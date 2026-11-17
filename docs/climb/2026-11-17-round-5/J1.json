@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 7, "worst_defect": "The home page never says what Vendure is or links to it: the hero says \"Point of sale for Vendure\" and \"signs in to your own Vendure store\", but nowhere does it say it is an open-source headless commerce framework (tech.json home links include no vendure.io; that link only appears on /docs). A visitor who half knows Vendure has to guess whether this is for them. The hero also gives four buttons of nearly equal weight (Live demo, Quick start, Try with your store, GitHub), and the line under them has to warn that \"Try with your store\" will not work without the plugin.", "where": "home.desktop.01 hero; home.phone.01; tech.json pages.home.desktop.links"},
+    "C2": {"score": 8, "worst_defect": "The product is VendurePOS, but the visitor meets other names without explanation: the home footer says \"Built with Tally UI\", step 2 of the quick start is \"Add TallyPosPlugin\", and the routes are /tally/v1/... Nothing says how Tally relates to VendurePOS, so it reads like a rebrand or a wrapper around someone else's product.", "where": "home.desktop.02 footer; quick-start.desktop.01 step 2"},
+    "C3": {"score": 7, "worst_defect": "The path to a first sale is cluttered with edge cases. Step 7, \"Prepare the channel and stock\", is one ~150-word paragraph of stock-allocation rules (\"Short stock is topped up so the sale goes through, at the strategy's first location or...\", \"A per-sale locationId is refused\"). The intro and step 5 also bring in a second hosted address, https://vendurepos.vercel.app. The few actions you actually need to take are buried among caveats.", "where": "quick-start.desktop.02-03 step 7; quick-start.desktop.01 intro paragraph"},
+    "C4": {"score": 7, "worst_defect": "The Changelog is written in internal jargon that means nothing to a user, e.g. \"GET /tally/v1/info advertises order.create 1–5 (ADR 0005)\", \"order.create v5 custom lines are real order lines on a plugin-owned, disabled 'POS custom item' variant\" and \"(#116)\". It records wire-protocol versions, not what changed for someone running a till.", "where": "changelog.desktop.01; changelog.phone.01"},
+    "C5": {"score": 8, "worst_defect": "On the docs overview the sidebar highlights two items at once: \"Docs\" (top group) and \"Overview\" both get the grey active pill, so it is unclear which one is the current page. Otherwise desktop and dark mode are clean.", "where": "docs.desktop.01 sidebar"},
+    "C6": {"score": 7, "worst_defect": "On phone, code blocks are cut off mid-line with no wrapping. Step 2 shows \"plugins: [/* your existing plugins, */ Tally\", which hides the one name you need to copy, and the cors and taxOptions blocks are cut the same way. The home hero screenshot is also shrunk until its text cannot be read.", "where": "quick-start.phone.02 (step 2 and generate-migration blocks); quick-start.phone.04-05; home.phone.01 hero image"},
+    "C7": {"score": 9, "worst_defect": "The share card (og-image.png) is text only: a pink and purple accent, a dashed rule and an empty-circle \"logo\". It matches neither the site's black-and-white look nor its product screenshot, so a shared link shows no product.", "where": "og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "A visitor who searched \"Vendure point of sale\" and only half knows Vendure gets no one-line explanation of Vendure and no link to it from the home page. The hero assumes you already run a Vendure server. The visitor has to work out from the requirements list further down (\"Vendure 3.6 or later on Postgres\") whether the product fits them.",
+    "where": "home.desktop.01 hero subhead; home.phone.01",
+    "fix": "In the hero subhead, call Vendure \"Vendure, the open-source TypeScript commerce platform\" and link that phrase to vendure.io. Give the hero one primary action (Live demo) and one secondary (Quick start), and move \"Try with your store\" and GitHub out of the hero button row."
+  },
+  "mean": 7.6
+}
