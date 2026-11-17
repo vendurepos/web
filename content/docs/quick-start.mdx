@@ -144,7 +144,7 @@ long as anyone still opens the POS at that address.
 Use an object, so Vendure exposes `vendure-auth-token` for bearer sign-in.
 Origins contain no path; `localhost` and `127.0.0.1` are different origins.
 
-## 6. Choose tax rounding for your pricing mode (ADR-048)
+## 6. Choose tax rounding for your pricing mode
 
 These settings
 are store-wide and also affect the web shop; the plugin does not choose them
@@ -189,6 +189,12 @@ adding a channel so it receives this setup.
 
 ## 8. Sign in and make a sale
 
+{/* Not part of the port; keep it when re-porting. */}
+
+<Callout type="warn" title="Before a sale on a live store">
+If your store uses `@vendure/email-plugin`, swap its order-confirmation handler first: see [Set up email](/docs/plugin-setup#set-up-email). Each sale also runs in one database transaction, so read [Check your own code](/docs/plugin-setup#check-your-own-code) if your store has its own order hooks, event handlers or strategies.
+</Callout>
+
 Open `https://app.vendurepos.com`. Enter the
 store URL (for example `https://store.example.com`; a trailing `/admin-api`
 is accepted), your administrator email and password. Enter the optional
@@ -204,6 +210,16 @@ print the receipt through the browser if needed. Once the order has synced,
 check Vendure for the POS prices, settled `tally-pos` payment, delivered
 fulfilment, stock reduction and `tallySaleAt`. To try offline sales, sync first,
 disconnect while the POS stays open, sell, then reconnect and let orders drain.
+
+{/* Not part of the port; a checklist of the checks named in step 8 above. Keep it when re-porting. */}
+
+**Check it worked.** Once the till shows the order as synced, open the order in the Vendure Dashboard:
+
+- the line prices are the ones the till charged;
+- the payment is `tally-pos`, settled;
+- the fulfilment is delivered;
+- stock for each product went down;
+- the order's `tallySaleAt` custom field is set.
 
 ## 9. Troubleshoot
 
