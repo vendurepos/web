@@ -1,0 +1,48 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {
+      "score": 7,
+      "worst_defect": "A point-of-sale home page with not one image of the till: the hero is text plus four equal-weight buttons (Live demo, Quick start, Try with your store, GitHub), and the ten feature cards are text only, so you cannot judge what the product looks like next to Shopify POS or Square without clicking away. 'Try with your store' also doesn't say it opens a hosted app at app.vendurepos.com.",
+      "where": "home.desktop.01 (hero and 'What it does today' grid); home.phone.01"
+    },
+    "C2": {
+      "score": 6,
+      "worst_defect": "Quick start step 8 and Connect a till tell you to type 'your administrator email and password' into the hosted app at https://app.vendurepos.com (with https://vendurepos.vercel.app 'serves the same build'), but no page says who runs that host, what it stores or sends, or how to self-host the till instead. The only hint of self-hosting is the unexplained VENDUREPOS_WEB_ALLOW_LAN_HTTP note in Troubleshoot. On top of that, the hero proof ('Our acceptance run makes 25 sales, 20 of them offline', 'The same sale sent 200 times makes one order') links to no test or CI run. The changelog shows three releases between 2026-10-01 and 2026-10-06 and nothing in the six weeks since, and no page names who maintains the project.",
+      "where": "quick-start.desktop.03 step 8 and step 9; connect-a-till.phone.01; home.desktop.01 cards 1-2; changelog.desktop.01"
+    },
+    "C3": {
+      "score": 7,
+      "worst_defect": "Step 3 has no single migration command. You must write two separate TypeScript entry files (generateMigration, then runMigrations) and run them 'with your project's existing TypeScript runner'. Step 4 then puts the optional device-key setup and a pnpm Dashboard Vite workaround into the required path. Step 6 is labelled '(ADR-048)', a reference the site never explains.",
+      "where": "quick-start.desktop.01-02 (steps 3, 4, 6); quick-start.phone.02-05"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "The changelog is internal protocol notes ('order.create v5 custom lines … (ADR 0005)', '(#116)', '(#117)') with unlinked ADR and issue references. The 0.3.0 features it lists (custom lines, fees, one shipping charge) are never explained in At the till, so a reader can't tell whether the till can actually use them. Only the plugin has a changelog; the till app has none.",
+      "where": "changelog.desktop.01; at-the-till.desktop.01 (no mention of custom items, fees or shipping)"
+    },
+    "C5": {
+      "score": 7,
+      "worst_defect": "The home grid has ten cards in three columns, so 'Line and order discounts' sits alone on the last row with two empty slots. The docs overview's 'Next steps' leaves 'Source on GitHub' alone in a two-column grid. Together with the text-only, unbranded docs template (no logo, no accent colour, no imagery), the site looks like a default template rather than a product.",
+      "where": "home.desktop.01 (bottom-left card); home.desktop-dark; docs.desktop.01 (Next steps cards)"
+    },
+    "C6": {
+      "score": 7,
+      "worst_defect": "On phone the copy button sits on top of code text in the scrolling code blocks ('@vendu[icon]re/', 'api-k[icon]y'). The tax-strategy table is cut off at the right edge ('taxOptions.orderTaxCalc…', 'new OrderLevelTaxCalcul…') with no sign that it scrolls.",
+      "where": "quick-start.phone.02, quick-start.phone.03, quick-start.phone.05"
+    },
+    "C7": {
+      "score": 8,
+      "worst_defect": "The share card uses a pink/purple accent and a hollow circle as the 'logo'; neither appears anywhere on the monochrome site, so the card looks like a placeholder. The SoftwareApplication JSON-LD has no softwareVersion, and every sitemap lastmod is from early October.",
+      "where": "og-image.png; tech.json home.desktop jsonLd; text/endpoint_sitemap_xml.txt"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The site asks a Vendure developer to type a store administrator email and password into a hosted third-party app (app.vendurepos.com, also served from vendurepos.vercel.app) but never says who operates it, what it keeps or sends, or how to run the till yourself. I would advise a client not to try it with a production store until that is answered.",
+    "where": "quick-start.desktop.03 step 8; connect-a-till.phone.01 'Open your till'; home.desktop.01 'Try with your store'",
+    "fix": "Add a short 'Where your data goes' section to the Overview, linked from Quick start step 8. It should say the hosted till is static, who serves it, that credentials and sales go only from the browser to your own Vendure, and give the one command to self-host the till from the repo. In the same section, recommend device keys over admin passwords."
+  },
+  "mean": 7.0
+}
