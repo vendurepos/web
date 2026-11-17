@@ -23,5 +23,12 @@ test('at the till states the plugin gate for refunds', () => {
   const start = html.indexOf('id="refund-a-sale"');
   const end = html.indexOf('id="check-the-register-during-the-day"', start);
   assert.ok(start >= 0 && end > start);
-  assert.match(html.slice(start, end), /0\.3\.0/);
+  const section = html.slice(start, end);
+  assert.match(section, /need a plugin release after 0\.3\.0/);
+  assert.match(section, /On plugin 0\.3\.0, refund in the Vendure Dashboard/);
+});
+
+test('at the till says the customer note is public', () => {
+  // vendurepos/app 1404f42 plugin CHANGELOG.md:6: kept as one public order note.
+  assert.match(html, /public note in the order/);
 });

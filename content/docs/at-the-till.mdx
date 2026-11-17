@@ -2,7 +2,7 @@
 title: At the till
 description: Open the register, sell with charges and open sales, take or split a payment, refund a till sale and close the day.
 ---
-{/* Sources: vendurepos/app 1404f42 (app.vendurepos.com production, 17 Nov 2026); plugin CHANGELOG at 1404f42. */}
+{/* Sources: vendurepos/app 1404f42 (app.vendurepos.com production, 17 Nov 2026); plugin CHANGELOG at 1404f42; customer note: plugin CHANGELOG.md:6 ("kept as one public order note"), vendurepos/app#284 ("public to the customer"). */}
 
 Some steps depend on the store's VendurePOS plugin. With no plugin, or one too old to sell,
 the till shows "This store's VendurePOS plugin is missing or out of date.
@@ -52,7 +52,7 @@ The ⋮ beside **Checkout** opens **Order details**.
 **Void** drops the sale from the till. Nothing has been sent to the store.
 A sale that is partly paid can't be voided.
 
-Type a **Customer note** to send with the order. The store keeps it as a note in the order's history.
+Type a **Customer note** to send with the order. The store keeps it as a public note in the order's history, so the customer can see it too.
 The note needs a plugin release after 0.3.0, which is not out yet. The live demo already has it.
 Without it, **Order details** shows no note.
 
