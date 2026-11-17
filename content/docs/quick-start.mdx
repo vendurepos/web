@@ -9,7 +9,7 @@ description: Install the plugin, configure Vendure and make your first sale.
 The [live demo](https://demo.vendurepos.com/demo) is the till signed in to a simulated store in your browser, with nothing to install.
 </Callout>
 
-{/* Intro and steps 1–9 below are ported from vendurepos/app docs/QUICKSTART.md at tag plugin-v0.3.0. */}
+{/* Intro, steps 1–9 and the device key section below are ported from vendurepos/app docs/QUICKSTART.md at commit 36758b3 (plugin 0.3.0, tag plugin-v0.3.0). */}
 
 The hosted POS is live at `https://app.vendurepos.com`.
 `https://vendurepos.vercel.app` serves the same build. The plugin is
@@ -41,8 +41,8 @@ handler, and `/tally/v1/commands` and `/tally/v1/info` routes.
 ## 3. Generate and run the migration before starting the server
 
 Keep
-`dbConnectionOptions.synchronize: false`. With the plugin added, use your
-project's migration runner to invoke Vendure's generator:
+`dbConnectionOptions.synchronize: false`. With the plugin added, save this
+as `src/generate-migration.ts`, next to `src/vendure-config.ts`:
 
 ```ts
 import { generateMigration } from '@vendure/core';
@@ -52,12 +52,14 @@ generateMigration(config, { name: 'AddVendurePos', outputDir: './src/migrations'
   .catch(error => { console.error(error); process.exitCode = 1; });
 ```
 
-Run this TypeScript entry with your project's existing TypeScript runner.
+Run it with `npx tsx src/generate-migration.ts` (`tsx` is the TypeScript
+runner VendurePOS's own dev store uses).
 For projects scaffolded with `@vendure/create`, Vendure's CLI alternative is
 `npx vendure migrate` (generate and run interactively).
 Review the generated migration and include it in
 `config.dbConnectionOptions.migrations` (or your existing migration glob).
-Then run a separate entry with the same runner:
+Then save this as `src/run-migrations.ts` and run it with
+`npx tsx src/run-migrations.ts`:
 
 ```ts
 import { runMigrations } from '@vendure/core';
@@ -84,44 +86,7 @@ tokenMethod: ['bearer', 'cookie'],
 Sign in with a Vendure administrator who can read the channel's catalogue
 and settings and has the plugin's `TallyPosSell` permission (or `CreateOrder`, which is broader); the plugin routes require one of them.
 
-{/* Ported from vendurepos/app docs/QUICKSTART.md step 4 at tag plugin-v0.3.0 (device keys are new since plugin 0.1.0). */}
-
-**Optional: a Vendure API key for each till (Vendure 3.6+).** Add
-`'api-key'` to the same `tokenMethod` list:
-
-```ts
-tokenMethod: ['bearer', 'cookie', 'api-key'],
-```
-
-With Vendure's React Dashboard, go to **System → API keys → New POS till key**
-and name the key after the device. First switch the Dashboard to the
-till's channel: a key works only in the channel it was created in (Vendure's
-API keys are channel-aware), and the dialog names that channel. The button
-does three things:
-
-- creates or extends the plugin's `vendurepos-pos-till` role, which has
-  `TallyPosSell` and the reads a till needs;
-- creates the key with that role;
-- shows the key once.
-
-Rotate or delete a key on its own page.
-
-On the POS sign-in screen, choose **Device key**, then paste the key and the
-till's channel token. The POS shows the key's name as the till on its
-receipts. Signing out forgets the key on that device; it does not revoke it.
-A till whose key is revoked asks for a new one and keeps its cart.
-
-**pnpm projects:** point the Dashboard's Vite plugin at your `node_modules`,
-or the build will not find the button:
-
-```ts
-vendureDashboardPlugin({
-  // ...your existing options
-  pluginPackageScanner: { nodeModulesRoot: path.resolve(__dirname, 'node_modules') },
-}),
-```
-
-npm projects need nothing extra.
+For a key per till instead, see **Optional: a device key for each till** below.
 
 ## 5. Allow the POS origin through CORS
 
@@ -179,8 +144,14 @@ Assign the products
 and stock locations to the channel you will use, with a usable default stock
 location. Check its currency, `pricesIncludeTax`, default tax zone and enabled
 tax rates (including a zero rate where appropriate). Keep the manual
-fulfilment handler enabled. The plugin uses Vendure's stock allocation
-strategy; a per-sale `locationId` is not supported.
+fulfilment handler enabled. The plugin wraps your store's
+`catalogOptions.stockLocationStrategy`, so POS sales take stock where it
+allocates, across several locations if it splits a line; any quantity it
+leaves unallocated comes from the channel's default stock location. Short
+stock is topped up so the sale goes through, at the strategy's first location
+or, when it cannot cover the sale, the default location. A custom stock
+strategy must allocate each POS line in full by `PaymentSettled`, or the sale
+is refused as a store configuration problem. A per-sale `locationId` is refused.
 
 On server start the plugin creates or assigns the `tally-pos` payment method,
 `tally-in-store` shipping method and walk-in customer to each channel. Keep
@@ -195,21 +166,24 @@ adding a channel so it receives this setup.
 If your store uses `@vendure/email-plugin`, swap its order-confirmation handler first: see [Set up email](/docs/plugin-setup#set-up-email). Each sale also runs in one database transaction, so read [Check your own code](/docs/plugin-setup#check-your-own-code) if your store has its own order hooks, event handlers or strategies.
 </Callout>
 
-Open `https://app.vendurepos.com`. Enter the
-store URL (for example `https://store.example.com`; a trailing `/admin-api`
-is accepted), your administrator email and password. Enter the optional
-channel token to select a channel; leave it blank for the default channel.
-For scanning, enter the name of an existing single text `ProductVariant`
-custom field, such as `barcode`; leaving it blank disables this field choice.
+Open `https://app.vendurepos.com`, then:
 
-Wait for the catalogue and settings, enter the counted opening float and open
-the register. Search for or scan a product, add it to the cart, choose cash
-or record a payment already taken on your external card terminal, and complete
-the tender. For cash, enter the amount received. Check the receipt and change;
-print the receipt through the browser if needed. Once the order has synced,
-check Vendure for the POS prices, settled `tally-pos` payment, delivered
-fulfilment, stock reduction and `tallySaleAt`. To try offline sales, sync first,
-disconnect while the POS stays open, sell, then reconnect and let orders drain.
+1. Enter the store URL (for example `https://store.example.com`; a trailing
+   `/admin-api` is accepted), your administrator email and password.
+2. Enter the optional channel token to select a channel; leave it blank for
+   the default channel.
+3. For scanning, enter the name of an existing single text `ProductVariant`
+   custom field, such as `barcode`; leaving it blank disables this field choice.
+4. Wait for the catalogue and settings, enter the counted opening float and
+   open the register.
+5. Search for or scan a product and add it to the cart.
+6. Choose cash, or record a payment already taken on your external card
+   terminal, and complete the tender. For cash, enter the amount received.
+7. Check the receipt and change; print the receipt through the browser if needed.
+8. Once the order has synced, check Vendure for the POS prices, settled
+   `tally-pos` payment, delivered fulfilment, stock reduction and `tallySaleAt`.
+9. To try offline sales, sync first, disconnect while the POS stays open,
+   sell, then reconnect and let orders drain.
 
 {/* Not part of the port; a checklist of the checks named in step 8 above. Keep it when re-porting. */}
 
@@ -230,13 +204,25 @@ disconnect while the POS stays open, sell, then reconnect and let orders drain.
   adds `http:` to `connect-src` and `img-src` only for exports served over
   plain HTTP on the same LAN; it cannot bypass HTTPS mixed-content blocking.
 - **401:** verify `'bearer'` in `tokenMethod`. For “Your session has ended.
-  Sign out, then sign in again.” or “The store refused this sign-in. Sign out,
-  then sign in again.”, do exactly that. Check the credentials and channel
-  token if sign-in or settings reads still fail.
+  Sign in again to keep selling.” or “The store refused this sign-in. Sign in
+  again below; orders are kept.”, sign in again. Check the credentials and
+  channel token if sign-in or settings reads still fail.
 - **Missing / old plugin:** “This store's VendurePOS plugin is missing or out
   of date. Install or update it, then this till continues.” means the store
   must advertise `order.create` v4 and register v1. Install/update the plugin,
-  apply its schema changes and restart Vendure; the till retries. For “The
-  store's VendurePOS plugin isn't answering. Orders are kept and retried.”,
+  apply its schema changes and restart Vendure; the till retries. For “Sales
+  aren't reaching the online store. Keep selling: they're saved on this till and will send by themselves.”,
   check that `/tally/v1/info` and `/tally/v1/commands` reach the plugin through
   the store's proxy. Keep queued orders while fixing the store.
+
+## Optional: a device key for each till
+
+A till can sign in with its own Vendure API key (Vendure 3.6+): add `'api-key'`
+to the step 4 `tokenMethod` list, then create the key in the till's channel with
+the Dashboard's **New POS till key** button (the plugin's
+[README](https://github.com/vendurepos/app/blob/main/packages/vendure-plugin/README.md#dashboard-a-key-for-each-till)
+covers its role and the setting pnpm projects need). On the POS sign-in screen,
+choose **Device key**, then paste the key and the till's channel token. The POS
+shows the key's name as the till on its receipts. Signing out forgets the key on
+that device; it does not revoke it. A till whose key is revoked asks for a new
+one and keeps its cart.
