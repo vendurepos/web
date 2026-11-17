@@ -31,7 +31,10 @@ As of 0.3.0 there are four bundled migrations; `TallyPosV51790900000000` ships i
 
 ```ts
 import {
-  TallyPosPlugin, TallyPos1790648006022, TallyPosVp2a1790720000000, TallyPosRegister1790800000000,
+  TallyPosPlugin,
+  TallyPos1790648006022,
+  TallyPosVp2a1790720000000,
+  TallyPosRegister1790800000000,
   TallyPosV51790900000000,
 } from '@vendurepos/plugin';
 ```
@@ -42,7 +45,13 @@ Inside your Vendure config, register them in `dbConnectionOptions` with `synchro
 dbConnectionOptions: {
   // …your existing connection settings
   synchronize: false,
-  migrations: [TallyPos1790648006022, TallyPosVp2a1790720000000, TallyPosRegister1790800000000, TallyPosV51790900000000, /* your own migrations */],
+  migrations: [
+    TallyPos1790648006022,
+    TallyPosVp2a1790720000000,
+    TallyPosRegister1790800000000,
+    TallyPosV51790900000000,
+    /* your own migrations */
+  ],
 },
 ```
 
@@ -59,12 +68,19 @@ They create the `tally_command` ledger, read-only `Order` and `OrderLine` custom
 POS orders send no order-confirmation email. If you use `@vendure/email-plugin`, replace `orderConfirmationHandler` with `tallyOrderConfirmationHandler`:
 
 ```ts
-import { EmailPlugin, defaultEmailHandlers, orderConfirmationHandler } from '@vendure/email-plugin';
+import {
+  EmailPlugin,
+  defaultEmailHandlers,
+  orderConfirmationHandler,
+} from '@vendure/email-plugin';
 import { tallyOrderConfirmationHandler } from '@vendurepos/plugin/email';
 
 EmailPlugin.init({
   handlers: defaultEmailHandlers.map(handler =>
-    handler === orderConfirmationHandler ? tallyOrderConfirmationHandler : handler),
+    handler === orderConfirmationHandler
+      ? tallyOrderConfirmationHandler
+      : handler
+  ),
   // …
 });
 ```
@@ -87,7 +103,9 @@ From 0.3.0 the plugin records one shipping charge per order. Fees are Vendure su
 If your store has more than about 50,000 customers, or POS sales with an email are visibly slow, run this on its own in `psql`, outside a migration: `CONCURRENTLY` must run outside a transaction.
 
 ```sql
-CREATE INDEX CONCURRENTLY "IDX_customer_email_lower" ON "customer" (lower("emailAddress")) WHERE "deletedAt" IS NULL;
+CREATE INDEX CONCURRENTLY "IDX_customer_email_lower"
+ON "customer" (lower("emailAddress"))
+WHERE "deletedAt" IS NULL;
 ```
 
 If it fails part-way, it leaves an `INVALID` index: drop it and run it again. The server logs a warning at start when `customer` has more than 50,000 rows and no such index.

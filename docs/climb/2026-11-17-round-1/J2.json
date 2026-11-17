@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 7, "worst_defect": "The home page never shows the till itself: no screenshot of the cart, payment or Z report anywhere, so a shop owner cannot see what staff would use without leaving for the demo; and the four equal-weight buttons 'Live demo / Quick start / Try with your store / GitHub' don't say how 'Try with your store' differs from 'Quick start'.", "where": "home.desktop.01 hero and 'What it does today' grid; home.phone.01 button rows"},
+    "C2": {"score": 8, "worst_defect": "The offline promise stops at 'Unsent orders and the register wait on that device': nowhere does Limitations or Troubleshooting say what happens to unsent sales if that till is lost, breaks, or has its browser data cleared while offline.", "where": "troubleshooting 'Refresh prices and stock' / 'Sell while offline'; limitations.desktop.01"},
+    "C3": {"score": 7, "worst_defect": "Mandatory step '4. Enable bearer authentication' also holds the whole optional device-key setup (Dashboard 'New POS till key', pnpm vendureDashboardPlugin config), repeating Connect a till; step 9 adds VENDUREPOS_WEB_ALLOW_LAN_HTTP / connect-src jargon; and the intro sends you to two app URLs (app.vendurepos.com and vendurepos.vercel.app).", "where": "quick-start.desktop.02 (step 4), quick-start.desktop.04 (step 9), quick-start.desktop.01 intro"},
+    "C4": {"score": 7, "worst_defect": "The same on-screen message is quoted two ways: Quick start step 9 says 'The store refused this sign-in. Sign out, then sign in again.' while Troubleshooting says 'The store refused this sign-in. Sign in again below; orders are kept.', so staff cannot match what they see; At the till names buttons ('Card payment approved', 'Parked (n)', 'Closure #n') with no picture of where they are.", "where": "quick-start.txt '9. Troubleshoot' vs troubleshooting.txt 'Act on a header notice'; at-the-till.desktop.01"},
+    "C5": {"score": 7, "worst_defect": "The home page is ten identical grey text cards in a 2x5 grid with no image or icon, followed by a comparison table whose 'Live demo' column leaves a wide empty gutter before 'Your Vendure store'; the page reads as a spec sheet rather than a product.", "where": "home.desktop.01 'What it does today' and 'Live demo or your own store' table"},
+    "C6": {"score": 7, "worst_defect": "Code blocks on phone clip mid-token behind a faint fade ('@vendurepos/', 'Tall', 'new DefaultTa'), and the tax table cuts 'DefaultOrderTaxCalculati'; on every docs page the sticky 'On this page' bar starts with a circle that reads as a loading spinner.", "where": "quick-start.phone.02, quick-start.phone.06; at-the-till.phone.01 / troubleshooting.phone.01 top bar"},
+    "C7": {"score": 8, "worst_defect": "The 404 page reuses the home meta description ('Open-source point of sale for Vendure. Sell from the browser...'), llms-full.txt carries raw anchor artefacts like 'Open the register [#open-the-register]', and the share card's hollow pink circle logo matches nothing on the grey site.", "where": "tech.json not-found.desktop.description; text/endpoint_llms_full_txt.txt; og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "There is not a single picture of the till on the whole site (home or At the till), so a shop owner deciding whether staff can sell with it tomorrow has to read text that names buttons like 'Pay cash', 'Card payment approved' and 'Close register' without ever seeing the screen.",
+    "where": "home.desktop.01 / home.phone.01-02; at-the-till.desktop.01",
+    "fix": "Add one screenshot of the till mid-sale (cart plus tender) under the home hero, and one each of the tender screen and the Z report in At the till."
+  },
+  "mean": 7.3
+}

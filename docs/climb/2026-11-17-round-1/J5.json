@@ -1,0 +1,48 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {
+      "score": 7,
+      "worst_defect": "Nowhere on the site is there a picture of the till itself: home shows ten text-only feature cards and a Yes/No table, and 'At the till' describes buttons ('Pay cash', 'Parked (n)', 'Close register') that a reader never sees, so a buyer comparing with Shopify POS or Square cannot judge what the product looks like without leaving for the demo.",
+      "where": "home.desktop.01 / home.phone.01-03; at-the-till.desktop.01"
+    },
+    "C2": {
+      "score": 5,
+      "worst_defect": "The only till path documented is the hosted app: 'Open https://app.vendurepos.com. Enter the store URL ..., your administrator email and password', yet no page says who runs app.vendurepos.com (or 'https://vendurepos.vercel.app'), whether credentials or order data pass through it, or how to run the 'open-source till' yourself; the only hint is an unexplained 'VENDUREPOS_WEB_ALLOW_LAN_HTTP ... exports served over plain HTTP' line in Troubleshoot.",
+      "where": "quick-start.desktop.03 (step 8) and quick-start.desktop.04 (step 9); connect-a-till.desktop.01"
+    },
+    "C3": {
+      "score": 7,
+      "worst_defect": "Step 4 says to sign in as an administrator who 'has the plugin's TallyPosSell permission (or CreateOrder ...)' but never says how to give a staff role TallyPosSell for email sign-in (the role is only created for device keys via 'New POS till key'), and the bundled-migration route is sent off-site ('the README describes that alternative') although Plugin setup covers it.",
+      "where": "quick-start.desktop.02 (step 4), quick-start.desktop.01 (end of step 3)"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "The Changelog is written for the maintainers: unlinked internal references '(ADR 0005)', '(ADR 0004)', '(#116)', '(#117)', protocol names like 'order.create v5' and 'lineTax: { none: true, classes: true }', and it covers only the plugin, so a reader cannot tell what changed in the till app or when it last shipped.",
+      "where": "changelog.desktop.01 / changelog.phone.01"
+    },
+    "C5": {
+      "score": 7,
+      "worst_defect": "On every desktop docs page the grey sidebar panel stops dead at about 900 px, leaving a pale block below it beside the content, and the share card uses a pink ring logo and pink wordmark seen nowhere on the monochrome site.",
+      "where": "docs.desktop.01, limitations.desktop.01, changelog.desktop.01 (left column below y=900); og-image.png"
+    },
+    "C6": {
+      "score": 7,
+      "worst_defect": "The tax-rounding table at 390 px cuts off the one value the reader needs: the right column shows 'taxOptions.orderTaxCalc', 'new OrderLevelTaxCalcul' and 'DefaultOrderTaxCalculati' clipped at the edge, and the code blocks around it are clipped mid-token ('@vendurepos/', 'TallyPos', 'new DefaultTa').",
+      "where": "quick-start.phone.05 and quick-start.phone.06 (step 6)"
+    },
+    "C7": {
+      "score": 8,
+      "worst_defect": "The 404 page reuses the home meta description ('Open-source point of sale for Vendure. Sell from the browser...') and logs a console 404 resource error; otherwise titles, JSON-LD, llms.txt, search API, sitemap and Lighthouse (98/93, 100s) are solid.",
+      "where": "tech.json pages.not-found.desktop / not-found.phone"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A client is told to type their Vendure administrator email and password into app.vendurepos.com, a hosted site whose operator, data handling and self-host alternative are never stated anywhere on the site; for a sceptic advising a retailer that is the reason to say no, however honest the Limitations page is.",
+    "where": "quick-start.desktop.03 step 8; connect-a-till.desktop.01 'Open your till'",
+    "fix": "Add a short 'Where your data goes' note on Overview and Quick start: who serves app.vendurepos.com, that the till talks only to your store from the browser (if true) and nothing is stored on the host, and one link or paragraph on hosting the till yourself."
+  },
+  "mean": 6.9
+}
