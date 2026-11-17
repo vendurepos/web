@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 7, "worst_defect": "The home hero is all text: no screenshot of the till anywhere on the page. Its CTA row puts four buttons at nearly equal weight, three of them identical outline buttons ('Quick start', 'Try with your store', 'GitHub'), and 'Try with your store' repeats the nav link right above it, so what to click after 'Live demo' is unclear.", "where": "home.desktop.01 hero; home.phone.01 (the button row wraps 2+2 with ragged widths)"},
+    "C2": {"score": 8, "worst_defect": "The minimum plugin version contradicts itself. Troubleshooting says 'Run plugin 0.1.0 or later' for the 'missing or out of date' notice, while the quick start pins @vendurepos/plugin@0.3.0 and says the store must advertise 'order.create v4 and register v1'.", "where": "troubleshooting.desktop.01 'Act on a header notice' 5th bullet vs quick-start.desktop.04 step 9"},
+    "C3": {"score": 7, "worst_defect": "Step 4 'Enable bearer authentication' is required, but the optional device-key setup is poured into it: four paragraphs, a bullet list and a pnpm Vite config block, marked only by a bold 'Optional:' run-in. A first-time reader can't see where the required step ends, and connect-a-till already covers the same material.", "where": "quick-start.desktop.02 (from 'Optional: a Vendure API key for each till' to 'npm projects need nothing extra.')"},
+    "C4": {"score": 7, "worst_defect": "Step 8 lists the success check twice. The prose already ends 'check Vendure for the POS prices, settled tally-pos payment, delivered fulfilment, stock reduction and tallySaleAt', and the 'Check it worked.' bullet list right under it repeats the same five items. The Overview page also stacks a 'Quick start' Next-steps card directly above a 'Quick start' pager card.", "where": "quick-start.desktop.03 step 8; docs.desktop.01 bottom"},
+    "C5": {"score": 7, "worst_defect": "'What it does today' is a 5-row wall of 10 identical flat grey text cards: no icons, no images, no change in weight. The 'Live demo or your own store' table under it gives the 'Live demo' column about 430 px while the first column wraps 'Sales reach Vendure, once each, even offline'. The page has no visual anchor anywhere; dark mode holds up.", "where": "home.desktop.01 feature grid and comparison table; home.desktop-dark.jpg"},
+    "C6": {"score": 6, "worst_defect": "At 390 px the step-6 tax table breaks the values you must copy in the middle of the identifier: 'taxOptions.orderTa / xCalculationStrateg / y', 'new OrderLevelTaxCalcul / ationStrategy()', 'DefaultOrderTaxCalc / ulationStrategy()'. Inline code chips also split at hyphens ('vendurepos- / pos-till', 'tally-in- / store', '/admin- / api'), and every TypeScript block is clipped mid-token ('@vendurepos/', 'Tally').", "where": "quick-start.phone.05 bottom and quick-start.phone.06 top; quick-start.phone.02, .04, .07"},
+    "C7": {"score": 8, "worst_defect": "The share card repeats its headline in the body ('Point of sale for Vendure' then 'Open-source point of sale for Vendure...'). It uses a pink/purple dashed-rule palette and a hollow-circle logo that appear nowhere on the monochrome site, and it shows nothing of the product.", "where": "og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C6",
+    "defect": "On a phone, the one table in the quick start that a developer must copy from (step 6, choosing the order tax strategy) wraps the strategy class names character by character across three lines. The step that decides whether totals match is unreadable and uncopyable at 390 px.",
+    "where": "quick-start.phone.05 bottom to quick-start.phone.06 top",
+    "fix": "Put `white-space: nowrap` on code inside table cells and wrap the table in a horizontally scrolling container. Alternatively, render the two rows as stacked 'Tax-exclusive → new OrderLevelTaxCalculationStrategy()' lines below 640 px."
+  },
+  "mean": 7.1
+}

@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 7, "worst_defect": "There is no picture of the till anywhere on the home page, so an owner can't see what staff will use without leaving the site. The hero also gives four equal-weight buttons ('Live demo', 'Quick start', 'Try with your store', 'GitHub'), and 'Try with your store' sounds like the owner's next step when it actually needs the plugin installed first.", "where": "home.desktop.01 / home.phone.01 hero"},
+    "C2": {"score": 7, "worst_defect": "'Refunds: not yet' is a dealbreaker for a counter shop, but it appears only on the Limitations page. The home page's 'What it does today' lists ten capabilities, and the only route to the gaps is the small 'what it does not do yet' link at the very bottom. Limitations also never says what happens to sales still waiting to send if the till device is lost or its browser data is cleared.", "where": "home.desktop.01-02 (What it does today, Before you start), limitations.desktop.01"},
+    "C3": {"score": 8, "worst_defect": "Step 8 tells you to sign in with 'your administrator email and password'. The safer per-till option (a device key with the vendurepos-pos-till role) is buried as an 'Optional' paragraph inside step 4 'Enable bearer authentication', so an owner's developer is steered toward handing cashiers admin logins.", "where": "quick-start.desktop.02 (step 4 Optional) and quick-start.desktop.03 (step 8)"},
+    "C4": {"score": 7, "worst_defect": "The same sign-in error gets two different instructions. Quick start quotes 'The store refused this sign-in. Sign out, then sign in again.' and says 'do exactly that'. Troubleshooting quotes 'Sign in again below; orders are kept.' and says to sign in again in the bar that appears. And '\"N orders keep failing at the store. They are kept and retried.\"' is listed with no action at all.", "where": "quick-start.desktop.04 (9. Troubleshoot, 401) vs troubleshooting.desktop.01 (Act on a header notice)"},
+    "C5": {"score": 7, "worst_defect": "The home page is ten identical grey text cards followed by a plain text table, with no screenshot, illustration or icon. The brand mark on the share card is a hollow pink circle, so the page reads like a default template rather than a product.", "where": "home.desktop.01, home.desktop-dark.jpg, og-image.png"},
+    "C6": {"score": 7, "worst_defect": "On phone the tax-strategy table breaks code mid-word, for example 'taxOptions.orderTa / xCalculationStrateg / y' and 'DefaultOrderTaxCalc / ulationStrategy()'. Several code blocks are cut off at the right edge ('Tally', 'pi'), and the quick start runs past 9,300 px on a phone.", "where": "quick-start.phone.05-06 (step 6 table), quick-start.phone.02-03 code blocks"},
+    "C7": {"score": 9, "worst_defect": "The 404 page reuses the home page meta description ('Open-source point of sale for Vendure. Sell from the browser...') instead of one of its own. The share card has no product image, only a title and description text.", "where": "tech.json pages.not-found.desktop.description; og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The things a counter shop most needs to know it can't do yet (no refunds, the card terminal isn't connected, and a typed rather than verified manager approval) are kept off the home page. 'What it does today' shows ten capability cards with no matching 'not yet' list, so an owner only finds out about no refunds after their developer has installed it.",
+    "where": "home.desktop.01-02 / home.phone.01-04 (What it does today, Before you start)",
+    "fix": "Add a short 'Not yet' line or card next to 'What it does today' listing 'Refunds', 'Card terminal integration (you confirm card payments by hand)' and 'Coupon codes', each linking to /docs/limitations."
+  },
+  "mean": 7.4
+}

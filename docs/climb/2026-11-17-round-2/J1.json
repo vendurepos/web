@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 7, "worst_defect": "The home page never shows the product: there is no screenshot or picture of the till anywhere, only a headline, four equally weighted buttons (Live demo / Quick start / Try with your store / GitHub) and a wall of ten text cards using terms like 'idempotency ledger', 'Keyboard-wedge' and 'counted float'. A visitor who half knows Vendure cannot picture what they would be getting.", "where": "home/desktop/01 and home/phone/01-02"},
+    "C2": {"score": 8, "worst_defect": "The strongest proof claims ('Our acceptance run makes 25 sales, 20 of them offline...', 'The same sale sent 200 times makes one order') link to no test, run or source, so they read as assertions. And the plugin a visitor installs is called 'TallyPosPlugin', not VendurePOS, which is never explained on the home page.", "where": "home/desktop/01 cards 'Keeps selling offline' and 'Every sale lands once'; quick-start/desktop/01 step 2"},
+    "C3": {"score": 7, "worst_defect": "Step 3 asks the reader to write and run their own TypeScript entry files for generateMigration/runMigrations 'with your project's existing TypeScript runner'. It names no file location and no command to run them, so the one step that changes the database is left to guessing.", "where": "quick-start/desktop/01 step 3"},
+    "C4": {"score": 7, "worst_defect": "The quick start opens with 'The hosted POS is live at https://app.vendurepos.com. https://vendurepos.vercel.app serves the same build.' A raw hosting URL shows up in the first paragraph with no reason given, and again in the CORS step. It reads as an unfinished internal note.", "where": "quick-start/desktop/01 intro paragraph; quick-start/desktop/02 step 5"},
+    "C5": {"score": 7, "worst_defect": "The home page body is one long run of ten identical grey text cards and a table, with no image, icon or visual break. The four hero buttons are almost the same weight, so nothing guides the eye. The share card's logo is an empty pink circle in a colour used nowhere else on the site.", "where": "home/desktop/01 'What it does today' grid; og-image.png"},
+    "C6": {"score": 7, "worst_defect": "On phone the tax-strategy table squeezes code into a narrow column and breaks identifiers mid-word ('taxOptions.orderTa / xCalculationStrateg / y', 'new OrderLevelTaxCalcul / ationStrategy()'), so the values are hard to read or copy.", "where": "quick-start/phone/05-06 step 6 table"},
+    "C7": {"score": 9, "worst_defect": "The 404 page reuses the home page meta description ('Open-source point of sale for Vendure. Sell from the browser...') instead of one of its own. Otherwise strong: Lighthouse 98/100/100/100, JSON-LD on every page, llms.txt, sitemap, robots and search all answer 200.", "where": "tech.json pages.not-found.desktop.description"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "There is no picture of the till anywhere on the home page (or in the docs). A first-time visitor from 'Vendure point of sale' reads a paragraph and ten text cards but never sees what the product looks like, so judging it means clicking away to the demo or leaving.",
+    "where": "home/desktop/01 and home/phone/01",
+    "fix": "Put one real screenshot of the till (cart and payment screen) directly under the hero buttons, linked to the live demo, with a smaller phone-sized crop on mobile."
+  },
+  "mean": 7.4
+}
