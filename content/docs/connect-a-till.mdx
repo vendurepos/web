@@ -2,13 +2,41 @@
 title: Connect a till
 description: Sign a till in to your store with a staff account or a device key.
 ---
-{/* Sources: vendurepos/app 41d722d; packages/vendure-plugin/README.md at plugin-v0.3.0; @tallyui/components 3.3.0. */}
+{/* Sources: vendurepos/app 41d722d; vendurepos/app 1404f42 (data section); packages/vendure-plugin/README.md at plugin-v0.3.0; @tallyui/components 3.3.0. */}
 
 ## Open your till
 
 Open [app.vendurepos.com](https://app.vendurepos.com). On **Sign in to Vendure**,
 choose **Email and password** or **Device key**.
 Use one browser tab per till: a second tab is told the till is open in another tab.
+
+## Where your data goes
+
+{/* Data section, vendurepos/app 1404f42: apps/pos/lib/sign-in.ts:26-41,107-117
+apps/pos/lib/session.ts:5-21,34-35,44-55,74-80
+apps/pos/lib/session-context.tsx:16-18
+apps/pos/app/index.tsx:205-209
+apps/pos/lib/logout.ts:7-21
+apps/pos/lib/storage.ts:1-8
+apps/pos/lib/orders-db.ts:14-21,57-59
+apps/pos/lib/demo/analytics.ts:3-16,24-28
+apps/pos/vercel.json:2,9
+apps/pos/package.json:3,12
+README.md:73-74
+docs/QUICKSTART.md:80-88 */}
+
+When you sign in with email and password, the till sends them from this browser to the store URL you entered.
+It then saves the session in this browser's `localStorage`: the store URL, channel token, barcode field, your email,
+the store's settings and the session token the store returned. It never saves the password. With a device key, it saves the key itself.
+Signing out deletes that saved session and, for a password sign-in, asks the store to end the session.
+The catalogue and the sales not yet sent to your store are kept in SQLite databases inside this browser.
+Signing out deletes the catalogue but never the sales database, so unsent sales wait for your next sign-in.
+Every request in the till's code goes to that store URL, except on the public demo at demo.vendurepos.com:
+it posts anonymous demo events to ph.wcpos.com with no cookie and nothing stored. The page loads scripts only from its own host, cannot be shown inside another site, and may connect to any `https://` address.
+
+The till's source is [MIT-licensed](https://github.com/vendurepos/app) and builds to static files. Building it yourself needs your own RxDB Premium
+licence token in `RXDB_PREMIUM`; then run `pnpm build:web` in `apps/pos` and serve `apps/pos/dist` from your own host.
+Your store must then allow that origin in its CORS settings, the same way it allows `https://app.vendurepos.com`.
 
 ## Enter your store details
 
