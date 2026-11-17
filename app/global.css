@@ -36,3 +36,13 @@ figure.shiki .fd-scroll-container,
 .prose table :is(td, th) code {
   overflow-wrap: break-word;
 }
+
+/* Keep short prose code together and close the pill ends of wrapped inline code. */
+.prose :not(pre) > code {
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.prose code[data-nowrap] {
+  white-space: nowrap;
+}
