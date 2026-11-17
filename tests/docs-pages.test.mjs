@@ -66,3 +66,10 @@ test('llms text carries no MDX comments', () => {
   assert.ok(full.includes('# Limitations'));
   assert.ok(full.includes('plugins: [/* your existing plugins, */ TallyPosPlugin],'));
 });
+
+test("troubleshooting gives the plugin requirement in the quick start's terms", () => {
+  const text = readFileSync('content/docs/troubleshooting.mdx', 'utf8');
+  assert.ok(text.includes('advertise `order.create` v4 and register v1'));
+  assert.ok(text.includes('/docs/quick-start#1-install-the-plugin'));
+  assert.doesNotMatch(text, /Run plugin 0\.1\.0 or later/);
+});
