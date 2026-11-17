@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/plugin-setup.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Staff-account setup says the administrator must read catalogue and settings but omits the explicit permission list, including customer permissions documented only in the changelog's till-role preset.",
+      "where": "text/quick-start.txt, step 4; text/connect-a-till.txt, staff sign-in; text/changelog.txt, 0.2.0"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The pnpm Dashboard configuration snippet uses path.resolve(__dirname, 'node_modules') without supplying the path import or naming the configuration file to edit.",
+      "where": "text/connect-a-till.txt, pnpm Dashboard configuration"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.desktop.02.jpg; shots/home.desktop-dark.jpg; shots/plugin-setup.desktop.01.jpg"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.phone.01.jpg through home.phone.04.jpg; shots/quick-start.phone.01.jpg through quick-start.phone.09.jpg; tech.json"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "tech.json; text/endpoint_llms_txt.txt; text/endpoint_llms_full_txt.txt; text/endpoint_api_search_query_offline.txt; shots/og-image.png"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "The recommended staff-account setup does not provide a complete, explicit till-role permission set; developers must reconstruct it from prose and the changelog.",
+    "where": "text/quick-start.txt, step 4; text/connect-a-till.txt; text/changelog.txt, 0.2.0",
+    "fix": "List TallyPosSell, ReadCatalog, ReadSettings, ReadCustomer and CreateCustomer together in the staff-account instructions, with assignment to the intended channel. Link that list from quick-start step 4."
+  },
+  "mean": 8.9
+}

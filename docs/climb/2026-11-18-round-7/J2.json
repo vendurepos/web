@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The home page's first feature cards talk to developers, not shop owners: \"records it in one transaction with an idempotency ledger\" and \"Keyboard-wedge scanners\". And the three outline buttons \"Quick start\", \"Try with your store\" and \"GitHub\" give no hint which one is for the owner and which is for the developer.", "where": "home.desktop.01 (hero buttons, 'Every sale lands once' and 'Barcode scanners' cards); home.phone.01-02"},
+    "C2": {"score": 8, "worst_defect": "The demo row says \"All it sends is anonymous usage events to ph.wcpos.com, with no cookie\", but a VendurePOS site never explains why a different brand's domain (wcpos.com) gets data. To a shop owner that reads like an undisclosed third party.", "where": "home.desktop.02 'Live demo or your own store' table, last row; home.phone.04; connect-a-till 'Where your data goes'"},
+    "C3": {"score": 7, "worst_defect": "Nothing says how to give each of my two staff their own till login. Quick start step 8 and Connect a till say to sign in as \"a Vendure administrator\" with TallyPosSell or CreateOrder, but neither shows how to create a limited cashier account per person. Yet At the till relies on per-person accounts: \"Tap your name in the bar\" and \"Hand over signs you out and leaves the drawer open for the next account\".", "where": "quick-start.desktop.03 step 8a; connect-a-till 'Sign in with a staff account' (connect-a-till.desktop.01); at-the-till 'Check the register during the day' (at-the-till.phone.05)"},
+    "C4": {"score": 7, "worst_defect": "At the till is the only page a cashier would use, and it is about 4,000 px of text with no picture of the till screen. Staff have to find \"the ⋮ beside Checkout\", \"Register › in the bar\" and the line keypad from words alone. Its refund section also tells owners to \"settle it by hand\" without saying what that means in the Vendure Dashboard.", "where": "at-the-till.desktop.01-03 (no images); at-the-till 'Refund a sale'; limitations.desktop.01 refund bullet"},
+    "C5": {"score": 8, "worst_defect": "On every docs page the grey left-sidebar panel, with its GitHub and theme switcher, stops at about 900 px, and the column below it is untinted. Long pages look cut in two.", "where": "quick-start.desktop.01, at-the-till.desktop.01, troubleshooting.desktop.01 (sidebar ends at y≈900)"},
+    "C6": {"score": 8, "worst_defect": "The home page's only picture of the till is the desktop screenshot shrunk to 390 px. Product names, prices and the Checkout button are unreadable, so someone reading on their phone cannot see what the till looks like.", "where": "home.phone.01 (hero screenshot under the buttons)"},
+    "C7": {"score": 9, "worst_defect": "The 404 page's meta description is the home page's (\"Open-source point of sale for Vendure. Sell from the browser…\") rather than one of its own. Otherwise Lighthouse scores 98/100/100/100, and llms.txt, sitemap, robots and the search API all answer.", "where": "tech.json pages.not-found.desktop.description"}
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "The site never tells an owner how to set up a till login for each staff member. The only sign-in it documents is \"a Vendure administrator\" or a per-device key, while At the till assumes each cashier has their own name and account (\"Tap your name in the bar\", \"Hand over … for the next account\"). Without that, I can't tell whether my two staff can sell tomorrow without being given admin access to my store.",
+    "where": "connect-a-till 'Sign in with a staff account' (connect-a-till.desktop.01); quick-start step 8a (quick-start.desktop.03); at-the-till 'Check the register during the day'",
+    "fix": "Add a short 'Set up your staff' section to Connect a till. It should say to create one Vendure administrator per cashier with only the vendurepos-pos-till role (TallyPosSell plus reads), not full admin, and how Hand over switches between them. Link it from step 8 of the quick start and from At the till."
+  },
+  "mean": 7.9
+}

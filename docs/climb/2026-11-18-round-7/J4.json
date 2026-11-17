@@ -1,0 +1,48 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero has four CTAs ('Live demo', 'Quick start', 'Try with your store', 'GitHub'). The three secondary buttons look identical, so 'Try with your store' and 'GitHub' carry the same weight as 'Quick start', and the hero needs an extra caption line ('Your own store needs the plugin… the quick start sets it up') to say which one to pick.",
+      "where": "home.desktop.01 hero button row; home.phone.01"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The comparison table says the demo 'sends anonymous usage events to ph.wcpos.com'. That is a different brand's domain, never explained anywhere on the site, and it reads as an unexplained third party in an otherwise very candid table.",
+      "where": "home.desktop.02 'Live demo or your own store' table, last row; connect-a-till 'Where your data goes'"
+    },
+    "C3": {
+      "score": 7,
+      "worst_defect": "Step 3 offers three migration routes in one paragraph: tsx scripts, 'npx vendure migrate', and the 'plugin's bundled migrations' mentioned as an alternative. Step 8 then uses a lettered a–i list ('i.' reads as a roman numeral) and repeats its sub-step h almost word for word in the 'Check it worked' list right after it.",
+      "where": "quick-start.desktop.01 step 3; quick-start.desktop.03 step 8"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "'Where your data goes' is a single 10-sentence paragraph (localStorage contents, sign-out behaviour, SQLite, telemetry, CSP) with no list or subheads, about 20 lines on a phone. 'At the till' describes the UI ('The ⋮ beside Checkout', keypads, tabs) in prose only, with no screenshot.",
+      "where": "connect-a-till.desktop.01 / connect-a-till.phone.01; at-the-till.desktop.01"
+    },
+    "C5": {
+      "score": 7,
+      "worst_defect": "The 'Live demo or your own store' table has badly balanced columns. The label column is so narrow that 'Sell for cash and print the receipt', 'Open and close a register with a Z report' and 'Attach a customer to the sale' wrap to two lines, while the 'Live demo' column is about 420 px wide and mostly holds a single 'Yes'. Separately, the hero product screenshot is cropped through a fourth row of product tiles, leaving coloured slivers along its bottom edge.",
+      "where": "home.desktop.02 table; home.desktop.01 hero image bottom edge"
+    },
+    "C6": {
+      "score": 6,
+      "worst_defect": "Code blocks soft-wrap at 390 px with no hanging indent. Wrapped lines restart at column 0, so 'taxLineCalculationStrategy: new' / 'DefaultTaxLineCalculationStrategy(),' loses its nesting, and the string './vendure-config' is split across two lines in both migration scripts. The hero product screenshot also shrinks to illegible text, and the four hero buttons wrap into a ragged, centred 2+2 block of unequal widths.",
+      "where": "quick-start.phone.02, .03, .05; home.phone.01"
+    },
+    "C7": {
+      "score": 8,
+      "worst_defect": "The share card is a generic text-only template whose pink accent, hollow-circle logo and dashed rule appear nowhere on the monochrome site. Its body repeats the title ('Point of sale for Vendure' / 'Open-source point of sale for Vendure…'), and it shows no product image although the site has a good one. Minor: llms.txt lists the docs alphabetically ('At the till' first, 'Quick start' ninth), and search snippets return raw markdown backticks.",
+      "where": "og-image.png; text/endpoint_llms_txt.txt; text/endpoint_api_search_query_offline.txt"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C6",
+    "defect": "On a 390 px phone the Quick start's config code blocks soft-wrap with no indentation, so the code a developer must copy loses its structure. The 'taxOptions' block and both migration scripts break mid-expression, and './vendure-config' is split across lines.",
+    "where": "quick-start.phone.02, quick-start.phone.03, quick-start.phone.05",
+    "fix": "Turn soft-wrap off in code blocks ('white-space: pre' with 'overflow-x: auto') so long lines scroll sideways instead of wrapping. If wrapping must stay, give wrapped lines a hanging indent."
+  },
+  "mean": 7.3
+}

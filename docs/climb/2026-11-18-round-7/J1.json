@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 7, "worst_defect": "The home page never says what Vendure is: the hero ('Point of sale for Vendure ... signs in to your own Vendure store') assumes you already know, and the only way to find out is the 'Vendure' link in the first line of /docs, not anything on the home page; the four equal-weight buttons 'Quick start' and 'Try with your store' also read as the same thing until you parse the small print below them.", "where": "home/desktop/01 hero and CTA row; home/phone/01"},
+    "C2": {"score": 8, "worst_defect": "The comparison table says the demo 'sends anonymous usage events to ph.wcpos.com' with no word on what wcpos.com is or why a VendurePOS demo reports to it, so a newcomer meets an unexplained third-party domain right next to the privacy claim (and connect-a-till later adds that building the 'open-source' till needs 'your own RxDB Premium licence token', which the home page never mentions).", "where": "home/desktop/02 table row 'Sales reach Vendure, once each, even offline'; connect-a-till/desktop/01 'Where your data goes'"},
+    "C3": {"score": 8, "worst_defect": "Step 3 offers three migration routes in one paragraph (a tsx generate script, 'npx vendure migrate' for @vendure/create projects, and 'the plugin's bundled migrations ... the README describes that alternative'), so the 'quick' start makes the reader choose a path without saying which one most people should take.", "where": "quick-start/desktop/01, '3. Generate and run the migration before starting the server'"},
+    "C4": {"score": 8, "worst_defect": "The changelog is written for maintainers: entries cite '(ADR 0005)', '(ADR 0004)', '(#116)', '(#117)' as plain unlinked text and lead with wire-level details like 'GET /tally/v1/info advertises order.create 1–5', so a reader cannot tell what changed for them.", "where": "changelog/desktop/01 and changelog/phone/01, section 0.3.0 and 0.2.0"},
+    "C5": {"score": 8, "worst_defect": "The hero screenshot is cut off through the middle of a fourth row of product tiles (half-tiles visible at its bottom edge, and the cart's bottom bar is clipped too), which reads as a crop mistake on the most prominent image on the site.", "where": "home/desktop/01, bottom edge of the till screenshot (~y 1100); same in home.desktop-dark"},
+    "C6": {"score": 8, "worst_defect": "On every docs page the sticky 'On this page' bar opens with a grey partial-ring icon ('◌ 1. Install the plugin', '◌ Open your till') that looks like a loading spinner stuck mid-load, and the hero's till screenshot is too small at 390 px to read any of its text.", "where": "quick-start/phone/01, docs/phone/01, connect-a-till/phone/01 top bar; home/phone/01 screenshot"},
+    "C7": {"score": 9, "worst_defect": "The share card is text-only with a hollow pink circle as the 'logo' and a pink/purple palette that appears nowhere on the monochrome site, so a shared link looks like a placeholder rather than the product (no till image).", "where": "og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "A visitor who only half knows Vendure gets no explanation of it on the home page, so 'Point of sale for Vendure' plus 'signs in to your own Vendure store' doesn't tell them whether this is for them; they have to open the docs to learn what Vendure is.",
+    "where": "home/desktop/01 hero subline; home/phone/01",
+    "fix": "Add a short clause to the hero subline, for example 'for Vendure, the open-source headless commerce platform', with a link to vendure.io. Then make the 'Try with your store' button read 'Open the till' or similar, so it is clearly different from 'Quick start'."
+  },
+  "mean": 8.0
+}
