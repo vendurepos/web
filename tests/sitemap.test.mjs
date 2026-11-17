@@ -9,7 +9,7 @@ const blocks = [...body.matchAll(/<url>[\s\S]*?<\/url>/g)].map((match) => match[
 const lastmods = blocks.map((block) => block.match(/<lastmod>([^<]*)<\/lastmod>/)?.[1]);
 
 test('every sitemap url has one lastmod', () => {
-  assert.equal(blocks.length, 9);
+  assert.equal(blocks.length, 10);
   for (const block of blocks) {
     assert.equal([...block.matchAll(/<lastmod>([^<]*)<\/lastmod>/g)].length, 1);
   }
