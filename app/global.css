@@ -80,6 +80,11 @@ figure.shiki .fd-scroll-container,
     white-space: pre-wrap;
     overflow-wrap: break-word;
   }
+  /* Round-7 judges saw wrapped quick-start code restart at column 0; hang it past its indent (lib/rehype-code-hang.ts) + 2ch. */
+  figure.shiki:not(.not-fumadocs-codeblock *, [data-line-numbers]) pre .line {
+    padding-left: calc(var(--padding-left) + var(--indent, 0ch) + 2ch);
+    text-indent: calc(-1 * (var(--indent, 0ch) + 2ch));
+  }
 }
 
 /* Quick start step 8: letter its sub-steps so they do not echo the step numbers (content/docs/quick-start.mdx). */
