@@ -22,13 +22,34 @@ with a **Retry**. Choose **Back to sale** to return without losing your cart.
 
 ## Act on a header notice
 
-- "The store refused the orders (reason). They are kept; send them again once the store is fixed."
-  Fix the store, then choose **Send again**.
-- "The store's VendurePOS plugin isn't answering. Orders are kept and retried."
-  Check that `/tally/v1/info` and `/tally/v1/commands` reach the plugin through the store's proxy.
-- "N orders keep failing at the store. They are kept and retried."
+{/* Sources: vendurepos/app@1404f42 apps/pos/app/index.tsx:305-307 (sign-in bar), :313-318
+(Send again), :377, :381, :423-427 (outboxNotice); apps/pos/lib/register-sync.ts:9 (updates),
+:17-27 (registerSyncNotice); apps/pos/lib/use-sale-settings.ts:18,26. */}
+
+**Orders line**
+
 - "The store refused this sign-in. Sign in again below; orders are kept."
   Sign in again in the bar that appears.
+- "The store refused this account. Sign in again below; orders are kept."
+  Sign in again in the bar that appears.
+- "The store refused the orders (reason). They are kept; send them again once the store is fixed."
+  Fix the store, then choose **Send again**.
+
+**Till updates line**
+
+- "Till updates aren't sending: this till needs to sign in to the online store again."
+  Sign in to the online store again.
+- "N till updates need attention · The online store refused them, and later till updates wait
+  behind them. Ask the store owner to look at the sync log in this till's Settings."
+  Ask the store owner to look at the sync log in this till's **Settings**.
+- "N till updates waiting to sync · The online store refused the last send. This till will try
+  again with the next till update, or when the app is reopened."
+- "Till updates aren't reaching the online store. Keep selling: they're saved on this till and
+  will send by themselves."
+  Keep selling.
+
+**Store settings**
+
 - "This store's VendurePOS plugin is missing or out of date. Install or update it, then this till continues."
   The store must advertise `order.create` v4 and register v1, as every plugin release from 0.1.0
   does. Install the current release as in [the quick start](/docs/quick-start#1-install-the-plugin),
