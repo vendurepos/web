@@ -238,6 +238,12 @@ export default function HomePage() {
             on npm, added to your Vendure config.
           </li>
           <li>A web till for now. The app is pre-release: expect changes before 1.0.</li>
+          {/* vendurepos/app cc719c2 LICENSE:1 (MIT License), README.md:72-74 (RxDB Premium install needs the token in RXDB_PREMIUM), apps/pos/package.json:44 (rxdb-premium 17.5.0); content/docs/connect-a-till.mdx:50-52 and content/docs/limitations.mdx:16-17 say the same. */}
+          <li>
+            The till&apos;s source is MIT licensed. To build and host it yourself instead of using app.vendurepos.com, you
+            need your own RxDB Premium licence token (<code>RXDB_PREMIUM</code>); see{' '}
+            <Link href="/docs/connect-a-till" className="underline">Connect a till</Link>.
+          </li>
           {/* plugin-v0.3.0 (2d3699e, npm latest) packages/vendure-plugin/src/api/info.controller.ts:29 (no order.refund); vendurepos/app cc719c2 apps/pos/lib/refund-sheet.tsx:56 (Refund items needs order.refund), apps/pos/lib/demo/store.ts:12 (the demo advertises it); vendurepos/app@1404f42 apps/pos/lib/discount-total-matrix.test.ts:171-178 (the till applies no coupons). */}
           <li>
             Coupon codes are not supported yet; line and order discounts work. On plugin 0.3.0,
