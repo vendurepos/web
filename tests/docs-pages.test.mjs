@@ -225,3 +225,11 @@ test('connect a till lists where your data goes in three short groups, every sen
     'with no cookie and nothing stored.', "the same one this website's page-view counter reports to.",
     'cannot be shown inside another site']) assert.ok(text.includes(sentence), sentence);
 });
+
+test('connect a till and the quick start name no release after 0.3.0', () => {
+  // Front desk, 18 Nov: describe what plugin 0.3.0 (npm latest) does today; TallyPosPairDisplay is not in 0.3.0.
+  for (const slug of ['connect-a-till', 'quick-start']) {
+    const text = readFileSync(join('.next/server/app', `docs/${slug}.html`), 'utf8').replace(/<[^>]+>/g, ' ');
+    assert.doesNotMatch(text, /after 0\.3\.0|not out yet|TallyPosPairDisplay/i, slug);
+  }
+});

@@ -104,3 +104,15 @@ test("step 8's list is lettered", () => {
     selector.includes('steps-lettered') && /(?:^|;)\s*list-style-type\s*:\s*lower-alpha\s*(?:;|$)/.test(declarations)
   ));
 });
+
+test("step 4 names the plugin 0.3.0 till permissions and ReadOrder; the device-key section names ReadOrder", () => {
+  // Round 17, J3 C3: vendurepos/app@2d3699e (plugin-v0.3.0) src/config/pos-till-role.ts:6-8 has no ReadOrder.
+  const step4 = stepSection('Enable bearer authentication', 'Allow the POS origin through CORS');
+  for (const permission of ['TallyPosSell', 'ReadCatalog', 'ReadSettings', 'ReadCustomer', 'CreateCustomer', 'ReadOrder']) {
+    assert.ok(step4.includes(permission), permission);
+  }
+  const start = html.search(/<h2\b[^>]*>(?:(?!<\/h2>)[\s\S])*Optional: a device key for each till/);
+  assert.ok(start >= 0);
+  const end = html.indexOf('<h2', start + 3);
+  assert.ok(html.slice(start, end < 0 ? undefined : end).includes('ReadOrder'));
+});

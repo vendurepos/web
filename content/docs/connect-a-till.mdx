@@ -76,13 +76,15 @@ needs for any custom field change, and fill in each variant's barcode in the Ven
 
 ## Sign in with a staff account
 
-Choose **Email and password** and sign in as a Vendure administrator who can read
-the channel's catalogue and settings and has `TallyPosSell` (plugin 0.2.0+) or `CreateOrder`.
+Choose **Email and password** and sign in as a Vendure administrator whose role in the till's channel has
+`TallyPosSell` (plugin 0.2.0+; or the broader `CreateOrder`), `ReadCatalog`, `ReadSettings`, `ReadCustomer` and
+`CreateCustomer`. Also add `ReadOrder`, or the till sells but its order history is refused.
 
 {/* Sources: vendurepos/app@1404f42 apps/pos/lib/hand-over.tsx:7-10 (a cashier is a Vendure administrator; Hand over signs out and leaves the register session open);
-packages/vendure-plugin/CHANGELOG.md:34,38 (0.2.0: New POS till key; tallyEnsurePosTillRole and its five permissions), :11 (Unreleased: the preset gains ReadOrder), :12 (Unreleased: TallyPosRefund, left out of the preset), :21 (0.3.0 is the latest release);
-apps/pos/lib/order-history.ts:9,38 (the order list needs ReadOrder); packages/vendure-plugin/src/config/pos-till-role.ts:7;
-apps/pos/app/index.tsx:172,245 and apps/pos/lib/session.ts:97-98 (the bar shows a password sign-in's email). No Dashboard menu path for roles or administrators is cited. */}
+packages/vendure-plugin/CHANGELOG.md:34,38 (0.2.0: New POS till key; tallyEnsurePosTillRole and its five permissions);
+vendurepos/app@2d3699e (plugin-v0.3.0) packages/vendure-plugin/src/config/pos-till-role.ts:6-8 (the five permissions, no ReadOrder), src/api/commands.controller.ts:54 (TallyPosSell or CreateOrder); no sales report route and no refund permission at 0.3.0;
+vendurepos/app@cc719c2 apps/pos/lib/order-history.ts:9,38 (the order list needs ReadOrder);
+vendurepos/app@1404f42 apps/pos/app/index.tsx:172,245 and apps/pos/lib/session.ts:97-98 (the bar shows a password sign-in's email). No Dashboard menu path for roles or administrators is cited. */}
 
 ### Give each cashier their own account
 
@@ -90,21 +92,20 @@ Each cashier signs in to the till with their own Vendure administrator account, 
 
 1. Use the `vendurepos-pos-till` role that **New POS till key** creates (plugin 0.2.0+), or in the Vendure Dashboard
    create a role in the till's channel with `TallyPosSell`, `ReadCatalog`, `ReadSettings`, `ReadCustomer`, `CreateCustomer`
-   and `ReadOrder`. The till's order list needs `ReadOrder`, which that role gains only in the plugin release after 0.3.0;
-   until then, add it to the role yourself.
+   and `ReadOrder`. On plugin 0.3.0 that role has no `ReadOrder`: add it yourself, or the till sells but its order
+   history is refused.
 2. Create one administrator per cashier, with only that role.
 3. Each cashier signs in with **Email and password**; the till names them by their email. At the end of a shift,
    [**Hand over**](/docs/at-the-till#check-the-register-during-the-day) signs them out and the next cashier signs in.
-
-Refunding at the till will need `TallyPosRefund`, given separately, once the plugin release after 0.3.0 is out.
 
 ## Create and use a device key
 
 You need plugin 0.2.0 or later and Vendure's React Dashboard.
 See [Plugin setup](/docs/plugin-setup) for installation.
 
-{/* Sources: vendurepos/app@1404f42 packages/vendure-plugin/CHANGELOG.md:38 (0.2.0 preset without ReadOrder), :11 (Unreleased: the preset gains ReadOrder);
-packages/vendure-plugin/src/config/pos-till-role.ts:7; apps/pos/lib/order-history.ts:9,38 (the order list needs ReadOrder, through sessionContext(session)). */}
+{/* Sources: vendurepos/app@1404f42 packages/vendure-plugin/CHANGELOG.md:38 (0.2.0 preset without ReadOrder);
+vendurepos/app@2d3699e (plugin-v0.3.0) packages/vendure-plugin/src/config/pos-till-role.ts:4,6-8 (vendurepos-pos-till, no ReadOrder);
+vendurepos/app@cc719c2 apps/pos/lib/order-history.ts:9,38 (the order list needs ReadOrder, through sessionContext(session)). */}
 
 1. Add `'api-key'` to `authOptions.tokenMethod`:
 
@@ -117,7 +118,7 @@ packages/vendure-plugin/src/config/pos-till-role.ts:7; apps/pos/lib/order-histor
 3. Go to **System → API keys → New POS till key** and name the key after the device.
    This creates or extends the `vendurepos-pos-till` role with `TallyPosSell` and
    the reads a till needs, creates the key with that role and shows the key once.
-   On plugin 0.3.0 and earlier, add `ReadOrder` to that role yourself for the till's order list, as in
+   On plugin 0.3.0, add `ReadOrder` to that role yourself for the till's order list, as in
    [Give each cashier their own account](#give-each-cashier-their-own-account).
 4. On the till, choose **Device key**, paste the key and the till's channel token, and sign in.
 
