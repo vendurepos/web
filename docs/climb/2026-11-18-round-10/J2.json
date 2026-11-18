@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero puts four equal-looking buttons side by side ('Live demo', 'Quick start', 'Try with your store', 'GitHub'). 'Try with your store' opens app.vendurepos.com, which only works once a developer has installed the plugin. Only the small grey line underneath says so, so a shop owner who taps it first gets a sign-in screen they cannot use.", "where": "home.desktop.01 hero buttons; home.phone.01 (buttons wrap to two rows)"},
+    "C2": {"score": 8, "worst_defect": "'The plugin release after 0.3.0, which is not out yet' appears on home, at-the-till, limitations and connect-a-till, but there is no version number or date anywhere, and the changelog's newest entry is 0.3.0 (2026-10-06). An owner can't tell whether refunds at the till are weeks or months away.", "where": "home.desktop.02 table row 'Refund a sale at the till'; text/at-the-till.txt 'Refund a sale'; text/limitations.txt; changelog.phone.01"},
+    "C3": {"score": 8, "worst_defect": "Step 3 of the quick start gives three migration routes in one paragraph: the tsx generate/run scripts, 'npx vendure migrate', and 'the plugin's bundled migrations ... the README describes that alternative'. My freelancer has to pick one without being told which is recommended for an existing live store.", "where": "quick-start.desktop.01, '3. Generate and run the migration before starting the server'"},
+    "C4": {"score": 7, "worst_defect": "Offline selling is the headline promise, but the docs cover it in one sentence under Troubleshooting ('Sell while offline': everything works except customer search). They never say whether the till can be reloaded or reopened while the internet is down, or how long it can stay offline. Store settings also says 'The till takes no sale until it has read the store's settings', which reads as if a cold start offline is blocked.", "where": "troubleshooting.desktop.02 'Sell while offline'; text/troubleshooting.txt 'Store settings'"},
+    "C5": {"score": 8, "worst_defect": "On every docs page the grey sidebar panel stops at about y=900 and plain page background runs below it beside the content. This is visible in the full-length desktop slices.", "where": "docs.desktop.01, limitations.desktop.01, at-the-till.desktop.01 (left column below the theme toggle)"},
+    "C6": {"score": 8, "worst_defect": "On phone, the docs 'On this page' bar starts with a hollow grey ring icon that looks like a loading spinner (e.g. '◯ 1. Install the plugin'). Between customers it reads as 'page still loading'.", "where": "quick-start.phone.01, docs.phone.01, troubleshooting.phone.01 (bar under the header)"},
+    "C7": {"score": 9, "worst_defect": "The share card uses a pink/purple palette and an empty ring as its logo, which matches nothing on the monochrome site, so a shared link doesn't look like the site it opens.", "where": "og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "The site's main promise to a shop owner is 'It keeps selling when the connection drops'. The docs never say what happens if the till page is reloaded or the computer restarts while the internet is down, or how long a till can stay offline. The only offline section is one sentence in Troubleshooting, and the 'Can't reach the store's settings yet ... takes no sale' line suggests a cold start offline may not sell at all.",
+    "where": "troubleshooting.desktop.02 'Sell while offline'; home.desktop.01 'Keeps selling offline' card",
+    "fix": "Expand 'Sell while offline' (and link it from the home card) with three plain answers: can a till that is reloaded or reopened offline still sell, how long it can stay offline, and what the staff see when the connection comes back."
+  },
+  "mean": 8.0
+}

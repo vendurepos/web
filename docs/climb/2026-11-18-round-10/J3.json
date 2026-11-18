@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The quick start's device-key instructions omit adding ReadOrder manually, although Connect a till explicitly requires it for the order list on the pinned plugin version 0.3.0.",
+      "where": "shots/quick-start.desktop.04.jpg, Optional: a device key for each till; shots/connect-a-till.desktop.02.jpg"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The needs_admin recovery instructions provide a resolution mutation but omit a runnable listing query and the checks needed to choose applied versus rejected for a partially recorded sale.",
+      "where": "shots/troubleshooting.desktop.02.jpg, Resolve a sale the store kept part-way"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop-dark.jpg; shots/home.desktop.01.jpg; shots/plugin-setup.desktop.01.jpg"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The desktop till screenshot is shrunk to phone width, making its cart labels, prices and controls too small to inspect comfortably.",
+      "where": "shots/home.phone.01.jpg, A sale in progress on the live demo till"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The llms-full export retains a raw div className=\"steps-lettered\" wrapper around the quick-start sale instructions.",
+      "where": "text/endpoint_llms_full_txt.txt:717"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "Following the quick start's device-key path leaves out the ReadOrder permission that Connect a till says must be added manually on plugin 0.3.0 for the till's order list.",
+    "where": "shots/quick-start.desktop.04.jpg, Optional: a device key for each till; shots/connect-a-till.desktop.02.jpg",
+    "fix": "Add the manual ReadOrder step immediately after creating the device key, explicitly naming plugin 0.3.0 and earlier. Link to the on-site Connect a till instructions."
+  },
+  "mean": 8.7
+}

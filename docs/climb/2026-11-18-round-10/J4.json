@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero gives four CTAs (Live demo, Quick start, Try with your store, GitHub), and the last three are the same outlined style with equal weight. That splits the next click three ways, and the helper line under them is needed only to warn that 'Try with your store' fails without the plugin.", "where": "home/desktop/01 hero button row"},
+    "C2": {"score": 9, "worst_defect": "The comparison table says the demo sends 'anonymous usage events to ph.wcpos.com', a domain from a different brand, and the home page never says what that host is. The explanation only appears deep in Connect a till, 'Where requests go'.", "where": "home/desktop/02 'Live demo or your own store' table, last row"},
+    "C3": {"score": 8, "worst_defect": "Step 8 'Sign in and make a sale' is a nine-item lettered list (a-i) followed by a separate 'Check it worked' bullet list that repeats item h almost word for word. The success check is buried at the end of the longest step and not set apart.", "where": "quick-start/desktop/03"},
+    "C4": {"score": 8, "worst_defect": "'At the till' is a 5,100 px page of prose describing UI ('The ⋮ beside Checkout opens Order details', 'Tap a line's quantity to open its keypad') with no screenshot or annotated image. The only picture of the till on the whole site is the home hero.", "where": "at-the-till/desktop/01-03"},
+    "C5": {"score": 8, "worst_defect": "In the home comparison table, the first column is squeezed to ~190 px, so four of seven row labels ('Sell for cash and print the receipt', 'Open and close a register with a Z report', ...) wrap to two lines. Meanwhile the 'Live demo' column is ~420 px wide and mostly holds the single word 'Yes'.", "where": "home/desktop/02 'Live demo or your own store' table"},
+    "C6": {"score": 7, "worst_defect": "On 390 px, code blocks soft-wrap inside string literals: './vendure-' breaks from 'config';, and 'AddVendurePos', outputDir: './src/migrations' splits over three lines. The snippets read as different code from what they copy. In the hero, the four CTAs also wrap into two centred rows of unequal width (left edges at ~109 and ~77 px).", "where": "quick-start/phone/02 and 03 code blocks; home/phone/01 hero buttons"},
+    "C7": {"score": 8, "worst_defect": "The share card's brand mark is a hollow pink circle that reads as a missing-logo placeholder. Its pink/purple accent and dashed rule appear nowhere on the monochrome site, and the subtitle repeats the headline ('Point of sale for Vendure' / 'Open-source point of sale for Vendure').", "where": "og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C6",
+    "defect": "At 390 px the home hero falls apart into two ragged rows of four equal-weight buttons, sitting above a 1440-wide till screenshot scaled to ~330 px where every product name and price is unreadable. The quick start's code blocks then wrap mid-string ('./vendure-' / 'config'). The phone experience of the two key pages looks unfinished next to the desktop.",
+    "where": "home/phone/01 hero; quick-start/phone/02-03",
+    "fix": "On phone, stack the hero CTAs full width (primary Live demo, secondary Quick start) and demote 'Try with your store' and GitHub to text links. Swap the hero image for a narrow-viewport till screenshot. Set code blocks to scroll horizontally (white-space: pre, overflow-x: auto) instead of soft-wrapping."
+  },
+  "mean": 8.0
+}
