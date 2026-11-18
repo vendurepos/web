@@ -49,11 +49,15 @@ export function TillFigure({ name, alt, sizes = '(max-width: 768px) 100vw, (max-
       <TillPicture name={name} scheme="dark" alt={alt} sizes={sizes} className="hidden dark:block" />
     </>
   );
-  // Round 34, J4 C5: three shot widths left-aligned read as unplanned; narrow shots sit centred on a column-wide panel.
-  const narrow = WIDE_SIZE[name][0] / 2 < 600;
+  // Round 34, J4 C5: narrow shots sit centred, not left-aligned. Round 36, J2/J4 C5: a column-wide panel left them
+  // tiny in empty grey, so the panel hugs the shot (its CSS width + 2 × 16 px padding + 2 × 1 px border).
+  // Below 640px the phone captures (390 CSS px for cashier and closure) fit under that maxWidth (418, 546), so the phone
+  // shot is no narrower than before.
+  const width = WIDE_SIZE[name][0];
+  const narrow = width / 2 < 600;
   return (
     <figure className={className}>
-      {narrow ? <div className="sm:flex sm:justify-center sm:rounded-lg sm:border sm:border-fd-border sm:bg-fd-muted sm:p-8">{pictures}</div> : pictures}
+      {narrow ? <div className="sm:mx-auto sm:flex sm:justify-center sm:rounded-lg sm:border sm:border-fd-border sm:bg-fd-muted sm:p-4" style={{ maxWidth: width / 2 + 34 }}>{pictures}</div> : pictures}
       {caption && <figcaption className="mt-3 text-sm text-fd-muted-foreground">{caption}</figcaption>}
       {children}
     </figure>
