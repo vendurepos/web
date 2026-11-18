@@ -129,19 +129,31 @@ A till whose key is revoked asks for a new one and keeps its cart.
 
 ## Make the key button available in a pnpm project
 
-For pnpm projects, the Dashboard build does not find the button unless its Vite
-plugin points at your `node_modules`:
+With pnpm, the Dashboard looks for plugins inside `node_modules/.pnpm` and misses the button,
+so point its Vite plugin at your project's own `node_modules`. Vendure's setup configures that plugin
+in `vite.config.mts`, next to `package.json`:
 
 ```ts
+// vite.config.mts
+import { resolve } from 'path';
+// ...your other imports
+
+// inside plugins: [...]
 vendureDashboardPlugin({
   // ...your existing options
   pluginPackageScanner: {
-    nodeModulesRoot: path.resolve(__dirname, 'node_modules')
+    nodeModulesRoot: resolve(__dirname, 'node_modules'),
   },
 }),
 ```
 
+`nodeModulesRoot` is then the `node_modules` folder beside `vite.config.mts`.
+Rebuild the Dashboard (`npx vite build`, or restart `npx vite`) and check that
+Settings → API keys shows **New POS till key**. Tested with Vendure 3.7.3.
+
 npm projects need nothing extra.
+
+{/* Sources: vendurepos/app@2d3699e (plugin-v0.3.0) packages/vendure-plugin/README.md:174-182 (pnpm: the Dashboard looks inside node_modules/.pnpm and misses the button; pluginPackageScanner.nodeModulesRoot; tested with Vendure 3.7.3), README.md:165 (Settings → API keys gains New POS till key), dev/vendure-store/vite.config.mts:1-15 (the file is vite.config.mts; imports { join, resolve } from 'path'; uses __dirname); https://docs.vendure.io/current/framework/extending-the-dashboard/getting-started (vite.config.mts in the project root, on the same level as package.json; imports { join, resolve } from 'path'; npx vite starts the dev server); https://docs.vendure.io/guides/extending-the-dashboard/deployment/ (npx vite build builds to dist/dashboard). */}
 
 ## Fix a sign-in problem
 
