@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "Five seconds tell you what it is and where to click, but the home page never says who builds or maintains VendurePOS and has no 'who this is not for' or comparison line (e.g. versus a hosted Shopify/Square till). A buyer comparing tills has to infer the fit from the Limitations list.", "where": "home/desktop/01-02 (hero and 'Before you start')"},
+    "C2": {"score": 7, "worst_defect": "The home page sells an 'open-source till' and its footer says 'MIT licensed', but building the till yourself 'needs your own RxDB Premium licence token in RXDB_PREMIUM'. That paid dependency appears only on Limitations and Connect a till, so in practice you depend on the hosted app.vendurepos.com, which the home page never says.", "where": "home/desktop/02 footer vs limitations/desktop/01 bullet 3 and connect-a-till text"},
+    "C3": {"score": 8, "worst_defect": "Connect a till sends you to 'System → API keys → New POS till key', then a few paragraphs later says to check that 'Settings → API keys shows New POS till key'. Two menu paths for one button make the reader guess, on top of having to add ReadOrder by hand because plugin 0.3.0's own role leaves it out.", "where": "connect-a-till text, 'Create and use a device key' and 'Make the key button available in a pnpm project'"},
+    "C4": {"score": 7, "worst_defect": "At the till documents features the shipping plugin does not have, as normal steps, each followed by a caveat: 'Type a Customer note… On plugin 0.3.0, Order details shows no note', and the whole Refund items procedure after 'On plugin 0.3.0 an order shows no Refund items'. The cashier guide describes the demo, not the release.", "where": "at-the-till/desktop/01 'Order details' and at-the-till/desktop/02 'Refund a sale'"},
+    "C5": {"score": 8, "worst_defect": "The payment-screen screenshot in the cashier guide shows a cart line named 'Tally Fixture Mug', a test-fixture product leaking into marketing-grade docs. The hero screenshot is also cut off mid-way through the fourth product row.", "where": "at-the-till/desktop/02 (payment screen image); home/desktop/01 hero image bottom edge"},
+    "C6": {"score": 9, "worst_defect": "Code blocks wrap rather than scroll on 390 px, so the generateMigration call breaks over five lines and the import splits from its module path. The code stays readable but is awkward to scan.", "where": "quick-start/phone/02 and quick-start/phone/03 code blocks"},
+    "C7": {"score": 9, "worst_defect": "Every sitemap <lastmod> is a timestamp from 2026-11-17/18, the build time rather than the content change, so it tells crawlers nothing. The SoftwareApplication JSON-LD also carries no softwareVersion, although the site advertises 'plugin 0.3.0'.", "where": "text/endpoint_sitemap_xml.txt; tech.json home.desktop jsonLd"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The 'open-source, MIT licensed' pitch on the home page hides the fact that building and self-hosting the till needs a paid RxDB Premium licence. A client is therefore tied to the hosted app.vendurepos.com, and the home page says nothing about who runs that host or what it commits to. A sceptic who finds this on Limitations stops trusting the rest of the pitch.",
+    "where": "home/desktop/02 footer and 'Before you start' vs limitations/desktop/01 ('Building the till yourself needs your own RxDB Premium licence token')",
+    "fix": "Add a 'Before you start' bullet on the home page saying the plugin and till source are MIT, that self-building the till needs a paid RxDB Premium licence, and that most stores use the hosted app.vendurepos.com. Link it to a line on who runs that host."
+  },
+  "mean": 8.0
+}

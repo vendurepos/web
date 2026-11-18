@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; text/home.txt"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 9,
+      "worst_defect": "The quick start omits the Node requirement (^20.19 || >=22.12) stated in Plugin setup, so its opening prerequisites are incomplete.",
+      "where": "text/quick-start.txt, opening prerequisites; text/plugin-setup.txt, Check your store"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Device-key creation directs readers to System \u2192 API keys, but the pnpm verification step directs them to Settings \u2192 API keys.",
+      "where": "shots/connect-a-till.desktop.02.jpg; text/connect-a-till.txt:95 and :119"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.desktop-dark.jpg; shots/plugin-setup.desktop.01.jpg"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The Copy Markdown and Open controls are approximately 30 CSS pixels high, making these repeated documentation touch targets small.",
+      "where": "shots/troubleshooting.phone.01.jpg; shots/limitations.phone.01.jpg"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "tech.json; text/endpoint_llms_txt.txt; text/endpoint_llms_full_txt.txt; shots/og-image.png"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "The device-key guide gives two different Dashboard navigation paths for the same API keys page.",
+    "where": "shots/connect-a-till.desktop.02.jpg; text/endpoint_llms_full_txt.txt:341 and :376",
+    "fix": "Use the correct navigation path for the documented Vendure version in both steps, and keep the machine-readable export consistent."
+  },
+  "mean": 8.9
+}
