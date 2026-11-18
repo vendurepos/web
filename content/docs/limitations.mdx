@@ -8,10 +8,11 @@ description: What VendurePOS does not do yet.
 {/* Stock: vendurepos/app packages/vendure-plugin/test/stock-locations.e2e.ts ('two POS lines of the same variant allocate from where the stock is'); quick start step 7. The app README's "default stock location" line is out of date (vendurepos/app#35 tracks choosing a location). */}
 {/* RxDB: vendurepos/app@1404f42 README.md:73-74 (the web storage uses RxDB Premium; its install script needs the licence token in RXDB_PREMIUM); same sentence as connect-a-till.mdx (web#67). */}
 {/* Printing and the cash drawer: vendurepos/app@df046fc apps/pos/lib/sale-receipt.tsx:31 and lib/order-receipt.tsx:25 (Print receipt: window.print()), lib/sale-receipt.tsx:17 (print after each sale); lib/print-lines.ts:5-18 (X report, Z report, sales summary, hand-over slip: a hidden frame's print(), the browser's print dialog; callers lib/print-x-report.ts:15, app/index.tsx:219, lib/closure-history-sheet.tsx:43, lib/reports-panel.tsx:33, lib/hand-over.tsx:20). No printer or drawer path, git grep at df046fc -- apps packages: -i -E 'escpos|esc/pos' 0 hits; -E 'navigator\.(usb|serial|hid|bluetooth)' 0 hits; -i -w -E 'usb|webusb|hid|serial|bluetooth|kick|pulse' 3 hits, all Postgres SERIAL columns; -i -E 'open.?(cash.?)?drawer|drawer.?(kick|open)|cash.?drawer' 3 hits, the register panel button and a comment, none opens a drawer. docs/V2-PARITY.md:83: thermal ESC/POS printing Missing. */}
+{/* Browsers and unsent sales: vendurepos/app@a257d16 apps/pos/playwright.config.ts:24-25 (the only Playwright project: chromium, devices['Desktop Chrome']; no other playwright, wdio or cypress config in git ls-files); apps/pos/lib/storage.ts:8 (SQLite-wasm in a worker), lib/app-storage.ts:7-8 (one storage for the catalogue and order databases), lib/storage-start-failure.ts:8 (no OPFS: the private-window message); lib/orders-db.ts:57-59 (close() never removes the orders database: unsent orders wait for the next sign-in). Same as connect-a-till.mdx:36 and :41; header text at-the-till.mdx:138. */}
 
 - Pre-release: expect changes before 1.0.
 
-- Web till only for now.
+- Web till only for now. Its browser tests run in desktop Chrome; other browsers are not tested yet.
 
 - Building the till yourself needs your own RxDB Premium
   licence token in `RXDB_PREMIUM`.
@@ -38,6 +39,9 @@ description: What VendurePOS does not do yet.
 
 - Private browser windows that give a site no storage,
   such as Safari's, cannot run the till.
+
+- Sales not yet sent are kept only in this browser. Clearing this site's data, or losing the device,
+  before the header's **N orders waiting to send** clears loses them.
 
 - The manager's approval on register close is a typed name,
   not a verified sign-in.

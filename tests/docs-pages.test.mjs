@@ -139,6 +139,14 @@ test('limitations has a bullet naming the browser print dialog and the cash draw
   assert.match(bullet, /does not open a cash drawer/);
 });
 
+test('limitations names the tested browser and says unsent sales live only in this browser', () => {
+  // Round 16, C2: vendurepos/app@a257d16 tests in desktop Chrome only; unsent orders are in the browser's SQLite.
+  const html = readFileSync(join('.next/server/app', 'docs/limitations.html'), 'utf8');
+  const text = html.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ');
+  assert.ok(text.includes('Its browser tests run in desktop Chrome'));
+  assert.ok(text.includes('Sales not yet sent are kept only in this browser'));
+});
+
 test('connect a till shows the barcode custom field in a code block', () => {
   // Round 16, C3: vendurepos/app@a257d16 apps/pos/lib/barcode-field.ts:22-23 needs a single string or text ProductVariant field.
   const html = readFileSync(join('.next/server/app', 'docs/connect-a-till.html'), 'utf8');
