@@ -8,9 +8,10 @@ import { homeJsonLd } from '@/lib/structured-data';
 export const metadata: Metadata = { alternates: { canonical: '/' } };
 
 // Captured from the public demo (demo.vendurepos.com/demo); retake when the till UI changes.
-// True of both the desktop shot (grid beside the cart) and the phone one (the Cart tab alone).
+// True of both the desktop shot (grid beside the cart) and the phone one (the Products tab, its Cart tab reading
+// "Cart (3) · €20.09").
 const TILL_ALT =
-  'The VendurePOS till mid-sale: a cart of three items totalling €20.09 with a Checkout button.';
+  'The VendurePOS till mid-sale: the product grid and a cart of three items totalling €20.09.';
 
 // Each claim is backed by a test in vendurepos/app; the file is named in the comment beside it. Add a feature here only with its test.
 const features = [
