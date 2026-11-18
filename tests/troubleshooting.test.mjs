@@ -113,3 +113,24 @@ test('troubleshooting gives the counter and the store owner their own paragraphs
   assert.ok(nextItem >= 0, 'the next item follows');
   assert.ok(!tail.slice(0, nextItem).includes('<p'), 'no paragraph after the Any other code text');
 });
+
+// Round 27, C4 (J2): the store owner's paragraph went straight into the DEBUG line format with no plain step.
+test('troubleshooting gives the store owner a plain step before the sync log procedure', () => {
+  const text = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+  const start = text.indexOf('For the store owner:');
+  const end = text.indexOf('DEBUG', start);
+  assert.ok(start >= 0 && end > start, `${start} ${end}`);
+  const owner = text.slice(start, end);
+  const find = owner.indexOf('To find the line');
+  assert.ok(find >= 0, 'To find the line');
+  for (const phrase of [
+    'copy the refused line',
+    'choosing another register',
+    'fixes by itself',
+    'send the copied line to whoever runs your Vendure server',
+  ]) {
+    const at = owner.indexOf(phrase);
+    assert.ok(at >= 0, phrase);
+    assert.ok(at < find, `${phrase} comes before To find the line`);
+  }
+});
