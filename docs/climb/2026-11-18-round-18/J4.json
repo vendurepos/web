@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 9, "worst_defect": "On a 390 px screen the hero lead runs to seven lines of large grey text, padded by the parenthetical \"(Vendure is an open-source headless commerce framework)\", so the till screenshot only starts at the bottom of the first screen and the small grey note under the buttons competes with the buttons.", "where": "home/phone/01"},
+    "C2": {"score": 9, "worst_defect": "Requirements and limits are blended together: \"Before you start\" on the home page mixes a limitation bullet (\"Coupon codes are not supported yet ... refunds go through the Vendure Dashboard\") into the requirements list, so the refund limit is said three times on one page (table row, this bullet, the link to Limitations).", "where": "home/desktop/02, 'Before you start'"},
+    "C3": {"score": 8, "worst_defect": "Step 8 is a lettered list a–i inside a numbered step, and its item h (\"check Vendure for the POS prices, settled tally-pos payment ...\") repeats the \"Check it worked\" checklist directly below it. Step 9 \"Troubleshoot\" is then three long run-on bullets full of code chips (the CORS bullet is 5 lines on desktop and 11 on phone), so the success state and the fixes are hard to scan.", "where": "quick-start/desktop/03-04; quick-start/phone/08"},
+    "C4": {"score": 8, "worst_defect": "Limitations is a flat list of 15 equal-weight bullets with no grouping. The one data-loss risk (\"Sales not yet sent are kept only in this browser ... those sales are lost\") sits 12th, between \"One browser tab per till\" and \"The manager's approval ... is a typed name\".", "where": "limitations/desktop/01"},
+    "C5": {"score": 8, "worst_defect": "The docs Overview page shows two active states in the sidebar at once (the grey \"Docs\" pill and the grey \"Overview\" pill). It ends with a 3-card \"Next steps\" row whose middle card \"Quick start\" is followed straight away by a full-width pager card that also reads \"Quick start >\" with almost the same description, so two adjacent components lead to the same place.", "where": "docs/desktop/01"},
+    "C6": {"score": 8, "worst_defect": "Inline code chips break mid-token at 390 px: \"packages/vendure-\" / \"plugin/CHANGELOG.md\" splits across two lines, and \"npx tsx\" / \"src/run-migrations.ts\" does too. The chips' padding also makes lines with code taller than plain lines, so body text in code-heavy paragraphs has uneven spacing (the permissions paragraph in quick-start step 4).", "where": "changelog/phone/01; quick-start/phone/03-04"},
+    "C7": {"score": 9, "worst_defect": "The search API returns raw markdown in result snippets (\"sent to the plugin's `/tally/v1/commands` route\" with the backticks). On the share card the subtitle wraps to a lone \"a normal order.\" line, and the till screenshot is cut through the \"Add charge\" button at the bottom edge.", "where": "text/endpoint_api_search_query_offline.txt; og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "The docs entry page ends with redundant components: the \"Next steps\" cards include \"Quick start\", and directly under them a full-width pager card also says \"Quick start >\" with near-identical text, while the sidebar highlights both \"Docs\" and \"Overview\". On phone this stacks four cards, two of them to the same page, and it reads as default template output rather than a designed page.",
+    "where": "docs/desktop/01; docs/phone/02",
+    "fix": "Replace the \"Quick start\" card in Next steps with \"Plugin setup\" (or hide the pager on the Overview page), and highlight only \"Overview\" in the sidebar when on /docs."
+  },
+  "mean": 8.4
+}

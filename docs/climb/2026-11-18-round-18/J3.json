@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; text/home.txt"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The pnpm Dashboard example uses path.resolve(__dirname, 'node_modules') without naming the configuration file or showing the required path import.",
+      "where": "shots/connect-a-till.desktop.02.jpg, Make the key button available in a pnpm project"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The current-version refund instructions stop at naming settleRefund and linking the general Admin API mutations reference, without an example showing how to settle the Pending POS refund.",
+      "where": "shots/at-the-till.desktop.02.jpg, Refund a sale; text/endpoint_llms_full_txt.txt"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop-dark.jpg; shots/quick-start.desktop.01.jpg; shots/plugin-setup.desktop.02.jpg"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.phone.01.jpg through home.phone.05.jpg; shots/quick-start.phone.01.jpg through quick-start.phone.09.jpg"
+    },
+    "C7": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "tech.json; text/endpoint_llms_txt.txt; text/endpoint_llms_full_txt.txt; text/endpoint_api_search_query_offline.txt; shots/og-image.png"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "The pnpm device-key setup example requires the developer to infer its configuration file and supply the missing path import.",
+    "where": "shots/connect-a-till.desktop.02.jpg, Make the key button available in a pnpm project",
+    "fix": "Name the Dashboard Vite configuration file and include the required import. State which directory nodeModulesRoot must resolve to and tell the reader to rebuild the Dashboard and verify that New POS till key appears."
+  },
+  "mean": 8.9
+}

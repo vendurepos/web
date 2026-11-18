@@ -1,0 +1,48 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero is clear (\"Point of sale for Vendure\", a live till screenshot, Live demo and Quick start buttons), but the next line, \"Your own store needs the plugin on your Vendure server first…\", is written for a developer. The home page also never says what the counter needs (tablet or PC, browser, receipt printer, scanner).",
+      "where": "home.desktop.01 hero paragraph"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The page is honest about refunds and lost unsent sales. The weak spot is \"Web till only for now. Its browser tests run in desktop Chrome; other browsers are not tested yet.\" It leaves a shop owner unsure whether the counter iPad or tablet will work. Minor: the demo payment screenshot shows a product named \"Tally Fixture Mug\".",
+      "where": "limitations.desktop.01; at-the-till.desktop.02"
+    },
+    "C3": {
+      "score": 7,
+      "worst_defect": "To refund a sale in your own store you \"refund in the Vendure Dashboard… Pending until an administrator settles it with the Admin API's settleRefund mutation\". No page gives the steps or an example, so a shop owner cannot refund a customer tomorrow.",
+      "where": "at-the-till.desktop.02 \"Refund a sale\"; limitations.desktop.01"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The Z report is described only as a bullet list, with no picture of an actual Z report. The Changelog is written for developers (\"order.create v5 custom lines… (ADR 0005)\", \"GET /tally/v1/info advertises order.create 1–5\") and has no plain-language note for shop owners beyond \"In short\".",
+      "where": "at-the-till.desktop.03 Z report; changelog.desktop.01"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "In the full-page desktop shots, the grey docs sidebar background stops at about 900px and a lighter band runs below it. Minor: the cashier-sheet image sits small and narrow next to a large empty area.",
+      "where": "quick-start.desktop.01, plugin-setup.desktop.01, at-the-till.desktop.01; at-the-till.desktop.03"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "On the phone, the cashier-sheet screenshot shows a stray unstyled \"Last synced 3:31 AM / Sync now\" and a grey bar on its left edge. Minor: wrapped code blocks are dense on a phone.",
+      "where": "at-the-till.phone.06; quick-start.phone.02"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The 404 page has no JSON-LD and no search box in the page body (only the header search). Lighthouse flags render-blocking requests and about 52 KiB of unused JS, though the scores stay at 98/100/100/100.",
+      "where": "not-found.desktop.01; tech.json lighthouse"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "On plugin 0.3.0, refunding a sale in your own store means the Vendure Dashboard plus \"the Admin API's settleRefund mutation\", and no page gives a shop owner steps they can follow.",
+    "where": "at-the-till.desktop.02 \"Refund a sale\"; limitations.desktop.01",
+    "fix": "Add a short \"Refund a customer on plugin 0.3.0\" how-to: the Dashboard clicks with a screenshot, plus a copy-paste settleRefund example for the developer. Link it from the refund row of the home page's demo-vs-store table."
+  },
+  "mean": 8.0
+}

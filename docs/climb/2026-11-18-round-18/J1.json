@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The first thing above the H1 is the badge 'Pre-release · plugin 0.3.0', and the line under the buttons ('Your own store needs the plugin on your Vendure server first: the quick start sets it up. Then try the till with your store.') talks about a plugin and a server before a newcomer knows there is one. Together with the four-line hero paragraph, that is a lot to read in five seconds next to two clear buttons.", "where": "home/desktop/01 and home/phone/01 (hero)"},
+    "C2": {"score": 8, "worst_defect": "The home comparison table says the demo's only traffic is 'anonymous usage events to ph.wcpos.com, with no cookie'. Nothing on the home page says who wcpos.com is or why a VendurePOS demo reports to it, so a newcomer wonders whose product this really is.", "where": "home/desktop/02 'Live demo or your own store' table, last row; home/phone/04"},
+    "C3": {"score": 8, "worst_defect": "The quick start's opening paragraph gives two hosted addresses ('The hosted POS is live at https://app.vendurepos.com. https://vendurepos.vercel.app serves the same build.') and mentions the vercel address again under CORS. A newcomer is left unsure which one to open and allow, and the run-in sentence reads like a typo.", "where": "quick-start/desktop/01 intro paragraph; quick-start/desktop/02 step 5"},
+    "C4": {"score": 8, "worst_defect": "Overview, Quick start and Plugin setup say 'MySQL, MariaDB and SQLite are not supported', but Connect a till says sales are 'kept in SQLite databases inside this browser'. It never explains that one is the store database and the other is the till's local storage. The Changelog also cites 'ADR 0005' and '#116' with no links or meaning.", "where": "connect-a-till/desktop/01 'Stored in this browser'; plugin-setup/desktop/01; changelog/desktop/01"},
+    "C5": {"score": 8, "worst_defect": "On every docs page the grey sidebar panel stops at about 900 px, right under the GitHub/theme bar, and a lighter band runs down the left column below it. The hero product shot on home is also cut off mid-row through the fourth row of product tiles.", "where": "docs/desktop/01, quick-start/desktop/01, limitations/desktop/01 (bottom-left); home/desktop/01 hero image bottom edge"},
+    "C6": {"score": 9, "worst_defect": "In the phone hero screenshot of the till, the cart's quantity column header is cut to 'Q...'. Otherwise tables stack well and code wraps without overflowing.", "where": "home/phone/01 hero image, cart header row"},
+    "C7": {"score": 9, "worst_defect": "Lighthouse on mobile still flags 52 KiB of unused JavaScript and render-blocking requests (LCP 2.3 s on /, 2.4 s on /docs/quick-start). Docs pages carry only a BreadcrumbList in their JSON-LD.", "where": "tech.json lighthouse '/' and '/docs/quick-start'; pages.*.jsonLd"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The home page tells a first-time visitor that the demo sends usage events to ph.wcpos.com and never says who WCPOS is or how it relates to VendurePOS. On a product they have never heard of, an unexplained third-party domain is the line most likely to make them hesitate before trying the demo.",
+    "where": "home/desktop/02 and home/phone/04, 'Live demo or your own store' table, row 'Sales reach Vendure, once each, even offline'",
+    "fix": "In that cell, say in a few words who runs ph.wcpos.com and that it is the same self-hosted PostHog this site uses (Connect a till already explains it), or link the words to that section."
+  },
+  "mean": 8.3
+}
