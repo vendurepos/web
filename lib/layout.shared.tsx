@@ -1,5 +1,5 @@
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
-import { APP_URL, DEMO_URL, GITHUB_URL, SITE_NAME } from '@/lib/site';
+import { DEMO_URL, GITHUB_URL, SITE_NAME } from '@/lib/site';
 
 export const gitConfig = {
   user: 'vendurepos',
@@ -16,7 +16,8 @@ export function baseOptions(): BaseLayoutProps {
       // The sidebar's Overview item already marks /docs as active; one highlight is enough.
       { text: 'Docs', url: '/docs', active: 'none' },
       { text: 'Live demo', url: DEMO_URL, external: true },
-      { text: 'Try with your store', url: APP_URL, external: true },
+      // The app sign-in needs the plugin first; Connect a till says so and links the app. Its sidebar item is the one highlight.
+      { text: 'Connect your store', url: '/docs/connect-a-till', active: 'none' },
       // Fumadocs' githubUrl renders an unnamed <svg role="img">; the link carries the name, so the icon is decorative.
       {
         type: 'icon',

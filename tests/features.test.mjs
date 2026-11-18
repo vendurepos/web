@@ -85,6 +85,21 @@ test('hero has two buttons, no GitHub link, and the note links the quick start a
   assert.match(note, /<a[^>]*\shref="https:\/\/app\.vendurepos\.com"[^>]*>try the till with your store<\/a>/);
 });
 
+test('header and docs nav link Connect your store to Connect a till, not the app sign-in', () => {
+  // Round 20, J1 C1: the app sign-in is a dead end until the store has the plugin; Connect a till says so first.
+  for (const file of ['index.html', 'docs.html']) {
+    const html = readFileSync(join('.next/server/app', file), 'utf8');
+    assert.match(html, /<a\b[^>]*\shref="\/docs\/connect-a-till"[^>]*>Connect your store<\/a>/, file);
+    assert.doesNotMatch(html, /<a\b[^>]*>[^<]*Try with your store/, file);
+  }
+  // On Connect a till itself only the sidebar item is active, not the header link too (as #125 did for Docs).
+  const page = readFileSync(join('.next/server/app', 'docs/connect-a-till.html'), 'utf8');
+  const active = Array.from(page.matchAll(/<a\b[^>]*>/g)).filter(
+    (m) => m[0].includes('href="/docs/connect-a-till"') && m[0].includes('data-active="true"'),
+  );
+  assert.equal(active.length, 1);
+});
+
 test('the two proof claims link their tests', () => {
   const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
   assert.match(html, /<a href="https:\/\/github\.com\/vendurepos\/app\/blob\/main\/apps\/pos\/e2e\/offline\.spec\.ts"[^>]*>Read the acceptance test<\/a>/);
