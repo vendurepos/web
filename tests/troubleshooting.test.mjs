@@ -71,3 +71,19 @@ test('troubleshooting says the partial-sale section is for whoever runs the Vend
   const text = kept.slice(kept.indexOf('</h2>')).replace(/<[^>]+>/g, '').trim();
   assert.ok(text.startsWith('This section is for whoever runs your Vendure server.'), text.slice(0, 80));
 });
+
+// Round 25, C4 (J2): the refused till updates notice went straight to a developer procedure.
+test('troubleshooting says what to do at the counter before the sync log procedure', () => {
+  const text = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+  const start = text.indexOf('till updates need attention');
+  const end = text.indexOf('register_session_already_open', start);
+  assert.ok(start >= 0 && end > start);
+  const item = text.slice(start, end);
+  const counter = item.indexOf('At the counter:');
+  const owner = item.indexOf('For the store owner:');
+  const log = item.indexOf('Sync log', owner);
+  assert.ok(counter >= 0 && owner > counter && log > owner, `${counter} ${owner} ${log}`);
+  assert.ok(item.includes('do not reload it'));
+  assert.ok(item.includes('sales already made still send to the store'));
+  assert.ok(!item.includes('keep selling'));
+});

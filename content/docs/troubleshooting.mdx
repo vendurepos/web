@@ -46,7 +46,7 @@ sync-log-card.tsx:16, :18-21 (All); lib/sync-now.ts:4-7; lib/orders-db.ts:14-19,
 lib/register-conflict-card.tsx:48. @tallyui/pos 3.20.0 outbox/register-outbox.ts:166-181,
 register/register-adoption.ts:20-70, :151-173. Plugin 2d3699e register.service.ts:156-157, :187-188. Still works:
 index.tsx:216-221 (printZ), lib/closure-history-sheet.tsx:14-19, :38-47; pos register-outbox.ts:178-181
-(closure waits). */}
+(closure waits). Counter line: index.tsx:133 vs :157; log-buffer.ts:3-4, :41-49. */}
 
 **Till updates line**
 
@@ -57,7 +57,9 @@ register, cash movements and their voids, and the closure.
   Sign in to the online store again.
 - "N till updates need attention · The online store refused them, and later till updates wait
   behind them. Ask the store owner to look at the sync log in this till's Settings."
-  Open **Settings**, then **Sync log**, and choose **All**: the refusal is a `DEBUG` line,
+  **At the counter:** leave the app open and do not reload it until the store owner has copied the refused line
+  below; sales already made still send to the store.
+  **For the store owner:** open **Settings**, then **Sync log**, and choose **All**: the refusal is a `DEBUG` line,
   `Register command result … status=rejected errorCode=… error=…`, which **Warnings and errors** does not show.
   Copy it (**Share** on a phone) before you close or reload the app: the log holds only this till's last 500 events
   since the app opened, and the refused update is never sent again, so the line does not come back.
