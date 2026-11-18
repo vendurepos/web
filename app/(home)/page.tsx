@@ -147,7 +147,9 @@ export default function HomePage() {
         </h1>
         <p className="max-w-2xl mx-auto text-lg text-fd-muted-foreground">
           VendurePOS is an open-source till that runs in the browser and signs in
-          to your own <a href="https://vendure.io" className="underline">Vendure</a> store. It keeps selling when the connection drops,
+          to your own <a href="https://vendure.io" className="underline">Vendure</a> store
+          {/* Source: https://docs.vendure.io/ "The open source headless commerce framework, community plugins, and the commercial paid plans, all in one place." (read 2026-11-18) */}
+          {' '}(Vendure is an open-source headless commerce framework). It keeps selling when the connection drops,
           and every sale lands in Vendure once, as a normal order at the till&apos;s price.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">

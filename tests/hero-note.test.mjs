@@ -56,4 +56,6 @@ test('hero lede links Vendure to vendure.io', () => {
   assert.match(hero, /<a[^>]*\shref="https:\/\/vendure\.io"[^>]*>Vendure<\/a>/);
   const text = hero.replace(/<!-- -->/g, '').replace(/<[^>]+>/g, '');
   assert.ok(text.includes('signs in to your own Vendure store'));
+  // Round 15, C1: the hero says what Vendure is, in its own docs' terms (docs.vendure.io).
+  assert.ok(text.includes('your own Vendure store (Vendure is an open-source headless commerce framework).'));
 });
