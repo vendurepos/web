@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The quick start instructs installers to create a device key but omits the manual ReadOrder addition required on 0.3.0, sending readers to an external README instead of the local instructions that explain it.",
+      "where": "text/quick-start.txt, Optional: a device key for each till; text/connect-a-till.txt, Create and use a device key"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Troubleshooting says everything works offline except customer search and creation, without excluding refunds even though the refund instructions require a store response before returning cash.",
+      "where": "text/troubleshooting.txt, Sell while offline; text/at-the-till.txt, Refund a sale"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.desktop.02.jpg; shots/home.desktop-dark.jpg; shots/quick-start.desktop.01.jpg"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The home page scales the full desktop till screenshot into the phone width, making its cart text and controls too small to inspect.",
+      "where": "shots/home.phone.01.jpg"
+    },
+    "C7": {
+      "score": 8,
+      "worst_defect": "The full machine-readable documentation retains raw Cards, Card and Callout components and page-local fragment links without canonical URLs identifying each concatenated page.",
+      "where": "text/endpoint_llms_full_txt.txt, Overview / Next steps and Connect a till / Create and use a device key"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "Following the quick start's device-key path on the pinned plugin 0.3.0 leaves out the ReadOrder permission needed by the till's order list.",
+    "where": "text/quick-start.txt, Optional: a device key for each till; shots/connect-a-till.desktop.02.jpg",
+    "fix": "Add the instruction to grant ReadOrder to the generated till role on plugin 0.3.0. Link directly to the local device-key instructions for the complete role and pnpm setup."
+  },
+  "mean": 8.4
+}
