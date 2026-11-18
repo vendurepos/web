@@ -85,7 +85,7 @@ test('hero puts the live demo first, as the primary button', () => {
   assert.equal(Array.from(html.matchAll(/class="rounded-md bg-fd-primary/g)).length, 1);
 });
 
-test('hero has two buttons, no GitHub link, and the note links the quick start and the app', () => {
+test('hero has two buttons, no GitHub link, and the note links the quick start', () => {
   // Round 18, C1: Try with your store moves into the note under the buttons; GitHub stays in the header.
   const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
   const h1 = html.indexOf('<h1');
@@ -100,22 +100,31 @@ test('hero has two buttons, no GitHub link, and the note links the quick start a
   assert.ok(noteAt > hero.indexOf('Quick start</a>'));
   const note = hero.slice(noteAt);
   assert.match(note, /<a[^>]*\shref="\/docs\/quick-start"[^>]*>quick start<\/a>/);
-  assert.match(note, /<a[^>]*\shref="https:\/\/app\.vendurepos\.com"[^>]*>try the till with your store<\/a>/);
 });
 
-test('header and docs nav link Connect your store to Connect a till, not the app sign-in', () => {
-  // Round 20, J1 C1: the app sign-in is a dead end until the store has the plugin; Connect a till says so first.
+test('header and docs nav link Quick start to the quick start', () => {
+  // Round 24, J1 C1: one name for the own-store path; the quick start installs the plugin, then signs the till in.
   for (const file of ['index.html', 'docs.html']) {
     const html = readFileSync(join('.next/server/app', file), 'utf8');
-    assert.match(html, /<a\b[^>]*\shref="\/docs\/connect-a-till"[^>]*>Connect your store<\/a>/, file);
+    // The nav link is the one straight after the nav's Live demo link (the hero button and sidebar item also say Quick start).
+    assert.match(html, />Live demo<\/a>(?:<\/li><li\b[^>]*>)?<a\b[^>]*\shref="\/docs\/quick-start"[^>]*>Quick start<\/a>/, file);
+    assert.doesNotMatch(html, />Connect your store<\/a>/, file);
     assert.doesNotMatch(html, /<a\b[^>]*>[^<]*Try with your store/, file);
   }
-  // On Connect a till itself only the sidebar item is active, not the header link too (as #125 did for Docs).
-  const page = readFileSync(join('.next/server/app', 'docs/connect-a-till.html'), 'utf8');
+  // On the quick start itself only the sidebar item is active, not the header link too (as #125 did for Docs).
+  const page = readFileSync(join('.next/server/app', 'docs/quick-start.html'), 'utf8');
   const active = Array.from(page.matchAll(/<a\b[^>]*>/g)).filter(
-    (m) => m[0].includes('href="/docs/connect-a-till"') && m[0].includes('data-active="true"'),
+    (m) => m[0].includes('href="/docs/quick-start"') && m[0].includes('data-active="true"'),
   );
   assert.equal(active.length, 1);
+});
+
+test('hero note says the quick start ends with a sale, not a separate app link', () => {
+  // Round 24, J1 C1: quick-start.mdx step 8 is "Sign in and make a sale".
+  const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
+  const hero = html.slice(html.indexOf('<h1'), html.indexOf('<figure'));
+  assert.ok(hero.includes('signs the till in and makes a sale'));
+  assert.ok(!hero.includes('try the till with your store'));
 });
 
 test('the two proof claims link their tests', () => {
