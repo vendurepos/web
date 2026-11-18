@@ -88,3 +88,11 @@ test('before you start gates refunds on the plugin and names coupon codes as not
   assert.match(block, /Refunds at the till\s+need the plugin release after 0\.3\.0, and the live demo has them\./);
   assert.doesNotMatch(block, /Not yet: refunds/i);
 });
+
+test('before you start links the staff guide, At the till', () => {
+  const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
+  const heading = html.indexOf('Before you start');
+  const end = html.indexOf('</section>', heading);
+  assert.ok(heading >= 0 && end > heading);
+  assert.match(html.slice(heading, end), /href="\/docs\/at-the-till"[^>]*>At the till</);
+});

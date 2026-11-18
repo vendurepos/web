@@ -267,7 +267,9 @@ export default function HomePage() {
         </ul>
         <p className="mt-4 text-fd-muted-foreground">
           The <Link href="/docs/quick-start" className="underline">quick start</Link>{' '}
-          walks through the plugin, the migration, CORS and your first sale. See{' '}
+          walks through the plugin, the migration, CORS and your first sale. For cashiers,{' '}
+          <Link href="/docs/at-the-till" className="underline">At the till</Link> covers
+          selling, taking payment and closing the day. See{' '}
           <Link href="/docs/limitations" className="underline">what it does not do yet</Link>.
         </p>
       </section>
