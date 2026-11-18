@@ -30,3 +30,19 @@ test('docs overview names a staff account or a device key and links Connect a ti
   assert.ok(!text.includes('administrator account'), text);
   assert.ok(paragraph.includes('href="/docs/connect-a-till"'));
 });
+
+// Round 35, J1/J5 C4: the requirement lists left out the Node range Quick start requires.
+test('overview and home requirements name the plugin Node range', () => {
+  const text = (slice) =>
+    slice
+      .replace(/<[^>]*>/g, '')
+      .replace(/&gt;|&#x3e;|&#62;/gi, '>')
+      .replace(/&vert;|&verbar;|&#x7c;|&#124;/gi, '|');
+  const requirements = html.indexOf('<h2 id="requirements"');
+  assert.ok(requirements >= 0, 'a Requirements heading');
+  assert.ok(text(html.slice(requirements, html.indexOf('<h2', requirements + 1))).includes('^20.19 || >=22.12'));
+  const home = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
+  const start = home.indexOf('Before you start');
+  assert.ok(start >= 0, 'a Before you start heading');
+  assert.ok(text(home.slice(start, home.indexOf('</ul>', start))).includes('^20.19 || >=22.12'));
+});
