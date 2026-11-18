@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The tax instructions say a store mixing pricing modes must 'account for the store-wide strategy' without specifying how to choose or verify that strategy.",
+      "where": "text/endpoint_llms_full_txt.txt, Quick start step 6, 'Why these pairings'; shots/quick-start.desktop.03.jpg"
+    },
+    "C4": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "text/plugin-setup.txt; text/connect-a-till.txt; text/troubleshooting.txt; text/endpoint_llms_full_txt.txt"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop-dark.jpg; shots/home.desktop.01.jpg; shots/quick-start.desktop.03.jpg"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.phone.01.jpg through home.phone.05.jpg; shots/quick-start.phone.01.jpg through quick-start.phone.09.jpg"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Quick-start mobile LCP is 2.6 seconds, with Lighthouse flagging render-blocking requests and 25 KiB of unused JavaScript.",
+      "where": "tech.json, lighthouse./docs/quick-start"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "Stores with both tax-inclusive and tax-exclusive channels receive conflicting strategy recommendations without an actionable configuration for their shared store-wide setting.",
+    "where": "Quick start step 6; text/endpoint_llms_full_txt.txt, 'Why these pairings'; shots/quick-start.desktop.03.jpg",
+    "fix": "Document the supported strategy for mixed-pricing channels, or explicitly state the restriction. Include a verification example showing expected totals in each pricing mode."
+  },
+  "mean": 9.0
+}
