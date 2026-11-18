@@ -105,6 +105,7 @@ See [Plugin setup](/docs/plugin-setup) for installation.
 
 {/* Sources: vendurepos/app@1404f42 packages/vendure-plugin/CHANGELOG.md:38 (0.2.0 preset without ReadOrder);
 vendurepos/app@2d3699e (plugin-v0.3.0) packages/vendure-plugin/src/config/pos-till-role.ts:4,6-8 (vendurepos-pos-till, no ReadOrder);
+vendurepos/app@2d3699e (plugin-v0.3.0) packages/vendure-plugin/README.md:166 (the API keys page (Settings → API keys) gains New POS till key);
 vendurepos/app@cc719c2 apps/pos/lib/order-history.ts:9,38 (the order list needs ReadOrder, through sessionContext(session)). */}
 
 1. Add `'api-key'` to `authOptions.tokenMethod`:
@@ -115,7 +116,7 @@ vendurepos/app@cc719c2 apps/pos/lib/order-history.ts:9,38 (the order list needs 
 
 2. In the Dashboard, switch to the till's channel first. A key works only in the
    channel it was created in, and the dialog names that channel.
-3. Go to **System → API keys → New POS till key** and name the key after the device.
+3. Go to **Settings → API keys → New POS till key** and name the key after the device.
    This creates or extends the `vendurepos-pos-till` role with `TallyPosSell` and
    the reads a till needs, creates the key with that role and shows the key once.
    On plugin 0.3.0, add `ReadOrder` to that role yourself for the till's order list, as in
