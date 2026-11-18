@@ -25,7 +25,7 @@ const features = [
     // packages/vendure-plugin/test/replay.e2e.ts
     title: 'Every sale lands once',
     description:
-      'Each sale carries its own id, and the Vendure plugin records it in one transaction with an idempotency ledger. The same sale sent 200 times makes one order.',
+      'Each sale carries its own id, and the Vendure plugin saves that id with the order in one step, so a sale the till sends again never makes a second order. The same sale sent 200 times makes one order.',
     test: { label: 'Read the 200-send test', path: 'packages/vendure-plugin/test/replay.e2e.ts' },
   },
   {
@@ -36,9 +36,9 @@ const features = [
   },
   {
     // packages/vendure-plugin/test/register.e2e.ts; apps/pos/lib/z-report.test.ts
-    title: 'Registers and Z reports',
+    title: 'Open and close the register',
     description:
-      "Open a register with a counted float, record cash movements, and close it with a Z report that prints the closure's own figures.",
+      "Count the cash in the drawer when you open, record cash paid in and out during the day, and close with a Z report, the end-of-day report that prints the closure's own figures.",
   },
   {
     // apps/pos/e2e/sign-in.spec.ts at 1404f42 ("a split sale, part cash and part card, is applied by the plugin with both payments")
@@ -50,7 +50,7 @@ const features = [
     // apps/pos/lib/use-wedge-scanner.test.ts; apps/pos/lib/barcode-field.test.ts
     title: 'Barcode scanners',
     description:
-      'Keyboard-wedge scanners work out of the box, matched against a barcode field you choose on your product variants.',
+      'Scanners that type the code like a keyboard (keyboard-wedge scanners) work out of the box, matched against a barcode field you choose on your product variants.',
   },
   {
     // apps/pos/e2e/demo.spec.ts ("a demo cashier parks a sale, sells another, then resumes the parked one")
