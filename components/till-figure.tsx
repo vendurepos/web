@@ -17,6 +17,8 @@ const CAPTION: Record<string, string> = {
   payment: 'The payment screen on the live demo till.', cashier: 'The cashier sheet on the live demo till.',
   closure: 'The closure screen on the live demo till.',
 };
+// Round 34, J4 C5: closure is the dialog alone with its own border, so it gets no second border.
+const OWN_BORDER = new Set(['closure']);
 
 function TillPicture({ name, scheme, alt, sizes, eager, className }: {
   name: string; scheme: 'light' | 'dark'; alt: string; sizes: string; eager?: boolean; className: string;
@@ -28,7 +30,7 @@ function TillPicture({ name, scheme, alt, sizes, eager, className }: {
   return (
     <picture className={className}>
       <source media="(max-width: 639px)" srcSet={phone.srcSet} sizes={phone.sizes} width={phone.width} height={phone.height} />
-      <img {...wide} alt={alt} style={{ ...wide.style, maxWidth: `min(100%, ${width / 2}px)` }} className="block rounded-lg border border-fd-border" />
+      <img {...wide} alt={alt} style={{ ...wide.style, maxWidth: `min(100%, ${width / 2}px)` }} className={OWN_BORDER.has(name) ? 'block rounded-lg' : 'block rounded-lg border border-fd-border'} />
     </picture>
   );
 }
@@ -38,10 +40,17 @@ export function TillFigure({ name, alt, sizes = '(max-width: 768px) 100vw, (max-
   name: string; alt: string; sizes?: string; eager?: boolean; className?: string; children?: ReactNode;
 }) {
   const caption = CAPTION[name];
-  return (
-    <figure className={className}>
+  const pictures = (
+    <>
       <TillPicture name={name} scheme="light" alt={alt} sizes={sizes} eager={eager} className="block dark:hidden" />
       <TillPicture name={name} scheme="dark" alt={alt} sizes={sizes} className="hidden dark:block" />
+    </>
+  );
+  // Round 34, J4 C5: three shot widths left-aligned read as unplanned; narrow shots sit centred on a column-wide panel.
+  const narrow = WIDE_SIZE[name][0] / 2 < 600;
+  return (
+    <figure className={className}>
+      {narrow ? <div className="sm:flex sm:justify-center sm:rounded-lg sm:border sm:border-fd-border sm:bg-fd-muted sm:p-8">{pictures}</div> : pictures}
       {caption && <figcaption className="mt-3 text-sm text-fd-muted-foreground">{caption}</figcaption>}
       {children}
     </figure>
