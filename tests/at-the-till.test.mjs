@@ -188,3 +188,17 @@ test('at the till says to keep the tab open while offline, since a reload needs 
   assert.ok(neverTwice >= 0 && neverTwice < keepOpen, 'after never twice');
   assert.ok(keepOpen < text.indexOf('orders waiting to send'), 'before orders waiting to send');
 });
+
+test('at the till says Reports is in the side menu', () => {
+  // Round 30, C4 (J2): Reports was named without saying where it is.
+  const start = html.indexOf('id="check-the-register-during-the-day"');
+  const end = html.indexOf('<h2', start + 1);
+  assert.ok(start >= 0 && end > start);
+  const text = html
+    .slice(start, end)
+    .replace(/<!-- -->/g, '')
+    .replace(/<[^>]+>/g, '')
+    .replace(/&#x27;|&#39;|&apos;/g, "'")
+    .replace(/\s+/g, ' ');
+  assert.ok(text.includes("Reports, in the till's side menu, opens on the drawer card"), 'Reports is in the side menu');
+});
