@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero has four buttons side by side ('Live demo', 'Quick start', 'Try with your store', 'GitHub'), and 'Try with your store' opens app.vendurepos.com, which the line under it says will not work until the plugin is installed. A shop owner can't tell which button is theirs.", "where": "home.desktop.01 hero buttons; home.phone.01 (two rows of buttons)"},
+    "C2": {"score": 8, "worst_defect": "The live demo is said to send 'anonymous usage events to ph.wcpos.com'. That domain belongs to a different brand and is never explained on the home page (only deep in Connect a till), so a cautious owner reads it as a third party watching the till. Also, 'the plugin release after 0.3.0' is promised six times with no date or version.", "where": "home.desktop.02 comparison table, last row; limitations.txt; at-the-till.txt 'Refund a sale'"},
+    "C3": {"score": 8, "worst_defect": "Quick start step 8a signs the till in with 'your administrator email and password' and never links to 'Give each cashier their own account' (on Connect a till), so the easy path ends with staff selling on the owner's admin login.", "where": "quick-start.desktop.03 step 8a; quick-start.phone.07"},
+    "C4": {"score": 7, "worst_defect": "Offline behaviour is spread across pages and the key case is missing. 'Sell while offline' is a single sentence, the fourth section of Troubleshooting. No page says whether a till that is reloaded, closed or restarted during an outage can reopen and keep selling without signing in again. And the notice 'Ask the store owner to look at the sync log in this till's Settings' points to a sync log that no page explains.", "where": "troubleshooting.txt 'Sell while offline' and 'Till updates line'; troubleshooting.desktop.01"},
+    "C5": {"score": 8, "worst_defect": "The docs pages that staff will learn from are long walls of text with no images. At the till is 5119 px tall on desktop with not one picture of the till, while the hero till screenshot on the home page is cropped through the fourth row of product tiles at its bottom edge.", "where": "at-the-till.desktop.01-03; home.desktop.01 hero screenshot bottom edge"},
+    "C6": {"score": 8, "worst_defect": "On a 390 px phone the hero till screenshot shrinks so far that product names, prices and the 'Checkout €59.59' button can't be read, so on a phone the only picture of the product shows nothing. Quick start runs to 9662 px with full TypeScript blocks.", "where": "home.phone.01 hero image; quick-start.phone.01-09"},
+    "C7": {"score": 9, "worst_defect": "The share card is text only and repeats the meta description word for word ('Open-source point of sale for Vendure. Sell from the browser...'), with no picture of the till. Shared in a shop owners' chat, nothing on it shows what the product looks like.", "where": "og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "'At the till', the page an owner would hand to staff, has no screenshots of the till at all. It is 5119 px on desktop and 6984 px on phone of text that points at controls by description ('The ⋮ beside Checkout', 'Register › in the bar', 'Tap your name in the bar for your cashier sheet', 'Close register in your cashier sheet'). A cashier can't match those words to the screen, and the owner can't check from the page how closing the day and the Z report look before trusting their counter to it.",
+    "where": "at-the-till.desktop.01-03; at-the-till.phone.01-07",
+    "fix": "Add four or five annotated screenshots from the live demo to At the till: opening the register, the payment pane with a split payment, the receipt, the Register panel, and the close-register count with its Z report."
+  },
+  "mean": 8.0
+}

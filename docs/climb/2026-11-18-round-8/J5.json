@@ -1,0 +1,48 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero gives four equal-weight buttons (Live demo, Quick start, Try with your store, GitHub). 'Try with your store' sends a visitor to app.vendurepos.com, which cannot work until the plugin is installed, so a small caption under the buttons has to warn them off. Nothing on the page says who should not use it, for example shops on MySQL, shops that need integrated card terminals or native apps, or anyone needing a stable 1.0.",
+      "where": "home/desktop/01 hero buttons and caption 'Your own store needs the plugin on your Vendure server first'"
+    },
+    "C2": {
+      "score": 6,
+      "worst_defect": "The home page sells an 'open-source till' and the footer says 'MIT licensed'. Only Limitations and Connect a till admit that 'Building the till yourself needs your own RxDB Premium licence token'. So in practice a store either buys a commercial licence or types its Vendure administrator password into the project's hosted app. A second problem: the docs keep promising 'the plugin release after 0.3.0, which is not out yet' (refunds, customer note, ReadOrder) with no date, while the changelog's newest release is 0.3.0 from 2026-10-06, six weeks before capture. The demo shows features that no real store can run yet.",
+      "where": "home/desktop/02 footer 'MIT licensed'; limitations/desktop/01 bullet 3; at-the-till.txt 'Refund a sale' and 'Order details'; changelog/desktop/01"
+    },
+    "C3": {
+      "score": 7,
+      "worst_defect": "Step 3 gives three migration routes in one paragraph: a hand-written tsx generate-and-run script, 'npx vendure migrate', and 'the plugin's bundled migrations … the README describes that alternative', which is shown differently on Plugin setup. A developer has to guess which route is canonical. Step 9 then drifts into VENDUREPOS_WEB_ALLOW_LAN_HTTP, connect-src and img-src, which do not apply to the hosted till the guide tells them to use.",
+      "where": "quick-start/desktop/01 step 3; quick-start/desktop/03 step 9 'CORS / cannot reach the store'"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "The At the till page's description promises 'refund a till sale'. It then spends a whole section on Refund items, TallyPosRefund and Send again before admitting the feature needs an unreleased plugin, so docs written for the demo read as docs for the shipping product. The changelog cites 'ADR 0005', '#116' and '#117' as plain unlinked text. The UI walkthrough has no screenshot at all.",
+      "where": "at-the-till/desktop/01 subtitle; at-the-till.txt 'Refund a sale'; changelog/desktop/01 '(ADR 0005)', '(#116)'"
+    },
+    "C5": {
+      "score": 7,
+      "worst_defect": "The feature section is ten identical grey boxes of body text, with no icons, visuals or hierarchy, and reads like a default docs-theme template. The hero product shot is cropped through the middle of the fourth product row. The share card uses a pink/purple palette and a hollow-circle placeholder logo that appear nowhere on the monochrome site.",
+      "where": "home/desktop/01-02 'What it does today' cards; home/desktop/01 hero screenshot bottom edge; og-image.png"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "At 390 px the hero product screenshot is shrunk to unreadable text, so the one proof image on the phone says nothing. Every docs page's sticky 'On this page' bar shows a grey ring that reads as a loading spinner ('1. Install the plugin' with a spinner). The quick start is a 9,662 px phone scroll with no way to collapse its long sections.",
+      "where": "home/phone/01 hero image; quick-start/phone/01 and docs/phone/01 TOC bar; tech.json quick-start.phone height 9662"
+    },
+    "C7": {
+      "score": 8,
+      "worst_defect": "The 404 page returns the home page's meta description ('Open-source point of sale for Vendure. Sell from the browser…'). The share card is a generic text card with a placeholder circle instead of the product. The SoftwareApplication JSON-LD has no softwareVersion, even though the site leads with 'plugin 0.3.0'.",
+      "where": "tech.json pages not-found.desktop/phone description; og-image.png; tech.json home.desktop jsonLd"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "'Open-source' and 'MIT licensed' are the home page's trust claims, but self-hosting the till requires a commercial RxDB Premium licence, and that is disclosed only deep in Limitations and Connect a till. The real choice is to pay a third party or to enter a Vendure administrator password on app.vendurepos.com. A sceptic who finds that later concludes the home page was hiding it.",
+    "where": "home/desktop/02 footer 'MIT licensed' and 'Before you start' vs limitations/desktop/01 bullet 3 and connect-a-till/desktop/01 'The till's source is MIT-licensed…'",
+    "fix": "Add one bullet to the home page's 'Before you start': 'Use the hosted till at app.vendurepos.com (sign-in goes only to your store; see Where your data goes), or build it yourself with a commercial RxDB Premium licence.' Link it to Connect a till."
+  },
+  "mean": 7.3
+}

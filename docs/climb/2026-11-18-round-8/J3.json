@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The device-key recipe promises 'the reads a till needs' but omits the manual ReadOrder addition that the preceding staff-account section says is necessary on plugin 0.3.0.",
+      "where": "shots/connect-a-till.desktop.01.jpg and shots/connect-a-till.desktop.02.jpg, cashier permissions and device-key step 3"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "The needs_admin recovery instructions provide an applied mutation without explaining what to inspect or how to choose applied versus rejected for a partially recorded sale.",
+      "where": "shots/troubleshooting.desktop.02.jpg, 'Resolve a sale the store kept part-way'"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "The overview sidebar highlights both 'Docs' and 'Overview' as selected, giving the current page two competing active navigation markers.",
+      "where": "shots/docs.desktop.01.jpg"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "The migration example wraps the quoted './vendure-config' import path across lines without a continuation indicator, making visual transcription harder.",
+      "where": "shots/quick-start.phone.02.jpg, generate-migration.ts example"
+    },
+    "C7": {
+      "score": 8,
+      "worst_defect": "llms-full.txt retains raw components such as TillFigure and renders subsection headings as plain text with fragment markers instead of Markdown heading hierarchy.",
+      "where": "text/endpoint_llms_full_txt.txt, 'At the till' and 'Take payment'"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "A developer handling a needs_admin sale must guess which existing order state warrants applied versus rejected; the example supplies the mutation but not the recovery decision.",
+    "where": "shots/troubleshooting.desktop.02.jpg, 'Resolve a sale the store kept part-way'",
+    "fix": "Add the checks required before choosing each resolution and explain the resulting order and retry behavior. Include a complete tallyNeedsAdminCommands query showing how to obtain the command ID and relevant state."
+  },
+  "mean": 8.6
+}
