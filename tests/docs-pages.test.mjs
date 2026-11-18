@@ -119,3 +119,14 @@ test('limitations says a self-build needs an RxDB Premium licence token, with no
   assert.ok(li);
   assert.doesNotMatch(strip(li[0]), /[$€]|\bprice\b|\bpricing\b|\bplan\b/i);
 });
+
+test('connect a till names the demo events and where they go', () => {
+  const html = readFileSync(join('.next/server/app', 'docs/connect-a-till.html'), 'utf8');
+  const start = html.indexOf('id="where-your-data-goes"');
+  assert.ok(start >= 0);
+  const end = html.indexOf('<h2', start);
+  const section = html.slice(start, end < 0 ? undefined : end);
+  for (const word of ['demo_opened', 'demo_signed_in', 'demo_sale_completed', 'demo_reset', 'PostHog']) {
+    assert.ok(section.includes(word), word);
+  }
+});
