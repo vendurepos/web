@@ -249,3 +249,19 @@ test('the intro names the Node requirement and links Plugin setup', () => {
   const setup = readFileSync('.next/server/app/docs/plugin-setup.html', 'utf8');
   assert.ok(setup.includes('id="check-your-store"'));
 });
+
+test('the intro links Vendure\'s install guide for visitors with no project', () => {
+  // Round 26, J1 C3: the intro asked for a Vendure project but said nothing about getting one.
+  const firstH2 = html.indexOf('<h2');
+  assert.ok(firstH2 >= 0);
+  const intro = html.slice(0, firstH2);
+  const link = intro.match(/<a\b[^>]*\bhref="https:\/\/docs\.vendure\.io\/current\/framework\/getting-started\/installation"[^>]*>((?:(?!<\/a>)[\s\S])*)<\/a>/);
+  assert.ok(link);
+  assert.equal(textOf(link[1]).trim(), 'Installing Vendure with @vendure/create');
+  const text = textOf(intro);
+  const ask = text.indexOf('No Vendure project yet?');
+  assert.ok(ask >= 0);
+  assert.ok(text.includes('npx @vendure/create my-shop'));
+  const run = text.indexOf('Run store commands from that project');
+  assert.ok(run >= 0 && ask > run);
+});
