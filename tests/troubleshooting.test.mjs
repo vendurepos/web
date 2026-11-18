@@ -121,8 +121,8 @@ test('troubleshooting gives the store owner a plain step before the sync log pro
   const end = text.indexOf('DEBUG', start);
   assert.ok(start >= 0 && end > start, `${start} ${end}`);
   const owner = text.slice(start, end);
-  const find = owner.indexOf('To find the line');
-  assert.ok(find >= 0, 'To find the line');
+  const find = owner.indexOf('To find the line in the sync log');
+  assert.ok(find >= 0, 'To find the line in the sync log');
   for (const phrase of [
     'copy the refused line',
     'choosing another register',
@@ -132,5 +132,28 @@ test('troubleshooting gives the store owner a plain step before the sync log pro
     const at = owner.indexOf(phrase);
     assert.ok(at >= 0, phrase);
     assert.ok(at < find, `${phrase} comes before To find the line`);
+  }
+});
+
+// Round 28, C4 (J2): the sync-log procedure folds; the plain step and the errorCode list stay open.
+test('troubleshooting folds the sync log procedure inside the till updates item', () => {
+  const start = html.indexOf('For the store owner:');
+  const end = html.indexOf('register_session_already_open', start);
+  assert.ok(start >= 0 && end > start, `${start} ${end}`);
+  const item = html.slice(start, end);
+  const opens = item.match(/<details\b[^>]*>/g) ?? [];
+  assert.equal(opens.length, 1, 'exactly one <details>');
+  assert.doesNotMatch(opens[0], /\sopen\b/, 'the fold starts closed');
+  const detailsStart = item.indexOf('<details');
+  const detailsEnd = item.indexOf('</details>', detailsStart);
+  assert.ok(detailsStart > 0, 'For the store owner: comes before the fold');
+  assert.ok(detailsEnd > detailsStart, 'register_session_already_open comes after </details>');
+  assert.ok(!item.slice(0, detailsEnd).includes('</li>'), 'the fold sits in the same <li>');
+  const details = item.slice(detailsStart, detailsEnd);
+  const summary = details.match(/<summary\b[^>]*>([\s\S]*?)<\/summary>/);
+  assert.ok(summary, '<summary>');
+  assert.equal(summary[1].replace(/<[^>]+>/g, '').trim(), 'To find the line in the sync log');
+  for (const phrase of ['DEBUG', 'status=rejected', 'last 500 events']) {
+    assert.ok(details.includes(phrase), `${phrase} inside the fold`);
   }
 });
