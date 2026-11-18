@@ -9,6 +9,7 @@ description: What VendurePOS does not do yet.
 {/* RxDB: vendurepos/app@1404f42 README.md:73-74 (the web storage uses RxDB Premium; its install script needs the licence token in RXDB_PREMIUM); same sentence as connect-a-till.mdx (web#67). */}
 {/* Printing and the cash drawer: vendurepos/app@df046fc apps/pos/lib/sale-receipt.tsx:31 and lib/order-receipt.tsx:25 (Print receipt: window.print()), lib/sale-receipt.tsx:17 (print after each sale); lib/print-lines.ts:5-18 (X report, Z report, sales summary, hand-over slip: a hidden frame's print(), the browser's print dialog; callers lib/print-x-report.ts:15, app/index.tsx:219, lib/closure-history-sheet.tsx:43, lib/reports-panel.tsx:33, lib/hand-over.tsx:20). No printer or drawer path, git grep at df046fc -- apps packages: -i -E 'escpos|esc/pos' 0 hits; -E 'navigator\.(usb|serial|hid|bluetooth)' 0 hits; -i -w -E 'usb|webusb|hid|serial|bluetooth|kick|pulse' 3 hits, all Postgres SERIAL columns; -i -E 'open.?(cash.?)?drawer|drawer.?(kick|open)|cash.?drawer' 3 hits, the register panel button and a comment, none opens a drawer. docs/V2-PARITY.md:83: thermal ESC/POS printing Missing. */}
 {/* Browsers and unsent sales: vendurepos/app@a257d16 apps/pos/playwright.config.ts:24-25 (the only Playwright project: chromium, devices['Desktop Chrome']; no other playwright, wdio or cypress config in git ls-files); apps/pos/lib/storage.ts:8 (SQLite-wasm in a worker), lib/app-storage.ts:7-8 (one storage for the catalogue and order databases), lib/storage-start-failure.ts:8 (no OPFS: the private-window message); lib/orders-db.ts:57-59 (close() never removes the orders database: unsent orders wait for the next sign-in). Same as connect-a-till.mdx:36 and :41; header text at-the-till.mdx:138. */}
+{/* Refused till updates: same facts and sources as troubleshooting.mdx (Till updates line comment): vendurepos/app@ebcd9e4 apps/pos/app/index.tsx:133 vs :157, :355, :369; @tallyui/pos 3.20.0 outbox/register-outbox.ts:166-181, register/register-adoption.ts:20-70. */}
 
 - Pre-release: expect changes before 1.0.
 
@@ -43,6 +44,11 @@ description: What VendurePOS does not do yet.
 
 - Sales not yet sent are kept only in this browser. If this site's data is cleared, or the device is lost,
   while the header still shows **N orders waiting to send**, those sales are lost.
+
+- When the store refuses a till update (the register's open, close, cash movements or closure), the till does not
+  send it again, except a closure refused for its number, which it renumbers and sends once. Later till updates
+  for that register stay on this till; sales keep sending. See
+  [Troubleshooting](/docs/troubleshooting#act-on-a-header-notice).
 
 - The manager's approval on register close is a typed name,
   not a verified sign-in.
