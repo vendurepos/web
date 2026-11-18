@@ -237,3 +237,22 @@ test('at the till shows the closure screen in the close-the-day section, and Han
   assert.ok(text.includes('leaves the register open'), 'register open');
   assert.ok(!text.includes('leaves the drawer open'), 'not drawer open');
 });
+
+test('at the till shots are one session: the alts agree on €20.09 and €120.09, and the closure has clear corners', () => {
+  // Round 34, J4 C5/C2: the three At the till shots came from different sessions and disagreed.
+  const alts = [...html.matchAll(/<img[^>]*\salt="([^"]*)"/g)].map((m) => m[1]);
+  for (const alt of alts) {
+    for (const bad of ['€21.29', '€121.29', 'Fixture']) assert.ok(!alt.includes(bad), `${bad} in ${alt}`);
+  }
+  const altOf = (start) => alts.find((alt) => alt.startsWith(start)) ?? '';
+  const payment = altOf('The payment screen on the live demo till');
+  assert.ok(payment.includes('Total €20.09'), 'payment Total €20.09');
+  const cashier = altOf('The cashier sheet on the live demo till');
+  assert.ok(cashier.includes('Your sales today €20.09'), 'cashier sales €20.09');
+  assert.ok(cashier.includes('In the drawer €120.09'), 'cashier drawer €120.09');
+  const closure = altOf('The closure on the live demo till');
+  assert.ok(closure.includes('Counted €120.09'), 'closure counted €120.09');
+  for (const name of ['closure-light', 'closure-dark', 'closure-phone-light', 'closure-phone-dark']) {
+    assert.equal(readFileSync(`public/till/${name}.png`)[25], 6, `${name} is RGBA`);
+  }
+});
