@@ -220,3 +220,14 @@ test('step 4 points to one administrator per cashier on Connect a till', () => {
   const connect = readFileSync('.next/server/app/docs/connect-a-till.html', 'utf8');
   assert.ok(connect.includes('id="give-each-cashier-their-own-account"'));
 });
+
+test('the intro names the Node requirement and links Plugin setup', () => {
+  // Round 24, J3 C3: the prerequisites omitted the plugin's Node engines range.
+  const step1 = html.search(/<h2\b[^>]*>(?:(?!<\/h2>)[\s\S])*1\. Install the plugin/);
+  assert.ok(step1 >= 0);
+  const intro = html.slice(0, step1);
+  assert.ok(intro.includes('^20.19 || &gt;=22.12'));
+  assert.ok(intro.includes('href="/docs/plugin-setup#check-your-store"'));
+  const setup = readFileSync('.next/server/app/docs/plugin-setup.html', 'utf8');
+  assert.ok(setup.includes('id="check-your-store"'));
+});
