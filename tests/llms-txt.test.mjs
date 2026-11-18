@@ -30,3 +30,16 @@ test('built llms text shows each till figure as a Markdown image, not a raw comp
     }
   }
 });
+
+test('built llms text has no raw Cards or Callouts, and every link in it is absolute', () => {
+  const full = readFileSync('.next/server/app/llms-full.txt.body', 'utf8');
+  for (const raw of ['<Cards', '<Card ', '</Card>', '<Callout', '</Callout>', '](/', '](#']) {
+    assert.ok(!full.includes(raw), raw);
+  }
+  assert.ok(full.includes('- [Live demo](https://demo.vendurepos.com/demo): '));
+  assert.match(full, /^> \*\*Try it first:\*\*/m);
+  assert.ok(full.includes(`URL: ${SITE_URL}/docs/quick-start`));
+
+  const page = readFileSync('.next/server/app/llms.mdx/docs/connect-a-till.body', 'utf8');
+  assert.equal(page.split('\n').filter((line) => line.trim())[1], `URL: ${SITE_URL}/docs/connect-a-till`);
+});
