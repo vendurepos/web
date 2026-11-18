@@ -92,9 +92,9 @@ If your till is set not to show the receipt after each sale, it shows "Sale comp
 
 {/* Pay out for a Dashboard refund: plugin-v0.3.0 (2d3699e, npm latest) packages/vendure-plugin/src/service/register.service.ts:267-279 (the register counts each order's tallyPayments, written once when the till creates the order: order-create.service.ts:910, config/custom-fields.ts:35 readonly), :251 ("refunds stay 0"); src/vendored/register-figures.ts:22-27 (expected cash = counted float + those payments + paid_in - paid_out, non-voided); src/vendored/register-payload-shape.ts:60 (paid_in, paid_out, no_sale). A Dashboard refund changes none of these. */}
 
-1. On plugin 0.3.0 the till cannot refund: someone with Vendure Dashboard access refunds the order there.
-   Vendure keeps the refund Pending until an administrator settles it with the Admin API's
-   [`settleRefund`](/docs/plugin-setup#settle-a-dashboard-refund) mutation.
+1. On plugin 0.3.0 the till cannot refund. Ask whoever manages your Vendure store to refund the order in the Vendure
+   Dashboard. The refund then shows as Pending until they settle it;
+   [Plugin setup](/docs/plugin-setup#settle-a-dashboard-refund) has the steps for them.
 2. If you hand back cash, record it on the till with **Pay out** (tap your name in the bar), the amount,
    and the order code as the reason. The register's expected cash counts the till's own payments,
    pay ins and pay outs, not Dashboard refunds, so without it the drawer count comes up short.
