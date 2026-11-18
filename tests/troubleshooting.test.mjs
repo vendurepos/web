@@ -87,3 +87,29 @@ test('troubleshooting says what to do at the counter before the sync log procedu
   assert.ok(item.includes('sales already made still send to the store'));
   assert.ok(!item.includes('keep selling'));
 });
+
+// Round 26, C4 (J4, J2): the refused till updates item mixed the counter, the owner and a stray note in one paragraph.
+test('troubleshooting gives the counter and the store owner their own paragraphs for refused till updates', () => {
+  const start = html.indexOf('till updates need attention');
+  const end = html.indexOf('register_session_already_open', start);
+  assert.ok(start >= 0 && end > start);
+  const item = html.slice(start, end);
+  for (const label of ['<strong>At the counter:</strong>', '<strong>For the store owner:</strong>']) {
+    const at = item.indexOf(label);
+    assert.ok(at >= 0, label);
+    assert.match(item.slice(0, at), /<p(\s[^>]*)?>\s*$/, `${label} starts its own paragraph`);
+  }
+  const text = item.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+  const counter = text.indexOf('At the counter:');
+  const clear = text.indexOf('Do not clear the site');
+  const owner = text.indexOf('For the store owner:');
+  assert.ok(counter >= 0 && clear > counter && owner > clear, `${counter} ${clear} ${owner}`);
+  const tailStart = html.indexOf('runs your Vendure server.', end);
+  const tailEnd = html.indexOf('till updates waiting to sync', tailStart);
+  assert.ok(tailStart >= 0 && tailEnd > tailStart);
+  // The list is loose, so the next item opens with <li><p>; nothing may sit before that <li.
+  const tail = html.slice(tailStart, tailEnd);
+  const nextItem = tail.lastIndexOf('<li');
+  assert.ok(nextItem >= 0, 'the next item follows');
+  assert.ok(!tail.slice(0, nextItem).includes('<p'), 'no paragraph after the Any other code text');
+});

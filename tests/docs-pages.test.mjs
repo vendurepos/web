@@ -268,8 +268,8 @@ test('troubleshooting says what still works after a refused till update', () => 
   const text = readFileSync(join('.next/server/app', 'docs/troubleshooting.html'), 'utf8')
     .replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
   const start = text.indexOf('Any other code');
-  const end = text.indexOf('Do not clear the site', start);
-  assert.ok(start >= 0 && end > start, 'the Any other code case precedes Do not clear the site');
+  const end = text.indexOf('till updates waiting to sync', start);
+  assert.ok(start >= 0 && end > start, 'the Any other code case precedes till updates waiting to sync');
   const anyOther = text.slice(start, end);
   for (const phrase of ['What still works', 'The Z report still prints', 'Closures', 'do not reach your Vendure store']) {
     assert.ok(anyOther.includes(phrase), phrase);
