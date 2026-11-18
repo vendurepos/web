@@ -118,7 +118,13 @@ const demoParity = [
   {
     // apps/pos/e2e/demo.spec.ts:779-781 (the first test asserts no request leaves the page's origin except DEMO_CAPTURE_URL); apps/pos/lib/demo/analytics.ts:3-16,24-36 (anonymous events to ph.wcpos.com on demo.vendurepos.com only, credentials: 'omit', no cookie or storage); apps/pos/e2e/offline.spec.ts; packages/vendure-plugin/test/replay.e2e.ts
     capability: 'Sales reach Vendure, once each, even offline',
-    demo: 'No: the demo store lives in your browser. All it sends is anonymous usage events to ph.wcpos.com, with no cookie',
+    demo: (
+      <>
+        No: the demo store lives in your browser. All it sends is{' '}
+        <Link href="/docs/connect-a-till#where-your-data-goes" className="underline">anonymous usage events</Link>{' '}
+        to ph.wcpos.com, with no cookie
+      </>
+    ),
     store: 'Yes',
   },
 ];

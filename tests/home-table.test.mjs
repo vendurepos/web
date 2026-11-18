@@ -17,3 +17,14 @@ test('home table has a till refund row whose store cell needs the release after 
   assert.ok(row, 'no row for Refund a sale at the till');
   assert.ok(row.includes('after 0.3.0'));
 });
+
+test('home table links "anonymous usage events" to where the data goes, words unchanged', () => {
+  const rows = html().match(/<tr[\s>][\s\S]*?<\/tr>/g) ?? [];
+  const row = rows.find((r) => r.includes('ph.wcpos.com'));
+  assert.ok(row, 'no row mentioning ph.wcpos.com');
+  const link = row.match(/<a\b[^>]*\shref="\/docs\/connect-a-till#where-your-data-goes"[^>]*>([\s\S]*?)<\/a>/);
+  assert.ok(link, 'no link to /docs/connect-a-till#where-your-data-goes');
+  assert.equal(link[1].replace(/<[^>]*>/g, ''), 'anonymous usage events');
+  const cell = row.match(/<td\b[^>]*>[\s\S]*?<\/td>/g)?.find((c) => c.includes('ph.wcpos.com'));
+  assert.ok(cell.replace(/<[^>]*>/g, '').includes('All it sends is anonymous usage events to ph.wcpos.com, with no cookie'));
+});
