@@ -1,0 +1,48 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero says what it is ('Point of sale for Vendure') but nowhere on home says who it is NOT for or how it sits against the obvious alternatives (Shopify POS, Square, Lightspeed, WCPOS/MedusaPOS siblings). The only maturity signal is the small 'Pre-release · plugin 0.3.0' pill; the footer line 'For Medusa, see MedusaPOS' is the only positioning.",
+      "where": "home.desktop.01 (hero), home footer"
+    },
+    "C2": {
+      "score": 7,
+      "worst_defect": "'MIT licensed' plus 'To build and host it yourself instead of using app.vendurepos.com, you need your own RxDB Premium licence token (RXDB_PREMIUM)': the site never says RxDB Premium is a paid commercial licence or what it costs, and never says who operates app.vendurepos.com (or ph.wcpos.com, where the demo sends usage events), on what terms, or whether it will stay free. A sceptic reads this as an open-source label on a till that in practice depends on one unnamed party's hosted origin.",
+      "where": "home.desktop.02 'Before you start'; home 'Live demo or your own store' table (ph.wcpos.com)"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The path makes you patch the plugin's own role ('On plugin 0.3.0 that role has no ReadOrder: add it yourself'), and step 5 carries a leftover collapsible 'If your store already allows vendurepos.vercel.app' that refers to an origin the reader has never been told about.",
+      "where": "quick-start step 4 and step 5 (CORS); connect-a-till text"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Version range contradicts itself: plugin setup says 'Use Vendure ^3.6.0' (excludes 4.x) while home and overview say 'Vendure 3.6 or later'; plugin setup also shows a bare `runMigrations(config);` with no import, and the changelog speaks internal jargon ('ADR 0005', 'order.create v5', '#116').",
+      "where": "plugin-setup.desktop.01 vs docs.phone.01 'Requirements'; changelog text"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "Home 'What it does today' is a uniform grid of ten near-identical text cards; the two strongest proof points (25 sales, 20 offline; 200 resends make one order) are buried in the same card style as minor features instead of being visually raised.",
+      "where": "home.desktop.02 'What it does today'"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found that blocks reading; the comparison table collapses to stacked rows and code wraps cleanly. Minor: long docs pages are very long scrolls with only the collapsed section dropdown for navigation.",
+      "where": "quick-start.phone.*, limitations.phone.01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Lighthouse mobile still flags 52 KiB unused JS, 14 KiB legacy JS and 120 ms render-blocking on / and /docs/quick-start (perf 98, LCP 2.4 s); otherwise llms.txt, llms-full.txt, sitemap, robots, OG image, JSON-LD and /api/search all answer correctly.",
+      "where": "tech.json lighthouse"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "'To build and host it yourself instead of using app.vendurepos.com, you need your own RxDB Premium licence token (RXDB_PREMIUM)' sits under an 'MIT licensed' footer with no word that RxDB Premium is paid, what it costs, who runs app.vendurepos.com and ph.wcpos.com, or on what terms. Add to that a live demo showing refund-at-till that no release has, with the last release on 2026-10-06 and no date for the next. A consultant would warn a client about vendor lock-in they cannot size.",
+    "where": "home.desktop.02 'Before you start'; changelog.desktop.01",
+    "fix": "Add one 'Who runs this and what it costs' line on home and in the overview: name the operator of app.vendurepos.com and ph.wcpos.com and their terms (free, uptime, how long), state that RxDB Premium is a paid licence with its price or a link, and add an 'Unreleased / next' entry in the changelog naming refund-at-till and a target date."
+  },
+  "mean": 8.1
+}
