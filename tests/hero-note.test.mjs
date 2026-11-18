@@ -64,3 +64,29 @@ test('hero lede links Vendure to vendure.io', () => {
   const lede = hero.slice(ledeStart, hero.indexOf('</p>', ledeStart)).replace(/<[^>]+>/g, '');
   assert.ok(ledeStart !== -1 && !lede.includes('('), lede);
 });
+
+test('hero is left-aligned with a smaller lead below 640px', () => {
+  // Round 32, J4 C1: seven centred lines of large grey type on a phone.
+  const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
+  const classes = (tag) => (tag.match(/\sclass="([^"]*)"/)?.[1] ?? '').split(/\s+/);
+  const h1 = html.indexOf('<h1');
+  assert.ok(h1 !== -1);
+  const sectionStart = html.lastIndexOf('<section', h1);
+  assert.ok(sectionStart !== -1);
+  const section = classes(html.slice(sectionStart, html.indexOf('>', sectionStart) + 1));
+  assert.ok(section.includes('text-left') && section.includes('sm:text-center'), section.join(' '));
+  assert.ok(!section.includes('text-center'), section.join(' '));
+  const ledeStart = html.indexOf('<p', html.indexOf('</h1>', h1));
+  assert.ok(ledeStart !== -1);
+  const lede = classes(html.slice(ledeStart, html.indexOf('>', ledeStart) + 1));
+  assert.ok(lede.includes('text-base') && lede.includes('sm:text-lg'), lede.join(' '));
+  assert.ok(!lede.includes('text-lg'), lede.join(' '));
+  const demo = html.indexOf('>Live demo</a>', ledeStart);
+  const quickStart = html.indexOf('>Quick start</a>', demo);
+  assert.ok(demo !== -1 && quickStart > demo);
+  const buttonsStart = html.lastIndexOf('<div', demo);
+  assert.ok(buttonsStart > ledeStart && html.indexOf('</div>', buttonsStart) > quickStart);
+  const buttons = classes(html.slice(buttonsStart, html.indexOf('>', buttonsStart) + 1));
+  assert.ok(buttons.includes('justify-start') && buttons.includes('sm:justify-center'), buttons.join(' '));
+  assert.ok(!buttons.includes('justify-center'), buttons.join(' '));
+});
