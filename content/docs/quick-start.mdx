@@ -220,23 +220,19 @@ Open `https://app.vendurepos.com`, then:
 
 ## 9. Troubleshoot
 
-- **CORS / cannot reach the store:** check the exact POS origin in
-  `CORS_ORIGINS`, the object-valued `apiOptions.cors`, and restart the server.
-  Use HTTPS for a remote store. The hosted HTTPS build does **not** use the
-  LAN `http:` rewrite: leave `VENDUREPOS_WEB_ALLOW_LAN_HTTP` unset. That option
-  adds `http:` to `connect-src` and `img-src` only for exports served over
-  plain HTTP on the same LAN; it cannot bypass HTTPS mixed-content blocking.
-- **401:** verify `'bearer'` in `tokenMethod`. For “Your session has ended.
-  Sign in again to keep selling.” or “The store refused this sign-in. Sign in
-  again below; orders are kept.”, sign in again. Check the credentials and
-  channel token if sign-in or settings reads still fail.
-- **Missing / old plugin:** “This store's VendurePOS plugin is missing or out
-  of date. Install or update it, then this till continues.” means the store
-  must advertise `order.create` v4 and register v1. Install/update the plugin,
-  apply its schema changes and restart Vendure; the till retries. For “Sales
-  aren't reaching the online store. Keep selling: they're saved on this till and will send by themselves.”,
-  check that `/tally/v1/info` and `/tally/v1/commands` reach the plugin through
-  the store's proxy. Keep queued orders while fixing the store.
+{/* Not part of the port; QUICKSTART step 9 reshaped into a symptom → fix list. Keep it when re-porting. */}
+
+- **The till cannot reach the store (CORS)**\
+  Check the exact POS origin in `CORS_ORIGINS`, the object-valued `apiOptions.cors`, and restart the server.
+  Use HTTPS for a remote store; for a LAN store over plain http, see [Troubleshooting](/docs/troubleshooting#fix-cors-401-or-plain-http-store-problems).
+- **HTTP 401**\
+  Verify `'bearer'` in `tokenMethod`.
+- **“Your session has ended. Sign in again to keep selling.”** or **“The store refused this sign-in. Sign in again below; orders are kept.”**\
+  Sign in again. Check the credentials and channel token if sign-in or settings reads still fail.
+- **“This store's VendurePOS plugin is missing or out of date. Install or update it, then this till continues.”**\
+  The store must advertise `order.create` v4 and register v1. Install/update the plugin, apply its schema changes and restart Vendure; the till retries.
+- **“Sales aren't reaching the online store. Keep selling: they're saved on this till and will send by themselves.”**\
+  Check that `/tally/v1/info` and `/tally/v1/commands` reach the plugin through the store's proxy. Keep queued orders while fixing the store.
 
 ## Optional: a device key for each till
 

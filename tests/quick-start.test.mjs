@@ -116,3 +116,26 @@ test("step 4 names the plugin 0.3.0 till permissions and ReadOrder; the device-k
   const end = html.indexOf('<h2', start + 3);
   assert.ok(html.slice(start, end < 0 ? undefined : end).includes('ReadOrder'));
 });
+
+test('step 9 is a symptom → fix list and leaves the LAN http aside to Troubleshooting', () => {
+  // Round 19, J4 C4: one bold symptom per item, each quoted till message kept verbatim.
+  const section = stepSection('Troubleshoot', 'Optional: a device key for each till');
+  const items = Array.from(section.matchAll(/<li\b[^>]*>((?:(?!<\/li>)[\s\S])*)<\/li>/g));
+  assert.equal(items.length, 5);
+  for (const [, inner] of items) assert.match(inner, /^\s*<strong>/);
+  const text = section.replaceAll('&#x27;', "'");
+  for (const message of [
+    '“Your session has ended. Sign in again to keep selling.”',
+    '“The store refused this sign-in. Sign in again below; orders are kept.”',
+    "“This store's VendurePOS plugin is missing or out of date. Install or update it, then this till continues.”",
+    "“Sales aren't reaching the online store. Keep selling: they're saved on this till and will send by themselves.”",
+  ]) {
+    assert.ok(text.includes(message), message);
+  }
+  assert.ok(!section.includes('VENDUREPOS_WEB_ALLOW_LAN_HTTP'));
+  assert.ok(section.includes('href="/docs/troubleshooting#fix-cors-401-or-plain-http-store-problems"'));
+  const troubleshooting = readFileSync('.next/server/app/docs/troubleshooting.html', 'utf8');
+  assert.ok(troubleshooting.includes('id="fix-cors-401-or-plain-http-store-problems"'));
+  assert.ok(troubleshooting.includes('VENDUREPOS_WEB_ALLOW_LAN_HTTP'));
+  assert.ok(troubleshooting.includes('mixed-content'));
+});
