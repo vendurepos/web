@@ -316,3 +316,13 @@ test('the intro gives one address for the till; step 5 keeps the vercel.app note
   assert.ok(note >= 0);
   assert.ok(step5.lastIndexOf('vendurepos.vercel.app', note) >= 0);
 });
+
+test('step 5 folds the vercel.app note into a closed callout after its explanation', () => {
+  // Round 32, J5 C3: a note a new installer cannot act on sat in step 5's main text.
+  const section = stepSection('Allow the POS origin through CORS', 'Choose tax rounding');
+  const { start, text } = closedBlock(section, 'If your store already allows vendurepos.vercel.app');
+  assert.ok(text.replace(/\s+/g, ' ').includes('keeps it for as long as anyone still opens the POS at that address'));
+  const before = textOf(section.slice(0, start)).replace(/\s+/g, ' ');
+  assert.ok(before.includes('Origins contain no path'));
+  assert.ok(!before.includes('keeps it for as long as anyone'));
+});

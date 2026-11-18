@@ -145,11 +145,14 @@ cors: {
 },
 ```
 
-A store that already allows `https://vendurepos.vercel.app` keeps it for as
-long as anyone still opens the POS at that address.
-
 Use an object, so Vendure exposes `vendure-auth-token` for bearer sign-in.
 Origins contain no path; `localhost` and `127.0.0.1` are different origins.
+
+{/* Layout only: the note for stores that already allow the older address folds into a closed callout; same words (round 32, J5 C3). Keep when re-porting. */}
+<Callout title="If your store already allows vendurepos.vercel.app" fold>
+A store that already allows `https://vendurepos.vercel.app` keeps it for as
+long as anyone still opens the POS at that address.
+</Callout>
 
 ## 6. Choose tax rounding for your pricing mode
 
