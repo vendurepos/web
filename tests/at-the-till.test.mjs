@@ -51,6 +51,20 @@ test('at the till shows the payment and cashier screens in their sections', () =
   }
 });
 
+test('at the till payment and cashier figures have captions and their real image sizes', () => {
+  // Round 15, C5: the wide <img> carries the PNG's own pixel size (IHDR width and height), not a fixed 2880x1800.
+  for (const [id, name] of [['take-payment', 'payment'], ['check-the-register-during-the-day', 'cashier']]) {
+    const start = html.indexOf(`id="${id}"`);
+    const figure = html.slice(html.indexOf('<figure', start), html.indexOf('</figure>', start));
+    assert.match(figure, /<figcaption[^>]*>The (payment screen|cashier sheet) on the live demo till\.<\/figcaption>/, name);
+    for (const scheme of ['light', 'dark']) {
+      const png = readFileSync(`public/till/${name}-${scheme}.png`);
+      const img = figure.match(new RegExp(`<img[^>]*%2Ftill%2F${name}-${scheme}\\.png[^>]*>`))?.[0] ?? '';
+      assert.ok(img.includes(`width="${png.readUInt32BE(16)}"`) && img.includes(`height="${png.readUInt32BE(20)}"`), `${name}-${scheme}`);
+    }
+  }
+});
+
 test('at the till screenshots are each at most 400 KB', () => {
   for (const file of ['payment-light', 'payment-dark', 'cashier-light', 'cashier-dark', 'payment-phone-light', 'payment-phone-dark', 'cashier-phone-light', 'cashier-phone-dark']) {
     assert.ok(statSync(`public/till/${file}.png`).size <= 400 * 1024, file);
