@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero gives four equal-weight buttons ('Live demo', 'Quick start', 'Try with your store', 'GitHub'); 'Quick start' and 'Try with your store' look like the same thing to a shop owner, and the line under them ('Your own store needs the plugin on your Vendure server first') is the only clue to which comes first.", "where": "home.desktop.01 hero buttons; home.phone.01 (buttons wrap to two rows)"},
+    "C2": {"score": 7, "worst_defect": "Nowhere does the site say which devices or browsers the till is meant to run on (iPad Safari? an Android tablet? a Windows PC with Chrome?). It also never warns that offline sales not yet sent exist only in that one browser's storage ('kept in SQLite databases inside this browser'), so a cleared browser or a dead tablet could lose them.", "where": "text/limitations.txt (only 'Web till only for now' and the private-window line); text/connect-a-till.txt 'Stored in this browser'"},
+    "C3": {"score": 7, "worst_defect": "Barcode scanning depends on 'an existing single text ProductVariant custom field, such as barcode', but neither the quick start nor Connect a till says how to create that field if the store has none. A shop with a scanner is left guessing, or the field is left blank and scanning by barcode is switched off.", "where": "quick-start.desktop.03 step 8c; text/connect-a-till.txt 'Enter your store details'"},
+    "C4": {"score": 8, "worst_defect": "'Refund a sale' on At the till opens by saying it needs an unreleased plugin, then gives a full walkthrough (Refund items, Reason, Send again, TallyPosRefund) that no real store on 0.3.0 can follow. Meanwhile the Dashboard refund that does work today is covered in one sentence ('stays Pending until someone settles it by hand') with no steps.", "where": "at-the-till.desktop.02-03, 'Refund a sale'"},
+    "C5": {"score": 8, "worst_defect": "On every desktop docs page the grey left sidebar panel stops dead at about 900px, leaving a hard horizontal edge with page background below it. The Overview page also highlights both 'Docs' and 'Overview' in the sidebar at once.", "where": "quick-start.desktop.01, limitations.desktop.01, docs.desktop.01 (left column at y≈900)"},
+    "C6": {"score": 8, "worst_defect": "Long inline code chips break mid-token on the phone, e.g. 'packages/vendure-' / 'plugin/CHANGELOG.md' and 'lineTax: { none:' / 'true, …'. In the home till screenshot the 'Add charge' button is cut off under 'Order discount'.", "where": "changelog.phone.01; home.phone.02 top"},
+    "C7": {"score": 9, "worst_defect": "The SoftwareApplication JSON-LD has no softwareVersion or offers (price 0), even though the hero badge says 'plugin 0.3.0' and the product is free. Otherwise it is all solid: Lighthouse 98/100/100/100, llms.txt, search, sitemap and a real 404.", "where": "tech.json pages.home.desktop.jsonLd"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A shop owner deciding whether staff can sell tomorrow cannot find out what to run the till on (which tablets, computers and browsers are supported or tested). They also aren't warned that unsent offline sales live only in that browser, so clearing site data, using a different browser or losing the device before sync loses those sales.",
+    "where": "text/limitations.txt; text/connect-a-till.txt 'Where your data goes'; home 'Before you start'",
+    "fix": "Add one line to Before you start and Limitations naming the tested browsers and devices (for example 'Tested on Chrome on Windows/Android and Safari on iPad'). Add a bullet to Limitations: 'Sales not yet sent live only in this browser: don't clear site data or switch browsers until the header shows nothing waiting to send.'"
+  },
+  "mean": 7.9
+}

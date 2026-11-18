@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero carries four CTAs (Live demo, Quick start, Try with your store, GitHub) where three outlined secondaries have identical weight, so 'Quick start' and 'Try with your store' compete for the second click; the caption under them has to explain that the store button needs the plugin first.", "where": "home/desktop/01 hero button row; home/phone/01"},
+    "C2": {"score": 9, "worst_defect": "The payment-screen screenshot on At the till shows a cart line named 'Tally Fixture Mug', a test-fixture product name, in an image captioned 'The payment screen on the live demo till.'", "where": "at-the-till/desktop/02 screenshot, first cart line"},
+    "C3": {"score": 8, "worst_defect": "Step 8, the point where the till takes its first real sale, has no image of success: item h ('check Vendure for the POS prices, settled tally-pos payment, delivered fulfilment, stock reduction and tallySaleAt') is repeated straight away as the five-bullet 'Check it worked' list, and neither shows the synced order in the Vendure Dashboard.", "where": "quick-start/desktop/03 step 8; quick-start/phone/07-08"},
+    "C4": {"score": 8, "worst_defect": "On the Overview page, the 'Next steps' card row ends in a 'Quick start' card, and directly under it sits a full-width next-page card that also says 'Quick start'. The same target appears twice in 60 px, and the lone pager card is right-aligned in an otherwise empty full-width box.", "where": "docs/desktop/01 bottom"},
+    "C5": {"score": 8, "worst_defect": "The docs sidebar shows two active pills at once on the Overview page, 'Docs' and 'Overview' both highlighted grey. Separately, the At the till payment screenshot's right-hand cart column is roughly 420 px of empty white between the three lines and the subtotal, so the image looks half-blank.", "where": "docs/desktop/01 sidebar; at-the-till/desktop/02 screenshot"},
+    "C6": {"score": 8, "worst_defect": "At 390 px the hero buttons wrap 2+2 with mismatched widths ('Live demo' and 'Quick start' on one row, the wider 'Try with your store' and 'GitHub' below), giving a ragged, centred block. Inline code chips also break mid-token, e.g. 'packages/vendure-' / 'plugin/CHANGELOG.md' split across two lines on the changelog.", "where": "home/phone/01 CTA rows; changelog/phone/01 first paragraph"},
+    "C7": {"score": 9, "worst_defect": "The docs search API returns raw markdown in its snippets (the Overview hit contains literal backticks around `/tally/v1/commands`, `tally-pos`, `tally-in-store`), and every hit's breadcrumbs is just [\"VendurePOS\"] with no page section.", "where": "text/endpoint_api_search_query_offline.txt, id /docs-5"}
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "The quick start's payoff step never shows what success looks like. Step 8 is a nine-item lettered list a–i whose item h is then repeated as the 'Check it worked' bullets, with no screenshot of the synced order in the Vendure Dashboard. On a 9,947 px phone page made of prose and code, the one moment a developer needs visual confirmation is plain text, and it is stated twice.",
+    "where": "quick-start/desktop/03 step 8; quick-start/phone/07-08",
+    "fix": "Drop item h from the a–i list and put one captioned screenshot of the synced POS order in the Vendure Dashboard under 'Check it worked' (prices, tally-pos settled, fulfilment delivered, tallySaleAt visible), keeping the five checks as its caption."
+  },
+  "mean": 8.3
+}

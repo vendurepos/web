@@ -1,0 +1,48 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero gives four equal-weight buttons (Live demo, Quick start, Try with your store, GitHub). 'Try with your store' opens app.vendurepos.com, which cannot work until the plugin is installed, so a visitor who clicks it before reading the small caveat line lands on a sign-in screen that will fail.",
+      "where": "home.desktop.01 hero buttons and the line 'Your own store needs the plugin on your Vendure server first'"
+    },
+    "C2": {
+      "score": 6,
+      "worst_defect": "The home page sells an 'open-source till' that is 'MIT licensed', but only Limitations and Connect a till say that building the till yourself 'needs your own RxDB Premium licence token in RXDB_PREMIUM', a paid proprietary dependency. Nothing says who runs app.vendurepos.com, whether it is free, or whether it will stay up. Alongside this, three features (till refunds, customer note, ReadOrder in the till role) wait on 'the plugin release after 0.3.0, which is not out yet' with no date, and the newest changelog entry is 2026-10-06, six weeks before capture. A sceptic reads that as either a stalled project or a hosted lock-in.",
+      "where": "home.desktop.02 footer 'MIT licensed'; limitations.desktop.01 bullet 3; connect-a-till.desktop.01 'Building it yourself needs your own RxDB Premium licence token'; changelog.desktop.01 '0.3.0 (2026-10-06)'"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Quick start step 4 says the signing-in administrator needs to read the catalogue and settings and have TallyPosSell or CreateOrder. Connect a till says the till's order list also needs ReadOrder, which the POS role lacks on 0.3.0. A developer who follows the quick start with a least-privilege admin may not be able to see the synced order that the 'Check it worked' step depends on.",
+      "where": "quick-start.desktop.02 step 4 vs connect-a-till.txt 'The till's order list needs ReadOrder, which that role gains only in the plugin release after 0.3.0'"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "The changelog is the raw internal CHANGELOG ('advertises order.create 1–5 (ADR 0005)', 'maxShippingLines: 1 and lineTax: { none: true, classes: true }', 'Migration TallyPosV51790900000000'). It references ADRs and issue numbers the reader cannot see, and has no plain-language line saying what each release lets a store do. The data-storage wording is also unclear: Connect a till says data is 'kept in SQLite databases inside this browser' while Limitations names RxDB Premium, and no page explains how the two relate.",
+      "where": "changelog.desktop.01 0.3.0 bullets; connect-a-till.desktop.01 'Stored in this browser' vs limitations.desktop.01"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The home hero screenshot is cut off through a half-visible fourth row of product tiles and the cart's 'Guest · 3 items' tab bar, so it reads as an accidental crop. It also contradicts itself: the phone version's tab says 'Cart (4) · €59.59' while the bar says '3 items'.",
+      "where": "home.desktop.01 bottom edge of the till screenshot; home.phone.01-02 'Cart (4)' vs 'Guest · 3 items'"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "On a phone the quick start is about 9,950 px of scrolling (nine slices) with nothing collapsible. The optional material (the 'Other ways to run the migration' callout, the long 'How POS sales take stock' paragraph, and the VENDUREPOS_WEB_ALLOW_LAN_HTTP troubleshooting) sits in the main path, so finding step 8 on a phone is a long scroll that relies on the 'On this page' dropdown.",
+      "where": "quick-start.phone.01-09 (tech.json quick-start.phone height 9947)"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The SoftwareApplication JSON-LD has no softwareVersion or pre-release signal, and the og-image card ('Point of sale for Vendure / Sell from the browser, keep selling offline…') says neither 'open source' nor 'pre-release'. A shared link therefore looks like a finished commercial product.",
+      "where": "tech.json home.desktop jsonLd; og-image.png"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The site leads with 'open-source till' and 'MIT licensed', but the till can only be self-built with a paid RxDB Premium licence. Nothing says who operates the hosted app.vendurepos.com or on what terms. Several promised features wait on an undated 'plugin release after 0.3.0, which is not out yet', and the last release was six weeks before capture. A consultant would warn a client that the open-source promise has a catch and that the project's momentum is unproven.",
+    "where": "home.desktop.02 footer and 'Before you start'; limitations.desktop.01 bullet 3; changelog.desktop.01",
+    "fix": "Add one line to the home page 'Before you start': 'The hosted till at app.vendurepos.com is free to use (run by …); self-building the till needs a paid RxDB Premium licence', linked to Limitations. Also give the next plugin release a target date or a link to its tracking issue wherever 'the release after 0.3.0' is mentioned."
+  },
+  "mean": 7.7
+}
