@@ -1,0 +1,48 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero says 'Point of sale for Vendure' and 'signs in to your own Vendure store' but never says what Vendure is or links to it (only the docs Overview links vendure.io), and the first feature cards then lean on jargon a newcomer can't parse: 'idempotency ledger', 'Keyboard-wedge scanners', 'counted float', 'Z report'.",
+      "where": "home.desktop.01 hero paragraph and 'What it does today' cards; home.phone.01-02"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The home comparison table says the demo sends 'anonymous usage events to ph.wcpos.com', a different brand's domain with no explanation on the home page (only Connect a till explains it is a self-hosted PostHog), which makes a newcomer wonder who else is involved; refunds and customer notes are also promised for 'the plugin release after 0.3.0' with no date while the changelog's latest release is 2026-10-06.",
+      "where": "home.desktop.02 table row 'Sales reach Vendure, once each, even offline'; changelog.desktop.01"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 3 of the quick start offers three migration routes in one paragraph (npx tsx src/generate-migration.ts, 'Vendure's CLI alternative is npx vendure migrate', and 'the plugin's bundled migrations ... the README describes that alternative') and the code identifiers (TallyPosPlugin, /tally/v1, tally-pos) never get a one-line explanation of why a VendurePOS plugin is named Tally.",
+      "where": "quick-start.desktop.01 steps 2-3; quick-start.phone.02-03"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "'Where your data goes' on Connect a till is a single 15-line paragraph mixing localStorage, SQLite-in-browser, demo event names and CSP rules, and its 'SQLite databases inside this browser' reads as a contradiction of 'MySQL, MariaDB and SQLite are not supported' elsewhere; the changelog is written for maintainers ('ADR 0005', '#116', 'order.create v5').",
+      "where": "connect-a-till.desktop.01 'Where your data goes'; changelog.desktop.01"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "On every desktop docs page the grey sidebar panel stops at about 900 px and the rest of the left column is bare page background, which looks unfinished next to a long article; on the home hero the four buttons ('Live demo', 'Quick start', 'Try with your store', 'GitHub') compete with almost equal weight.",
+      "where": "quick-start.desktop.01, docs.desktop.01, limitations.desktop.01 left column below y≈900; home.desktop.01 hero buttons"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The hero product screenshot shrinks to a 340 px-wide image whose labels and prices are unreadable, and every docs page's sticky 'On this page' bar starts with a grey ring that looks like a loading spinner.",
+      "where": "home.phone.01 screenshot; quick-start.phone.01, docs.phone.01, plugin-setup.phone.01 TOC bar"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The 404 page reuses the home meta description ('Open-source point of sale for Vendure. Sell from the browser...') instead of its own, and the share card's logo is a hollow circle above text that just repeats the title.",
+      "where": "tech.json pages.not-found.desktop.description; og-image.png"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "A visitor who only half knows Vendure is never told what it is on the home page: the hero assumes it, nothing links to it, and the first feature cards switch to developer jargon ('idempotency ledger', 'Keyboard-wedge'), so within a minute the reader can't tell if this is for them.",
+    "where": "home.desktop.01 / home.phone.01 hero paragraph and first two feature cards",
+    "fix": "Make the hero sentence say 'for Vendure, the open-source TypeScript commerce platform' with Vendure linked to vendure.io, and rewrite 'idempotency ledger' and 'Keyboard-wedge scanners' in plain words (e.g. 'a resent sale is recognised and never duplicated', 'USB barcode scanners')."
+  },
+  "mean": 8.1
+}

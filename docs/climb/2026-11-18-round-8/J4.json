@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero has four buttons where three ('Quick start', 'Try with your store', 'GitHub') share the same outlined style and weight, so the second step reads as a three-way tie; at 390 px they wrap into a ragged, centred 2+2 block of mismatched widths ('Live demo | Quick start' over 'Try with your store | GitHub').", "where": "home.desktop.01 hero button row; home.phone.01"},
+    "C2": {"score": 8, "worst_defect": "The demo row of the comparison table says 'All it sends is anonymous usage events to ph.wcpos.com', a domain from another brand that appears nowhere else on the home page and is not explained there, so a privacy note ends up raising a question.", "where": "home.desktop.02 table row 'Sales reach Vendure, once each, even offline'"},
+    "C3": {"score": 7, "worst_defect": "Step 3 packs two alternative migration routes (a tsx script, or 'npx vendure migrate' for @vendure/create projects) plus a warning about bundled migrations into one prose paragraph of inline code chips between two code blocks, so the step that most often breaks has no clear single path.", "where": "quick-start.desktop.01 step 3 paragraph 'Run it with npx tsx src/generate-migration.ts ...'; quick-start.phone.02-03"},
+    "C4": {"score": 7, "worst_defect": "The docs are unbroken prose: 'Where your data goes' on Connect a till is one 14-line paragraph on desktop (about 30 lines on a phone), and At the till spends 5,119 px describing till UI ('Tap a line's quantity to open its keypad...') without a single screenshot.", "where": "connect-a-till.desktop.01 'Where your data goes'; at-the-till.desktop.01"},
+    "C5": {"score": 7, "worst_defect": "'What it does today' is a wall of ten identical grey cards (5 rows x 2) with no icons, grouping or emphasis, and only the first two carry links. In the comparison table below, the 'Live demo' column is about 420 px wide for mostly 'Yes' while the first column is squeezed so 'Sell for cash and print the receipt' and 'Attach a customer to the sale' wrap to two lines.", "where": "home.desktop.01-02 feature grid and 'Live demo or your own store' table"},
+    "C6": {"score": 7, "worst_defect": "Code blocks soft-wrap mid-token at 390 px: \"'./vendure-\" / \"config';\" splits inside a string literal and 'new' / 'DefaultTaxLineCalculationStrategy()' splits across lines, so the copied-looking code reads wrong. The hero screenshot is also scaled so small that its product names and prices cannot be read.", "where": "quick-start.phone.02-03 and quick-start.phone.05 code blocks; home.phone.01 hero screenshot"},
+    "C7": {"score": 8, "worst_defect": "llms-full.txt flattens headings into body lines with the router anchor leaking in ('Open the register [#open-the-register]', no '##'), and the 404 page reuses the home page's meta description.", "where": "text/endpoint_llms_full_txt.txt; tech.json not-found.desktop description"}
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "The docs never show the product they describe. At the till, Connect a till and Troubleshooting are long walls of prose that name UI ('Order details', 'Hand over', 'Parked (n)', header notices) without one screenshot, and 'Where your data goes' is a single 14-line paragraph. The site looks careful but reads as a spec, especially at 390 px.",
+    "where": "at-the-till.desktop.01 / phone.01-07; connect-a-till.desktop.01 'Where your data goes'",
+    "fix": "Add one annotated till screenshot each to At the till (cart and keypad, payment pane) and Troubleshooting (header sync notice). Split 'Where your data goes' into a short list: what is stored, what is sent where, and what sign-out deletes."
+  },
+  "mean": 7.4
+}
