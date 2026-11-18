@@ -225,15 +225,17 @@ Open `https://app.vendurepos.com`, then:
 6. Choose cash, or record a payment already taken on your external card
    terminal, and complete the tender. For cash, enter the amount received.
 7. Check the receipt and change; print the receipt through the browser if needed.
-8. Once the order has synced, check it in Vendure: see **Check it worked** below.
+8. Once the order has synced, check it in Vendure: see [Check it worked](#check-it-worked) below.
 9. To try offline sales, sync first, disconnect while the POS stays open,
    sell, then reconnect and let orders drain.
 
 </div>
 
-{/* Not part of the port; the checklist item h above points to (upstream item 8 named these checks inline). Keep it when re-porting. */}
+{/* Not part of the port; the checklist item h above points to (upstream item 8 named these checks inline). Keep it when re-porting. Round 26: a heading so it is in the table of contents. */}
 
-**Check it worked.** Once the till shows the order as synced, open the order in the Vendure Dashboard:
+### Check it worked
+
+Once the till shows the order as synced, open the order in the Vendure Dashboard:
 
 - the line prices are the ones the till charged;
 - the payment is `tally-pos`, settled;
