@@ -111,6 +111,15 @@ test('connect a till says where your data goes', () => {
   assert.doesNotMatch(section.replace(/<[^>]+>/g, ' '), /\b(secure|safe|private|trusted)\b/i);
 });
 
+test('limitations says a self-build needs an RxDB Premium licence token, with no price or plan', () => {
+  const html = readFileSync(join('.next/server/app', 'docs/limitations.html'), 'utf8');
+  const strip = (s) => s.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ');
+  assert.ok(strip(html).includes('Building the till yourself needs your own RxDB Premium licence token in RXDB_PREMIUM'));
+  const li = html.match(/<li[^>]*>(?:(?!<\/li>)[\s\S])*?RxDB Premium(?:(?!<\/li>)[\s\S])*<\/li>/);
+  assert.ok(li);
+  assert.doesNotMatch(strip(li[0]), /[$€]|\bprice\b|\bpricing\b|\bplan\b/i);
+});
+
 test('connect a till names the demo events and where they go', () => {
   const html = readFileSync(join('.next/server/app', 'docs/connect-a-till.html'), 'utf8');
   const start = html.indexOf('id="where-your-data-goes"');
