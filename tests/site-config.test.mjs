@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { SITE_DESCRIPTION } from '../lib/site.ts';
 
 test('every route sends the security headers', () => {
   const manifest = JSON.parse(readFileSync(join('.next', 'routes-manifest.json'), 'utf8'));
@@ -31,4 +32,10 @@ test('docs pages carry og:url, og:site_name and og:type', () => {
   const image = html.match(/<meta property="og:image" content="([^"]+)"\s*\/?>/);
   assert.ok(image);
   assert.match(image[1], /^https:\/\/vendurepos\.com\/og\/docs\/quick-start\//);
+});
+
+test('the 404 page has its own description, not the home one', () => {
+  const html = readFileSync(join('.next/server/app', '_not-found.html'), 'utf8');
+  assert.ok(html.includes('<meta name="description" content="There is no page at this address."'));
+  assert.ok(!html.includes(SITE_DESCRIPTION));
 });
