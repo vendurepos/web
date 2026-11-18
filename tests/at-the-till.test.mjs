@@ -283,3 +283,32 @@ test('at the till narrow shots sit centred on a column-wide panel; the closure h
   const sale = (home.match(/<figure[\s\S]*?<\/figure>/g) ?? []).find((f) => f.includes('%2Ftill%2Fsale-light.png'));
   assert.ok(sale && !sale.includes('sm:bg-fd-muted'), 'home sale has no panel');
 });
+
+// Round 35, J2 C4/C6: the offline section was one paragraph with its warning buried mid-way.
+test('at the till sets the offline warning apart and lists what still needs the connection', () => {
+  const frame = 'rounded-xl border bg-fd-card';
+  const start = html.indexOf('id="if-the-internet-drops"');
+  const end = html.indexOf('id="count-the-drawer-and-close-the-day"', start);
+  assert.ok(start >= 0 && end > start);
+  const section = html.slice(start, end).replace(/\s+/g, ' ');
+  const lists = section.match(/<ul/g) ?? [];
+  assert.equal(lists.length, 1, 'one list');
+  const ul = section.indexOf('<ul');
+  const listText = section.slice(ul, section.indexOf('</ul>', ul)).replace(/<[^>]+>/g, '');
+  for (const words of ['Customer search', 'orders waiting to send']) assert.ok(listText.includes(words), words);
+  const keepTill = section.indexOf('Keep the till');
+  const frameStart = section.lastIndexOf(frame, keepTill);
+  assert.ok(keepTill >= 0 && frameStart >= 0, 'callout frame before Keep the till');
+  // The warn variant: the style the quick-start warn callout carries and its plain "Try it first" callout lacks.
+  const quickStart = readFileSync('.next/server/app/docs/quick-start.html', 'utf8');
+  const styleOf = (page, text) => {
+    const at = page.lastIndexOf(frame, page.indexOf(text));
+    return page.slice(at, page.indexOf('>', at)).match(/style="([^"]*)"/)?.[1] ?? '';
+  };
+  const warn = styleOf(quickStart, 'Before a sale on a live store');
+  assert.match(warn, /warning/, 'quick-start warn callout names a warning colour');
+  assert.ok(!styleOf(quickStart, 'Try it first').includes(warn), 'a plain callout does not carry it');
+  assert.ok(styleOf(section, 'Keep the till') === warn, 'offline callout is the warn variant');
+  const reload = section.indexOf('needs the connection to load the till again');
+  assert.ok(frameStart < reload && reload < ul, 'reload sentence inside the callout, before the list');
+});

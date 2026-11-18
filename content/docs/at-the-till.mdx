@@ -136,15 +136,21 @@ Choose **Pay in** or **Pay out** to record cash in or out, with an amount and a 
 
 {/* Sources: content/docs/troubleshooting.mdx:9-11 (sells offline; sent once, never twice), :15 (header line), :73-74 (customer search and adding a customer need a connection); content/docs/limitations.mdx:44-45 (unsent sales are kept only in this browser and lost if site data is cleared or the device is lost); ~/Projects/vendurepos ebcd9e4 (no service worker; apps/pos/vercel.json caches only /_expo/static), so a reload needs the connection. */}
 
-Once the catalogue has synced, the till keeps selling offline, with the network off,
-except customer search and adding a customer, which need a connection to the store.
+Once the catalogue has synced, the till keeps selling offline, with the network off.
 Each sale waits on the till until the store is reachable, then lands in Vendure once, never twice.
-Keep the till's tab open while the connection is down: the app keeps no offline copy of its own page, so a reload,
-or closing and reopening the browser, needs the connection to load the till again.
-The header shows `N orders waiting to send`, with ` · sending…` while sending.
-Until they send, those sales are kept only in this browser. If this site's data is cleared, or the device is lost,
-while the header still shows **N orders waiting to send**, they are lost ([Limitations](/docs/limitations)).
-[Troubleshooting](/docs/troubleshooting#check-whether-a-sale-has-reached-the-store) covers the other sync notices.
+
+<Callout type="warn" title="Keep the till's tab open while the connection is down">
+The app keeps no offline copy of its own page, so a reload, or closing and reopening the browser, needs the connection
+to load the till again. Until they send, those sales are kept only in this browser: if this site's data is cleared, or
+the device is lost, while the header still shows **N orders waiting to send**, they are lost
+([Limitations](/docs/limitations)).
+</Callout>
+
+While the connection is down:
+
+- Customer search and adding a customer need a connection to the store.
+- The header shows `N orders waiting to send`, with ` · sending…` while sending.
+- [Troubleshooting](/docs/troubleshooting#check-whether-a-sale-has-reached-the-store) covers the other sync notices.
 
 ## Count the drawer and close the day
 
