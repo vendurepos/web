@@ -275,3 +275,28 @@ test('troubleshooting says what still works after a refused till update', () => 
     assert.ok(anyOther.includes(phrase), phrase);
   }
 });
+
+test('changelog ADR and pull request references are links to vendurepos/app', () => {
+  // Round 24, J5 C4 / J4 C2: ADR 0005 at plugin-v0.3.0, ADR 0004 at plugin-v0.2.0; #116 and #117 are vendurepos/app PRs.
+  const html = readFileSync(join('.next/server/app', 'docs/changelog.html'), 'utf8');
+  const start = html.indexOf('<strong>In short:</strong>');
+  const end = html.indexOf('the first release', start);
+  assert.ok(start >= 0 && end > start, 'the 0.3.0 and 0.2.0 sections');
+  const section = html.slice(start, end);
+  const strip = (s) => s.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+  const links = Array.from(section.matchAll(/<a\s[^>]*href="([^"]*)"[^>]*>([\s\S]*?)<\/a>/g), ([, href, body]) => [strip(body), href]);
+  const expected = {
+    'ADR 0005': ['https://github.com/vendurepos/app/blob/plugin-v0.3.0/docs/adr/0005-order-create-v5.md', 4],
+    'ADR 0004': ['https://github.com/vendurepos/app/blob/plugin-v0.2.0/docs/adr/0004-device-credentials.md', 3],
+    '#116': ['https://github.com/vendurepos/app/pull/116', 1],
+    '#117': ['https://github.com/vendurepos/app/pull/117', 1],
+  };
+  for (const [label, [href, count]] of Object.entries(expected)) {
+    const found = links.filter(([text]) => text === label);
+    assert.equal(found.length, count, label);
+    for (const [, h] of found) assert.equal(h, href, label);
+    assert.ok(strip(section).includes(`(${label})`), `(${label}) keeps its parentheses`);
+  }
+  const outside = strip(section.replace(/<a\s[^>]*>[\s\S]*?<\/a>/g, ''));
+  assert.doesNotMatch(outside, /ADR 000|#11\d/);
+});
