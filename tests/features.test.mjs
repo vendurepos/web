@@ -187,3 +187,21 @@ test('limitations still states the counter facts the home page repeats', () => {
     assert.ok(article.includes(phrase), phrase);
   }
 });
+
+test('home offline card says the till tab must stay open', () => {
+  // Round 29, C2 (J2): the home offline card did not say the tab must stay open.
+  // Visible HTML only: drop <head> and every <script> (the RSC payload repeats the text).
+  const raw = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
+  const html = raw
+    .slice(raw.indexOf('</head>'))
+    .replace(/<script[\s\S]*?<\/script>/g, '')
+    .replace(/&#x27;|&#39;|&apos;/g, "'")
+    .replaceAll('<!-- -->', '');
+  const phrase = "With the till's tab left open, sales made with the network off";
+  assert.equal(html.split(phrase).length - 1, 1);
+  const at = html.indexOf(phrase);
+  const title = html.indexOf('Keeps selling offline');
+  const link = html.indexOf('Read the acceptance test');
+  assert.ok(title >= 0 && title < at, 'after the title');
+  assert.ok(link > at, 'before the test link');
+});
