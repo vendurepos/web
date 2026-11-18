@@ -300,3 +300,14 @@ test('changelog ADR and pull request references are links to vendurepos/app', ()
   const outside = strip(section.replace(/<a\s[^>]*>[\s\S]*?<\/a>/g, ''));
   assert.doesNotMatch(outside, /ADR 000|#11\d/);
 });
+
+test('connect a till says the browser SQLite is the till\'s own storage, not the server database', () => {
+  // Round 29, C4 (J1): browser SQLite read as a contradiction of "SQLite are not supported".
+  const html = readFileSync(join('.next/server/app', 'docs/connect-a-till.html'), 'utf8');
+  const items = html.match(/<li[^>]*>(?:(?!<\/li>)[\s\S])*<\/li>/g) ?? [];
+  const text = (li) => li.replace(/<[^>]+>/g, '').replace(/&#x27;|&#39;|&apos;/g, "'").replace(/\s+/g, ' ');
+  const storage = items.map(text).find((li) => li.includes('kept in SQLite databases inside this browser'));
+  assert.ok(storage, 'the browser storage item');
+  assert.ok(storage.includes("This is the till's own storage"), "the till's own storage");
+  assert.ok(storage.includes('must be Postgres'), 'must be Postgres');
+});
