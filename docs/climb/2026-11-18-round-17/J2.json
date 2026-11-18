@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "'Try with your store' is a peer hero button next to 'Live demo', but on a store without the plugin it leads nowhere useful; the only warning is a small grey line under the buttons ('Your own store needs the plugin on your Vendure server first'), and nothing tells a non-developer owner to hand the quick start to their developer.", "where": "home/desktop/01 hero buttons; home/phone/01"},
+    "C2": {"score": 8, "worst_defect": "Refunds and the customer note at the till depend on 'a plugin release after 0.3.0, which is not out yet', repeated on home, At the till, Connect a till and Limitations, with no date or version number, so an owner cannot tell whether refunds at the till are weeks or months away.", "where": "home/desktop/02 comparison table 'Refund a sale at the till'; at-the-till.txt 'Refund a sale' and 'Order details'; limitations.txt"},
+    "C3": {"score": 8, "worst_defect": "Quick start step 8a signs the till in with 'your administrator email and password' and never links to 'Give each cashier their own account' (Connect a till), so the obvious path ends with staff sharing the owner's admin login; the cashier role also lacks ReadOrder until the next plugin release.", "where": "quick-start/desktop/03 step 8a; connect-a-till.txt 'Give each cashier their own account'"},
+    "C4": {"score": 7, "worst_defect": "On a real store (plugin 0.3.0) the only refund route is 'refund in the Vendure Dashboard. A refund made there on a POS order stays Pending until someone settles it by hand', and no page says how to settle it or what the cashier does with the cash meanwhile.", "where": "at-the-till/desktop/02 'Refund a sale'; limitations.txt"},
+    "C5": {"score": 8, "worst_defect": "The hero screenshot is cut off at the bottom through a fourth row of product tiles and the 'Guest · 3 items' bar, so the main picture ends on half-tiles; 'Count the drawer and close the day' has no picture of the count screen or the Z report, though payment and the cashier sheet have one.", "where": "home/desktop/01 hero image bottom edge; at-the-till/desktop/03"},
+    "C6": {"score": 8, "worst_defect": "The quick start's first paragraph on a phone breaks into code pills on separate lines ('https://app.vendurepos.com.' then 'https://vendurepos.vercel.app serves the same build'), so the two URLs read as one run-on sentence; At the till runs to eight phone screens, with closing the day at the very bottom.", "where": "quick-start/phone/01; at-the-till/phone/01-08"},
+    "C7": {"score": 9, "worst_defect": "Mobile Lighthouse is 98 but LCP is 2.4 s on both / and /docs/quick-start, with 52 KiB of unused JavaScript and 140 ms of render-blocking requests on the home page; docs pages carry only BreadcrumbList JSON-LD.", "where": "tech.json lighthouse; tech.json pages.*.jsonLd"}
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "A customer brings something back tomorrow and my till cannot refund it on plugin 0.3.0; the docs only say to refund in the Vendure Dashboard where it 'stays Pending until someone settles it by hand', with no steps for settling it or handling the cash in the drawer.",
+    "where": "at-the-till/desktop/02 'Refund a sale'; home/desktop/02 comparison table",
+    "fix": "Under 'Refund a sale', add a short 'On plugin 0.3.0' list: the Dashboard clicks to refund the order and mark the refund settled, plus recording the cash with Pay out on the till. Name the plugin version that brings refunds to the till."
+  },
+  "mean": 8.0
+}

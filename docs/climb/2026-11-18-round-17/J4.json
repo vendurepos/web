@@ -1,0 +1,48 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero has four buttons, one black 'Live demo' and three identical outlined ones ('Quick start', 'Try with your store', 'GitHub'), so the developer's real next step (Quick start) looks no more important than GitHub, which is already the icon in the header.",
+      "where": "home.desktop.01 (button row under the lede, y~425); home.phone.01"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The demo row in the home comparison table says 'All it sends is anonymous usage events to ph.wcpos.com', and Connect a till says this website reports to the same server. A different brand's domain appears without a word on who wcpos is, which makes a careful reader wonder whose product this is.",
+      "where": "home.desktop.02 table row 'Sales reach Vendure, once each, even offline'; connect-a-till.desktop.01 'Where requests go'"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 8 runs a nine-item lettered list (a–i), whose item h already says 'check Vendure for the POS prices, settled tally-pos payment, delivered fulfilment, stock reduction and tallySaleAt'. A separate 'Check it worked' bullet list then repeats the same five checks, so success is defined twice and the step reads long.",
+      "where": "quick-start.desktop.03 (step 8, items a–i plus 'Check it worked'); quick-start.phone.07-08"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Limitations is one flat list of 15 equal bullets with no grouping. Scope gaps (coupons), build requirements (RxDB token) and a data-loss warning carry the same weight, and that warning reads garbled: 'before the header's N orders waiting to send clears loses them.'",
+      "where": "limitations.desktop.01, bullet 12; limitations.phone.01-02"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "On the docs overview the sidebar shows two active pills at once: both 'Docs' and 'Overview' carry the grey selected background, so the nav has no single 'you are here'.",
+      "where": "docs.desktop.01 sidebar (y~136 and y~266)"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "At 390 px the hero's four buttons wrap 2+2 into a ragged, centred block: 'Live demo' and 'Quick start' on one row, then a wider 'Try with your store' beside a narrow 'GitHub', with unequal widths and offset edges, instead of a clean stack.",
+      "where": "home.phone.01 (y~940-1140)"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The share card cuts the till screenshot off at the bottom edge: the 'In Stock' chips sit on the crop line and an 'Add charge' button shows only its top half at bottom right, so the card ends on a sliced UI rather than a composed frame.",
+      "where": "og-image.png (bottom edge, y~600-630)"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "The hero's four-button row gives Quick start, Try with your store and GitHub identical outlined styling next to one black Live demo, so there is no clear second step for a developer. At 390 px the row breaks into an uneven 2+2 block of mismatched widths.",
+    "where": "home.desktop.01 button row; home.phone.01",
+    "fix": "Drop 'GitHub' from the hero row (it is already in the header and footer) and keep Live demo (primary) plus Quick start and Try with your store. On phones, stack them at full width."
+  },
+  "mean": 8.1
+}
