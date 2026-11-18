@@ -4,7 +4,7 @@ import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 import { baseOptions } from '@/lib/layout.shared';
 
 // Round 27, all judges: the sidebar tree already lists Overview (/docs) and Quick start; the home header keeps them.
-const SIDEBAR_URLS = new Set(['/docs', '/docs/quick-start']);
+const SIDEBAR_URLS = new Set(['/docs', '/docs/quick-start', '/docs/at-the-till']);
 
 export default function Layout({ children }: LayoutProps<'/docs'>) {
   const base = baseOptions();
