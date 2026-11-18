@@ -265,3 +265,16 @@ test('the intro links Vendure\'s install guide for visitors with no project', ()
   const run = text.indexOf('Run store commands from that project');
   assert.ok(run >= 0 && ask > run);
 });
+
+test('step 5 names the .env CORS_ORIGINS line and its comma-separated format', () => {
+  // Round 27, J1 and J4 C3: step 5 said "the scaffold's CORS_ORIGINS allowlist" without naming the file or format.
+  const step5 = stepSection('Allow the POS origin through CORS', 'Choose tax rounding');
+  const text = textOf(step5).replaceAll('&#x27;', "'").replaceAll('&amp;', '&').replace(/\s+/g, ' ');
+  assert.ok(text.includes("the CORS_ORIGINS line in the project's .env file"));
+  assert.ok(text.includes('comma-separated'));
+  assert.ok(text.includes('CORS_ORIGINS=https://app.vendurepos.com,http://localhost:8081'));
+  const without = text.indexOf('A project without CORS_ORIGINS');
+  const objectForm = text.indexOf('origin: [');
+  assert.ok(without >= 0 && objectForm > without);
+  assert.ok(!text.includes("the scaffold's"));
+});
