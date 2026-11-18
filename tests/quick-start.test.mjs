@@ -303,3 +303,16 @@ test('step 5 captions its CORS_ORIGINS line as a .env file, not a terminal', () 
   assert.equal(textOf(caption[1]).trim(), '.env file');
   assert.ok(!env[0].includes('Terminal'));
 });
+
+test('the intro gives one address for the till; step 5 keeps the vercel.app note', () => {
+  // Round 31, J1 C3: two addresses for one till in the intro.
+  const firstH2 = html.indexOf('<h2');
+  assert.ok(firstH2 >= 0);
+  const intro = textOf(html.slice(0, firstH2));
+  assert.ok(intro.includes('app.vendurepos.com'));
+  assert.ok(!intro.includes('vendurepos.vercel.app'));
+  const step5 = textOf(stepSection('Allow the POS origin through CORS', 'Choose tax rounding')).replace(/\s+/g, ' ');
+  const note = step5.indexOf('keeps it for as long as anyone');
+  assert.ok(note >= 0);
+  assert.ok(step5.lastIndexOf('vendurepos.vercel.app', note) >= 0);
+});
