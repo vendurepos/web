@@ -87,6 +87,41 @@ test('step 7 leads with its actions', () => {
   assert.ok(section.indexOf('How POS sales take stock.') > list.index + list[0].length);
 });
 
+// Round 20, J4 C6: steps 6 and 7 fold their explanations into one closed block each; the text stays in the HTML.
+function closedBlock(section, title) {
+  const blocks = Array.from(section.matchAll(/<details\b([^>]*)>((?:(?!<\/details>)[\s\S])*)<\/details>/g));
+  assert.equal(blocks.length, 1);
+  const [block, attributes, inner] = blocks[0];
+  assert.doesNotMatch(attributes, /\sopen\b/);
+  const summary = inner.match(/<summary\b[^>]*>((?:(?!<\/summary>)[\s\S])*)<\/summary>/);
+  assert.ok(summary);
+  assert.equal(summary[1].replace(/<[^>]+>/g, '').trim(), title);
+  return { block, start: blocks[0].index, text: inner.replace(/<[^>]+>/g, '') };
+}
+
+test('step 6 keeps its action visible and folds why the pairings work', () => {
+  const section = stepSection('Choose tax rounding for your pricing mode', 'Prepare the channel and stock, then restart Vendure');
+  const { block, start, text } = closedBlock(section, 'Why these pairings');
+  assert.ok(text.includes('multiple rates can still need'));
+  assert.ok(section.replace(/<[^>]+>/g, '').includes('use it for orderTaxCalculationStrategy instead.'));
+  assert.ok(section.indexOf('instead.') < start);
+  assert.ok(!block.includes('For inclusive pricing'));
+});
+
+test('step 7 folds how POS sales take stock and keeps the server-start actions visible', () => {
+  const section = stepSection('Prepare the channel and stock, then restart Vendure', 'Sign in and make a sale');
+  const { block, start, text } = closedBlock(section, 'How POS sales take stock.');
+  assert.ok(text.includes('A per-sale locationId is refused'));
+  const actions = section.indexOf('On server start the plugin creates');
+  assert.ok(actions > start + block.length);
+});
+
+test('the folded step 6 and step 7 text stays in the llms text, as titled asides', () => {
+  const llms = readFileSync('.next/server/app/llms.mdx/docs/quick-start.body', 'utf8');
+  assert.ok(llms.includes('> **Why these pairings:** The single-rate totals match'));
+  assert.match(llms, /^> \*\*How POS sales take stock\.:?\*\* The plugin wraps/m);
+});
+
 test('step 8c links how to add the barcode field', () => {
   const section = stepSection('Sign in and make a sale', 'Troubleshoot');
   const items = Array.from(section.matchAll(/<li\b[^>]*>((?:(?!<\/li>)[\s\S])*)<\/li>/g));
