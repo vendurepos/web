@@ -25,6 +25,8 @@ const mdxComment = /^\{\/\*[\s\S]*?\*\/\}[ \t]*\n?/gm;
 const tillFigure = /<TillFigure\s+name="([^"]+)"\s+alt="([^"]*)"\s*\/>/g;
 // <Cards> is only a layout wrapper, so its open and close lines go.
 const cardsTag = /^[ \t]*<\/?Cards\b[^>]*>[ \t]*\n?/gm;
+// A <div> is a styling wrapper (the lettered quick-start steps), so its open and close lines go, with one blank line after.
+const divTag = /^[ \t]*<\/?div\b[^>]*>[ \t]*\n(?:[ \t]*\n)?/gm;
 // A <Card> is a titled link with a short body; it becomes one Markdown list item.
 const card = /^[ \t]*<Card\b([^>]*)>([\s\S]*?)<\/Card>/gm;
 // A <Callout> is an aside; it becomes a blockquote led by its bold title, if it has one.
@@ -42,6 +44,7 @@ export async function getLLMText(page: InferPageType<typeof source>) {
     .replace(mdxComment, '')
     .replace(tillFigure, `![$2](${SITE_URL}/till/$1-light.png)`)
     .replace(cardsTag, '')
+    .replace(divTag, '')
     .replace(card, (_, attrs: string, body: string) => {
       const oneLine = body.trim().split(/\s*\n\s*/).join(' ');
       return `- [${attr(attrs, 'title')}](${attr(attrs, 'href')}): ${oneLine}`;
