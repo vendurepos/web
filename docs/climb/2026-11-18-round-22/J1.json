@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero is clear (what it is, Vendure explained in brackets, Live demo / Quick start), but the first two feature cards a newcomer reads next lean on developer jargon with no plain-English payoff: \"records it in one transaction with an idempotency ledger\", \"The same sale sent 200 times makes one order\", then \"Keyboard-wedge scanners\" and \"counted float\" / \"Z report\".", "where": "home/desktop/01 'What it does today' cards (also home/phone/02-03)"},
+    "C2": {"score": 8, "worst_defect": "The home comparison table says of the demo \"All it sends is anonymous usage events to ph.wcpos.com, with no cookie\": wcpos.com is a different brand never introduced on the page, so a first-timer sees an unknown third-party domain collecting data; the explanation (self-hosted PostHog, same as this site) is only on Connect a till.", "where": "home/desktop/02 'Live demo or your own store' table, last row; home/phone/04"},
+    "C3": {"score": 8, "worst_defect": "The quick start opens by naming two till addresses (\"https://app.vendurepos.com. https://vendurepos.vercel.app serves the same build.\") and step 5 again tells stores to keep the vercel.app origin, so a newcomer has to work out which URL is the real one before step 1; the rest (9 numbered steps, commands, 'Check it worked' list) is solid but long for a first sale.", "where": "quick-start/desktop/01 intro paragraph; quick-start/desktop/02 step 5"},
+    "C4": {"score": 8, "worst_defect": "The changelog is written for the maintainers: bullets cite \"(ADR 0005)\", \"(ADR 0004)\", \"(#116)\", \"(#117)\" with no links, and lines like \"order.create v5 custom lines are real order lines on a plugin-owned, disabled 'POS custom item' variant\" that a reader cannot follow; the sidebar also lists both \"Docs\" and \"Overview\" for the same /docs page.", "where": "changelog/desktop/01; docs sidebar (docs/desktop/01)"},
+    "C5": {"score": 8, "worst_defect": "The payment screenshot on At the till shows a test product named \"Tally Fixture Mug\" in the cart, which reads as leftover fixture data in an otherwise polished, consistent site (dark mode holds up).", "where": "at-the-till/desktop/02 payment screen image, first cart line"},
+    "C6": {"score": 8, "worst_defect": "No overflow and tables stack well, but the phone hero screenshot of the till cart truncates its quantity column header to \"Q...\", the first image a phone visitor sees.", "where": "home/phone/01 hero image, cart table header"},
+    "C7": {"score": 9, "worst_defect": "Every sitemap <lastmod> is a timestamp from the last ~12 hours of 2026-11-17/18 (e.g. changelog 2026-11-18T06:54, whose newest entry is 2026-10-06), so lastmod reflects deploy time rather than content changes; otherwise Lighthouse 98/100/100/100, real 404, OG card, JSON-LD, llms.txt and search all good.", "where": "text/endpoint_sitemap_xml.txt"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "Right after a clear hero, a first-time visitor hits feature cards written in engineer language (\"idempotency ledger\", \"The same sale sent 200 times makes one order\", \"Keyboard-wedge scanners\", \"counted float\", \"Z report\") that do not say why it matters to a shop, so the under-a-minute skim ends on jargon instead of a benefit.",
+    "where": "home/desktop/01 'What it does today' (Every sale lands once, Barcode scanners, Registers and Z reports cards)",
+    "fix": "Lead each card with the plain benefit (\"A flaky connection never creates a duplicate order\", \"Any USB barcode scanner works\", \"Count the cash drawer and print an end-of-day report\") and keep the technical detail as the second sentence or behind the test link."
+  },
+  "mean": 8.1
+}

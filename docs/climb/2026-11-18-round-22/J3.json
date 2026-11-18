@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The quick start omits the Node requirement (^20.19 || >=22.12) stated in Plugin setup, leaving its installation prerequisites incomplete.",
+      "where": "text/quick-start.txt, introduction and step 1; text/plugin-setup.txt, Check your store"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "Troubleshooting explains how to inspect status=rejected register updates and says later updates remain blocked, but supplies no recovery or escalation step after collecting the log.",
+      "where": "text/troubleshooting.txt, Act on a header notice \u2192 Till updates line"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.desktop.02.jpg; shots/home.desktop-dark.jpg; shots/quick-start.desktop.01.jpg"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.phone.01.jpg through home.phone.05.jpg; shots/quick-start.phone.01.jpg through quick-start.phone.09.jpg"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The captured mobile Lighthouse report identifies 51 KiB of unused JavaScript and an estimated 150 ms of render-blocking savings on the homepage.",
+      "where": "tech.json, lighthouse./.failing"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "A developer investigating rejected register updates reaches a dead end: the docs explain the log and blocked queue but not how to recover or escalate.",
+    "where": "text/troubleshooting.txt, Act on a header notice \u2192 Till updates line; text/endpoint_llms_full_txt.txt, corresponding section",
+    "fix": "Add the supported next step after inspecting the rejection code. If recovery requires maintainer help, explicitly say so and link the support destination with the diagnostic information to include."
+  },
+  "mean": 8.6
+}
