@@ -7,10 +7,16 @@ const html = readFileSync(join('.next/server/app', 'docs.html'), 'utf8');
 const anchors = Array.from(html.matchAll(/<a ([^>]*)>([^<]*)/g), ([, attrs, text]) => ({ attrs, text }));
 const href = ({ attrs }) => attrs.match(/href="([^"]*)"/)?.[1];
 
-test('docs overview next steps link plugin setup, not quick start', () => {
+// Round 36, J4 C4: Next steps left out Quick start, which sat alone in the pager below.
+test('docs overview next steps link quick start and plugin setup', () => {
   // Fumadocs marks each <Card> anchor with data-card="true"; the Next steps grid holds the only cards on the page.
   const cards = anchors.filter(({ attrs }) => attrs.includes('data-card="true"')).map(href);
-  assert.deepEqual(cards, ['https://demo.vendurepos.com/demo', '/docs/plugin-setup', 'https://github.com/vendurepos/app']);
+  assert.deepEqual(cards, [
+    '/docs/quick-start',
+    'https://demo.vendurepos.com/demo',
+    '/docs/plugin-setup',
+    'https://github.com/vendurepos/app',
+  ]);
   // The pager below the page still leads to Quick start.
   assert.ok(anchors.some((a) => href(a) === '/docs/quick-start' && !a.attrs.includes('data-card')));
 });
@@ -45,4 +51,29 @@ test('overview and home requirements name the plugin Node range', () => {
   const start = home.indexOf('Before you start');
   assert.ok(start >= 0, 'a Before you start heading');
   assert.ok(text(home.slice(start, home.indexOf('</ul>', start))).includes('^20.19 || >=22.12'));
+});
+
+// Round 36, J4 C4: Next steps left out Quick start, which sat alone in the pager below.
+test('overview next steps lead with Quick start, two by two', () => {
+  const heading = html.indexOf('<h2 id="next-steps"');
+  assert.ok(heading >= 0, 'a Next steps heading');
+  const grid = html.indexOf('<div', heading);
+  // Walk the div tags from the grid's opening tag to its matching close.
+  let depth = 0;
+  let end = -1;
+  for (const tag of html.slice(grid).matchAll(/<(\/?)div\b/g)) {
+    depth += tag[1] ? -1 : 1;
+    if (depth === 0) {
+      end = grid + tag.index;
+      break;
+    }
+  }
+  assert.ok(end > grid, 'the cards grid closes');
+  const slice = html.slice(heading, end);
+  const gridClass = slice.match(/<div [^>]*class="([^"]*)"/)?.[1] ?? '';
+  assert.ok(gridClass.includes('sm:grid-cols-2'), gridClass);
+  assert.ok(!gridClass.includes('sm:grid-cols-3'), gridClass);
+  const cards = Array.from(slice.matchAll(/<a ([^>]*data-card="true"[^>]*)>/g), ([, attrs]) => href({ attrs }));
+  assert.equal(cards.length, 4);
+  assert.equal(cards[0], '/docs/quick-start');
 });
