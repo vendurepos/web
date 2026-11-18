@@ -54,8 +54,13 @@ test('hero lede links Vendure to vendure.io', () => {
   assert.ok(h1 !== -1 && figure > h1);
   const hero = html.slice(h1, figure);
   assert.match(hero, /<a[^>]*\shref="https:\/\/vendure\.io"[^>]*>Vendure<\/a>/);
-  const text = hero.replace(/<!-- -->/g, '').replace(/<[^>]+>/g, '');
-  assert.ok(text.includes('signs in to your own Vendure store'));
-  // Round 15, C1: the hero says what Vendure is, in its own docs' terms (docs.vendure.io).
-  assert.ok(text.includes('your own Vendure store (Vendure is an open-source headless commerce framework).'));
+  const text = hero.replace(/<!-- -->/g, '').replace(/<[^>]+>/g, '').replace(/&#x27;/g, "'");
+  // Round 15, C1: the hero says what Vendure is, in its own docs' terms (docs.vendure.io);
+  // round 27, J4 C1: the definition is an appositive, not a parenthesis.
+  assert.ok(text.includes('VendurePOS is an open-source till for Vendure, the open-source headless commerce framework.'));
+  assert.ok(text.includes('It runs in the browser and keeps selling when the connection drops.'));
+  assert.ok(text.includes("Every sale lands in your Vendure store once, as a normal order at the till's price."));
+  const ledeStart = hero.indexOf('<p', hero.indexOf('</h1>'));
+  const lede = hero.slice(ledeStart, hero.indexOf('</p>', ledeStart)).replace(/<[^>]+>/g, '');
+  assert.ok(ledeStart !== -1 && !lede.includes('('), lede);
 });
