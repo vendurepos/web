@@ -2,9 +2,10 @@ import { getImageProps } from 'next/image';
 import type { ReactNode } from 'react';
 
 // public/till/<name>-{light,dark}.png are live demo till captures (#62) at 1440x900, deviceScaleFactor 2;
-// <name>-phone-{light,dark}.png are the same states at 390x844, deviceScaleFactor 2 (cashier cropped to its sheet).
+// <name>-phone-{light,dark}.png are the same states at 390x844, deviceScaleFactor 2 (sale at 390x664, a phone's
+// visible Safari viewport, round 13; cashier cropped to its sheet).
 // Round 11, C6: a 1440px shot shrunk to a phone is unreadable, so below 640px a <picture> serves the phone capture.
-const PHONE_HEIGHT: Record<string, number> = { sale: 1688, payment: 1688, cashier: 688 };
+const PHONE_HEIGHT: Record<string, number> = { sale: 1328, payment: 1688, cashier: 688 };
 
 function TillPicture({ name, scheme, alt, sizes, eager, className }: {
   name: string; scheme: 'light' | 'dark'; alt: string; sizes: string; eager?: boolean; className: string;
