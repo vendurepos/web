@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero lead runs to four centred lines (seven on phone) because it stops to define Vendure in a parenthetical, '(Vendure is an open-source headless commerce framework)', so the one-sentence promise is buried in a grey paragraph between the H1 and the buttons.", "where": "home.desktop.01 (hero paragraph under 'Point of sale for Vendure'); home.phone.01"},
+    "C2": {"score": 9, "worst_defect": "The refund caveat is said three times on the home page (table row 'No, not on plugin 0.3.0...', the 'Before you start' bullet, and again in Limitations link text), which reads as padding rather than one plain statement; minor.", "where": "home.desktop.02 (table row 'Refund a sale at the till' and last 'Before you start' bullet)"},
+    "C3": {"score": 8, "worst_defect": "The success checkpoint 'Check it worked.' is a bold run-in sentence after a lettered a–i list inside step 8, not a heading, so it is missing from the 'On this page' TOC and the phone section dropdown on a page 6342 px (desktop) / 9946 px (phone) tall.", "where": "quick-start.desktop.03 (y≈1550, 'Check it worked.'); TOC in quick-start.desktop.01 lists steps 1–9 only"},
+    "C4": {"score": 8, "worst_defect": "Limitations is 16 flat bullets of equal weight with no grouping (setup, at the till, data and sync), so 'One browser tab per till' sits at the same level as the data-loss warning 'those sales are lost'.", "where": "limitations.desktop.01; limitations.phone.01-03"},
+    "C5": {"score": 8, "worst_defect": "The payment screenshot on At the till has its right cart pane about two-thirds empty: three line items, then ~420 px of blank white before Subtotal, so the figure looks unfinished next to the dense keypad on the left.", "where": "at-the-till.desktop.02 (figure, right pane y≈200–620)"},
+    "C6": {"score": 8, "worst_defect": "The inline code chip 'Register command result … status=rejected errorCode=… error=…' breaks into three separate bordered chips across three lines in the middle of a 20-line bullet, and the hero screenshot's cart column header is truncated to 'Q...'.", "where": "troubleshooting.phone.02 (y≈1450–1580); home.phone.01 (cart header 'Q...  ITEM  TOTAL')"},
+    "C7": {"score": 9, "worst_defect": "The share card's subtitle wraps leaving 'a normal order.' alone on a second line, and the till screenshot is cut through the middle of the product cards at the bottom edge.", "where": "og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "On a very long quick start (9 steps, 6342 px desktop / 9946 px phone), the 'what success looks like' check is a bold run-in paragraph under a lettered a–i list in step 8. It has no heading or anchor, so a developer scanning the TOC or the phone section dropdown cannot jump to the one place that says the till worked.",
+    "where": "quick-start.desktop.03 / quick-start.phone.08 ('Check it worked.')",
+    "fix": "Make 'Check it worked' its own H3 (or an H2 between steps 8 and 9) so it appears in the TOC and phone dropdown. Present its five checks as a visually distinct checklist callout."
+  },
+  "mean": 8.3
+}

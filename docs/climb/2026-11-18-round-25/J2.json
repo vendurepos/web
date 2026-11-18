@@ -1,0 +1,48 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero speaks to the developer (Vendure plugin, browser till) and does not say in plain words what my two staff need at the counter (a browser, scanner, card terminal kept separate) until 'Before you start' further down.",
+      "where": "home.desktop.01 (hero)"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The payment-screen screenshot that is meant to show a real sale has a test product in the cart, 'Tally Fixture Mug €8.00', which reads as a demo fixture rather than a shop.",
+      "where": "at-the-till.desktop.02 (payment screenshot)"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Closing the day is described in text only: no screenshot shows the close-register screen or the Z report. The quick-start step 9 message 'Sales aren't reaching the online store. Keep selling…' also does not match troubleshooting's 'Till updates aren't reaching the online store. Keep selling…'.",
+      "where": "quick-start.desktop.04 (step 9) vs troubleshooting.desktop.01; at-the-till text (close the day)"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "The 'Till updates' refusal section tells staff 'Ask the store owner to look at the sync log', then has the owner open Settings → Sync log → All and copy a DEBUG line 'Register command result … status=rejected errorCode=… error=…' before reloading (only the last 500 events are kept). For 'Any other code', closures and cash records never reach Vendure and there is no retry. That is developer jargon on the page a shop owner opens in a panic.",
+      "where": "troubleshooting.desktop.01 ('N till updates need attention' section)"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "On desktop docs pages the grey sidebar background stops at about 900 px, leaving a lighter strip below it for the rest of the page.",
+      "where": "connect-a-till.desktop.01, changelog.desktop.01, notifications.desktop.01 (left column below y≈900)"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "In the phone hero, the till screenshot's column header is cut to 'Q...'. On docs pages, long inline code such as '^20.19 || >=22.12' and 'authOptions.tokenMethod' breaks lines awkwardly.",
+      "where": "home.phone.01 (hero screenshot); plugin-setup.phone.01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Lighthouse still flags 52 KiB of unused JS, 150 ms of render-blocking resources and 14 KiB of legacy JS. The 404 page carries no JSON-LD (minor).",
+      "where": "tech.json (lighthouse / and /docs/quick-start; not-found jsonld)"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "When the till says 'N till updates need attention', the troubleshooting page hands the shop owner a developer procedure: open Settings → Sync log → All, copy a DEBUG 'Register command result … status=rejected errorCode=…' line before reloading, and accept that for 'Any other code' the day's closure and cash records never reach Vendure. Nothing says plainly what staff should do right now.",
+    "where": "troubleshooting.desktop.01 ('Till updates' / 'N till updates need attention' section)",
+    "fix": "Open the section with a three-line 'What to do at the counter' box: keep selling, print and keep the Z report or count sheet, message your developer. Move the sync-log, errorCode and reload detail into a collapsed 'For your developer' block underneath."
+  },
+  "mean": 8.0
+}
