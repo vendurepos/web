@@ -32,7 +32,7 @@ test('quick start links the setup warnings before a live sale', () => {
 });
 
 test('quick start includes the success checklist', () => {
-  assert.ok(html.includes('Check it worked.'));
+  assert.match(html, /<h3\b[^>]*\bid="check-it-worked"[^>]*>((?:(?!<\/h3>)[\s\S])*)<\/h3>/);
   assert.ok(html.includes('tallySaleAt'));
 });
 
@@ -203,13 +203,31 @@ test('step 8h points to Check it worked instead of repeating its checks', () => 
   assert.ok(h.includes('Check it worked'));
   assert.ok(!h.includes('stock reduction'));
   assert.ok(!h.includes('delivered fulfilment'));
-  const check = section.indexOf('Check it worked.', list.index + list[0].length);
-  assert.ok(check >= 0);
+  const heading = section.slice(list.index + list[0].length).match(/<h3\b[^>]*\bid="check-it-worked"[^>]*>((?:(?!<\/h3>)[\s\S])*)<\/h3>/);
+  assert.ok(heading);
+  const check = list.index + list[0].length + heading.index;
   const bullets = section.slice(check).match(/<ul\b[^>]*>((?:(?!<\/ul>)[\s\S])*)<\/ul>/);
   assert.ok(bullets);
   for (const phrase of ['line prices', 'tally-pos', 'delivered', 'went down', 'tallySaleAt']) {
     assert.ok(bullets[1].includes(phrase), phrase);
   }
+});
+
+test('Check it worked is a level-three heading that item h links to', () => {
+  // Round 26, J4 C3: a bold run-in paragraph was missing from the table of contents.
+  const section = stepSection('Sign in and make a sale', 'Troubleshoot');
+  const list = section.match(/<div\b[^>]*class="[^"]*\bsteps-lettered\b[^"]*"[^>]*>\s*<ol\b[^>]*>((?:(?!<\/ol>)[\s\S])*)<\/ol>/);
+  assert.ok(list);
+  const heading = section.match(/<h3\b[^>]*\bid="check-it-worked"[^>]*>((?:(?!<\/h3>)[\s\S])*)<\/h3>/);
+  assert.ok(heading);
+  // Fumadocs wraps the heading text in a self-link and appends a "Copy Anchor Link" button.
+  const label = heading[1].match(/<a\b[^>]*>((?:(?!<\/a>)[\s\S])*)<\/a>/);
+  assert.ok(label);
+  assert.equal(textOf(label[1]).trim(), 'Check it worked');
+  assert.ok(heading.index > list.index + list[0].length);
+  assert.ok(html.split('href="#check-it-worked"').length - 1 >= 2);
+  const items = Array.from(list[1].matchAll(/<li\b[^>]*>((?:(?!<\/li>)[\s\S])*)<\/li>/g));
+  assert.ok(items[7][1].includes('href="#check-it-worked"'));
 });
 
 test('step 4 points to one administrator per cashier on Connect a till', () => {
