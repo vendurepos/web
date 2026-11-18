@@ -144,3 +144,8 @@ Private windows that give a site no storage, such as Safari's, cannot run the ti
 Follow [Troubleshoot in the quick start](/docs/quick-start#9-troubleshoot).
 A till served over https talks only to https stores; `http://localhost` and
 `http://127.0.0.1` are allowed for development.
+
+The hosted HTTPS build does **not** use the
+LAN `http:` rewrite: leave `VENDUREPOS_WEB_ALLOW_LAN_HTTP` unset. That option
+adds `http:` to `connect-src` and `img-src` only for exports served over
+plain HTTP on the same LAN; it cannot bypass HTTPS mixed-content blocking.
