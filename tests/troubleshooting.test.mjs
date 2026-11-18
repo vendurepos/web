@@ -46,3 +46,28 @@ test('troubleshooting lists kept sales before resolving one, and says when to ch
   assert.match(prose, /Choose <code[^>]*>applied<\/code>/);
   assert.match(prose, /Choose <code[^>]*>rejected<\/code>/);
 });
+
+// Round 22, C4 (J3): a refused till update had no way to find its log line and no next step.
+test('troubleshooting says how to find a refused till update and what can and cannot clear it', () => {
+  const notices = section('act-on-a-header-notice', 'refresh-prices-and-stock');
+  for (const phrase of [
+    'choose <strong>All</strong>',
+    'Warnings and errors</strong> does not show',
+    'status=rejected',
+    'register_session_already_open',
+    'Choose another register',
+    'register_closure_number_invalid',
+    'never sent again',
+    'Do not clear the site',
+  ]) {
+    assert.ok(notices.includes(phrase), phrase);
+  }
+  assert.ok(!notices.includes('Take over'));
+});
+
+// Round 22, C4 (J2): the partial-sale section never said who it is for.
+test('troubleshooting says the partial-sale section is for whoever runs the Vendure server', () => {
+  const kept = section('resolve-a-sale-the-store-kept-part-way', 'check-browser-storage');
+  const text = kept.slice(kept.indexOf('</h2>')).replace(/<[^>]+>/g, '').trim();
+  assert.ok(text.startsWith('This section is for whoever runs your Vendure server.'), text.slice(0, 80));
+});
