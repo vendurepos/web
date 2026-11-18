@@ -298,6 +298,26 @@ test('at the till narrow panels hug their shots', () => {
   }
 });
 
+test('at the till narrow captions sit under their panels', () => {
+  // Round 37, J4 C5: the narrow shots' captions sat at the column's left edge.
+  const captionOf = (id) => {
+    const start = html.indexOf(`id="${id}"`);
+    assert.ok(start >= 0, id);
+    const figure = html.slice(html.indexOf('<figure', start), html.indexOf('</figure>', start));
+    const tag = figure.match(/<figcaption[^>]*>/)?.[0];
+    assert.ok(tag, `${id} figcaption`);
+    return { cls: (tag.match(/class="([^"]*)"/)?.[1] ?? '').split(' '), style: tag.match(/style="([^"]*)"/)?.[1] };
+  };
+  for (const [id, name, max] of [['check-the-register-during-the-day', 'cashier', 418], ['count-the-drawer-and-close-the-day', 'closure', 546]]) {
+    const { cls, style } = captionOf(id);
+    assert.ok(cls.includes('sm:mx-auto'), `${name} caption centred`);
+    assert.equal(style, `max-width:${max}px`, `${name} caption max-width matches its panel`);
+  }
+  const payment = captionOf('take-payment');
+  assert.ok(!payment.cls.includes('sm:mx-auto'), 'payment caption not centred');
+  assert.equal(payment.style, undefined, 'payment caption has no style');
+});
+
 // Round 35, J2 C4/C6: the offline section was one paragraph with its warning buried mid-way.
 test('at the till sets the offline warning apart and lists what still needs the connection', () => {
   const frame = 'rounded-xl border bg-fd-card';
