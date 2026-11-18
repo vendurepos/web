@@ -311,3 +311,20 @@ test('connect a till says the browser SQLite is the till\'s own storage, not the
   assert.ok(storage.includes("This is the till's own storage"), "the till's own storage");
   assert.ok(storage.includes('must be Postgres'), 'must be Postgres');
 });
+
+test('changelog till role bullet notes the missing ReadOrder and links the device key section', () => {
+  // Round 30, C4 (J5): "does everything a till does" read as a contradiction of the ReadOrder caveat.
+  const html = readFileSync(join('.next/server/app', 'docs/changelog.html'), 'utf8');
+  const items = html.match(/<li[^>]*>(?:(?!<\/li>)[\s\S])*<\/li>/g) ?? [];
+  const role = items.find((li) => li.includes('tallyEnsurePosTillRole'));
+  assert.ok(role, 'the tallyEnsurePosTillRole item');
+  const text = role.replace(/<[^>]+>/g, '').replace(/&#x27;|&#39;|&apos;/g, "'").replace(/\s+/g, ' ');
+  const claim = text.indexOf('does everything a till does');
+  assert.ok(claim >= 0, 'does everything a till does');
+  assert.ok(text.indexOf('Not in the release notes', claim) > claim, 'Not in the release notes, after the claim');
+  assert.ok(text.indexOf('has no ReadOrder', claim) > claim, 'has no ReadOrder, after the claim');
+  const anchor = 'create-and-use-a-device-key';
+  assert.ok(role.includes(`href="/docs/connect-a-till#${anchor}"`), 'links the device key section');
+  const connect = readFileSync(join('.next/server/app', 'docs/connect-a-till.html'), 'utf8');
+  assert.ok(connect.includes(`id="${anchor}"`), 'connect a till has the anchor');
+});
