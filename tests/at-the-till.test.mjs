@@ -137,3 +137,16 @@ test('limitations links settleRefund to the plugin setup steps', () => {
   const limitations = readFileSync('.next/server/app/docs/limitations.html', 'utf8');
   assert.ok(limitations.includes('href="/docs/plugin-setup#settle-a-dashboard-refund"'));
 });
+
+test('at the till says unsent sales are lost if site data is cleared or the device is lost', () => {
+  // Round 20, J2 C4/C7: limitations.mdx:44-45 was the only page that said so, and "offline" did not find it.
+  const start = html.indexOf('id="if-the-internet-drops"');
+  const end = html.indexOf('id="count-the-drawer-and-close-the-day"');
+  assert.ok(start >= 0 && end > start);
+  const section = html.slice(start, end);
+  const text = section.replace(/<!-- -->/g, '').replace(/<[^>]+>/g, '');
+  for (const words of ['offline', 'kept only in this browser', 'device is lost']) {
+    assert.ok(text.includes(words), words);
+  }
+  assert.match(section, /href="\/docs\/limitations(#[^"]+)?"/);
+});
