@@ -328,3 +328,16 @@ test('changelog till role bullet notes the missing ReadOrder and links the devic
   const connect = readFileSync(join('.next/server/app', 'docs/connect-a-till.html'), 'utf8');
   assert.ok(connect.includes(`id="${anchor}"`), 'connect a till has the anchor');
 });
+
+test('limitations says a reload needs the connection while the internet is down', () => {
+  // Round 30, C2 (J2): Limitations did not say a reload needs the connection.
+  const html = readFileSync(join('.next/server/app', 'docs/limitations.html'), 'utf8');
+  const items = html.match(/<li[^>]*>(?:(?!<\/li>)[\s\S])*<\/li>/g) ?? [];
+  const text = (li) => li.replace(/<[^>]+>/g, '').replace(/&#x27;|&#39;|&apos;/g, "'").replace(/\s+/g, ' ');
+  const item = items.find((li) => text(li).includes('keep its tab open'));
+  assert.ok(item, 'the keep-its-tab-open item');
+  assert.ok(text(item).includes('cannot load the till until the connection is back'), 'a reload needs the connection');
+  assert.ok(item.includes('href="/docs/at-the-till#if-the-internet-drops"'), 'link to If the internet drops');
+  const atTheTill = readFileSync(join('.next/server/app', 'docs/at-the-till.html'), 'utf8');
+  assert.ok(atTheTill.includes('id="if-the-internet-drops"'), 'the At the till heading id');
+});
