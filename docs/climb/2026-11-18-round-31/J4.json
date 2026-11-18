@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero product screenshot is cut through a fourth row of product tiles: a strip of coloured tile tops sits on the bottom edge under Filter Coffee to Leather Keyring, and the cart's 'Guest · 3 items' bar has a stray blue progress line, so the first image looks cropped at random instead of framed.", "where": "home/desktop/01 (screenshot bottom edge, y≈1140); same crop in home.desktop-dark.jpg"},
+    "C2": {"score": 8, "worst_defect": "The home comparison table says the demo sends 'anonymous usage events to ph.wcpos.com' and nothing on the home page explains why a VendurePOS demo reports to a wcpos.com host. Connect a till explains it, but the home page reader never gets there.", "where": "home/desktop/02, 'Sales reach Vendure, once each, even offline' row"},
+    "C3": {"score": 8, "worst_defect": "'Check it worked' is the step that proves a working till, but it is five text bullets ('the payment is tally-pos, settled; the fulfilment is delivered…') with no image of the resulting order in the Vendure Dashboard. Everything before it is setup code, so there is no picture of what success looks like.", "where": "quick-start/desktop/04, 'Check it worked'"},
+    "C4": {"score": 8, "worst_defect": "Limitations is one flat list of 17 bullets with no subheadings or grouping. Platform, payments, offline-data loss and register sync all get the same weight, it has no on-this-page rail, and 'Sales not yet sent are kept only in this browser… those sales are lost' sits at the same level as 'One browser tab per till.'", "where": "limitations/desktop/01"},
+    "C5": {"score": 8, "worst_defect": "The Overview's 'Next steps' shows three equal cards (Live demo, Plugin setup, Source on GitHub). Quick start, the real next step, is left out of the row and only appears as a right-aligned pager card underneath, so the most important destination gets the weakest treatment.", "where": "docs/desktop/01, 'Next steps'"},
+    "C6": {"score": 8, "worst_defect": "At 390 px the first image on the page, the hero till screenshot, shows its cart's QTY column header truncated to 'Q…', and the At the till payment screenshot wraps its quick-amount buttons so '€50.00' sits alone on a second row. The product looks cramped on the very screen width the page is being judged at.", "where": "home/phone/01 (cart header 'Q…'); at-the-till/phone/03 ('€50.00' orphan)"},
+    "C7": {"score": 9, "worst_defect": "The search API returns snippets with raw markdown in them ('**N orders waiting to send**', backtick-wrapped `N orders waiting to send`), and every result's breadcrumbs is just ['VendurePOS'] rather than the page name. On the share card the subtitle wraps to leave 'a normal order.' alone on line two, and the screenshot cuts the 'Add charge' button in half at the bottom edge.", "where": "text/endpoint_api_search_query_offline.txt (at-the-till-39 entry); og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "The hero screenshot, the single biggest visual on the site, ends mid-way through a fourth row of product tiles. A strip of half tiles sits on its bottom border in light and dark mode, so the first impression of the product is a careless crop.",
+    "where": "home/desktop/01 and home.desktop-dark.jpg, bottom edge of the hero screenshot",
+    "fix": "Re-capture or crop the hero image to end cleanly after the third tile row (or put a bottom fade over the grid) so the frame closes on whole tiles and the cart's Checkout row."
+  },
+  "mean": 8.1
+}

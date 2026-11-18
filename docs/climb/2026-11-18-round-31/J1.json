@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero and the two buttons are clear, but the home page's 'Before you start' list hands a newcomer build-it-yourself jargon ('you need your own RxDB Premium licence token (RXDB_PREMIUM)') that means nothing to someone who has not tried the demo yet.", "where": "home/desktop/02 'Before you start', 5th bullet; home/phone/05"},
+    "C2": {"score": 8, "worst_defect": "The comparison table says the demo sends 'anonymous usage events to ph.wcpos.com' but never says who or what wcpos is, so a visitor who just learned the name VendurePOS sees an unrelated domain collecting data and wonders whose product this really is.", "where": "home/desktop/02 'Live demo or your own store' table, last row; home/phone/04"},
+    "C3": {"score": 8, "worst_defect": "The quick start opens by giving two addresses for the same till ('The hosted POS is live at https://app.vendurepos.com. https://vendurepos.vercel.app serves the same build.'), and step 3 then offers three ways to migrate, so a first-time installer has to stop and work out which one to follow.", "where": "quick-start/desktop/01 intro paragraph and 'Other ways to run the migration' box on quick-start/desktop/02"},
+    "C4": {"score": 8, "worst_defect": "The changelog is written in internal protocol language ('order.create v5 custom lines are real order lines on a plugin-owned, disabled POS custom item variant', 'ADR 0005', 'advertises order.create 1-5'), so a reader can't tell what changed for them without decoding it.", "where": "changelog/desktop/01, 0.3.0 bullets"},
+    "C5": {"score": 8, "worst_defect": "The hero product screenshot is cut mid-row, with a row of half-visible product tiles along its bottom edge, so the main image looks clipped rather than framed.", "where": "home/desktop/01 bottom of the till screenshot (~y 1140); same in home.desktop-dark"},
+    "C6": {"score": 8, "worst_defect": "On the phone the home header shows only the logo, a search icon and a chevron: 'Docs' and 'Live demo' are hidden, and in the hero screenshot the quantity column header is truncated to 'Q...'.", "where": "home/phone/01 header and cart table header"},
+    "C7": {"score": 9, "worst_defect": "The share card crops the till screenshot at the bottom edge, cutting the product tiles and the 'Add charge' button in half; otherwise the scores are Lighthouse 99/100/100/100 and llms.txt, sitemap, robots, search API and the 404 all work.", "where": "og-image.png bottom edge"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The home page names 'ph.wcpos.com' as the place the demo sends usage events without ever introducing wcpos, so to a first-time visitor the product seems to report to an unexplained third party.",
+    "where": "home/desktop/02 comparison table, row 'Sales reach Vendure, once each, even offline'; home/phone/04",
+    "fix": "Say who it is in the same cell, for example 'to our own self-hosted analytics server (ph.wcpos.com, run by the WCPOS team behind VendurePOS)', or drop the hostname from the home page and leave it on the linked page."
+  },
+  "mean": 8.1
+}
