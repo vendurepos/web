@@ -130,3 +130,22 @@ test('connect a till names the demo events and where they go', () => {
     assert.ok(section.includes(word), word);
   }
 });
+
+test('connect a till says how to give each cashier their own account', () => {
+  const html = readFileSync(join('.next/server/app', 'docs/connect-a-till.html'), 'utf8')
+    .replace(/&#x27;|&#39;|&apos;/g, "'");
+  const start = html.indexOf('id="give-each-cashier-their-own-account"');
+  assert.ok(start >= 0);
+  const end = html.indexOf('<h2', start);
+  assert.ok(end > start);
+  const section = html.slice(start, end);
+  for (const permission of ['TallyPosSell', 'ReadCatalog', 'ReadSettings', 'ReadCustomer', 'CreateCustomer', 'ReadOrder']) {
+    assert.ok(section.includes(permission), permission);
+  }
+  assert.ok(section.includes('Hand over'));
+});
+
+test('at the till links Hand over to the cashier accounts section', () => {
+  const html = readFileSync(join('.next/server/app', 'docs/at-the-till.html'), 'utf8');
+  assert.ok(html.includes('/docs/connect-a-till#give-each-cashier-their-own-account'));
+});
