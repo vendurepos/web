@@ -15,6 +15,24 @@ test('home lists the features added since the first release', () => {
   }
 });
 
+test('home cards say what sale replay, the register and scanners mean at the counter', () => {
+  // Round 23, J1 C1: the cards after the hero lead with plain words, not engineer terms.
+  const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
+  for (const phrase of [
+    'never makes a second order',
+    'Open and close the register',
+    'Count the cash in the drawer',
+    'type the code like a keyboard',
+    '>Read the acceptance test</a>',
+    '>Read the 200-send test</a>',
+  ]) {
+    assert.ok(html.includes(phrase), phrase);
+  }
+  for (const phrase of ['idempotency ledger', 'counted float', 'Registers and Z reports']) {
+    assert.ok(!html.includes(phrase), phrase);
+  }
+});
+
 test('home has the demo parity table', () => {
   const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
   assert.ok(html.includes('Live demo or your own store'));
