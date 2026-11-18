@@ -11,19 +11,18 @@ description: What VendurePOS does not do yet.
 {/* Browsers and unsent sales: vendurepos/app@a257d16 apps/pos/playwright.config.ts:24-25 (the only Playwright project: chromium, devices['Desktop Chrome']; no other playwright, wdio or cypress config in git ls-files); apps/pos/lib/storage.ts:8 (SQLite-wasm in a worker), lib/app-storage.ts:7-8 (one storage for the catalogue and order databases), lib/storage-start-failure.ts:8 (no OPFS: the private-window message); lib/orders-db.ts:57-59 (close() never removes the orders database: unsent orders wait for the next sign-in). Same as connect-a-till.mdx:36 and :41; header text at-the-till.mdx:138. */}
 {/* Refused till updates: same facts and sources as troubleshooting.mdx (Till updates line comment): vendurepos/app@ebcd9e4 apps/pos/app/index.tsx:133 vs :157, :355, :369; @tallyui/pos 3.20.0 outbox/register-outbox.ts:166-181, register/register-adoption.ts:20-70. */}
 
-- Pre-release: expect changes before 1.0.
+Pre-release: expect changes before 1.0.
+
+{/* Round 32, J2 C4 and J4 C4: the counter limits first, then what whoever sets up the store needs. Every bullet is word for word as before. */}
+
+## At the counter
 
 - Web till only for now. Its browser tests run in desktop Chrome; other browsers are not tested yet.
 
-- Building the till yourself needs your own RxDB Premium
-  licence token in `RXDB_PREMIUM`.
+- One browser tab per till.
 
-- On plugin 0.3.0, refunds go through the Vendure Dashboard, and Vendure keeps a refund
-  of a POS order Pending until an administrator settles it with the Admin API's [`settleRefund`](/docs/plugin-setup#settle-a-dashboard-refund) mutation.
-  The live demo refunds at the till.
-
-- Coupon codes: not yet.
-  Line and order discounts work at the till.
+- Private browser windows that give a site no storage,
+  such as Safari's, cannot run the till.
 
 - Card payments are taken on a separate terminal and confirmed on the till.
   The till does not talk to the terminal.
@@ -31,16 +30,15 @@ description: What VendurePOS does not do yet.
 - Receipts and reports print through the browser's print dialog, on any printer that device's browser can use.
   The till does not connect to a receipt printer directly and does not open a cash drawer.
 
+- Coupon codes: not yet.
+  Line and order discounts work at the till.
+
+- On plugin 0.3.0, refunds go through the Vendure Dashboard, and Vendure keeps a refund
+  of a POS order Pending until an administrator settles it with the Admin API's [`settleRefund`](/docs/plugin-setup#settle-a-dashboard-refund) mutation.
+  The live demo refunds at the till.
+
 - Prices and stock: an open till picks up a price change within about a minute
   and a stock change within about five minutes.
-
-- Sales take stock through Vendure's stock allocation strategy,
-  from the channel's stock locations. The till cannot pick a location for a sale.
-
-- One browser tab per till.
-
-- Private browser windows that give a site no storage,
-  such as Safari's, cannot run the till.
 
 - The till keeps no offline copy of its own page. While the connection is down, keep its tab open:
   a reload, or a reopened browser, cannot load the till until the connection is back.
@@ -56,6 +54,14 @@ description: What VendurePOS does not do yet.
 
 - The manager's approval on register close is a typed name,
   not a verified sign-in.
+
+## Setting up the store
+
+- Building the till yourself needs your own RxDB Premium
+  licence token in `RXDB_PREMIUM`.
+
+- Sales take stock through Vendure's stock allocation strategy,
+  from the channel's stock locations. The till cannot pick a location for a sale.
 
 - Postgres only.
   MySQL, MariaDB and SQLite are not supported.
