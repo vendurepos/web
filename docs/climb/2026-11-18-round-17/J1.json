@@ -1,0 +1,48 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero offers four near-equal buttons (Live demo, Quick start, Try with your store, GitHub). 'Try with your store' goes straight to app.vendurepos.com, a sign-in that cannot work until the plugin is installed. The warning about that ('Your own store needs the plugin on your Vendure server first') sits in small grey text under the buttons, after a newcomer may already have clicked.",
+      "where": "home/desktop/01 hero buttons; home/phone/01"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The home page says 'MIT licensed' and 'open-source', but only the Limitations and Connect a till pages admit that 'Building the till yourself needs your own RxDB Premium licence token'. The home page's 'Before you start' list never mentions this paid dependency, so the open-source claim looks partly hidden.",
+      "where": "home/desktop/02 footer and 'Before you start' vs limitations/desktop/01 bullet 3"
+    },
+    "C3": {
+      "score": 7,
+      "worst_defect": "'Quick start' is nine steps and about 6,000 px long, with no time estimate. Store-wide tax-strategy choices (step 6) and a dense reference paragraph, 'How POS sales take stock … A per-sale locationId is refused', are mixed in with the steps. Step 9 drops into 'VENDUREPOS_WEB_ALLOW_LAN_HTTP … adds http: to connect-src and img-src'. A newcomer can't tell which parts are required and which are background.",
+      "where": "quick-start/desktop/02-03 (steps 6, 7, 9); quick-start/phone/05-08"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The changelog is written for the authors, not for readers: 'advertises order.create 1–5 (ADR 0005)', '(#116)', 'figures_mismatch … (#117)'. The ADR and issue references are not linked, and a visitor can't follow them.",
+      "where": "changelog/desktop/01; changelog/phone/01"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "In every docs desktop shot, the left sidebar's grey panel stops at about 900 px and leaves an empty band below it. Separately, 'What it does today' on the home page is ten identical grey text cards with no icon or visual anchor, and they read as a wall of text.",
+      "where": "docs/desktop/01, quick-start/desktop/01, plugin-setup/desktop/01 (sidebar edge); home/desktop/01-02 feature cards"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The phone hero screenshot shows a truncated column header 'Q...' and 'Cart (4) · €59.59' next to 'Guest · 3 items'. It is the first product image on a phone and looks like a glitch. The rest of the phone layout (stacked tables, wrapped code) holds up.",
+      "where": "home/phone/01-02 hero screenshot"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Mobile Lighthouse puts LCP at 2.4 s on both / and /docs/quick-start and flags 52 KiB of unused JavaScript plus render-blocking requests. The docs search API answers with breadcrumbs of just ['VendurePOS'] instead of the page's section.",
+      "where": "tech.json lighthouse; text/endpoint_api_search_query_offline.txt"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "For someone who just arrived, the hero gives four equal-weight choices, and one of them ('Try with your store') opens a sign-in that only works after a server plugin install the visitor doesn't know about yet. The caveat sits below the buttons in small text, so the most tempting button for a curious store owner is a dead end.",
+    "where": "home/desktop/01 and home/phone/01 hero buttons",
+    "fix": "Keep Live demo as the primary button and make Quick start the only secondary one. Drop 'Try with your store' from the hero, or relabel it 'Open the app (needs the plugin)' and move it after the caveat line."
+  },
+  "mean": 8.0
+}
