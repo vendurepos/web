@@ -110,3 +110,12 @@ test('connect a till says where your data goes', () => {
   assert.match(section, /Building it yourself needs your own RxDB Premium\s+licence token/);
   assert.doesNotMatch(section.replace(/<[^>]+>/g, ' '), /\b(secure|safe|private|trusted)\b/i);
 });
+
+test('limitations says a self-build needs an RxDB Premium licence token, with no price or plan', () => {
+  const html = readFileSync(join('.next/server/app', 'docs/limitations.html'), 'utf8');
+  const strip = (s) => s.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ');
+  assert.ok(strip(html).includes('Building the till yourself needs your own RxDB Premium licence token in RXDB_PREMIUM'));
+  const li = html.match(/<li[^>]*>(?:(?!<\/li>)[\s\S])*?RxDB Premium(?:(?!<\/li>)[\s\S])*<\/li>/);
+  assert.ok(li);
+  assert.doesNotMatch(strip(li[0]), /[$€]|\bprice\b|\bpricing\b|\bplan\b/i);
+});
