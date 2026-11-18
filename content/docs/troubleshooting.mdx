@@ -88,7 +88,22 @@ customer search and adding a customer, which need a connection to the store.
 ## Resolve a sale the store kept part-way
 
 A sale marked `needs_admin` answers 409 until an admin resolves it through the
-Admin API with SuperAdmin access. List these sales with `tallyNeedsAdminCommands`.
+Admin API with SuperAdmin access. List these sales with `tallyNeedsAdminCommands`;
+each `id` is the `commandId` you resolve:
+
+```graphql
+query {
+  tallyNeedsAdminCommands {
+    id
+    clientOrderId
+    channelId
+    orderId
+    orderCode
+    createdAt
+  }
+}
+```
+
 Resolve one with `tallyResolveNeedsAdmin`, using `applied` or `rejected` as the
 resolution and a note:
 
@@ -104,6 +119,16 @@ mutation {
   }
 }
 ```
+
+Choose `applied` when the order should stand: the plugin leaves it as recorded,
+and the till's resend answers `duplicate`.
+Choose `rejected` when the sale should not count: the plugin cancels the order
+and its settled POS payments, and the till's resend answers `rejected`.
+Either way the mutation's `status` is your resolution and the sale leaves the list;
+after a rejection, the order is `Cancelled` and flagged `tallyRejected`.
+
+{/* Sources: vendurepos/app@2d3699e (plugin-v0.3.0) packages/vendure-plugin/src/api/admin-api.ts:18-27 (TallyNeedsAdminCommand), :77-79 (lists needs_admin rows), :99 (returns id and status);
+packages/vendure-plugin/test/admin-api.e2e.ts:10 (listing query), :90 (applied resend is duplicate), :106 (rejected order Cancelled, tallyRejected); packages/vendure-plugin/src/service/order-create.service.ts:316-334 (rejected cancels payments and order, sets tallyRejected), :336-339 (status set to the resolution), :613 (resend answers rejected or duplicate). */}
 
 Send a rejection with the sale's channel token (`vendure-token`).
 An order flagged `tallyRejected` counts as never placed: leave it out of register
