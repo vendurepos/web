@@ -87,6 +87,12 @@ test('step 7 leads with its actions', () => {
   assert.ok(section.indexOf('How POS sales take stock.') > list.index + list[0].length);
 });
 
+test('step 8c links how to add the barcode field', () => {
+  const section = stepSection('Sign in and make a sale', 'Troubleshoot');
+  const items = Array.from(section.matchAll(/<li\b[^>]*>((?:(?!<\/li>)[\s\S])*)<\/li>/g));
+  assert.ok(items[2][1].includes('href="/docs/connect-a-till#enter-your-store-details"'));
+});
+
 test("step 8's list is lettered", () => {
   const section = stepSection('Sign in and make a sale', 'Troubleshoot');
   assert.match(section, /<div\b[^>]*class="[^"]*\bsteps-lettered\b[^"]*"[^>]*>\s*<ol\b/);

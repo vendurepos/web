@@ -139,6 +139,14 @@ test('limitations has a bullet naming the browser print dialog and the cash draw
   assert.match(bullet, /does not open a cash drawer/);
 });
 
+test('connect a till shows the barcode custom field in a code block', () => {
+  // Round 16, C3: vendurepos/app@a257d16 apps/pos/lib/barcode-field.ts:22-23 needs a single string or text ProductVariant field.
+  const html = readFileSync(join('.next/server/app', 'docs/connect-a-till.html'), 'utf8');
+  const blocks = (html.match(/<pre\b[\s\S]*?<\/pre>/g) ?? [])
+    .map((pre) => pre.replace(/<[^>]+>/g, '').replace(/&#x27;|&#39;/g, "'"));
+  assert.ok(blocks.some((code) => code.includes('ProductVariant') && code.includes("name: 'barcode'") && code.includes("type: 'string'")));
+});
+
 test('connect a till names the demo events and where they go', () => {
   const html = readFileSync(join('.next/server/app', 'docs/connect-a-till.html'), 'utf8');
   const start = html.indexOf('id="where-your-data-goes"');

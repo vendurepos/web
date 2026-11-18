@@ -60,6 +60,20 @@ For **Barcode field (optional)**, enter the name of an existing single text
 `ProductVariant` custom field, such as `barcode`, to use for scanning. Leave it blank to turn this off.
 The barcode field is set when signing in; **Settings** shows the field you chose.
 
+If your store has no such field, add one to `ProductVariant` in your Vendure config:
+
+```ts
+// vendure-config.ts
+customFields: {
+  ProductVariant: [{ name: 'barcode', type: 'string', nullable: true }],
+},
+```
+
+Then run a [database migration](https://docs.vendure.io/current/framework/developer-guide/migrations/), which Vendure
+needs for any custom field change, and fill in each variant's barcode in the Vendure Dashboard.
+
+{/* Sources: vendurepos/app@a257d16 apps/pos/lib/barcode-field.ts:22-23 (ProductVariant, list false, type string or text), dev/vendure-store/src/vendure-config.ts:62-69 (the dev store's barcode field); https://docs.vendure.io/current/framework/developer-guide/custom-fields/ ("Note: changes to custom fields require a database migration"), linking https://docs.vendure.io/current/framework/developer-guide/migrations/. */}
+
 ## Sign in with a staff account
 
 Choose **Email and password** and sign in as a Vendure administrator who can read
