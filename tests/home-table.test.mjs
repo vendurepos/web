@@ -28,3 +28,13 @@ test('home table links "anonymous usage events" to where the data goes, words un
   const cell = row.match(/<td\b[^>]*>[\s\S]*?<\/td>/g)?.find((c) => c.includes('ph.wcpos.com'));
   assert.ok(cell.replace(/<[^>]*>/g, '').includes('All it sends is anonymous usage events to ph.wcpos.com, with no cookie'));
 });
+
+test('home table fixes its columns from 640px up so row labels fit on one line', () => {
+  const page = html();
+  const table = page.slice(page.indexOf('Live demo or your own store')).match(/<table\b[^>]*>[\s\S]*?<\/thead>/)?.[0];
+  assert.ok(table, 'table after "Live demo or your own store"');
+  const classes = (tag) => tag.match(/\sclass="([^"]*)"/)?.[1].split(/\s+/) ?? [];
+  assert.ok(classes(table.match(/^<table\b[^>]*>/)[0]).includes('sm:table-fixed'));
+  const widths = Array.from(table.matchAll(/<th\b[^>]*>/g), ([th]) => classes(th).filter((c) => /(^|:)w-/.test(c)));
+  assert.deepEqual(widths, [['sm:w-[34%]'], ['sm:w-[22%]'], []]);
+});
