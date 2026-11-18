@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero has four CTAs and three of them ('Quick start', 'Try with your store', 'GitHub') are identical outlined buttons of equal weight. 'Quick start' and 'Try with your store' read as the same next step, so after the black 'Live demo' there is no clear second action.", "where": "home.desktop.01 hero button row; home.phone.01"},
+    "C2": {"score": 8, "worst_defect": "On the home comparison table the live demo 'sends anonymous usage events to ph.wcpos.com'. That is an unexplained third-party domain on a VendurePOS page, and the explanation (a self-hosted PostHog) only appears deep in Connect a till.", "where": "home.desktop.02 table, last row; home.phone.04"},
+    "C3": {"score": 8, "worst_defect": "Step 3 of the quick start offers three migration routes in one wall of prose: tsx scripts, 'npx vendure migrate', and 'Do not also run the plugin's bundled migrations'. Step 8 then lists sync checks twice: item h and the separate 'Check it worked' bullet list.", "where": "quick-start.desktop.01 step 3; quick-start.desktop.03 step 8 h vs 'Check it worked'"},
+    "C4": {"score": 8, "worst_defect": "Limitations is a flat list of 13 equal-weight bullets with no grouping. Scope items ('Web till only for now'), build needs (RXDB_PREMIUM) and edge cases ('Private browser windows… such as Safari's') sit side by side, so it is hard to scan for what blocks you.", "where": "limitations.desktop.01"},
+    "C5": {"score": 8, "worst_defect": "The home comparison table crushes the first column to about 190 px, so row labels such as 'Sell for cash and print the receipt' and 'Attach a customer to the sale' wrap to two lines. Meanwhile the 'Live demo' column is about 420 px wide and mostly holds a bare 'Yes'.", "where": "home.desktop.02 'Live demo or your own store' table"},
+    "C6": {"score": 8, "worst_defect": "At 390 px the four hero buttons wrap 2+2 into rows of different widths: 'Live demo | Quick start' above a wider 'Try with your store | GitHub'. The centred stack has ragged edges. The phone hero screenshot below it has about 250 px of blank cart between 'Add charge' and 'Subtotal', and a truncated 'Q…' column header.", "where": "home.phone.01 buttons and screenshot; home.phone.02 top"},
+    "C7": {"score": 9, "worst_defect": "The share card's till screenshot is cut off at the bottom edge, so the 'Add charge' button and the In Stock pills are sliced in half. Otherwise strong: Lighthouse 98/100/100/100, a real 404 status, llms.txt, sitemap and search API all present.", "where": "og-image.png bottom edge"}
+  },
+  "overall_worst": {
+    "criterion": "C6",
+    "defect": "The first screen on a phone ends in four near-equal buttons that wrap 2+2 into mismatched rows ('Live demo | Quick start' / 'Try with your store | GitHub'). The hierarchy falls apart exactly where a visitor decides what to do next.",
+    "where": "home.phone.01 hero button row (also home.desktop.01)",
+    "fix": "Cut the hero to one primary ('Live demo') and one secondary ('Quick start'). Demote 'Try with your store' and 'GitHub' to text links in the line below, and on phone make the two buttons full-width and stacked."
+  },
+  "mean": 8.1
+}

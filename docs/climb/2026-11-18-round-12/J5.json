@@ -1,0 +1,48 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero has four near-equal buttons (\"Live demo\", \"Quick start\", \"Try with your store\", \"GitHub\"), and \"Quick start\" and \"Try with your store\" overlap. Nothing on the page says who this is not for or how it compares with Shopify POS, Square or a WooCommerce till. A buyer comparing options gets no framing beyond \"Point of sale for Vendure\".",
+      "where": "home.desktop.01 hero; home.txt"
+    },
+    "C2": {
+      "score": 6,
+      "worst_defect": "The home footer says \"MIT licensed\" and the site presents an open-source till. The only place it says \"Building the till yourself needs your own RxDB Premium licence token in RXDB_PREMIUM\" is deep in Limitations and Connect a till, with no cost or explanation. The site also promises \"the plugin release after 0.3.0, which is not out yet\" with no date, while the last release was 2026-10-06. The maintainer behind ph.wcpos.com is never named.",
+      "where": "home.txt footer; limitations.txt; connect-a-till.txt; at-the-till.txt; changelog.txt"
+    },
+    "C3": {
+      "score": 7,
+      "worst_defect": "Quick start step 4 says the admin needs to read the channel's catalogue and settings and have \"TallyPosSell (or CreateOrder)\". Connect a till says the role also needs ReadCustomer, CreateCustomer and ReadOrder, and that ReadOrder is \"gained only in the plugin release after 0.3.0; until then, add it to the role yourself\". A least-privilege user built from the quick start alone is therefore under-specified. On 0.3.0 a till refund also \"stays Pending until someone settles it by hand\".",
+      "where": "quick-start.txt step 4 vs connect-a-till.txt; at-the-till.txt refund"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "The changelog is written for insiders (\"ADR 0005\", \"order.create v5\", \"TallyPosV51790900000000\", \"#116\") rather than for a store owner deciding whether to upgrade. The same notice reads \"Sales aren't reaching the online store\" in the quick start and \"Till updates aren't reaching the online store\" in Troubleshooting. The product name is spelled \"Tally UI\" in the footer and \"TallyUI\" in the docs.",
+      "where": "changelog.txt / changelog.desktop.01; quick-start.txt troubleshoot vs troubleshooting.txt; home.txt footer vs docs.txt"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The hero till screenshot is cropped through the middle of the product grid's bottom row of tiles, so it looks clipped rather than framed. On every docs page the grey sidebar background stops at about y 900, leaving a hard edge below the GitHub and theme bar.",
+      "where": "home.desktop.01 (~y 1110); quick-start.desktop.01, at-the-till.desktop.01, troubleshooting.desktop.01 (~y 900)"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The phone hero till shows \"Cart (4) · €59.59\" while its footer reads \"Guest · 3 items\", and there is a large empty white area in the cart below \"Add charge\". A sceptic reads the mismatched counts as a bug in the product shot. Ten stacked feature cards also make the phone home page a long scroll.",
+      "where": "home.phone.01–02; home.phone.03"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Lighthouse mobile still flags about 52 KiB of unused JS, 14 KiB of legacy JS and 150 ms of render-blocking on /. Everything else is clean: 98/100/100/100, CLS 0, no images without alt text, JSON-LD present, llms.txt, sitemap, search API and a real 404.",
+      "where": "tech.json lighthouse /"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The site sells an \"MIT licensed\" open-source till, but building the till yourself \"needs your own RxDB Premium licence token in RXDB_PREMIUM\". That is a paid third-party licence, disclosed only on Limitations and Connect a till, with no price. A competitor-aware buyer would call this open-source overselling and a de facto lock-in to the hosted app.vendurepos.com.",
+    "where": "home.txt footer (\"MIT licensed\"); limitations.txt; connect-a-till.txt",
+    "fix": "State it on the home page under \"Before you start\" and beside the footer licence line, for example: \"The hosted till at app.vendurepos.com is free; building the till from source needs a paid RxDB Premium licence (link, price).\" Name who maintains the project and runs ph.wcpos.com in the same place."
+  },
+  "mean": 7.6
+}
