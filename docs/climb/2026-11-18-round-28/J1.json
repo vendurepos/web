@@ -1,0 +1,19 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The first thing above the headline is the badge \"Pre-release · plugin 0.3.0\", which names a plugin before the page has said there is one or what it plugs into; a newcomer has to read the third paragraph (\"Your own store needs the plugin on your Vendure server first\") to decode it.", "where": "home/desktop/01 and home/phone/01, pill above the h1"},
+    "C2": {"score": 8, "worst_defect": "The home page says \"The till's source is MIT licensed\" and then, in the same bullet, \"you need your own RxDB Premium licence token (RXDB_PREMIUM)\" without saying what RxDB is or that it is a paid licence. A newcomer reads that as a catch hidden in an env var name.", "where": "home/desktop/02, 'Before you start', fifth bullet; same on home/phone/05"},
+    "C3": {"score": 8, "worst_defect": "Quick start opens with two hosts (\"The hosted POS is live at https://app.vendurepos.com. https://vendurepos.vercel.app serves the same build.\") and step 2 then makes the reader learn that the code is called Tally (TallyPosPlugin, TallyPosSell, /tally/v1). A first-timer doesn't know which URL to use or whether they have the right package.", "where": "quick-start/desktop/01, intro paragraph and step 2"},
+    "C4": {"score": 8, "worst_defect": "Connect a till says unsent sales \"are kept in SQLite databases inside this browser\", while the home page, Overview, Plugin setup and Limitations all say \"MySQL, MariaDB and SQLite are not supported\". No page says that one is the browser and the other is the server database, so a newcomer reads it as a contradiction.", "where": "connect-a-till/desktop/01, 'Stored in this browser' fourth bullet vs plugin-setup/desktop/01 'Check your store'"},
+    "C5": {"score": 8, "worst_defect": "The hero till screenshot is cropped through a fourth row of product tiles, leaving slivers of half-drawn tiles along its bottom edge just above the caption. That looks like a capture accident rather than a framed image.", "where": "home/desktop/01, bottom edge of the product grid in the hero image (also home.desktop-dark)"},
+    "C6": {"score": 8, "worst_defect": "On a phone the till screenshot's quantity column header is cut to \"Q...\". Lower down, the copyable CORS_ORIGINS value wraps so \",http://localhost:8081\" starts its own line, which reads like two separate lines to paste.", "where": "home/phone/01 (cart table header) and quick-start/phone/05 (Terminal block)"},
+    "C7": {"score": 9, "worst_defect": "Mobile Lighthouse is 98/100/100/100, but LCP is 2.4 s on both / and /docs/quick-start, with render-blocking requests and about 51 KiB of unused JavaScript flagged. Docs pages carry only BreadcrumbList JSON-LD.", "where": "tech.json lighthouse '/' and '/docs/quick-start'"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A newcomer is told the till is \"open-source\" and \"MIT licensed\", then meets \"your own RxDB Premium licence token (RXDB_PREMIUM)\" in the home page's requirements list. Nothing says what RxDB is, that it is a paid licence, or that it only matters if you self-host the till. It reads like a hidden cost behind the open-source claim.", "where": "home/desktop/02, 'Before you start', fifth bullet",
+    "fix": "Rewrite the bullet in plain words, e.g. \"Using app.vendurepos.com costs nothing extra; building the till yourself needs a paid RxDB Premium licence (the offline database it uses)\", and leave the RXDB_PREMIUM variable name to Connect a till."
+  },
+  "mean": 8.1
+}
