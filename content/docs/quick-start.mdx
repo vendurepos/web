@@ -145,10 +145,14 @@ taxOptions: {
 ```
 
 For inclusive pricing, import `DefaultOrderTaxCalculationStrategy` from
-`@vendure/core` and use it for `orderTaxCalculationStrategy` instead. The
-single-rate totals match with these pairings; multiple rates can still need
+`@vendure/core` and use it for `orderTaxCalculationStrategy` instead.
+
+{/* Layout only: the explanation folds into a closed callout; same words. Keep when re-porting. */}
+<Callout title="Why these pairings" fold>
+The single-rate totals match with these pairings; multiple rates can still need
 the plugin's rounding surcharge. A store mixing pricing modes must account
 for the store-wide strategy. `/tally/v1/info` advertises the actual rounding.
+</Callout>
 
 ## 7. Prepare the channel and stock, then restart Vendure
 
@@ -160,7 +164,9 @@ for the store-wide strategy. `/tally/v1/info` advertises the actual rounding.
   (including a zero rate where appropriate).
 - Keep the manual fulfilment handler enabled.
 
-**How POS sales take stock.** The plugin wraps your store's
+{/* Layout only: the bold lead-in is now the closed callout's title; same words. Keep when re-porting. */}
+<Callout title="How POS sales take stock." fold>
+The plugin wraps your store's
 `catalogOptions.stockLocationStrategy`, so POS sales take stock where it
 allocates, across several locations if it splits a line; any quantity it
 leaves unallocated comes from the channel's default stock location. Short
@@ -168,6 +174,7 @@ stock is topped up so the sale goes through, at the strategy's first location
 or, when it cannot cover the sale, the default location. A custom stock
 strategy must allocate each POS line in full by `PaymentSettled`, or the sale
 is refused as a store configuration problem. A per-sale `locationId` is refused.
+</Callout>
 
 On server start the plugin creates or assigns the `tally-pos` payment method,
 `tally-in-store` shipping method and walk-in customer to each channel. Keep
