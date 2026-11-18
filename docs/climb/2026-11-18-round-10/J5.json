@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero gives four equal-weight buttons ('Live demo', 'Quick start', 'Try with your store', 'GitHub'). 'Quick start' and 'Try with your store' overlap, and nothing says who it is not for: there is no line comparing it with the Shopify, Square or Lightspeed kind of hosted till, which is the first question a buyer asks.", "where": "home.desktop.01 hero; home.phone.01 (buttons wrap 2+2 at uneven widths)"},
+    "C2": {"score": 7, "worst_defect": "'the plugin release after 0.3.0' is promised about eight times (refunds, customer note, ReadOrder in the till role, TallyPosRefund) with no version number or date. The changelog's newest entry is 0.3.0 (2026-10-06), six weeks before capture, so the live demo shows refunds and customer notes that no real store can run yet.", "where": "home.desktop.02 comparison table 'Refund a sale at the till'; at-the-till.txt 'Refund a sale' and 'Order details'; connect-a-till.txt 'Give each cashier'; changelog.desktop.01"},
+    "C3": {"score": 8, "worst_defect": "In the quick start, step 4 says the sign-in account needs only 'TallyPosSell (or CreateOrder)', and step 8 says 'Once the till shows the order as synced'. Connect a till says 'The till's order list needs ReadOrder, which that role gains only in the plugin release after 0.3.0'. The quick start never mentions ReadOrder, so a least-privilege admin cannot see the sync confirmation the quick start tells them to check.", "where": "quick-start.desktop.02 step 4 vs connect-a-till.txt 'Give each cashier their own account'"},
+    "C4": {"score": 8, "worst_defect": "The changelog is internal shorthand, not user notes. Entries cite 'ADR 0005', 'ADR 0004', '#116', '#117' and 'order.create v5' with none of them linked or explained. Quick start step 3 says 'the README describes that alternative' when Plugin setup on this same site documents the bundled migrations.", "where": "changelog.desktop.01; quick-start.desktop.01 end of step 3"},
+    "C5": {"score": 8, "worst_defect": "On every long docs page the grey sidebar panel stops at about 900 px, leaving a lighter, mismatched strip under it for the rest of the page. The share card's pink and purple accent and hollow-circle logo appear nowhere on the monochrome site.", "where": "docs.desktop.01, quick-start.desktop.01, limitations.desktop.01 (left column below y≈900); og-image.png"},
+    "C6": {"score": 8, "worst_defect": "The phone 'on this page' bar puts a grey partial ring before the current section ('1. Install the plugin', '0.3.0 (2026-10-06)'). It reads as a loading spinner that never finishes. The hero screenshot of the till is too small to read at 390 px.", "where": "quick-start.phone.01, changelog.phone.01, docs.phone.01 top bar; home.phone.01 hero image"},
+    "C7": {"score": 9, "worst_defect": "Every sitemap <lastmod> is a build timestamp from 2026-11-17/18 (e.g. home 2026-11-18T02:40:34), not a real content change. The share card is text only, with no product image.", "where": "text/endpoint_sitemap_xml.txt; og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The site's honesty hinges on an undated 'plugin release after 0.3.0' that the demo already shows: refunds, customer notes and the ReadOrder role fix are all deferred to it, yet the last release was 0.3.0 on 2026-10-06. That reads as a stalled project whose demo oversells what a real store gets.",
+    "where": "home.desktop.02 'Live demo or your own store' table and 'Before you start'; at-the-till.txt; limitations.txt; changelog.desktop.01",
+    "fix": "Name the next release (e.g. 0.4.0) with a target date or a linked milestone everywhere 'the plugin release after 0.3.0' appears, and add an 'Unreleased' section at the top of the changelog listing what it will contain."
+  },
+  "mean": 8.0
+}

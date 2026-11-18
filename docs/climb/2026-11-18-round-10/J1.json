@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 7, "worst_defect": "The hero never says what Vendure is: 'signs in to your own Vendure store' only links the word 'Vendure', so a visitor who half-knows it gets no 'open-source TypeScript commerce platform' line. Below that sit four near-equal buttons (Live demo, Quick start, Try with your store, GitHub), and 'Quick start' and 'Try with your store' overlap.", "where": "home/desktop/01 hero; home/phone/01"},
+    "C2": {"score": 8, "worst_defect": "Refunds and customer notes are repeatedly promised for 'the plugin release after 0.3.0' with no date or tracking link, while the changelog shows 0.3.0 dated 2026-10-06, six weeks old. The home comparison table also names an unexplained third-party-looking domain, 'ph.wcpos.com'.", "where": "home/desktop/02 table rows 'Refund a sale at the till' and 'Sales reach Vendure'; changelog/desktop/01"},
+    "C3": {"score": 8, "worst_defect": "Step 3 of the quick start offers three migration routes in one paragraph ('npx tsx src/generate-migration.ts', 'npx vendure migrate', or the plugin's bundled migrations 'the README describes'), so the reader has to choose instead of follow. The Node version requirement ('^20.19 || >=22.12') appears only on Plugin setup, not in the quick start's prerequisites.", "where": "quick-start/desktop/01 step 3; plugin-setup/desktop/01 'Check your store'"},
+    "C4": {"score": 8, "worst_defect": "'At the till' describes the till UI purely in words ('The ⋮ beside Checkout opens Order details', 'Tap a line's quantity to open its keypad') with no screenshot anywhere in the docs. The changelog is written in internal shorthand ('order.create v5', 'ADR 0005', '#116') that a newcomer cannot decode.", "where": "at-the-till/desktop/01; changelog/desktop/01"},
+    "C5": {"score": 8, "worst_defect": "The home 'Live demo or your own store' table splits its two value columns about evenly at full width, so mostly one-word 'Yes' cells leave large empty bands. The hero row of four similar outline/filled buttons gives no clear hierarchy beyond the first.", "where": "home/desktop/02 table; home/desktop/01 hero buttons"},
+    "C6": {"score": 8, "worst_defect": "The hero till screenshot shrinks to the 390 px width, so its product names, prices and cart are unreadable. The four hero buttons wrap into two rows of unequal widths ('Live demo | Quick start' over 'Try with your store | GitHub').", "where": "home/phone/01"},
+    "C7": {"score": 8, "worst_defect": "The share card repeats itself: the title 'Point of sale for Vendure' is followed by 'Open-source point of sale for Vendure...'. Its logo is a hollow pink circle and it has no product image, and the pink/purple palette appears nowhere on the monochrome site.", "where": "og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "A visitor from a 'Vendure point of sale' search who only half knows Vendure is never told what it is. The hero sentence assumes it, and the next decision is among four similar buttons, two of which ('Quick start', 'Try with your store') lead to the same plugin-first path.",
+    "where": "home/desktop/01 and home/phone/01 hero",
+    "fix": "Add a short clause to the hero sentence, e.g. 'your own Vendure (the open-source TypeScript commerce platform) store'. Then merge 'Try with your store' into 'Quick start' so the hero offers one primary (Live demo) and one secondary (Quick start) action plus GitHub."
+  },
+  "mean": 7.9
+}
