@@ -56,12 +56,17 @@ generateMigration(config, { name: 'AddVendurePos', outputDir: './src/migrations'
   .catch(error => { console.error(error); process.exitCode = 1; });
 ```
 
-Run it with `npx tsx src/generate-migration.ts` (`tsx` is the TypeScript
-runner VendurePOS's own dev store uses).
+{/* Layout only: the two commands move from prose into terminal blocks; same commands. Keep when re-porting. */}
+
+Run it (`tsx` is the TypeScript runner VendurePOS's own dev store uses):
+
+```sh
+npx tsx src/generate-migration.ts
+```
+
 Review the generated migration and include it in
 `config.dbConnectionOptions.migrations` (or your existing migration glob).
-Then save this as `src/run-migrations.ts` and run it with
-`npx tsx src/run-migrations.ts`:
+Then save this as `src/run-migrations.ts`:
 
 ```ts
 import { runMigrations } from '@vendure/core';
@@ -69,6 +74,12 @@ import { config } from './vendure-config';
 
 runMigrations(config)
   .catch(error => { console.error(error); process.exitCode = 1; });
+```
+
+Run it:
+
+```sh
+npx tsx src/run-migrations.ts
 ```
 
 The schema includes the command ledger, order/line custom fields and indexes,

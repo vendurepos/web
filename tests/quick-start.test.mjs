@@ -9,6 +9,22 @@ test('quick start omits the internal ADR tag', () => {
   assert.doesNotMatch(html, /ADR-?0*48/);
 });
 
+const textOf = (fragment) => fragment.replace(/<[^>]*>/g, '');
+
+test('step 3 runs its two commands from terminal blocks, not prose', () => {
+  const section = stepSection('Generate and run the migration', 'Enable bearer authentication');
+  const figures = Array.from(section.matchAll(/<figure\b(?:(?!<\/figure>)[\s\S])*<\/figure>/g));
+  const terminals = figures.filter(([figure]) => figure.includes('>Terminal</figcaption>'));
+  assert.equal(terminals.length, 2);
+  assert.ok(textOf(terminals[0][0]).includes('npx tsx src/generate-migration.ts'));
+  assert.ok(textOf(terminals[1][0]).includes('npx tsx src/run-migrations.ts'));
+  const runCode = figures.find(([figure]) => textOf(figure).includes('runMigrations(config)'));
+  assert.ok(runCode && terminals[1].index > runCode.index);
+  for (const [paragraph] of section.matchAll(/<p\b(?:(?!<\/p>)[\s\S])*<\/p>/g)) {
+    assert.ok(!textOf(paragraph).includes('npx tsx'), paragraph);
+  }
+});
+
 test('quick start links the setup warnings before a live sale', () => {
   assert.ok(html.includes('Before a sale on a live store'));
   assert.ok(html.includes('href="/docs/plugin-setup#set-up-email"'));
@@ -25,8 +41,8 @@ test('quick start keeps tax rounding as a level-two heading', () => {
 });
 
 test('step 3 names the runner', () => {
-  assert.ok(html.includes('npx tsx src/generate-migration.ts'));
-  assert.ok(html.includes('npx tsx src/run-migrations.ts'));
+  assert.ok(textOf(html).includes('npx tsx src/generate-migration.ts'));
+  assert.ok(textOf(html).includes('npx tsx src/run-migrations.ts'));
 });
 
 test('device key is optional and last', () => {
@@ -64,8 +80,9 @@ test('no built page spells it "Tally UI"', () => {
 test('step 3 leads with one path and names the other ways after it, in a note', () => {
   const section = stepSection('Generate and run the migration', 'Enable bearer authentication');
   const lastCode = section.lastIndexOf('<pre');
-  assert.ok(lastCode >= 0 && section.indexOf('runMigrations', lastCode) > lastCode);
   const mainPathEnd = section.indexOf('</pre>', lastCode);
+  assert.ok(lastCode >= 0 && section.lastIndexOf('runMigrations', lastCode) >= 0);
+  assert.ok(textOf(section.slice(lastCode, mainPathEnd)).includes('npx tsx src/run-migrations.ts'));
   const note = section.indexOf('Other ways to run the migration');
   assert.ok(note > mainPathEnd);
   for (const phrase of ['vendure migrate', 'bundled migrations']) {
