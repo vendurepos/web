@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero speaks to the developer, not the counter: 'Point of sale for Vendure' plus a subtitle about the Vendure plugin, and nothing in the first screen tells a shop owner whether two staff can sell on it tomorrow (the only owner-facing line is the small note 'Your own store needs the plugin on your Vendure server first').", "where": "home/desktop/01, home/phone/01"},
+    "C2": {"score": 8, "worst_defect": "The page meant to list what it does not do ('What VendurePOS does not do yet') never says the till cannot be reloaded or reopened while offline; that warning appears only in At the till > 'If the internet drops' ('a reload, or closing and reopening the browser, needs the connection to load the till again'), while the home card just says 'With the till's tab left open'.", "where": "limitations/desktop/01, limitations/phone/01 vs at-the-till text 'If the internet drops'"},
+    "C3": {"score": 7, "worst_defect": "Quick start is nine developer steps (migrations, CORS, 'bearer' tokenMethod, tax strategy) with Connect a till repeating 'On plugin 0.3.0 that role has no ReadOrder: add it yourself', so the owner has to hand the whole path to the freelancer and cannot tell how long it will take.", "where": "quick-start/desktop/01-0x, connect-a-till text"},
+    "C4": {"score": 7, "worst_defect": "At the till's 'Check the register during the day' says 'Reports opens on the drawer card' without ever showing or naming a Reports button before, and 'Count the drawer and close the day' lists the Z report contents but shows no screenshot of the close or Z report screen; Troubleshooting's sync-log steps sit in a collapsed details box and say only 'Fix the store, then choose Send again'.", "where": "at-the-till/desktop/03, troubleshooting text"},
+    "C5": {"score": 9, "worst_defect": "The cashier sheet screenshot differs between devices (phone shows 'open since 03:31' with 'Last synced 3:31 AM / Sync now', desktop shows 06:01 with no sync row), so the same step looks like two different screens.", "where": "at-the-till/phone/06 vs at-the-till/desktop/03"},
+    "C6": {"score": 8, "worst_defect": "In the phone hero the till screenshot is shrunk so far that the cart column header truncates to 'Q...', and the at-the-till phone cashier-sheet image has a grey strip on its left edge.", "where": "home/phone/01, at-the-till/phone/06"},
+    "C7": {"score": 9, "worst_defect": "Lighthouse mobile flags about 52 KiB of unused JavaScript on / and /docs/quick-start (perf 98 and 97, LCP 2.4 s and 2.5 s); otherwise titles, OG card, JSON-LD, llms.txt, sitemap, search API and the 404 page all work.", "where": "tech.json lighthouse"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The Limitations page, the one an owner reads to learn what could go wrong at the counter, leaves out the biggest offline risk: if the internet is down, a reload or a browser restart cannot load the till again, so a cashier who refreshes the page cannot sell until the connection returns.",
+    "where": "limitations/desktop/01, limitations/phone/01",
+    "fix": "Add one bullet near the top of Limitations: 'Offline, keep the till's tab open: a reload or a browser restart needs the internet to load the till again.' Link it to At the till > If the internet drops."
+  },
+  "mean": 8.0
+}

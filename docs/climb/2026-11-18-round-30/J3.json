@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The tax instructions prescribe different store-wide strategies by channel pricing mode, but tell mixed-mode stores only to 'account for the store-wide strategy', leaving the configuration choice unresolved.",
+      "where": "Quick start, step 6; text/endpoint_llms_full_txt.txt:790-816; shots/quick-start.phone.06.jpg"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The changelog says a key with the generated role 'does everything a till does', while the current setup instructions require manually adding ReadOrder for order history, without qualifying that earlier claim.",
+      "where": "text/endpoint_llms_full_txt.txt, Changelog 0.2.0; text/connect-a-till.txt, Create and use a device key; shots/changelog.desktop.01.jpg"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop-dark.jpg; desktop documentation screenshots"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "Phone screenshots, including shots/quick-start.phone.03.jpg and shots/quick-start.phone.06.jpg"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The captured home Lighthouse report identifies 52 KiB of unused JavaScript and an estimated 150 ms of render-blocking savings.",
+      "where": "tech.json, lighthouse./.failing"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "A developer with both tax-inclusive and tax-exclusive channels cannot determine the supported store-wide tax strategy from the instructions.",
+    "where": "Quick start, step 6, 'Why these pairings'; text/endpoint_llms_full_txt.txt:814-816",
+    "fix": "Add explicit guidance for mixed-mode stores: the supported strategy choice and how to verify receipt and Vendure totals for each pricing mode. If no supported pairing exists, state that limitation directly."
+  },
+  "mean": 9.0
+}

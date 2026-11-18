@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 9, "worst_defect": "The hero product screenshot is cropped through the middle of the fourth product row, leaving a band of half-tiles (cut red/yellow icons) along its bottom edge just above the caption 'A sale in progress on the live demo till.'", "where": "home/desktop/01 (also home.desktop-dark)"},
+    "C2": {"score": 9, "worst_defect": "The two proof cards ('Read the acceptance test', 'Read the 200-send test') link to test source files on GitHub rather than to a passing run, so the '25 sales ... exactly 25 orders' and '200 times makes one order' claims point to code, not to a result.", "where": "home/desktop/01, 'What it does today' first two cards"},
+    "C3": {"score": 8, "worst_defect": "'Check it worked' begins 'Once the till shows the order as synced' but nothing on the page shows or names the till's synced state (the header wording 'N orders waiting to send' lives only on Troubleshooting), and step 8 has no screenshot of the sign-in screen or the synced order.", "where": "quick-start/desktop/04, 'Check it worked'"},
+    "C4": {"score": 8, "worst_defect": "The Overview's 'Next steps' cards are Live demo, Plugin setup and Source on GitHub, which leaves out Quick start, the main path. It appears only in the pager strip under the cards.", "where": "docs/desktop/01, 'Next steps'"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' is ten identical grey cards in a 2x5 grid with the same type and weight, so the two proven claims (offline, lands once) look the same as 'Park a sale' or 'Barcode scanners'. Only two cards carry a link, so rows 1 and 2+ have uneven heights and no clear focus.", "where": "home/desktop/01-02"},
+    "C6": {"score": 8, "worst_defect": "Inline code breaks mid-token: on the changelog the path pill splits as 'packages/vendure-' / 'plugin/CHANGELOG.md' across two lines. On the quick start, the step 2 h2 wraps to three lines around a bordered 'TallyPosPlugin' code pill.", "where": "changelog/phone/01; quick-start/phone/02"},
+    "C7": {"score": 9, "worst_defect": "llms.txt lists the docs alphabetically, so Quick start comes ninth after Changelog, Connect a till and Limitations. Also, the OG card crops its screenshot through the 'Add charge' button and the stock chips at the bottom edge.", "where": "text/endpoint_llms_txt.txt; shots/og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "The home page's middle is a flat wall of ten equal-weight grey cards. On a 390 px phone it runs about two and a half screens of identical boxes before the 'Live demo or your own store' table, and the two tested claims get no more emphasis than minor features.",
+    "where": "home/desktop/01-02; home/phone/02-03",
+    "fix": "Keep 'Keeps selling offline' and 'Every sale lands once' as two larger proof cards. Set the other eight as a compact two-column list of title plus one line, without card borders or fill."
+  },
+  "mean": 8.4
+}
