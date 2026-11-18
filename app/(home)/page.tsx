@@ -138,20 +138,21 @@ export default function HomePage() {
   return (
     <main className="max-w-5xl mx-auto w-full px-4">
       <JsonLd data={homeJsonLd()} />
-      <section className="pt-20 pb-16 text-center">
+      <section className="pt-20 pb-16 text-left sm:text-center">
+        {/* Round 32, J4 C1: below 640px the hero is left-aligned and its lead one size smaller; from sm up it is centred as before. */}
         <span className="rounded-md border border-fd-border px-2 py-0.5 text-sm text-fd-muted-foreground">
           {`Pre-release · plugin ${PLUGIN_VERSION}`}
         </span>
         <h1 className="mt-6 mb-6 text-4xl sm:text-5xl font-bold tracking-tight">
           Point of sale for Vendure
         </h1>
-        <p className="max-w-2xl mx-auto text-lg text-fd-muted-foreground">
+        <p className="max-w-2xl mx-auto text-base sm:text-lg text-fd-muted-foreground">
           VendurePOS is an open-source till for <a href="https://vendure.io" className="underline">Vendure</a>,
           {/* Source: https://docs.vendure.io/ "The open source headless commerce framework, community plugins, and the commercial paid plans, all in one place." (read 2026-11-18) */}
           {' '}the open-source headless commerce framework. It runs in the browser and keeps selling when the
           connection drops. Every sale lands in your Vendure store once, as a normal order at the till&apos;s price.
         </p>
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
+        <div className="mt-8 flex flex-wrap justify-start sm:justify-center gap-3">
           <a
             href={DEMO_URL}
             className="rounded-md bg-fd-primary px-6 py-3 text-fd-primary-foreground hover:bg-fd-primary/90"
