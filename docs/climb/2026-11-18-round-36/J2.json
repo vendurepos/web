@@ -1,0 +1,48 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero speaks to the freelancer, not the shop: 'Your own store needs the plugin on your Vendure server first' is the first instruction. Nothing above the fold says what the counter needs (a computer with Chrome, a card terminal you already have, a printer) or whether app.vendurepos.com costs anything.",
+      "where": "home.desktop.01 / home.phone.01, hero and CTA line"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "Device support is vague for a counter decision. The page says only 'Its browser tests run in desktop Chrome; other browsers are not tested yet', so an owner can't tell whether the iPad or Android tablet at the counter will work tomorrow.",
+      "where": "home 'Before you start'; limitations.desktop.01"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The quick start is complete and ends with a good 'Check it worked' list. But it runs to nine steps (migrations by tsx script, tax strategy table, CORS, permissions) with no time estimate and no hand-off line telling the freelancer what to give the shop staff once it works.",
+      "where": "quick-start.desktop.01-04, steps 3-6"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The cashier page mixes live-demo-only features into staff instructions: 'Refund at the till (live demo)' sits beside 'Refund a sale', where a real store is told to 'Ask whoever manages your Vendure store'. Troubleshooting also shows cashiers raw errorCodes such as register_session_already_open.",
+      "where": "at-the-till 'Refund a sale' / 'Refund at the till (live demo)'; troubleshooting 'Till updates line'"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The cashier-sheet and closure screenshots float small inside oversized grey frames with large empty padding, so the day-close screen looks lost on the page.",
+      "where": "at-the-till.desktop.03, at-the-till.desktop.04 (Register closed / Closure #1 frame)"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The payment screenshot takes a long stretch of scrolling on a phone before the explanatory text. Long code identifiers and inline chips wrap awkwardly on the docs pages. Nothing overflows.",
+      "where": "at-the-till.phone.04; quick-start.phone.03-05"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Minor only: the not-found page has no JSON-LD and logs the expected 404 resource error in the console. Lighthouse is 98/100/100/100, and llms.txt, the sitemap, robots, search and the OG image all work.",
+      "where": "tech.json not-found entry"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A shop owner cannot tell whether the device at their counter will work. The only statement is 'Its browser tests run in desktop Chrome; other browsers are not tested yet', with no answer for a counter iPad, an Android tablet or a Chromebook. That is the first question for 'can staff sell with this tomorrow'.",
+    "where": "home 'Before you start'; limitations.desktop.01",
+    "fix": "Add one plain line on home and at the top of Limitations naming what is known to work at a counter (for example: desktop Chrome on Windows/Mac and Chromebook tested; Android Chrome and iPad Safari not tested yet; use a desktop or laptop with Chrome for now)."
+  },
+  "mean": 8.1
+}
