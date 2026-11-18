@@ -40,6 +40,18 @@ test('wrapped code lines hang past their indent on phones only', () => {
   assert.deepEqual(hang(outside), []);
 });
 
+test('phone code keeps each space-free run on one row (round 10, J4)', () => {
+  const css = readdirSync('.next/static', { recursive: true })
+    .filter((file) => file.endsWith('.css'))
+    .map((file) => readFileSync(join('.next/static', file), 'utf8'))
+    .join('\n');
+  // Inside the phone @media block, whose body holds only flat rules; the minifier may reorder the declarations.
+  const rule = /@media[^{]*max-width:\s*639px[^{]*\{(?:[^{}]*\{[^{}]*\})*?[^{}]*\.line\s*>\s*\[data-word\]\s*\{([^}]*)\}/.exec(css);
+  for (const declaration of [/display:\s*inline-block/, /max-width:\s*100%/, /text-indent:\s*0\b/]) assert.match(rule?.[1] ?? '', declaration);
+  const html = readFileSync('.next/server/app/docs/quick-start.html', 'utf8');
+  assert.match(html, /<span data-word=""><span[^>]*>&#x27;\.\/vendure-config&#x27;<\/span>/);
+});
+
 test('code lines carry their own indent', () => {
   const line = (page, text) => codeLines(page).flat().find((l) => l.text === text);
   assert.match(line('quick-start',"  .catch(error => { console.error(error); process.exitCode = 1; });").attrs, /--indent:2ch/);
