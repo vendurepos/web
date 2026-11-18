@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero body copy is a centred block of long lines with a parenthetical definition of Vendure inside it; on phone it is seven centred lines at lead size ('...signs in to your own Vendure store (Vendure is an open-source headless commerce framework). It keeps selling...'), which is slow to read before the two buttons, and a second centred hint line ('Your own store needs the plugin... try the till with your store') sits under them.", "where": "home/phone/01 (also home/desktop/01)"},
+    "C2": {"score": 9, "worst_defect": "The payment screenshot on At the till shows a cart line named 'Tally Fixture Mug', a test-fixture product name leaking into a docs image of the 'VendurePOS demo store', while every other shot uses clean demo products.", "where": "at-the-till/desktop/02 (payment screen image)"},
+    "C3": {"score": 8, "worst_defect": "Step 8 'Sign in and make a sale' uses a lettered list a–i where the last item 'i.' reads as a roman numeral, and sub-step h ('check Vendure for the POS prices, settled tally-pos payment, delivered fulfilment, stock reduction and tallySaleAt') is repeated immediately below as the 'Check it worked' bullet list, so the success check appears twice.", "where": "quick-start/desktop/03; quick-start/phone/08"},
+    "C4": {"score": 8, "worst_defect": "Troubleshooting 'Act on a header notice' runs the quoted UI message and the fix together in one plain-weight bullet ('\"The store refused this sign-in. Sign in again below; orders are kept.\" Sign in again in the bar that appears.'), so message and action are hard to tell apart, while the quick start's step 9 sets the same messages in bold with the fix on its own line.", "where": "troubleshooting/desktop/01 (Orders line, Till updates line)"},
+    "C5": {"score": 8, "worst_defect": "On the docs Overview, the three 'Next steps' cards are followed directly by a full-width, right-aligned 'Quick start >' pager box in the same card styling, which reads as an orphaned fourth card with a different alignment and an empty left half.", "where": "docs/desktop/01 (bottom)"},
+    "C6": {"score": 8, "worst_defect": "The quick start is about 10,000 px tall on a 390 px screen, and steps 6 and 7 are long walls of chip-studded prose (the 'How POS sales take stock.' paragraph runs about 13 lines), with inline code chips inflating line height; elsewhere an inline chip breaks across lines ('packages/vendure-' / 'plugin/CHANGELOG.md').", "where": "quick-start/phone/05–06; changelog/phone/01"},
+    "C7": {"score": 9, "worst_defect": "Every sitemap <lastmod> is a build time within hours of each other on 2026-11-18 (e.g. limitations, plugin-setup and at-the-till all 08:53:10), so it signals that every page changed today rather than when its content changed; the search API's breadcrumbs say only 'VendurePOS'.", "where": "text/endpoint_sitemap_xml.txt; text/endpoint_api_search_query_offline.txt"}
+  },
+  "overall_worst": {
+    "criterion": "C6",
+    "defect": "On phone the quick start is about 10,000 px of mostly prose: the store-wide tax nuances in step 6 and the 'How POS sales take stock.' and server-start paragraphs in step 7 are 8–13 line blocks between the actionable steps, so the commands and checks a developer needs are buried in long scrolls of chip-heavy text.",
+    "where": "quick-start/phone/05–07",
+    "fix": "Move the explanation paragraphs in steps 6 and 7 ('For inclusive pricing...', 'How POS sales take stock.', 'On server start...') into collapsed callouts, like the existing 'Other ways to run the migration' box, and leave only the action and its snippet in the step."
+  },
+  "mean": 8.3
+}

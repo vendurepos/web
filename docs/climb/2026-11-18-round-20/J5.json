@@ -1,0 +1,48 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero says what it is ('Point of sale for Vendure', 'Pre-release · plugin 0.3.0'), but nothing positions it against the options a client would weigh (Shopify POS, Square, Lightspeed, a hosted till) or says who should not use it beyond the Limitations page. The only comparison on home is the footer line 'Built with TallyUI. For Medusa, see MedusaPOS.'",
+      "where": "home.desktop.01 hero / home footer (text/home.txt)"
+    },
+    "C2": {
+      "score": 7,
+      "worst_defect": "No person, company or support channel is named as the maintainer anywhere on the site. The newest release is 'plugin 0.3.0' dated 2026-10-06, six weeks old, and 0.2.0 and 0.3.0 shipped the same day. A known 0.3.0 bug is left to the user: 'the role it creates (vendurepos-pos-till) has the step 4 permissions except ReadOrder, so add ReadOrder to that role yourself.' A sceptic sees a possibly stalled solo project.",
+      "where": "home footer; changelog.desktop.01; quick-start 'Optional: a device key'"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The nine-step quick start is thorough, but required fixes are buried as side notes: the missing ReadOrder permission sits in a parenthetical in the optional device-key section, so a reader who skims fails at the till. The capture is also clipped at quick-start.desktop.04 and phone.09 because the page is so long.",
+      "where": "quick-start.desktop.03-04 / quick-start.phone.07-09"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Troubleshooting says the store needs 'order.create v4 and register v1, as every plugin release from 0.1.0 does', which implies any release is fine. Notifications and At the till say fee and shipping charges, the customer note and at-till refunds need more than 0.3.0 or are live-demo only. The changelog is plugin-only and full of unlinked internal references ('(ADR 0005)', '(#116)', 'order.create v5').",
+      "where": "troubleshooting.desktop.01 'Store settings'; notifications.desktop.01; changelog.desktop.01"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "On every docs page at desktop, the grey sidebar panel stops at about 900 px with a lighter, mismatched band below it, so the layout looks unfinished as you scroll. Elsewhere the type and spacing are clean, dark mode works and the OG image is good.",
+      "where": "troubleshooting.desktop.01, notifications.desktop.01, docs.desktop.01 (left column below y≈900)"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "Phone layout is clean with no horizontal overflow, and the comparison table reflows into label/value stacks. But the docs pages are very long walls of text on phone (quick-start runs to 9+ slices, about 10,000 px) and there is no in-page jump navigation visible on the first phone slice.",
+      "where": "quick-start.phone.01-09; docs.phone.01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Every sitemap lastmod is the build time (2026-11-17/18), not a real edit date. The 404 page logs a console 'Failed to load resource: 404' error, which is expected. Lighthouse is 98/100/100/100, CLS 0, and there is no overflow or missing alt text.",
+      "where": "tech.json sitemap / not-found console"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The site never says who builds or maintains VendurePOS or how a store gets support. The newest release is plugin 0.3.0 from 2026-10-06, and a known 0.3.0 bug (the created till role lacks ReadOrder) is documented as a manual step rather than fixed. A competitor-aware client weighing this against Shopify POS or Square reads it as a possibly stalled solo side project and walks away.",
+    "where": "home footer; changelog.desktop.01; quick-start 'Optional: a device key'",
+    "fix": "Add a short 'Who maintains this' line to home's 'Before you start' that names the maintainer, the support channel and the release cadence. Ship 0.3.1 with ReadOrder in the created role, or give the fix a date in the changelog."
+  },
+  "mean": 8.0
+}
