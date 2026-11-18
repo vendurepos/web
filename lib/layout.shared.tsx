@@ -13,7 +13,8 @@ export function baseOptions(): BaseLayoutProps {
       title: SITE_NAME,
     },
     links: [
-      { text: 'Docs', url: '/docs' },
+      // The sidebar's Overview item already marks /docs as active; one highlight is enough.
+      { text: 'Docs', url: '/docs', active: 'none' },
       { text: 'Live demo', url: DEMO_URL, external: true },
       { text: 'Try with your store', url: APP_URL, external: true },
       // Fumadocs' githubUrl renders an unnamed <svg role="img">; the link carries the name, so the icon is decorative.
