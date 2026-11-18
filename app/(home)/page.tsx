@@ -15,10 +15,10 @@ const TILL_ALT =
 // Each claim is backed by a test in vendurepos/app; the file is named in the comment beside it. Add a feature here only with its test.
 const features = [
   {
-    // apps/pos/e2e/offline.spec.ts
+    // apps/pos/e2e/offline.spec.ts; at-the-till.mdx "If the internet drops": a reload needs the connection
     title: 'Keeps selling offline',
     description:
-      'Sales made with the network off wait on the till and go to Vendure when it reconnects. Our acceptance run makes 25 sales, 20 of them offline, and checks that Vendure holds exactly 25 orders.',
+      "With the till's tab left open, sales made with the network off wait on the till and go to Vendure when it reconnects. Our acceptance run makes 25 sales, 20 of them offline, and checks that Vendure holds exactly 25 orders.",
     test: { label: 'Read the acceptance test', path: 'apps/pos/e2e/offline.spec.ts' },
   },
   {
