@@ -90,3 +90,18 @@ test('hero is left-aligned with a smaller lead below 640px', () => {
   assert.ok(buttons.includes('justify-start') && buttons.includes('sm:justify-center'), buttons.join(' '));
   assert.ok(!buttons.includes('justify-center'), buttons.join(' '));
 });
+
+// Round 33, J4 C6: the phone hero clipped the cart's Add charge at 390x664.
+test('phone hero capture is the whole 390x700 cart, and its alt names the cart total', () => {
+  const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
+  const sources = html.match(/<source[^>]*>/g) ?? [];
+  for (const scheme of ['light', 'dark']) {
+    const png = readFileSync(`public/till/sale-phone-${scheme}.png`);
+    const [width, height] = [png.readUInt32BE(16), png.readUInt32BE(20)];
+    assert.ok(width === 780 && height === 1400, `${scheme} ${width}x${height}`);
+    assert.ok(sources.some((s) => s.includes(`sale-phone-${scheme}.png`) && s.includes('height="1400"')), scheme);
+  }
+  const img = html.match(/<img[^>]*\salt="(The VendurePOS till mid-sale[^"]*)"/);
+  assert.ok(img, 'hero img');
+  assert.ok(img[1].includes('€20.09') && !img[1].includes('€59.59'), img[1]);
+});

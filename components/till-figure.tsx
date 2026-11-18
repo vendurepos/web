@@ -2,10 +2,10 @@ import { getImageProps } from 'next/image';
 import type { ReactNode } from 'react';
 
 // public/till/<name>-{light,dark}.png are live demo till captures (#62) at deviceScaleFactor 2 (sale 1440x900);
-// <name>-phone-{light,dark}.png are the same states at 390x844, deviceScaleFactor 2 (sale at 390x664, a phone's
-// visible Safari viewport, round 13; cashier cropped to its sheet).
+// <name>-phone-{light,dark}.png are the same states at 390x844, deviceScaleFactor 2 (sale at 390x700, round 33
+// J4 C6: 664 clipped the cart's Add charge; cashier cropped to its sheet).
 // Round 11, C6: a 1440px shot shrunk to a phone is unreadable, so below 640px a <picture> serves the phone capture.
-const PHONE_HEIGHT: Record<string, number> = { sale: 1328, payment: 1688, cashier: 688 };
+const PHONE_HEIGHT: Record<string, number> = { sale: 1400, payment: 1688, cashier: 688 };
 // Round 15, C5: a full 1440px window shrunk to the 836px docs column put the till's text at 7px. payment is a 900x820
 // capture right of the nav rail (836x820 CSS px), cashier is the sheet alone (384x306); sale stays the full window.
 // The wide image never renders wider than its CSS size, so a DPR 2 capture is shown 1:1 and not blown up.
