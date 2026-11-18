@@ -108,6 +108,8 @@ tokenMethod: ['bearer', 'cookie'],
 Sign in with a Vendure administrator whose role in the till's channel has `TallyPosSell`, `ReadCatalog`,
 `ReadSettings`, `ReadCustomer` and `CreateCustomer`. `TallyPosSell` (or `CreateOrder`, which is broader) opens the
 plugin's sale routes. Also add `ReadOrder`, or the till sells but its order history is refused.
+Give each cashier their own administrator with only that role, not a shared login: see
+[Give each cashier their own account](/docs/connect-a-till#give-each-cashier-their-own-account).
 
 For a key per till instead, see **Optional: a device key for each till** below.
 

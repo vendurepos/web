@@ -211,3 +211,12 @@ test('step 8h points to Check it worked instead of repeating its checks', () => 
     assert.ok(bullets[1].includes(phrase), phrase);
   }
 });
+
+test('step 4 points to one administrator per cashier on Connect a till', () => {
+  // Round 23, J2 C3: step 4 named the till role but never said to give each cashier their own login.
+  const step4 = stepSection('Enable bearer authentication', 'Allow the POS origin through CORS');
+  assert.ok(step4.includes('Give each cashier their own administrator'));
+  assert.ok(step4.includes('href="/docs/connect-a-till#give-each-cashier-their-own-account"'));
+  const connect = readFileSync('.next/server/app/docs/connect-a-till.html', 'utf8');
+  assert.ok(connect.includes('id="give-each-cashier-their-own-account"'));
+});
