@@ -33,3 +33,16 @@ test('troubleshooting places Retry in Orders and Send again in the header', () =
   assert.match(html, /<strong>Needs attention<\/strong>\s*in Orders, with a <strong>Retry<\/strong>/);
   assert.match(html, /<strong>Send again<\/strong> on this header line/);
 });
+
+// Round 14, C4 (J3): partial-sale recovery gave no runnable listing query and no way to choose a resolution.
+test('troubleshooting lists kept sales before resolving one, and says when to choose each resolution', () => {
+  const kept = section('resolve-a-sale-the-store-kept-part-way', 'check-browser-storage');
+  const blocks = kept.match(/<pre[\s\S]*?<\/pre>/g) ?? [];
+  const text = (block) => block.replace(/<[^>]+>/g, '');
+  const list = blocks.findIndex((block) => /tallyNeedsAdminCommands/.test(text(block)) && /orderCode/.test(text(block)));
+  const resolve = blocks.findIndex((block) => /tallyResolveNeedsAdmin/.test(text(block)));
+  assert.ok(list >= 0 && resolve > list, `list ${list}, resolve ${resolve}`);
+  const prose = kept.replace(/<pre[\s\S]*?<\/pre>/g, '');
+  assert.match(prose, /Choose <code[^>]*>applied<\/code>/);
+  assert.match(prose, /Choose <code[^>]*>rejected<\/code>/);
+});
