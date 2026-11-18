@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "Everything above the fold speaks to the developer (top nav 'Docs / Live demo / Quick start', the hero line 'Your own store needs the plugin on your Vendure server first'). The page for staff and owners, 'At the till', is only linked in the last paragraph above the footer ('For cashiers, At the till covers selling, taking payment and closing the day').", "where": "home/desktop/01 hero and nav; home/desktop/02 last paragraph; home/phone/05"},
+    "C2": {"score": 8, "worst_defect": "The home table says a Dashboard refund 'stays Pending until it is settled' but not that settling needs the Admin API's settleRefund mutation (only Limitations says so). An owner reading the home page would not see that every refund needs a developer.", "where": "home/desktop/02 'Refund a sale at the till' row vs limitations/desktop/01 bullet 4"},
+    "C3": {"score": 8, "worst_defect": "Quick start step 4 has the developer create cashier admins with five named permissions. The optional device-key section then says the plugin's own 'vendurepos-pos-till' role on 0.3.0 lacks ReadOrder, 'so add ReadOrder to that role yourself'. That is a known gotcha left to the user, it sits at the bottom of the page, and step 8 still assumes order history works.", "where": "quick-start text 'Optional: a device key for each till'; quick-start/desktop/02 step 4"},
+    "C4": {"score": 7, "worst_defect": "Troubleshooting's 'N till updates need attention' entry tells the owner to dig a DEBUG line ('Register command result … status=rejected errorCode=…') out of Settings › Sync log before reloading. For 'Any other code' it then says 'the till has no retry or skip, and fixing the store does not make it send the update again', with no next step: no contact, no export, nothing on what happens to that day's closure in Vendure.", "where": "troubleshooting/desktop/01 'Till updates line' bullets"},
+    "C5": {"score": 8, "worst_defect": "On every docs page the grey sidebar panel stops at about y=900 and the page below it is a lighter colour, so the left column visibly breaks partway down. On the home page, the ten 'What it does today' cards are identical grey boxes with no image after the hero, so closing the day and the Z report get no picture.", "where": "at-the-till/desktop/01 and quick-start/desktop/01 left column at y≈900; home/desktop/01-02 card grid"},
+    "C6": {"score": 8, "worst_defect": "On the phone, the hero till screenshot's cart header is cut to 'Q...' instead of QTY. The phone menu control is a chevron on the home page but a sidebar icon on docs pages, so the same menu looks different from page to page.", "where": "home/phone/01 cart header and top-right icon vs quick-start/phone/01 top-right icon"},
+    "C7": {"score": 9, "worst_defect": "Every sitemap lastmod is a timestamp from the last day (2026-11-17/18, e.g. changelog 2026-11-18T06:54) even though the changelog's last release is 2026-10-06, so lastmod looks like a deploy timestamp rather than the date content changed.", "where": "text/endpoint_sitemap_xml.txt"}
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "When the store refuses a register update (open, close, cash movement or closure) with any code other than the two named ones, Troubleshooting says the till will never resend it and that nothing clears it. It gives the owner no way out and does not say whether that day's closure and cash records ever reach Vendure. For someone who has to close the day, that is a dead end that breaks trust.",
+    "where": "troubleshooting/desktop/01 'Any other code:' bullet (also limitations/desktop/01 'When the store refuses a till update' bullet)",
+    "fix": "Under 'Any other code', add the next step in plain words: what is kept on the till and what is missing in Vendure, that the printed Z report is still the day's record, and where to report it (a GitHub issue link) with the copied log line."
+  },
+  "mean": 8.0
+}

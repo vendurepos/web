@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero carries three stacked text blocks of body copy: a 4-line centred paragraph with a parenthetical definition ('(Vendure is an open-source headless commerce framework)'), then the buttons, then another sentence ('Your own store needs the plugin…'). At 390 px the centred paragraph runs to 7 lines, so the buttons only appear after a long read.", "where": "home.desktop.01 hero; home.phone.01"},
+    "C2": {"score": 9, "worst_defect": "In the changelog, references such as '(ADR 0005)', '(ADR 0004)', '(#116)' and '(#117)' are plain unlinked text, so a reader cannot follow them to check the claim behind each entry.", "where": "changelog.desktop.01, 0.3.0 and 0.2.0 bullets"},
+    "C3": {"score": 8, "worst_defect": "The 6,300 px quick start has no picture of the sign-in screen or of the synced order in the Vendure Dashboard. Step 8 is a nine-item lettered list (a–i), and 'Check it worked' is five text bullets, so a reader never sees what success looks like.", "where": "quick-start.desktop.03 (step 8 and 'Check it worked'); quick-start.phone.07-08"},
+    "C4": {"score": 8, "worst_defect": "The docs sidebar lists 'Quick start' twice, once under 'Docs / Live demo / Quick start' and again under 'Overview'. The Overview's 'Next steps' cards (Live demo, Plugin setup, Source on GitHub) leave out Quick start and push it down to the pager.", "where": "docs.desktop.01 sidebar and Next steps; every docs page sidebar"},
+    "C5": {"score": 8, "worst_defect": "On the Overview, 'Next steps' is a row of three cards followed by a full-width, right-aligned 'Quick start >' pager card with the same border and fill. It reads as an orphaned fourth card whose text is aligned the other way.", "where": "docs.desktop.01 bottom; docs.phone.02"},
+    "C6": {"score": 8, "worst_defect": "On phone, the ten feature cards stack into one column about 2,900 px tall (two and a half screens of identical grey boxes) before the comparison table. Docs paragraphs dense with code chips (8 chips in the step 4 role sentence) raise the line height into a ragged rhythm.", "where": "home.phone.02-03; quick-start.phone.04 step 4"},
+    "C7": {"score": 9, "worst_defect": "llms-full.txt is ordered alphabetically and opens with '# At the till' rather than Overview and Quick start. Docs pages carry only BreadcrumbList JSON-LD, with no article type.", "where": "text/endpoint_llms_full_txt.txt first lines; tech.json docs.* jsonLd"}
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "The docs landing page's 'Next steps' block has three cards plus a full-width, right-aligned pager card in the same style, which reads as a stray fourth card. The step the reader needs most, Quick start, sits only in that pager card, while Plugin setup gets a primary card, and Quick start also appears twice in the sidebar.",
+    "where": "docs.desktop.01 / docs.phone.02",
+    "fix": "Make Quick start the first 'Next steps' card, with Live demo, Plugin setup and GitHub in a 2x2 grid, and give the prev/next pager a distinct borderless style. Drop the duplicate 'Quick start' from the sidebar's top link group."
+  },
+  "mean": 8.3
+}
