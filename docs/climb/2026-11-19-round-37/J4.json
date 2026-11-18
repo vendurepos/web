@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 9, "worst_defect": "On phone the hero screenshot is the narrow till layout showing only the Products tab and product grid; the cart is reduced to a 'Cart (3) · €20.09' tab, so the caption 'A sale in progress on the live demo till.' sits under an image where no sale is visible.", "where": "home/phone/01-02"},
+    "C2": {"score": 9, "worst_defect": "The 'Keeps selling offline' card claims 'Our acceptance run makes 25 sales, 20 of them offline' but links only to the spec file ('Read the acceptance test'), not to a passing run, so the claim can't be checked from the page.", "where": "home/desktop/01, 'What it does today' first card"},
+    "C3": {"score": 8, "worst_defect": "Step 4 hides the till role's permissions in one dense sentence with seven inline code pills ('TallyPosSell, ReadCatalog, ReadSettings, ReadCustomer and CreateCustomer ... Also add ReadOrder'). On phone it runs to a 10-line paragraph where the permission you must not miss (ReadOrder) is easy to skip.", "where": "quick-start/desktop/02 and quick-start/phone/05, '4. Enable bearer authentication'"},
+    "C4": {"score": 8, "worst_defect": "The same UI string is styled two ways on one screen: 'N orders waiting to send' is bold text in the warning callout and a monospace code pill in the bullet list just below it. Troubleshooting also sets header notices as code pills while other UI labels ('Waiting to sync', 'Retry') are bold.", "where": "at-the-till/phone/07 'If the internet drops'; troubleshooting/desktop/01"},
+    "C5": {"score": 8, "worst_defect": "Screenshots on At the till come in three widths. The payment screen fills the column, but the cashier sheet is a ~420 px card centred inside a second padded frame, and its caption 'The cashier sheet on the live demo till.' stays left-aligned to the column instead of sitting under the image.", "where": "at-the-till/desktop/02 vs at-the-till/desktop/03"},
+    "C6": {"score": 8, "worst_defect": "The 'Live demo or your own store' table stacks into cards at 390 px, but the hierarchy flips. Each row's title ('Sell for cash and print the receipt', 'Refund a sale at the till') is regular weight, while the repeated labels 'Live demo:' and 'Your Vendure store:' are bold, so the eye lands on the repeated labels and not on what each row is about.", "where": "home/phone/04"},
+    "C7": {"score": 9, "worst_defect": "The share card's till screenshot is cut off at the bottom edge through the 'Add charge' button and the stock pills, and the subtitle wraps so 'a normal order.' sits alone on a short second line.", "where": "og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C6",
+    "defect": "On the phone home page, the comparison table that answers 'demo or my store?' stacks with its hierarchy upside down. Row titles are regular weight and the repeated column labels 'Live demo:' / 'Your Vendure store:' are bold, so seven rows read as one undifferentiated list of bold labels and the important 'No, not on plugin 0.3.0' refund row doesn't stand out.",
+    "where": "home/phone/04",
+    "fix": "In the stacked layout, set each row title in semibold at a slightly larger size with a little space above it, and set the 'Live demo:' / 'Your Vendure store:' labels in regular muted text."
+  },
+  "mean": 8.4
+}

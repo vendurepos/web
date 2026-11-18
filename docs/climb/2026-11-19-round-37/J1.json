@@ -1,0 +1,48 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero is clear, but the next thing a newcomer reads, the home page's 'Before you start' list, is aimed at developers: a raw semver string 'Node ^20.19 || >=22.12', 'RxDB Premium licence token (RXDB_PREMIUM)' and 'one tab per till and not a private window'. It reads as setup internals, not as who this is for.",
+      "where": "home.desktop.02 / home.phone.04-05, 'Before you start'"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The home table says the demo 'sends ... anonymous usage events to ph.wcpos.com'. The visitor has never heard of wcpos, and nothing on the home page says who that is or how it relates to VendurePOS. It reads like a third party slipped in.",
+      "where": "home.desktop.02, 'Live demo or your own store' table, last row"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The quick start is complete and ends with a clear 'Check it worked' list. In step 5, though, a collapsible 'If your store already allows vendurepos.vercel.app' points at a domain never mentioned anywhere else, which reads as a leftover. It is also one more detour in a nine-step path that already includes migration scripts and tax strategies.",
+      "where": "quick-start.desktop.02 (bottom) / quick-start.phone.05"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The changelog reads as internal engineering notes rather than release notes. Examples: 'order.create v5 custom lines are real order lines on a plugin-owned, disabled 'POS custom item' variant ... (ADR 0005)', 'tallyNeedsAdminCommands', 'GET /tally/v1/info advertises order.create 1–5'.",
+      "where": "changelog.desktop.01 / changelog.phone.01"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "'What it does today' is ten identical grey text-only cards in a long two-column grid, with no icons or images to break it up. In the hero screenshot the cart pane has a large empty band between 'Add charge' and 'Subtotal'.",
+      "where": "home.desktop.01-02; home.desktop.01 hero image"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "While the reader is still at the page title, the sticky 'On this page' bar on phone docs pages already names a later section ('1. Install the plugin' on Quick start, 'How a sale reaches Vendure' on Overview). It looks as if the page has scrolled. Otherwise there is no overflow, and the comparison table turns into readable cards.",
+      "where": "quick-start.phone.01, docs.phone.01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Mobile LCP is 2.4 s on both / and /docs/quick-start, right at the 2.5 s 'good' line. Lighthouse also flags 52 KiB of unused JavaScript and 130 ms of render-blocking resources. Titles, share card, JSON-LD, llms.txt, sitemap, search API and the real 404 status are all in order.",
+      "where": "tech.json lighthouse ./ and ./docs/quick-start"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "Past the hero, the home page speaks to someone who already runs a Vendure server. Its 'Before you start' section leads with 'Node ^20.19 || >=22.12', Postgres versions and an 'RxDB Premium licence token (RXDB_PREMIUM)'. A visitor who only half knows what Vendure is cannot tell whether this is for them or what it takes to use it.",
+    "where": "home.desktop.02 / home.phone.04-05, 'Before you start'",
+    "fix": "Open 'Before you start' with one plain sentence: 'You need a Vendure store on Postgres; a developer adds our plugin, then any browser becomes a till.' Move the Node range and the RXDB_PREMIUM self-hosting note into the quick start."
+  },
+  "mean": 8.1
+}
