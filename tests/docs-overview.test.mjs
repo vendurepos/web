@@ -46,3 +46,19 @@ test('overview and home requirements name the plugin Node range', () => {
   assert.ok(start >= 0, 'a Before you start heading');
   assert.ok(text(home.slice(start, home.indexOf('</ul>', start))).includes('^20.19 || >=22.12'));
 });
+
+// Round 36, J5 C4: "3.6 or later" read as including 4.x; the plugin's peer range is ^3.6.0.
+test('the Vendure range reads the same on home, overview and plugin setup', () => {
+  const text = (page) =>
+    readFileSync(join('.next/server/app', page), 'utf8')
+      .replace(/<[^>]*>/g, '')
+      .replace(/&#x27;|&#39;|&apos;/gi, "'")
+      .replace(/&quot;|&#x22;|&#34;/gi, '"')
+      .replace(/\s+/g, ' ');
+  const pages = Object.fromEntries(['docs.html', 'index.html', 'docs/plugin-setup.html'].map((p) => [p, text(p)]));
+  for (const [page, body] of Object.entries(pages)) {
+    assert.ok(body.includes('3.6 or a later 3.x release'), page);
+    assert.ok(!body.includes('3.6 or later'), page);
+  }
+  assert.ok(pages['docs/plugin-setup.html'].includes("import { runMigrations } from '@vendure/core'"));
+});

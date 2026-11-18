@@ -230,8 +230,9 @@ export default function HomePage() {
       <section className="pb-16">
         <h2 className="mb-6 text-2xl font-bold tracking-tight">Before you start</h2>
         <ul className="list-disc pl-5 text-fd-muted-foreground space-y-1">
+          {/* plugin-v0.3.0 packages/vendure-plugin/package.json:41-42 (peerDependencies @vendure/core ^3.6.0) */}
           <li>
-            Vendure 3.6 or later on Postgres (tested on 3.7.3). MySQL, MariaDB and
+            Vendure 3.6 or a later 3.x release on Postgres (tested on 3.7.3). MySQL, MariaDB and
             SQLite are not supported.
           </li>
           {/* plugin-v0.3.0 packages/vendure-plugin/package.json:27-28 (engines); quick-start.mdx and plugin-setup.mdx:9 say the same. */}
