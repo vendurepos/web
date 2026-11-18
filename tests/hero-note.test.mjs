@@ -6,20 +6,20 @@ import { join } from 'node:path';
 test('hero explains what Try with your store needs', () => {
   const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
   const note = html.indexOf('Your own store needs the plugin on your Vendure server first');
-  const tryStore = html.indexOf('Try with your store</a>');
+  const quickStart = html.indexOf('Quick start</a>');
   const heading = html.indexOf('What it does today</h2>');
   assert.ok(note !== -1);
-  assert.ok(tryStore !== -1 && note > tryStore);
+  assert.ok(quickStart !== -1 && note > quickStart);
   assert.ok(heading !== -1 && note < heading);
 });
 
 test('hero shows the till, light and dark', () => {
   const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
-  const tryStore = html.indexOf('Try with your store</a>');
+  const quickStart = html.indexOf('Quick start</a>');
   const heading = html.indexOf('What it does today</h2>');
   const img = html.search(/<img[^>]*\salt="The VendurePOS till mid-sale/);
-  assert.ok(tryStore !== -1);
-  assert.ok(img !== -1 && img > tryStore);
+  assert.ok(quickStart !== -1);
+  assert.ok(img !== -1 && img > quickStart);
   assert.ok(heading !== -1 && img < heading);
   for (const file of ['sale-light', 'sale-dark', 'sale-phone-light', 'sale-phone-dark']) {
     assert.ok(html.includes(`${file}.png`), file);

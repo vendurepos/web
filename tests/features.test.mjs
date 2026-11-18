@@ -61,13 +61,28 @@ test('hero puts the live demo first, as the primary button', () => {
   const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
   const demo = '<a href="https://demo.vendurepos.com/demo" class="rounded-md bg-fd-primary px-6 py-3 text-fd-primary-foreground hover:bg-fd-primary/90">Live demo</a>';
   const quickStart = '<a class="rounded-md border border-fd-border px-6 py-3 hover:bg-fd-accent" href="/docs/quick-start">Quick start</a>';
-  const tryStore = '<a href="https://app.vendurepos.com" class="rounded-md border border-fd-border px-6 py-3 hover:bg-fd-accent">Try with your store</a>';
   assert.ok(html.includes(demo));
   assert.ok(html.includes(quickStart));
-  assert.ok(html.includes(tryStore));
   assert.ok(html.indexOf(demo) < html.indexOf(quickStart));
-  assert.ok(html.indexOf(quickStart) < html.indexOf(tryStore));
   assert.equal(Array.from(html.matchAll(/class="rounded-md bg-fd-primary/g)).length, 1);
+});
+
+test('hero has two buttons, no GitHub link, and the note links the quick start and the app', () => {
+  // Round 18, C1: Try with your store moves into the note under the buttons; GitHub stays in the header.
+  const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
+  const h1 = html.indexOf('<h1');
+  const figure = html.indexOf('<figure');
+  assert.ok(h1 !== -1 && figure > h1);
+  const hero = html.slice(h1, figure);
+  const buttons = Array.from(hero.matchAll(/<a\b[^>]*\bclass="[^"]*\bpx-6 py-3\b[^"]*"[^>]*>([^<]*)<\/a>/g));
+  assert.deepEqual(buttons.map((m) => m[1]), ['Live demo', 'Quick start']);
+  assert.match(buttons[0][0], /\bbg-fd-primary\b/);
+  assert.ok(!hero.includes('href="https://github.com/vendurepos/app"'));
+  const noteAt = hero.indexOf('Your own store needs the plugin on your Vendure server first');
+  assert.ok(noteAt > hero.indexOf('Quick start</a>'));
+  const note = hero.slice(noteAt);
+  assert.match(note, /<a[^>]*\shref="\/docs\/quick-start"[^>]*>quick start<\/a>/);
+  assert.match(note, /<a[^>]*\shref="https:\/\/app\.vendurepos\.com"[^>]*>try the till with your store<\/a>/);
 });
 
 test('the two proof claims link their tests', () => {

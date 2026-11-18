@@ -165,22 +165,11 @@ export default function HomePage() {
           >
             Quick start
           </Link>
-          <a
-            href={APP_URL}
-            className="rounded-md border border-fd-border px-6 py-3 hover:bg-fd-accent"
-          >
-            Try with your store
-          </a>
-          <a
-            href={GITHUB_URL}
-            className="rounded-md border border-fd-border px-6 py-3 hover:bg-fd-accent"
-          >
-            GitHub
-          </a>
         </div>
         <p className="mt-4 text-sm text-fd-muted-foreground">
           Your own store needs the plugin on your Vendure server first: the{' '}
           <Link href="/docs/quick-start" className="underline">quick start</Link> sets it up.
+          Then <a href={APP_URL} className="underline">try the till with your store</a>.
         </p>
         {/* Round 11, C6: TillFigure serves the phone capture (the Cart tab) below 640px. */}
         <TillFigure name="sale" alt={TILL_ALT} sizes="(min-width: 1024px) 1024px, 100vw" eager className="mt-12">
