@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero, CTAs and screenshot make it clear at once, but the home page's closing 'Before you start' list falls into developer jargon a newcomer can't follow: 'you need your own RxDB Premium licence token (RXDB_PREMIUM)', 'Vendure 3.6 or later on Postgres ... MySQL, MariaDB and SQLite are not supported'.", "where": "home/desktop/02 'Before you start' (also home/phone/05)"},
+    "C2": {"score": 8, "worst_defect": "In the home comparison table the live demo 'sends ... anonymous usage events to ph.wcpos.com'. That is a domain from a different brand that the home page never explains, so a visitor who has never heard of VendurePOS asks who wcpos is and why the demo reports to it. Only Connect a till explains it is a self-hosted PostHog server.", "where": "home/desktop/02 table row 'Sales reach Vendure, once each, even offline' (home/phone/04)"},
+    "C3": {"score": 8, "worst_defect": "The quick start is complete and gives a clear 'Check it worked', but step 8 'Sign in and make a sale' opens with a 'Before a sale on a live store' warning that sends the reader off to two other pages ('Set up email', 'Check your own code') before the first sale. That breaks the straight line, and the reader can't tell whether those steps are required.", "where": "quick-start/desktop/03 step 8 warning box (quick-start/phone/07)"},
+    "C4": {"score": 8, "worst_defect": "The Changelog is written as internal notes, not for readers: 'order.create v5 custom lines are real order lines on a plugin-owned, disabled 'POS custom item' variant ... (ADR 0005)', 'Migration TallyPosV51790900000000'. Only the bold 'In short:' lines are readable by anyone outside the codebase.", "where": "changelog/desktop/01 (changelog/phone/01)"},
+    "C5": {"score": 8, "worst_defect": "The home hero screenshot is cut through the fourth row of product tiles, so half-tiles poke out at its bottom edge. Below it, 'What it does today' is ten identical grey cards in a row with no visual break, which reads as a wall.", "where": "home/desktop/01 bottom of hero image; home/desktop/01-02 feature cards"},
+    "C6": {"score": 9, "worst_defect": "On phone the hero till screenshot shows its quantity column header truncated to 'Q...', a small sign the image was not made for narrow screens. Everything else reflows well, including the comparison table, which becomes stacked rows.", "where": "home/phone/01 hero screenshot cart header"},
+    "C7": {"score": 9, "worst_defect": "Lighthouse mobile LCP on / is 2.5 s, right at the 'needs improvement' line, with 140 ms render-blocking and 52 KiB unused JS flagged. Every sitemap <lastmod> is the build time from today, not a real content date.", "where": "tech.json lighthouse['/']; text/endpoint_sitemap_xml.txt"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The first table on the home page tells a stranger that the demo sends usage events to 'ph.wcpos.com', a domain from a brand they have never heard of, and gives no explanation of who that is. For someone deciding in under a minute whether to trust and click 'Live demo', that unexplained third-party domain is the line most likely to make them hesitate.",
+    "where": "home/desktop/02 'Live demo or your own store' table, last row (home/phone/04)",
+    "fix": "Say who runs it in place, e.g. 'anonymous usage events to our own self-hosted analytics (ph.wcpos.com, run by the VendurePOS maintainers), with no cookie'. Or drop the hostname from the home page and keep it on the linked privacy section."
+  },
+  "mean": 8.3
+}

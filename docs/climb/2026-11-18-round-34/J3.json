@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 9,
+      "worst_defect": "The tax guidance says a store mixing pricing modes 'must account for the store-wide strategy' without specifying a supported configuration or verification procedure for that case.",
+      "where": "text/endpoint_llms_full_txt.txt, Quick start, 'Why these pairings'"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Refund instructions explain Dashboard refunds, cash payouts and settleRefund, but omit how to return an externally collected card payment and distinguish that action from recording settlement.",
+      "where": "text/at-the-till.txt, 'Refund a sale'; shots/plugin-setup.desktop.03.jpg"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.desktop.02.jpg; shots/home.desktop-dark.jpg; shots/plugin-setup.desktop.03.jpg"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.phone.01.jpg through home.phone.05.jpg; shots/quick-start.phone.01.jpg through quick-start.phone.09.jpg"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The mobile Lighthouse capture identifies 52 KiB of unused JavaScript and 140 ms of potential render-blocking savings on the home page.",
+      "where": "tech.json, lighthouse./.failing"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "The real-store refund procedure does not explicitly require returning card funds through the external terminal before recording the refund as settled.",
+    "where": "shots/plugin-setup.desktop.03.jpg; text/at-the-till.txt, 'Refund a sale'",
+    "fix": "Add a card-refund step directing the operator to return funds through the external terminal or provider, then record settlement in Vendure using that refund reference. State explicitly that settleRefund records settlement and does not itself reverse the terminal payment."
+  },
+  "mean": 9.1
+}
