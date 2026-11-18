@@ -1,0 +1,48 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero has four near-equal buttons (Live demo, Quick start, Try with your store, GitHub). 'Try with your store' opens the app's sign-in, which cannot work until the plugin is installed, and the line underneath ('Your own store needs the plugin on your Vendure server first') has to warn you off it. A newcomer gets three competing next steps instead of one.",
+      "where": "home.desktop.01 hero buttons; home.phone.01 (buttons wrap into two uneven rows)"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The home page sells 'open-source' and its footer says 'MIT licensed', but only the Limitations page says 'Building the till yourself needs your own RxDB Premium licence token in RXDB_PREMIUM'. The home page also sends demo events to 'ph.wcpos.com', a different brand's domain, with no word on who that is (Connect a till explains it later). A first-timer finds both late, and they read as small things left unsaid.",
+      "where": "home.desktop.02 footer + comparison table last row; limitations.desktop.01 bullet 3"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 3 gives three ways to do the migration in one paragraph: a hand-written tsx script, 'Vendure's CLI alternative is npx vendure migrate', and 'Do not also run the plugin's bundled migrations ... the README describes that alternative'. Plugin setup then documents the bundled-migration route in full. A newcomer has to pick a route at the step most likely to break the database.",
+      "where": "quick-start.desktop.01 bottom to quick-start.desktop.02 top; plugin-setup.desktop.01 'Configure the plugin and migrations'"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The Changelog is internal engineering notes copied straight in: 'advertises order.create 1–5 (ADR 0005)', 'TallyPosV51790900000000', '(#116)', 'figures_mismatch'. The ADR and issue references are not links, and nothing tells a user or store owner what changed for them.",
+      "where": "changelog.desktop.01, sections 0.3.0 and 0.2.0"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "On every docs page at desktop the grey sidebar panel stops about 900 px down, leaving a lighter strip down the left side for the rest of the page. The hero till screenshot on the home page is also cut through a row of product tiles at its bottom edge.",
+      "where": "docs.desktop.01, quick-start.desktop.01, limitations.desktop.01 (left column below y≈900); home.desktop.01 hero image bottom edge"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The four hero buttons wrap into two rows of uneven width ('Live demo' + 'Quick start', then a wider 'Try with your store' + 'GitHub'). After that, the phone-layout till screenshot fills almost two full screens, so 'What it does today' only starts in the second slice.",
+      "where": "home.phone.01-02"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Mostly clean: every endpoint returns 200, the 404 returns a real 404, JSON-LD is present, and llms.txt, search and the share card all work. Lighthouse still flags 52 KiB of unused JavaScript and 130 ms of render-blocking requests on /, and a 2.5 s LCP (score 0.89) on /docs/quick-start.",
+      "where": "tech.json lighthouse ['/'] and ['/docs/quick-start'] failing audits"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "A visitor who has never heard of VendurePOS meets four equally weighted hero buttons. One of them, 'Try with your store', leads to a sign-in that cannot work without first installing a server plugin, so the clear first step (the demo) competes with a dead end and a caveat line.",
+    "where": "home.desktop.01 and home.phone.01 hero button row",
+    "fix": "Keep two hero buttons, Live demo (primary) and Quick start, and drop 'Try with your store' from the hero (it is already in the top nav). The caveat line under the buttons can then go."
+  },
+  "mean": 8.1
+}

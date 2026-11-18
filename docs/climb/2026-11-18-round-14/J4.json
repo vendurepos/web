@@ -1,0 +1,48 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero has four buttons of nearly equal weight ('Live demo' filled, then 'Quick start', 'Try with your store' and 'GitHub' all in the same outline style), and the header repeats 'Live demo' and 'Try with your store'. 'Try with your store' sits beside 'Quick start' even though the caption under them says your store needs the plugin first, so the second step is a three-way tie. On phone the row breaks into a ragged 2+2 with mismatched widths.",
+      "where": "home.desktop.01 hero button row; home.phone.01 (buttons wrap 2+2)"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The home footer says 'MIT licensed' with no qualifier. The catch that building the till yourself 'needs your own RxDB Premium licence token' appears only on Limitations and deep in Connect a till, so the open-source claim on the marketing page reads more open than it is.",
+      "where": "home.desktop.02 footer vs limitations.desktop.01 bullet 3, connect-a-till.desktop.01"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 8's sub-step 'h. Once the order has synced, check Vendure for the POS prices, settled tally-pos payment, delivered fulfilment, stock reduction and tallySaleAt' is repeated as the five-bullet 'Check it worked' list directly below it, and step 3 runs four alternative migration paths together in one dense paragraph. The success check and the main path are harder to pick out than they should be.",
+      "where": "quick-start.desktop.03 (step 8 a–i plus 'Check it worked'); quick-start.desktop.01 step 3 paragraph"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Connect a till puts the long 'Where your data goes' section (three sub-heads, 9 bullets, a build-it-yourself paragraph) between 'Open your till' and 'Enter your store details', so the sign-in task is cut in half by reference material. On Overview, 'Next steps' shows three cards and then a full-width 'Quick start >' pager card that repeats the middle card.",
+      "where": "connect-a-till.desktop.01; docs.desktop.01 bottom"
+    },
+    "C5": {
+      "score": 7,
+      "worst_defect": "'What it does today' is a wall of ten identical grey text-only cards in a 2-up grid. The two proven differentiators ('Keeps selling offline', 'Every sale lands once', the only ones with test links) look exactly like 'Barcode scanners' and 'Park a sale', so the section has no hierarchy and reads as filler. Also, inline-code hyphens render as wide dashes ('src/generate–migration.ts', 'vendure–auth–token').",
+      "where": "home.desktop.01–02 feature grid; quick-start.desktop.01–02 inline code"
+    },
+    "C6": {
+      "score": 7,
+      "worst_defect": "At 390 px the step 6 tax table stacks its header row as if it were a data row ('Channel pricing' / 'taxOptions.orderTaxCalculationStrategy' in the first block), and the two data rows lose their column labels. Unlike the home comparison table, which prefixes each value with 'Live demo:' / 'Your Vendure store:', the reader cannot tell setting from value. Code blocks also soft-wrap with hanging indents ('import { TallyPosPlugin } from' / ''@vendurepos/plugin';').",
+      "where": "quick-start.phone.05 (tax table); quick-start.phone.02 code blocks"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "On the share card the subtitle wraps so 'a normal order.' sits alone on line two, and the till screenshot is cropped through the first product row (the 'In Stock' pills and the 'Add charge' button are cut at the bottom edge).",
+      "where": "og-image.png"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C6",
+    "defect": "In the quick start's step 6 on a 390 px phone, the tax-strategy table becomes unlabeled stacked blocks, with its header row shown as a fake first row. That is the step where a developer picks a store-wide setting, and they cannot see which class goes with which pricing mode without decoding it.",
+    "where": "quick-start.phone.05",
+    "fix": "Give this table the same narrow-screen treatment as the home comparison table: hide the header row under the breakpoint and put a bold label ('orderTaxCalculationStrategy:') before each value. Or, since it is only two short columns, keep it as a horizontally scrollable 2-column table."
+  },
+  "mean": 7.9
+}
