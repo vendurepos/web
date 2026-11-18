@@ -35,6 +35,17 @@ test('long-code tables stack on phones', () => {
     .filter((table) => /^<table\b[^>]*\sdata-stack=""/.test(table));
   assert.equal(stacked.length, 1);
   assert.match(stacked[0].replace(/<wbr\s*\/?\s*>/g, ''), /OrderLevelTax/);
+  // Round 14 (C6): every body cell carries its column header's text as data-label.
+  const plain = (cell) => cell.replace(/<[^>]*>/g, '').trim();
+  const headers = Array.from(stacked[0].match(/<thead\b[\s\S]*?<\/thead>/)[0].matchAll(/<th\b[^>]*>([\s\S]*?)<\/th>/g),
+    ([, cell]) => plain(cell));
+  assert.deepEqual(headers, ['Channel pricing', 'taxOptions.orderTaxCalculationStrategy']);
+  const rows = Array.from(stacked[0].match(/<tbody\b[\s\S]*?<\/tbody>/)[0].matchAll(/<tr\b[\s\S]*?<\/tr>/g), ([row]) => row);
+  assert.ok(rows.length > 0);
+  for (const row of rows) {
+    const labels = Array.from(row.matchAll(/<td\b([^>]*)>/g), ([, attrs]) => attrs.match(/\sdata-label="([^"]*)"/)?.[1]);
+    assert.deepEqual(labels, headers);
+  }
   const others = readdirSync('.next/server/app/docs').filter((f) => f.endsWith('.html') && f !== 'quick-start.html');
   assert.ok(others.length > 0);
   for (const file of others) {
@@ -66,4 +77,16 @@ test('stack rule is phone-only', () => {
   ));
   const selectors = Array.from(outside.matchAll(/([^{};]+)\{/g), ([, selector]) => selector);
   assert.ok(!selectors.some((selector) => /data-stack/.test(selector)));
+  // Round 14 (C6): on phones the docs header row is hidden visually and each cell shows its column label.
+  const proseRules = media
+    .filter(({ condition }) => /max-width\s*:\s*639px|max-width\s*:\s*39\.9375rem|width\s*<\s*640px/.test(condition))
+    .flatMap(({ body }) => Array.from(body.matchAll(/([^{};]+)\{([^{}]*)\}/g)))
+    .filter(([, selector]) => selector.split(',').some((part) => /^\s*\.prose\b/.test(part) && /data-stack/.test(part)));
+  assert.ok(proseRules.some(([, selector, declarations]) =>
+    /\bthead\s*$/.test(selector) && /position\s*:\s*absolute/.test(declarations)
+      && /clip-path\s*:\s*inset\(50%\)/.test(declarations)
+  ), 'docs stacked thead is visually hidden on phones');
+  assert.ok(proseRules.some(([, selector, declarations]) =>
+    /td\[data-label\]::?before/.test(selector) && /attr\(data-label\)/.test(declarations)
+  ), 'docs stacked cells show attr(data-label) through ::before');
 });
