@@ -2,7 +2,7 @@
 title: Changelog
 description: Released versions of the @vendurepos/plugin package, newest first.
 ---
-{/* References link to vendurepos/app: ADRs at the plugin tag of their release, #N to that repo's pull requests. */}
+{/* References link to vendurepos/app: ADRs at the plugin tag of their release, #N to that repo's pull requests; the 0.2.0 ReadOrder note under the tallyEnsurePosTillRole bullet is the site's: vendurepos/app@1404f42 packages/vendure-plugin/CHANGELOG.md:38, @2d3699e packages/vendure-plugin/src/config/pos-till-role.ts:6-8, @cc719c2 apps/pos/lib/order-history.ts:9,38 */}
 
 The source is `packages/vendure-plugin/CHANGELOG.md` in [vendurepos/app](https://github.com/vendurepos/app);
 the package is [`@vendurepos/plugin`](https://www.npmjs.com/package/@vendurepos/plugin) on npm.
@@ -29,6 +29,8 @@ the package is [`@vendurepos/plugin`](https://www.npmjs.com/package/@vendurepos/
 - Admin API: `tallyNeedsAdminCommands` lists sales kept for an admin, and `tallyResolveNeedsAdmin(commandId, applied | rejected, note)` resolves one; both SuperAdmin only ([#116](https://github.com/vendurepos/app/pull/116)).
 - order.create v4 results carry a `figures_mismatch` warning when the till's subtotal, tax or discount differs from the store's ([#117](https://github.com/vendurepos/app/pull/117)).
 - Admin API: `tallyEnsurePosTillRole` (SuperAdmin) creates or extends the `vendurepos-pos-till` role: `TallyPosSell`, `ReadCatalog`, `ReadSettings`, `ReadCustomer`, `CreateCustomer` (exported as `POS_TILL_PERMISSIONS`), in every channel. It never removes a permission or channel. With Vendure's API keys (`tokenMethod` including `'api-key'`), a key with this role does everything a till does ([ADR 0004](https://github.com/vendurepos/app/blob/plugin-v0.2.0/docs/adr/0004-device-credentials.md)).
+  Not in the release notes: in 0.2.0 and 0.3.0 this role has no `ReadOrder`, so the till's order history is refused
+  until you add it to the role; see [Create and use a device key](/docs/connect-a-till#create-and-use-a-device-key).
 
 ## 0.1.0 (2026-10-01)
 
