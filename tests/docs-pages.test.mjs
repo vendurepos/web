@@ -341,3 +341,27 @@ test('limitations says a reload needs the connection while the internet is down'
   const atTheTill = readFileSync(join('.next/server/app', 'docs/at-the-till.html'), 'utf8');
   assert.ok(atTheTill.includes('id="if-the-internet-drops"'), 'the At the till heading id');
 });
+
+test('limitations puts the counter limits under one heading and the store setup under another', () => {
+  // Round 32, J2 C4 and J4 C4: one flat list mixed counter and developer limits.
+  const html = readFileSync(join('.next/server/app', 'docs/limitations.html'), 'utf8');
+  const heading = (name) => {
+    // The heading's copy-link button carries the screen-reader text "Copy Anchor Link"; drop it.
+    const text = (h) => h[1].replace(/<button[\s\S]*?<\/button>/g, '').replace(/<[^>]+>/g, '').trim();
+    const match = [...html.matchAll(/<h2[^>]*>([\s\S]*?)<\/h2>/g)].find((h) => text(h) === name);
+    assert.ok(match, `an h2 "${name}"`);
+    return match.index;
+  };
+  const counter = heading('At the counter');
+  const setup = heading('Setting up the store');
+  assert.ok(counter < setup, 'At the counter comes before Setting up the store');
+  const between = html.slice(counter, setup);
+  const after = html.slice(setup);
+  for (const phrase of ['does not open a cash drawer', 'One browser tab per till']) {
+    assert.ok(between.includes(phrase), `${phrase}, at the counter`);
+  }
+  for (const phrase of ['RXDB_PREMIUM', 'Postgres only']) {
+    assert.ok(after.includes(phrase), `${phrase}, after Setting up the store`);
+    assert.ok(!between.includes(phrase), `${phrase}, not at the counter`);
+  }
+});
