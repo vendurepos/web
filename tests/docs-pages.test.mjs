@@ -61,6 +61,15 @@ test('changelog lists 0.3.0, 0.2.0 and 0.1.0 newest first', () => {
   assert.doesNotMatch(html, /Unreleased/);
 });
 
+test('changelog intro names the source and npm package without repeating the subtitle', () => {
+  const html = readFileSync(join('.next/server/app', 'docs/changelog.html'), 'utf8');
+  assert.ok(html.includes('The source is'));
+  assert.ok(html.includes('href="https://www.npmjs.com/package/@vendurepos/plugin"'));
+  // Visible HTML only: drop <head> (meta/og/twitter tags) and every <script> (the RSC payload).
+  const visible = html.slice(html.indexOf('</head>')).replace(/<script[\s\S]*?<\/script>/g, '');
+  assert.equal(visible.split('newest first').length - 1, 1);
+});
+
 test('llms text carries no MDX comments', () => {
   const full = readFileSync(join('.next/server/app', 'llms-full.txt.body'), 'utf8');
   const directory = join('.next/server/app', 'llms.mdx/docs');

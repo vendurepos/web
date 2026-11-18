@@ -4,7 +4,7 @@ import { HomeLayout } from 'fumadocs-ui/layouts/home';
 import { baseOptions } from '@/lib/layout.shared';
 import { DEMO_URL } from '@/lib/site';
 
-export const metadata: Metadata = { title: 'Page not found' };
+export const metadata: Metadata = { title: 'Page not found', description: 'There is no page at this address.' };
 
 export default function NotFound() {
   return (
