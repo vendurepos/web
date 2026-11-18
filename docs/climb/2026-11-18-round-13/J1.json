@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero gives four equal-weight buttons, and 'Quick start' and 'Try with your store' look like the same thing to a newcomer. 'Try with your store' opens app.vendurepos.com, which cannot work until the plugin is installed, and the only warning is the small grey line underneath ('Your own store needs the plugin on your Vendure server first').", "where": "home/desktop/01 hero buttons; home/phone/01"},
+    "C2": {"score": 8, "worst_defect": "The home page's demo row says the demo 'sends ... anonymous usage events to ph.wcpos.com' without saying what wcpos is or how it relates to VendurePOS. A first-time visitor sees an unknown brand's domain in the privacy line, and the explanation (a self-hosted PostHog) only appears on Connect a till.", "where": "home/desktop/02 'Live demo or your own store' table, last row; home/phone/04"},
+    "C3": {"score": 7, "worst_defect": "Step 3 crams three migration routes into one dense paragraph: tsx scripts, 'npx vendure migrate', and the 'plugin's bundled migrations' described elsewhere. The reader has to work out which one to follow, and Plugin setup then shows the bundled-migration route with four timestamped class names.", "where": "quick-start/desktop/01 step 3; plugin-setup/desktop/01 'Configure the plugin and migrations'"},
+    "C4": {"score": 7, "worst_defect": "The product is VendurePOS, but the code and docs call it Tally ('TallyPosPlugin', '/tally/v1/commands', 'tally-pos', 'TallyPosSell') and no page says plainly that Tally is the plugin's internal name. The Changelog is written in internal terms ('advertises order.create 1–5 (ADR 0005)', 'order.create v5 custom lines') with no note on what changed for a store owner.", "where": "quick-start/desktop/01 step 2 heading; changelog/desktop/01 0.3.0 section"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' is ten identical grey text cards with no icons or visual hierarchy, so the two proven claims with test links read at the same weight as minor features. On docs pages the left sidebar's background stops at about 900 px, which leaves a visible seam beside long content.", "where": "home/desktop/01-02 feature grid; docs/desktop/01 and quick-start/desktop/01 lower-left"},
+    "C6": {"score": 8, "worst_defect": "The four hero buttons wrap into two uneven rows ('Live demo' + 'Quick start', then a wider 'Try with your store' + 'GitHub'), each row a different width, so the main action area looks ragged on a 390 px screen.", "where": "home/phone/01"},
+    "C7": {"score": 9, "worst_defect": "The docs search API returns raw markdown backticks and literal newlines in snippets (e.g. \"`/tally/v1/commands`\", 'except\\ncustomer search'). The share card's till screenshot is cut off at the bottom edge, mid-button ('Add charge').", "where": "text/endpoint_api_search_query_offline.txt; og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "In its first seconds a newcomer has four equal choices: Live demo, Quick start, Try with your store and GitHub. 'Try with your store' sounds like the easy option but opens an app that fails without a server plugin, and the warning is the small grey caption below the buttons.",
+    "where": "home/desktop/01 and home/phone/01 hero",
+    "fix": "Keep 'Live demo' as the primary button and 'Quick start' as the secondary one. Take 'Try with your store' out of the hero (it is already in the top nav) or relabel it 'Open the app (plugin required)'."
+  },
+  "mean": 7.9
+}

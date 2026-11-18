@@ -1,0 +1,48 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero gives four equal-weight buttons ('Live demo', 'Quick start', 'Try with your store', 'GitHub'), and 'Try with your store' looks as prominent as Quick start even though it cannot work until the plugin is installed. The only warning is the small grey line under the buttons: 'Your own store needs the plugin on your Vendure server first'.",
+      "where": "home.desktop.01 / home.phone.01, hero buttons"
+    },
+    "C2": {
+      "score": 6,
+      "worst_defect": "The home page sells the product as 'open-source' and 'MIT licensed' but never says that building the till yourself 'needs your own RxDB Premium licence token in RXDB_PREMIUM' (only on Limitations and Connect a till). Refunds at the till, the customer note and the ReadOrder role fix all wait on 'the plugin release after 0.3.0', which has no date, while the last release is 0.3.0 from 2026-10-06. Nowhere does the site say who maintains the project.",
+      "where": "home.desktop.02 footer and 'Before you start'; limitations.desktop.01 bullet 3; changelog.desktop.01; at-the-till 'Refund a sale' and 'Order details'"
+    },
+    "C3": {
+      "score": 7,
+      "worst_defect": "Following the documented till role leaves the till's order list broken on the current plugin: the vendurepos-pos-till role 'gains [ReadOrder] only in the plugin release after 0.3.0; until then, add it to the role yourself'. The quick start's 'Optional: a device key for each till' sends people to the New POS till key button without mentioning this gap.",
+      "where": "connect-a-till 'Give each cashier their own account' and 'Create and use a device key'; quick-start.desktop.04 'Optional: a device key for each till'"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "The Changelog is internal developer notes ('advertises order.create 1–5 (ADR 0005)', 'Migration TallyPosV51790900000000', '#116') that never say what changed for a store, and it has no 'Unreleased' or 'Next' entry even though five pages point to 'the plugin release after 0.3.0'. The retry button is also named inconsistently: 'Retry' on Troubleshooting, 'Send again' on At the till.",
+      "where": "changelog.desktop.01; troubleshooting.phone.01 ('Needs attention with a Retry') vs at-the-till 'Refund a sale' ('Send again')"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "'What it does today' is ten identical grey cards in a 2-column grid with the same weight. Only two of them carry proof links, so the evidence-backed claims (offline, 200-send test) look the same as the marketing ones. The docs chrome is the stock docs-template look (Copy Markdown / Open buttons, the sidebar).",
+      "where": "home.desktop.01–02 feature grid; docs.desktop.01"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "On a phone, the hero screenshot turns into a tall crop of the cart that runs about one and a half screens, so 'What it does today' starts only on the second slice and the proof-backed claims are pushed below a long picture of a cart.",
+      "where": "home.phone.01–02"
+    },
+    "C7": {
+      "score": 8,
+      "worst_defect": "Every sitemap <lastmod> is a timestamp from the last 12 hours (2026-11-17T16:39 to 2026-11-18T04:45), so it is the deploy time rather than when the content changed. The SoftwareApplication JSON-LD carries no softwareVersion or offers, even though the page shows 'plugin 0.3.0' and free/MIT.",
+      "where": "text/endpoint_sitemap_xml.txt; tech.json home.desktop jsonLd"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The site promotes 'open-source', 'MIT licensed' and 'Source on GitHub', but self-hosting the till requires a paid third-party RxDB Premium licence. That fact is buried in Limitations and Connect a till, so a client who cannot or will not buy one depends on the hosted app.vendurepos.com run by an unnamed maintainer. The home page and Overview never say this, which is the kind of thing that would make me advise a client against adopting it.",
+    "where": "home.desktop.02 'Before you start' and footer; docs.desktop.01 'Next steps' 'Source on GitHub'; limitations.desktop.01 bullet 3",
+    "fix": "Add one line to the home page's 'Before you start' and the Overview's Requirements: 'Use the hosted till at app.vendurepos.com, or build it yourself with a paid RxDB Premium licence'. Link it to Limitations, and name who runs the hosted app."
+  },
+  "mean": 7.4
+}

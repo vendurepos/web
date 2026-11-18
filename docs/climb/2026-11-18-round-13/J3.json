@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The quick start's device-key instructions omit the required manual ReadOrder addition for plugin 0.3.0, although Connect a till explicitly documents it.",
+      "where": "text/quick-start.txt, 'Optional: a device key for each till'; shots/connect-a-till.desktop.02.jpg"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "Partial-sale recovery names tallyNeedsAdminCommands and shows an applied mutation, but gives neither a listing query nor the checks needed to choose applied versus rejected.",
+      "where": "shots/troubleshooting.desktop.02.jpg, 'Resolve a sale the store kept part-way'; text/endpoint_llms_full_txt.txt"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.desktop.02.jpg; shots/home.desktop-dark.jpg; shots/quick-start.desktop.01.jpg"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.phone.01.jpg through home.phone.05.jpg; shots/quick-start.phone.01.jpg through quick-start.phone.09.jpg"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The captured quick-start mobile Lighthouse run reports a 2.6-second LCP, with render-blocking requests and 25 KiB of unused JavaScript.",
+      "where": "tech.json, lighthouse['/docs/quick-start']"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "A developer handling a needs_admin sale must guess which existing order, payment and stock state justifies applied versus rejected before executing the recovery mutation.",
+    "where": "shots/troubleshooting.desktop.02.jpg, 'Resolve a sale the store kept part-way'",
+    "fix": "Add a runnable listing query and a short decision procedure explaining what to inspect before each resolution. State what each resolution changes and how to verify recovery before retrying the sale."
+  },
+  "mean": 8.6
+}
