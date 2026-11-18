@@ -111,7 +111,7 @@ test('before you start gates refunds on the plugin and names coupon codes as not
   const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
   // plugin-v0.3.0 (2d3699e) info.controller.ts:29 (no order.refund); vendurepos/app 1404f42 apps/pos/lib/discount-total-matrix.test.ts:171-178.
   const heading = html.indexOf('Before you start');
-  const end = html.indexOf('href="/docs/limitations"', heading);
+  const end = html.indexOf('</ul>', heading);
   assert.ok(heading >= 0 && end > heading);
   const block = html.slice(heading, end);
   assert.match(block, /Coupon codes are not supported yet/);
@@ -125,4 +125,29 @@ test('before you start links the staff guide, At the till', () => {
   const end = html.indexOf('</section>', heading);
   assert.ok(heading >= 0 && end > heading);
   assert.match(html.slice(heading, end), /href="\/docs\/at-the-till"[^>]*>At the till</);
+});
+
+test('before you start says what goes on the counter, right after the web till item', () => {
+  // Round 22, J2 C2: the counter facts were only on Limitations. Same facts as content/docs/limitations.mdx:15, :30-31, :39, :41-42.
+  const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
+  const heading = html.indexOf('Before you start</h2>');
+  assert.ok(heading >= 0);
+  const list = html.slice(heading).match(/<ul\b[^>]*>[\s\S]*?<\/ul>/)[0];
+  const items = Array.from(list.matchAll(/<li>([\s\S]*?)<\/li>/g), (m) => m[1]);
+  const at = items.findIndex((item) => item.includes('At the counter'));
+  assert.ok(at > 0, 'an "At the counter" item');
+  assert.match(items[at - 1], /^A web till for now/);
+  const item = items[at];
+  for (const phrase of ['one tab per till', 'desktop Chrome', 'print dialog', 'cash drawer']) {
+    assert.ok(item.includes(phrase), phrase);
+  }
+  assert.match(item, /<a\b[^>]*\shref="\/docs\/limitations"[^>]*>Limitations<\/a>/);
+});
+
+test('limitations still states the counter facts the home page repeats', () => {
+  const html = readFileSync(join('.next/server/app', 'docs/limitations.html'), 'utf8');
+  const article = html.slice(html.indexOf('<article'), html.indexOf('</article>'));
+  for (const phrase of ['desktop Chrome', 'One browser tab per till', 'print dialog', 'does not open a cash drawer']) {
+    assert.ok(article.includes(phrase), phrase);
+  }
 });
