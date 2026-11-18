@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The quick start's device-key instructions omit the manual ReadOrder permission required on the pinned 0.3.0 release and send readers to an external README instead of the local instructions that explain it.",
+      "where": "text/quick-start.txt, 'Optional: a device key for each till'; text/connect-a-till.txt, 'Create and use a device key'"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "Rejected register updates are documented as blocking later updates with no retry or discard, but the instructions end at copying the sync log without explaining recovery or where to escalate.",
+      "where": "text/troubleshooting.txt, 'Till updates line'; shots/troubleshooting.desktop.01.jpg"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.desktop.02.jpg; shots/home.desktop-dark.jpg; desktop documentation slices"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "home.phone and quick-start.phone slices; shots/at-the-till.phone.03.jpg; shots/at-the-till.phone.06.jpg"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The captured quick-start mobile Lighthouse report records a 2.6-second LCP and flags render-blocking requests and 25 KiB of unused JavaScript.",
+      "where": "tech.json, lighthouse./docs/quick-start"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "A developer facing a rejected register update learns that subsequent updates are blocked but gets no documented next step after collecting the sync log.",
+    "where": "text/troubleshooting.txt, 'Till updates line'; shots/troubleshooting.desktop.01.jpg",
+    "fix": "Add the supported recovery procedure or link to an explicit escalation route, stating what diagnostic information to provide. If recovery requires maintainer intervention, say so."
+  },
+  "mean": 8.7
+}
