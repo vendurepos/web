@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { TillFigure } from '@/components/till-figure';
-import { APP_URL, DEMO_URL, GITHUB_URL, MEDUSAPOS_URL, NPM_URL, PLUGIN_VERSION, TALLYUI_URL } from '@/lib/site';
+import { DEMO_URL, GITHUB_URL, MEDUSAPOS_URL, NPM_URL, PLUGIN_VERSION, TALLYUI_URL } from '@/lib/site';
 import { JsonLd } from '@/components/json-ld';
 import { homeJsonLd } from '@/lib/structured-data';
 
@@ -168,8 +168,8 @@ export default function HomePage() {
         </div>
         <p className="mt-4 text-sm text-fd-muted-foreground">
           Your own store needs the plugin on your Vendure server first: the{' '}
-          <Link href="/docs/quick-start" className="underline">quick start</Link> sets it up.
-          Then <a href={APP_URL} className="underline">try the till with your store</a>.
+          <Link href="/docs/quick-start" className="underline">quick start</Link> sets it up, then signs the till in and makes a
+          sale.
         </p>
         {/* Round 11, C6: TillFigure serves the phone capture (the Cart tab) below 640px. */}
         <TillFigure name="sale" alt={TILL_ALT} sizes="(min-width: 1024px) 1024px, 100vw" eager className="mt-12">

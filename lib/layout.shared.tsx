@@ -16,8 +16,8 @@ export function baseOptions(): BaseLayoutProps {
       // The sidebar's Overview item already marks /docs as active; one highlight is enough.
       { text: 'Docs', url: '/docs', active: 'none' },
       { text: 'Live demo', url: DEMO_URL, external: true },
-      // The app sign-in needs the plugin first; Connect a till says so and links the app. Its sidebar item is the one highlight.
-      { text: 'Connect your store', url: '/docs/connect-a-till', active: 'none' },
+      // Round 24, J1 C1: one name for the own-store path, and it starts with the plugin. Its sidebar item is the one highlight.
+      { text: 'Quick start', url: '/docs/quick-start', active: 'none' },
       // Fumadocs' githubUrl renders an unnamed <svg role="img">; the link carries the name, so the icon is decorative.
       {
         type: 'icon',
