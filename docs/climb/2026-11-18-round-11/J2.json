@@ -1,0 +1,48 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The home page never links to the staff guide 'At the till' (selling, refunds, 'Count the drawer and close the day'): the hero buttons are Live demo / Quick start / Try with your store / GitHub, and the 'Registers and Z reports' card has no link, so an owner asking 'can my staff sell and how do I close the day' has no next click.",
+      "where": "home.desktop.01/02; tech.json home links (no /docs/at-the-till)"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "Refunds depend on 'the plugin release after 0.3.0, which is not out yet', repeated on home, limitations and at-the-till with no version number or expected date, and the site never says plainly whether a receipt printer or cash drawer works beyond 'print the receipt from the browser'.",
+      "where": "home text 'Before you start'; limitations; at-the-till (Refund, Receipt)"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Quick start step 8 signs in with an admin email and password. The cashier role needs ReadOrder added by hand ('which that role gains only in the plugin release after 0.3.0; until then, add it to the role yourself'), but that is said only on Connect a till, so a freelancer following the quick start for a cashier login hits it unwarned.",
+      "where": "quick-start.desktop.03 / phone.07-08 step 8; connect-a-till 'Give each cashier their own account'"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Troubleshooting 'Sell while offline' says everything works offline 'once the catalogue has synced' but never says whether the till reopens after a browser reload or a restart with no connection. That is the first thing a shop owner asks. Also 'Hand over signs you out and leaves the drawer open' is ambiguous: the register session or the physical drawer?",
+      "where": "troubleshooting.desktop.01 'Sell while offline'; at-the-till.desktop.03 'Hand over'"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "On every desktop docs page the grey sidebar panel stops at about 900 px with the GitHub/theme bar, leaving a lighter strip down the left below it, which looks unfinished. The hero till screenshot's text is also too small to read at 1440.",
+      "where": "plugin-setup / notifications / connect-a-till / changelog desktop.01 (left column below ~900 px); home.desktop.01 hero image"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The hero till screenshot shrinks to an unreadable thumbnail on a 390 px phone, so the one picture of what staff will use shows nothing. Otherwise tables stack, code wraps and nothing overflows.",
+      "where": "home.phone.01 hero image"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The share card is text only ('Point of sale for Vendure' with the ring logo) and shows no till, so a link shared to a shop owner in chat shows nothing of the product. Lighthouse 98-99, titles, descriptions, JSON-LD, llms.txt, sitemap, robots, the search API and the 404 are all present.",
+      "where": "og-image.png"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "The home page has no route to 'At the till', the one page that answers a shop owner's real questions (how staff sell, refund, hand over and close the day with an X/Z report); every home link points at developer setup, GitHub tests or npm.",
+    "where": "home.desktop.01/02 hero buttons and 'Registers and Z reports' card; tech.json home links",
+    "fix": "Make the 'Registers and Z reports' card link to /docs/at-the-till, and add one line under 'Before you start': 'For staff: At the till — selling, refunds and closing the day.'"
+  },
+  "mean": 8.1
+}

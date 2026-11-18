@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Observed: Quick start's device-key instructions omit the manual ReadOrder permission adjustment that Connect a till explicitly requires for the recommended plugin 0.3.0.",
+      "where": "text/quick-start.txt, Optional: a device key for each till; shots/connect-a-till.desktop.02.jpg"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "Observed: The needs_admin recovery section names the listing query and supplies a resolution mutation, but gives no checks for deciding whether a partially retained sale should be marked applied or rejected.",
+      "where": "shots/troubleshooting.desktop.02.jpg, Resolve a sale the store kept part-way; text/endpoint_llms_full_txt.txt"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "Observed: The Overview page highlights both Docs and Overview with the same active-navigation treatment.",
+      "where": "shots/docs.desktop.01.jpg, left sidebar"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/quick-start.phone.01.jpg through quick-start.phone.09.jpg; shots/plugin-setup.phone.02.jpg"
+    },
+    "C7": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "tech.json; text/endpoint_llms_txt.txt; text/endpoint_llms_full_txt.txt; text/endpoint_api_search_query_offline.txt; shots/og-image.png"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "The needs_admin instructions leave the developer without documented criteria for choosing applied versus rejected when recovering a partially retained sale.",
+    "where": "shots/troubleshooting.desktop.02.jpg, Resolve a sale the store kept part-way",
+    "fix": "Add a complete tallyNeedsAdminCommands query and explain which persisted order, payment and stock state warrants each resolution. State how to verify recovery before retrying the sale."
+  },
+  "mean": 8.9
+}

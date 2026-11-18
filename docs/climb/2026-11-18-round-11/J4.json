@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 9, "worst_defect": "The hero gives four buttons ('Live demo', 'Quick start', 'Try with your store', 'GitHub'). Three of them look the same, so 'Quick start' and 'Try with your store' compete as the second choice. On a phone the row wraps 2+2, and the second row ('Try with your store', 'GitHub') is wider than the first, so the button block looks ragged.", "where": "home.desktop.01 hero buttons; home.phone.01 button rows"},
+    "C2": {"score": 9, "worst_defect": "The package is @vendurepos/plugin, but quick-start step 2 says 'Add TallyPosPlugin' and then uses /tally/v1, tally-pos and TallyPosSell. The page never says why the names differ, so the rename looks unfinished. Only the Overview has a passing 'built on TallyUI'.", "where": "quick-start.desktop.01 step 2 heading; text/quick-start.txt"},
+    "C3": {"score": 8, "worst_defect": "Step 3 (migration) puts two commands, 'npx tsx src/generate-migration.ts' and 'npx tsx src/run-migrations.ts', inline in a long paragraph full of code chips (eight in the run-it paragraph alone) between two code blocks. Every other command gets a Terminal block. On a phone the run command even breaks across two lines.", "where": "quick-start.desktop.01 step 3 paragraph 'Run it with npx tsx…'; quick-start.phone.03 top"},
+    "C4": {"score": 8, "worst_defect": "On Connect a till, the long privacy section 'Where your data goes' (three sub-headings, eight bullets, a build paragraph) sits between 'Open your till' and 'Enter your store details'. It splits the sign-in procedure in two. On the Overview the sidebar highlights both 'Docs' and 'Overview' as active.", "where": "connect-a-till.desktop.01; docs.desktop.01 sidebar"},
+    "C5": {"score": 8, "worst_defect": "In the home comparison table the 'At the till' label column is about 180 px wide, so four of seven row labels wrap to two lines ('Sell for cash and print the receipt', 'Open and close a register with a Z report'…). Meanwhile the 'Live demo' column holds mostly 'Yes' with about 400 px of empty space. The two screenshots on At the till also have no captions, unlike the home hero.", "where": "home.desktop.02 'Live demo or your own store' table; at-the-till.desktop.02/03"},
+    "C6": {"score": 7, "worst_defect": "Full desktop-width till screenshots are shrunk to about 325 px on a phone. In the payment screen the keypad labels, 'Take €21.29 in Cash' and the totals column come out at roughly 4 px and can't be read. The home hero till has the same problem: product names and the €59.59 cart can't be read. Inline code chips also break mid-token (the 'packages/vendure-plugin/CHANGELOG.md' path and 'lineTax: { none: true…' in the changelog).", "where": "at-the-till.phone.03 payment screenshot; home.phone.01 hero screenshot; changelog.phone.01"},
+    "C7": {"score": 8, "worst_defect": "The share card shows only text: a headline that repeats the meta description, a hollow pink circle as the logo, and a pink/purple accent used nowhere on the monochrome site. It has no till image, so in a feed it doesn't look like the product and reads as a generated default.", "where": "og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C6",
+    "defect": "On a 390 px phone, the till screenshots that should prove the product (home hero, At the till payment and cashier sheet) are 1440-wide captures shrunk to about 325 px. Every label, price and button in them is illegible, so on a phone the visual proof turns into grey noise.",
+    "where": "home.phone.01 hero screenshot; at-the-till.phone.03 payment screenshot",
+    "fix": "At narrow widths, serve a cropped or phone-width capture of the till through <picture>/srcset (the cart and checkout pane for the hero, the payment pane for At the till), and make each screenshot open full size on tap."
+  },
+  "mean": 8.14
+}
