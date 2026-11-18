@@ -10,9 +10,10 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     ...defaultMdxComponents,
     TillFigure,
     // <Callout fold> is a closed native <details> in the callout frame; its text stays in the HTML for search.
+    // Round 33, J4 C5: no info icon in a fold; the <summary> triangle is its one affordance.
     Callout: ({ fold, title, children, ...props }: ComponentProps<typeof Callout> & { fold?: boolean }) =>
       fold ? (
-        <CalloutContainer {...props}>
+        <CalloutContainer icon={false} {...props}>
           <details>
             <summary className="cursor-pointer font-medium">{title}</summary>
             <CalloutDescription className="mt-2">{children}</CalloutDescription>

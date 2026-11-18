@@ -326,3 +326,23 @@ test('step 5 folds the vercel.app note into a closed callout after its explanati
   assert.ok(before.includes('Origins contain no path'));
   assert.ok(!before.includes('keeps it for as long as anyone'));
 });
+
+test('a folded callout shows no icon beside its disclosure triangle; plain callouts keep theirs', () => {
+  // Round 33, J4 C5: folds showed an info icon beside the disclosure triangle.
+  const frame = 'rounded-xl border bg-fd-card';
+  for (const page of ['quick-start', 'troubleshooting']) {
+    const doc = readFileSync(`.next/server/app/docs/${page}.html`, 'utf8');
+    const folds = Array.from(doc.matchAll(/<details\b/g));
+    assert.ok(folds.length >= 1, page);
+    for (const { index } of folds) {
+      const start = doc.lastIndexOf(frame, index);
+      assert.ok(start >= 0, page);
+      assert.ok(!doc.slice(start, index).includes('<svg'), `${page} @${index}`);
+    }
+  }
+  const title = html.indexOf('Before a sale on a live store');
+  assert.ok(title >= 0);
+  const start = html.lastIndexOf(frame, title);
+  assert.ok(start >= 0);
+  assert.ok(html.slice(start, title).includes('<svg'));
+});
