@@ -129,6 +129,16 @@ test('limitations says a self-build needs an RxDB Premium licence token, with no
   assert.doesNotMatch(strip(li[0]), /[$€]|\bprice\b|\bpricing\b|\bplan\b/i);
 });
 
+test('limitations has a bullet naming the browser print dialog and the cash drawer', () => {
+  // Round 15, C2: vendurepos/app@df046fc prints through the browser only; nothing opens a cash drawer.
+  const html = readFileSync(join('.next/server/app', 'docs/limitations.html'), 'utf8');
+  const items = html.match(/<li[^>]*>(?:(?!<\/li>)[\s\S])*<\/li>/g) ?? [];
+  const bullet = items.map((li) => li.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ')).find((text) => text.includes('print dialog'));
+  assert.ok(bullet, 'a bullet names the print dialog');
+  assert.match(bullet, /browser(&#x27;|&#39;|')s print dialog/);
+  assert.match(bullet, /does not open a cash drawer/);
+});
+
 test('connect a till names the demo events and where they go', () => {
   const html = readFileSync(join('.next/server/app', 'docs/connect-a-till.html'), 'utf8');
   const start = html.indexOf('id="where-your-data-goes"');

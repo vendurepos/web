@@ -57,6 +57,16 @@ test('at the till screenshots are each at most 400 KB', () => {
   }
 });
 
+test('at the till receipt section names the cash drawer and links limitations', () => {
+  // Round 15, C2: vendurepos/app@df046fc lib/sale-receipt.tsx:31 prints with window.print(); nothing opens a drawer.
+  const start = html.indexOf('id="receipt-and-next-sale"');
+  const end = html.indexOf('<h2', start);
+  assert.ok(start >= 0 && end > start);
+  const section = html.slice(start, end);
+  assert.match(section.replace(/<[^>]+>/g, ''), /does not open the cash drawer, so open it by hand/);
+  assert.ok(section.includes('href="/docs/limitations"'));
+});
+
 test('at the till says what happens when the internet drops, before closing the day', () => {
   // Round 12, C4: restates troubleshooting.mdx "Sell while offline" and the header line.
   const start = html.indexOf('id="if-the-internet-drops"');

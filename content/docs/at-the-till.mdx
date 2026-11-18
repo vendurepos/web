@@ -83,8 +83,11 @@ The pane shows which part you are on, such as "1 of 2", and its amount. **Don't 
 
 The receipt lists each payment and the change.
 **Print receipt** opens the browser's print dialog and prints the receipt alone.
+It prints on any printer that device's browser can use; the till does not open the cash drawer, so open it by hand ([Limitations](/docs/limitations)).
 **New sale** starts the next one.
 If your till is set not to show the receipt after each sale, it shows "Sale complete" and an empty cart.
+
+{/* Printer and cash drawer: vendurepos/app@df046fc apps/pos/lib/sale-receipt.tsx:31 (Print receipt: window.print()). Nothing opens a drawer: git grep at df046fc -- apps packages, -i -E 'escpos|esc/pos' 0 hits, -E 'navigator\.(usb|serial|hid|bluetooth)' 0 hits, -i -w -E 'kick|pulse' 0 hits, -i -E 'open.?(cash.?)?drawer|drawer.?(kick|open)|cash.?drawer' 3 hits, none opens a drawer (see limitations.mdx). */}
 
 ## Refund a sale
 
