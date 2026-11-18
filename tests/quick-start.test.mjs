@@ -287,3 +287,19 @@ test('step 5 names the .env CORS_ORIGINS line and its comma-separated format', (
   assert.ok(without >= 0 && objectForm > without);
   assert.ok(!text.includes("the scaffold's"));
 });
+
+test('step 5 captions its CORS_ORIGINS line as a .env file, not a terminal', () => {
+  // Round 29, C3 (J1, J4): the .env line was captioned "Terminal".
+  const start = html.search(/<h2\b[^>]*\bid="5-allow-the-pos-origin-through-cors"/);
+  assert.ok(start >= 0);
+  const end = html.indexOf('<h2', start + 1);
+  assert.ok(end > start);
+  const step5 = html.slice(start, end);
+  const figures = Array.from(step5.matchAll(/<figure\b(?:(?!<\/figure>)[\s\S])*<\/figure>/g));
+  const env = figures.find(([figure]) => textOf(figure).includes('CORS_ORIGINS=https://app.vendurepos.com'));
+  assert.ok(env);
+  const caption = env[0].match(/<figcaption\b[^>]*>((?:(?!<\/figcaption>)[\s\S])*)<\/figcaption>/);
+  assert.ok(caption);
+  assert.equal(textOf(caption[1]).trim(), '.env file');
+  assert.ok(!env[0].includes('Terminal'));
+});
