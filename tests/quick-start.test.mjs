@@ -174,3 +174,23 @@ test('step 9 is a symptom → fix list and leaves the LAN http aside to Troubles
   assert.ok(troubleshooting.includes('VENDUREPOS_WEB_ALLOW_LAN_HTTP'));
   assert.ok(troubleshooting.includes('mixed-content'));
 });
+
+test('step 8h points to Check it worked instead of repeating its checks', () => {
+  // Round 21, J5 C4: item h named the same checks as the list below it.
+  const section = stepSection('Sign in and make a sale', 'Troubleshoot');
+  const list = section.match(/<div\b[^>]*class="[^"]*\bsteps-lettered\b[^"]*"[^>]*>\s*<ol\b[^>]*>((?:(?!<\/ol>)[\s\S])*)<\/ol>/);
+  assert.ok(list);
+  const items = Array.from(list[1].matchAll(/<li\b[^>]*>((?:(?!<\/li>)[\s\S])*)<\/li>/g));
+  assert.equal(items.length, 9);
+  const h = items[7][1];
+  assert.ok(h.includes('Check it worked'));
+  assert.ok(!h.includes('stock reduction'));
+  assert.ok(!h.includes('delivered fulfilment'));
+  const check = section.indexOf('Check it worked.', list.index + list[0].length);
+  assert.ok(check >= 0);
+  const bullets = section.slice(check).match(/<ul\b[^>]*>((?:(?!<\/ul>)[\s\S])*)<\/ul>/);
+  assert.ok(bullets);
+  for (const phrase of ['line prices', 'tally-pos', 'delivered', 'went down', 'tallySaleAt']) {
+    assert.ok(bullets[1].includes(phrase), phrase);
+  }
+});
