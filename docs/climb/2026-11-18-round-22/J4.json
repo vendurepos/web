@@ -1,0 +1,48 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {
+      "score": 9,
+      "worst_defect": "On a phone the hero lead under \"Point of sale for Vendure\" runs to 7 centred lines of large grey body text, and the till screenshot under it shows a truncated \"Q...\" column header in the cart table.",
+      "where": "home.phone.01"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "Limitations is one flat list of 15 equal-weight bullets. The deal-breaker \"Postgres only\" sits near the bottom with the same weight as minor items, so the most important constraint is the hardest to find.",
+      "where": "limitations.desktop.01"
+    },
+    "C3": {
+      "score": 9,
+      "worst_defect": "The quick start's collapsed disclosures are labelled inconsistently (\"Why these pairings\" has no period, \"How POS sales take stock.\" has one) and hide setup reasoning behind a click inside a 9-step page that is already dense.",
+      "where": "quick-start.desktop.03"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Limitations has no headings or grouping (data, payments, hardware, platform), so its right-hand \"On this page\" rail is empty. The docs overview ends with three \"Next steps\" cards and then a separate right-aligned \"Quick start >\" pager card, two different card styles stacked.",
+      "where": "limitations.desktop.01; docs.desktop / docs.phone.02"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "\"What it does today\" is a 2×5 wall of ten identical grey cards. Only the first two carry links (\"Read the acceptance test\", \"Read the 200-send test\"), so the proven claims look no different from the rest and there is no visual hierarchy. Also: the docs sidebar's grey panel stops with a hard edge at about y=900, and the at-the-till payment screenshot has a roughly 420 px empty band in the cart pane.",
+      "where": "home.desktop.01-02; docs desktop slices .01; at-the-till.desktop.02"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The inline code chip `packages/vendure-plugin/CHANGELOG.md` breaks across two lines into two chip fragments (\"packages/vendure–\" / \"plugin/CHANGELOG.md\"), and the ten home cards stack into a single column about three screens long.",
+      "where": "changelog.phone.01; home.phone.02-03"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Lighthouse mobile flags about 51 KiB of unused JS and about 150 ms of render-blocking resources; LCP is 2.3 s on / and 2.4 s on /docs/quick-start, close to the 2.5 s threshold.",
+      "where": "tech.json lighthouse"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "The home \"What it does today\" section is a uniform 2×5 wall of ten equal-weight grey cards. Only the first two link to proof (\"Read the acceptance test\", \"Read the 200-send test\"), so the page's strongest evidence has no visual priority, and on a phone it becomes a three-screen single-column stack.",
+    "where": "home.desktop.01-02, home.phone.02-03",
+    "fix": "Promote the two proven claims (offline sales, lands-once sends) to a featured pair of larger cards with their proof links, and set the other eight as a compact two-column checklist (icon plus one line each) that collapses to tight rows on a phone."
+  },
+  "mean": 8.6
+}

@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The guide my cashiers need is not in the hero or the top nav (Docs, Live demo, Connect your store); the only home-page pointer is the last paragraph, 'For cashiers, At the till covers selling, taking payment and closing the day.', below the feature cards, the comparison table and Before you start.", "where": "home.desktop.02 (last paragraph above footer); home.phone.05"},
+    "C2": {"score": 8, "worst_defect": "The home page never says what device or browser to put on the counter; only Limitations admits 'Its browser tests run in desktop Chrome; other browsers are not tested yet.', so 'A web till for now' in Before you start reads as 'any browser'.", "where": "home.desktop.02 'Before you start' vs limitations.desktop.01 second bullet"},
+    "C3": {"score": 8, "worst_defect": "A step a store with order emails must do before a real sale (swap the @vendure/email-plugin order-confirmation handler) is not a numbered step; it sits in a 'Before a sale on a live store' callout inside step 8 that sends you to another page ('see Set up email').", "where": "quick-start.desktop.03 step 8 callout; quick-start.phone.07"},
+    "C4": {"score": 8, "worst_defect": "Troubleshooting mixes cashier-facing header notices with a SuperAdmin GraphQL section ('Resolve a sale the store kept part-way', tallyNeedsAdminCommands / tallyResolveNeedsAdmin) without saying that part is for whoever runs the Vendure server, so a shop owner reading it between customers can't tell which bits are theirs.", "where": "troubleshooting.txt 'Resolve a sale the store kept part-way'; troubleshooting.desktop.02"},
+    "C5": {"score": 8, "worst_defect": "The payment-screen screenshot shows a test-fixture product name, 'Tally Fixture Mug', in the cart, which looks like leftover test data next to the polished demo catalogue used elsewhere.", "where": "at-the-till.desktop.02 (payment screen image, first cart line)"},
+    "C6": {"score": 9, "worst_defect": "In the phone hero image the cart's quantity column header is cut to 'Q...', a small truncation in the first thing a phone reader sees of the till.", "where": "home.phone.01 (till image, cart header 'Q... ITEM TOTAL')"},
+    "C7": {"score": 9, "worst_defect": "Mobile LCP is 2.3 s on / and 2.4 s on /docs/quick-start, and Lighthouse still flags render-blocking requests (est. 150 ms) and ~51 KiB of unused JavaScript on the home page.", "where": "tech.json lighthouse"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A shop owner deciding whether staff can sell tomorrow can't learn from the home page what to put on the counter: 'Before you start' only says 'A web till for now', and the facts that matter (tested only in desktop Chrome, private Safari windows cannot run it, one tab per till, printing through the browser dialog, no cash-drawer kick) are on the Limitations page only.",
+    "where": "home.desktop.02 / home.phone.04 'Before you start' vs limitations.desktop.01",
+    "fix": "Add one 'At the counter' bullet to Before you start: 'A computer running desktop Chrome (other browsers untested), a keyboard-wedge scanner, any printer the browser can use, your own card terminal; the cash drawer opens by hand.' Link it to Limitations."
+  },
+  "mean": 8.3
+}

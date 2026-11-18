@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero says what it is but not who it suits: there is no line of the kind 'for a shop that already runs Vendure, counter service with an external card terminal' set against Shopify POS or Square, so a buyer has to piece that together from the Limitations page.", "where": "home/desktop/01 hero paragraph 'VendurePOS is an open-source till that runs in the browser...'"},
+    "C2": {"score": 7, "worst_defect": "Nobody is named as standing behind the project: no maintainer, company, support channel or issue link on home or Overview. The only clue is that analytics go to 'ph.wcpos.com', which is never explained on home. The hosted app at app.vendurepos.com, which receives admin credentials, has no named operator.", "where": "home/desktop/02 footer 'MIT licensed. Built with TallyUI. For Medusa, see MedusaPOS.' and table cell 'anonymous usage events to ph.wcpos.com'"},
+    "C3": {"score": 8, "worst_defect": "The header nav item 'Connect your store' links to /docs/connect-a-till, not the quick start. A developer who clicks it skips the plugin install, the migration, bearer auth and CORS, then hits the 'plugin is missing or out of date' wall.", "where": "home/desktop/01 header nav 'Connect your store' (tech.json home.desktop links: /docs/connect-a-till)"},
+    "C4": {"score": 8, "worst_defect": "The changelog cites internal references the reader cannot follow ('(ADR 0005)', '(ADR 0004)', '(#116)', '(#117)'), and these are not links. It also covers only the plugin, so the hosted till's own changes have no version history.", "where": "changelog/desktop/01, 0.3.0 and 0.2.0 bullets"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' is a wall of ten identical grey cards with the same weight. Only two have a proof link, so the two verified claims (offline and 200-send tests) look no different from unproven ones such as 'Barcode scanners... work out of the box'.", "where": "home/desktop/01-02 'What it does today' card grid"},
+    "C6": {"score": 8, "worst_defect": "Long TypeScript lines wrap mid-expression on 390 px instead of scrolling. 'generateMigration(config, { name: 'AddVendurePos', outputDir: './src/migrations' })' breaks across five lines, which is hard to read and to check against a copy-paste.", "where": "quick-start/phone/02 step 3 code block"},
+    "C7": {"score": 9, "worst_defect": "The sitemap gives every page a lastmod of the build day (e.g. changelog 2026-11-18T06:54:09 although its newest entry is 2026-10-06), so lastmod tells crawlers nothing.", "where": "text/endpoint_sitemap_xml.txt"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "I could not advise a client to run their tills on this, because the site never says who builds it, who runs app.vendurepos.com (which receives their Vendure admin password) or where to get help. The only hint is an unexplained 'ph.wcpos.com' analytics host. With the last plugin release on 2026-10-06 and no app changelog, a buyer cannot tell whether the project is maintained.",
+    "where": "home/desktop/02 footer and 'Live demo or your own store' table; docs/desktop/01 Overview",
+    "fix": "Add one line to the home footer and the Overview: who maintains VendurePOS (and its relation to WCPOS), who operates app.vendurepos.com, and where to report problems (GitHub issues link or chat), plus the date of the last app deploy."
+  },
+  "mean": 8.0
+}
