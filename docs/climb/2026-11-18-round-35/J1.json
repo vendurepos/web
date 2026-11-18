@@ -1,0 +1,48 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero's last sentence, \"Every sale lands in your Vendure store once, as a normal order at the till's price\", and the first two feature cards (\"Every sale lands once\", \"The same sale sent 200 times makes one order\") answer a duplicate-order worry a newcomer doesn't have yet, so the first screen spends its space on plumbing instead of saying who it's for (a shop selling at a counter that already runs Vendure).",
+      "where": "home/desktop/01 hero paragraph and first feature row; home/phone/01-02"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "No page says who builds or maintains VendurePOS, yet the comparison table says the demo \"sends anonymous usage events to ph.wcpos.com\", a second brand the site never explains. Connect a till only calls it \"a self-hosted PostHog analytics server\" and doesn't say who runs it, which a newcomer reads as an unexplained third party.",
+      "where": "home/desktop/02 'Live demo or your own store' table, last row; footer 'MIT licensed. Built with TallyUI.'; connect-a-till/desktop/01 'Where requests go'"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The step that gets to an actual till is not clickable: Quick start shows \"The hosted POS is live at https://app.vendurepos.com\" and step 8's \"Open https://app.vendurepos.com, then:\" as code chips, not links (app.vendurepos.com is not in quick-start's link list in tech.json), and the home page also has it only as plain text.",
+      "where": "quick-start/desktop/01 intro paragraph and quick-start/desktop/03 step 8; tech.json pages['quick-start.desktop'].links"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The requirements lists disagree: Quick start and Plugin setup require Node \"^20.19 || >=22.12\", but Docs Overview 'Requirements' and the home page 'Before you start' list Vendure, Postgres and the package and leave out Node.",
+      "where": "docs/desktop/01 'Requirements' vs plugin-setup/desktop/01 'Check your store'; home/desktop/02 'Before you start'"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The hero product screenshot ends on a half-visible row of product tiles (coloured tops cut off at the bottom edge), and below it the ten feature cards are identical grey boxes with no icons or visual anchors, so the middle of the page looks like a wall of text.",
+      "where": "home/desktop/01 bottom of hero screenshot (y~1140) and the 'What it does today' grid running into home/desktop/02; same crop in home.desktop-dark"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "On the phone the hero screenshot is a tall cart view that takes more than a full screen (home/phone/01 into 02) before 'What it does today' starts, and inside it the quantity column header is truncated to \"Q...\".",
+      "where": "home/phone/01-02 hero screenshot"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The share card crops the till screenshot at the bottom edge partway through the 'Add charge' button and the product price/stock row, so the card looks cut off rather than framed.",
+      "where": "og-image.png bottom edge"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A newcomer never learns who makes VendurePOS: the home page and footer name no maintainer, and the only outside party mentioned is an unexplained ph.wcpos.com that receives the demo's usage events.",
+    "where": "home/desktop/02 comparison table last row and footer",
+    "fix": "Add one line to the footer (or under the hero) naming who builds and maintains VendurePOS, and in the table say ph.wcpos.com is that maintainer's own self-hosted analytics."
+  },
+  "mean": 8.14
+}

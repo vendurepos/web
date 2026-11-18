@@ -1,0 +1,48 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero's till screenshot is cropped on phone so the cart column header reads only \"Q...\". Beyond one feature card, the home page never says in counter terms what a cashier's day looks like (open register, sell, close).",
+      "where": "home.phone.01"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "Honest throughout. The only sting is in the table: refund is \"No, not on plugin 0.3.0: refund in the Vendure Dashboard, where the refund stays Pending until it is settled\". It is stated plainly, but it is not explained what 'Pending until settled' means for the customer standing at the counter.",
+      "where": "home.desktop.02 (Live demo or your own store table)"
+    },
+    "C3": {
+      "score": 7,
+      "worst_defect": "The till key the plugin makes is not enough to work a till: \"the role it creates (vendurepos-pos-till) has the step 4 permissions except ReadOrder, so add ReadOrder to that role yourself\". There is also a cryptic collapsible, \"If your store already allows vendurepos.vercel.app\". My freelancer has to catch both by hand before staff can sell.",
+      "where": "quick-start.desktop.02 / quick-start text (device key step)"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "At the till's \"If the internet drops\" is one unbroken paragraph of about 13 phone lines. It mixes what still works, keeping the tab open, the header status and the data-loss warning. Troubleshooting mixes cashier notices with server material: errorCodes such as \"register_session_already_open\", GraphQL mutations (tallyNeedsAdminCommands) and \"The store must advertise order.create v4 and register v1\".",
+      "where": "at-the-till.phone.07; troubleshooting.desktop.01"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The cashier-sheet and register-closure screenshots sit small inside large, mostly empty framed boxes, which leaves awkward dead space mid-page. Dark mode and the other pages are clean.",
+      "where": "at-the-till.desktop.03, at-the-till.desktop.04"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "On a phone between customers, the offline guidance is a wall of text, about 13 lines with no bullets. The hero till image truncates its cart header to \"Q...\". Tables stack and code wraps well elsewhere.",
+      "where": "at-the-till.phone.07; home.phone.01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The og-image crops the till's \"Add charge\" button at its bottom edge. Lighthouse flags 51 KiB of unused JS on /. Otherwise every endpoint returns 200, the 404 is correct, there are no console errors, and alt text and JSON-LD are present.",
+      "where": "og-image.png; tech.json (Lighthouse /)"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "The one thing a shop owner most needs to brief staff on, what to do when the internet drops, is a single dense paragraph. The \"don't reload / don't clear site data\" warning that protects unsent sales is buried mid-paragraph. Troubleshooting also mixes counter actions with errorCode/GraphQL content meant for whoever runs the server.",
+    "where": "at-the-till.phone.07 (If the internet drops); troubleshooting.desktop.01",
+    "fix": "Split \"If the internet drops\" into three short bullet groups: what still works; DO NOT reload, close the tab or clear site data (bold); how to tell queued sales have sent. In Troubleshooting, put the errorCode and GraphQL admin material under a separate \"For whoever runs your Vendure server\" heading, below the cashier notices."
+  },
+  "mean": 8.0
+}
