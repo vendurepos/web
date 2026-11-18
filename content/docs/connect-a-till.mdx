@@ -77,6 +77,9 @@ Refunding at the till will need `TallyPosRefund`, given separately, once the plu
 You need plugin 0.2.0 or later and Vendure's React Dashboard.
 See [Plugin setup](/docs/plugin-setup) for installation.
 
+{/* Sources: vendurepos/app@1404f42 packages/vendure-plugin/CHANGELOG.md:38 (0.2.0 preset without ReadOrder), :11 (Unreleased: the preset gains ReadOrder);
+packages/vendure-plugin/src/config/pos-till-role.ts:7; apps/pos/lib/order-history.ts:9,38 (the order list needs ReadOrder, through sessionContext(session)). */}
+
 1. Add `'api-key'` to `authOptions.tokenMethod`:
 
    ```ts
@@ -88,6 +91,8 @@ See [Plugin setup](/docs/plugin-setup) for installation.
 3. Go to **System → API keys → New POS till key** and name the key after the device.
    This creates or extends the `vendurepos-pos-till` role with `TallyPosSell` and
    the reads a till needs, creates the key with that role and shows the key once.
+   On plugin 0.3.0 and earlier, add `ReadOrder` to that role yourself for the till's order list, as in
+   [Give each cashier their own account](#give-each-cashier-their-own-account).
 4. On the till, choose **Device key**, paste the key and the till's channel token, and sign in.
 
 The till shows the key's name on receipts as `Till: <name>`.
