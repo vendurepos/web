@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The quick-start prerequisites omit Node ^20.19 || >=22.12, which Plugin setup requires, allowing readers to begin installation without checking the runtime requirement.",
+      "where": "text/quick-start.txt, introduction; text/plugin-setup.txt, Check your store"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The changelog says a key with the generated role 'does everything a till does', but the quick start says that role lacks ReadOrder and order history is refused until it is added.",
+      "where": "shots/changelog.desktop.01.jpg, 0.2.0; text/quick-start.txt, Optional: a device key for each till; text/endpoint_llms_full_txt.txt"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop-dark.jpg; desktop home, quick-start and documentation slices"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "phone home and quick-start slices; first phone slice of each documentation page; tech.json"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "tech.json; text/endpoint_llms_txt.txt; text/endpoint_llms_full_txt.txt; captured search, sitemap and robots endpoints; shots/og-image.png"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "The changelog's claim that the generated device-key role does everything a till does conflicts with the setup instructions requiring ReadOrder to be added manually.",
+    "where": "shots/changelog.desktop.01.jpg, 0.2.0 final bullet; text/endpoint_llms_full_txt.txt, Changelog",
+    "fix": "Annotate the changelog claim with the current ReadOrder requirement and link to the device-key setup instructions. Include that qualification in llms-full.txt."
+  },
+  "mean": 9.0
+}
