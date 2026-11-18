@@ -217,3 +217,23 @@ test('at the till says the expected cash also counts pay ins and pay outs', () =
   assert.ok(!text.includes('opening float plus cash sales is what is expected'), 'no float + cash sales = expected');
   assert.ok(text.includes('which also counts any pay ins and pay outs'), 'expected cash counts pay ins and pay outs');
 });
+
+test('at the till shows the closure screen in the close-the-day section, and Hand over leaves the register open', () => {
+  // Round 33, J2 C4: the close-the-day section had no picture of the close screen.
+  const start = html.indexOf('id="count-the-drawer-and-close-the-day"');
+  const end = html.indexOf('The Z report lists', start);
+  assert.ok(start >= 0 && end > start);
+  const section = html.slice(start, end);
+  const img = section.match(/<img[^>]*alt="The closure on the live demo till[^>]*>/)?.[0];
+  assert.ok(img, 'closure img between the h2 and The Z report lists');
+  const figure = section.slice(section.lastIndexOf('<figure', section.indexOf(img)), section.indexOf('</figure>', section.indexOf(img)));
+  assert.match(figure, /<figcaption[^>]*>The closure screen on the live demo till\.<\/figcaption>/);
+  const png = readFileSync('public/till/closure-light.png');
+  const wide = figure.match(/<img[^>]*%2Ftill%2Fclosure-light\.png[^>]*>/)?.[0] ?? '';
+  assert.ok(wide.includes(`width="${png.readUInt32BE(16)}"`) && wide.includes(`height="${png.readUInt32BE(20)}"`), 'real size');
+  const phone = (figure.match(/<source[^>]*>/g) ?? []).find((s) => s.includes('%2Ftill%2Fclosure-phone-light.png'));
+  assert.ok(phone?.includes('media="(max-width: 639px)"'), 'phone source');
+  const text = html.replace(/<!-- -->/g, '').replace(/<[^>]+>/g, '');
+  assert.ok(text.includes('leaves the register open'), 'register open');
+  assert.ok(!text.includes('leaves the drawer open'), 'not drawer open');
+});
