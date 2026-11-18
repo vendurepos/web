@@ -26,3 +26,14 @@ test('hero shows the till, light and dark', () => {
   assert.ok(existsSync('public/till/sale-light.png'));
   assert.ok(existsSync('public/till/sale-dark.png'));
 });
+
+test('hero lede links Vendure to vendure.io', () => {
+  const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
+  const h1 = html.indexOf('<h1');
+  const figure = html.indexOf('<figure');
+  assert.ok(h1 !== -1 && figure > h1);
+  const hero = html.slice(h1, figure);
+  assert.match(hero, /<a[^>]*\shref="https:\/\/vendure\.io"[^>]*>Vendure<\/a>/);
+  const text = hero.replace(/<!-- -->/g, '').replace(/<[^>]+>/g, '');
+  assert.ok(text.includes('signs in to your own Vendure store'));
+});
