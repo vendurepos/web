@@ -92,16 +92,31 @@ test('hero is left-aligned with a smaller lead below 640px', () => {
 });
 
 // Round 33, J4 C6: the phone hero clipped the cart's Add charge at 390x664.
-test('phone hero capture is the whole 390x700 cart, and its alt names the cart total', () => {
+// Round 35, J1/J2/J4/J5 C6: the phone cart truncated its Qty header; the phone hero now shows the Products tab.
+test('phone hero capture is the Products tab at 390x665, and its alt names the cart total', () => {
   const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
   const sources = html.match(/<source[^>]*>/g) ?? [];
   for (const scheme of ['light', 'dark']) {
     const png = readFileSync(`public/till/sale-phone-${scheme}.png`);
     const [width, height] = [png.readUInt32BE(16), png.readUInt32BE(20)];
-    assert.ok(width === 780 && height === 1400, `${scheme} ${width}x${height}`);
-    assert.ok(sources.some((s) => s.includes(`sale-phone-${scheme}.png`) && s.includes('height="1400"')), scheme);
+    assert.ok(width === 780 && height === 1330, `${scheme} ${width}x${height}`);
+    assert.ok(sources.some((s) => s.includes(`sale-phone-${scheme}.png`) && s.includes('height="1330"')), scheme);
   }
   const img = html.match(/<img[^>]*\salt="(The VendurePOS till mid-sale[^"]*)"/);
   assert.ok(img, 'hero img');
   assert.ok(img[1].includes('€20.09') && !img[1].includes('€59.59'), img[1]);
+});
+
+// Round 35, J4 C5: the desktop hero was cut mid-row.
+test('desktop hero capture ends on whole rows at 2880x1732', () => {
+  const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
+  const imgs = html.match(/<img[^>]*>/g) ?? [];
+  for (const scheme of ['light', 'dark']) {
+    const png = readFileSync(`public/till/sale-${scheme}.png`);
+    const [width, height] = [png.readUInt32BE(16), png.readUInt32BE(20)];
+    assert.ok(width === 2880 && height === 1732, `${scheme} ${width}x${height}`);
+    const img = imgs.find((i) => i.includes(`sale-${scheme}.png`) && i.includes('alt="The VendurePOS till mid-sale'));
+    assert.ok(img, `hero img ${scheme}`);
+    assert.ok(img.includes('width="2880"') && img.includes('height="1732"'), img);
+  }
 });
