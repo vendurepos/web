@@ -27,10 +27,12 @@ function TillPicture({ name, scheme, alt, sizes, eager, className }: {
   const phone = getImageProps({ src: `/till/${name}-phone-${scheme}.png`, width: 780, height: PHONE_HEIGHT[name], sizes: '100vw', alt, ...priority }).props;
   const [width, height] = WIDE_SIZE[name];
   const wide = getImageProps({ src: `/till/${name}-${scheme}.png`, width, height, sizes, alt, ...priority }).props;
+  // A narrow shot's <picture> takes the img's width attribute as its flex width, so mx-auto centres the img in it.
+  const imgClass = `block rounded-lg${OWN_BORDER.has(name) ? '' : ' border border-fd-border'}${width / 2 < 600 ? ' mx-auto' : ''}`;
   return (
     <picture className={className}>
       <source media="(max-width: 639px)" srcSet={phone.srcSet} sizes={phone.sizes} width={phone.width} height={phone.height} />
-      <img {...wide} alt={alt} style={{ ...wide.style, maxWidth: `min(100%, ${width / 2}px)` }} className={OWN_BORDER.has(name) ? 'block rounded-lg' : 'block rounded-lg border border-fd-border'} />
+      <img {...wide} alt={alt} style={{ ...wide.style, maxWidth: `min(100%, ${width / 2}px)` }} className={imgClass} />
     </picture>
   );
 }

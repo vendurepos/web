@@ -272,8 +272,11 @@ test('at the till narrow shots sit centred on a column-wide panel; the closure h
     assert.ok(panel?.[1].includes('sm:bg-fd-muted') && panel[1].includes('sm:justify-center'), `${name} panel`);
     const inside = figure.slice(panel.index, figure.lastIndexOf('</div>'));
     for (const scheme of ['light', 'dark']) assert.ok(imgOf(inside, `${name}-${scheme}.png`), `${name}-${scheme} inside the panel`);
+    assert.match(imgOf(figure, `${name}-light.png`), /class="[^"]*\bmx-auto\b/, `${name} img centred in its picture`);
   }
   assert.ok(!figureIn('take-payment').includes('sm:bg-fd-muted'), 'payment has no panel');
+  assert.doesNotMatch(imgOf(figureIn('take-payment'), 'payment-light.png'), /mx-auto/, 'payment img not centred');
+  assert.ok(imgOf(figureIn('take-payment'), 'payment-light.png'), 'payment light img found');
   assert.ok(!imgOf(figureIn('count-the-drawer-and-close-the-day'), 'closure-light.png').includes('border-fd-border'), 'closure has one border');
   assert.match(imgOf(figureIn('check-the-register-during-the-day'), 'cashier-light.png'), /class="[^"]*border-fd-border/, 'cashier keeps its border');
   const home = readFileSync('.next/server/app/index.html', 'utf8');
