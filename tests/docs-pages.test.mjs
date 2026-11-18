@@ -261,3 +261,17 @@ test('limitations lists the refused till update right after the unsent sales and
   const troubleshooting = readFileSync(join('.next/server/app', 'docs/troubleshooting.html'), 'utf8');
   assert.ok(troubleshooting.includes('id="act-on-a-header-notice"'), 'the link target exists');
 });
+
+test('troubleshooting says what still works after a refused till update', () => {
+  // Round 25, J2 C4: vendurepos/app@ebcd9e4 index.tsx:216-221 (printZ), closure-history-sheet.tsx:14-19, :38-47;
+  // @tallyui/pos 3.20.0 register-outbox.ts:178-181 (closures wait behind the refused row).
+  const text = readFileSync(join('.next/server/app', 'docs/troubleshooting.html'), 'utf8')
+    .replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+  const start = text.indexOf('Any other code');
+  const end = text.indexOf('Do not clear the site', start);
+  assert.ok(start >= 0 && end > start, 'the Any other code case precedes Do not clear the site');
+  const anyOther = text.slice(start, end);
+  for (const phrase of ['What still works', 'The Z report still prints', 'Closures', 'do not reach your Vendure store']) {
+    assert.ok(anyOther.includes(phrase), phrase);
+  }
+});
