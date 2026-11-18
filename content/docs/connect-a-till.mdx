@@ -26,14 +26,26 @@ README.md:73-74
 docs/QUICKSTART.md:80-88
 vendurepos/web components/analytics.tsx:11-14 */}
 
-When you sign in with email and password, the till sends them from this browser to the store URL you entered.
-It then saves the session in this browser's `localStorage`: the store URL, channel token, barcode field, your email,
-the store's settings and the session token the store returned. It never saves the password. With a device key, it saves the key itself.
-Signing out deletes that saved session and, for a password sign-in, asks the store to end the session.
-The catalogue and the sales not yet sent to your store are kept in SQLite databases inside this browser.
-Signing out deletes the catalogue but never the sales database, so unsent sales wait for your next sign-in.
-Every request in the till's code goes to that store URL, except on the public demo at demo.vendurepos.com:
-it posts anonymous demo events to ph.wcpos.com with no cookie and nothing stored. The events are `demo_opened`, `demo_signed_in`, `demo_sale_completed` and `demo_reset`, each with a random id that lasts one page load and the demo's host name, plus the referring site on `demo_opened`; ph.wcpos.com is a self-hosted PostHog analytics server, the same one this website's page-view counter reports to. The page loads scripts only from its own host, cannot be shown inside another site, and may connect to any `https://` address.
+**Stored in this browser**
+
+- When you sign in with email and password, the till sends them from this browser to the store URL you entered.
+  It then saves the session in this browser's `localStorage`: the store URL, channel token, barcode field, your email,
+  the store's settings and the session token the store returned.
+- It never saves the password.
+- With a device key, it saves the key itself.
+- The catalogue and the sales not yet sent to your store are kept in SQLite databases inside this browser.
+
+**What signing out deletes**
+
+- Signing out deletes that saved session and, for a password sign-in, asks the store to end the session.
+- Signing out deletes the catalogue but never the sales database, so unsent sales wait for your next sign-in.
+
+**Where requests go**
+
+- Every request in the till's code goes to that store URL, except on the public demo at demo.vendurepos.com:
+  it posts anonymous demo events to ph.wcpos.com with no cookie and nothing stored.
+- The events are `demo_opened`, `demo_signed_in`, `demo_sale_completed` and `demo_reset`, each with a random id that lasts one page load and the demo's host name, plus the referring site on `demo_opened`; ph.wcpos.com is a self-hosted PostHog analytics server, the same one this website's page-view counter reports to.
+- The page loads scripts only from its own host, cannot be shown inside another site, and may connect to any `https://` address.
 
 The till's source is [MIT-licensed](https://github.com/vendurepos/app) and builds to static files. Building it yourself needs your own RxDB Premium
 licence token in `RXDB_PREMIUM`; then run `pnpm build:web` in `apps/pos` and serve `apps/pos/dist` from your own host.

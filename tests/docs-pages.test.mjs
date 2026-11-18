@@ -159,3 +159,21 @@ test('connect a till device-key recipe says to add ReadOrder on plugin 0.3.0 and
   assert.ok(section.includes('ReadOrder'));
   assert.match(section, /href="(\/docs\/connect-a-till)?#give-each-cashier-their-own-account"/);
 });
+
+test('connect a till lists where your data goes in three short groups, every sentence kept', () => {
+  const html = readFileSync(join('.next/server/app', 'docs/connect-a-till.html'), 'utf8');
+  const start = html.indexOf('id="where-your-data-goes"');
+  assert.ok(start >= 0);
+  const end = html.indexOf('<h2', start);
+  const section = html.slice(start, end < 0 ? undefined : end);
+  for (const lead of ['Stored in this browser', 'What signing out deletes', 'Where requests go']) assert.ok(section.includes(lead), lead);
+  assert.ok((section.match(/<li/g) ?? []).length >= 6);
+  const strip = (s) => s.replace(/<[^>]+>/g, '');
+  const lists = section.slice(0, section.indexOf('The till&#x27;s source is')); // that paragraph is out of scope
+  assert.ok(lists.length > 0 && lists.length < section.length);
+  for (const p of lists.match(/<p[\s>][\s\S]*?<\/p>/g) ?? []) assert.ok(strip(p).length <= 320, strip(p).slice(0, 60));
+  const text = strip(section.replace(/&#x27;|&#39;/g, "'").replace(/&quot;/g, '"').replace(/&amp;/g, '&')).replace(/\s+/g, ' ');
+  for (const sentence of ['It never saves the password.', 'Signing out deletes the catalogue but never the sales database',
+    'with no cookie and nothing stored.', "the same one this website's page-view counter reports to.",
+    'cannot be shown inside another site']) assert.ok(text.includes(sentence), sentence);
+});
