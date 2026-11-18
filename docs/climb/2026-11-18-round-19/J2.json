@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero paragraph spends its middle explaining what Vendure is ('Vendure is an open-source headless commerce framework') rather than telling a shop owner that staff sell at the counter with a scanner and card terminal; on phone the paragraph runs seven lines before the buttons, and the Docs link is hidden behind the header chevron.", "where": "home/phone/01 (hero paragraph, header chevron)"},
+    "C2": {"score": 8, "worst_defect": "Limitations says 'Its browser tests run in desktop Chrome; other browsers are not tested yet', yet At the till describes narrow-screen tabs and camera scanning as if tablets and phones are fine, and the home page never says which device to put on the counter. Separately, the payment screenshot shows a test-fixture product called 'Tally Fixture Mug'.", "where": "limitations/desktop/01 vs at-the-till/desktop/01 'On a narrow screen...' and at-the-till/desktop/02 screenshot"},
+    "C3": {"score": 8, "worst_defect": "Quick start step 8a signs the till in with 'your administrator email and password'. Giving each cashier their own limited account (the vendurepos-pos-till role, Hand over) is only on Connect a till, and step 8 does not link it. A developer following the quick start would hand staff the admin login.", "where": "quick-start/desktop/03 step 8a; connect-a-till 'Give each cashier their own account'"},
+    "C4": {"score": 7, "worst_defect": "On plugin 0.3.0 a real store cannot refund at the till, but 'Refund a sale' on the cashier page mostly gives till steps that only work on the demo. It never tells a cashier what to do with the cash when the refund is made in the Dashboard (record a Pay out so the Z report balances?). It then puts two admin GraphQL blocks (settleRefund) on the same cashier page.", "where": "at-the-till/desktop/02-03 'Refund a sale' and 'Settle a Dashboard refund'"},
+    "C5": {"score": 8, "worst_defect": "On every desktop docs slice the grey left sidebar panel stops dead at about 900 px (its bottom edge sits just under the GitHub/theme bar), leaving a bare strip below it beside the content. On the home page the ten feature cards are identical grey boxes of equal weight, so 'Keeps selling offline' does not stand out from 'Change a line price'.", "where": "quick-start/desktop/01, at-the-till/desktop/01 (sidebar edge at y≈900); home/desktop/01-02 card grid"},
+    "C6": {"score": 8, "worst_defect": "In the home page's phone hero screenshot of the till, the cart's quantity column header is truncated to 'Q...', and the phone header has no visible Docs or Live demo link, only a search icon and a chevron.", "where": "home/phone/01"},
+    "C7": {"score": 8, "worst_defect": "The docs search for 'offline' returns Troubleshooting, Quick start and Overview, but not At the till's 'If the internet drops' section or the Limitations warning that unsent sales are lost if browser data is cleared. Those two are the answers a shop owner needs.", "where": "text/endpoint_api_search_query_offline.txt"}
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "A customer return is an everyday counter job, and the cashier page does not say what staff do on a real store running plugin 0.3.0. 'Refund a sale' gives till steps that only work on the demo. The real path is a Dashboard refund that stays Pending until someone runs a GraphQL settleRefund mutation. Nothing tells the cashier how to hand back cash and keep the drawer and Z report right.",
+    "where": "at-the-till/desktop/02-03 ('Refund a sale', 'Settle a Dashboard refund')",
+    "fix": "Open 'Refund a sale' with a short 'On your store (plugin 0.3.0)' box for the cashier: refund in the Dashboard, then record the cash handed back with Pay out and the order code as the reason. Move the demo-only till steps and the settleRefund GraphQL to a collapsed section or to Troubleshooting for the developer."
+  },
+  "mean": 7.9
+}

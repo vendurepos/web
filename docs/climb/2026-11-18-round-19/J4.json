@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 9, "worst_defect": "The hero lede runs four centred lines including a parenthetical definition of Vendure (\"(Vendure is an open-source headless commerce framework)\"), and below the buttons sits a second, two-link sentence (\"the quick start sets it up. Then try the till with your store\"). At 390 px that makes seven lines of grey centred text before the screenshot.", "where": "home.desktop.01 / home.phone.01, hero"},
+    "C2": {"score": 8, "worst_defect": "On a vendurepos.com page, the comparison table's demo cell says \"All it sends is anonymous usage events to ph.wcpos.com\". The wcpos.com domain is never explained on the home page, so a careful reader is left wondering who that third party is.", "where": "home.desktop.02, 'Live demo or your own store' table, last row"},
+    "C3": {"score": 8, "worst_defect": "Step 8 says the same thing twice. Sub-step h (\"check Vendure for the POS prices, settled tally-pos payment, delivered fulfilment, stock reduction and tallySaleAt\") is followed straight away by a 'Check it worked' list of the same five checks. Meanwhile sub-step i, the offline test, is buried among the a–i sale steps.", "where": "quick-start.desktop.03, step 8"},
+    "C4": {"score": 8, "worst_defect": "Quick start '9. Troubleshoot' is three bullets of 4–6 line prose with full quoted error strings and 5+ inline-code pills each. Limitations is a flat list of 15 bullets with no grouping and no 'On this page': \"One browser tab per till\" gets the same weight as the data-loss warning \"those sales are lost\".", "where": "quick-start.desktop.03-04 / quick-start.phone.08-09; limitations.desktop.01"},
+    "C5": {"score": 8, "worst_defect": "On Overview, the three equal 'Next steps' cards (Live demo, Plugin setup, Source on GitHub) leave out Quick start. The main next action is a full-width right-aligned 'Quick start >' pager box 16 px below them, which reads as a fourth, mismatched card. The home hero screenshot is also cut through a half row of product tiles at its bottom edge.", "where": "docs.desktop.01, Next steps; home.desktop.01 hero image bottom"},
+    "C6": {"score": 8, "worst_defect": "Inline code pills break mid-token on narrow widths. On the phone Changelog, 'packages/vendure-' / 'plugin/CHANGELOG.md' splits into two pills. On the desktop Quick start, 'npx tsx src/run-' / 'migrations.ts' splits the same way. The phone hero screenshot shows the cart's QTY header truncated to 'Q...'.", "where": "changelog.phone.01 intro line; quick-start.desktop.01 step 3; home.phone.01 hero image"},
+    "C7": {"score": 9, "worst_defect": "The share card's till screenshot is cropped through the 'Add charge' button at the bottom edge. llms-full.txt opens with 'At the till' (alphabetical) rather than Overview / Quick start.", "where": "og-image.png bottom edge; text/endpoint_llms_full_txt.txt line 1"}
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "The last step of the most important page is the hardest to scan. Quick start '9. Troubleshoot' packs each failure (CORS, 401, missing plugin) into one 4–6 line bullet that mixes quoted till messages, env vars and CSP terms. At 390 px it fills about two screens of unbroken grey text, so a developer whose first sale failed can't spot their error message.",
+    "where": "quick-start.desktop.03-04 / quick-start.phone.08-09, section 9",
+    "fix": "Restyle section 9 as a symptom → fix list: each item starts with the exact till message (or HTTP status) as a bold or callout title, followed by one or two short fix lines. Move the LAN-http/CSP aside to Troubleshooting."
+  },
+  "mean": 8.3
+}

@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero's one long paragraph closes on 'every sale lands in Vendure once, as a normal order at the till's price', which a visitor who barely knows Vendure cannot decode in five seconds. The first thing above the headline is 'Pre-release · plugin 0.3.0', a version number for a plugin that hasn't been introduced yet.", "where": "home/desktop/01 and home/phone/01, hero badge and paragraph"},
+    "C2": {"score": 8, "worst_defect": "The comparison table says the demo sends 'anonymous usage events to ph.wcpos.com', but the home page never says what WCPOS is or how it relates to VendurePOS, so a newcomer sees an unexplained third-party domain receiving data.", "where": "home/desktop/02, 'Live demo or your own store' table, last row; home/phone/04"},
+    "C3": {"score": 8, "worst_defect": "The 'Quick start' runs to nine steps over about 6,100 px. A long 'How POS sales take stock' paragraph (stockLocationStrategy, PaymentSettled, per-sale locationId) and a pre-sale warning that sends you to two other pages ('Set up email', 'Check your own code') sit between you and the first sale, so the fastest route to a working till is hard to pick out.", "where": "quick-start/desktop/03, steps 7-8; quick-start/phone/06-07"},
+    "C4": {"score": 8, "worst_defect": "Internal jargon gets in the way: the plugin's 'Tally' code names need their own explanatory paragraph in Quick start step 2, and the Changelog cites '(ADR 0005)', '(ADR 0004)', '(#116)' and 'order.create v5' with no links or explanation.", "where": "quick-start/desktop/01 step 2; changelog/desktop/01"},
+    "C5": {"score": 8, "worst_defect": "On every docs page the grey sidebar panel stops at about 900 px and the plain page background shows below it. The demo screenshot on At the till shows a product called 'Tally Fixture Mug', which reads as leftover test data.", "where": "docs.desktop.01, limitations.desktop.01 (sidebar bottom left); at-the-till.desktop.02 (cart line 1)"},
+    "C6": {"score": 9, "worst_defect": "The phone hero screenshot cuts the cart's quantity column header to 'Q...'. That's minor, and otherwise tables turn into readable stacked rows with no overflow.", "where": "home/phone/01, hero till screenshot cart header"},
+    "C7": {"score": 9, "worst_defect": "In sitemap.xml every lastmod is a timestamp from 17-18 Nov 2026 (for example the changelog shows 2026-11-18T06:54 although its newest release is 2026-10-06), so the dates mark builds, not content changes. The og-image also cuts off the 'Add charge' button at its bottom edge.", "where": "text/endpoint_sitemap_xml.txt; shots/og-image.png bottom right"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A first-time visitor reading the demo comparison is told their activity goes to 'ph.wcpos.com', a domain belonging to an unnamed third party (WCPOS) never mentioned anywhere else on the home page. For someone deciding whether to trust an unknown pre-release POS, that is the one line that looks like it's hiding something.",
+    "where": "home/desktop/02 and home/phone/04, 'Sales reach Vendure, once each, even offline' row, Live demo column",
+    "fix": "Name the owner in that cell, for example 'to our own self-hosted PostHog (ph.wcpos.com, run by the WCPOS team who make VendurePOS)', or add one footer line saying who makes VendurePOS."
+  },
+  "mean": 8.3
+}
