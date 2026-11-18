@@ -1,0 +1,48 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero has four equal-sized buttons ('Live demo', 'Quick start', 'Try with your store', 'GitHub'), and the top nav repeats 'Try with your store'. A newcomer can't tell how 'Try with your store' differs from 'Quick start'. It opens app.vendurepos.com, which only works once the plugin is installed; the small line underneath ('Your own store needs the plugin on your Vendure server first') admits this.",
+      "where": "home.desktop.01 hero buttons and top nav; home.phone.01 (buttons wrap to 2x2)"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The home page says 'open-source' and 'MIT licensed' without any caveat. Only the Limitations page says 'Building the till yourself needs your own RxDB Premium licence token in RXDB_PREMIUM', a paid dependency a visitor reading 'open-source' would not expect.",
+      "where": "home.desktop.02 footer vs limitations.desktop.01 bullet 3"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Before step 1, the quick start gives two addresses for the same app ('The hosted POS is live at https://app.vendurepos.com. https://vendurepos.vercel.app serves the same build'), and step 5 brings vercel.app up again. Step 8 also lists the Vendure checks twice: item h, then the 'Check it worked' list straight after.",
+      "where": "quick-start.desktop.01 intro paragraph; quick-start.desktop.03 step 8 (item h and 'Check it worked')"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The Changelog covers only '@vendurepos/plugin', in internal terms ('order.create v5 ... (ADR 0005)', 'maxShippingLines: 1'). Nothing records changes to the till app itself, although the docs mention till features that the live demo 'already has' ahead of any plugin release, such as refunds and the customer note.",
+      "where": "changelog.desktop.01; at-the-till.desktop.01 'Order details' paragraph"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The hero product screenshot is cropped through a row of product tiles: half-tiles are visible at its bottom edge, and the 'Guest · 3 items' bar is cut off, which looks like an accidental crop. Below it, ten identical grey feature cards form a monotonous wall with no visual hierarchy.",
+      "where": "home.desktop.01 bottom of hero screenshot (~y 1140) and 'What it does today' grid continuing into home.desktop.02"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "On phone, the home page header opens its navigation with a bare chevron (⌄) instead of a recognisable menu icon, so a newcomer may not find Docs or Live demo there. The phone hero screenshot also shows a truncated 'Q...' column header.",
+      "where": "home.phone.01 header (top right) and hero screenshot table header"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The SoftwareApplication JSON-LD has no softwareVersion, although the hero badge says 'plugin 0.3.0'. Lighthouse mobile also reports LCP 2.3 s, with render-blocking (est. 140 ms) and unused-JavaScript findings.",
+      "where": "tech.json pages.home.desktop.jsonLd; lighthouse['/']"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "The hero presents four equal-weight next steps, and 'Try with your store' sends a first-time visitor to the app's sign-in. That sign-in can't work until someone has installed the plugin on a Vendure server, so a visitor who doesn't know Vendure is offered a dead end next to the one action that suits them, the live demo.",
+    "where": "home.desktop.01 / home.phone.01 hero buttons and top nav 'Try with your store'",
+    "fix": "Keep 'Live demo' as the primary button and 'Quick start' as the secondary one. Remove 'Try with your store' from the hero and nav, or rename it 'Open the app (plugin required)' and show it only after the quick start."
+  },
+  "mean": 8.1
+}
