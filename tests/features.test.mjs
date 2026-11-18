@@ -211,8 +211,11 @@ test('home header links At the till; docs pages leave it to the sidebar', () => 
   // The nav link is the one straight after the nav's Quick start link (the home page body also links At the till).
   const navAtTheTill = />Quick start<\/a>(?:<\/li><li\b[^>]*>)?<a\b[^>]*\shref="\/docs\/at-the-till"[^>]*>At the till<\/a>/;
   assert.match(readFileSync(join('.next/server/app', 'index.html'), 'utf8'), navAtTheTill, 'index.html');
+  // Docs pages drop the header Quick start link, so a header At the till link there would follow Live demo.
+  const docsAtTheTill = />Live demo<\/a>(?:<\/li><li\b[^>]*>)?<a\b[^>]*\shref="\/docs\/at-the-till"[^>]*>At the till<\/a>/;
   for (const file of ['docs.html', 'docs/at-the-till.html']) {
     assert.doesNotMatch(readFileSync(join('.next/server/app', file), 'utf8'), navAtTheTill, file);
+    assert.doesNotMatch(readFileSync(join('.next/server/app', file), 'utf8'), docsAtTheTill, file);
   }
   // On the cashier guide itself only the sidebar item is active.
   const page = readFileSync(join('.next/server/app', 'docs/at-the-till.html'), 'utf8');
