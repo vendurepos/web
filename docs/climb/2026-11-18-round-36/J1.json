@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero lead ends in builder jargon a newcomer can't parse in five seconds: \"Every sale lands in your Vendure store once, as a normal order at the till's price\" — why 'once' matters and what 'the till's price' means only become clear two cards further down.", "where": "home/desktop/01 and home/phone/01, hero paragraph"},
+    "C2": {"score": 8, "worst_defect": "The comparison table says the demo sends \"anonymous usage events to ph.wcpos.com\" — a different brand's domain with no word on who wcpos is or how it relates to VendurePOS, which makes a first-time visitor wonder who is behind the site.", "where": "home/desktop/02, 'Live demo or your own store' table, last row (also home/phone/04)"},
+    "C3": {"score": 8, "worst_defect": "The path asks for nine steps, with permission lists to assemble by hand and a tax-strategy choice to make, and it has a documented gap: a device key's auto-created role \"has the step 4 permissions except ReadOrder, so add ReadOrder to that role yourself\".", "where": "quick-start/desktop/02 step 4 and the 'Optional: a device key for each till' section (quick-start.txt)"},
+    "C4": {"score": 8, "worst_defect": "The changelog is written for maintainers: \"GET /tally/v1/info advertises order.create 1–5 (ADR 0005)\", \"(#116)\", \"order.create v5 custom lines\". There's no plain-English line about what changed for a store owner beyond a short 'In short' sentence.", "where": "changelog/desktop/01 and changelog/phone/01, 0.3.0 and 0.2.0 bullets"},
+    "C5": {"score": 8, "worst_defect": "Below the hero, the home page is ten identical grey text-only cards, then a table, then a seven-bullet 'Before you start' list. Nothing breaks the run of text, and the refund caveat appears twice (in the table row and in the last bullet).", "where": "home/desktop/01–02, 'What it does today' cards through 'Before you start'"},
+    "C6": {"score": 8, "worst_defect": "On phone the hero screenshot shows only the product grid, and its category chips are cut off at \"Gif\". The cart is hidden behind a 'Cart (3) · €20.09' tab, so the caption \"A sale in progress on the live demo till\" isn't visibly true.", "where": "home/phone/01–02, hero screenshot"},
+    "C7": {"score": 9, "worst_defect": "Mobile LCP is 2.4 s on both / and /docs/quick-start, just under the 2.5 s 'good' line. Lighthouse also flags 52 KiB of unused JavaScript and render-blocking requests on the home page. Everything else is clean: 98/100/100/100, a correct 404 status, llms.txt, sitemap, robots, a good share card and a search API that returns hits.", "where": "tech.json lighthouse ./ and ./docs/quick-start"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "In the first five seconds the hero sentence explains the product in builder's terms (\"lands in your Vendure store once, as a normal order at the till's price\"). A visitor who only half knows Vendure gets the mechanism, not the benefit, and has to read the cards to learn why they should care.",
+    "where": "home/desktop/01 and home/phone/01, hero paragraph under 'Point of sale for Vendure'",
+    "fix": "Make the lead benefit-first, for example: \"Sell in person from any browser, even when the internet drops; every sale shows up in your Vendure store as a normal order, never twice.\" Leave the 'till's price' detail to the 'Paid, fulfilled, at the till's price' card."
+  },
+  "mean": 8.1
+}

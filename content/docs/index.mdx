@@ -13,7 +13,8 @@ The till syncs your catalogue and store settings to a local database. A complete
 
 {/* Node range: plugin-v0.3.0 packages/vendure-plugin/package.json:27-28 (engines). */}
 
-- Vendure 3.6 or later on Postgres (tested on 3.7.3). MySQL, MariaDB and SQLite are not supported.
+{/* plugin-v0.3.0 packages/vendure-plugin/package.json:41-42 (peerDependencies @vendure/core ^3.6.0) */}
+- Vendure 3.6 or a later 3.x release on Postgres (tested on 3.7.3). MySQL, MariaDB and SQLite are not supported.
 - Node `^20.19 || >=22.12` on the server that runs Vendure, as [Plugin setup](/docs/plugin-setup#check-your-store) says.
 - The [@vendurepos/plugin](https://www.npmjs.com/package/@vendurepos/plugin) package on npm, added to your Vendure config.
 - A web till for now. The app is pre-release: expect changes before 1.0.

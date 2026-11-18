@@ -268,7 +268,7 @@ test('at the till narrow shots sit centred on a column-wide panel; the closure h
   const imgOf = (figure, file) => figure.match(new RegExp(`<img[^>]*%2Ftill%2F${file}[^>]*>`))?.[0] ?? '';
   for (const [id, name] of [['check-the-register-during-the-day', 'cashier'], ['count-the-drawer-and-close-the-day', 'closure']]) {
     const figure = figureIn(id);
-    const panel = figure.match(/<div class="([^"]*)">/);
+    const panel = figure.match(/<div class="([^"]*)"( style="[^"]*")?>/);
     assert.ok(panel?.[1].includes('sm:bg-fd-muted') && panel[1].includes('sm:justify-center'), `${name} panel`);
     const inside = figure.slice(panel.index, figure.lastIndexOf('</div>'));
     for (const scheme of ['light', 'dark']) assert.ok(imgOf(inside, `${name}-${scheme}.png`), `${name}-${scheme} inside the panel`);
@@ -282,6 +282,20 @@ test('at the till narrow shots sit centred on a column-wide panel; the closure h
   const home = readFileSync('.next/server/app/index.html', 'utf8');
   const sale = (home.match(/<figure[\s\S]*?<\/figure>/g) ?? []).find((f) => f.includes('%2Ftill%2Fsale-light.png'));
   assert.ok(sale && !sale.includes('sm:bg-fd-muted'), 'home sale has no panel');
+});
+
+test('at the till narrow panels hug their shots', () => {
+  // Round 36, J2/J4 C5: column-wide panels left the narrow shots small in empty grey.
+  for (const [id, name, max] of [['check-the-register-during-the-day', 'cashier', 418], ['count-the-drawer-and-close-the-day', 'closure', 546]]) {
+    const start = html.indexOf(`id="${id}"`);
+    assert.ok(start >= 0, id);
+    const figure = html.slice(html.indexOf('<figure', start), html.indexOf('</figure>', start));
+    const panel = figure.match(/<div class="([^"]*)" style="([^"]*)">/);
+    assert.ok(panel, `${name} panel`);
+    const classes = panel[1].split(' ');
+    assert.ok(classes.includes('sm:mx-auto') && classes.includes('sm:p-4') && !classes.includes('sm:p-8'), `${name} panel classes`);
+    assert.match(panel[2], new RegExp(`max-width:${max}px`), `${name} panel max-width`);
+  }
 });
 
 // Round 35, J2 C4/C6: the offline section was one paragraph with its warning buried mid-way.

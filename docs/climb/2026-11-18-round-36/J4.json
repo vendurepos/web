@@ -1,0 +1,48 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {
+      "score": 9,
+      "worst_defect": "On phone the hero till screenshot is a tall crop showing only four product cards with the category chips cut off at 'Gif', so the hero plus image runs to about 1.3 screens before any content below it appears.",
+      "where": "home.phone.01-02"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "Of the ten 'What it does today' cards only the first two carry evidence links ('Read the acceptance test', 'Read the 200-send test'); the other eight are bare claims in identical cards, so the grid reads half-proven.",
+      "where": "home.desktop.01-02, 'What it does today' grid"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The quick start never shows what success looks like: no screenshot of the till sign-in screen or of the first sale arriving as a Vendure order, and step 4's paragraph is a wall of eight inline code chips (TallyPosSell, ReadCatalog, ...).",
+      "where": "quick-start.desktop steps 4-8; quick-start.phone.04"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Overview's 'Next steps' shows three cards (Live demo, Plugin setup, Source on GitHub) that omit Quick start, then a full-width right-aligned 'Quick start ›' pager card in a different style sits directly beneath them and reads as an orphaned fourth card; troubleshooting nests 'At the counter:' / 'For the store owner:' paragraphs under bullets with uneven spacing.",
+      "where": "docs.desktop.01 (Next steps + pager); troubleshooting.desktop.01-02"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The cashier-sheet and closure screenshots are narrow mobile-width app sheets centred inside wide grey frames, roughly 40% empty padding each side plus large top/bottom bands, so the image reads tiny and the frame dominates; the payment screenshot on the same page fills its frame, making the inconsistency obvious.",
+      "where": "at-the-till.desktop.03, at-the-till.desktop.04"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "Inline code chips break badly at 390 px: the changelog path splits into two chips at the hyphen ('packages/vendure-' / 'plugin/CHANGELOG.md'), and in the quick start a ',http://localhost:8081' chip starts a line with a comma; the step 6 tax table's stacked cards repeat the long 'taxOptions.orderTaxCalculationStrategy' label in each card.",
+      "where": "changelog.phone.01; quick-start.phone.05; quick-start.phone.06"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Lighthouse mobile flags 52 KiB of unused JavaScript on / and 120 ms render-blocking, with LCP at 2.4 s, at the edge of 'good'; everything else (200s, 404, JSON-LD, llms.txt, sitemap, search API, 0 missing alts) is clean.",
+      "where": "tech.json lighthouse /"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "The cashier-sheet and closure screenshots on At the till float small inside oversized empty grey frames (about 40% side padding), so the two key register images read as thumbnails while the payment shot on the same page fills its frame.",
+    "where": "at-the-till.desktop.03, at-the-till.desktop.04",
+    "fix": "Crop each image to the sheet itself (or render the frame at the sheet's natural width, about 400 px, centred) so the sheet fills its frame like the payment screenshot does; keep the same frame radius and border for all three."
+  },
+  "mean": 8.4
+}
