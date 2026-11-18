@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero is clear (\"Point of sale for Vendure\", Live demo / Quick start), but the home page's \"Before you start\" list drops raw developer jargon on a newcomer: \"RxDB Premium licence token (RXDB_PREMIUM)\", \"one tab per till and not a private window\", \"Its browser tests run in desktop Chrome\", with nothing saying what RxDB is.", "where": "home/desktop/02 (Before you start), home/phone/05"},
+    "C2": {"score": 8, "worst_defect": "The footer and hero say \"MIT licensed\" and \"open-source\", but a bullet then says self-hosting needs \"your own RxDB Premium licence token\" and never says whether that costs money or that app.vendurepos.com is free. It reads like a hidden catch. The demo row also sends usage events to \"ph.wcpos.com\", a different brand that is never introduced.", "where": "home/desktop/02, Before you start bullet 5 and the Live demo table's last row"},
+    "C3": {"score": 8, "worst_defect": "Step 4 says to sign in with \"a Vendure administrator whose role in the till's channel has TallyPosSell, ReadCatalog, ReadSettings, ReadCustomer and CreateCustomer ... Also add ReadOrder\" but gives no Dashboard steps to create that role, and never says whether a SuperAdmin works for a first test. A newcomer has to guess at step 8a.", "where": "quick-start/desktop/02, step 4"},
+    "C4": {"score": 8, "worst_defect": "The changelog is written for the plugin's own maintainers: \"GET /tally/v1/info advertises order.create 1–5 (ADR 0005)\", \"figures_mismatch\" and \"(#117)\". ADR numbers go unexplained, and in the 0.2.0 entry \"Not in the release notes: ...\" contradicts the page itself being the release notes.", "where": "changelog/desktop/01"},
+    "C5": {"score": 7, "worst_defect": "Below the hero, the home page is a long run of ten identical grey text-only cards (\"What it does today\"), then a plain table and a bullet list. There are no icons, screenshots or visual rhythm, and the only image is the hero shot, whose bottom row of product tiles is cut off mid-tile.", "where": "home/desktop/01 (cards and cropped hero image bottom), home/desktop/02"},
+    "C6": {"score": 8, "worst_defect": "On phone the \"Live demo or your own store\" table turns into stacked rows but loses its \"At the till\" column heading, so the feature names (\"Sell for cash and print the receipt\") float without a label. The page is also very long, about 5,000 px of mostly text cards.", "where": "home/phone/04"},
+    "C7": {"score": 9, "worst_defect": "Almost nothing: Lighthouse scores 98/100/100/100, and titles, descriptions, JSON-LD, llms.txt, sitemap, robots and search all work, and the 404 page returns a real 404. The one flaw: the share card crops the till screenshot through the cart's \"Add charge\" button and the product tiles' bottom edge.", "where": "og-image.png bottom edge"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A first-time visitor reads \"open-source\" and \"MIT licensed\", then a home-page bullet says self-hosting needs \"your own RxDB Premium licence token (RXDB_PREMIUM)\". It never says what RxDB Premium is, whether it costs money, or that using app.vendurepos.com needs no licence, so the free open-source claim looks like it hides a catch.",
+    "where": "home/desktop/02, Before you start bullet 5 (also home/phone/05)",
+    "fix": "Rewrite the bullet in plain words, e.g. \"Using the hosted till at app.vendurepos.com is free. Building and hosting the till yourself also needs a paid RxDB Premium licence; see Connect a till.\" Or move it off the home page into Connect a till."
+  },
+  "mean": 8.0
+}
