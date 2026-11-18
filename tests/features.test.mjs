@@ -205,3 +205,19 @@ test('home offline card says the till tab must stay open', () => {
   assert.ok(title >= 0 && title < at, 'after the title');
   assert.ok(link > at, 'before the test link');
 });
+
+test('home header links At the till; docs pages leave it to the sidebar', () => {
+  // Round 31, J2 C1: the home header links the cashier guide; docs pages leave it to the sidebar.
+  // The nav link is the one straight after the nav's Quick start link (the home page body also links At the till).
+  const navAtTheTill = />Quick start<\/a>(?:<\/li><li\b[^>]*>)?<a\b[^>]*\shref="\/docs\/at-the-till"[^>]*>At the till<\/a>/;
+  assert.match(readFileSync(join('.next/server/app', 'index.html'), 'utf8'), navAtTheTill, 'index.html');
+  for (const file of ['docs.html', 'docs/at-the-till.html']) {
+    assert.doesNotMatch(readFileSync(join('.next/server/app', file), 'utf8'), navAtTheTill, file);
+  }
+  // On the cashier guide itself only the sidebar item is active.
+  const page = readFileSync(join('.next/server/app', 'docs/at-the-till.html'), 'utf8');
+  const active = Array.from(page.matchAll(/<a\b[^>]*>/g)).filter(
+    (m) => m[0].includes('href="/docs/at-the-till"') && m[0].includes('data-active="true"'),
+  );
+  assert.equal(active.length, 1);
+});

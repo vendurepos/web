@@ -18,6 +18,8 @@ export function baseOptions(): BaseLayoutProps {
       { text: 'Live demo', url: DEMO_URL, external: true },
       // Round 24, J1 C1: one name for the own-store path, and it starts with the plugin. Its sidebar item is the one highlight.
       { text: 'Quick start', url: '/docs/quick-start', active: 'none' },
+      // Round 31, J2 C1: the cashier guide gets a header link on the home page; docs pages leave it to the sidebar.
+      { text: 'At the till', url: '/docs/at-the-till', active: 'none' },
       // Fumadocs' githubUrl renders an unnamed <svg role="img">; the link carries the name, so the icon is decorative.
       {
         type: 'icon',
