@@ -169,3 +169,22 @@ test('at the till says unsent sales are lost if site data is cleared or the devi
   }
   assert.match(section, /href="\/docs\/limitations(#[^"]+)?"/);
 });
+
+test('at the till says to keep the tab open while offline, since a reload needs the connection', () => {
+  // Round 28, C3 (J2): the page never said whether a reload works offline.
+  const start = html.indexOf('id="if-the-internet-drops"');
+  const end = html.indexOf('<h2', start + 1);
+  assert.ok(start >= 0 && end > start);
+  const text = html
+    .slice(start, end)
+    .replace(/<!-- -->/g, '')
+    .replace(/<[^>]+>/g, '')
+    .replace(/&#x27;|&#39;|&apos;/g, "'")
+    .replace(/\s+/g, ' ');
+  const keepOpen = text.indexOf("Keep the till's tab open while the connection is down");
+  assert.ok(keepOpen >= 0, 'keep the tab open');
+  assert.ok(text.includes('needs the connection to load the till again'), 'a reload needs the connection');
+  const neverTwice = text.indexOf('never twice');
+  assert.ok(neverTwice >= 0 && neverTwice < keepOpen, 'after never twice');
+  assert.ok(keepOpen < text.indexOf('orders waiting to send'), 'before orders waiting to send');
+});
