@@ -1,0 +1,48 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The second path has three names that go to two places: the nav says 'Connect your store' (goes to /docs/connect-a-till, the till sign-in page), the hero button says 'Quick start' (plugin install), and the line under it says 'try the till with your store' (goes straight to app.vendurepos.com). A newcomer can't tell which one to click first, and the nav item skips the plugin step.",
+      "where": "home.desktop.01 header nav and hero CTA row; tech.json home.desktop links"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The hero calls VendurePOS an 'open-source till'. Only the fifth bullet of 'Before you start' says that building it yourself needs 'your own RxDB Premium licence token (RXDB_PREMIUM)', a paid third-party licence, and it never says that this costs money.",
+      "where": "home.desktop.02 'Before you start' bullet 5; home.phone.05"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 4 lists six permissions in prose ('TallyPosSell, ReadCatalog, ReadSettings, ReadCustomer and CreateCustomer ... Also add ReadOrder') with no snippet or Dashboard path for creating that role. Step 5 says to edit 'the scaffold's CORS_ORIGINS allowlist' without naming the file or env where it lives.",
+      "where": "quick-start.desktop.02 steps 4 and 5"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The changelog's first entries are in internal shorthand with no links: 'GET /tally/v1/info advertises order.create 1–5 (ADR 0005)', 'order.create v5 custom lines'. A reader has no way to find out what an ADR or 'order.create v5' is. Only the 'In short' line is readable.",
+      "where": "changelog.desktop.01 / changelog.phone.01, 0.3.0 section"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "'What it does today' is a wall of ten near-identical grey cards with no icons and no grouping. Only the first two have links, which makes the first row taller than the rest and leaves the block flat and long between the hero image and the comparison table.",
+      "where": "home.desktop.01 bottom to home.desktop.02 top (also home.desktop-dark.jpg)"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "The phone header opens the menu with a bare down-chevron next to search instead of a recognisable menu icon, so the site nav (Docs, Live demo, Connect your store) is easy to miss. Everything else reflows well: the comparison and tax tables stack into labelled rows and code wraps.",
+      "where": "home.phone.01 and not-found.phone.01 header, top right"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Small: Lighthouse still flags 'unused-javascript: Est savings of 52 KiB' and 'render-blocking ... 150 ms' on /. Otherwise the surface is complete: scores 98/100/100/100, llms.txt, sitemap, robots, a 404 status with a styled page, a share card and JSON-LD.",
+      "where": "tech.json lighthouse['/'].failing"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "A first-time visitor gets three differently named next steps for 'use it with my store'. The nav's 'Connect your store' goes to the till sign-in docs, which assume the plugin is already installed. 'try the till with your store' goes straight to the app's sign-in. 'Quick start' is the real first step. It is unclear what to click after the demo, and two of the three skip the plugin install.",
+    "where": "home.desktop.01 header nav and line under the hero buttons; tech.json home.desktop links (/docs/connect-a-till, https://app.vendurepos.com)",
+    "fix": "Point the nav item at /docs/quick-start and call it 'Quick start' (or 'Set up your store'). Change the line under the hero to link only the quick start, for example 'Your own store needs the plugin first: the quick start sets it up and ends with your first sale.'"
+  },
+  "mean": 8.3
+}

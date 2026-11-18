@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero and both buttons speak to the developer (\"Live demo\", \"Quick start\", \"signs in to your own Vendure store\"); the cashier guide a shop owner wants, At the till, is linked from the home page only in the last paragraph above the footer (\"For cashiers, At the till covers selling...\") and is not in the top nav.", "where": "home/desktop/02 (bottom paragraph), home/phone/05; top nav home/desktop/01"},
+    "C2": {"score": 8, "worst_defect": "The home card \"Open and close the register\" promises a clean Z-report day close, but Troubleshooting admits a refused till update \"is never sent again\" and for \"Any other code: the till has no retry or skip\"; the home page and Limitations never mention that register records can get stuck on the till.", "where": "home/desktop/01 card vs troubleshooting/desktop/01 'Till updates line'; limitations/desktop/01"},
+    "C3": {"score": 8, "worst_defect": "Quick start step 4 says \"Sign in with a Vendure administrator whose role ... has TallyPosSell...\" and never links to Connect a till's \"Give each cashier their own account\", so an owner following the quick start will likely give staff one shared admin login.", "where": "quick-start/desktop/02 step 4; connect-a-till 'Give each cashier their own account'"},
+    "C4": {"score": 8, "worst_defect": "The cashier guide mixes demo-only features into real-store instructions: a full \"Refund at the till (live demo)\" section and \"On the live demo, type a Customer note\", which a cashier on a plugin 0.3.0 store will look for and not find.", "where": "at-the-till/desktop/02-03 'Refund at the till (live demo)'; at-the-till/desktop/01 'Order details'"},
+    "C5": {"score": 9, "worst_defect": "The cashier-sheet screenshot sits left-aligned at about half the column width, leaving a large empty block to its right, out of step with the full-width payment screenshot above it.", "where": "at-the-till/desktop/03"},
+    "C6": {"score": 9, "worst_defect": "In the phone hero screenshot of the till, the cart's first column header is cut to \"Q...\", so the product image itself looks truncated on a 390 px screen.", "where": "home/phone/01"},
+    "C7": {"score": 9, "worst_defect": "The share card crops the till screenshot through the middle of the \"Add charge\" button and the product cards' bottom edge, so the card ends mid-UI.", "where": "og-image.png (bottom edge)"}
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "The quick start, the page the home page sends you to, sets the till up with \"a Vendure administrator\" and never points to per-cashier accounts with the limited vendurepos-pos-till role, so a small shop is steered toward sharing an admin password at the counter.",
+    "where": "quick-start/desktop/02, step 4 'Enable bearer authentication'",
+    "fix": "Add one sentence to quick start step 4: \"For staff, give each cashier their own account with only the till role: see Give each cashier their own account\", linking to /docs/connect-a-till#give-each-cashier-their-own-account."
+  },
+  "mean": 8.4
+}
