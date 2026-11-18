@@ -1,0 +1,48 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The home page speaks to the developer before the owner. It opens with 'headless commerce framework', and 'Before you start' asks for an 'RxDB Premium licence token (RXDB_PREMIUM)' and a 'keyboard-wedge' scanner. The page the owner actually needs, 'At the till', is linked only from the bottom of the page.",
+      "where": "home.desktop.01-03, home.phone.02-04"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "The payment screenshot shows a test-fixture product called 'Tally Fixture Mug'. In a guide written for counter staff it reads as test data. The limits themselves are stated very honestly: no refunds at the till, no card-terminal link, unsent sales lost if site data is cleared.",
+      "where": "at-the-till.desktop.02 (payment screen image)"
+    },
+    "C3": {
+      "score": 7,
+      "worst_defect": "Whether staff can sell tomorrow depends on a developer finishing about seven server steps: migration, bearer tokenMethod, CORS, tax strategy, channel stock. A known gotcha is passed on to the reader: 'On plugin 0.3.0 the role it creates (vendurepos-pos-till) has the step 4 permissions except ReadOrder, so add ReadOrder to that role yourself'.",
+      "where": "quick-start.desktop.03-05, 'Optional: a device key'"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "Troubleshooting puts counter guidance and developer internals on one page. Straight after 'At the counter:' comes 'For the store owner: ... the refusal is a DEBUG line, Register command result … status=rejected errorCode=…', then a list of errorCode values and GraphQL tallyNeedsAdminCommands. Neither the owner nor the cashier can act on that.",
+      "where": "troubleshooting.desktop.01, 'Till updates line'"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "'Quick start' appears twice in the docs sidebar, once in the top group (Docs / Live demo / Quick start) and again under Overview, on every docs page.",
+      "where": "docs.desktop.01, quick-start.desktop.01, troubleshooting.desktop.01 sidebar"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "In the phone hero screenshot of the till, the cart's quantity column header is cut off to 'Q...'. The phone cashier-sheet image has a grey strip down its left edge and shows 'open since 03:31' where the desktop copy says 06:01.",
+      "where": "home.phone.01 (hero image), at-the-till.phone.06 (cashier sheet image)"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Lighthouse mobile flags 52 KiB of unused JS, 14 KiB of legacy JS and 130 ms of render-blocking resources. Even so, performance is 98 on / and 97 on /docs/quick-start, with every other category at 100 and no horizontal overflow.",
+      "where": "tech.json lighthouse.mobile failing audits"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "Instructions for staff and for the developer are mixed together, so the owner cannot tell which job is theirs. Troubleshooting moves from 'At the counter:' straight into 'For the store owner: ... the refusal is a DEBUG line, Register command result … status=rejected errorCode=…' and errorCode/GraphQL detail. It warns that for any other code 'the till has no retry or skip ... Those closures and cash records do not reach your Vendure store from this till', and gives the owner no plain next step. Refunds, likewise, are handed to 'whoever manages your Vendure store' with no owner-level checklist.",
+    "where": "troubleshooting.desktop.01 'Till updates line'; at-the-till.desktop.02 'Refund a sale'",
+    "fix": "Split each problem into two labelled boxes: 'At the counter (staff)', which says what to tap and what not to do, and 'Send this to your developer', which holds the errorCode, DEBUG and GraphQL detail. Add one short owner checklist for a refund: who does it in the Dashboard, the Pay out for cash, and how to tell when it is settled."
+  },
+  "mean": 8.0
+}
