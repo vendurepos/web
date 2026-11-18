@@ -25,6 +25,10 @@ npm install @vendurepos/plugin@0.3.0
 
 ## 2. Add `TallyPosPlugin` to your existing Vendure config
 
+{/* Not part of the port; keep it when re-porting. Sources: vendurepos/app@2d3699e (plugin-v0.3.0) packages/vendure-plugin/src/plugin.ts:108 (TallyPosPlugin), :28 ('/tally/v1/commands'), src/config/permissions.ts:3 (TallyPosSell, "the plugin's /tally/v1 routes"); docs/adr/0002-order-path-vendure-plugin.md:8-11 (a sale reaches the server as a TallyUI command, sent to POST /tally/v1/commands); README.md:3-4 (built on TallyUI). */}
+
+The plugin's code names say Tally, not VendurePOS: `TallyPosPlugin`, the `TallyPosSell` permission and the `/tally/v1` routes, which take the till's TallyUI commands (VendurePOS is built on TallyUI).
+
 Keep your other
 plugins and settings. This plugin has no `.init()` options:
 

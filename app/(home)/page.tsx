@@ -264,7 +264,7 @@ export default function HomePage() {
       <footer className="flex flex-wrap items-center justify-between gap-4 border-t border-fd-border py-6 text-sm text-fd-muted-foreground">
         <p>
           MIT licensed. Built with{' '}
-          <a href={TALLYUI_URL} className="underline">Tally UI</a>. For Medusa, see{' '}
+          <a href={TALLYUI_URL} className="underline">TallyUI</a>. For Medusa, see{' '}
           <a href={MEDUSAPOS_URL} className="underline">MedusaPOS</a>.
         </p>
         <div className="flex flex-wrap gap-4">
