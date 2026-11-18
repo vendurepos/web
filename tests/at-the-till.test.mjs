@@ -56,3 +56,16 @@ test('at the till screenshots are each at most 400 KB', () => {
     assert.ok(statSync(`public/till/${file}.png`).size <= 400 * 1024, file);
   }
 });
+
+test('at the till says what happens when the internet drops, before closing the day', () => {
+  // Round 12, C4: restates troubleshooting.mdx "Sell while offline" and the header line.
+  const start = html.indexOf('id="if-the-internet-drops"');
+  const end = html.indexOf('id="count-the-drawer-and-close-the-day"');
+  assert.ok(start >= 0 && end > start);
+  const section = html.slice(start, end);
+  assert.match(section, /waiting to send/);
+  const anchor = section.match(/href="\/docs\/troubleshooting#([^"]+)"/)?.[1];
+  assert.ok(anchor, 'link to a troubleshooting heading');
+  const troubleshooting = readFileSync('.next/server/app/docs/troubleshooting.html', 'utf8');
+  assert.match(troubleshooting, new RegExp(`<h[1-6][^>]*id="${anchor}"`));
+});

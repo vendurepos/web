@@ -125,6 +125,16 @@ Tap your name in the bar for your cashier sheet. It shows "Your sales today" and
 Choose **Pay in** or **Pay out** to record cash in or out, with an amount and a reason.
 **Hand over** signs you out and leaves the drawer open for [the next account](/docs/connect-a-till#give-each-cashier-their-own-account).
 
+## If the internet drops
+
+{/* Sources: content/docs/troubleshooting.mdx:9-11 (sells offline; sent once, never twice), :15 (header line), :73-74 (customer search and adding a customer need a connection). */}
+
+Once the catalogue has synced, the till keeps selling with the network off,
+except customer search and adding a customer, which need a connection to the store.
+Each sale waits on the till until the store is reachable, then lands in Vendure once, never twice.
+The header shows `N orders waiting to send`, with ` · sending…` while sending.
+[Troubleshooting](/docs/troubleshooting#check-whether-a-sale-has-reached-the-store) covers the other sync notices.
+
 ## Count the drawer and close the day
 
 Choose **Close register** in your cashier sheet, or close from the **Register** panel.
