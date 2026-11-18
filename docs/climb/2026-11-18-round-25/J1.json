@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero is clear, but the home page's 'Before you start' list hits a newcomer with unexplained jargon: 'you need your own RxDB Premium licence token (RXDB_PREMIUM)', 'one tab per till and not a private window', 'Its browser tests run in desktop Chrome', all before they know whether they want to try it.", "where": "home desktop slice 02 / phone slice 05, 'Before you start' bullets 4-5"},
+    "C2": {"score": 8, "worst_defect": "The comparison table says the demo 'sends anonymous usage events to ph.wcpos.com', but the home page never says what wcpos is or who makes VendurePOS. The footer names only 'TallyUI' and 'MedusaPOS', so the site's maker stays unknown.", "where": "home desktop slice 02, 'Live demo or your own store' table, last row; footer"},
+    "C3": {"score": 8, "worst_defect": "Creating the cashier's Vendure role and administrator is a gating prerequisite, but it is not a numbered step: it sits mid-paragraph in step 4 ('Sign in with a Vendure administrator whose role in the till's channel has TallyPosSell, ReadCatalog, ReadSettings, ReadCustomer and CreateCustomer ... Also add ReadOrder') with no instructions for creating that role.", "where": "quick-start desktop slice 02, step 4 'Enable bearer authentication'"},
+    "C4": {"score": 8, "worst_defect": "Plugin setup asks readers to import and register four opaque migration class names ('TallyPos1790648006022', 'TallyPosVp2a1790720000000', 'TallyPosRegister1790800000000', 'TallyPosV51790900000000') without saying what each one adds or which version needs it. The Troubleshooting 'Any other code' bullet is also a single ~100-word paragraph.", "where": "plugin-setup desktop slice 01, 'Configure the plugin and migrations'; troubleshooting desktop slice 01"},
+    "C5": {"score": 8, "worst_defect": "The At the till payment screenshot shows a cart line named 'Tally Fixture Mug', which reads as a leftover test fixture in an otherwise polished demo. The home hero screenshot also crops the fourth row of product tiles mid-image.", "where": "at-the-till desktop slice 02 (cart, first line); home desktop slice 01 (hero image bottom edge)"},
+    "C6": {"score": 8, "worst_defect": "On the phone, the hero screenshot's cart table truncates its first column header to 'Q...'. Code blocks in the quick start wrap single statements across several lines ('import { generateMigration } from' / ''@vendure/core';'), which makes them harder to scan.", "where": "home phone slice 01 (cart header 'Q...'); quick-start phone slices 02-03"},
+    "C7": {"score": 9, "worst_defect": "Lighthouse (mobile, home) still flags 'unused-javascript: Est savings of 52 KiB' and 'render-blocking-insight: Est savings of 150 ms', with LCP 2.3 s. Everything else (titles, descriptions, og card, JSON-LD, llms.txt, sitemap, robots, search, real 404) is in place.", "where": "tech.json lighthouse['/'].failing"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A first-time visitor never learns who is behind VendurePOS. The only hint is an unexplained third-party domain, 'ph.wcpos.com', in the home comparison table, next to footer mentions of TallyUI and MedusaPOS. That makes 'should I trust this with my store?' harder to answer than it needs to be.",
+    "where": "home desktop slice 02 / phone slice 04, 'Live demo or your own store' table last row; footer",
+    "fix": "Name the maker once in the footer or hero (e.g. 'Made by the WCPOS team'), and in the table say 'to ph.wcpos.com, our self-hosted analytics server'."
+  },
+  "mean": 8.1
+}

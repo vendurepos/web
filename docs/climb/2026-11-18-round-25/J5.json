@@ -1,0 +1,48 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The home page says what VendurePOS is and offers 'Live demo' / 'Quick start', but never says who it is not for or how it differs from Shopify POS, Square or a hosted till. A buyer has to read the 'Before you start' bullets and Limitations to work out that a shop needing card-terminal integration, a cash drawer or refunds at the till is not the target.",
+      "where": "home/desktop/01-02 (hero and 'Before you start')"
+    },
+    "C2": {
+      "score": 7,
+      "worst_defect": "No page names who builds or supports VendurePOS: no maintainer, company, support channel or issue link. The only hint is 'ph.wcpos.com' in the home table, which the home page never explains. The newest plugin release is '0.3.0 (2026-10-06)', six weeks before capture, and its own gap ('On plugin 0.3.0 that role has no ReadOrder: add it yourself') is documented as a workaround on three pages instead of patched.",
+      "where": "home/desktop/02 (Live demo table, footer); changelog/desktop/01; connect-a-till.txt 'Give each cashier their own account'"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Barcode setup comes in step 8c ('enter the name of an existing single text ProductVariant custom field ... how to add one'), after the migration (step 3) and the restart (step 7). Connect a till then says adding that field needs another database migration. A developer who wants scanning has to go back and generate and run a second migration.",
+      "where": "quick-start/desktop/03 step 8c; connect-a-till/desktop/01 'Enter your store details'"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The changelog entries are internal protocol notes ('order.create v5 custom lines ... (ADR 0005)', 'Migration TallyPosV51790900000000', 'lineTax: { none: true, classes: true }'). The Overview says the till 'signs in to your own Vendure store with an administrator account', which omits the device-key route that Connect a till leads with.",
+      "where": "changelog/desktop/01; docs/desktop/01 first paragraph"
+    },
+    "C5": {
+      "score": 7,
+      "worst_defect": "On desktop docs pages the grey sidebar panel stops at about 900 px and leaves the left column bare below it. The home page is ten near-identical grey text cards with one product screenshot, so it looks like a template default rather than a finished product page.",
+      "where": "docs/desktop/01, limitations/desktop/01, changelog/desktop/01 (left column below y≈900); home/desktop/01-02 feature cards"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The phone hero screenshot crops the cart table, so the quantity column header shows as 'Q...' and the PRICE column is missing. That makes the product look cramped on a phone, the device a buyer is most likely to judge it on.",
+      "where": "home/phone/01 (hero image, cart table header)"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Every sitemap <lastmod> is a timestamp from the capture day (2026-11-17/18, for example changelog 2026-11-18T12:36:54+01:00). These are deploy times, not content changes, so crawlers get no real freshness signal.",
+      "where": "text/endpoint_sitemap_xml.txt"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A client being advised whether to run a till that handles their takings cannot find out who maintains VendurePOS, where to get support, or whether it is actively developed. No maintainer or support channel is named, 'ph.wcpos.com' appears in the home table unexplained, and the last plugin release (0.3.0, 2026-10-06) ships a known permission gap that the docs tell users to patch by hand.",
+    "where": "home/desktop/02 (Live demo table and footer); changelog/desktop/01; quick-start.txt 'Optional: a device key for each till'",
+    "fix": "Add a short 'Who builds this' line to the home footer and the Overview. It should name the maintainer (and its relation to wcpos.com), link a support or issues channel, and state the release cadence or the date of the next plugin release that fixes the ReadOrder role gap."
+  },
+  "mean": 7.9
+}
