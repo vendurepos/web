@@ -61,6 +61,19 @@ test('changelog lists 0.3.0, 0.2.0 and 0.1.0 newest first', () => {
   assert.doesNotMatch(html, /Unreleased/);
 });
 
+test('each changelog release opens with an In short paragraph before its list', () => {
+  const html = readFileSync(join('.next/server/app', 'docs/changelog.html'), 'utf8');
+  const visible = html.slice(html.indexOf('</head>')).replace(/<script[\s\S]*?<\/script>/g, '');
+  const sections = visible.split(/<h2[\s>]/).slice(1);
+  for (const release of ['0.3.0 (2026-10-06)', '0.2.0 (2026-10-06)', '0.1.0 (2026-10-01)']) {
+    const section = sections.find((part) => part.includes(release));
+    assert.ok(section, release);
+    const inShort = section.search(/<p>\s*<strong>In short:<\/strong>/);
+    assert.ok(inShort >= 0, release);
+    assert.ok(inShort < section.indexOf('<li'), release);
+  }
+});
+
 test('changelog intro names the source and npm package without repeating the subtitle', () => {
   const html = readFileSync(join('.next/server/app', 'docs/changelog.html'), 'utf8');
   assert.ok(html.includes('The source is'));
