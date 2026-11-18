@@ -47,18 +47,32 @@ figure.shiki .fd-scroll-container,
   white-space: nowrap;
 }
 
-/* Phones: stack the cells of tables with long code (lib/rehype-stack-code-tables.ts) so identifiers keep one line. */
+/* Phones: stack the cells of tables with long code (lib/rehype-stack-code-tables.ts) so identifiers keep one line.
+   Round 14 (C6): the stacked header row read as a data row, so it is hidden visually (screen readers still read it)
+   and each cell's column label sits on its own line above the value, which keeps a long identifier's full width. */
 @media (max-width: 639px) {
   .prose table[data-stack],
   .prose table[data-stack] :is(thead, tbody, tr, th, td) {
     display: block;
   }
+  .prose table[data-stack] thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
   .prose table[data-stack] tr {
     padding: 0.5rem 0.75rem;
     border-bottom: 1px solid var(--color-fd-border);
   }
-  .prose table[data-stack] thead tr {
-    background: var(--color-fd-muted);
+  .prose table[data-stack] td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-fd-foreground);
   }
   .prose table[data-stack] tbody tr:last-child {
     border-bottom: none;
