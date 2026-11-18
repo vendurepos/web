@@ -62,13 +62,17 @@ register, cash movements and their voids, and the closure.
   sales already made still send to the store. Do not clear the site's data or reinstall to get past it: that
   deletes this till's unsent sales, refunds and register records along with the refused update.
 
-  **For the store owner:** copy the refused line from this till's sync log, as below, and match its `errorCode` in
-  the list after it. One case you clear at the till by choosing another register, one the till fixes by itself,
-  and for any other code you send the copied line to whoever runs your Vendure server.
-  To find the line, open **Settings**, then **Sync log**, and choose **All**: the refusal is a `DEBUG` line,
+  **For the store owner:** copy the refused line from this till's sync log, and match its `errorCode` in the list
+  below. One case you clear at the till by choosing another register, one the till fixes by itself, and for any
+  other code you send the copied line to whoever runs your Vendure server.
+
+  <Callout title="To find the line in the sync log" fold>
+  Open **Settings**, then **Sync log**, and choose **All**: the refusal is a `DEBUG` line,
   `Register command result … status=rejected errorCode=… error=…`, which **Warnings and errors** does not show.
   Copy it (**Share** on a phone) before you close or reload the app: the log holds only this till's last 500 events
   since the app opened, and the refused update is never sent again, so the line does not come back.
+  </Callout>
+
   What happens next depends on the `errorCode`:
   - `register_session_already_open`: the store already has this register open, on another till or from a session
     never closed there. The till offers **Choose another register**; this till's records for that session then stay
