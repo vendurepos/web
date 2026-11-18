@@ -44,7 +44,9 @@ apps/pos/e2e/sign-in.spec.ts:446-452 (Retry under Needs attention). */}
 (separate outboxes), :355, :369 (only the order retry); apps/pos/lib/log-buffer.ts:3-4, :41-49, :89-91;
 sync-log-card.tsx:16, :18-21 (All); lib/sync-now.ts:4-7; lib/orders-db.ts:14-19, :40-55;
 lib/register-conflict-card.tsx:48. @tallyui/pos 3.20.0 outbox/register-outbox.ts:166-181,
-register/register-adoption.ts:20-70, :151-173. Plugin 2d3699e register.service.ts:156-157, :187-188. */}
+register/register-adoption.ts:20-70, :151-173. Plugin 2d3699e register.service.ts:156-157, :187-188. Still works:
+index.tsx:216-221 (printZ), lib/closure-history-sheet.tsx:14-19, :38-47; pos register-outbox.ts:178-181
+(closure waits). */}
 
 **Till updates line**
 
@@ -67,6 +69,10 @@ register, cash movements and their voids, and the closure.
   - Any other code: the till has no retry or skip, and fixing the store does not make it send the update again.
     **Sync now**, signing out and in, and closing the register do not clear it. Later till updates for this register
     stay saved on this till; sales keep syncing as normal.
+    What still works: keep selling, and close the register as usual. The Z report still prints, and **Closures** in
+    your cashier sheet keeps each closure on this till to print again as a copy. Those closures and cash records
+    do not reach your Vendure store from this till, so keep the printed Z reports and the copied log line for whoever
+    runs your Vendure server.
 
   Do not clear the site's data or reinstall to get past it: that deletes this till's unsent sales, refunds and
   register records along with the refused update.
