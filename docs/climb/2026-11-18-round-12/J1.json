@@ -1,0 +1,48 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero offers four near-equal buttons (\"Live demo\", \"Quick start\", \"Try with your store\", \"GitHub\"). \"Try with your store\" opens the app, which cannot work until the plugin is installed, so the page needs a small-print line under the buttons (\"Your own store needs the plugin on your Vendure server first\") to undo it. Vendure itself is only a link, never glossed in a few words for a visitor who half knows it.",
+      "where": "home/desktop/01 and home/phone/01, hero button row and the caption under it"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The home page says \"open-source\" and \"MIT licensed\", but only Limitations and Connect a till say that \"Building the till yourself needs your own RxDB Premium licence token in RXDB_PREMIUM\". A visitor finds the paid dependency late, and it reads as hidden.",
+      "where": "home footer ('MIT licensed') vs limitations/desktop/01 bullet 3 and connect-a-till/desktop/01 'The till's source is MIT-licensed…'"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 3 of the quick start gives three migration routes in one paragraph: the tsx script, \"npx vendure migrate\", and \"the plugin's bundled migrations… the README describes that alternative\". The Node requirement (\"^20.19 || >=22.12\") appears only on Plugin setup, not in the quick start's prerequisites or the home \"Before you start\".",
+      "where": "quick-start/desktop/01 step 3; plugin-setup/desktop/01 'Check your store'"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The changelog is written for the maintainers. Entries cite internal \"(ADR 0005)\", \"(ADR 0004)\", \"(#116)\" with no link, and 0.3.0 lists wire-protocol details (\"GET /tally/v1/info advertises order.create 1–5\") but no plain-language summary of what changed for a store owner.",
+      "where": "changelog/desktop/01, 0.3.0 and 0.2.0 sections"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "\"What it does today\" is a wall of ten identical grey text-only cards: no icons, no visual hierarchy, and only two of them carry a link. It reads as a long feature list rather than a designed section, and it pushes the demo-vs-store table far down.",
+      "where": "home/desktop/01 bottom through home/desktop/02 top"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The hero till screenshot fills about one and a half phone screens. It includes a large empty white band between \"Add charge\" and \"Subtotal\" and a truncated \"Q...\" column header, so the first scroll on a phone is mostly blank app chrome.",
+      "where": "home/phone/01 bottom and home/phone/02 top"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The SoftwareApplication JSON-LD has no softwareVersion, even though the page leads with \"Pre-release · plugin 0.3.0\". The search API's breadcrumbs for every hit are just [\"VendurePOS\"], with no section names. Everything else is strong: Lighthouse 98/100/100/100, a real 404 status, llms.txt, sitemap and the OG card.",
+      "where": "tech.json pages.home.desktop.jsonLd; text/endpoint_api_search_query_offline.txt"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "A first-time visitor sees four peer buttons and cannot tell \"Quick start\" from \"Try with your store\". The latter opens app.vendurepos.com, which only works after a server-side plugin install, and the hero has to add a caveat line to stop people from clicking it. The next step should be obvious, and it is hedged instead.",
+    "where": "home/desktop/01 and home/phone/01, hero buttons",
+    "fix": "Take \"Try with your store\" out of the hero, leaving Live demo (primary), Quick start and GitHub, and keep it in the top nav and at the end of the quick start. Add a short gloss after the Vendure link, e.g. \"(the open-source TypeScript commerce platform)\"."
+  },
+  "mean": 8.1
+}
