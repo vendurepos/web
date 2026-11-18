@@ -127,12 +127,14 @@ For a key per till instead, see **Optional: a device key for each till** below.
 {/* Changed from the port: names the .env file and the format. Source: @vendure/create v3.8.2 templates/vendure-config.hbs (CORS_ORIGINS split on commas; unset allows none; APP_ENV=dev allows any) and templates/.env.hbs (CORS_ORIGINS=), read 2026-11-18 via research-run. */}
 
 In a project made with `@vendure/create`, the allowed origins are the `CORS_ORIGINS` line in the project's `.env`
-file, a comma-separated list. Add `https://app.vendurepos.com` and, for testing, the exact local POS origin, then
-restart the server:
+file, a comma-separated list. Add `https://app.vendurepos.com`:
 
 ```bash
-CORS_ORIGINS=https://app.vendurepos.com,http://localhost:8081
+CORS_ORIGINS=https://app.vendurepos.com
 ```
+
+For testing, add the exact local POS origin after a comma, with no space, for example `,http://localhost:8081`.
+Then restart the server.
 
 Left empty, it allows no origins unless `APP_ENV` is `dev`. A project without `CORS_ORIGINS` sets the origins in
 `apiOptions` in `vendure-config.ts`: merge this in and keep any other allowed origins:
