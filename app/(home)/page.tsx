@@ -233,6 +233,8 @@ export default function HomePage() {
             Vendure 3.6 or later on Postgres (tested on 3.7.3). MySQL, MariaDB and
             SQLite are not supported.
           </li>
+          {/* plugin-v0.3.0 packages/vendure-plugin/package.json:27-28 (engines); quick-start.mdx and plugin-setup.mdx:9 say the same. */}
+          <li>Node <code>^20.19 || &gt;=22.12</code> on the server that runs Vendure.</li>
           <li>
             The <a href={NPM_URL} className="underline">@vendurepos/plugin</a> package
             on npm, added to your Vendure config.
