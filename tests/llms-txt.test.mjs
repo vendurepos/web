@@ -18,3 +18,15 @@ test('built llms.txt names the product, summarises it and links absolutely', () 
   assert.ok(links.includes(`${SITE_URL}/`));
   assert.ok(links.includes(`${SITE_URL}/llms-full.txt`));
 });
+
+test('built llms text shows each till figure as a Markdown image, not a raw component', () => {
+  const escape = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  for (const file of ['llms-full.txt.body', 'llms.mdx/docs/at-the-till.body']) {
+    const body = readFileSync(`.next/server/app/${file}`, 'utf8');
+    assert.ok(!body.includes('<TillFigure'), file);
+    for (const [name, alt] of [['payment', 'The payment screen on the live demo till'], ['cashier', 'The cashier sheet on the live demo till']]) {
+      const image = `!\\[${escape(alt)}[^\\]\\n]*\\]\\(${escape(`${SITE_URL}/till/${name}-light.png`)}\\)`;
+      assert.match(body, new RegExp(image), `${file} ${name}`);
+    }
+  }
+});
