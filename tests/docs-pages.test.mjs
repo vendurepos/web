@@ -244,3 +244,20 @@ test('home, at the till and limitations say what plugin 0.3.0 does today', () =>
   assert.ok(text('docs/at-the-till.html').includes('plugin 0.3.0'), 'plugin 0.3.0');
   assert.ok(readFileSync('.next/server/app/docs/at-the-till.html', 'utf8').includes('href="/docs/plugin-setup#settle-a-dashboard-refund"'), 'settle link');
 });
+
+test('limitations lists the refused till update right after the unsent sales and links troubleshooting', () => {
+  // Round 23, J5 C2: same facts as troubleshooting.mdx (Till updates line); vendurepos/app@ebcd9e4, @tallyui/pos 3.20.0.
+  const html = readFileSync(join('.next/server/app', 'docs/limitations.html'), 'utf8');
+  const items = html.match(/<li[^>]*>(?:(?!<\/li>)[\s\S])*<\/li>/g) ?? [];
+  const text = (li) => li.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ');
+  const unsent = items.findIndex((li) => text(li).includes('Sales not yet sent are kept only in this browser'));
+  assert.ok(unsent >= 0, 'the unsent-sales item');
+  const refused = items[unsent + 1];
+  assert.ok(refused, 'an item follows the unsent-sales item');
+  for (const phrase of ['does not send it again', 'renumbers and sends once', 'sales keep sending']) {
+    assert.ok(text(refused).includes(phrase), phrase);
+  }
+  assert.ok(refused.includes('href="/docs/troubleshooting#act-on-a-header-notice"'), 'troubleshooting link');
+  const troubleshooting = readFileSync(join('.next/server/app', 'docs/troubleshooting.html'), 'utf8');
+  assert.ok(troubleshooting.includes('id="act-on-a-header-notice"'), 'the link target exists');
+});
