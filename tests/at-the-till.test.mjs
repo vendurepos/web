@@ -24,8 +24,8 @@ test('at the till states the plugin gate for refunds', () => {
   const end = html.indexOf('id="check-the-register-during-the-day"', start);
   assert.ok(start >= 0 && end > start);
   const section = html.slice(start, end);
-  assert.match(section, /need a plugin release after 0\.3\.0/);
-  assert.match(section, /On plugin 0\.3\.0, refund in the Vendure Dashboard/);
+  assert.match(section, /On plugin 0\.3\.0 an order shows no <strong>Refund items<\/strong>: refund in the Vendure Dashboard/);
+  assert.match(section, /settleRefund/);
 });
 
 test('at the till says the customer note is public', () => {

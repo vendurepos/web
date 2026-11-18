@@ -94,13 +94,13 @@ test('the two proof claims link their tests', () => {
 
 test('before you start gates refunds on the plugin and names coupon codes as not yet', () => {
   const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
-  // vendurepos/app 1404f42 plugin CHANGELOG.md:8, :21; apps/pos/lib/discount-total-matrix.test.ts:171-178.
+  // plugin-v0.3.0 (2d3699e) info.controller.ts:29 (no order.refund); vendurepos/app 1404f42 apps/pos/lib/discount-total-matrix.test.ts:171-178.
   const heading = html.indexOf('Before you start');
   const end = html.indexOf('href="/docs/limitations"', heading);
   assert.ok(heading >= 0 && end > heading);
   const block = html.slice(heading, end);
   assert.match(block, /Coupon codes are not supported yet/);
-  assert.match(block, /Refunds at the till\s+need the plugin release after 0\.3\.0, and the live demo has them\./);
+  assert.match(block, /On plugin 0\.3\.0,\s+refunds go through the Vendure Dashboard; the live demo also refunds at the till\./);
   assert.doesNotMatch(block, /Not yet: refunds/i);
 });
 

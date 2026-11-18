@@ -233,3 +233,12 @@ test('connect a till and the quick start name no release after 0.3.0', () => {
     assert.doesNotMatch(text, /after 0\.3\.0|not out yet|TallyPosPairDisplay/i, slug);
   }
 });
+
+test('home, at the till and limitations say what plugin 0.3.0 does today', () => {
+  // Front desk, 18 Nov: plugin-v0.3.0 (2d3699e) advertises no order.refund; refunds go through the Dashboard.
+  const text = (file) => readFileSync(join('.next/server/app', file), 'utf8').replace(/<[^>]+>/g, ' ');
+  for (const file of ['index.html', 'docs/at-the-till.html', 'docs/limitations.html']) {
+    assert.doesNotMatch(text(file), /after 0\.3\.0|not out yet|refund a till sale/i, file);
+  }
+  for (const words of ['settleRefund', 'plugin 0.3.0']) assert.ok(text('docs/at-the-till.html').includes(words), words);
+});
