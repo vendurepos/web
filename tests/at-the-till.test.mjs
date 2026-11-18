@@ -24,8 +24,31 @@ test('at the till states the plugin gate for refunds', () => {
   const end = html.indexOf('id="check-the-register-during-the-day"', start);
   assert.ok(start >= 0 && end > start);
   const section = html.slice(start, end);
-  assert.match(section, /On plugin 0\.3\.0 an order shows no <strong>Refund items<\/strong>: refund in the Vendure Dashboard/);
+  assert.match(section, /On plugin 0\.3\.0 the till cannot refund: someone with Vendure Dashboard access refunds the order there\./);
   assert.match(section, /settleRefund/);
+});
+
+test('at the till refund section leads with the plugin 0.3.0 cashier steps, then the live demo', () => {
+  // Round 20: plugin-v0.3.0 register.service.ts:267-279 and register-figures.ts:22-27 count the till's own payments,
+  // paid_in and paid_out, so a Dashboard refund needs a Pay out to keep the drawer count right.
+  const start = html.indexOf('id="refund-a-sale"');
+  const end = html.indexOf('id="check-the-register-during-the-day"', start);
+  assert.ok(start >= 0 && end > start);
+  const section = html.slice(start, end);
+  const payOut = section.indexOf('Pay out');
+  assert.ok(payOut >= 0 && payOut < section.indexOf('Refund items'), 'Pay out before Refund items');
+  assert.ok(section.includes('href="/docs/plugin-setup#settle-a-dashboard-refund"'));
+  assert.match(section, /<h3[^>]*>(?:(?!<\/h3>)[\s\S])*live demo/);
+  assert.doesNotMatch(section, /settleRefund\(input/);
+});
+
+test('at the till order details leads with plugin 0.3.0', () => {
+  const start = html.indexOf('id="order-details"');
+  const end = html.indexOf('<h2', start);
+  assert.ok(start >= 0 && end > start);
+  const section = html.slice(start, end);
+  const plugin = section.indexOf('On plugin 0.3.0');
+  assert.ok(plugin >= 0 && plugin < section.indexOf('Customer note'), 'On plugin 0.3.0 before Customer note');
 });
 
 test('at the till says the customer note is public', () => {
@@ -94,18 +117,23 @@ test('at the till says what happens when the internet drops, before closing the 
   assert.match(troubleshooting, new RegExp(`<h[1-6][^>]*id="${anchor}"`));
 });
 
-test('at the till shows how to settle a Dashboard refund and names no TallyPosRefund', () => {
+test('plugin setup shows how to settle a Dashboard refund; at the till names no TallyPosRefund', () => {
   // Round 19: plugin-v0.3.0 has no TallyPosRefund (git grep prints nothing); Vendure Admin API settleRefund,
   // orders filter on code (plugin-v0.3.0 test/api-key.e2e.ts:49), GraphiqlPlugin route /graphiql/admin.
-  const text = html.replace(/<[^>]+>/g, '');
+  // Round 20: the settle steps are an administrator's, so they live on Plugin setup, not the cashier page.
+  const setup = readFileSync('.next/server/app/docs/plugin-setup.html', 'utf8');
+  const text = setup.replace(/<[^>]+>/g, '');
   for (const words of ['settleRefund(input', 'RefundStateTransitionError', 'refunds { id state total }', '/graphiql/admin']) {
     assert.ok(text.includes(words), words);
   }
-  assert.doesNotMatch(text, /TallyPosRefund/);
-  assert.match(html, /<h2[^>]*id="settle-a-dashboard-refund"/);
+  assert.match(setup, /<h2[^>]*id="settle-a-dashboard-refund"/);
+  const till = html.replace(/<[^>]+>/g, '');
+  assert.ok(!till.includes('settleRefund(input'), 'at the till has no settleRefund mutation');
+  assert.doesNotMatch(till, /TallyPosRefund/);
+  assert.doesNotMatch(html, /id="settle-a-dashboard-refund"/);
 });
 
-test('limitations links settleRefund to the at the till steps', () => {
+test('limitations links settleRefund to the plugin setup steps', () => {
   const limitations = readFileSync('.next/server/app/docs/limitations.html', 'utf8');
-  assert.ok(limitations.includes('href="/docs/at-the-till#settle-a-dashboard-refund"'));
+  assert.ok(limitations.includes('href="/docs/plugin-setup#settle-a-dashboard-refund"'));
 });

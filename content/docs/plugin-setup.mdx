@@ -115,3 +115,39 @@ If it fails part-way, it leaves an `INVALID` index: drop it and run it again. Th
 Each sale runs in one database transaction. Custom order-process hooks, blocking event handlers and custom strategies inside it must not send email, call payment providers or webhooks, or write to other databases: a rolled-back sale would keep that side effect.
 
 Read the [full plugin reference](https://github.com/vendurepos/app/blob/main/packages/vendure-plugin/README.md).
+
+## Settle a Dashboard refund
+
+{/* Sources: Settle a Dashboard refund: the code filter shape is plugin-v0.3.0 packages/vendure-plugin/test/api-key.e2e.ts:49 (roles filter: { code: { eq } }; orders takes the same StringOperators filter on code); https://docs.vendure.io/reference/graphql-api/admin/queries (orders(options: OrderListOptions): OrderList!); https://docs.vendure.io/reference/graphql-api/admin/input-types (OrderFilterParameter.code: StringOperators, "A unique code for the Order."; SettleRefundInput { id: ID! transactionId: String! }); https://docs.vendure.io/reference/graphql-api/admin/object-types (Order.payments, Payment.refunds, Refund id/state/total/transactionId; union SettleRefundResult = Refund | RefundStateTransitionError, with errorCode and message); https://docs.vendure.io/reference/graphql-api/admin/mutations (settleRefund(input: SettleRefundInput!): SettleRefundResult!); https://docs.vendure.io/reference/core-plugins/graphiql-plugin/ (GraphiqlPlugin, @vendure/graphiql-plugin, routes /graphiql/admin and /graphiql/shop). Not documented, so not claimed: which Dashboard screen shows or settles a refund, and the state a settled refund ends in. */}
+
+On plugin 0.3.0, a refund made in the Vendure Dashboard stays Pending until an administrator settles it through
+the Admin API, for example in GraphiQL at `/graphiql/admin` if the store has Vendure's GraphiQL plugin.
+
+Find the refund's ID from the order's code:
+
+```graphql
+query {
+  orders(options: { filter: { code: { eq: "ORDER_CODE" } } }) {
+    items {
+      code
+      payments {
+        refunds { id state total }
+      }
+    }
+  }
+}
+```
+
+Settle it. `transactionId` is required; Vendure stores it on the refund.
+See [Vendure's `settleRefund` reference](https://docs.vendure.io/current/framework/reference/graphql-api/admin/mutations).
+
+```graphql
+mutation {
+  settleRefund(input: { id: "REFUND_ID", transactionId: "YOUR_REFERENCE" }) {
+    ... on Refund { id state }
+    ... on RefundStateTransitionError { errorCode message }
+  }
+}
+```
+
+The response shows the refund's `state`, or an error saying why it could not be settled.
