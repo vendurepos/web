@@ -61,6 +61,22 @@ test('no built page spells it "Tally UI"', () => {
   }
 });
 
+test('step 3 leads with one path and names the other ways after it, in a note', () => {
+  const section = stepSection('Generate and run the migration', 'Enable bearer authentication');
+  const lastCode = section.lastIndexOf('<pre');
+  assert.ok(lastCode >= 0 && section.indexOf('runMigrations', lastCode) > lastCode);
+  const mainPathEnd = section.indexOf('</pre>', lastCode);
+  const note = section.indexOf('Other ways to run the migration');
+  assert.ok(note > mainPathEnd);
+  for (const phrase of ['vendure migrate', 'bundled migrations']) {
+    const first = section.indexOf(phrase);
+    assert.ok(first > note, phrase);
+  }
+  assert.ok(section.indexOf('href="/docs/plugin-setup#configure-the-plugin-and-migrations"') > note);
+  const setup = readFileSync('.next/server/app/docs/plugin-setup.html', 'utf8');
+  assert.ok(setup.includes('id="configure-the-plugin-and-migrations"'));
+});
+
 test('step 7 leads with its actions', () => {
   const section = stepSection('Prepare the channel and stock, then restart Vendure', 'Sign in and make a sale');
   const list = section.match(/<ul\b[^>]*>((?:(?!<\/ul>)[\s\S])*)<\/ul>/);
