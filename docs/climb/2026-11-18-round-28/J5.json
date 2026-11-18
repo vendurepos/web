@@ -1,0 +1,48 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {
+      "score": 9,
+      "worst_defect": "The hero says what it is and gives two clear next clicks, but nothing above the fold says who it suits and who it does not: no line such as 'for developer-run Vendure stores; not a Square/Shopify POS replacement with integrated card payments and hardware'. A buyer comparing tills has to scroll to 'Before you start' to work that out.",
+      "where": "home/desktop/01 hero; home/phone/01"
+    },
+    "C2": {
+      "score": 7,
+      "worst_defect": "The site never says who builds, runs or supports VendurePOS. The only owner hint is the unexplained third-party domain 'ph.wcpos.com' in the demo row. The recommended path runs the till from app.vendurepos.com with no word on who operates it, whether it stays free, or what happens if it goes away. The way out, self-hosting, 'needs your own RxDB Premium licence token', and nowhere does the site say that is a paid commercial licence.",
+      "where": "home/desktop/02 'Live demo or your own store' table and 'Before you start' bullet 5; footer 'MIT licensed. Built with TallyUI.'; connect-a-till/desktop/01 'Where requests go'"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 4 tells you to 'Sign in with a Vendure administrator whose role ... has TallyPosSell, ReadCatalog, ReadSettings, ReadCustomer and CreateCustomer ... Also add ReadOrder' but leaves the creation of that role and admin to another page. The quick start also never shows the till's sign-in screen or what a synced order looks like, so 'success' is a text checklist only.",
+      "where": "quick-start/desktop/02 step 4; quick-start/desktop/04 'Check it worked'"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The changelog covers only the plugin, and its entries are protocol internals a store owner cannot read ('order.create v5 custom lines are real order lines ... (ADR 0005)', 'advertises order.create 1–5'). The till app itself has no version or changelog anywhere. Plugin releases stop at 2026-10-06, while the docs show demo-only features (refund at the till, Customer note) with no date for when your store gets them.",
+      "where": "changelog/desktop/01; at-the-till/desktop/01 'On plugin 0.3.0, Order details has no customer note. On the live demo...'"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "After the hero screenshot the home page is ten same-sized grey text-only cards ('What it does today') followed by a plain table and a bullet list. No second image backs up the offline, Z-report or receipt claims, so the page reads as a wall of grey text. Dark mode holds up.",
+      "where": "home/desktop/01–02; home.desktop-dark.jpg"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The one-line CORS env example wraps so the second line starts with a comma (',http://localhost:8081'), which looks like two entries. Long headings such as '2. Add TallyPosPlugin to your existing Vendure config' take three lines. The hero app screenshot's cart header is truncated to 'Q...'.",
+      "where": "quick-start/phone/05; quick-start/phone/02; home/phone/01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The share card reads 'Point of sale for Vendure / Sell from the browser, keep selling offline...' and never says open-source or pre-release, so a link shared in a client thread oversells maturity next to the home page's 'Pre-release · plugin 0.3.0' badge. Everything else is strong: Lighthouse 98/100/100/100, JSON-LD, llms.txt, sitemap and search all good.",
+      "where": "og-image.png; tech.json lighthouse"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "No maintainer, company, support channel or terms are named anywhere. The default till runs from app.vendurepos.com, operated by an unnamed party ('ph.wcpos.com' analytics hints at one and is never explained), and the self-host escape hatch needs an 'RxDB Premium licence token' without saying it is paid. A sceptic cannot tell a client who stands behind it or what it costs to stop depending on the hosted app.",
+    "where": "home/desktop/02 'Before you start' and demo table row; footer; connect-a-till/desktop/01 'Where requests go'",
+    "fix": "Add one short 'Who runs this' line to the home footer or Overview: who maintains VendurePOS, who runs app.vendurepos.com and ph.wcpos.com, and that the hosted app is free with no account. Then add 'RxDB Premium is a paid commercial licence' wherever RXDB_PREMIUM is mentioned."
+  },
+  "mean": 8.1
+}

@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The home page speaks to whoever installs the plugin ('Your own store needs the plugin on your Vendure server first'); the only route for a shop owner or cashier is one sentence near the bottom, 'For cashiers, At the till covers…', and the Overview's next-steps cards (Live demo, Plugin setup, Source on GitHub, Quick start) leave out At the till.", "where": "home.desktop/phone last slices; docs.desktop.01 / text/docs.txt next-steps cards"},
+    "C2": {"score": 8, "worst_defect": "Right after 'On plugin 0.3.0 the till cannot refund. Ask whoever manages your Vendure store to refund the order in the Vendure Dashboard', a full 'Refund at the till (live demo)' walkthrough describes a flow the owner's own store does not have, so it is easy to think refunds work.", "where": "at-the-till.desktop.02-03, at-the-till.phone (Refund a sale)"},
+    "C3": {"score": 7, "worst_defect": "'If the internet drops' says how to keep selling and that sales send later, but never says whether staff can reload the page or reopen the browser and still get the till while offline; the only hints are 'Parked sales are still there after a reload' and troubleshooting's 'do not reload it until…'.", "where": "at-the-till 'If the internet drops' (text/at-the-till.txt), troubleshooting.desktop.01"},
+    "C4": {"score": 7, "worst_defect": "The 'N till updates need attention' fix tells 'the store owner' to 'open Settings, then Sync log, and choose All: the refusal is a DEBUG line, Register command result … status=rejected errorCode=… error=…, which Warnings and errors does not show… the log holds only this till's last 500 events', which is a developer procedure in owner-facing text; Limitations is also one flat list of 16 bullets that puts counter limits (no cash drawer, card terminal not linked, one tab per till) beside settleRefund, RXDB_PREMIUM and Postgres-only.", "where": "troubleshooting.desktop.01; limitations.desktop.01, limitations.phone.01"},
+    "C5": {"score": 9, "worst_defect": "The 404 page is a lone 'Page not found' with three buttons above a large empty area and no footer, so it looks plainer than the rest of the site; everything else, including dark mode, is consistent.", "where": "not-found.desktop.01"},
+    "C6": {"score": 8, "worst_defect": "In the hero demo screenshot the cart column header is cut to 'Q...', and the CORS_ORIGINS terminal line breaks so ',http://localhost:8081' starts a new line, which looks like two values; nothing overflows.", "where": "home.phone.01; quick-start.phone.05"},
+    "C7": {"score": 9, "worst_defect": "Lighthouse mobile still flags 51 KiB of unused JS on / (25 KiB on quick-start), 14 KiB of legacy JS and render-blocking requests (LCP 2.4 s); titles, descriptions, JSON-LD, og card, llms.txt, search API, sitemap and 404 status are all correct.", "where": "tech.json lighthouse"}
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "When sales stop reaching the store (the 'N till updates need attention' line), the page addressed to the store owner sends them into a DEBUG sync-log hunt for 'Register command result … status=rejected errorCode=…' within 'the last 500 events', with no plain instruction a shop owner can follow between customers.",
+    "where": "troubleshooting.desktop.01 (and its phone slices)",
+    "fix": "Start the section with three counter-level lines: keep selling, don't reload or clear this browser, call whoever runs your Vendure store. Move the Sync log, errorCode and needs_admin steps into a collapsed 'For your developer' block."
+  },
+  "mean": 8.0
+}
