@@ -18,13 +18,18 @@ Read the sync status in the header:
 
 Open **Orders** to see the till's recent sales with a status: **Waiting to sync**,
 **Synced** or **Not accepted**. Sales the store refused appear under **Needs attention**
-with a **Retry**. Choose **Back to sale** to return without losing your cart.
+in Orders, with a **Retry**. Choose **Back to sale** to return without losing your cart.
 
 ## Act on a header notice
 
 {/* Sources: vendurepos/app@1404f42 apps/pos/app/index.tsx:305-307 (sign-in bar), :313-318
 (Send again), :377, :381, :423-427 (outboxNotice); apps/pos/lib/register-sync.ts:9 (updates),
-:17-27 (registerSyncNotice); apps/pos/lib/use-sale-settings.ts:18,26. */}
+:17-27 (registerSyncNotice); apps/pos/lib/use-sale-settings.ts:18,26. vendurepos/app@72d88b1
+packages/vendure-plugin/src/vendored/commands.ts:19-21 and apps/pos/lib/demo/fetch.ts:23-27 (till
+updates); apps/pos/lib/settings-sections.ts:15, apps/pos/lib/sync-log-card.tsx:16-31 and
+apps/pos/lib/log-buffer.ts:41-48,94-96, apps/pos/e2e/sign-in.spec.ts:818-828 (sync log);
+apps/pos/app/index.tsx:333-335 (Send again), :340-343 (no button on the till updates line);
+apps/pos/e2e/sign-in.spec.ts:446-452 (Retry under Needs attention). */}
 
 **Orders line**
 
@@ -33,15 +38,22 @@ with a **Retry**. Choose **Back to sale** to return without losing your cart.
 - "The store refused this account. Sign in again below; orders are kept."
   Sign in again in the bar that appears.
 - "The store refused the orders (reason). They are kept; send them again once the store is fixed."
-  Fix the store, then choose **Send again**.
+  Fix the store, then choose **Send again** on this header line.
 
 **Till updates line**
+
+Till updates are the register's records the till sends to the store: opening and closing the
+register, cash movements and their voids, and the closure.
 
 - "Till updates aren't sending: this till needs to sign in to the online store again."
   Sign in to the online store again.
 - "N till updates need attention · The online store refused them, and later till updates wait
   behind them. Ask the store owner to look at the sync log in this till's Settings."
-  Ask the store owner to look at the sync log in this till's **Settings**.
+  Open **Settings**, then **Sync log**: it lists this till's sync events since the app opened,
+  newest first, and a refused update shows `status=rejected` with the store's error code and
+  message. **Warnings and errors** shows only problems; **Copy** (**Share** on a phone) passes
+  the log on. The sync log offers no retry or discard, and later till updates wait behind the
+  refused one.
 - "N till updates waiting to sync · The online store refused the last send. This till will try
   again with the next till update, or when the app is reopened."
 - "Till updates aren't reaching the online store. Keep selling: they're saved on this till and
