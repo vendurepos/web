@@ -1,0 +1,48 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {
+      "score": 9,
+      "worst_defect": "The hero never says where your own till runs or whether it costs anything: app.vendurepos.com is first mentioned in the fifth 'Before you start' bullet ('To build and host it yourself instead of using app.vendurepos.com...'), so a newcomer only finds out there is a hosted app near the bottom of the page.",
+      "where": "home/desktop/02 'Before you start' bullet 5; home/phone/05"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The home page says 'The till's source is MIT licensed. To build and host it yourself ... you need your own RxDB Premium licence token (RXDB_PREMIUM)' without saying what RxDB Premium is or that it is a paid third-party licence, so next to 'MIT licensed' it reads like a hidden catch. The demo row's unexplained 'ph.wcpos.com' (a different brand's domain) adds to the question of who is behind this.",
+      "where": "home/desktop/02 'Before you start' bullet 5 and comparison table last row; home/phone/04-05"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 5 says 'Add https://app.vendurepos.com to the scaffold's CORS_ORIGINS allowlist' without naming the file (.env) or saying that this variable exists only in @vendure/create projects. A developer who did not scaffold has to guess, and is pointed to the object form only after that.",
+      "where": "quick-start/desktop/02 '5. Allow the POS origin through CORS'; quick-start/phone/05"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The docs sidebar lists 'Docs / Live demo / Quick start' and then 'Overview / Quick start' straight after, so Quick start appears twice and 'Docs' and 'Overview' open the same page. Separately, the changelog dates 0.3.0 and 0.2.0 both '2026-10-06' and leans on internal references ('ADR 0005', 'order.create v5', '#116').",
+      "where": "every docs page sidebar, e.g. docs/desktop/01; changelog/desktop/01"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The 'Live demo or your own store' comparison table shows 'Yes' and 'No, not on plugin 0.3.0...' in the same plain grey text with no mark or colour, so the one real difference (refunds, and sales reaching Vendure) does not stand out. The ten identical grey feature cards above it, with no icons, look template-default.",
+      "where": "home/desktop/02 comparison table and feature grid; home.desktop-dark.jpg same section"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The phone menu is a bare down-chevron at the top right of the home and 404 pages, but a sidebar-panel icon on docs pages. The main nav is hard to recognise and inconsistent between pages.",
+      "where": "home/phone/01 and not-found/phone/01 (chevron) vs quick-start/phone/01 (panel icon)"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Mobile Lighthouse flags render-blocking requests and unused JavaScript (52 KiB on /), and LCP is 2.3 s on / and 2.5 s on /docs/quick-start. Otherwise the titles, descriptions, share card, JSON-LD, llms.txt, search API, sitemap, robots and 404 are all sound.",
+      "where": "tech.json lighthouse '/' and '/docs/quick-start'"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A first-time visitor reading 'MIT licensed' then meets 'you need your own RxDB Premium licence token (RXDB_PREMIUM)' with no word on what that is or what it costs. Nothing on the home page says whether the hosted app.vendurepos.com is free to use, so the open-source pitch looks like it may hide a cost.",
+    "where": "home/desktop/02 'Before you start' bullet 5; home/phone/05",
+    "fix": "In that bullet, add one clause saying RxDB Premium is a paid third-party licence needed only to build the till yourself, and state plainly whether using app.vendurepos.com costs anything."
+  },
+  "mean": 8.3
+}

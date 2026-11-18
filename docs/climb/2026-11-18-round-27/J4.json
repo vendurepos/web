@@ -1,0 +1,48 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {
+      "score": 9,
+      "worst_defect": "The hero till screenshot cuts through a half-visible fourth row of product tiles, so the image ends mid-row under the caption",
+      "where": "home.desktop.01"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "'Before you start' repeats the refund and coupon limits already given in the comparison table row 'Refund a sale at the till', which adds length but no new information",
+      "where": "home.desktop.02"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 5 says to add the origin to 'the scaffold's CORS_ORIGINS allowlist' but does not say which file or env var holds it",
+      "where": "quick-start.desktop.02"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Limitations is 16 bullets with no headings or grouping, so it has no 'On this page' and mixes browser, payments, refunds and data-loss items",
+      "where": "limitations.desktop.01, limitations.phone.01"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The docs sidebar lists 'Quick start' twice: a top group 'Docs / Live demo / Quick start' sits right above the page list's own 'Quick start', and 'Docs' is styled like a grey section label; the docs index also follows its 'Next steps' cards with a redundant 'Quick start' pager card",
+      "where": "docs.desktop.01, quick-start.desktop.01 (sidebar on every docs desktop slice)"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "On phone the hero till screenshot truncates the cart's QTY header to 'Q…', and the changelog's inline code chip 'packages/vendure-plugin/CHANGELOG.md' breaks across lines mid-chip",
+      "where": "home.phone.01, changelog.phone.01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The og-image product shot is cut off at the bottom edge, leaving the 'Add charge' button half visible, and the subtitle wraps so 'a normal order.' sits alone on its line",
+      "where": "og-image.png"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "The desktop docs sidebar lists 'Quick start' twice ('Docs / Live demo / Quick start' group directly above the page list that also starts 'Overview / Quick start'), with 'Docs' styled like a heading. It is the first thing seen on every docs page and makes the navigation look unfinished",
+    "where": "docs.desktop.01, quick-start.desktop.01 and every docs desktop slice",
+    "fix": "Remove the top 'Docs / Live demo / Quick start' group from the docs sidebar so each page appears once. Move 'Live demo' to an external link at the end of the page list"
+  },
+  "mean": 8.43
+}
