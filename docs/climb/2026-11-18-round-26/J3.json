@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The tax instructions prescribe different store-wide strategies for inclusive and exclusive channels, but only say a store mixing pricing modes 'must account for the store-wide strategy', leaving that configuration decision unresolved.",
+      "where": "text/endpoint_llms_full_txt.txt, Quick start step 6, 'Why these pairings'; shots/quick-start.desktop.03.jpg"
+    },
+    "C4": {
+      "score": 9,
+      "worst_defect": "The quick start's optional device-key instructions send pnpm users to a GitHub README instead of linking the exact configuration already documented under Connect a till.",
+      "where": "text/quick-start.txt, 'Optional: a device key for each till'; text/connect-a-till.txt, 'Make the key button available in a pnpm project'"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.desktop.02.jpg; shots/home.desktop-dark.jpg; shots/plugin-setup.desktop.02.jpg"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.phone.01.jpg\u2013home.phone.05.jpg; shots/quick-start.phone.01.jpg\u2013quick-start.phone.09.jpg; tech.json phone overflow checks"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The home Lighthouse report identifies 52 KiB of unused JavaScript and an estimated 140 ms of render-blocking savings.",
+      "where": "tech.json, lighthouse['/'].failing"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "A developer with tax-inclusive and tax-exclusive channels must guess how to reconcile the two prescribed strategies with the single store-wide setting.",
+    "where": "text/endpoint_llms_full_txt.txt, Quick start step 6, 'Why these pairings'; shots/quick-start.desktop.03.jpg",
+    "fix": "Add a short mixed-pricing recommendation stating which strategy to use and how to verify totals in each channel. If that configuration is outside the supported setup, state that explicitly."
+  },
+  "mean": 9.1
+}
