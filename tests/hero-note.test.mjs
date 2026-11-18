@@ -36,6 +36,17 @@ test('hero serves the phone till capture below 640px', () => {
   }
 });
 
+test('phone hero capture is under one phone screen tall', () => {
+  // Round 12, C6: captured at 390x664 CSS px, DPR 2, so the cart has no empty band; the <source> carries its height.
+  const sources = readFileSync(join('.next/server/app', 'index.html'), 'utf8').match(/<source[^>]*>/g) ?? [];
+  for (const scheme of ['light', 'dark']) {
+    const png = readFileSync(`public/till/sale-phone-${scheme}.png`);
+    const [width, height] = [png.readUInt32BE(16), png.readUInt32BE(20)];
+    assert.ok(width === 780 && height <= 1400, `${scheme} ${width}x${height}`);
+    assert.ok(sources.some((s) => s.includes(`sale-phone-${scheme}.png`) && s.includes(`height="${height}"`)), scheme);
+  }
+});
+
 test('hero lede links Vendure to vendure.io', () => {
   const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
   const h1 = html.indexOf('<h1');
