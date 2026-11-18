@@ -45,6 +45,22 @@ function stepSection(from, to) {
   return html.slice(start.index, end.index);
 }
 
+test('step 2 explains the Tally code names and names TallyUI, before its code', () => {
+  const section = stepSection('to your existing Vendure config', 'Generate and run the migration');
+  const sentence = section.indexOf('code names say Tally, not VendurePOS');
+  assert.ok(sentence >= 0);
+  assert.ok(section.indexOf('TallyUI commands', sentence) > sentence);
+  assert.ok(sentence < section.indexOf('<pre'));
+});
+
+test('no built page spells it "Tally UI"', () => {
+  const pages = readdirSync('.next/server/app', { recursive: true }).filter((file) => file.endsWith('.html'));
+  assert.ok(pages.some((file) => file.startsWith('docs')));
+  for (const file of pages) {
+    assert.ok(!readFileSync(join('.next/server/app', file), 'utf8').includes('Tally UI'), file);
+  }
+});
+
 test('step 7 leads with its actions', () => {
   const section = stepSection('Prepare the channel and stock, then restart Vendure', 'Sign in and make a sale');
   const list = section.match(/<ul\b[^>]*>((?:(?!<\/ul>)[\s\S])*)<\/ul>/);
