@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero says what it is and offers Live demo / Quick start, but nothing above the fold or anywhere on home says who builds and runs it (no maintainer, company or support channel), and the 'Pre-release · plugin 0.3.0' badge versions only the server plugin, not the till at app.vendurepos.com that a buyer actually uses.", "where": "home/desktop/01 hero badge; home.txt footer 'MIT licensed. Built with TallyUI. For Medusa, see MedusaPOS.'"},
+    "C2": {"score": 6, "worst_defect": "The hero sells an 'open-source till' and the footer says 'MIT licensed', yet self-hosting the till 'needs your own RxDB Premium licence token (RXDB_PREMIUM)' and the site never says this is a paid third-party commercial licence or what it costs, so in practice a client is tied to app.vendurepos.com, run by an unnamed operator whose analytics go to ph.wcpos.com.", "where": "home/desktop/02 'Before you start' bullet 5; limitations/desktop/01 bullet 3; connect-a-till/desktop/01 'Where requests go'"},
+    "C3": {"score": 8, "worst_defect": "Step 4 describes the till's sign-in role only in prose ('TallyPosSell, ReadCatalog, ReadSettings, ReadCustomer and CreateCustomer ... Also add ReadOrder') with no Dashboard steps or snippet to create it, and the device-key section admits the plugin's own vendurepos-pos-till role omits ReadOrder, so the documented path ships a role you must patch by hand.", "where": "quick-start/desktop/02 step 4; quick-start.txt 'Optional: a device key for each till'"},
+    "C4": {"score": 8, "worst_defect": "The Changelog covers only @vendurepos/plugin (three releases between 2026-10-01 and 2026-10-06, nothing in the six weeks since). The hosted till, which 'expect[s] changes before 1.0', has no release notes or version anywhere, so a reader cannot tell what changed in the app or whether it is still maintained.", "where": "changelog/desktop/01 TOC '0.3.0 (2026-10-06) / 0.2.0 (2026-10-06) / 0.1.0 (2026-10-01)'"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' is ten identical grey cards of equal weight with no icons or grouping, so the two proven claims (with test links) look the same as minor features like 'Park a sale' and the section reads as a generic feature grid.", "where": "home/desktop/01-02 'What it does today' grid (same in home.desktop-dark)"},
+    "C6": {"score": 9, "worst_defect": "In the phone hero screenshot of the till the cart's QTY column header is truncated to 'Q...', a small sign of a cramped layout in the first image a phone visitor sees.", "where": "home/phone/01 hero image, cart header 'Q... ITEM TOTAL'"},
+    "C7": {"score": 9, "worst_defect": "The docs landing page's title is the generic 'Overview | VendurePOS', which says nothing about point of sale or Vendure in search results or tabs. The 404 page logs a console error and has no JSON-LD, as expected.", "where": "tech.json pages['docs.desktop'].title"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The site leads with 'open-source till' and 'MIT licensed', but running the till anywhere except the project's own app.vendurepos.com needs an 'RxDB Premium licence token' that is never identified as a paid third-party licence or priced, and the operator of app.vendurepos.com (and of the ph.wcpos.com analytics) is never named. A sceptic would read this as open source in name only and advise a client against depending on it.",
+    "where": "home/desktop/02 'Before you start' bullet 5; limitations/desktop/01 bullet 3; connect-a-till/desktop/01",
+    "fix": "In the home 'Before you start' bullet and on Limitations, say plainly that RxDB Premium is a paid commercial licence from RxDB (link and rough price). Add one line naming who runs app.vendurepos.com and ph.wcpos.com, with a support or issues link."
+  },
+  "mean": 8.0
+}

@@ -1,0 +1,48 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero is clear (what it is, Live demo / Quick start), but the 'Before you start' list on the home page drops developer internals on a newcomer: 'you need your own RxDB Premium licence token (RXDB_PREMIUM)', and the footer's 'Built with TallyUI. For Medusa, see MedusaPOS' names two more products with no word on what they are.",
+      "where": "home.desktop.02 'Before you start' bullet 5 and footer; home.phone.05"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The demo comparison table says the demo sends 'anonymous usage events to ph.wcpos.com, with no cookie', a different brand's domain that the home page never explains, so a newcomer wonders who wcpos is and why it gets data from a VendurePOS demo. Connect a till says it is a self-hosted PostHog server, but that is three clicks away.",
+      "where": "home.desktop.02 table row 'Sales reach Vendure, once each, even offline'; home.phone.04"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 5 puts the .env line 'CORS_ORIGINS=https://app.vendurepos.com' in a code block labelled 'Terminal', but it is a line to put in the .env file. Run in a shell, it only sets a variable and the till still cannot reach the store.",
+      "where": "quick-start.desktop.02 step 5; quick-start.phone.05"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Connect a till says the catalogue and unsent sales 'are kept in SQLite databases inside this browser', while the overview, home and Limitations all say 'MySQL, MariaDB and SQLite are not supported'. Nothing says one is the browser and the other is the Vendure server, so a newcomer reads it as a contradiction. The Changelog is also written in internal shorthand ('advertises order.create 1–5 (ADR 0005)').",
+      "where": "connect-a-till.desktop.01 'Stored in this browser' bullet 4; changelog.desktop.01"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "'What it does today' is ten grey cards of the same size in a 2-column grid. Only two have a link and none has an icon or any other emphasis, so the two proven claims (offline, once-only) look no different from 'Park a sale'. Dark mode holds up.",
+      "where": "home.desktop.01-02 'What it does today' grid; home.desktop-dark.jpg"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "Minor: in the phone hero screenshot the till's cart column header is cut to 'Q...'. Also, quick-start headings that contain inline code wrap to three lines ('2. Add TallyPosPlugin to your existing Vendure config'). No overflow, and the comparison table reflows into readable stacked rows.",
+      "where": "home.phone.01 hero image; quick-start.phone.02"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "llms-full.txt keeps the docs' heading-anchor markup inline ('Open the register [#open-the-register]') and has runs of blank lines. Otherwise everything is strong: Lighthouse 98/100/100/100, a real 404 status with nav, a complete sitemap, a good og-image and working search.",
+      "where": "text/endpoint_llms_full_txt.txt"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "In its 'Live demo or your own store' table, the home page tells a first-time visitor that the demo sends usage events to 'ph.wcpos.com', a domain from another brand that the page never explains. That plants doubt about who is behind VendurePOS and where data goes, right when the visitor is deciding whether to click Live demo.",
+    "where": "home.desktop.02 / home.phone.04, table row 'Sales reach Vendure, once each, even offline'",
+    "fix": "Name it in place, e.g. 'anonymous usage events to our self-hosted PostHog (ph.wcpos.com, run by WCPOS, the team behind VendurePOS), no cookie', and link to the Connect a till 'Where requests go' section."
+  },
+  "mean": 8.3
+}

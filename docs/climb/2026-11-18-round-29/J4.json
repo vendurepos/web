@@ -1,0 +1,48 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "Below a strong hero, \"What it does today\" is ten grey cards of identical weight, size and treatment in a 2-column grid: no icons, no lead feature and no grouping. The section reads as a uniform slab and nothing tells the eye where to start. It is followed by \"Before you start\", a dense 6-bullet wall that repeats the comparison table above it.",
+      "where": "home desktop slices 01-02; phone slices 02-03"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "Copy contradicts itself on sign-in. The docs Overview says the till signs in \"with an administrator account\", while Connect a till says \"staff account or a device key\". Separately, the changelog gives 0.3.0 and 0.2.0 the same date, 2026-10-06.",
+      "where": "docs overview vs connect-a-till; changelog"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The quick-start numbering breaks: \"Check it worked\" is unnumbered and sits between \"8.\" and \"9. Troubleshoot\", so the TOC mixes numbered and unnumbered entries. The `CORS_ORIGINS=https://app.vendurepos.com` .env line is labelled \"Terminal\", which invites pasting it into a shell.",
+      "where": "quick-start desktop slice 02 / phone slice 05; On this page TOC"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Limitations is 16 flat, ungrouped bullets with no subheadings. There is no TOC, so the desktop right column sits empty and the phone view is one long undifferentiated bullet run. On Connect a till, the long \"Where your data goes\" privacy section is wedged between \"Open your till\" and \"Enter your store details\", which breaks the task sequence.",
+      "where": "limitations desktop slice 01 / phone slice 01; connect-a-till desktop slice 01"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "On the docs Overview, the \"Quick start >\" pager card sits directly under the 3-up Next steps cards (Live demo, Plugin setup, Source on GitHub), with the same gap and full width. It reads as an orphaned fourth card, and the main next step, Quick start, is the one missing from the card row.",
+      "where": "docs overview desktop slice 01"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "On 390 px the home feature cards stack into ten full-width grey boxes, about two screens of identical blocks (home is 5077 px tall). In the quick-start tax table on phone, the stacked header \"taxOptions.orderTaxCalculationStrategy\" loses its code chip and becomes bold proportional text. The hero till screenshot truncates the cart header to \"Q...\".",
+      "where": "home phone slices 01-03; quick-start phone slice 06"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "tech.json: 200s, real 404, no overflow, 0 images without alt, Lighthouse mobile 98/100/100/100, CLS 0, JSON-LD, llms.txt, sitemap, search API"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "Home \"What it does today\" is a wall of ten identical grey cards with equal weight, no icons and no lead item, so the page's main selling section has no hierarchy. On phone it becomes about two screens of identical stacked boxes.",
+    "where": "home desktop slices 01-02; phone slices 02-03",
+    "fix": "Promote the 3 strongest capabilities to a larger lead row, each with an icon or small till crop. Collapse the other 7 into a compact 2-column checklist, and on phone show the 3 lead cards plus a 'See all features' disclosure."
+  },
+  "mean": 8.1
+}
