@@ -149,3 +149,13 @@ test('at the till links Hand over to the cashier accounts section', () => {
   const html = readFileSync(join('.next/server/app', 'docs/at-the-till.html'), 'utf8');
   assert.ok(html.includes('/docs/connect-a-till#give-each-cashier-their-own-account'));
 });
+
+test('connect a till device-key recipe says to add ReadOrder on plugin 0.3.0 and earlier', () => {
+  const html = readFileSync(join('.next/server/app', 'docs/connect-a-till.html'), 'utf8');
+  const start = html.indexOf('id="create-and-use-a-device-key"');
+  assert.ok(start >= 0);
+  const end = html.indexOf('<h2', start);
+  const section = html.slice(start, end < 0 ? undefined : end);
+  assert.ok(section.includes('ReadOrder'));
+  assert.match(section, /href="(\/docs\/connect-a-till)?#give-each-cashier-their-own-account"/);
+});
