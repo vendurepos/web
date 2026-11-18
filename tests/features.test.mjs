@@ -102,12 +102,21 @@ test('hero has two buttons, no GitHub link, and the note links the quick start',
   assert.match(note, /<a[^>]*\shref="\/docs\/quick-start"[^>]*>quick start<\/a>/);
 });
 
-test('header and docs nav link Quick start to the quick start', () => {
+test('home header links Quick start; docs pages leave it to the sidebar', () => {
   // Round 24, J1 C1: one name for the own-store path; the quick start installs the plugin, then signs the till in.
+  // Round 27, all judges: docs pages drop the header Docs and Quick start links; the sidebar lists Overview and Quick start.
+  // The nav link is the one straight after the nav's Live demo link (the hero button and sidebar item also say Quick start).
+  const navQuickStart = />Live demo<\/a>(?:<\/li><li\b[^>]*>)?<a\b[^>]*\shref="\/docs\/quick-start"[^>]*>Quick start<\/a>/;
   for (const file of ['index.html', 'docs.html']) {
     const html = readFileSync(join('.next/server/app', file), 'utf8');
-    // The nav link is the one straight after the nav's Live demo link (the hero button and sidebar item also say Quick start).
-    assert.match(html, />Live demo<\/a>(?:<\/li><li\b[^>]*>)?<a\b[^>]*\shref="\/docs\/quick-start"[^>]*>Quick start<\/a>/, file);
+    if (file === 'index.html') {
+      assert.match(html, navQuickStart, file);
+    } else {
+      // In the docs sidebar Fumadocs puts an external-link icon before the text.
+      assert.match(html, /<a\b[^>]*\shref="https:\/\/demo\.vendurepos\.com\/demo"[^>]*>(?:<svg\b.*?<\/svg>)?Live demo<\/a>/, file);
+      assert.doesNotMatch(html, navQuickStart, file);
+      assert.doesNotMatch(html, /<a\b[^>]*\shref="\/docs"[^>]*>Docs<\/a>/, file);
+    }
     assert.doesNotMatch(html, />Connect your store<\/a>/, file);
     assert.doesNotMatch(html, /<a\b[^>]*>[^<]*Try with your store/, file);
   }
