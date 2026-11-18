@@ -1,0 +1,48 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The home page never says who builds or maintains VendurePOS or who operates app.vendurepos.com (the only names are the footer's 'Built with Tally UI' and 'For Medusa, see MedusaPOS'). It also never says who should not use it, or how it compares with Shopify POS, Square or the WooCommerce/Odoo tills. On the phone the hero product screenshot is too small to read.",
+      "where": "home.desktop.01 and the footer; home.phone.01; text/home.txt"
+    },
+    "C2": {
+      "score": 5,
+      "worst_defect": "The home page sells it as 'MIT licensed', but Limitations says 'Building the till yourself needs your own RxDB Premium licence token in RXDB_PREMIUM'. Self-hosting the till therefore needs a paid proprietary licence; otherwise you depend on the hosted app.vendurepos.com, run by an unnamed operator. The home page's 'Before you start' list and its 'Live demo or your own store' table never mention this.",
+      "where": "limitations.phone.01 (third bullet) and text/limitations.txt vs text/home.txt footer 'MIT licensed'"
+    },
+    "C3": {
+      "score": 7,
+      "worst_defect": "Quick-start step 4 says the till sign-in needs catalogue/settings read plus TallyPosSell or CreateOrder. Connect a till says 'The till's order list needs ReadOrder, which that role gains only in the plugin release after 0.3.0; until then, add it to the role yourself'. A developer who follows only the quick start gets a till whose Orders list fails.",
+      "where": "text/quick-start.txt step 4 vs text/connect-a-till.txt"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "Refunds, the customer note and ReadOrder on the till role all wait on 'the plugin release after 0.3.0', and no page dates that release. The changelog's last entry is 0.3.0 on 2026-10-06, six weeks before capture. The changelog is also written in wire-level jargon ('order.create v5', 'ADR 0005', 'maxShippingLines: 1') with no plain-language summary of what each release means for a store.",
+      "where": "text/limitations.txt, text/at-the-till.txt, text/changelog.txt"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The hero product screenshot is cropped mid product row, so the till looks cut off rather than framed. On long docs pages the grey sidebar panel stops part-way down and leaves a bare column.",
+      "where": "home.desktop.01; long docs pages desktop (e.g. quick-start.desktop slices after 01)"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The phone hero screenshot is a tiny, unreadable thumbnail of the till, so on a phone the only product proof above the fold shows nothing.",
+      "where": "home.phone.01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The share card is a plain dark text card ('Point of sale for Vendure' plus the tagline and a hollow-circle mark) with no image of the product, so a shared link proves nothing visually. The 404 page has no JSON-LD (minor).",
+      "where": "og-image.png; tech.json not-found"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "Home sells an 'MIT licensed' open-source till, yet building it yourself needs a paid RxDB Premium licence ('needs your own RxDB Premium licence token in RXDB_PREMIUM'), and the alternative is a hosted app.vendurepos.com whose operator is never named. A sceptic finds this on the Limitations page and reads it as a hidden lock-in, which is the point at which they would advise a client against it.",
+    "where": "text/limitations.txt / limitations.phone.01 vs home footer 'MIT licensed' and home 'Before you start'",
+    "fix": "Add one line to the home page's 'Before you start' list, next to 'MIT licensed': 'Use the hosted till at app.vendurepos.com (run by <name>), or build it yourself with a paid RxDB Premium licence'. Name the maintainer in the footer."
+  },
+  "mean": 7.4
+}

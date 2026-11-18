@@ -1,0 +1,48 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero has four equal-weight buttons ('Live demo', 'Quick start', 'Try with your store', 'GitHub'). 'Try with your store' goes straight to app.vendurepos.com, which is useless until the plugin is installed. The site admits this only in the small line under the buttons ('Your own store needs the plugin on your Vendure server first'), so a newcomer has three competing next steps, one of them a dead end.",
+      "where": "home.desktop.01 (hero buttons) and home.phone.01 (buttons wrap 2+2)"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The home comparison table says the demo 'sends anonymous usage events to ph.wcpos.com'. That domain has no visible connection to VendurePOS. Neither the home page nor Connect a till ('a self-hosted PostHog analytics server') says who wcpos is, so a stranger sees their demo data going to an unexplained third-party domain.",
+      "where": "home.desktop.02 table row 'Sales reach Vendure, once each, even offline'; connect-a-till.desktop.01 'Where requests go'"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 3 of the quick start gives three ways to migrate: a hand-written src/generate-migration.ts run with tsx, 'npx vendure migrate' for @vendure/create projects, and the plugin's bundled migrations ('Do not also run the plugin's bundled migrations ... the README describes that alternative'), which Plugin setup then lays out in full. The reader has to choose without a stated recommendation.",
+      "where": "quick-start.desktop.01 step 3; plugin-setup.desktop.01 'Configure the plugin and migrations'"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The Changelog is written for the maintainers, not users. Entries like 'GET /tally/v1/info advertises order.create 1–5 (ADR 0005)' and 'order.create v5 custom lines ... (SKU TALLY-CUSTOM-ITEM, category 'POS no tax')' cite unlinked ADRs and say nothing about what a store owner gains, such as fees, shipping and custom lines at the till.",
+      "where": "changelog.desktop.01 / changelog.phone.01, section 0.3.0"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "The hero till screenshot cuts off through a fourth row of product tiles: half-tiles stick out of its bottom edge, so it looks cropped by accident rather than framed.",
+      "where": "home.desktop.01 (bottom of the till screenshot, y≈1110); same in home.desktop-dark.jpg"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "On a 390 px screen the hero till screenshot shrinks to the full desktop layout. Product names, prices and the cart are a few pixels tall and unreadable, so the one picture of the product says nothing on a phone.",
+      "where": "home.phone.01 (till screenshot under the buttons)"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The share card is text only: no product image, and a hollow pink circle stands in for the logo. Its body ('Open-source point of sale for Vendure...') repeats the title 'Point of sale for Vendure', so a shared link looks generic next to the real till screenshot the site has.",
+      "where": "og-image.png"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "A first-time visitor gets four equal-weight hero buttons. 'Try with your store' opens the app's sign-in, which cannot work without the server plugin, and the warning about that is a small grey line below the buttons, not on the button itself.",
+    "where": "home.desktop.01 / home.phone.01 hero button row",
+    "fix": "Keep 'Live demo' as the primary button and make 'Quick start' the only secondary one. Move 'Try with your store' to the end of the quick start (or label it 'Open the app (plugin required)'), and leave GitHub in the header."
+  },
+  "mean": 8.3
+}
