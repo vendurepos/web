@@ -27,6 +27,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
         sh: 'Terminal',
         bash: 'Terminal',
         shell: 'Terminal',
+        dotenv: '.env file',
         ts: 'TypeScript',
         tsx: 'TSX',
         js: 'JavaScript',
