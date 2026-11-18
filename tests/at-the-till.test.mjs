@@ -202,3 +202,18 @@ test('at the till says Reports is in the side menu', () => {
     .replace(/\s+/g, ' ');
   assert.ok(text.includes("Reports, in the till's side menu, opens on the drawer card"), 'Reports is in the side menu');
 });
+
+test('at the till says the expected cash also counts pay ins and pay outs', () => {
+  // Round 31, C4 (J2): the drawer card line read as float + cash sales = expected, against the refund section's pay ins and pay outs.
+  const start = html.indexOf('id="check-the-register-during-the-day"');
+  const end = html.indexOf('<h2', start + 1);
+  assert.ok(start >= 0 && end > start);
+  const text = html
+    .slice(start, end)
+    .replace(/<!-- -->/g, '')
+    .replace(/<[^>]+>/g, '')
+    .replace(/&#x27;|&#39;|&apos;/g, "'")
+    .replace(/\s+/g, ' ');
+  assert.ok(!text.includes('opening float plus cash sales is what is expected'), 'no float + cash sales = expected');
+  assert.ok(text.includes('which also counts any pay ins and pay outs'), 'expected cash counts pay ins and pay outs');
+});

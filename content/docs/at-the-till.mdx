@@ -113,13 +113,13 @@ If the store doesn't answer, don't hand back cash. Choose **Send again**; a refu
 
 ## Check the register during the day
 
-{/* Reports: vendurepos/app@ebcd9e4 apps/pos/lib/till-nav.ts:14-20 (a nav item beside Orders), apps/pos/app/index.tsx:89 (the nav is a rail on a wide screen, else a drawer). */}
+{/* Reports: vendurepos/app@ebcd9e4 apps/pos/lib/till-nav.ts:14-20 (a nav item beside Orders), apps/pos/app/index.tsx:89 (the nav is a rail on a wide screen, else a drawer); the drawer card: apps/pos/lib/reports-drawer-card.tsx:33-37; expected cash: plugin-v0.3.0 packages/vendure-plugin/src/vendored/register-figures.ts:22-27 (float + cash payments + pay ins - pay outs) */}
 
 **Register ›** in the bar opens the **Register** panel.
 It shows the cash in the drawer, this session's sales and other tenders, and prints an X-report.
 
-**Reports**, in the till's side menu, opens on the drawer card:
-opening float plus cash sales is what is expected in the drawer.
+**Reports**, in the till's side menu, opens on the drawer card. It shows the opening float, the cash sales
+and the cash expected in the drawer, which also counts any pay ins and pay outs.
 **Print X-report** prints the figures so far. The register stays open.
 
 Tap your name in the bar for your cashier sheet. It shows "Your sales today" and "In the drawer".
