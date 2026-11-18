@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 9, "worst_defect": "On the phone the home header shows only the logo, a search icon and an unlabelled chevron, so Docs, Live demo and Quick start are hidden until the hero buttons; there is also no line saying who it is not for (for example 'not a Shopify POS / Square replacement with hardware').", "where": "home.phone.01"},
+    "C2": {"score": 7, "worst_defect": "The hero sells an 'open-source till', but self-hosting needs 'your own RxDB Premium licence token (RXDB_PREMIUM)' with no word that this is a paid third-party licence or what it costs, and nothing says who runs app.vendurepos.com, the only alternative. Add the unfixed role defect: the changelog says 'Not in the release notes: in 0.2.0 and 0.3.0 this role has no ReadOrder', and the last plugin release is 2026-10-06.", "where": "home.desktop.02 'Before you start' bullet 5; limitations.desktop.01 bullet 3; changelog.desktop.01 0.2.0 last bullet"},
+    "C3": {"score": 8, "worst_defect": "Step 5 (CORS) adds a stray legacy note, 'A store that already allows https://vendurepos.vercel.app keeps it for as long as anyone still opens the POS at that address', which a new installer cannot act on. Device-key users must also hand-patch ReadOrder into the role the plugin's own 'New POS till key' button creates.", "where": "quick-start.desktop.02 / quick-start.phone.05; quick-start 'Optional: a device key for each till'"},
+    "C4": {"score": 8, "worst_defect": "The changelog is written for the plugin's authors, not for users: 'GET /tally/v1/info advertises order.create 1–5 (ADR 0005)', 'lineTax: { none: true, classes: true }'. The quick-start troubleshoot line 'The store must advertise order.create v4 and register v1' uses the same internal protocol words without explaining them.", "where": "changelog.desktop.01; quick-start.desktop.04 '9. Troubleshoot'"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' is ten identical grey text cards in a 2-column grid with no icon, image or visual weighting, so the two proven claims (offline, sale lands once) look no different from 'Park a sale'.", "where": "home.desktop.01 bottom to home.desktop.02 top"},
+    "C6": {"score": 9, "worst_defect": "Headings carrying inline code wrap to three lines on 390 px, for example '2. Add TallyPosPlugin to your existing Vendure config', which pushes the step body far down; otherwise code and tables reflow cleanly.", "where": "quick-start.phone.02"},
+    "C7": {"score": 9, "worst_defect": "The quick start's Lighthouse run still flags 'largest-contentful-paint (0.88): 2.6 s' and render-blocking requests. The SoftwareApplication JSON-LD has no softwareVersion, although the site leads with 'plugin 0.3.0'.", "where": "tech.json lighthouse /docs/quick-start; tech.json home.desktop jsonLd"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A buyer cannot judge lock-in. The site calls VendurePOS an open-source, MIT-licensed till, yet the only way to run it without a paid third-party RxDB Premium licence (price and terms not stated) is app.vendurepos.com, and no page says who operates that host or what happens if it stops.",
+    "where": "home.desktop.02 'Before you start'; limitations.desktop.01; connect-a-till.desktop.01 'The till's source is MIT-licensed…'",
+    "fix": "Next to the RXDB_PREMIUM line, say plainly that RxDB Premium is a paid commercial licence and link its pricing. Add one sentence naming who runs app.vendurepos.com and its continuity promise, for example 'static files, no server-side data; you can self-host the same build'."
+  },
+  "mean": 8.3
+}

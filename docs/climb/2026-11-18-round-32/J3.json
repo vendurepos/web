@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The tax table requires different store-wide strategies for inclusive and exclusive pricing, but 'A store mixing pricing modes must account for the store-wide strategy' leaves that installation case without a concrete configuration or explicit support boundary.",
+      "where": "text/endpoint_llms_full_txt.txt:794\u2013823, Quick start step 6"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Recovery guidance says a rejected sale's resend answers 'rejected', then directs users to 'Retry for the sale that counts' without explaining whether Retry creates a replacement command or resends the rejected one.",
+      "where": "text/troubleshooting.txt, Resolve a sale the store kept part-way; text/endpoint_llms_full_txt.txt:1053\u20131063"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop-dark.jpg; shots/home.desktop.*; shots/quick-start.desktop.*; other reviewed desktop slices"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.phone.*; shots/quick-start.phone.*; shots/plugin-setup.phone.02.jpg; shots/at-the-till.phone.03.jpg"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The supplied mobile Lighthouse result records Quick start LCP at 2.6 seconds, with 25 KiB of unused JavaScript.",
+      "where": "tech.json, lighthouse./docs/quick-start"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "A developer maintaining channels with both tax-inclusive and tax-exclusive pricing must guess how to satisfy the two conflicting store-wide tax-strategy recommendations.",
+    "where": "text/endpoint_llms_full_txt.txt:794\u2013823, Quick start step 6",
+    "fix": "State the supported configuration for mixed-pricing channels and how to verify its totals. If that combination is unsupported, say so explicitly beside the tax table."
+  },
+  "mean": 9.0
+}
