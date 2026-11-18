@@ -2,7 +2,7 @@
 title: At the till
 description: Open the register, sell with charges and open sales, take or split a payment and close the day.
 ---
-{/* Sources: vendurepos/app 1404f42 (app.vendurepos.com production, 17 Nov 2026); plugin CHANGELOG at 1404f42; customer note: plugin CHANGELOG.md:6 ("kept as one public order note"), vendurepos/app#284 ("public to the customer"); note and refund gates: vendurepos/app cc719c2 apps/pos/lib/sale-cart.tsx:72 with lib/use-sale-settings.ts:23 (MIN_ORDER_CREATE_NOTE = 7), lib/refund-sheet.tsx:56 (Refund items needs order.refund), lib/demo/store.ts:12 (the demo advertises both); plugin-v0.3.0 (2d3699e, npm latest) packages/vendure-plugin/src/api/info.controller.ts:29 (order.create 1-5, no order.refund), src/config/strategies.ts:133-141 (tally-pos has no createRefund); https://docs.vendure.io/current/framework/reference/typescript-api/payment/payment-method-config-options (without createRefund, refunds "settled manually by an administrator"); https://docs.vendure.io/current/framework/reference/graphql-api/admin/mutations (settleRefund). */}
+{/* Sources: vendurepos/app 1404f42 (app.vendurepos.com production, 17 Nov 2026); plugin CHANGELOG at 1404f42; customer note: plugin CHANGELOG.md:6 ("kept as one public order note"), vendurepos/app#284 ("public to the customer"); note and refund gates: vendurepos/app cc719c2 apps/pos/lib/sale-cart.tsx:72 with lib/use-sale-settings.ts:23 (MIN_ORDER_CREATE_NOTE = 7), lib/refund-sheet.tsx:56 (Refund items needs order.refund), lib/demo/store.ts:12 (the demo advertises both); plugin-v0.3.0 (2d3699e, npm latest) packages/vendure-plugin/src/api/info.controller.ts:29 (order.create 1-5, no order.refund), src/config/strategies.ts:133-141 (tally-pos has no createRefund); https://docs.vendure.io/current/framework/reference/typescript-api/payment/payment-method-config-options (without createRefund, refunds "settled manually by an administrator"); https://docs.vendure.io/current/framework/reference/graphql-api/admin/mutations (settleRefund). Settle a Dashboard refund: the code filter shape is plugin-v0.3.0 packages/vendure-plugin/test/api-key.e2e.ts:49 (roles filter: { code: { eq } }; orders takes the same StringOperators filter on code); https://docs.vendure.io/reference/graphql-api/admin/queries (orders(options: OrderListOptions): OrderList!); https://docs.vendure.io/reference/graphql-api/admin/input-types (OrderFilterParameter.code: StringOperators, "A unique code for the Order."; SettleRefundInput { id: ID! transactionId: String! }); https://docs.vendure.io/reference/graphql-api/admin/object-types (Order.payments, Payment.refunds, Refund id/state/total/transactionId; union SettleRefundResult = Refund | RefundStateTransitionError, with errorCode and message); https://docs.vendure.io/reference/graphql-api/admin/mutations (settleRefund(input: SettleRefundInput!): SettleRefundResult!); https://docs.vendure.io/reference/core-plugins/graphiql-plugin/ (GraphiqlPlugin, @vendure/graphiql-plugin, routes /graphiql/admin and /graphiql/shop). Not documented, so not claimed: which Dashboard screen shows or settles a refund, and the state a settled refund ends in. */}
 
 Some steps depend on the store's VendurePOS plugin. With no plugin, or one too old to sell,
 the till shows "This store's VendurePOS plugin is missing or out of date.
@@ -92,7 +92,7 @@ If your till is set not to show the receipt after each sale, it shows "Sale comp
 
 On plugin 0.3.0 an order shows no **Refund items**: refund in the Vendure Dashboard. Vendure keeps that refund
 Pending until an administrator settles it with the Admin API's
-[`settleRefund`](https://docs.vendure.io/current/framework/reference/graphql-api/admin/mutations) mutation.
+[`settleRefund`](#settle-a-dashboard-refund) mutation.
 The live demo refunds at the till:
 
 Open **Orders**, choose **This till** and open the sale. Only sales made on a till can be refunded.
@@ -105,9 +105,39 @@ The till shows "Refunded … to the original payment." A cash refund lowers the 
 
 If the store doesn't answer, don't hand back cash. Choose **Send again**; a refund is never made twice.
 
-A till key's role needs the `TallyPosRefund` permission, and the till role preset leaves it out.
-Without it, the till shows "This account can't refund.
-Ask the store's admin to add the TallyPosRefund permission to its role."
+## Settle a Dashboard refund
+
+On plugin 0.3.0, a refund made in the Vendure Dashboard stays Pending until an administrator settles it through
+the Admin API, for example in GraphiQL at `/graphiql/admin` if the store has Vendure's GraphiQL plugin.
+
+Find the refund's ID from the order's code:
+
+```graphql
+query {
+  orders(options: { filter: { code: { eq: "ORDER_CODE" } } }) {
+    items {
+      code
+      payments {
+        refunds { id state total }
+      }
+    }
+  }
+}
+```
+
+Settle it. `transactionId` is required; Vendure stores it on the refund.
+See [Vendure's `settleRefund` reference](https://docs.vendure.io/current/framework/reference/graphql-api/admin/mutations).
+
+```graphql
+mutation {
+  settleRefund(input: { id: "REFUND_ID", transactionId: "YOUR_REFERENCE" }) {
+    ... on Refund { id state }
+    ... on RefundStateTransitionError { errorCode message }
+  }
+}
+```
+
+The response shows the refund's `state`, or an error saying why it could not be settled.
 
 ## Check the register during the day
 

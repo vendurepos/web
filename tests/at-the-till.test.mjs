@@ -93,3 +93,19 @@ test('at the till says what happens when the internet drops, before closing the 
   const troubleshooting = readFileSync('.next/server/app/docs/troubleshooting.html', 'utf8');
   assert.match(troubleshooting, new RegExp(`<h[1-6][^>]*id="${anchor}"`));
 });
+
+test('at the till shows how to settle a Dashboard refund and names no TallyPosRefund', () => {
+  // Round 19: plugin-v0.3.0 has no TallyPosRefund (git grep prints nothing); Vendure Admin API settleRefund,
+  // orders filter on code (plugin-v0.3.0 test/api-key.e2e.ts:49), GraphiqlPlugin route /graphiql/admin.
+  const text = html.replace(/<[^>]+>/g, '');
+  for (const words of ['settleRefund(input', 'RefundStateTransitionError', 'refunds { id state total }', '/graphiql/admin']) {
+    assert.ok(text.includes(words), words);
+  }
+  assert.doesNotMatch(text, /TallyPosRefund/);
+  assert.match(html, /<h2[^>]*id="settle-a-dashboard-refund"/);
+});
+
+test('limitations links settleRefund to the at the till steps', () => {
+  const limitations = readFileSync('.next/server/app/docs/limitations.html', 'utf8');
+  assert.ok(limitations.includes('href="/docs/at-the-till#settle-a-dashboard-refund"'));
+});
