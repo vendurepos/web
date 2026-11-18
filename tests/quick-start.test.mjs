@@ -272,7 +272,16 @@ test('step 5 names the .env CORS_ORIGINS line and its comma-separated format', (
   const text = textOf(step5).replaceAll('&#x27;', "'").replaceAll('&amp;', '&').replace(/\s+/g, ' ');
   assert.ok(text.includes("the CORS_ORIGINS line in the project's .env file"));
   assert.ok(text.includes('comma-separated'));
-  assert.ok(text.includes('CORS_ORIGINS=https://app.vendurepos.com,http://localhost:8081'));
+  // Round 28, C6 (J1, J2, J4, J5): the one-line example wrapped at its comma on phones.
+  assert.ok(text.includes('CORS_ORIGINS=https://app.vendurepos.com'));
+  assert.ok(text.includes('add the exact local POS origin after a comma'));
+  for (const [pre] of step5.matchAll(/<pre\b(?:(?!<\/pre>)[\s\S])*<\/pre>/g)) {
+    const code = textOf(pre).replaceAll('&#x27;', "'").replaceAll('&quot;', '"').replaceAll('&lt;', '<')
+      .replaceAll('&gt;', '>').replaceAll('&amp;', '&');
+    for (const line of code.split('\n')) {
+      assert.ok(line.length <= 40 || line.includes(' '), line);
+    }
+  }
   const without = text.indexOf('A project without CORS_ORIGINS');
   const objectForm = text.indexOf('origin: [');
   assert.ok(without >= 0 && objectForm > without);
