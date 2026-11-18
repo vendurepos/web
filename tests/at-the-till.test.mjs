@@ -24,8 +24,27 @@ test('at the till states the plugin gate for refunds', () => {
   const end = html.indexOf('id="check-the-register-during-the-day"', start);
   assert.ok(start >= 0 && end > start);
   const section = html.slice(start, end);
-  assert.match(section, /On plugin 0\.3\.0 the till cannot refund: someone with Vendure Dashboard access refunds the order there\./);
-  assert.match(section, /settleRefund/);
+  assert.match(section, /On plugin 0\.3\.0 the till cannot refund\./);
+  assert.ok(section.includes('href="/docs/plugin-setup#settle-a-dashboard-refund"'), 'links the settle steps on Plugin setup');
+});
+
+test('at the till refund item 1 says in plain words who refunds, and leaves the API to Plugin setup', () => {
+  // Round 21, J2 C4: a GraphQL mutation means nothing to an owner; the settle steps stay on Plugin setup.
+  const start = html.indexOf('id="refund-a-sale"');
+  const end = html.indexOf('id="check-the-register-during-the-day"', start);
+  assert.ok(start >= 0 && end > start);
+  const list = html.slice(start, end);
+  const itemStart = list.indexOf('<li');
+  const itemEnd = list.indexOf('</li>', itemStart);
+  assert.ok(itemStart >= 0 && itemEnd > itemStart);
+  const item = list.slice(itemStart, itemEnd);
+  const text = item.replace(/<!-- -->/g, '').replace(/<[^>]+>/g, '');
+  for (const words of ['Ask whoever manages your Vendure store', 'Pending']) assert.ok(text.includes(words), words);
+  assert.ok(item.includes('href="/docs/plugin-setup#settle-a-dashboard-refund"'), 'links the settle steps');
+  assert.doesNotMatch(text, /settleRefund|Admin API/);
+  const setup = readFileSync('.next/server/app/docs/plugin-setup.html', 'utf8');
+  assert.match(setup, /<h2[^>]*id="settle-a-dashboard-refund"/);
+  assert.match(setup.replace(/<[^>]+>/g, ''), /settleRefund/);
 });
 
 test('at the till refund section leads with the plugin 0.3.0 cashier steps, then the live demo', () => {

@@ -240,5 +240,7 @@ test('home, at the till and limitations say what plugin 0.3.0 does today', () =>
   for (const file of ['index.html', 'docs/at-the-till.html', 'docs/limitations.html']) {
     assert.doesNotMatch(text(file), /after 0\.3\.0|not out yet|refund a till sale/i, file);
   }
-  for (const words of ['settleRefund', 'plugin 0.3.0']) assert.ok(text('docs/at-the-till.html').includes(words), words);
+  // Round 22: at the till names the owner's step in plain words; settleRefund lives on Plugin setup, linked from it.
+  assert.ok(text('docs/at-the-till.html').includes('plugin 0.3.0'), 'plugin 0.3.0');
+  assert.ok(readFileSync('.next/server/app/docs/at-the-till.html', 'utf8').includes('href="/docs/plugin-setup#settle-a-dashboard-refund"'), 'settle link');
 });
