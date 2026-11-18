@@ -111,10 +111,10 @@ const demoParity = [
     store: 'Yes, from your Vendure customers',
   },
   {
-    // apps/pos/e2e/demo.spec.ts:628 ("a demo cashier refunds a mug from the order sheet; ..."); packages/vendure-plugin/CHANGELOG.md:8,9,21 (order.refund v1 is Unreleased, 0.3.0 is the latest release; before it an admin refund of a POS order stays Pending until settled by hand)
+    // apps/pos/e2e/demo.spec.ts:628 ("a demo cashier refunds a mug from the order sheet; ..."), apps/pos/lib/demo/store.ts:12 (the demo advertises order.refund); plugin-v0.3.0 (2d3699e) packages/vendure-plugin/src/api/info.controller.ts:29 (no order.refund), src/config/strategies.ts:133-141 (tally-pos has no createRefund); vendurepos/app cc719c2 apps/pos/lib/refund-sheet.tsx:56 (Refund items needs order.refund); https://docs.vendure.io/current/framework/reference/typescript-api/payment/payment-method-config-options (without createRefund, refunds are settled manually by an administrator)
     capability: 'Refund a sale at the till',
     demo: 'Yes',
-    store: 'Not yet: it needs the plugin release after 0.3.0. Until then, refund in the Vendure Dashboard and settle it by hand',
+    store: 'No, not on plugin 0.3.0: refund in the Vendure Dashboard, where the refund stays Pending until it is settled',
   },
   {
     // apps/pos/e2e/demo.spec.ts:779-781 (the first test asserts no request leaves the page's origin except DEMO_CAPTURE_URL); apps/pos/lib/demo/analytics.ts:3-16,24-36 (anonymous events to ph.wcpos.com on demo.vendurepos.com only, credentials: 'omit', no cookie or storage); apps/pos/e2e/offline.spec.ts; packages/vendure-plugin/test/replay.e2e.ts
@@ -238,10 +238,10 @@ export default function HomePage() {
             on npm, added to your Vendure config.
           </li>
           <li>A web till for now. The app is pre-release: expect changes before 1.0.</li>
-          {/* vendurepos/app@1404f42 packages/vendure-plugin/CHANGELOG.md:8 (Unreleased: till refunds), :21 (0.3.0 is the latest release); apps/pos/lib/discount-total-matrix.test.ts:171-178 (the till applies no coupons). */}
+          {/* plugin-v0.3.0 (2d3699e, npm latest) packages/vendure-plugin/src/api/info.controller.ts:29 (no order.refund); vendurepos/app cc719c2 apps/pos/lib/refund-sheet.tsx:56 (Refund items needs order.refund), apps/pos/lib/demo/store.ts:12 (the demo advertises it); vendurepos/app@1404f42 apps/pos/lib/discount-total-matrix.test.ts:171-178 (the till applies no coupons). */}
           <li>
-            Coupon codes are not supported yet; line and order discounts work. Refunds at the till
-            need the plugin release after 0.3.0, and the live demo has them.
+            Coupon codes are not supported yet; line and order discounts work. On plugin 0.3.0,
+            refunds go through the Vendure Dashboard; the live demo also refunds at the till.
           </li>
         </ul>
         <p className="mt-4 text-fd-muted-foreground">

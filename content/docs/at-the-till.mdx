@@ -1,8 +1,8 @@
 ---
 title: At the till
-description: Open the register, sell with charges and open sales, take or split a payment, refund a till sale and close the day.
+description: Open the register, sell with charges and open sales, take or split a payment and close the day.
 ---
-{/* Sources: vendurepos/app 1404f42 (app.vendurepos.com production, 17 Nov 2026); plugin CHANGELOG at 1404f42; customer note: plugin CHANGELOG.md:6 ("kept as one public order note"), vendurepos/app#284 ("public to the customer"). */}
+{/* Sources: vendurepos/app 1404f42 (app.vendurepos.com production, 17 Nov 2026); plugin CHANGELOG at 1404f42; customer note: plugin CHANGELOG.md:6 ("kept as one public order note"), vendurepos/app#284 ("public to the customer"); note and refund gates: vendurepos/app cc719c2 apps/pos/lib/sale-cart.tsx:72 with lib/use-sale-settings.ts:23 (MIN_ORDER_CREATE_NOTE = 7), lib/refund-sheet.tsx:56 (Refund items needs order.refund), lib/demo/store.ts:12 (the demo advertises both); plugin-v0.3.0 (2d3699e, npm latest) packages/vendure-plugin/src/api/info.controller.ts:29 (order.create 1-5, no order.refund), src/config/strategies.ts:133-141 (tally-pos has no createRefund); https://docs.vendure.io/current/framework/reference/typescript-api/payment/payment-method-config-options (without createRefund, refunds "settled manually by an administrator"); https://docs.vendure.io/current/framework/reference/graphql-api/admin/mutations (settleRefund). */}
 
 Some steps depend on the store's VendurePOS plugin. With no plugin, or one too old to sell,
 the till shows "This store's VendurePOS plugin is missing or out of date.
@@ -53,8 +53,7 @@ The ⋮ beside **Checkout** opens **Order details**.
 A sale that is partly paid can't be voided.
 
 Type a **Customer note** to send with the order. The store keeps it as a public note in the order's history, so the customer can see it too.
-The note needs a plugin release after 0.3.0, which is not out yet. The live demo already has it.
-Without it, **Order details** shows no note.
+The live demo has the note. On plugin 0.3.0, **Order details** shows no note.
 
 ## Take payment
 
@@ -91,10 +90,10 @@ If your till is set not to show the receipt after each sale, it shows "Sale comp
 
 ## Refund a sale
 
-Refunds at the till need a plugin release after 0.3.0, which is not out yet. The live demo already has them.
-Without it, an order shows no **Refund items**.
-On plugin 0.3.0, refund in the Vendure Dashboard.
-A refund made there on a POS order stays Pending until someone settles it by hand.
+On plugin 0.3.0 an order shows no **Refund items**: refund in the Vendure Dashboard. Vendure keeps that refund
+Pending until an administrator settles it with the Admin API's
+[`settleRefund`](https://docs.vendure.io/current/framework/reference/graphql-api/admin/mutations) mutation.
+The live demo refunds at the till:
 
 Open **Orders**, choose **This till** and open the sale. Only sales made on a till can be refunded.
 With the register closed, the order shows "Open the register to refund this order."

@@ -11,11 +11,12 @@ test('home table says the demo sends anonymous events, not that nothing leaves t
   assert.ok(page.includes('ph.wcpos.com'));
 });
 
-test('home table has a till refund row whose store cell needs the release after 0.3.0', () => {
+test('home table has a till refund row whose store cell sends plugin 0.3.0 to the Vendure Dashboard', () => {
   const rows = html().match(/<tr[\s>][\s\S]*?<\/tr>/g) ?? [];
   const row = rows.find((r) => r.includes('Refund a sale at the till'));
   assert.ok(row, 'no row for Refund a sale at the till');
-  assert.ok(row.includes('after 0.3.0'));
+  assert.ok(row.includes('not on plugin 0.3.0'));
+  assert.ok(row.includes('Vendure Dashboard'));
 });
 
 test('home table links "anonymous usage events" to where the data goes, words unchanged', () => {
