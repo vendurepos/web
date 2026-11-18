@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "text/home.txt; shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "text/home.txt, demo/store comparison; text/limitations.txt; text/connect-a-till.txt, Where your data goes"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The quick start's device-key instructions omit the manual ReadOrder permission required on plugin 0.3.0, although Connect a till documents it.",
+      "where": "text/quick-start.txt, Optional: a device key for each till; text/connect-a-till.txt, Create and use a device key"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "Partial-sale recovery names tallyNeedsAdminCommands and supplies an applied/rejected mutation, but provides neither a runnable listing query nor criteria for choosing the resolution and checking its effects.",
+      "where": "text/troubleshooting.txt, Resolve a sale the store kept part-way; shots/troubleshooting.desktop.02.jpg"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.desktop.02.jpg; shots/home.desktop-dark.jpg; shots/plugin-setup.desktop.02.jpg"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.phone.01.jpg through home.phone.05.jpg; quick-start phone slices; shots/at-the-till.phone.03.jpg and at-the-till.phone.06.jpg"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The supplied home Lighthouse report identifies 52 KiB of unused JavaScript and an estimated 130 ms of render-blocking savings.",
+      "where": "tech.json, lighthouse./.failing"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "The partial-sale recovery instructions leave the developer to decide whether a needs_admin sale should be marked applied or rejected without explaining the required evidence or consequences.",
+    "where": "shots/troubleshooting.desktop.02.jpg, Resolve a sale the store kept part-way; text/endpoint_llms_full_txt.txt, corresponding section",
+    "fix": "Add a runnable listing query and a short decision procedure identifying the order, payment and stock evidence to inspect before each resolution. State what each resolution changes and how to verify recovery before retrying."
+  },
+  "mean": 8.6
+}

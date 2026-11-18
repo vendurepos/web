@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero gives four equal-weight buttons ('Live demo', 'Quick start', 'Try with your store', 'GitHub'). 'Try with your store' sits beside 'Quick start' but cannot work until the quick start is done, and nowhere says who it is NOT for (e.g. a shop that wants an integrated card terminal or a native app should look elsewhere).", "where": "home/desktop/01 hero buttons"},
+    "C2": {"score": 7, "worst_defect": "Home footer 'MIT licensed' and Overview's 'Source on GitHub: The app and the Vendure plugin, MIT licensed' never mention that building the till yourself needs a paid RxDB Premium licence token. That fact appears only on Limitations and Connect a till, so 'open source' quietly means 'use our hosted app'.", "where": "home/desktop/02 footer; docs/desktop/01 'Source on GitHub' card; limitations/desktop/01 third bullet"},
+    "C3": {"score": 8, "worst_defect": "Quick start step 4 says the admin needs to 'read the channel's catalogue and settings and has the plugin's TallyPosSell permission'. Connect a till says the till's order list also needs ReadOrder, which no released role includes. A least-privilege admin set up from the quick start alone gets a broken Orders list.", "where": "quick-start/desktop/02 step 4 vs connect-a-till 'Give each cashier their own account'"},
+    "C4": {"score": 8, "worst_defect": "The changelog cites '(ADR 0005)', '(ADR 0004)', '(#116)' and '(#117)' as plain unlinked text and covers only the plugin, so a reader cannot check the references or see any release history for the till app itself.", "where": "changelog/desktop/01"},
+    "C5": {"score": 8, "worst_defect": "The payment screenshot on At the till sells a 'Tally Fixture Mug', a test-fixture product name, which makes the product look toy-grade. The home hero screenshot is also cut mid-way through a row of product tiles at its bottom edge.", "where": "at-the-till/desktop/02 payment image cart line 1; home/desktop/01 hero image bottom edge"},
+    "C6": {"score": 8, "worst_defect": "Long inline code breaks across lines: 'lineTax: { none: true, classes: true }' and 'packages/vendure-plugin/CHANGELOG.md' wrap mid-token into split pill boxes, and the hero till screenshot's QTY column header shows as 'Q...'.", "where": "changelog/phone/01; home/phone/01 hero image"},
+    "C7": {"score": 9, "worst_defect": "Every sitemap.xml <lastmod> is a build timestamp within the last day (2026-11-17/18) on every page, so it tells crawlers nothing about which docs actually changed. The docs search also does not index the home page, so a search for 'offline' returns none of the home page's offline claims.", "where": "text/endpoint_sitemap_xml.txt; text/endpoint_api_search_query_offline.txt"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The home page and Overview headline the project as 'MIT licensed' open source. They hide, until the Limitations page, that self-building the till needs a paid proprietary RxDB Premium licence. A client who wants to fork or self-host is dependent on the hosted app.vendurepos.com in practice, which is the classic open-source oversell I would warn a client about.",
+    "where": "home/desktop/02 footer; docs/desktop/01 'Source on GitHub' card; limitations/desktop/01",
+    "fix": "Next to 'MIT licensed' on the home footer and the Overview 'Source on GitHub' card, add one clause: 'self-building the till needs a paid RxDB Premium licence; the hosted app at app.vendurepos.com does not', linked to Limitations."
+  },
+  "mean": 8.0
+}
