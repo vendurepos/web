@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The tax setup prescribes different store-wide strategies for inclusive and exclusive channels, but tells mixed-mode stores only to 'account for the store-wide strategy', leaving the configuration decision unresolved.",
+      "where": "shots/quick-start.desktop.03.jpg, step 6; text/endpoint_llms_full_txt.txt, 'Why these pairings'"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The refund procedure explains Dashboard refunds and settleRefund but omits the separate return of card funds through the external terminal, despite documenting cash repayment.",
+      "where": "shots/plugin-setup.desktop.03.jpg, 'Settle a Dashboard refund'; text/at-the-till.txt, 'Refund a sale'"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.desktop-dark.jpg; shots/plugin-setup.desktop.02.jpg"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.phone.01.jpg through home.phone.05.jpg; shots/quick-start.phone.01.jpg through quick-start.phone.09.jpg; tech.json"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "tech.json; text/endpoint_llms_txt.txt; text/endpoint_llms_full_txt.txt; text/endpoint_api_search_query_offline.txt; og-image.png"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "Refund instructions end with recording settlement through settleRefund without explicitly requiring the separate external-terminal card refund.",
+    "where": "shots/plugin-setup.desktop.03.jpg, 'Settle a Dashboard refund'; text/at-the-till.txt, 'Refund a sale'",
+    "fix": "Before the settlement mutation, instruct the administrator to return card funds through the external terminal or provider and retain its reference. Clarify that recording settlement in Vendure does not itself return those funds."
+  },
+  "mean": 8.86
+}
