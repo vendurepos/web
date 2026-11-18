@@ -21,10 +21,19 @@ test('hero shows the till, light and dark', () => {
   assert.ok(tryStore !== -1);
   assert.ok(img !== -1 && img > tryStore);
   assert.ok(heading !== -1 && img < heading);
-  assert.ok(html.includes('sale-light.png'));
-  assert.ok(html.includes('sale-dark.png'));
-  assert.ok(existsSync('public/till/sale-light.png'));
-  assert.ok(existsSync('public/till/sale-dark.png'));
+  for (const file of ['sale-light', 'sale-dark', 'sale-phone-light', 'sale-phone-dark']) {
+    assert.ok(html.includes(`${file}.png`), file);
+    assert.ok(existsSync(`public/till/${file}.png`), file);
+  }
+});
+
+test('hero serves the phone till capture below 640px', () => {
+  // Round 11, C6: art direction, one <source media> per scheme pointing at the phone capture.
+  const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
+  const sources = html.match(/<source[^>]*>/g) ?? [];
+  for (const scheme of ['light', 'dark']) {
+    assert.ok(sources.some((s) => s.includes('media="(max-width: 639px)"') && s.includes(`sale-phone-${scheme}.png`)), scheme);
+  }
 });
 
 test('hero lede links Vendure to vendure.io', () => {

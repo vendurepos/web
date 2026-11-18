@@ -42,12 +42,17 @@ test('at the till shows the payment and cashier screens in their sections', () =
   };
   const shows = (part, file) => part.includes(`/till/${file}`) || part.includes(`%2Ftill%2F${file}`);
   for (const [id, name] of [['take-payment', 'payment'], ['check-the-register-during-the-day', 'cashier']]) {
-    for (const scheme of ['light', 'dark']) assert.ok(shows(section(id), `${name}-${scheme}.png`), `${name}-${scheme}`);
+    for (const scheme of ['light', 'dark']) {
+      assert.ok(shows(section(id), `${name}-${scheme}.png`), `${name}-${scheme}`);
+      // Round 11, C6: the phone capture is served below 640px.
+      const phone = (section(id).match(/<source[^>]*>/g) ?? []).find((s) => shows(s, `${name}-phone-${scheme}.png`));
+      assert.ok(phone?.includes('media="(max-width: 639px)"'), `${name}-phone-${scheme}`);
+    }
   }
 });
 
 test('at the till screenshots are each at most 400 KB', () => {
-  for (const file of ['payment-light', 'payment-dark', 'cashier-light', 'cashier-dark']) {
+  for (const file of ['payment-light', 'payment-dark', 'cashier-light', 'cashier-dark', 'payment-phone-light', 'payment-phone-dark', 'cashier-phone-light', 'cashier-phone-dark']) {
     assert.ok(statSync(`public/till/${file}.png`).size <= 400 * 1024, file);
   }
 });
