@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '../lib/site.ts';
 
 test('built llms.txt names the product, summarises it and links absolutely', () => {
@@ -42,4 +42,16 @@ test('built llms text has no raw Cards or Callouts, and every link in it is abso
 
   const page = readFileSync('.next/server/app/llms.mdx/docs/connect-a-till.body', 'utf8');
   assert.equal(page.split('\n').filter((line) => line.trim())[1], `URL: ${SITE_URL}/docs/connect-a-till`);
+});
+
+test('built llms text has no raw div wrapper and no line of raw JSX or HTML outside code blocks', () => {
+  const dir = '.next/server/app/llms.mdx/docs';
+  const pages = readdirSync(dir).filter((f) => f.endsWith('.body')).map((f) => `llms.mdx/docs/${f}`);
+  for (const file of ['llms-full.txt.body', ...pages]) {
+    const body = readFileSync(`.next/server/app/${file}`, 'utf8');
+    assert.ok(!body.includes('<div') && !body.includes('</div'), file);
+    // Fenced code blocks may legitimately show markup, so they are cut out before the line check.
+    const prose = body.replace(/^[ \t]*```[\s\S]*?^[ \t]*```/gm, '');
+    assert.doesNotMatch(prose, /^[ \t]*<\/?[A-Za-z]/m, file);
+  }
 });
