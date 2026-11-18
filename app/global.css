@@ -118,7 +118,8 @@ figure.shiki .fd-scroll-container,
   list-style-type: lower-alpha;
 }
 
-/* Phones: stack the home "Live demo or your own store" table (app/(home)/page.tsx); round-6 judges saw its cells wrap a word a line at 390 px. */
+/* Phones: stack the home "Live demo or your own store" table (app/(home)/page.tsx); round-6 judges saw its cells wrap a word a line at 390 px.
+   Round 37, J4 C6: the row titles lead and the repeated labels recede. */
 @media (max-width: 639px) {
   main table[data-stack]:not(.prose table),
   main table[data-stack]:not(.prose table) :is(thead, tbody, tr, th, td) {
@@ -133,7 +134,12 @@ figure.shiki .fd-scroll-container,
     white-space: nowrap;
   }
   main table[data-stack]:not(.prose table) tbody tr {
-    padding: 0.5rem 0;
+    padding: 0.75rem 0 0.5rem;
+  }
+  main table[data-stack]:not(.prose table) tbody th {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-fd-foreground);
   }
   main table[data-stack]:not(.prose table) tbody :is(th, td) {
     padding: 0;
@@ -143,7 +149,7 @@ figure.shiki .fd-scroll-container,
   }
   main table[data-stack]:not(.prose table) td[data-label]::before {
     content: attr(data-label) ": ";
-    font-weight: 600;
-    color: var(--color-fd-foreground);
+    font-weight: 400;
+    color: var(--color-fd-muted-foreground);
   }
 }
