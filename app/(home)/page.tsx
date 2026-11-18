@@ -212,12 +212,13 @@ export default function HomePage() {
         </p>
         <div className="overflow-x-auto">
           {/* Round 12, C5: fixed columns from 640px up. 34% (337px of the 992px column) fits the longest row label,
-              302px plus padding, on one line; 22% fits every short demo answer; the store column keeps the rest. */}
+              302px plus padding, on one line. Round 13, C5: the two answer columns split the rest evenly (33% each,
+              about 327px), because the demo caveat and the store refund note are the two long answers, one in each. */}
           <table data-stack="" className="w-full text-left text-sm sm:table-fixed">
             <thead>
               <tr className="border-b border-fd-border">
                 <th scope="col" className="py-2 pr-4 font-semibold sm:w-[34%]">At the till</th>
-                <th scope="col" className="py-2 pr-4 font-semibold sm:w-[22%]">{DEMO_COLUMN}</th>
+                <th scope="col" className="py-2 pr-4 font-semibold sm:w-[33%]">{DEMO_COLUMN}</th>
                 <th scope="col" className="py-2 font-semibold">{STORE_COLUMN}</th>
               </tr>
             </thead>

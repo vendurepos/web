@@ -36,5 +36,5 @@ test('home table fixes its columns from 640px up so row labels fit on one line',
   const classes = (tag) => tag.match(/\sclass="([^"]*)"/)?.[1].split(/\s+/) ?? [];
   assert.ok(classes(table.match(/^<table\b[^>]*>/)[0]).includes('sm:table-fixed'));
   const widths = Array.from(table.matchAll(/<th\b[^>]*>/g), ([th]) => classes(th).filter((c) => /(^|:)w-/.test(c)));
-  assert.deepEqual(widths, [['sm:w-[34%]'], ['sm:w-[22%]'], []]);
+  assert.deepEqual(widths, [['sm:w-[34%]'], ['sm:w-[33%]'], []]);
 });
