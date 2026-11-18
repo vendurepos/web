@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero carries four near-equal buttons (Live demo, Quick start, Try with your store, GitHub) and repeats 'Try with your store' in the top nav, so 'Quick start' and 'Try with your store' compete as the second step; on phone the row wraps 2+2 with unequal widths and ragged centred edges.", "where": "home.desktop.01 hero button row; home.phone.01"},
+    "C2": {"score": 9, "worst_defect": "The refunds caveat is stated twice within one screen on home: in the comparison table row 'Refund a sale at the till … Not yet: it needs the plugin release after 0.3.0' and again in the 'Before you start' bullet 'Refunds at the till need the plugin release after 0.3.0, and the live demo has them', which reads as padding rather than an extra fact.", "where": "home.desktop.02 table + Before you start"},
+    "C3": {"score": 8, "worst_defect": "Step '8. Sign in and make a sale' is a nine-item lettered list (a–i) that mixes sign-in, scanner-field setup, opening the register, the sale, verification and an offline test, and item h duplicates the 'Check it worked' list right after it, so the actual first-sale path is buried.", "where": "quick-start.desktop.03, quick-start.phone.07-08"},
+    "C4": {"score": 8, "worst_defect": "Limitations is a flat run of 13 bullets mixing product scope ('Web till only for now'), build needs ('RxDB Premium licence token'), timing ('within about a minute') and database support, with no grouping or headings, so it has no On-this-page column and is hard to scan; the docs sidebar also highlights both 'Docs' and 'Overview' at once on the overview page.", "where": "limitations.desktop.01; docs.desktop.01 sidebar"},
+    "C5": {"score": 7, "worst_defect": "The At the till screenshots are full 1440-wide app captures shrunk into the ~836 px content column: on the payment shot the keypad, quick amounts and cart text render at roughly 7-8 px and half the frame is an empty white cart column; on the cashier-sheet shot the sheet being described fills only the top-right quarter and the rest is a dimmed product grid. Neither has a caption, though the home hero image does.", "where": "at-the-till.desktop.02 (payment image), at-the-till.desktop.03 (cashier sheet image)"},
+    "C6": {"score": 8, "worst_defect": "Inline code chips break mid-token at 390 px: 'packages/vendure-' / 'plugin/CHANGELOG.md' splits across lines in the changelog intro and 'lineTax: { none:' / 'true, classes: true }' splits further down. The cashier-sheet phone image also shows a grey strip of dimmed backdrop down its left edge.", "where": "changelog.phone.01; at-the-till.phone.06"},
+    "C7": {"score": 9, "worst_defect": "In the share card the product screenshot is cut off at the bottom edge partway through the 'Add charge' button and the product cards, and the subhead wraps so that 'a normal order.' sits alone on its second line.", "where": "og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "On desktop the At the till payment screenshot is a full-window app capture scaled down to the docs column. The keypad, quick-amount chips and cart totals the paragraph describes render at about 7-8 px and can't be read, and about half the frame is empty white cart space. It is the docs' main 'what the till looks like' image and it looks careless next to the crisp hero.",
+    "where": "at-the-till.desktop.02 (payment image); at-the-till.desktop.03 (cashier sheet image)",
+    "fix": "Recapture both images at a ~1000 px wide viewport, or crop to the payment pane plus totals and to the cashier sheet alone, so they render near 1:1 in the 836 px column, and add a one-line caption like the home hero has."
+  },
+  "mean": 8.1
+}

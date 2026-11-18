@@ -1,0 +1,48 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {
+      "score": 7,
+      "worst_defect": "Nothing on the home page says what Vendure is: the hero assumes it ('signs in to your own Vendure store') and only links the word to vendure.io, so a visitor who half-knows Vendure has to leave the site to learn whether this is for them; the hero then offers four near-equal buttons (Live demo, Quick start, Try with your store, GitHub), and 'Try with your store' leads straight to the app's sign-in, which fails without the plugin.",
+      "where": "home/desktop/01 hero; home/phone/01; text/home.txt (no definition of Vendure on home or docs overview)"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The demo row of the comparison table names 'ph.wcpos.com' as where usage events go without saying what WCPOS is, so a newcomer sees an unrelated brand's domain on a VendurePOS page (the explanation is only on Connect a till); the docs screenshot of the payment screen also shows a test product called 'Tally Fixture Mug', which looks unfinished.",
+      "where": "home/desktop/02 table row 'Sales reach Vendure, once each, even offline'; at-the-till/desktop/02 screenshot (cart line 'Tally Fixture Mug')"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The quick start has no screenshots at all: step 8 lists nine sign-in and sale actions (a–i) and 'Check it worked' lists five Dashboard checks, but there is no picture of the till's sign-in screen or of a correctly synced order, so a first-timer can't tell what success looks like.",
+      "where": "quick-start/desktop/03 step 8 and 'Check it worked'; text/quick-start.txt has no [image:] marker"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Four pages promise features in 'the plugin release after 0.3.0, which is not out yet' (refunds, customer note, TallyPosRefund), but the Changelog has no Unreleased section and its newest entry is 0.3.0 from 2026-10-06, written in internal terms ('order.create v5', 'ADR 0005') with nothing about the till app.",
+      "where": "changelog/desktop/01; at-the-till/desktop/02 'Refund a sale'; connect-a-till text line 72; limitations"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "Below the hero, the home page is ten identical grey text cards with no icons or images, then a plain table and a bullet list, so after the screenshot there is nothing visual to break up the copy; on every docs page the sidebar panel also ends with a hard edge at about 900px, leaving a bare strip below it.",
+      "where": "home/desktop/01–02 'What it does today' grid; docs/desktop/01 and quick-start/desktop/01 sidebar bottom edge"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The four hero buttons wrap into two ragged rows of different widths ('Live demo | Quick start' over 'Try with your store | GitHub'), and the phone header shows only a search icon and a bare chevron, with no visible Docs or Live demo link; the till screenshot's QTY column header is cut to 'Q...'.",
+      "where": "home/phone/01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The Lighthouse mobile scores are strong, but the quick start's LCP is 2.6 s, flagged by render-blocking requests and 25–52 KiB of unused JavaScript; the docs pages' JSON-LD is only a BreadcrumbList, with no TechArticle or HowTo for the quick start.",
+      "where": "tech.json lighthouse /docs/quick-start; tech.json quick-start.desktop jsonLd"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "A visitor who arrives from a 'Vendure point of sale' search and only half-knows Vendure is never told what Vendure is, and has to pick from four similar-looking hero buttons; one of them, 'Try with your store', is a dead end unless the plugin is already on their server.",
+    "where": "home/desktop/01 and home/phone/01 hero",
+    "fix": "Add one clause to the hero line, e.g. 'Vendure, the open-source TypeScript commerce platform', and cut the hero to two buttons (Live demo, Quick start), moving 'Try with your store' and GitHub into the nav."
+  },
+  "mean": 8.0
+}

@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero sentence is about Vendure plumbing ('signs in to your own Vendure store', 'lands in Vendure once, as a normal order at the till's price'); nothing in the first screen says it is meant for a counter with a scanner, card terminal and cash drawer, so an owner has to read down to the feature cards to know it fits a physical shop.", "where": "home desktop slice 01 / phone slice 01, hero paragraph"},
+    "C2": {"score": 7, "worst_defect": "The site never says whether a cash drawer opens on a cash sale or which receipt printers work: the only printing words are 'print the receipt from the browser' and 'opens the browser's print dialog', and Limitations, which is honest about the card terminal ('The till does not talk to the terminal'), says nothing about drawers or thermal printers.", "where": "limitations desktop slice 01; home 'Cash, card and receipts' card; at-the-till 'Receipt and next sale'"},
+    "C3": {"score": 8, "worst_defect": "Quick start step 8 signs the till in with 'your administrator email and password'. The safer setup (one cashier account per person with the vendurepos-pos-till role, and ReadOrder added by hand until the next plugin release) is only on Connect a till, so a developer following the quick start step by step leaves staff on an admin login.", "where": "quick-start desktop slice 03, step 8a; connect-a-till 'Give each cashier their own account'"},
+    "C4": {"score": 8, "worst_defect": "Troubleshooting is the page a cashier or owner opens when the header shows a sync notice. Partway down, 'Resolve a sale the store kept part-way' turns into raw GraphQL (tallyNeedsAdminCommands, tallyResolveNeedsAdmin) with SuperAdmin access, mixing developer repair steps into staff help without a 'for your developer' label.", "where": "troubleshooting desktop slice 02 / text 'Resolve a sale the store kept part-way'"},
+    "C5": {"score": 8, "worst_defect": "The home hero screenshot cuts through a fourth row of product tiles and the 'Guest · 3 items' open-sale tab at its bottom edge, so the main picture ends on a half-row of coloured blocks.", "where": "home desktop slice 01, bottom of the till screenshot (~y 1110)"},
+    "C6": {"score": 8, "worst_defect": "On a phone the hero till screenshot is a full-height cart capture that runs from home.phone.01 into home.phone.02. 'What it does today', the part a busy owner wants, starts about two screens down. The screenshot's own column header is also truncated to 'Q...'.", "where": "home phone slices 01-02"},
+    "C7": {"score": 9, "worst_defect": "Minor: the share card's till screenshot is cut off mid-button at the bottom ('Add charge' half visible), and render-blocking requests and LCP 2.6 s are still flagged on /docs/quick-start.", "where": "og-image.png bottom edge; tech.json lighthouse /docs/quick-start"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A shop owner deciding whether staff can sell tomorrow cannot find out from the site whether the cash drawer opens or whether a normal receipt printer works. Printing is only 'through the browser' and Limitations is silent on both, while it is clear about the card terminal.",
+    "where": "limitations desktop slice 01 / phone slice 01; home 'Cash, card and receipts' card",
+    "fix": "Add one Limitations line, and one sentence in At the till under 'Receipt and next sale', saying what printing and the cash drawer actually do today (for example: 'Receipts print through the browser's print dialog to any printer the computer can use; the till does not open a cash drawer by itself')."
+  },
+  "mean": 8.0
+}
