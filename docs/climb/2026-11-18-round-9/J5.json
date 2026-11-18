@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero gives four buttons of near-equal weight (Live demo, Quick start, Try with your store, GitHub). 'Try with your store', also in the top nav, goes straight to app.vendurepos.com even though the line under it says 'Your own store needs the plugin on your Vendure server first'. A first-time visitor is offered a door that cannot work for them yet.", "where": "home/desktop/01 hero buttons; home/phone/01; top nav on every page"},
+    "C2": {"score": 7, "worst_defect": "The home footer ('MIT licensed') and the docs card ('Source on GitHub: The app and the Vendure plugin, MIT licensed') present the till as plain open source. Only Limitations and Connect a till admit that 'Building the till yourself needs your own RxDB Premium licence token in RXDB_PREMIUM', a paid proprietary dependency. In practice a store depends on the hosted app.vendurepos.com unless it buys a licence.", "where": "home/desktop/02 footer; docs/desktop/01 'Source on GitHub' card vs limitations/desktop/01 bullet 3 and connect-a-till/desktop/01 'Where your data goes'"},
+    "C3": {"score": 8, "worst_defect": "Step 3 gives three migration routes in one paragraph: the tsx generate/run scripts, 'npx vendure migrate', and the plugin's bundled migrations ('the README describes that alternative'), with Plugin setup adding a fourth listing. A developer must decide which to use with no recommendation. Separately, the till's order list needs ReadOrder, and the role lacks it until 'the plugin release after 0.3.0'. That is only on Connect a till, not in the quick start.", "where": "quick-start/desktop/01 step 3; connect-a-till text 'Give each cashier their own account'"},
+    "C4": {"score": 7, "worst_defect": "The Changelog covers only @vendurepos/plugin and is written in internal jargon ('advertises order.create 1–5 (ADR 0005)', 'TallyPosV51790900000000', 'lineTax: { none: true, classes: true }') with no plain summary. The till app has no changelog at all, so 'the live demo already has' refunds and customer notes, but no versioned record shows when or in what they shipped.", "where": "changelog/desktop/01; at-the-till text 'Refund a sale' and 'Order details'"},
+    "C5": {"score": 8, "worst_defect": "On every desktop docs page the grey sidebar panel ends abruptly at about 900 px and the page continues below it with no sidebar background, which leaves a visible step in the left column.", "where": "docs/desktop/01, quick-start/desktop/01, plugin-setup/desktop/01, changelog/desktop/01 (left column at y≈900)"},
+    "C6": {"score": 8, "worst_defect": "On a phone the hero product screenshot shrinks to about 650 px wide, so its product names, prices and cart totals are unreadable. The one proof image on the page tells a phone visitor nothing.", "where": "home/phone/01 hero screenshot"},
+    "C7": {"score": 9, "worst_defect": "The 404 page reuses the home page's marketing meta description ('Open-source point of sale for Vendure. Sell from the browser…') instead of one of its own. The share card is text only, with no product image.", "where": "tech.json not-found.desktop/phone description; og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The site sells VendurePOS as MIT-licensed open source on the home page and in the docs overview. The catch only appears in Limitations and Connect a till: self-hosting the till needs a paid RxDB Premium licence, so without one a store depends on the project's hosted app.vendurepos.com. A sceptic advising a client reads this as the open-source claim being oversold.",
+    "where": "home/desktop/02 footer 'MIT licensed' and docs/desktop/01 'Source on GitHub … MIT licensed' vs limitations/desktop/01 'RxDB Premium licence token'",
+    "fix": "Next to each 'MIT licensed' mention, and in the home 'Before you start' list, add one plain line: 'The hosted till is free to use; building and hosting the till yourself needs a paid RxDB Premium licence.' Link it to Connect a till."
+  },
+  "mean": 7.9
+}

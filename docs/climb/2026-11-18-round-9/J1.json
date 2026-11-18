@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 7, "worst_defect": "The home page never says what Vendure is: the h1 'Point of sale for Vendure' and the lede assume you already know it, and Vendure is not linked anywhere on home (only the docs Overview links vendure.io). The hero then offers four equal-weight buttons, 'Live demo', 'Quick start', 'Try with your store' and 'GitHub', where 'Quick start' and 'Try with your store' both read like 'start here'.", "where": "home.desktop.01 / home.phone.01 hero"},
+    "C2": {"score": 8, "worst_defect": "The live demo shows features a real store cannot get yet ('Refund a sale at the till: Yes' vs 'Not yet: it needs the plugin release after 0.3.0'), and 'MIT licensed' sits in the footer while 'Building the till yourself needs your own RxDB Premium licence token' appears only on Limitations and Connect a till, so 'open source' carries an unflagged paid dependency.", "where": "home.desktop.02 comparison table + footer; limitations.desktop.01 bullet 3"},
+    "C3": {"score": 7, "worst_defect": "Step 3 offers three migration routes in one paragraph (an npx tsx generate script plus a run script, 'npx vendure migrate' for @vendure/create projects, and the 'plugin's bundled migrations' from the README / Plugin setup) without saying which one to pick, so the reader has to guess at the riskiest step.", "where": "quick-start.desktop.01 step 3 / quick-start.phone.02-03"},
+    "C4": {"score": 7, "worst_defect": "The Changelog, linked from the home footer, is raw internal notes such as 'order.create v5 custom lines are real order lines on a plugin-owned, disabled 'POS custom item' variant', '(ADR 0005)' and 'TallyPosV51790900000000', with no plain-language summary of what each release means for a shop.", "where": "changelog.desktop.01 / changelog.phone.01"},
+    "C5": {"score": 7, "worst_defect": "The 'Live demo or your own store' table is lopsided: the first column is so narrow that row labels wrap ('Sell for cash and print the / receipt', 'Sales reach Vendure, / once each, even offline'), while the 'Live demo' column holds mostly a bare 'Yes' in a wide empty band. On docs pages the grey sidebar panel stops at about 900 px, leaving a mismatched strip below it.", "where": "home.desktop.02 table; docs.desktop.01 left edge below y≈900"},
+    "C6": {"score": 8, "worst_defect": "The hero till screenshot shrinks to about 650 px wide on phone, so the product names, prices and cart text are unreadable, and the four hero buttons wrap into an unbalanced 2+2 block ('Live demo' / 'Quick start', then 'Try with your store' / 'GitHub').", "where": "home.phone.01"},
+    "C7": {"score": 8, "worst_defect": "The share card is text only: it repeats the meta description in grey and carries a hollow pink circle as the 'logo', which looks like a placeholder. The 404 page reuses the home meta description ('Open-source point of sale for Vendure. Sell from the browser…').", "where": "og-image.png; tech.json pages.not-found.desktop.description"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "A visitor who arrives from 'Vendure point of sale' and only half knows Vendure gets no one-line explanation of it and no link to it on the home page, then faces four equal hero buttons where 'Quick start' and 'Try with your store' look like the same thing. In the first minute the next step is unclear unless you are already a Vendure developer.",
+    "where": "home.desktop.01 / home.phone.01 hero",
+    "fix": "Add a half-sentence gloss that links Vendure ('Vendure, the open-source headless commerce framework') to the lede. Cut the hero to one primary 'Live demo' and one secondary 'Set up your store' (the quick start), and move 'Try with your store' and GitHub to text links."
+  },
+  "mean": 7.4
+}

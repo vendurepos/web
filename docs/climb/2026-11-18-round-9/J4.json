@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero gives four buttons and three of them ('Quick start', 'Try with your store', 'GitHub') are the same outlined style, so 'Try with your store' looks like an equal next step even though the caption under it has to warn that it needs the plugin first. At 390 px the four buttons wrap into an uneven, centred 2+2 block.", "where": "home.desktop.01 hero button row; home.phone.01"},
+    "C2": {"score": 9, "worst_defect": "The refund caveat ('needs the plugin release after 0.3.0') is said again in the comparison table, in the last 'Before you start' bullet ('…and the live demo has them') and on Limitations. Repeating it three times on one page reads as padding, not as hiding anything.", "where": "home.desktop.02 table row 'Refund a sale at the till' + 'Before you start' bullet 4"},
+    "C3": {"score": 8, "worst_defect": "Step 3 puts two alternative migration paths in one paragraph ('npx tsx src/generate-migration.ts' or, for @vendure/create projects, 'npx vendure migrate') with seven inline code chips, then a second script. The main path is not set apart from the alternative, and the step wraps to about 20 lines on a phone.", "where": "quick-start.desktop.01 bottom (step 3); quick-start.phone.02-03"},
+    "C4": {"score": 8, "worst_defect": "The Changelog's first paragraph repeats its subtitle word for word ('Released versions of … @vendurepos/plugin …, newest first.'). In the docs sidebar, 'Docs' and 'Overview' are both highlighted as active on the Overview page.", "where": "changelog.desktop.01 intro; docs.desktop.01 sidebar"},
+    "C5": {"score": 7, "worst_defect": "In the home 'Live demo or your own store' table, the label column is about 190 px wide, so 'Sell for cash and print the receipt', 'Open and close a register with a Z report' and 'Attach a customer to the sale' wrap onto two lines. Meanwhile the two value columns are about 420 px each and mostly hold just 'Yes'. Also, the Overview's three Next-steps cards are followed by a full-width pager that repeats 'Quick start', right-aligned, with an empty bar to its left.", "where": "home.desktop.02 comparison table; docs.desktop.01 bottom"},
+    "C6": {"score": 7, "worst_defect": "On phones, code blocks soft-wrap instead of scrolling sideways, so string literals break mid-token: \"'./vendure-\" / \"config';\" and \"'./src/migrations' })\" are spread over three lines. Inline code chips also break: 'packages/vendure-' / 'plugin/CHANGELOG.md' and 'lineTax: { none:' / 'true…' split across lines.", "where": "quick-start.phone.02 and .03 (TypeScript blocks); changelog.phone.01"},
+    "C7": {"score": 8, "worst_defect": "The share card uses a magenta accent, a hollow-circle mark and a dashed rule that appear nowhere on the monochrome site, so it reads as an unbranded template rather than VendurePOS. Everything else is clean: Lighthouse 98/100/100/100, JSON-LD, llms.txt, sitemap, and a styled 404 page.", "where": "og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C6",
+    "defect": "On a 390 px screen, Quick start code blocks wrap mid-string ('./vendure-' / 'config'; generateMigration's options spread over three lines), so the page a developer copies from looks broken and is hard to check line by line.",
+    "where": "quick-start.phone.02 and quick-start.phone.03 (steps 2-3 TypeScript blocks)",
+    "fix": "Render code blocks with white-space: pre and overflow-x: auto (horizontal scroll) instead of soft-wrapping. Give inline <code> white-space: nowrap or break only at '/' and '.'."
+  },
+  "mean": 7.9
+}
