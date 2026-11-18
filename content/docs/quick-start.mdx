@@ -58,8 +58,6 @@ generateMigration(config, { name: 'AddVendurePos', outputDir: './src/migrations'
 
 Run it with `npx tsx src/generate-migration.ts` (`tsx` is the TypeScript
 runner VendurePOS's own dev store uses).
-For projects scaffolded with `@vendure/create`, Vendure's CLI alternative is
-`npx vendure migrate` (generate and run interactively).
 Review the generated migration and include it in
 `config.dbConnectionOptions.migrations` (or your existing migration glob).
 Then save this as `src/run-migrations.ts` and run it with
@@ -75,8 +73,15 @@ runMigrations(config)
 
 The schema includes the command ledger, order/line custom fields and indexes,
 stock top-up recovery fields, and register/session/movement/closure tables.
-Generate against your store's current schema. Do not also run the plugin's
-bundled migrations for the same changes; the README describes that alternative.
+Generate against your store's current schema.
+
+{/* Not part of the port: upstream step 3 gives both alternatives inline; they are moved into this note. Sources: vendurepos/app plugin-v0.3.0 (2d3699e) docs/QUICKSTART.md:45-46 (npx vendure migrate), :61-62 (do not also run the bundled migrations; the README describes them); packages/vendure-plugin/README.md:55-57 (bundled migrations instead of generating one; do not run both for the same schema changes). */}
+
+<Callout title="Other ways to run the migration">
+For projects scaffolded with `@vendure/create`, Vendure's CLI alternative is `npx vendure migrate` (generate and run interactively).
+
+Instead of generating a migration, you can register the plugin's bundled migrations, which the README describes; see [Plugin setup](/docs/plugin-setup#configure-the-plugin-and-migrations). Do not also run the bundled migrations for the same changes.
+</Callout>
 
 ## 4. Enable bearer authentication
 
