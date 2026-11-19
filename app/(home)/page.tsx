@@ -19,7 +19,7 @@ const features = [
     // apps/pos/e2e/offline.spec.ts; at-the-till.mdx "If the internet drops" and limitations.mdx:47: a reload needs the connection; unsent sales live only in this browser (round 41, J2 C2)
     title: 'Keeps selling offline',
     description:
-      "With the till's tab left open, sales made with the network off wait on the till and go to Vendure when it reconnects. A reload needs the connection, and sales not yet sent are lost if the till app's site data is cleared. Our acceptance run makes 25 sales, 20 of them offline, and checks that Vendure holds exactly 25 orders.",
+      "With the till's tab left open, sales made with the network off wait on the till and go to Vendure when it reconnects. A reload needs the connection, and sales not yet sent are lost if this site's data is cleared. Our acceptance run makes 25 sales, 20 of them offline, and checks that Vendure holds exactly 25 orders.",
     test: { label: 'Read the acceptance test', path: 'apps/pos/e2e/offline.spec.ts' },
   },
   {
