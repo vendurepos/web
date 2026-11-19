@@ -1,0 +1,48 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "Home says what it is (a browser till for Vendure) and what it needs, but nowhere frames who should NOT use it or how it compares with Shopify POS / Square / Lightspeed (no card-terminal integration, no cash drawer, desktop Chrome only). A buyer only finds out on /docs/limitations; the home page has no one-line 'not for you if you need integrated card payments or a cash drawer'.",
+      "where": "home.desktop.01 / home.desktop.02 (feature list and 'Before you start')"
+    },
+    "C2": {
+      "score": 7,
+      "worst_defect": "No maintainer or owner is named anywhere: the footer reads only 'MIT licensed. Built with TallyUI. For Medusa, see MedusaPOS.', yet the demo sends 'anonymous usage events to ph.wcpos.com' with no explanation of who wcpos is. The changelog also admits a bug in the role the plugin itself creates ('Not in the release notes: in 0.2.0 and 0.3.0 this role has no ReadOrder, so the till's order history is refused until you add it to the role') with no plugin release since 2026-10-06. And home's 'keyboard-wedge scanners work out of the box' oversells, because you must first add a custom barcode field and a migration.",
+      "where": "home.desktop.02 footer; home.txt demo row; changelog.desktop.01 / changelog.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Quick-start step 3 makes you hand-save two TypeScript files (src/generate-migration.ts, src/run-migrations.ts) and run them with 'npx tsx' just to apply migrations. On top of that comes the ReadOrder role fix the plugin should have done itself, and a legacy collapsible 'If your store already allows vendurepos.vercel.app' that is noise for a first install.",
+      "where": "quick-start.desktop.02 / quick-start.phone.03-04 (step 3); quick-start.txt"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "User-facing docs leak internals: troubleshooting talks about 'VENDUREPOS_WEB_ALLOW_LAN_HTTP … adds http: to connect-src and img-src' and 'tallyNeedsAdminCommands', and quick-start's troubleshoot says 'plugin 0.3.0 advertises order.create 1–5, which includes v4'. The ReadOrder caveat is repeated on about four pages instead of being fixed once.",
+      "where": "troubleshooting.txt; quick-start.txt (Troubleshoot); at-the-till.txt / limitations.txt / changelog.txt"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "Home feature section is inconsistent: two feature cards are boxed and the rest sit unboxed, and there is a visibly empty band before the footer, so the page reads unfinished next to Shopify/Square marketing. The 404 page is a bare heading and three buttons.",
+      "where": "home.desktop.02; not-found.desktop.01"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The phone hero shows the till's phone layout with chips cut off mid-word ('Gif…') while limitations says phones are 'not tested yet'. Quick-start runs to about 10,580px on a phone with no in-page step index visible after the first slice.",
+      "where": "home.phone.01; quick-start.phone.01-09"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The 404 page logs 'Failed to load resource: the server responded with a status of 404 ()' and carries no JSON-LD. Every sitemap lastmod is just the 18-19 Nov build time. og-image.png crops the till screenshot through the 'Add charge' button.",
+      "where": "tech.json not-found; sitemap.xml; og-image.png"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A sceptic cannot tell who stands behind VendurePOS or whether it is maintained. No person or company is named. The footer only says 'MIT licensed. Built with TallyUI. For Medusa, see MedusaPOS.' Demo analytics go to an unexplained ph.wcpos.com. The plugin has shipped nothing since 0.3.0 on 2026-10-06, even though the changelog itself admits the role it creates lacks ReadOrder and breaks the till's order history.",
+    "where": "home.desktop.02 footer; changelog.desktop.01 / changelog.txt",
+    "fix": "Name the maintainer in the footer and on home (e.g. 'Built and maintained by WCPOS', with ph.wcpos.com stated as theirs) and add a support/issues link. Ship plugin 0.3.1 that adds ReadOrder to the role, so the caveat can be deleted from the four pages that repeat it."
+  },
+  "mean": 8.0
+}

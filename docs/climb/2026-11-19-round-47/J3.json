@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 6 prescribes different store-wide tax strategies for inclusive and exclusive channels, but 'A store mixing pricing modes must account for the store-wide strategy' leaves that configuration unresolved.",
+      "where": "text/endpoint_llms_full_txt.txt, Quick start, step 6, 'Why these pairings'"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The refund instructions cover Dashboard settlement and cash payouts but omit the external card-refund step and its relationship to settleRefund.",
+      "where": "text/at-the-till.txt, 'Refund a sale'; shots/plugin-setup.desktop.03.jpg, 'Settle a Dashboard refund'"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop-dark.jpg; desktop home, quick-start and documentation slices"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "phone home and quick-start slices; shots/at-the-till.phone.03.jpg and .04.jpg; tech.json phone overflow measurements"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The full machine-readable changelog omits the hosted till version 0.1.0, build date and commit a6ca2f3 supplied by the visible changelog.",
+      "where": "text/endpoint_llms_full_txt.txt, Changelog introduction; text/changelog.txt:24"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "A developer with tax-inclusive and tax-exclusive channels must guess how to choose the store-wide order tax strategy.",
+    "where": "text/endpoint_llms_full_txt.txt, Quick start, step 6, 'Why these pairings'",
+    "fix": "Document the supported configuration for mixed pricing modes and how to verify its totals. If that setup is unsupported, state the limitation explicitly."
+  },
+  "mean": 9.0
+}
