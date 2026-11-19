@@ -4,11 +4,13 @@ import { Callout, CalloutContainer, CalloutDescription } from 'fumadocs-ui/compo
 import type { MDXComponents } from 'mdx/types';
 import type { ComponentProps } from 'react';
 import { TillFigure } from '@/components/till-figure';
+import { HostedTillVersion } from '@/components/hosted-till-version';
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
     ...defaultMdxComponents,
     TillFigure,
+    HostedTillVersion,
     // <Callout fold> is a closed native <details> in the callout frame; its text stays in the HTML for search.
     // Round 33, J4 C5: no info icon in a fold; the <summary> triangle is its one affordance.
     Callout: ({ fold, title, children, ...props }: ComponentProps<typeof Callout> & { fold?: boolean }) =>
