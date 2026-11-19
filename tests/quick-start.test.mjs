@@ -339,17 +339,21 @@ test('step 5 folds the vercel.app note into a closed callout after its explanati
   assert.ok(!before.includes('keeps it for as long as anyone'));
 });
 
-test('a folded callout shows no icon beside its disclosure triangle; plain callouts keep theirs', () => {
+test('a folded callout is a plain bordered disclosure, not a callout frame; plain callouts keep their icon', () => {
   // Round 33, J4 C5: folds showed an info icon beside the disclosure triangle.
+  // Round 52, J4 C5: folds reused the callout's shadow and coloured rule.
   const frame = 'rounded-xl border bg-fd-card';
-  for (const page of ['quick-start', 'troubleshooting']) {
+  for (const page of ['quick-start', 'troubleshooting', 'at-the-till']) {
     const doc = readFileSync(`.next/server/app/docs/${page}.html`, 'utf8');
-    const folds = Array.from(doc.matchAll(/<details\b/g));
+    const folds = Array.from(doc.matchAll(/<details\b[^>]*>/g));
     assert.ok(folds.length >= 1, page);
-    for (const { index } of folds) {
-      const start = doc.lastIndexOf(frame, index);
-      assert.ok(start >= 0, page);
-      assert.ok(!doc.slice(start, index).includes('<svg'), `${page} @${index}`);
+    for (const { 0: tag, index } of folds) {
+      const where = `${page} @${index}`;
+      assert.ok(tag.includes('rounded-lg border') && !tag.includes('shadow'), where);
+      const before = doc.slice(Math.max(0, index - 200), index);
+      assert.ok(!/min-w-0 flex-1">\s*$/.test(before) && !/role="none"/.test(before), where);
+      const body = doc.slice(index, doc.indexOf('</details>', index));
+      assert.ok(!body.slice(0, body.indexOf('<summary')).includes('<svg'), where);
     }
   }
   const title = html.indexOf('Before a sale on a live store');
