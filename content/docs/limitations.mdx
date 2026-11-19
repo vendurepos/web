@@ -49,7 +49,8 @@ Pre-release: expect changes before 1.0.
 
 - When the store refuses a till update (the register's open, close, cash movements or closure), the till does not
   send it again, except a closure refused for its number, which it renumbers and sends once. Later till updates
-  for that register stay on this till; sales keep sending. See
+  for that register stay on this till; sales keep sending. None of those register records reach your Vendure store
+  from this till, so keep the printed Z reports. See
   [Troubleshooting](/docs/troubleshooting#act-on-a-header-notice).
 
 - The manager's approval on register close is a typed name,

@@ -295,6 +295,20 @@ test('limitations lists the refused till update right after the unsent sales and
   assert.ok(troubleshooting.includes('id="act-on-a-header-notice"'), 'the link target exists');
 });
 
+// Round 42, J2 C2: Limitations says what a refused till update costs, from troubleshooting.mdx "Any other code".
+test('limitations says refused register records do not reach the Vendure store', () => {
+  const html = readFileSync(join('.next/server/app', 'docs/limitations.html'), 'utf8');
+  const items = html.match(/<li[^>]*>(?:(?!<\/li>)[\s\S])*<\/li>/g) ?? [];
+  const text = (li) => li.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ');
+  const unsent = items.findIndex((li) => text(li).includes('Sales not yet sent are kept only in this browser'));
+  assert.ok(unsent >= 0, 'the unsent-sales item');
+  const refused = items[unsent + 1];
+  assert.ok(refused, 'an item follows the unsent-sales item');
+  const phrase = 'sales keep sending. None of those register records reach your Vendure store from this till, '
+    + 'so keep the printed Z reports. See Troubleshooting';
+  assert.ok(text(refused).includes(phrase), phrase);
+});
+
 test('troubleshooting says what still works after a refused till update', () => {
   // Round 25, J2 C4: vendurepos/app@ebcd9e4 index.tsx:216-221 (printZ), closure-history-sheet.tsx:14-19, :38-47;
   // @tallyui/pos 3.20.0 register-outbox.ts:178-181 (closures wait behind the refused row).
