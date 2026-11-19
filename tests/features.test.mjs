@@ -143,6 +143,52 @@ test('the two proof claims link their tests', () => {
   assert.equal(Array.from(html.matchAll(/<a\b[^>]*\bhref="https:\/\/github\.com\/vendurepos\/app\/blob\/main\//g)).length, 2);
 });
 
+// Round 45, J4 C5, P5: the two test-backed claims lead as cards; the other eight are a frameless checklist.
+test('home features: two test-backed cards lead, the other eight are a frameless checklist', () => {
+  const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
+  const start = html.indexOf('What it does today</h2>');
+  assert.ok(start >= 0);
+  const end = html.indexOf('<section', start);
+  assert.ok(end > start);
+  const slice = html.slice(start, end);
+  const ul = slice.indexOf('<ul');
+  assert.ok(ul >= 0);
+  assert.equal(slice.split('<ul').length - 1, 1);
+  const cards = Array.from(slice.matchAll(/<[a-z]+\b[^>]*\bclass="[^"]*\bbg-fd-card\b[^"]*"[^>]*>/g));
+  assert.equal(cards.length, 2);
+  const offline = slice.indexOf('Keeps selling offline');
+  const once = slice.indexOf('Every sale lands once');
+  assert.ok(cards[0].index < offline && offline < cards[1].index, 'first card holds Keeps selling offline');
+  assert.ok(cards[1].index < once && once < ul, 'second card holds Every sale lands once');
+  const list = slice.slice(ul);
+  let at = 0;
+  for (const title of [
+    'Paid, fulfilled, at the till&#x27;s price',
+    'Open and close the register',
+    'Cash, card and receipts',
+    'Barcode scanners',
+    'Park a sale, resume it later',
+    'Change a line price',
+    'Customers at the till',
+    'Line and order discounts',
+  ]) {
+    const found = list.indexOf(`>${title}</h3>`, at);
+    assert.ok(found > at, title);
+    assert.match(list.slice(list.lastIndexOf('<', found), found + 1), /^<h3\b/, title);
+    at = found;
+  }
+  assert.doesNotMatch(list, /\bbg-fd-card\b/);
+  assert.doesNotMatch(list, /\bclass="[^"]*\bborder\b/);
+  const links = Array.from(slice.matchAll(/<a\b[^>]*\bhref="https:\/\/github\.com\/vendurepos\/app\/blob\/main\/[^>]*>/g));
+  assert.equal(links.length, 2);
+  for (const [tag] of links) {
+    assert.match(tag, /\bclass="[^"]*\brounded-md\b/);
+    assert.match(tag, /\bclass="[^"]*\bborder\b/);
+    assert.doesNotMatch(tag, /\brounded-full\b/);
+  }
+  assert.equal(slice.split('<h3').length - 1, 10);
+});
+
 test('before you start gates refunds on the plugin and names coupon codes as not yet', () => {
   const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
   // plugin-v0.3.0 (2d3699e) info.controller.ts:29 (no order.refund); vendurepos/app 1404f42 apps/pos/lib/discount-total-matrix.test.ts:171-178.
