@@ -167,7 +167,8 @@ export default function HomePage() {
             Quick start
           </Link>
         </div>
-        <p className="mt-4 text-sm text-fd-muted-foreground">
+        {/* Round 40, J4 C1: the note overhung the lede's measure. */}
+        <p className="mt-4 max-w-2xl mx-auto text-sm text-fd-muted-foreground">
           Your own store needs the plugin on your Vendure server first: the{' '}
           <Link href="/docs/quick-start" className="underline">quick start</Link> sets it up, then signs the till in and makes a
           sale.
