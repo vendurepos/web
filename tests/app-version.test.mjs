@@ -4,7 +4,9 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { appVersionSentence, LOCAL_APP_VERSION, parseAppVersion } from '../lib/app-version.ts';
 
-const SENTENCE = 'The hosted till at app.vendurepos.com is version 0.1.0, built 18 Nov 2026 from vendurepos/app commit 8483714.';
+// Round 39, C2/C4 (J1, J2, J4): the sentence tells the till app's version from the plugin's.
+const SENTENCE =
+  "The hosted till at app.vendurepos.com is till app version 0.1.0, built 18 Nov 2026 from vendurepos/app commit 8483714. The till app has its own version number; the releases below are the plugin's.";
 
 test('parseAppVersion accepts the local fixture as an equal object', () => {
   assert.deepEqual(parseAppVersion({ ...LOCAL_APP_VERSION }), LOCAL_APP_VERSION);
@@ -34,7 +36,11 @@ test('appVersionSentence names the version, the UTC build date and the short com
 test('the built changelog shows the hosted till sentence once', () => {
   const html = readFileSync('.next/server/app/docs/changelog.html', 'utf8');
   // The RSC payload in <script> repeats the page's text, so it is cut out before counting what renders.
-  const text = html.replace(/<script\b[\s\S]*?<\/script>/g, ' ').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ');
+  const text = html
+    .replace(/<script\b[\s\S]*?<\/script>/g, ' ')
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .replaceAll('&#x27;', "'");
   assert.equal(text.split(SENTENCE).length - 1, 1);
 });
 

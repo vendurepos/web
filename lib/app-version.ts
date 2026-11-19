@@ -19,9 +19,13 @@ export function parseAppVersion(value: unknown): AppVersion | null {
 
 const DATE = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
 
+// Round 39, C2/C4 (J1, J2, J4): app and plugin versions were not told apart.
 export function appVersionSentence(v: AppVersion): string {
   const date = DATE.format(new Date(v.builtAt));
-  return `The hosted till at app.vendurepos.com is version ${v.version}, built ${date} from vendurepos/app commit ${v.commit.slice(0, 7)}.`;
+  return (
+    `The hosted till at app.vendurepos.com is till app version ${v.version}, built ${date} from vendurepos/app commit ${v.commit.slice(0, 7)}.` +
+    " The till app has its own version number; the releases below are the plugin's."
+  );
 }
 
 // Local builds and tests only (front desk ruling P6 (c), 2026-11-19): Vercel reads the real ${APP_URL}/version.json.
