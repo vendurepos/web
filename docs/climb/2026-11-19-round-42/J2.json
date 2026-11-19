@@ -1,0 +1,48 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero gives a shop owner only developer next steps ('Live demo' / 'Quick start'), and its lede leans on jargon ('the open-source headless commerce framework'). The cashier guide 'At the till' never appears as a hero action: it is in the top nav and the closing paragraph only, so 'can my staff sell with this tomorrow' has no obvious click.",
+      "where": "home.desktop.01 hero; home.phone.01 (nav collapsed behind a chevron, so At the till is not visible at all)"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "The only notable defect is that the hardest truth for an owner sits in Troubleshooting rather than on Limitations or home. Under 'Any other code' it says 'the till has no retry or skip, and fixing the store does not make it send the update again … Those closures and cash records do not reach your Vendure store from this till'. Everywhere else, limits are stated plainly and the claims link to acceptance tests.",
+      "where": "text/troubleshooting.txt, Till updates line, 'Any other code'"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The device-key route leaves a known gap for the user to fix by hand: 'On plugin 0.3.0 that role has no ReadOrder: add it yourself', and the changelog admits it was 'Not in the release notes'. Quick start also tells you up front that 'code names say Tally, not VendurePOS' (TallyPosPlugin, TallyPosV51790900000000), and Plugin setup offers two migration paths, which a hired freelancer has to sort out.",
+      "where": "connect-a-till (device key section); changelog.desktop.01 0.2.0 last bullet; plugin-setup.desktop.01"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Troubleshooting mixes counter-staff guidance with admin-only GraphQL ('tallyNeedsAdminCommands' / 'tallyResolveNeedsAdmin', 'VENDUREPOS_WEB_ALLOW_LAN_HTTP', errorCode values). A shop owner reading it between customers cannot tell which fixes are theirs and which belong to the developer.",
+      "where": "troubleshooting.desktop.01 onward; text/troubleshooting.txt"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "On At the till, the closure-screen screenshot sits in a large card with a lot of empty space around a small screen, which breaks the rhythm of an otherwise tight page. The home hero is centred while everything below it is left-aligned.",
+      "where": "at-the-till.desktop.03/04 (closure screenshot); home.desktop.01"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "On phone, the home header collapses every top link behind a chevron, so the cashier page is not one tap away for an owner reading on a phone. At the till runs very long on phone (about 9,000 px) with only the 'On this page' dropdown to move around.",
+      "where": "home.phone.01 header; at-the-till.phone.* (long page)"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "None that matters. Lighthouse mobile scores 98/100/100/100, and the only failing audits are minor (52 KiB of unused JS on home, LCP 2.4 s). Titles, descriptions, JSON-LD, llms.txt, sitemap, robots, the search API, the share card and a real 404 are all present.",
+      "where": "tech.json lighthouse /; og-image.png; not-found.desktop.01"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "Nothing on the home page speaks to the owner or the counter staff. The hero actions are 'Live demo' and 'Quick start' (npm, migrations, CORS), and the page that answers 'can staff sell tomorrow, what if the internet drops, how do I close the day' (At the till) appears only as a nav link (hidden behind a chevron on phone) and in the final paragraph.",
+    "where": "home.desktop.01 and home.phone.01 hero",
+    "fix": "Add a third hero link, 'For your staff: At the till', plus one line under it for owners: sell, keep selling offline with the tab open, close the day with a Z report."
+  },
+  "mean": 8.3
+}

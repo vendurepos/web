@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 9, "worst_defect": "The hero repeats its own second CTA: under the 'Live demo' / 'Quick start' buttons sits a grey note whose underlined 'quick start' link points to the same page, so three targets compete in the first fold where two would do.", "where": "home/desktop/01 and home/phone/01 (note under the hero buttons)"},
+    "C2": {"score": 9, "worst_defect": "Proof is uneven across the feature grid: 'Keeps selling offline' and 'Every sale lands once' link to their tests, but the equally strong claim 'Paid, fulfilled, at the till's price' (and the other seven cards) carry no link or evidence, so the grid reads half-proven.", "where": "home/desktop/01, 'What it does today' cards"},
+    "C3": {"score": 8, "worst_defect": "The 9-step quick start (6699 px tall) has no image at all: neither the till's 'Sign in to Vendure' form that step 8a-c describes nor the synced order in the Vendure Dashboard that 'Check it worked' lists, so success is text-only.", "where": "quick-start/desktop/03-04 (step 8 and 'Check it worked'); text/quick-start.txt has no [image] marker"},
+    "C4": {"score": 8, "worst_defect": "Troubleshooting nests too deep to scan: under 'Till updates line' a bullet contains bold-led paragraphs ('At the counter:', 'For the store owner:'), a collapsible 'To find the line in the sync log', and a second bullet list of errorCodes, all at one indent with no visual break.", "where": "troubleshooting/desktop/01, 'Act on a header notice'"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' is ten identical text-only grey cards in a 2-column grid (~1100 px tall); the first row is taller because only it has links, and with no icon, image or weight change it reads as one monotone slab between the hero shot and the comparison table. Dark mode holds up well.", "where": "home/desktop/01-02"},
+    "C6": {"score": 8, "worst_defect": "On a 390 px screen the ten feature cards stack into one column of identical grey boxes, about 1750 CSS px (two-plus screens) of uniform cards before 'Live demo or your own store', right after a phone hero shot that cuts off mid product grid.", "where": "home/phone/02-03"},
+    "C7": {"score": 9, "worst_defect": "Docs pages carry only BreadcrumbList JSON-LD (no TechArticle or similar), and the search API's breadcrumbs for every hit are just ['VendurePOS'] rather than the page path.", "where": "tech.json docs.desktop jsonLd; text/endpoint_api_search_query_offline.txt"}
+  },
+  "overall_worst": {
+    "criterion": "C6",
+    "defect": "The home page's ten 'What it does today' cards are identical text-only grey boxes; on a phone they stack into two-plus screens of the same card, the longest unbroken run on the site, and on desktop they form a monotone 2x5 slab with a taller first row.",
+    "where": "home/phone/02-03 (and home/desktop/01-02)",
+    "fix": "Keep the two proof cards ('Keeps selling offline', 'Every sale lands once') as full cards with their test links, and turn the other eight into a compact two-column checklist (title plus one line each) that becomes a tight list on phone."
+  },
+  "mean": 8.4
+}
