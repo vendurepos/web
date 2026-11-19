@@ -1,0 +1,48 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "Lede explains the product as 'open-source till for Vendure, the open-source headless commerce framework' — the owner has to get past 'headless commerce framework' before reading 'keeps selling when the connection drops'; on phone the header shows only Docs and Live demo, with Quick start / At the till hidden behind the chevron",
+      "where": "home.desktop.01 hero lede; home.phone.01 header"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "'Live demo or your own store' row 'Refund a sale at the till': demo 'Yes', own store 'No, not on plugin 0.3.0 ... stays Pending until an administrator settles it with two Admin API calls' — honest, but in developer terms; it never says what the customer gets back or when, and the demo trains staff on a refund button their store will not have",
+      "where": "home.desktop.02 / home.phone.04 table; at-the-till 'Refund a sale'"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Device key path has a known hole: the role made by 'New POS till key' has no ReadOrder on 0.3.0, so 'the till's order history is refused until you add it to the role' by hand; scanning also needs a 'barcode' ProductVariant custom field plus a database migration before the scanner works",
+      "where": "quick-start 'Optional: a device key' and step 8c; changelog 0.2.0 last bullet; connect-a-till 'Enter your store details'"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Troubleshooting mixes cashier-facing header notices with admin GraphQL (tallyNeedsAdminCommands / tallyResolveNeedsAdmin, SuperAdmin, VENDUREPOS_WEB_ALLOW_LAN_HTTP) on one page; At the till is a long reference with no short 'first shift' checklist a cashier can follow",
+      "where": "troubleshooting.desktop.01-03; at-the-till.phone.01-09"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "Cashier sheet and register closure screenshots sit in oversized framed boxes with large empty padding around small images; the feature list under the two home cards is undifferentiated plain text",
+      "where": "at-the-till.desktop.03-04; home.desktop.01-02"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "At the till runs to 9 phone screens (~9000 px) with no jump list at top of body; inline code chips such as `N orders waiting to send` break onto their own lines inside the 'If the internet drops' callout",
+      "where": "at-the-till.phone.01-09, at-the-till.phone.07"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "og-image crops the till screenshot at its bottom edge; 404 page body has no search box or structured data; Lighthouse flags 53 KiB unused JS and 14 KiB legacy JS on /",
+      "where": "og-image.png; not-found; tech.json lighthouse /"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "On a real store (plugin 0.3.0) a refund cannot be done at the till, and the site explains it as an administrator settling it 'with two Admin API calls' while the live demo refunds at the till — an owner cannot tell how a customer refund works day to day or what the customer is told",
+    "where": "home.desktop.02 'Live demo or your own store' row 'Refund a sale at the till'; at-the-till 'Refund a sale'",
+    "fix": "In the home row and At the till › Refund a sale, say in plain words who does the refund, where (Vendure Dashboard), and when the customer's money actually goes back; mark the demo's refund-at-till as 'demo only, not on 0.3.0 stores'; link Plugin setup for the developer steps instead of naming API calls"
+  },
+  "mean": 8.1
+}
