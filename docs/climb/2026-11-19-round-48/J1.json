@@ -1,0 +1,48 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero is clear, but the first two highlighted cards under 'What it does today' are written for engineers. 'Keeps selling offline' spends most of its text on caveats ('A reload needs the connection, and sales not yet sent are lost if this site's data is cleared'), and 'Every sale lands once' talks about an id saved 'with the order in one step' and has a 'Read the 200-send test' button. So the first thing a newcomer reads below the hero is about data loss and test harnesses, not what a shop gets.",
+      "where": "home/desktop/01 (cards below the screenshot); home/phone/02"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "In the demo column of the comparison table, the site says the demo sends 'anonymous usage events to ph.wcpos.com, with no cookie'. A wcpos.com domain appears on a vendurepos.com site with no word on who that is, so it reads like an unexplained third party.",
+      "where": "home/desktop/02 'Live demo or your own store' table, last row; home/phone/04"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The path to a till is complete, but step 5 ends in a collapsed box, 'If your store already allows vendurepos.vercel.app', which points to an old address a new user has never seen. It looks like leftover migration text in the middle of the main setup path.",
+      "where": "quick-start/desktop/03 top; quick-start/phone/05 bottom"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The Changelog is internal developer notes rather than a reader's changelog. Bullets like 'order.create v5 custom lines are real order lines on a plugin-owned, disabled 'POS custom item' variant (SKU TALLY-CUSTOM-ITEM...)' and repeated '(ADR 0005)' links assume the reader knows the plugin's internals. The plugin's 'Tally' code names (TallyPosPlugin, tally-pos, /tally/v1) also need an explainer paragraph in quick-start step 2.",
+      "where": "changelog/desktop/01; quick-start/desktop/01 step 2"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "Below the hero, the home page is mostly grey body text. 'What it does today' gives two features bordered cards and the next eight unboxed text blocks with no icons or images, then come a seven-row table and a seven-bullet 'Before you start' list. The single product screenshot is the only visual on the page, so the lower half reads like a docs page.",
+      "where": "home/desktop/01 bottom to home/desktop/02"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "On a phone, the tax table in quick-start step 6 stacks into cards that repeat the long label 'taxOptions.orderTaxCalculationStrategy' in bold for every row, and the step 2 heading wraps onto three lines around a code pill ('2. Add TallyPosPlugin to your existing Vendure config'). Nothing overflows, but these two spots are heavy to read.",
+      "where": "quick-start/phone/06 (tax table); quick-start/phone/02 top"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The share card's till screenshot is cut off at the bottom edge: the first row of product cards loses its 'In Stock' pills and 'Add charge' is half visible. Otherwise everything checks out: Lighthouse 98/100/100/100, llms.txt, sitemap, real 404 status and JSON-LD are all in place.",
+      "where": "og-image.png bottom edge"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "A first-time visitor who scrolls past the clear hero meets two highlighted cards written for engineers. 'Keeps selling offline' leads into caveats about reloads and 'sales not yet sent are lost if this site's data is cleared', and 'Every sale lands once' talks about ids, 'one step' and a '200-send test'. The first impression of the product turns into data loss and test jargon instead of what a shop gains.",
+    "where": "home/desktop/01 and home/phone/02, 'What it does today' cards",
+    "fix": "Rewrite the two cards as plain shop outcomes, e.g. 'Internet drops? Keep selling: sales send themselves when it is back.' and 'Never a double order, even if a sale is sent twice.' Keep the test links as small proof links, and move the reload and cleared-data caveat into the 'Before you start' list next to the existing Limitations link."
+  },
+  "mean": 8.3
+}
