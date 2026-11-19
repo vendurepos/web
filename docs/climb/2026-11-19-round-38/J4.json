@@ -1,0 +1,48 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero is clear ('Point of sale for Vendure', Live demo / Quick start), but the real first step for a developer, 'Your own store needs the plugin on your Vendure server first…', sits as small gray text under the buttons, and the phone header shows only the logo, search and a chevron, with no visible Docs entry.",
+      "where": "home.desktop.01, home.phone.01"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "The changelog prose exposes internal references such as '(ADR 0005)' and issue numbers that mean nothing to an outside reader, and they read as repo notes rather than release notes.",
+      "where": "changelog.desktop.01, changelog.phone.01"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 4's permission list is a run-on paragraph of seven inline code chips ('TallyPosSell, ReadCatalog, ReadSettings, ReadCustomer and CreateCustomer … CreateOrder … ReadOrder') instead of a checklist, which is the step most likely to be set up wrong.",
+      "where": "quick-start.desktop.02, quick-start.phone.04"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "On the docs overview, the 'Next steps' Quick start card is directly followed by the pager card 'Quick start >' with the same text, 'Install the plugin, configure Vendure and make your first sale.', so the same link appears twice in a row.",
+      "where": "docs.desktop.01, docs.phone.02"
+    },
+    "C5": {
+      "score": 7,
+      "worst_defect": "'What it does today' is ten visually identical gray text cards in an even 2-column grid with no icons, emphasis or grouping, so the three proven claims with test links look the same as 'Barcode scanners'. The at-the-till payment screenshot also carries about 420 px of empty white cart pane, and the limitations list floats one-line bullets about 48 px apart.",
+      "where": "home.desktop.01-02, at-the-till.desktop.02, limitations.desktop.01"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The inline code chip 'packages/vendure-plugin/CHANGELOG.md' breaks mid-token across two lines, and dense inline chips push line heights out of rhythm ('Sign in with a Vendure administrator…'). The sticky TOC bar already reads '1. Install the plugin' at the top of the page, and the ten home cards stack to about 1700 CSS px.",
+      "where": "changelog.phone.01, quick-start.phone.04, quick-start.phone.01, home.phone.02-03"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "On / Lighthouse mobile LCP is 2.4 s, with 52 KiB of unused JavaScript and 150 ms of render-blocking resources. Everything else is complete: llms.txt, llms-full.txt, sitemap, robots, OG image, JSON-LD and search all return 200.",
+      "where": "tech.json (lighthouse /)"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "The 'What it does today' section is ten visually identical gray text cards with no icons, emphasis or grouping. The three proven claims (keeps selling offline, every sale lands once, paid/fulfilled at the till's price, two of them with test links) look the same as 'Barcode scanners', and on phone the section becomes about 1700 CSS px of the same box.",
+    "where": "home.desktop.01-02, home.phone.02-03",
+    "fix": "Promote the three proof cards (offline, every sale once, paid/fulfilled) to a 3-up row that carries their test links. Render the other seven as a compact two-column list without card chrome, single column on phone."
+  },
+  "mean": 8.1
+}
