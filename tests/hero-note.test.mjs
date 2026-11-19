@@ -129,14 +129,15 @@ test('hero is left-aligned with a smaller lead below 640px', () => {
 
 // Round 33, J4 C6: the phone hero clipped the cart's Add charge at 390x664.
 // Round 35, J1/J2/J4/J5 C6: the phone cart truncated its Qty header; the phone hero now shows the Products tab.
-test('phone hero capture is the Products tab at 390x665, and its alt names the cart total', () => {
+// Round 46, J1 C6: the phone hero is cropped after the first product row.
+test('phone hero capture is the Products tab at 390x475, and its alt names the cart total', () => {
   const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
   const sources = html.match(/<source[^>]*>/g) ?? [];
   for (const scheme of ['light', 'dark']) {
     const png = readFileSync(`public/till/sale-phone-${scheme}.png`);
     const [width, height] = [png.readUInt32BE(16), png.readUInt32BE(20)];
-    assert.ok(width === 780 && height === 1330, `${scheme} ${width}x${height}`);
-    assert.ok(sources.some((s) => s.includes(`sale-phone-${scheme}.png`) && s.includes('height="1330"')), scheme);
+    assert.ok(width === 780 && height === 950, `${scheme} ${width}x${height}`);
+    assert.ok(sources.some((s) => s.includes(`sale-phone-${scheme}.png`) && s.includes('height="950"')), scheme);
   }
   const img = html.match(/<img[^>]*\salt="(The VendurePOS till mid-sale[^"]*)"/);
   assert.ok(img, 'hero img');

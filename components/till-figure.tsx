@@ -7,7 +7,8 @@ import type { ReactNode } from 'react';
 // desktop shot ended mid-row. Both now end on whole rows.
 // Round 11, C6: a 1440px shot shrunk to a phone is unreadable, so below 640px a <picture> serves the phone capture.
 // Round 33, J2 C4: closure is the dialog alone after closing the register (512x504 CSS px; phone 390x444).
-const PHONE_HEIGHT: Record<string, number> = { sale: 1330, payment: 1688, cashier: 688, closure: 888 };
+// Round 46, J1 C6: the phone hero ends after the first product row (780x950), so the page's first section comes sooner.
+const PHONE_HEIGHT: Record<string, number> = { sale: 950, payment: 1688, cashier: 688, closure: 888 };
 // Round 15, C5: a full 1440px window shrunk to the 836px docs column put the till's text at 7px. payment is a 900x820
 // capture right of the nav rail (836x820 CSS px), cashier is the sheet alone (384x306); sale stays the full window.
 // The wide image never renders wider than its CSS size, so a DPR 2 capture is shown 1:1 and not blown up.
