@@ -1,0 +1,48 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {
+      "score": 9,
+      "worst_defect": "The phone top bar shows only \"VendurePOS  Docs  Live demo\" plus search and a chevron. \"Quick start\", the main next step, is missing from the bar and only reachable through the hero button or the menu.",
+      "where": "home.phone.01"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "The comparison table's demo row says \"anonymous usage events to ph.wcpos.com\". The unexplained wcpos domain breaks the otherwise single-brand voice.",
+      "where": "home.desktop.02 (comparison table)"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Quick start has no images at all. Step 8 (the a–i lettered list) and \"Check it worked\" describe the sign-in screen and the synced order in text only, with no screenshot to confirm success against.",
+      "where": "quick-start.desktop.03/04"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "At the page top, the phone \"On this page\" bar already reads \"1. Install the plugin\" (on the overview it reads \"How a sale reaches Vendure\"), naming a heading the reader has not reached. Connect-a-till is a long run of prose and bullets with no image to break it up.",
+      "where": "quick-start.phone.01, docs.phone.01, connect-a-till.desktop.01"
+    },
+    "C5": {
+      "score": 7,
+      "worst_defect": "The three at-the-till screenshots render at three widths: the payment screen at the full ~836 px column, the cashier sheet at ~418 px and the closure at ~545 px. The last two sit as a small card inside an oversized outer frame with empty padding. Home's \"What it does today\" boxes 2 items as bordered cards with buttons and leaves the other 8 borderless.",
+      "where": "at-the-till.desktop.02/03/04; home.desktop.01/02"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "On the phone, the stacked tax table drops code styling from its labels (\"taxOptions.orderTaxCalculationStrategy\" in bold sans instead of the code chip used on desktop). The payment screenshot is about two screens tall, with the \"€50.00\" chip orphaned on its own row. Bordered inline code chips make the leading uneven in prose (changelog.phone.02).",
+      "where": "quick-start.phone.06, at-the-till.phone.03/04, changelog.phone.02"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The OG card crops the till at the bottom edge mid-row, cutting off the \"Add charge\" button. The subtitle wraps so \"a normal order.\" sits alone on its own line.",
+      "where": "og-image.png"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "The at-the-till screenshots render at three different widths (~836 / 418 / 545 px). Two of them appear as a small card inside a larger padded outer frame, so the page looks assembled from three different components.",
+    "where": "at-the-till.desktop.02, at-the-till.desktop.03, at-the-till.desktop.04",
+    "fix": "Give every docs screenshot one width (the content column, or one fixed max width, centred) and a single frame with no inner padding. Captions should keep the same alignment and spacing under each image."
+  },
+  "mean": 8.3
+}

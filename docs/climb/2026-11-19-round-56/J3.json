@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The tax setup prescribes different store-wide strategies for inclusive and exclusive channels, but tells mixed-mode stores only to 'account for the store-wide strategy' without explaining what to configure.",
+      "where": "Quick start, step 6, 'Why these pairings'; text/endpoint_llms_full_txt.txt:850\u2013872"
+    },
+    "C4": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "text/plugin-setup.txt; text/connect-a-till.txt; text/troubleshooting.txt; text/endpoint_api_search_query_offline.txt"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop-dark.jpg; home and quick-start desktop slices; plugin-setup desktop slices"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "Home and quick-start phone slices; first phone slice of every other page; tech.json overflowX fields"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The llms-full.txt changelog omits the visible changelog's hosted till version, build date and commit, leaving machine readers without that release identification.",
+      "where": "text/changelog.txt:24 versus text/endpoint_llms_full_txt.txt:176\u2013189"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "A developer with tax-inclusive and tax-exclusive channels must guess which global order-tax strategy to use.",
+    "where": "Quick start, step 6, 'Why these pairings'; text/endpoint_llms_full_txt.txt:850\u2013872",
+    "fix": "Document the supported configuration for mixed-mode channels and how to verify rounding in each channel. If that combination is unsupported, state the restriction explicitly before the configuration example."
+  },
+  "mean": 9.1
+}

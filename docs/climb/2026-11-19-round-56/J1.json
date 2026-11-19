@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The first feature card says sales not yet sent \"are lost if this site's data is cleared\". Read on vendurepos.com, \"this site\" sounds like the marketing site, not the till app at app.vendurepos.com, so the one caveat a newcomer reads first is ambiguous.", "where": "home.desktop.01 / home.phone.02, card 'Keeps selling offline'"},
+    "C2": {"score": 7, "worst_defect": "The home page sells the product as \"open-source\" and \"MIT licensed\", then in 'Before you start' says that self-hosting needs \"your own RxDB Premium licence token (RXDB_PREMIUM)\". It never says what RxDB Premium is or that it costs money, so it reads like a paid catch tucked behind jargon.", "where": "home.desktop.02 / home.phone.04, 'Setting up the store' last bullet"},
+    "C3": {"score": 8, "worst_defect": "Step 8c says to \"enter the name of an existing single text ProductVariant custom field ... leaving it blank disables this field choice\". \"Disables this field choice\" doesn't say what happens to scanning when the box is left blank, at exactly the moment the reader is signing in for the first time.", "where": "quick-start.desktop.03 / quick-start.phone.08, step 8 item c"},
+    "C4": {"score": 8, "worst_defect": "The quick start's sign-in step (8a–d: store URL, channel token, barcode field, opening float) has no screenshot of the sign-in screen, while At the till shows three till screens. The reader has to picture fields they have never seen.", "where": "quick-start.desktop.03-04, '8. Sign in and make a sale' (no [image:] marker in text/quick-start.txt)"},
+    "C5": {"score": 8, "worst_defect": "In the 'Live demo or your own store' table, the 'Refund a sale at the till' cell for 'Your Vendure store' is a four-line paragraph (\"No, not on plugin 0.3.0: refund in the Vendure Dashboard. The refund stays Pending until an administrator settles it with two Admin API calls; see Plugin setup.\"). It breaks the table's Yes/No rhythm and makes that row tall.", "where": "home.desktop.02, comparison table row 6"},
+    "C6": {"score": 8, "worst_defect": "On phone the home header shows only 'Docs' and 'Live demo'. 'Quick start' and 'At the till' are hidden behind an unlabeled chevron next to the search icon, so the second main path is only reachable from the hero button.", "where": "home.phone.01, header"},
+    "C7": {"score": 9, "worst_defect": "The share card's till screenshot is cut off at the bottom edge: the product cards' 'In Stock' pills and the 'Add charge' button are sliced in half, so the card looks cropped rather than composed.", "where": "og-image.png, bottom edge"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A first-time visitor is told the product is open source and MIT licensed, then meets an unexplained \"RxDB Premium licence token (RXDB_PREMIUM)\" requirement in 'Before you start'. With no word on what it is, whether it costs money, or that the hosted app.vendurepos.com needs none, it plants doubt about the 'free and open' promise.",
+    "where": "home.desktop.02 / home.phone.04, 'Setting up the store' last bullet",
+    "fix": "Say it in plain words, for example: \"Using app.vendurepos.com needs nothing extra. Building the till yourself needs a paid RxDB Premium licence (a third-party database add-on); see Connect a till.\""
+  },
+  "mean": 8.0
+}
