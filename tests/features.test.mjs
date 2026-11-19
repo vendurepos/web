@@ -206,6 +206,23 @@ test('home offline card says the till tab must stay open', () => {
   assert.ok(link > at, 'before the test link');
 });
 
+// Round 41, J2 C2: the offline card carries the reload and site-data caveat next to its promise.
+test('home offline card says a reload needs the connection and unsent sales live in this browser', () => {
+  const raw = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
+  const html = raw
+    .slice(raw.indexOf('</head>'))
+    .replace(/<script[\s\S]*?<\/script>/g, '')
+    .replace(/&#x27;|&#39;|&apos;/g, "'")
+    .replaceAll('<!-- -->', '');
+  const caveat = "A reload needs the connection, and sales not yet sent are lost if this site's data is cleared.";
+  assert.equal(html.split(caveat).length - 1, 1);
+  const at = html.indexOf(caveat);
+  const promise = html.indexOf("With the till's tab left open");
+  const run = html.indexOf('Our acceptance run makes 25 sales');
+  assert.ok(promise >= 0 && promise < at, 'after the tab-left-open promise');
+  assert.ok(run > at, 'before the acceptance run');
+});
+
 test('home header links At the till; docs pages leave it to the sidebar', () => {
   // Round 31, J2 C1: the home header links the cashier guide; docs pages leave it to the sidebar.
   // The nav link is the one straight after the nav's Quick start link (the home page body also links At the till).
