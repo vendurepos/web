@@ -309,6 +309,16 @@ test('limitations says refused register records do not reach the Vendure store',
   assert.ok(text(refused).includes(phrase), phrase);
 });
 
+// Round 43, J4 C4: Limitations' lists are tight like the other pages' (no <p> inside each item).
+test('limitations lists are tight, with no paragraph inside an item', () => {
+  const html = readFileSync(join('.next/server/app', 'docs/limitations.html'), 'utf8');
+  const body = html.slice(html.indexOf('</head>')).replace(/<script\b[\s\S]*?<\/script>/g, '');
+  const items = body.match(/<li[^>]*>(?:(?!<\/li>)[\s\S])*<\/li>/g) ?? [];
+  assert.ok(items.length >= 15, `at least 15 items, found ${items.length}`);
+  const loose = items.filter((li) => /^<li[^>]*>(?:\s|<!-- -->)*<p[\s>]/.test(li));
+  assert.deepEqual(loose, [], 'no item opens with a <p>');
+});
+
 test('troubleshooting says what still works after a refused till update', () => {
   // Round 25, J2 C4: vendurepos/app@ebcd9e4 index.tsx:216-221 (printZ), closure-history-sheet.tsx:14-19, :38-47;
   // @tallyui/pos 3.20.0 register-outbox.ts:178-181 (closures wait behind the refused row).

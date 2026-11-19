@@ -18,41 +18,30 @@ Pre-release: expect changes before 1.0.
 ## At the counter
 
 - Web till only for now. Its browser tests run in desktop Chrome; other browsers are not tested yet.
-
 - One browser tab per till.
-
 - Private browser windows that give a site no storage,
   such as Safari's, cannot run the till.
-
 - Card payments are taken on a separate terminal and confirmed on the till.
   The till does not talk to the terminal.
-
 - Receipts and reports print through the browser's print dialog, on any printer that device's browser can use.
   The till does not connect to a receipt printer directly and does not open a cash drawer.
-
 - Coupon codes: not yet.
   Line and order discounts work at the till.
-
 - On plugin 0.3.0, refunds go through the Vendure Dashboard, and Vendure keeps a refund
   of a POS order Pending until an administrator settles it with the Admin API's [`settleRefund`](/docs/plugin-setup#settle-a-dashboard-refund) mutation.
   The live demo refunds at the till.
-
 - Prices and stock: an open till picks up a price change within about a minute
   and a stock change within about five minutes.
-
 - The till keeps no offline copy of its own page. While the connection is down, keep its tab open:
   a reload, or a reopened browser, cannot load the till until the connection is back.
   See [At the till](/docs/at-the-till#if-the-internet-drops).
-
 - Sales not yet sent are kept only in this browser. If this site's data is cleared, or the device is lost,
   while the header still shows `N orders waiting to send`, those sales are lost.
-
 - When the store refuses a till update (the register's open, close, cash movements or closure), the till does not
   send it again, except a closure refused for its number, which it renumbers and sends once. Later till updates
   for that register stay on this till; sales keep sending. None of those register records reach your Vendure store
   from this till, so keep the printed Z reports. See
   [Troubleshooting](/docs/troubleshooting#act-on-a-header-notice).
-
 - The manager's approval on register close is a typed name,
   not a verified sign-in.
 
@@ -60,12 +49,9 @@ Pre-release: expect changes before 1.0.
 
 - Building the till yourself needs your own RxDB Premium
   licence token in `RXDB_PREMIUM`.
-
 - Sales take stock through Vendure's stock allocation strategy,
   from the channel's stock locations. The till cannot pick a location for a sale.
-
 - Postgres only.
   MySQL, MariaDB and SQLite are not supported.
-
 - Device keys need plugin 0.2.0 or later;
   see [Plugin setup](/docs/plugin-setup).
