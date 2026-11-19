@@ -157,3 +157,23 @@ test('troubleshooting folds the sync log procedure inside the till updates item'
     assert.ok(details.includes(phrase), `${phrase} inside the fold`);
   }
 });
+
+// Round 47, J2 C2: Troubleshooting's offline answer carries the keep-the-tab-open caveat, like Limitations.
+test('sell while offline says to keep the till tab open', () => {
+  const start = html.indexOf('id="sell-while-offline"');
+  const end = html.indexOf('<h2', start);
+  assert.ok(start >= 0 && end > start, `${start} ${end}`);
+  const slice = html.slice(start, end);
+  const text = slice
+    .replace(/<!-- -->/g, '')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&#x27;|&#39;|&apos;/g, "'")
+    .replace(/\s+/g, ' ');
+  assert.ok(text.includes('keeps selling offline while its tab stays open'), 'keeps selling offline');
+  assert.ok(
+    text.includes("Don't reload or close the till's tab until the connection is back"),
+    "Don't reload or close the till's tab",
+  );
+  assert.ok(!text.includes('everything at the till works offline'), 'no everything works offline');
+  assert.ok(slice.includes('href="/docs/at-the-till#if-the-internet-drops"'), 'links At the till');
+});
