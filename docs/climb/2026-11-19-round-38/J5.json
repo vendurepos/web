@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero says what it is and gives two clear CTAs, but nowhere on the home page says who it is for or not for (shop size, single vs multi-store, who it is an alternative to such as Shopify POS or Square). A buyer comparing tills has to infer fit from the 'Before you start' list.", "where": "home/desktop/01 hero and home/desktop/02 'Before you start'"},
+    "C2": {"score": 7, "worst_defect": "The hero sells an 'open-source till', but 'To build and host it yourself instead of using app.vendurepos.com, you need your own RxDB Premium licence token' gives no cost and no free path. The only alternative is a hosted origin (app.vendurepos.com) whose operator, price, terms and uptime are never stated. The only hint of who is behind the project is the unexplained 'ph.wcpos.com' in the demo row.", "where": "home/desktop/02 'Before you start' bullet 6 and the 'Sales reach Vendure' row; limitations 'Setting up the store'"},
+    "C3": {"score": 8, "worst_defect": "The device-key path has a known defect that is patched over in prose rather than fixed. 'On plugin 0.3.0 the role it creates (vendurepos-pos-till) has the step 4 permissions except ReadOrder, so add ReadOrder to that role yourself.' A developer who misses that line gets a till that sells but whose order history is refused.", "where": "quick-start 'Optional: a device key for each till'; connect-a-till 'Create and use a device key'; changelog 0.2.0 last bullet"},
+    "C4": {"score": 8, "worst_defect": "Only the plugin has a version and a changelog, and its entries are raw internal notes ('advertises order.create 1–5 (ADR 0005)', '(#116)', 'Not in the release notes: …'). The hosted till app, which changes under users (it already refunds on the demo but not on stores), has no version or change history on the site.", "where": "changelog/desktop/01"},
+    "C5": {"score": 8, "worst_defect": "The 'What it does today' section is ten identical grey cards of equal weight and similar length, a wall of text. The two proof-backed claims (offline, 200-send) are styled the same as 'Park a sale', so the strongest evidence does not stand out. Dark mode holds up.", "where": "home/desktop/01–02 'What it does today' grid; home.desktop-dark"},
+    "C6": {"score": 8, "worst_defect": "Code wraps mid-expression on the phone (e.g. 'generateMigration(config, { name:' / ''AddVendurePos', outputDir:' split over four lines), which makes copy-checking the migration script awkward. Otherwise there is no overflow, and the tax table becomes stacked cards cleanly.", "where": "quick-start/phone/03"},
+    "C7": {"score": 9, "worst_defect": "The SoftwareApplication JSON-LD carries no softwareVersion or offers, though the site states 'plugin 0.3.0' and a free MIT licence. Everything else checks out: Lighthouse 98/100/100/100, llms.txt, sitemap, search API, a real 404 status and a good share card.", "where": "tech.json pages.home.desktop.jsonLd"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "'Open-source, MIT' is the headline, but in practice a store runs a till served from app.vendurepos.com by an unnamed operator, or pays for an RxDB Premium licence of unstated cost to self-host. The site never says who runs the hosted till, what it costs, or what happens to a shop if it goes away. That is the question I would put to a client before recommending it over Square or Shopify POS.",
+    "where": "home/desktop/02 'Before you start' (RXDB_PREMIUM bullet) and the 'ph.wcpos.com' demo row; limitations 'Setting up the store'",
+    "fix": "Add two sentences to 'Before you start': who operates app.vendurepos.com and that it is free with no account, and what an RxDB Premium licence costs or a link to its price. A one-line 'Who maintains VendurePOS' with the maintainer's name would also explain the ph.wcpos.com domain."
+  },
+  "mean": 8.0
+}

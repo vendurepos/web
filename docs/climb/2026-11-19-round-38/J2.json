@@ -1,0 +1,48 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The home 'Before you start' list mixes what a counter needs (a browser, desktop Chrome, no cash drawer, no coupon codes) with server requirements a shop owner can't act on ('Node ^20.19 || >=22.12', Postgres, 'RXDB_PREMIUM'), so 'can my staff use this tomorrow?' is buried in developer detail.",
+      "where": "home.desktop.02 (Before you start); home.phone.04-05"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "The site never says whether the till can run on the iPad or tablet a small shop is likely to have at the counter; the only line on devices is 'Its browser tests run in desktop Chrome', which leaves an owner guessing rather than reading a clear yes or no.",
+      "where": "home.desktop.02 (Before you start); limitations.desktop.01"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The quick-start CORS step hides 'If your store already allows vendurepos.vercel.app' in a collapsed details block. That host name appears nowhere else and reads like a leftover, and step 2's 'say Tally, not VendurePOS' adds a second unexplained product name.",
+      "where": "quick-start.desktop.02 (CORS step, step 2)"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "At the till, the page staff would actually use, mixes plugin-version and live-demo caveats into the cashier steps. Item 1 of the 'Refund a sale' numbered list is not a step ('On plugin 0.3.0 the till cannot refund. Ask whoever manages your Vendure store to refund the order in the Vendure Dashboard...'), and it is followed by a separate 'Refund at the till (live demo)' section. Troubleshooting's counter guidance also asks staff to 'match its errorCode' from the sync log.",
+      "where": "at-the-till.desktop.02 (Refund a sale); troubleshooting.desktop.01"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The cashier-sheet screenshots disagree between devices: desktop shows 'open since 22:06' with no Sync now, while phone shows 22:07 with 'Last synced 10:07 PM / Sync now' and a grey stripe down the left edge. Neither shows the 'Closures' entry the text tells staff to find in the cashier sheet.",
+      "where": "at-the-till.desktop.03; at-the-till.phone.06"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "At the till runs 9,213 px on a 390 px phone and has no short summary at the top, so a cashier checking 'how do I close the day' on a phone has to scroll past opening, selling, payment, receipts and refunds, with only the 'On this page' dropdown to jump.",
+      "where": "at-the-till.phone (all slices; tech.json page height)"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Small items only: Lighthouse mobile flags render-blocking resources and unused JavaScript, with LCP at 2.4 s on / and /docs/quick-start (perf 98). The 404 page's console error is the expected 404 resource load.",
+      "where": "tech.json (lighthouse)"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "The till guide I would hand my two staff, At the till, is a 9,213 px phone page that threads owner and version caveats ('On plugin 0.3.0...', 'On the live demo...') through the cashier steps. 'Refund a sale' opens with a numbered item that is a statement, not a step, so staff can't quickly see what to do at the counter for open, sell, refund and close.",
+    "where": "at-the-till.desktop.02 / at-the-till.phone (Refund a sale, whole page)",
+    "fix": "Put a five-line 'First shift' checklist at the top of At the till (open register with float → scan and sell → take card on your terminal, enter amount → print receipt → count drawer and close with Z report). Move the plugin-0.3.0 and live-demo notes into one callout, so the Refund steps start with what the cashier actually does."
+  },
+  "mean": 8.1
+}
