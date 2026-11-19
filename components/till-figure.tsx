@@ -55,10 +55,12 @@ export function TillFigure({ name, alt, sizes = '(max-width: 768px) 100vw, (max-
   // shot is no narrower than before.
   const width = WIDE_SIZE[name][0];
   const narrow = width / 2 < 600;
+  const hug = narrow ? { maxWidth: width / 2 + 34 } : undefined;
+  // Round 37, J4 C5: a narrow shot's caption sat at the column's left edge, not under its panel.
   return (
     <figure className={className}>
-      {narrow ? <div className="sm:mx-auto sm:flex sm:justify-center sm:rounded-lg sm:border sm:border-fd-border sm:bg-fd-muted sm:p-4" style={{ maxWidth: width / 2 + 34 }}>{pictures}</div> : pictures}
-      {caption && <figcaption className="mt-3 text-sm text-fd-muted-foreground">{caption}</figcaption>}
+      {narrow ? <div className="sm:mx-auto sm:flex sm:justify-center sm:rounded-lg sm:border sm:border-fd-border sm:bg-fd-muted sm:p-4" style={hug}>{pictures}</div> : pictures}
+      {caption && <figcaption className={`mt-3 text-sm text-fd-muted-foreground${narrow ? ' sm:mx-auto' : ''}`} style={hug}>{caption}</figcaption>}
       {children}
     </figure>
   );
