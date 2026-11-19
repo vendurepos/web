@@ -120,3 +120,20 @@ test('desktop hero capture ends on whole rows at 2880x1732', () => {
     assert.ok(img.includes('width="2880"') && img.includes('height="1732"'), img);
   }
 });
+
+// Round 40, J4 C1: the helper note keeps the lede's measure.
+test('hero helper note sits on the lede measure', () => {
+  const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
+  const classes = (tag) => (tag.match(/\sclass="([^"]*)"/)?.[1] ?? '').split(/\s+/);
+  const text = html.indexOf('Your own store needs the plugin on your Vendure server first');
+  assert.ok(text !== -1);
+  const noteStart = html.lastIndexOf('<p', text);
+  const h1End = html.indexOf('</h1>');
+  assert.ok(h1End !== -1);
+  const ledeStart = html.indexOf('<p', h1End);
+  assert.ok(ledeStart !== -1 && noteStart > ledeStart);
+  for (const [name, start] of [['note', noteStart], ['lede', ledeStart]]) {
+    const cls = classes(html.slice(start, html.indexOf('>', start) + 1));
+    assert.ok(cls.includes('max-w-2xl') && cls.includes('mx-auto'), `${name}: ${cls.join(' ')}`);
+  }
+});
