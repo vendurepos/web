@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero explains Vendure only as 'the open-source headless commerce framework' and never says who the product is for: nothing tells a visitor that the shop must already run on Vendure and needs a developer to install a server plugin. The line 'Your own store needs the plugin on your Vendure server first' only hints at it.", "where": "home.desktop.01 / home.phone.01, hero paragraph and line under the buttons"},
+    "C2": {"score": 8, "worst_defect": "The comparison table names an unrelated-looking domain, 'anonymous usage events to ph.wcpos.com', with no word on what wcpos.com is. 'MIT licensed' then sits next to 'you need your own RxDB Premium licence token (RXDB_PREMIUM)'. A newcomer reads both as a hidden catch.", "where": "home.desktop.02, 'Live demo or your own store' table last row and 'Before you start' bullet 6"},
+    "C3": {"score": 8, "worst_defect": "The quick start runs to 9 steps plus an optional section. Step 6 makes the reader change store-wide tax strategies that 'also affect the web shop', and step 4 lists six permissions. There is no time estimate or summary of the steps up front, so the path looks heavier than it is.", "where": "quick-start.desktop.01-03, steps 4 and 6"},
+    "C4": {"score": 8, "worst_defect": "The changelog is written for the maintainers rather than the user. 'order.create v5 custom lines are real order lines on a plugin-owned, disabled 'POS custom item' variant', with 'ADR 0005' links and SKU internals, sits under a one-line 'In short'.", "where": "changelog.desktop.01, 0.3.0 and 0.2.0 bullet lists"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' is ten identical grey text cards with no icon, image or emphasis. 'Before you start' that follows is a seven-bullet wall that includes 'Node ^20.19 || >=22.12'. The lower half of the home page reads like a docs page, not a product page.", "where": "home.desktop.01-02, 'What it does today' grid and 'Before you start' list"},
+    "C6": {"score": 8, "worst_defect": "On phone the hero screenshot of the till runs from the bottom of home.phone.01 to the top of home.phone.02, more than a screen of product grid before the first feature. The site header shows only a search icon and a bare chevron (⌄), not a recognisable menu, so the nav to Docs and the Live demo is hidden.", "where": "home.phone.01-02; header chevron at top right of home.phone.01"},
+    "C7": {"score": 9, "worst_defect": "Small items only. Lighthouse flags render-blocking requests (150 ms) and 52 KiB of unused JavaScript on / (LCP 2.4 s). llms.txt lists pages alphabetically ('At the till' first, Overview in the middle), not in reading order.", "where": "tech.json lighthouse '/' failing; text/endpoint_llms_txt.txt"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "A visitor who searched 'Vendure point of sale' cannot tell from the hero whether this is for them. It assumes they know Vendure ('headless commerce framework'). It never says plainly that it is for shops already running on Vendure, that a developer installs a server plugin, and that cashiers then use a browser till. The jargon-heavy 'Before you start' list (Node ranges, Postgres, RxDB Premium token) is the only place the home page answers that question.",
+    "where": "home.desktop.01 / home.phone.01 hero; home.desktop.02 'Before you start'",
+    "fix": "Add one plain sentence under the h1 such as 'For shops already selling on Vendure: your developer adds a plugin to the store, then staff sell from any browser.' Swap 'headless commerce framework' for something like 'the open-source online-shop platform'."
+  },
+  "mean": 8.1
+}
