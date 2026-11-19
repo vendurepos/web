@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The top of the page is clear (\"Point of sale for Vendure\", a real till screenshot, Live demo / Quick start), but the lower half of the home page drops into developer-only requirements a newcomer can't parse: \"Node ^20.19 || >=22.12\", \"RxDB Premium licence token (RXDB_PREMIUM)\", \"refund stays Pending until it is settled\", and \"Built with TallyUI\" is never explained.", "where": "home.desktop.02 'Before you start' list and footer; home.phone.04-05"},
+    "C2": {"score": 7, "worst_defect": "Nothing on the home page says whether the hosted till at app.vendurepos.com is free or paid, and the only cost signal is that self-hosting needs \"your own RxDB Premium licence token\". On top of that, the demo row says usage events go to \"ph.wcpos.com\", a different brand the page never explains, so a newcomer is left wondering what it costs and who runs it.", "where": "home.desktop.02 'Before you start' bullet 6 and 'Live demo or your own store' table, last row"},
+    "C3": {"score": 8, "worst_defect": "Quick start assumes you already run Vendure 3.6+ on Postgres. Step 2 then has to stop and explain \"The plugin's code names say Tally, not VendurePOS: TallyPosPlugin, the TallyPosSell permission and the /tally/v1 routes\", which adds a second name to keep in your head in the middle of setup. The steps themselves are ordered, have commands and end in a clear 'Check it worked' list.", "where": "quick-start.desktop.01 step 2; quick-start.phone.02"},
+    "C4": {"score": 8, "worst_defect": "The versions contradict each other at first read: the Changelog says \"The hosted till at app.vendurepos.com is version 0.1.0\" while the home badge says \"Pre-release · plugin 0.3.0\". The changelog entries are internal shorthand (\"advertises order.create 1–5 (ADR 0005)\") with no plain summary above them. Connect a till also says data is \"kept in SQLite databases inside this browser\" when every other page says \"SQLite are not supported\".", "where": "changelog.desktop.01 intro and 0.3.0 list; connect-a-till.desktop.01 'Stored in this browser' bullet 4"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' is ten identical grey cards in a 2x5 grid, all with the same weight. Only the first two have links and none has an icon or image, so the middle of the home page reads as a flat wall of text after a strong hero. Dark mode holds up.", "where": "home.desktop.01 bottom to home.desktop.02 top; home.desktop-dark.jpg"},
+    "C6": {"score": 9, "worst_defect": "On the phone header the only controls are a search icon and a chevron, so the 'Live demo' and 'Quick start' nav links are hidden until you open the chevron. The hero buttons make up for it, and the tables and code fit with no overflow.", "where": "home.phone.01 header"},
+    "C7": {"score": 9, "worst_defect": "Lighthouse mobile LCP is 2.4 s on both / and /docs/quick-start, with 52 KiB of unused JavaScript and render-blocking requests flagged. Everything else is in place: titles and descriptions on every page, Organization + SoftwareApplication JSON-LD, llms.txt, sitemap, search API and a real 404.", "where": "tech.json lighthouse '/' and '/docs/quick-start'"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A first-time visitor can't find out from the home page what VendurePOS costs or who runs the hosted till. The page says \"MIT licensed\", then says self-hosting needs an \"RxDB Premium licence token\", and sends demo analytics to an unexplained \"ph.wcpos.com\", but it never states whether app.vendurepos.com is free to use.",
+    "where": "home.desktop.02 'Before you start' and 'Live demo or your own store' table; footer",
+    "fix": "Add one plain line near the hero or in 'Before you start', for example \"The hosted till at app.vendurepos.com is free to use; the till and plugin are MIT licensed\", plus a short note that ph.wcpos.com is the maker's own analytics server (WCPOS, the same team)."
+  },
+  "mean": 8.1
+}
