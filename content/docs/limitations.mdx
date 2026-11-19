@@ -36,7 +36,7 @@ Pre-release: expect changes before 1.0.
 - The till keeps no offline copy of its own page. While the connection is down, keep its tab open:
   a reload, or a reopened browser, cannot load the till until the connection is back.
   See [At the till](/docs/at-the-till#if-the-internet-drops).
-- Sales not yet sent are kept only in this browser. If the till app's site data is cleared, or the device is lost,
+- Sales not yet sent are kept only in this browser. If this site's data is cleared, or the device is lost,
   while the header still shows `N orders waiting to send`, those sales are lost.
 - When the store refuses a till update (the register's open, close, cash movements or closure), the till does not
   send it again, except a closure refused for its number, which it renumbers and sends once. Later till updates
