@@ -58,7 +58,7 @@ test('overview and home requirements name the plugin Node range', () => {
   const home = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
   const start = home.indexOf('Before you start');
   assert.ok(start >= 0, 'a Before you start heading');
-  assert.ok(text(home.slice(start, home.indexOf('</ul>', start))).includes('^20.19 || >=22.12'));
+  assert.ok(text(home.slice(start, home.indexOf('</section>', start))).includes('^20.19 || >=22.12'));
 });
 
 // Round 36, J5 C4: "3.6 or later" read as including 4.x; the plugin's peer range is ^3.6.0.

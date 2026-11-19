@@ -82,7 +82,9 @@ test('hero puts the live demo first, as the primary button', () => {
   assert.ok(html.includes(demo));
   assert.ok(html.includes(quickStart));
   assert.ok(html.indexOf(demo) < html.indexOf(quickStart));
-  assert.equal(Array.from(html.matchAll(/class="rounded-md bg-fd-primary/g)).length, 1);
+  const hero = html.slice(0, html.indexOf('</section>'));
+  assert.equal(Array.from(hero.matchAll(/class="rounded-md bg-fd-primary/g)).length, 1);
+  assert.equal(Array.from(html.matchAll(/class="rounded-md bg-fd-primary/g)).length, 2);
 });
 
 test('hero has two buttons, no GitHub link, and the note links the quick start', () => {
@@ -193,7 +195,7 @@ test('before you start gates refunds on the plugin and names coupon codes as not
   const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
   // plugin-v0.3.0 (2d3699e) info.controller.ts:29 (no order.refund); vendurepos/app 1404f42 apps/pos/lib/discount-total-matrix.test.ts:171-178.
   const heading = html.indexOf('Before you start');
-  const end = html.indexOf('</ul>', heading);
+  const end = html.indexOf('</section>', heading);
   assert.ok(heading >= 0 && end > heading);
   const block = html.slice(heading, end);
   assert.match(block, /Coupon codes are not supported yet/);
@@ -214,12 +216,12 @@ test('before you start says what goes on the counter, right after the web till i
   const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
   const heading = html.indexOf('Before you start</h2>');
   assert.ok(heading >= 0);
-  const list = html.slice(heading).match(/<ul\b[^>]*>[\s\S]*?<\/ul>/)[0];
+  const counter = html.indexOf('>At the counter</h3>', heading);
+  assert.ok(counter > heading, 'an "At the counter" group');
+  const list = html.slice(counter).match(/<ul\b[^>]*>[\s\S]*?<\/ul>/)[0];
   const items = Array.from(list.matchAll(/<li>([\s\S]*?)<\/li>/g), (m) => m[1]);
-  const at = items.findIndex((item) => item.includes('At the counter'));
-  assert.ok(at > 0, 'an "At the counter" item');
-  assert.match(items[at - 1], /^A web till for now/);
-  const item = items[at];
+  assert.match(items[0], /^A web till for now/);
+  const item = items[1];
   for (const phrase of ['one tab per till', 'desktop Chrome', 'print dialog', 'cash drawer']) {
     assert.ok(item.includes(phrase), phrase);
   }
@@ -302,4 +304,36 @@ test('home refund row says settling takes two Admin API calls and links Plugin s
   assert.match(row, /<a\b[^>]*\shref="\/docs\/plugin-setup#settle-a-dashboard-refund"/);
   const setup = readFileSync(join('.next/server/app', 'docs/plugin-setup.html'), 'utf8');
   assert.ok(setup.includes('id="settle-a-dashboard-refund"'), 'the anchor exists');
+});
+
+// Round 49, J2 C1, J4 and J1 C5: the counter group comes first, the lists are text-sm, and the page ends on the hero's buttons.
+test('before you start groups the counter before the store setup and ends on the demo and quick start buttons', () => {
+  const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
+  const start = html.indexOf('Before you start</h2>');
+  assert.ok(start >= 0);
+  const section = html.slice(start, html.indexOf('</section>', start));
+  const a = section.indexOf('>At the counter</h3>');
+  const b = section.indexOf('>Setting up the store</h3>');
+  assert.ok(a >= 0 && b > a, 'the counter group comes before the store setup group');
+  for (const phrase of ['Coupon codes are not supported yet', 'one tab per till']) {
+    assert.ok(section.slice(a, b).includes(phrase), phrase);
+  }
+  for (const phrase of ['^20.19', 'Postgres', '@vendurepos/plugin', 'RXDB_PREMIUM']) {
+    assert.ok(section.slice(b).includes(phrase), phrase);
+  }
+  const classWords = (attrs) => (attrs.match(/\sclass="([^"]*)"/)?.[1] ?? '').split(/\s+/);
+  const lists = Array.from(section.matchAll(/<ul\b([^>]*)>/g), (m) => m[1]);
+  assert.equal(lists.length, 2);
+  for (const attrs of lists) assert.ok(classWords(attrs).includes('text-sm'), `<ul${attrs}> is text-sm`);
+  const lastList = section.lastIndexOf('</ul>');
+  const demo = section.match(/<a\b([^>]*)>Live demo<\/a>/);
+  assert.ok(demo, 'a Live demo button');
+  assert.match(demo[1], /\shref="https:\/\/demo\.vendurepos\.com\/demo"/);
+  assert.ok(classWords(demo[1]).includes('bg-fd-primary'));
+  assert.ok(demo.index > lastList, 'Live demo comes after the lists');
+  const quick = section.match(/<a\b([^>]*)>Quick start<\/a>/);
+  assert.ok(quick, 'a Quick start button');
+  assert.match(quick[1], /\shref="\/docs\/quick-start"/);
+  for (const word of ['border', 'px-6']) assert.ok(classWords(quick[1]).includes(word), word);
+  assert.ok(quick.index > lastList, 'Quick start comes after the lists');
 });

@@ -45,7 +45,7 @@ test('Before you start says building the till yourself needs an RxDB Premium tok
   const page = html();
   const start = page.indexOf('Before you start</h2>');
   assert.ok(start !== -1);
-  const list = page.slice(start).match(/<ul\b[^>]*>[\s\S]*?<\/ul>/)[0];
+  const list = page.slice(start, page.indexOf('</section>', start));
   const item = list.match(/<li>(?:(?!<\/li>)[\s\S])*RXDB_PREMIUM[\s\S]*?<\/li>/)[0];
   assert.ok(item.includes('RxDB Premium'));
   assert.match(item, /<a\b[^>]*\shref="\/docs\/connect-a-till"[^>]*>Connect a till<\/a>/);

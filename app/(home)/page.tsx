@@ -254,45 +254,60 @@ export default function HomePage() {
 
       <section className="pb-16">
         <h2 className="mb-6 text-2xl font-bold tracking-tight">Before you start</h2>
-        <ul className="list-disc pl-5 text-fd-muted-foreground space-y-1">
-          {/* plugin-v0.3.0 packages/vendure-plugin/package.json:41-42 (peerDependencies @vendure/core ^3.6.0) */}
-          <li>
-            Vendure 3.6 or a later 3.x release on Postgres (tested on 3.7.3). MySQL, MariaDB and
-            SQLite are not supported.
-          </li>
-          {/* plugin-v0.3.0 packages/vendure-plugin/package.json:27-28 (engines); quick-start.mdx and plugin-setup.mdx:9 say the same. */}
-          <li>Node <code>^20.19 || &gt;=22.12</code> on the server that runs Vendure.</li>
-          <li>
-            The <a href={NPM_URL} className="underline">@vendurepos/plugin</a> package
-            on npm, added to your Vendure config.
-          </li>
-          <li>A web till for now. The app is pre-release: expect changes before 1.0.</li>
-          {/* Same facts as content/docs/limitations.mdx:15, :30-31, :39, :41-42 (sources in its comments at :10-11). */}
-          <li>
-            At the counter: a browser on the till&apos;s device, one tab per till and not a private window. Its browser
-            tests run in desktop Chrome; tablets and phones, an iPad included, are not tested yet. Receipts print through
-            the browser&apos;s print dialog; the till does not open a
-            cash drawer. See <Link href="/docs/limitations" className="underline">Limitations</Link>.
-          </li>
-          {/* vendurepos/app cc719c2 LICENSE:1 (MIT License), README.md:72-74 (RxDB Premium install needs the token in RXDB_PREMIUM), apps/pos/package.json:44 (rxdb-premium 17.5.0); content/docs/connect-a-till.mdx:50-52 and content/docs/limitations.mdx:16-17 say the same. */}
-          <li>
-            The till&apos;s source is MIT licensed. To build and host it yourself instead of using app.vendurepos.com, you
-            need your own RxDB Premium licence token (<code>RXDB_PREMIUM</code>); see{' '}
-            <Link href="/docs/connect-a-till" className="underline">Connect a till</Link>.
-          </li>
-          {/* plugin-v0.3.0 (2d3699e, npm latest) packages/vendure-plugin/src/api/info.controller.ts:29 (no order.refund); vendurepos/app cc719c2 apps/pos/lib/refund-sheet.tsx:56 (Refund items needs order.refund), apps/pos/lib/demo/store.ts:12 (the demo advertises it); vendurepos/app@1404f42 apps/pos/lib/discount-total-matrix.test.ts:171-178 (the till applies no coupons). */}
-          <li>
-            Coupon codes are not supported yet; line and order discounts work. On plugin 0.3.0,
-            refunds go through the Vendure Dashboard; the live demo also refunds at the till.
-          </li>
-        </ul>
-        <p className="mt-4 text-fd-muted-foreground">
+        {/* Round 49, J2 C1, J4 and J1 C5: the counter's needs come first, apart from the store setup; the lists match the page's text-sm body; the page ends on the hero's two buttons. */}
+        <div className="grid gap-8 sm:grid-cols-2">
+          <div>
+            <h3 className="font-semibold">At the counter</h3>
+            <ul className="mt-2 list-disc pl-5 text-sm text-fd-muted-foreground space-y-1">
+              <li>A web till for now. The app is pre-release: expect changes before 1.0.</li>
+              {/* Same facts as content/docs/limitations.mdx:15, :30-31, :39, :41-42 (sources in its comments at :10-11). */}
+              <li>
+                A browser on the till&apos;s device, one tab per till and not a private window. Its browser
+                tests run in desktop Chrome; tablets and phones, an iPad included, are not tested yet. Receipts print through
+                the browser&apos;s print dialog; the till does not open a
+                cash drawer. See <Link href="/docs/limitations" className="underline">Limitations</Link>.
+              </li>
+              {/* plugin-v0.3.0 (2d3699e, npm latest) packages/vendure-plugin/src/api/info.controller.ts:29 (no order.refund); vendurepos/app cc719c2 apps/pos/lib/refund-sheet.tsx:56 (Refund items needs order.refund), apps/pos/lib/demo/store.ts:12 (the demo advertises it); vendurepos/app@1404f42 apps/pos/lib/discount-total-matrix.test.ts:171-178 (the till applies no coupons). */}
+              <li>
+                Coupon codes are not supported yet; line and order discounts work. On plugin 0.3.0,
+                refunds go through the Vendure Dashboard; the live demo also refunds at the till.
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-semibold">Setting up the store</h3>
+            <ul className="mt-2 list-disc pl-5 text-sm text-fd-muted-foreground space-y-1">
+              {/* plugin-v0.3.0 packages/vendure-plugin/package.json:41-42 (peerDependencies @vendure/core ^3.6.0) */}
+              <li>
+                Vendure 3.6 or a later 3.x release on Postgres (tested on 3.7.3). MySQL, MariaDB and
+                SQLite are not supported.
+              </li>
+              {/* plugin-v0.3.0 packages/vendure-plugin/package.json:27-28 (engines); quick-start.mdx and plugin-setup.mdx:9 say the same. */}
+              <li>Node <code>^20.19 || &gt;=22.12</code> on the server that runs Vendure.</li>
+              <li>
+                The <a href={NPM_URL} className="underline">@vendurepos/plugin</a> package
+                on npm, added to your Vendure config.
+              </li>
+              {/* vendurepos/app cc719c2 LICENSE:1 (MIT License), README.md:72-74 (RxDB Premium install needs the token in RXDB_PREMIUM), apps/pos/package.json:44 (rxdb-premium 17.5.0); content/docs/connect-a-till.mdx:50-52 and content/docs/limitations.mdx:16-17 say the same. */}
+              <li>
+                The till&apos;s source is MIT licensed. To build and host it yourself instead of using app.vendurepos.com, you
+                need your own RxDB Premium licence token (<code>RXDB_PREMIUM</code>); see{' '}
+                <Link href="/docs/connect-a-till" className="underline">Connect a till</Link>.
+              </li>
+            </ul>
+          </div>
+        </div>
+        <p className="mt-6 text-sm text-fd-muted-foreground">
           The <Link href="/docs/quick-start" className="underline">quick start</Link>{' '}
           walks through the plugin, the migration, CORS and your first sale. For cashiers,{' '}
           <Link href="/docs/at-the-till" className="underline">At the till</Link> covers
           selling, taking payment and closing the day. See{' '}
           <Link href="/docs/limitations" className="underline">what it does not do yet</Link>.
         </p>
+        <div className="mt-6 flex flex-wrap gap-3">
+          <a href={DEMO_URL} className="rounded-md bg-fd-primary px-6 py-3 text-fd-primary-foreground hover:bg-fd-primary/90">Live demo</a>
+          <Link href="/docs/quick-start" className="rounded-md border border-fd-border px-6 py-3 hover:bg-fd-accent">Quick start</Link>
+        </div>
       </section>
 
       <footer className="flex flex-wrap items-center justify-between gap-4 border-t border-fd-border py-6 text-sm text-fd-muted-foreground">
