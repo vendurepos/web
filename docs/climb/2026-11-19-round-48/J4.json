@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 9, "worst_defect": "Three blocks of text sit between the H1 and the product image (a 4-line centred lede, the CTA pair, then a 2-line note 'Your own store needs the plugin on your Vendure server first...'), so on a phone the till screenshot starts below the first screen.", "where": "home.phone.01 / home.desktop.01"},
+    "C2": {"score": 9, "worst_defect": "The demo row of the comparison table says the demo sends 'anonymous usage events to ph.wcpos.com'. A VendurePOS visitor is given no reason why a wcpos.com domain appears here, which makes a careful privacy line read as a loose end.", "where": "home.desktop.02 table row 'Sales reach Vendure, once each, even offline'"},
+    "C3": {"score": 8, "worst_defect": "Step 8 'Sign in and make a sale' has nine lettered sub-steps (a-i) with no screenshot of the sign-in screen or of the 'synced' state. 'Check it worked' depends on 'Once the till shows the order as synced', but the page never shows what that looks like.", "where": "quick-start.desktop.03-04 / quick-start.phone.07-08"},
+    "C4": {"score": 8, "worst_defect": "The Overview page ends at its 'Next steps' card grid with no previous/next pager, while Notifications and Limitations end with one. Troubleshooting 'Act on a header notice' nests bold-lead paragraphs, a collapsible and a code-keyed list inside a single bullet, so it scans as a wall.", "where": "docs.desktop.01 bottom vs limitations.desktop.01 bottom; troubleshooting.desktop.01"},
+    "C5": {"score": 8, "worst_defect": "In 'What it does today' only the first two features are bordered cards with buttons, and their buttons do not line up: 'Read the acceptance test' sits about 20 px lower than 'Read the 200-send test' because the card texts differ in length. The other eight features then drop the card style for plain heading-and-text pairs, so the one section uses two different styles.", "where": "home.desktop.01 (y~1300-1530) and home.desktop-dark"},
+    "C6": {"score": 8, "worst_defect": "The phone payment screenshot on At the till is about 1.3 screens tall, and its quick-amount row wraps so that '€50.00' sits alone on a second line under 'Exact €20.09 / €25.00 / €30.00'. That orphaned button is the first thing a reader sees in the image.", "where": "at-the-till.phone.03-04"},
+    "C7": {"score": 9, "worst_defect": "The share card crops the till screenshot at the bottom edge, cutting the 'Add charge' button and the bottom row of product cards in half. The subtitle also wraps so 'a normal order.' runs onto a short second line.", "where": "og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "The home page's main feature section uses two styles: two bordered cards whose CTA buttons sit at different heights, then eight unboxed heading-and-text pairs. It is the clearest polish fault on the page a visitor sees first.",
+    "where": "home.desktop.01, 'What it does today'",
+    "fix": "Pin the card buttons to the card bottom (flex column with margin-top:auto) so they align. Then either give the eight smaller features a matching light card style or visually separate the two proof cards as their own 'Proven by tests' row."
+  },
+  "mean": 8.4
+}
