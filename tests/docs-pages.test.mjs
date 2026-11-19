@@ -46,6 +46,31 @@ test('notifications shows the empty sheet, the plugin notice and the plugin setu
   assert.ok(html.includes('href="/docs/plugin-setup"'));
 });
 
+// Round 41 (front desk row): the page says which messages can be turned off.
+test('notifications says which messages show at the till and which can be turned off', () => {
+  const html = readFileSync(join('.next/server/app', 'docs/notifications.html'), 'utf8');
+  const text = html
+    .replace(/<!-- -->/g, '')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&#x27;/g, "'")
+    .replace(/&quot;/g, '"')
+    .replace(/\s+/g, ' ');
+  let from = 0;
+  for (const phrase of [
+    'Short messages at the till',
+    'added to cart',
+    'Sale complete',
+    'Turn notifications on or off',
+    'Show receipt after each sale',
+    'asks for no notification permission',
+  ]) {
+    const at = text.indexOf(phrase, from);
+    assert.ok(at >= 0, phrase);
+    from = at + phrase.length;
+  }
+  assert.ok(text.includes('so the demo never shows this notice.'));
+});
+
 test('changelog lists 0.3.0, 0.2.0 and 0.1.0 newest first', () => {
   const html = readFileSync(join('.next/server/app', 'docs/changelog.html'), 'utf8');
   const v030 = html.indexOf('0.3.0 (2026-10-06)');
