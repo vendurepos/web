@@ -346,3 +346,23 @@ test('at the till sets the offline warning apart and lists what still needs the 
   const reload = section.indexOf('needs the connection to load the till again');
   assert.ok(frameStart < reload && reload < ul, 'reload sentence inside the callout, before the list');
 });
+
+test('the header notice is a code pill wherever the docs name it', () => {
+  // Round 37, J4 C4: the notice was bold in one place and a code pill in the next.
+  const notice = 'orders waiting to send';
+  const encloses = (page, at, open, close) => {
+    const opened = page.lastIndexOf(open, at);
+    return opened >= 0 && page.lastIndexOf(close, at) < opened;
+  };
+  for (const name of ['at-the-till', 'limitations', 'troubleshooting']) {
+    // The rendered markup only: the RSC payload in <script> repeats the text as JSON, with no <code tag.
+    const page = readFileSync(`.next/server/app/docs/${name}.html`, 'utf8').replace(/<script[\s\S]*?<\/script>/g, '');
+    let count = 0;
+    for (let at = page.indexOf(notice); at >= 0; at = page.indexOf(notice, at + notice.length)) {
+      count += 1;
+      assert.ok(encloses(page, at, '<code', '</code>'), `${name} occurrence ${count} inside <code>`);
+      assert.ok(!encloses(page, at, '<strong', '</strong>'), `${name} occurrence ${count} not inside <strong>`);
+    }
+    assert.ok(count >= 1, `${name} names the notice`);
+  }
+});
