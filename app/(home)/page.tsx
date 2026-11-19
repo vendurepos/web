@@ -316,11 +316,12 @@ export default function HomePage() {
           <a href={TALLYUI_URL} className="underline">TallyUI</a>. For Medusa, see{' '}
           <a href={MEDUSAPOS_URL} className="underline">MedusaPOS</a>.
         </p>
-        <div className="flex flex-wrap gap-4">
-          <a href={GITHUB_URL} className="underline">GitHub</a>
-          <a href={NPM_URL} className="underline">npm</a>
-          <Link href="/docs/limitations" className="underline">Limitations</Link>
-          <Link href="/docs/changelog" className="underline">Changelog</Link>
+        {/* Round 55, J5 C6: each footer link is at least 44 px tall so it is an easy tap target on a phone. */}
+        <div className="flex flex-wrap gap-x-6">
+          <a href={GITHUB_URL} className="inline-flex min-h-11 items-center underline">GitHub</a>
+          <a href={NPM_URL} className="inline-flex min-h-11 items-center underline">npm</a>
+          <Link href="/docs/limitations" className="inline-flex min-h-11 items-center underline">Limitations</Link>
+          <Link href="/docs/changelog" className="inline-flex min-h-11 items-center underline">Changelog</Link>
         </div>
       </footer>
     </main>
