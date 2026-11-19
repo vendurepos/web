@@ -104,6 +104,14 @@ test("troubleshooting gives the plugin requirement in the quick start's terms", 
   assert.doesNotMatch(text, /Run plugin 0\.1\.0 or later/);
 });
 
+// Round 39, J5 C4: "must advertise v4" read against the Changelog's v5.
+test('troubleshooting and quick start say plugin 0.3.0 advertises order.create 1–5, which includes v4', () => {
+  const troubleshooting = readFileSync('content/docs/troubleshooting.mdx', 'utf8').replace(/\s+/g, ' ');
+  assert.ok(troubleshooting.includes('does (0.3.0 advertises `order.create` 1–5, which includes v4).'));
+  const quickStart = readFileSync('content/docs/quick-start.mdx', 'utf8');
+  assert.ok(quickStart.includes('register v1; plugin 0.3.0 advertises `order.create` 1–5, which includes v4.'));
+});
+
 test('troubleshooting lists the header notices the till shows at app 1404f42', () => {
   const html = readFileSync(join('.next/server/app', 'docs/troubleshooting.html'), 'utf8')
     .replace(/&#x27;|&#39;|&apos;/g, "'");

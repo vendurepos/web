@@ -271,7 +271,7 @@ Once the till shows the order as synced, open the order in the Vendure Dashboard
 - **“Your session has ended. Sign in again to keep selling.”** or **“The store refused this sign-in. Sign in again below; orders are kept.”**\
   Sign in again. Check the credentials and channel token if sign-in or settings reads still fail.
 - **“This store's VendurePOS plugin is missing or out of date. Install or update it, then this till continues.”**\
-  The store must advertise `order.create` v4 and register v1. Install/update the plugin, apply its schema changes and restart Vendure; the till retries.
+  The store must advertise `order.create` v4 and register v1; plugin 0.3.0 advertises `order.create` 1–5, which includes v4. Install/update the plugin, apply its schema changes and restart Vendure; the till retries.
 - **“Sales aren't reaching the online store. Keep selling: they're saved on this till and will send by themselves.”**\
   Check that `/tally/v1/info` and `/tally/v1/commands` reach the plugin through the store's proxy. Keep queued orders while fixing the store.
 
