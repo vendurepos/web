@@ -262,7 +262,7 @@ test('home offline card says a reload needs the connection and unsent sales live
     .replace(/<script[\s\S]*?<\/script>/g, '')
     .replace(/&#x27;|&#39;|&apos;/g, "'")
     .replaceAll('<!-- -->', '');
-  const caveat = "A reload needs the connection, and sales not yet sent are lost if this site's data is cleared.";
+  const caveat = "A reload needs the connection, and sales not yet sent are lost if the till app's site data is cleared.";
   assert.equal(html.split(caveat).length - 1, 1);
   const at = html.indexOf(caveat);
   const promise = html.indexOf("With the till's tab left open");
@@ -336,4 +336,17 @@ test('before you start groups the counter before the store setup and ends on the
   assert.match(quick[1], /\shref="\/docs\/quick-start"/);
   for (const word of ['border', 'px-6']) assert.ok(classWords(quick[1]).includes(word), word);
   assert.ok(quick.index > lastList, 'Quick start comes after the lists');
+});
+
+// Round 50, J1 C1: on vendurepos.com "this site" read as the marketing site; the caveat names the till app.
+test('the unsent-sales caveat names the till app, not this site', () => {
+  for (const page of ['index.html', 'docs/at-the-till.html', 'docs/limitations.html']) {
+    const text = readFileSync(join('.next/server/app', page), 'utf8')
+      .replace(/&#x27;|&#39;|&apos;/g, "'")
+      .replaceAll('<!-- -->', '')
+      .replace(/<[^>]+>/g, '')
+      .replace(/\s+/g, ' ');
+    assert.ok(!text.includes("this site's data"), page);
+    assert.ok(text.includes("the till app's site data is cleared"), page);
+  }
 });
