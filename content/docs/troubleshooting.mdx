@@ -114,8 +114,10 @@ or the register is closing.
 
 ## Sell while offline
 
-Once the catalogue has synced, everything at the till works offline except
-customer search and adding a customer, which need a connection to the store.
+Once the catalogue has synced, the till keeps selling offline while its tab stays open. Customer search and adding a
+customer need a connection to the store. Don't reload or close the till's tab until the connection is back: the app
+keeps no offline copy of its own page, so it cannot load again until then
+([At the till](/docs/at-the-till#if-the-internet-drops)).
 
 ## Resolve a sale the store kept part-way
 
