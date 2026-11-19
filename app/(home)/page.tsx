@@ -112,10 +112,20 @@ const demoParity = [
     store: 'Yes, from your Vendure customers',
   },
   {
+    // Round 45, J2 C2: settling is two Admin API calls (plugin-setup.mdx, Settle a Dashboard refund), so the row says so and links the steps.
     // apps/pos/e2e/demo.spec.ts:628 ("a demo cashier refunds a mug from the order sheet; ..."), apps/pos/lib/demo/store.ts:12 (the demo advertises order.refund); plugin-v0.3.0 (2d3699e) packages/vendure-plugin/src/api/info.controller.ts:29 (no order.refund), src/config/strategies.ts:133-141 (tally-pos has no createRefund); vendurepos/app cc719c2 apps/pos/lib/refund-sheet.tsx:56 (Refund items needs order.refund); https://docs.vendure.io/current/framework/reference/typescript-api/payment/payment-method-config-options (without createRefund, refunds are settled manually by an administrator)
     capability: 'Refund a sale at the till',
     demo: 'Yes',
-    store: 'No, not on plugin 0.3.0: refund in the Vendure Dashboard, where the refund stays Pending until it is settled',
+    store: (
+      <>
+        No, not on plugin 0.3.0: refund in the Vendure Dashboard. The refund stays Pending until an administrator settles
+        it with two Admin API calls; see{' '}
+        <Link href="/docs/plugin-setup#settle-a-dashboard-refund" className="underline">
+          Plugin setup
+        </Link>
+        .
+      </>
+    ),
   },
   {
     // apps/pos/e2e/demo.spec.ts:779-781 (the first test asserts no request leaves the page's origin except DEMO_CAPTURE_URL); apps/pos/lib/demo/analytics.ts:3-16,24-36 (anonymous events to ph.wcpos.com on demo.vendurepos.com only, credentials: 'omit', no cookie or storage); apps/pos/e2e/offline.spec.ts; packages/vendure-plugin/test/replay.e2e.ts
