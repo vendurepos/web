@@ -1,0 +1,48 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero offers only 'Live demo' and 'Quick start'; the line under it, 'Your own store needs the plugin on your Vendure server first…', is aimed at developers, and the cashier guide 'At the till' is not offered from the hero. On phone it sits behind an unlabeled chevron in the header.",
+      "where": "home.desktop.01 / home.phone.01"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "Device support is vague: 'Its browser tests run in desktop Chrome; other browsers are not tested yet.' leaves an owner unsure whether a tablet or iPad works at the counter.",
+      "where": "limitations.desktop.01 / home.desktop.02 'Before you start'"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 8 says 'Once the till shows the order as synced…' but shows no image of the sign-in screen or of the synced state, so the person checking cannot see what success looks like.",
+      "where": "quick-start.desktop.03-04 / text quick-start step 8"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "On plugin 0.3.0 a refund 'stays Pending until it is settled' with the Admin API's settleRefund mutation, a step a shop owner cannot do. At the till also shows no sample printed receipt or Z report; the Z report is only a text list.",
+      "where": "limitations.desktop.01 / at-the-till.desktop.04"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The closure and cashier-sheet screenshots sit in padded double-bordered frames with a lot of empty space, and 'Counted / Expected / Exact' is stacked far apart. The eight home feature cards are all the same flat grey weight with no icons.",
+      "where": "at-the-till.desktop.03-04 / home.desktop.01-02"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The phone header hides Docs, Live demo, Quick start and At the till behind an unlabeled chevron, and the phone hero screenshot cuts the category chips mid-word ('Gif').",
+      "where": "home.phone.01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The OG image crops the till screenshot at the bottom edge, cutting off the 'Add charge' button and the product cards. Minor: the 404 page has no JSON-LD.",
+      "where": "og-image.png / tech.json not-found"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The site never says plainly which counter devices the till supports. The only line is 'Its browser tests run in desktop Chrome; other browsers are not tested yet.', so a shop owner can't tell whether staff can sell on a tablet or iPad tomorrow.",
+    "where": "limitations.desktop.01 / home.desktop.02 'Before you start'",
+    "fix": "Add one line to 'Before you start' and to Limitations naming the devices and browsers known to work at the counter (e.g. 'Tested: Chrome on a Windows or Mac PC. iPad Safari and Android tablets: not tested yet'), so owners know what hardware to use."
+  },
+  "mean": 8.3
+}

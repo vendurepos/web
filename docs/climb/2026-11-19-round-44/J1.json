@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero is clear, but the home page's 'Before you start' block, which a newcomer reads before any closing next step, switches into developer config jargon: 'Node ^20.19 || >=22.12', 'one tab per till and not a private window', 'your own RxDB Premium licence token (RXDB_PREMIUM)'. A visitor who only half knows Vendure can't parse it.", "where": "home/desktop/02 'Before you start' (also home/phone/04-05)"},
+    "C2": {"score": 8, "worst_defect": "The home comparison table says the demo 'sends anonymous usage events to ph.wcpos.com' without saying who wcpos.com is. An unexplained third-party domain on a VendurePOS page makes a newcomer wonder who is behind the product. Separately, 'MIT licensed' next to 'you need your own RxDB Premium licence token' reads as a catch unless it is explained.", "where": "home/desktop/02 table row 'Sales reach Vendure, once each, even offline'; 'Before you start' bullet 6"},
+    "C3": {"score": 8, "worst_defect": "Step 3 says 'include it in config.dbConnectionOptions.migrations (or your existing migration glob)' with no snippet, although every other config change on the page gets one. A developer has to guess the exact edit at the step that most often breaks.", "where": "quick-start/desktop/01 bottom, step 3"},
+    "C4": {"score": 8, "worst_defect": "The Changelog, linked from the home footer, is written for the maintainers: 'order.create v5 custom lines are real order lines on a plugin-owned, disabled POS custom item variant', 'Migration TallyPosV51790900000000', repeated '(ADR 0005)' links. Only the 'In short' lines read for a user.", "where": "changelog/desktop/01"},
+    "C5": {"score": 7, "worst_defect": "Below the hero the home page is a long run of ten identical grey text-only cards, then a plain table, then a bulleted list. There is no icon, image or visual break after the single hero screenshot, so it reads as a docs page more than a product page.", "where": "home/desktop/01-02 'What it does today' grid"},
+    "C6": {"score": 8, "worst_defect": "On phone the header shows only search and a chevron, with no visible 'Docs'/'Quick start' link. The hero till screenshot then fills about a screen and a half, so 'What it does today' starts on the second slice.", "where": "home/phone/01-02"},
+    "C7": {"score": 9, "worst_defect": "Mobile LCP is 2.4 s on both / and /docs/quick-start, and Lighthouse flags 52 KiB of unused JS and 130 ms of render-blocking on /. Separately, the og-image cuts the till screenshot mid-button ('Add charge' clipped at the bottom edge).", "where": "tech.json lighthouse; og-image.png bottom edge"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "After a clear hero, a first-time visitor scrolling the home page meets dense developer detail: a semver Node range, an RXDB_PREMIUM env var, a 'refund stays Pending until it is settled' caveat and an unexplained ph.wcpos.com. Nothing restates the simple choice, try the demo or set up your store, so a half-informed visitor is more likely to leave than click.",
+    "where": "home/desktop/02 ('Live demo or your own store' table and 'Before you start'); home/phone/04-05",
+    "fix": "Cut 'Before you start' on the home page to three plain lines (Vendure 3.6+ on Postgres, a browser at the counter, pre-release) and link the rest to Quick start and Limitations. End the page with the Live demo / Quick start buttons again."
+  },
+  "mean": 8.0
+}

@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/troubleshooting.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The tax guidance prescribes different store-wide strategies for inclusive and exclusive channels but only says a mixed-pricing store must 'account for' this, leaving its configuration unresolved.",
+      "where": "Quick start, step 6 and 'Why these pairings'; text/endpoint_llms_full_txt.txt, lines 832\u2013860"
+    },
+    "C4": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "text/plugin-setup.txt; text/connect-a-till.txt; text/troubleshooting.txt; text/endpoint_api_search_query_offline.txt"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.desktop.02.jpg; shots/home.desktop-dark.jpg; desktop documentation screenshots"
+    },
+    "C6": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "Home and quick-start phone slices; first phone slice of every other page"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The captured mobile Lighthouse report identifies 52 KiB of unused JavaScript and approximately 130 ms of render-blocking savings on the homepage.",
+      "where": "tech.json, lighthouse./.failing"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "A developer maintaining both tax-inclusive and tax-exclusive channels is warned that tax strategy is store-wide but is not told which configuration to use or how to verify both modes.",
+    "where": "Quick start, step 6, 'Why these pairings'; text/endpoint_llms_full_txt.txt, lines 832\u2013860",
+    "fix": "Document the recommended configuration for mixed-pricing channels and provide a tax-total verification example for each mode. If that combination is unsupported, state the limitation explicitly."
+  },
+  "mean": 9.3
+}
