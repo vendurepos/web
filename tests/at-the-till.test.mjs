@@ -47,6 +47,26 @@ test('at the till refund item 1 says in plain words who refunds, and leaves the 
   assert.match(setup.replace(/<[^>]+>/g, ''), /settleRefund/);
 });
 
+// Round 38, J2 C4: item 1 of the refund list was a statement; the plugin gate is a lead line.
+test('at the till refund list holds only steps; the plugin gate is a lead line before it', () => {
+  const start = html.indexOf('id="refund-a-sale"');
+  const end = html.indexOf('id="check-the-register-during-the-day"', start);
+  assert.ok(start >= 0 && end > start);
+  const section = html.slice(start, end);
+  const strip = (s) => s.replace(/<!-- -->/g, '').replace(/<[^>]+>/g, '');
+  const ol = section.indexOf('<ol');
+  assert.ok(ol >= 0);
+  assert.ok(
+    strip(section.slice(0, ol)).includes('On plugin 0.3.0 the till cannot refund. The order is refunded in the Vendure Dashboard instead.'),
+    'lead line before the list',
+  );
+  const itemStart = section.indexOf('<li', ol);
+  const itemEnd = section.indexOf('</li>', itemStart);
+  assert.ok(itemStart >= 0 && itemEnd > itemStart);
+  assert.ok(strip(section.slice(itemStart, itemEnd)).trim().startsWith('Ask whoever manages your Vendure store'), 'item 1 is a step');
+  for (const item of section.match(/<li[\s\S]*?<\/li>/g) ?? []) assert.ok(!strip(item).includes('On plugin 0.3.0'), 'no item states the gate');
+});
+
 test('at the till refund section leads with the plugin 0.3.0 cashier steps, then the live demo', () => {
   // Round 20: plugin-v0.3.0 register.service.ts:267-279 and register-figures.ts:22-27 count the till's own payments,
   // paid_in and paid_out, so a Dashboard refund needs a Pay out to keep the drawer count right.
