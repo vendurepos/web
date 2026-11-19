@@ -1,0 +1,48 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero is clear ('Point of sale for Vendure', with Vendure explained in one clause), but the first thing above the h1 is the badge 'Pre-release · plugin 0.3.0', and the first proof cards go straight to developer language ('the Vendure plugin saves that id with the order in one step', 'Read the 200-send test'). A newcomer who half knows Vendure gets the what, but not who it is for (does a small shop owner do this, or their developer?).",
+      "where": "home/desktop/01 (badge above h1, 'Every sale lands once' card); home/phone/01-02"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The comparison table's demo cell says 'All it sends is anonymous usage events to ph.wcpos.com'. That is an unexplained third-party domain, and nothing on the home page says who makes VendurePOS (the footer only has 'Built with TallyUI. For Medusa, see MedusaPOS.'). An honest disclosure therefore leaves a first-timer asking 'who is wcpos, and who is behind this?'",
+      "where": "home/desktop/02 'Live demo or your own store' table, last row; home footer"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The quick start is complete, down to 'Check it worked', but it carries a collapsed leftover, 'If your store already allows vendurepos.vercel.app', in step 5. To a newcomer that reads as an old domain nobody cleaned up, inside the most important how-to.",
+      "where": "quick-start/desktop/03 top; quick-start/phone/05 bottom"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The Changelog is written for the maintainers, not readers: '(ADR 0005)', '(#116)', 'order.create v5 custom lines are real order lines on a plugin-owned, disabled ...'. It also has the aside 'Not in the release notes: in 0.2.0 and 0.3.0 this role has no ReadOrder'. A visitor checking how active and mature the project is gets internal references instead of a plain summary.",
+      "where": "changelog/desktop/01; changelog/phone/01"
+    },
+    "C5": {
+      "score": 7,
+      "worst_defect": "Below the hero screenshot, the home page becomes a page of grey text at one weight. There are eight icon-less feature blocks, a 7-row Yes/No table, then a 7-bullet 'Before you start' list with 'Node ^20.19 || >=22.12' and 'RXDB_PREMIUM'. It ends in inline links rather than a button, so it reads like a docs page, not a landing page.",
+      "where": "home/desktop/01 bottom to home/desktop/02; same in home.desktop-dark"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "Minor: the phone hero image is cropped to the till's search bar, filter chips and two product tiles, so the 'sale in progress' from the caption is only a 'Cart (3) · €20.09' tab label. Otherwise there is no overflow, the table turns into stacked cards, and code wraps readably.",
+      "where": "home/phone/01 bottom"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Small: every sitemap.xml <lastmod> is stamped 18–19 Nov 2026 (build time, not content change), and Lighthouse flags 53 KiB unused JS with quick-start LCP at 2.6 s. Titles, descriptions, the OG card, JSON-LD, llms.txt, search API and the 404 (real 404 status) are all good.",
+      "where": "text/endpoint_sitemap_xml.txt; tech.json lighthouse"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "A first-time visitor who scrolls past the hero to decide whether to try it ends on server prerequisites ('Node ^20.19 || >=22.12', 'Postgres', 'RxDB Premium licence token (RXDB_PREMIUM)') and a paragraph of inline links. There is no closing Live demo button. The low-commitment next step that suits this visitor is only at the very top of a long, text-only page.",
+    "where": "home/desktop/02 'Before you start' to footer; home/phone/04-05",
+    "fix": "End the home page with a short closing band ('Try it in your browser', with Live demo and Quick start buttons), placed after or instead of the inline-link paragraph. Move the server prerequisites behind a 'For developers' heading or link them to the Overview's Requirements."
+  },
+  "mean": 8.1
+}
