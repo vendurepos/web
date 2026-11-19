@@ -173,3 +173,20 @@ test('hero helper note sits on the lede measure', () => {
     assert.ok(cls.includes('max-w-2xl') && cls.includes('mx-auto'), `${name}: ${cls.join(' ')}`);
   }
 });
+
+// Round 44, J1 C6 and J2 C6: the phone header keeps a visible Docs link; Fumadocs hides the others below 640px.
+test('phone header keeps a visible Docs link on the home page only', () => {
+  const anchors = (html) => html.match(/<a\s[^>]*>[\s\S]*?<\/a>/g) ?? [];
+  const classes = (tag) => (tag.match(/\sclass="([^"]*)"/)?.[1] ?? '').split(/\s+/);
+  const phoneDocs = (a) => /\shref="\/docs"/.test(a) && classes(a.slice(0, a.indexOf('>') + 1)).includes('sm:hidden');
+  const home = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
+  const start = home.search(/<header[^>]*\sid="nd-nav"/);
+  assert.ok(start !== -1, 'home header');
+  const end = home.indexOf('</header>', start);
+  assert.ok(end > start, 'home header end');
+  const link = anchors(home.slice(start, end)).find(phoneDocs);
+  assert.ok(link, 'phone Docs link in the home header');
+  assert.equal(link.replace(/<!-- -->/g, '').replace(/<[^>]+>/g, '').trim(), 'Docs');
+  const docs = readFileSync(join('.next/server/app', 'docs.html'), 'utf8');
+  assert.ok(!anchors(docs).some(phoneDocs), 'docs layout has no phone Docs link');
+});
