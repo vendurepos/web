@@ -193,15 +193,16 @@ export default function HomePage() {
       <section className="pb-16">
         <h2 className="mb-6 text-2xl font-bold tracking-tight">What it does today</h2>
         {/* Round 45, J4 C5 and J1 C1, P5 (front desk, 2026-11-19): the two test-backed claims lead as cards; the other eight are a frameless checklist. */}
+        {/* Round 48, J4 C5: the cards are flex columns and the buttons sit at the bottom, so the two line up. */}
         <div className="grid gap-4 sm:grid-cols-2">
           {features.filter((feature) => feature.test).map((feature) => (
-            <div key={feature.title} className="rounded-lg border border-fd-border bg-fd-card p-5">
+            <div key={feature.title} className="flex flex-col rounded-lg border border-fd-border bg-fd-card p-5">
               <h3 className="font-semibold">{feature.title}</h3>
-              <p className="mt-2 text-sm text-fd-muted-foreground">{feature.description}</p>
+              <p className="mt-2 mb-4 text-sm text-fd-muted-foreground">{feature.description}</p>
               {feature.test && (
                 <a
                   href={`${GITHUB_URL}/blob/main/${feature.test.path}`}
-                  className="mt-4 inline-block rounded-md border border-fd-border px-4 py-2 text-sm hover:bg-fd-accent"
+                  className="mt-auto self-start inline-block rounded-md border border-fd-border px-4 py-2 text-sm hover:bg-fd-accent"
                 >
                   {feature.test.label}
                 </a>
