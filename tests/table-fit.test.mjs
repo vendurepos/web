@@ -90,3 +90,31 @@ test('stack rule is phone-only', () => {
     /td\[data-label\]::?before/.test(selector) && /attr\(data-label\)/.test(declarations)
   ), 'docs stacked cells show attr(data-label) through ::before');
 });
+
+test('a code column label keeps its code style on phones', () => {
+  // Round 56 (J4 C6): the code header's phone label is a code chip, as the header is on desktop.
+  const html = readFileSync('.next/server/app/docs/quick-start.html', 'utf8');
+  const [table] = Array.from(html.matchAll(/<table\b[^>]*\sdata-stack=""[\s\S]*?<\/table>/g), ([t]) => t);
+  const rows = Array.from(table.match(/<tbody\b[\s\S]*?<\/tbody>/)[0].matchAll(/<tr\b[\s\S]*?<\/tr>/g), ([row]) => row);
+  assert.ok(rows.length > 0);
+  for (const row of rows) {
+    const cells = Array.from(row.matchAll(/<td\b([^>]*)>/g), ([, attrs]) => attrs);
+    const cell = (label) => cells.find((attrs) => attrs.includes(` data-label="${label}"`));
+    assert.match(cell('taxOptions.orderTaxCalculationStrategy'), /\sdata-label-code=""/);
+    assert.doesNotMatch(cell('Channel pricing'), /data-label-code/);
+  }
+  const css = readdirSync('.next/static', { recursive: true }).filter((file) => file.endsWith('.css'))
+    .map((file) => readFileSync(join('.next/static', file), 'utf8')).join('\n');
+  const phone = [];
+  for (const match of css.matchAll(/@media([^{]*)\{/g)) {
+    let depth = 1;
+    let end = match.index + match[0].length;
+    for (; depth > 0 && end < css.length; end += 1) depth += { '{': 1, '}': -1 }[css[end]] ?? 0;
+    if (/max-width\s*:\s*639px|max-width\s*:\s*39\.9375rem|width\s*<\s*640px/.test(match[1]))
+      phone.push(...css.slice(match.index + match[0].length, end - 1).matchAll(/([^{};]+)\{([^{}]*)\}/g));
+  }
+  assert.ok(phone.some(([, selector, declarations]) =>
+    selector.split(',').some((part) => /\.prose\b.*data-stack.*td\[data-label-code\]::?before/.test(part))
+      && /(?:^|;)\s*font-family\s*:/.test(declarations) && /(?:^|;)\s*background(?:-color)?\s*:/.test(declarations)
+  ), 'docs stacked code labels have a code font and background on phones');
+});
