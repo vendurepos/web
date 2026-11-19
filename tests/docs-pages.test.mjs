@@ -408,3 +408,21 @@ test('the changelog sets order.create as code everywhere', () => {
   assert.ok(count('`order.create` v5') >= 3, '`order.create` v5 at least 3 times');
   assert.equal(count('`order.create` 1–5'), 1, '`order.create` 1–5 once');
 });
+
+// Round 41, J4 C2: 0.3.0 says it shares 0.2.0's date on purpose.
+test('the changelog says 0.3.0 came out the same day as 0.2.0', () => {
+  const html = readFileSync(join('.next/server/app', 'docs/changelog.html'), 'utf8');
+  // Visible HTML only: drop <head> and every <script> (the RSC payload repeats the page's text).
+  const text = html
+    .slice(html.indexOf('</head>'))
+    .replace(/<script\b[\s\S]*?<\/script>/g, ' ')
+    .replaceAll('<!-- -->', '')
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/\s+/g, ' ');
+  const sentence = 'Released the same day as 0.2.0, a few hours later.';
+  assert.equal(text.split(sentence).length - 1, 1, 'the same-day sentence once');
+  const at = text.indexOf(sentence);
+  const heading = text.indexOf('0.3.0 (2026-10-06)');
+  assert.ok(heading >= 0 && heading < at, 'after the 0.3.0 heading');
+  assert.ok(at < text.indexOf('In short:', heading), 'before In short:');
+});
