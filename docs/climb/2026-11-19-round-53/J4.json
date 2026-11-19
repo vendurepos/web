@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero stacks three text blocks around the CTAs: a four-line centred lede, then the buttons, then a second two-line grey caveat (\"Your own store needs the plugin on your Vendure server first...\"). The buttons sit sandwiched in copy instead of closing the block, and at 390 px that caveat pushes the till screenshot below the fold.", "where": "home.desktop.01 (hero), home.phone.01"},
+    "C2": {"score": 8, "worst_defect": "In the 'Live demo or your own store' table the demo cell says it sends \"anonymous usage events to ph.wcpos.com\". The wcpos.com domain is never explained on a VendurePOS page. The Refund row's 'Your Vendure store' cell packs a four-line caveat into one cell, so it reads as small print rather than a plain 'No'.", "where": "home.desktop.02 (comparison table), home.phone.04"},
+    "C3": {"score": 8, "worst_defect": "Step 8 'Sign in and make a sale' opens with a warning callout that sends the reader to two other pages (\"Set up email\" and \"Check your own code\") before they make the first sale. The one linear path breaks at its last step.", "where": "quick-start.desktop.03 / quick-start.phone.07"},
+    "C4": {"score": 8, "worst_defect": "On Troubleshooting, the second 'Till updates line' bullet holds two bold-labelled paragraphs ('At the counter:', 'For the store owner:'), a collapsible 'To find the line in the sync log' and a nested errorCode list, all inside one list item. It is the hardest block on the site to scan.", "where": "troubleshooting.desktop.01 (Act on a header notice)"},
+    "C5": {"score": 7, "worst_defect": "At the till shows its three screenshots at three different widths. The payment screen fills the full ~836 px column, the cashier sheet is a ~418 px centred box padded inside a second frame, and the closure screen is a ~545 px centred box. Each caption is left-aligned to its own figure rather than to the text column, so the left edge jumps three times down the page. On the home page, 'What it does today' also switches from two bordered cards to eight borderless items with no visual reason.", "where": "at-the-till.desktop.02, at-the-till.desktop.03, at-the-till.desktop.04; home.desktop.01"},
+    "C6": {"score": 8, "worst_defect": "On the phone Changelog, the inline code `packages/vendure-plugin/CHANGELOG.md` breaks at the hyphen into two separate pills over two lines. Long inline-code tokens across the docs (e.g. `DefaultTaxLineCalculationStrategy`, `N orders waiting to send`) make ragged, extra-tall lines at 390 px.", "where": "changelog.phone.01, quick-start.phone.06, troubleshooting.phone.01"},
+    "C7": {"score": 9, "worst_defect": "Mobile LCP is 2.4 s on both / and /docs/quick-start, with 53 KiB of unused JavaScript and render-blocking requests flagged on a mostly static marketing page. Everything else is in place: titles, descriptions, JSON-LD, llms.txt, sitemap, a real 404 and the share card.", "where": "tech.json lighthouse"}
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "The At the till page shows its three product screenshots at three unrelated widths (full column, ~418 px centred, ~545 px centred), each with its own left-aligned caption. The docs' only visual moments look assembled rather than designed, and the page's left edge stops reading as one column.",
+    "where": "at-the-till.desktop.02, at-the-till.desktop.03, at-the-till.desktop.04",
+    "fix": "Render every docs screenshot in one figure style: either the full content-column width, or one shared max-width (e.g. 560 px) with the image centred and the caption aligned to the text column. Drop the extra inner frame around the cashier-sheet image."
+  },
+  "mean": 8.0
+}

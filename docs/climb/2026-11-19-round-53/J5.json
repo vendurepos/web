@@ -1,0 +1,48 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "Hero 'Point of sale for Vendure' with 'Pre-release · plugin 0.3.0' is clear, but home never says who should NOT use it (e.g. stores needing a cash drawer, coupons or non-Chrome tills) and never positions against the obvious alternatives a client would ask about (Shopify POS, Square, Lightspeed, or rolling their own on the Admin API); no maintainer or company is named beyond 'Built with TallyUI'.",
+      "where": "home.desktop.01–03 / text/home.txt (hero, feature cards, footer 'MIT licensed. Built with TallyUI. For Medusa, see MedusaPOS.')"
+    },
+    "C2": {
+      "score": 7,
+      "worst_defect": "Last plugin release is 0.3.0 dated 2026-10-06 (0.2.0 the same day), six weeks stale, while a known bug ('in 0.2.0 and 0.3.0 this role has no ReadOrder, so the till's order history is refused until you add it to the role') is documented as a manual workaround in changelog, quick-start and connect-a-till instead of shipped as a fix; the live demo also shows till refunds and customer notes that 'plugin 0.3.0' stores do not get, so the demo oversells the product.",
+      "where": "changelog.desktop.01 'Not in the release notes…'; quick-start 'Optional: a device key'; at-the-till (demo-only refund/customer note); home demo-vs-store table"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The plugin's own 'New POS till key' path creates role vendurepos-pos-till without ReadOrder on 0.3.0, so following the docs' optional device-key route yields a till whose order history is refused until the admin hand-edits the role; there is also no simple 'is the plugin installed' check (e.g. hit /tally/v1 info) before the sign-in step, and a collapsed 'If your store already allows vendurepos.vercel.app' leftover adds noise.",
+      "where": "quick-start 'Optional: a device key' and step 4 permissions; quick-start collapsed vercel.app section"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Changelog is written for the maintainer, not the buyer: 'ADR 0005', 'order.create v5', migration class 'TallyPosV51790900000000' with no plain-language summary of what changed for a store; Tally vs VendurePOS naming (TallyPosPlugin, /tally/v1, TallyPosSell) is never explained in one line.",
+      "where": "changelog.desktop.01–02 / text/changelog.txt; plugin-setup (TallyPosPlugin, /tally/v1)"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "After the hero till screenshot and the two test-backed proof cards, the rest of the home feature list drops to plain two-column text with no icons, screenshots or visual rhythm, so the lower page reads like a README; dark mode itself holds up well including the dark till screenshot.",
+      "where": "home.desktop.02–03 (feature list below proof cards)"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "Long TypeScript lines in the plugin config code block wrap mid-expression on phone (generateMigration call broken across several lines), making copy-checking awkward; tables collapse to stacked cards correctly and nav works.",
+      "where": "quick-start.phone.03 (code block wrapping)"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "404 page carries no JSON-LD and logs 'Failed to load resource: 404' (expected but noisy); Lighthouse still flags minor unused JS / render-blocking items and LCP 2.4 s on home; otherwise llms.txt, llms-full.txt, sitemap with lastmod, robots, search API and Organization/SoftwareApplication JSON-LD are all solid.",
+      "where": "tech.json not-found page; Lighthouse / and /docs/quick-start"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "Plugin's last release is 0.3.0 from 2026-10-06 and its known bug (vendurepos-pos-till role lacks ReadOrder, so the till's order history is refused) is documented as a hand-edit workaround on the changelog, quick-start and connect-a-till pages instead of being fixed — to a sceptic advising a client this reads as stalled maintenance on a pre-release product.",
+    "where": "changelog.desktop.01 'Not in the release notes: in 0.2.0 and 0.3.0 this role has no ReadOrder…'; quick-start 'Optional: a device key'; connect-a-till",
+    "fix": "Ship plugin 0.3.1 adding ReadOrder to the till role and drop the three workaround notes, or state on the changelog when the next plugin release lands and why it has not yet."
+  },
+  "mean": 8.0
+}
