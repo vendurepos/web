@@ -436,3 +436,22 @@ test('limitations says settling a refund takes two Admin API calls, like home', 
   );
   assert.ok(textOf('.next/server/app/index.html').includes('settles it with two Admin API calls'), 'home says two calls');
 });
+
+// Round 47, J2 C4: the bar shows the account's initial in a circle, not a name.
+test('at the till says to tap your initial, not your name', () => {
+  // The rendered markup only: the RSC payload in <script> repeats the text as JSON.
+  const toText = (markup) =>
+    markup
+      .replace(/<!-- -->/g, '')
+      .replace(/<[^>]+>/g, '')
+      .replace(/\s+/g, ' ');
+  const page = html.replace(/<script[\s\S]*?<\/script>/g, '');
+  const text = toText(page);
+  assert.ok(text.includes('Tap your initial at the right of the bar for your cashier sheet.'), 'cashier sheet sentence');
+  const step = page.indexOf('If you hand back cash');
+  assert.ok(step >= 0, 'Pay out step present');
+  const stepText = toText(page.slice(page.lastIndexOf('<li', step), page.indexOf('</li>', step)));
+  assert.ok(stepText.includes('record it on the till with Pay out'), 'the step is the Pay out step');
+  assert.ok(stepText.includes('tap your initial at the right of the bar'), 'Pay out step says tap your initial');
+  assert.doesNotMatch(text, /your name in the bar/i);
+});
