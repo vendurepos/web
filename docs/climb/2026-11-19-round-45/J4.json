@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The ten equal-weight \"What it does today\" cards push the demo-vs-your-store comparison table and \"Before you start\" about 2.5 screens down on phone, so the 'what to click next' context is buried below a uniform feature wall.", "where": "home.phone.02-03"},
+    "C2": {"score": 9, "worst_defect": "The Pending-refund caveat appears three times on home (table row, \"Before you start\" bullet and its link text), which reads as repetitive rather than as an extra limit.", "where": "home.desktop.02"},
+    "C3": {"score": 8, "worst_defect": "Step 8 \"Sign in and make a sale\" is a text-only a-i list with no screenshot of the sign-in screen or the synced till, so the guide never shows what success looks like.", "where": "quick-start.desktop.03"},
+    "C4": {"score": 8, "worst_defect": "The troubleshooting \"Till updates\" entry nests several paragraphs, a details toggle and a code list inside one bullet, which is hard to scan.", "where": "troubleshooting.desktop.01"},
+    "C5": {"score": 7, "worst_defect": "\"What it does today\" is a 2-column grid of 10 identical grey cards with ragged heights (only the first two carry \"Read the ... test\" links), and the \"Before you start\" bullets run about 150 characters per line; on at-the-till, the cashier sheet and closure screenshots sit small inside a second bordered frame with about 50px of dead padding and captions offset from the text column, unlike the full-width payment shot.", "where": "home.desktop.01-02; at-the-till.desktop.03-04"},
+    "C6": {"score": 8, "worst_defect": "The inline code \"packages/vendure-plugin/CHANGELOG.md\" breaks at the hyphen into two bordered chip fragments, and the phone header hides Quick start and Live demo behind a chevron.", "where": "changelog.phone.01; home.phone.01"},
+    "C7": {"score": 9, "worst_defect": "The OG card crops the till screenshot at the bottom edge, through the product \"In Stock\" pills and the cart's \"Add charge\" button, and the subtitle leaves \"a normal order.\" as a short orphan line; Lighthouse also flags 140ms of render-blocking resources on /.", "where": "og-image.png; tech.json lighthouse /"}
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "The home \"What it does today\" section is a wall of 10 identical grey cards in a 2-column grid with ragged heights. Proof-backed claims (offline, a sale lands once) get the same weight as minor features, and on phone the section takes about 2.5 screens.",
+    "where": "home.desktop.01-02 / home.phone.02-03",
+    "fix": "Show the two proof-backed cards larger with their test links. Turn the other eight into a compact 3- or 4-column list of one-line items, and cap prose width at about 70ch."
+  },
+  "mean": 8.1
+}

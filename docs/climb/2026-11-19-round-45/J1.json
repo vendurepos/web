@@ -1,0 +1,48 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero is clear ('Point of sale for Vendure', two buttons, a till screenshot), but the home page then ends in a developer checklist a newcomer cannot use: 'Node ^20.19 || >=22.12 on the server that runs Vendure', 'your own RxDB Premium licence token (RXDB_PREMIUM)', 'MySQL, MariaDB and SQLite are not supported'. A visitor who half knows what Vendure is gets semver ranges and env-var names before any plain 'is this for me?' line.",
+      "where": "home.desktop.02 'Before you start' list; home.phone.04-05"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The demo row says 'All it sends is anonymous usage events to ph.wcpos.com, with no cookie', but nothing on the home page says who or what wcpos.com is. To a stranger, a VendurePOS demo reporting to an unrelated-looking domain reads as data going to a third party. Connect a till only adds that it is a 'self-hosted PostHog analytics server', and still never names the owner.",
+      "where": "home.desktop.02 'Live demo or your own store' table, last row; home.phone.04; connect-a-till.desktop.01 'Where requests go'"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 4 says to sign in with 'a Vendure administrator whose role in the till's channel has TallyPosSell, ReadCatalog, ReadSettings, ReadCustomer and CreateCustomer ... Also add ReadOrder'. It gives no Dashboard path or snippet for creating that role, so a first-timer must leave the quick start (via 'Give each cashier their own account') to work out the one step that gates sign-in.",
+      "where": "quick-start.desktop.02 '4. Enable bearer authentication'; quick-start.phone.04"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Below each 'In short' line, the changelog is written in internal protocol terms a reader cannot act on: 'order.create v5 custom lines are real order lines on a plugin-owned, disabled ... variant', 'returns maxShippingLines: 1 and lineTax: { none: true, classes: true }', and repeated '(ADR 0005)' and '#116' references. It also carries a known gap as an afterthought ('Not in the release notes: in 0.2.0 and 0.3.0 this role has no ReadOrder').",
+      "where": "changelog.desktop.01; changelog.phone.01"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "After the hero, 'What it does today' is ten identical grey text-only cards in a 2x5 grid with no icons, images or emphasis. Only the first two carry a link, so row heights jump, and the eye has nothing to land on until the table. Dark mode holds up well.",
+      "where": "home.desktop.01 bottom to home.desktop.02 top; home.desktop-dark.jpg"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "No real layout breakage (no overflow, and the comparison table turns into readable stacked rows). However, the phone hero screenshot is cropped to the product grid and the 'Cart (3) · €20.09' tab, so the caption 'A sale in progress on the live demo till.' shows no cart, total or checkout on a phone.",
+      "where": "home.phone.01-02 hero image and caption"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Doc page titles lead with a bare generic word, e.g. 'Overview | VendurePOS' and 'Notifications | VendurePOS', so a search result or tab gives no hint it is a Vendure point of sale. Everything else is strong: Lighthouse 98/100/100/100, JSON-LD, llms.txt, sitemap, search API, a real 404 with Home/Docs/Live demo, and the share card.",
+      "where": "tech.json pages docs.desktop / notifications.desktop title"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "For someone who arrived from a search for 'Vendure point of sale', the home page turns into server-admin detail ('Node ^20.19 || >=22.12', 'RXDB_PREMIUM', the database list) before it plainly says what they need to have. With the ten equal grey text cards above it, a newcomer who skims past the hero gets a wall of text and jargon instead of a clear 'try the demo' or 'you need a Vendure store' fork.",
+    "where": "home.desktop.02 'Before you start' (and the cards above it); home.phone.04-05",
+    "fix": "Replace the home 'Before you start' list with one plain sentence, e.g. 'You need your own Vendure 3.6+ store on Postgres; no store? Try the live demo.', linking to Overview > Requirements for the version and licence detail."
+  },
+  "mean": 8.3
+}
