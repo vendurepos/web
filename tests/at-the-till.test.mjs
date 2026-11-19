@@ -81,6 +81,37 @@ test('at the till refund section leads with the plugin 0.3.0 cashier steps, then
   assert.doesNotMatch(section, /settleRefund\(input/);
 });
 
+// Round 40, J2 C4: the live-demo refund flow read as one staff on plugin 0.3.0 could use.
+test('at the till live-demo refund steps sit in a closed fold under a line saying why', () => {
+  const start = html.indexOf('id="refund-a-sale"');
+  const end = html.indexOf('id="check-the-register-during-the-day"', start);
+  assert.ok(start >= 0 && end > start);
+  const section = html.slice(start, end);
+  const h3 = section.match(/<h3[^>]*>((?:(?!<\/h3>)[\s\S])*)<\/h3>/);
+  assert.ok(h3?.[1].includes('live demo only'), 'h3 says live demo only');
+  const details = section.indexOf('<details');
+  assert.ok(details > h3.index, 'a <details> after the h3');
+  const lead = section.slice(h3.index + h3[0].length, details);
+  const text = (part) =>
+    part
+      .replace(/<!-- -->/g, '')
+      .replace(/<[^>]+>/g, '')
+      .replace(/&#x27;/g, "'")
+      .replace(/\s+/g, ' ');
+  assert.ok(
+    text(lead).includes(
+      "The till refunds only through a store that offers refunds. The live demo's store does; plugin 0.3.0 does not, so on your own store use the steps above.",
+    ),
+    'lead line',
+  );
+  const fold = section.slice(details, section.indexOf('</details>', details));
+  assert.doesNotMatch(fold.match(/<details[^>]*>/)[0], /\sopen/);
+  assert.equal(text(fold.match(/<summary[^>]*>([\s\S]*?)<\/summary>/)?.[1] ?? '').trim(), 'Refund steps on the live demo');
+  for (const phrase of ['Refund items', 'Open the register to refund this order.', 'Send again']) {
+    assert.ok(text(fold).includes(phrase), phrase);
+  }
+});
+
 test('at the till order details leads with plugin 0.3.0', () => {
   const start = html.indexOf('id="order-details"');
   const end = html.indexOf('<h2', start);
