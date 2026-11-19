@@ -189,4 +189,10 @@ test('phone header keeps a visible Docs link on the home page only', () => {
   assert.equal(link.replace(/<!-- -->/g, '').replace(/<[^>]+>/g, '').trim(), 'Docs');
   const docs = readFileSync(join('.next/server/app', 'docs.html'), 'utf8');
   assert.ok(!anchors(docs).some(phoneDocs), 'docs layout has no phone Docs link');
+  // Round 45, J5 C6: Live demo stays visible too.
+  const phoneDemo = (a) => /\shref="https:\/\/demo\.vendurepos\.com\/demo"/.test(a) && classes(a.slice(0, a.indexOf('>') + 1)).includes('sm:hidden');
+  const demo = anchors(home.slice(start, end)).find(phoneDemo);
+  assert.ok(demo, 'phone Live demo link in the home header');
+  assert.equal(demo.replace(/<!-- -->/g, '').replace(/<[^>]+>/g, '').trim(), 'Live demo');
+  assert.ok(!anchors(docs).some(phoneDemo), 'docs layout has no phone Live demo link');
 });
