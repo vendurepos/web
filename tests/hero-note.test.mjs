@@ -59,7 +59,7 @@ test('hero lede links Vendure to vendure.io', () => {
   // round 27, J4 C1: the definition is an appositive, not a parenthesis.
   assert.ok(text.includes('VendurePOS is an open-source till for Vendure, the open-source headless commerce framework.'));
   assert.ok(text.includes('It runs in the browser and keeps selling when the connection drops.'));
-  assert.ok(text.includes("Every sale lands in your Vendure store once, as a normal order at the till's price."));
+  assert.ok(!text.includes('Every sale lands in your Vendure store once'), 'round 43: the guarantee is on its card, not in the hero');
   const ledeStart = hero.indexOf('<p', hero.indexOf('</h1>'));
   const lede = hero.slice(ledeStart, hero.indexOf('</p>', ledeStart)).replace(/<[^>]+>/g, '');
   assert.ok(ledeStart !== -1 && !lede.includes('('), lede);
@@ -76,6 +76,29 @@ test('hero lede says who VendurePOS is for', () => {
   const sentence =
     'framework. It is made for shops that sell online with Vendure and also sell in person. It runs in the browser';
   assert.equal(text.split(sentence).length - 1, 1, text);
+});
+
+// Round 43, J4 C1: the lede is three sentences and the guarantee it dropped is still on a feature card.
+test('hero lede ends on offline selling and the guarantee stays on its card', () => {
+  const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
+  const h1End = html.indexOf('</h1>');
+  assert.ok(h1End !== -1);
+  const ledeStart = html.indexOf('<p', h1End);
+  const ledeEnd = html.indexOf('</p>', ledeStart);
+  assert.ok(ledeStart !== -1 && ledeEnd > ledeStart);
+  const lede = html
+    .slice(ledeStart, ledeEnd)
+    .replace(/<!-- -->/g, '')
+    .replace(/<[^>]+>/g, '')
+    .replace(/&#x27;/g, "'")
+    .trim();
+  assert.ok(lede.endsWith('keeps selling when the connection drops.'), lede);
+  const body = html
+    .slice(html.indexOf('</head>'))
+    .replace(/<script[\s\S]*?<\/script>/g, '')
+    .replace(/&#x27;/g, "'");
+  assert.ok(body.includes('Every sale lands once'), 'replay card');
+  assert.ok(body.includes("Paid, fulfilled, at the till"), 'price card');
 });
 
 test('hero is left-aligned with a smaller lead below 640px', () => {
