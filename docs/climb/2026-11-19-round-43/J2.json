@@ -1,0 +1,48 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "Hero speaks to developers (\"the open-source headless commerce framework\"); the note \"Your own store needs the plugin on your Vendure server first…\" leaves a shop owner with no next step for them, and At the till is only linked at the page bottom (\"For cashiers, At the till covers…\") and in the nav.",
+      "where": "home.desktop.01 / home.phone.01"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "Honest, but the refund limit is scattered: \"Vendure keeps a refund of a POS order Pending until an administrator settles it with the Admin API's settleRefund mutation\" — a shop owner only learns across Limitations and At the till that every counter refund needs their developer.",
+      "where": "limitations.desktop.01, at-the-till.desktop.02"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Quick-start step 8 mixes developer and cashier steps; nowhere lists what the developer must hand the counter (app URL, store URL, channel token, one cashier login with the TallyPosSell role plus ReadOrder, barcode field name), and 0.3.0 device keys need ReadOrder added by hand.",
+      "where": "quick-start.desktop.03 (step 8)"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Troubleshooting's till-updates entry hands counter staff raw codes (\"What happens next depends on the errorCode: register_session_already_open … register_closure_number_invalid\") and \"copy the refused line from this till's sync log\"; Changelog is ADR / order.create v5 detail with no counter-level summary.",
+      "where": "troubleshooting.desktop.01 / troubleshooting.phone.03, changelog.desktop.01"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "Closure and cashier-sheet screenshots sit as small cards in large empty frames (\"Counted €120.09 / Expected €120.09 / Exact\" spread on widely spaced lines); home feature section is a wall of 10 text-only grey cards.",
+      "where": "at-the-till.desktop.03-04, home.desktop.02"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "No overflow; tables stack well. Long code lines wrap (generateMigration snippet), slightly harder to read on a phone.",
+      "where": "quick-start.phone.03"
+    },
+    "C7": {
+      "score": 8,
+      "worst_defect": "Lighthouse /docs/quick-start performance 79 (TBT 790 ms, main-thread 2.6 s); sitemap home loc lacks trailing slash. 404, llms.txt, search, JSON-LD and OG card are all good.",
+      "where": "tech.json lighthouse /docs/quick-start, sitemap"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "No clear who-does-what handoff for a shop owner: nothing lists what the freelancer must give the counter before staff can sell; quick-start step 8 mixes developer and cashier steps.",
+    "where": "quick-start.desktop.03 (step 8), home.desktop.01",
+    "fix": "Add a short 'Before your staff sell' box on Connect a till / At the till, linked from the home hero note: app URL, store URL, channel token, one cashier login per staff member with TallyPosSell + ReadOrder, barcode field name."
+  },
+  "mean": 8.3
+}
