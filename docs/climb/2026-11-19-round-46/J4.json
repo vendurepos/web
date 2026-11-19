@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 9, "worst_defect": "The hero is text-heavy for a five-second read: a 4-line centred paragraph (\"VendurePOS is an open-source till for Vendure, the open-source headless commerce framework. It is made for shops...\") plus a second 2-line note under the buttons (\"Your own store needs the plugin on your Vendure server first...\") sits between the H1 and the screenshot, pushing the product shot below the fold on desktop.", "where": "home.desktop.01 (hero), home.phone.01"},
+    "C2": {"score": 9, "worst_defect": "Only two of the ten feature claims carry proof: \"Keeps selling offline\" and \"Every sale lands once\" get boxed cards with test links, while \"Paid, fulfilled, at the till's price\" and \"Line and order discounts\" (\"the order in Vendure matches the receipt's totals\") are plain text with nothing to click.", "where": "home.desktop.01-02, What it does today"},
+    "C3": {"score": 8, "worst_defect": "Step 4 hides the role you must create inside one run-on paragraph: \"TallyPosSell, ReadCatalog, ReadSettings, ReadCustomer and CreateCustomer. TallyPosSell (or CreateOrder, which is broader)... Also add ReadOrder\", so the permission list a developer has to tick off is never shown as a list.", "where": "quick-start.desktop.02 (4. Enable bearer authentication), quick-start.phone.04"},
+    "C4": {"score": 8, "worst_defect": "Troubleshooting's \"Act on a header notice\" uses body-size bold run-in labels (\"Orders line\", \"Till updates line\") as headings. They are missing from the On this page rail, and below them are paragraphs (\"At the counter:\", \"For the store owner:\") and an errorCode list nested two indents deep inside a bullet, so the section's hierarchy can't be scanned.", "where": "troubleshooting.desktop.01 (lower half)"},
+    "C5": {"score": 8, "worst_defect": "At the till frames its three screenshots three different ways: the payment screen fills the 836 px column, the cashier sheet is a ~420 px card centred inside an oversized empty outer frame, and the closure screen is a ~545 px framed card. The captions' left edges therefore jump (x≈302, 511, 447), so the page has no consistent figure rhythm.", "where": "at-the-till.desktop.02, .03, .04"},
+    "C6": {"score": 8, "worst_defect": "At 390 px the step 4 permissions paragraph turns into five consecutive lines of inline code pills (TallyPosSell, ReadCatalog, ReadSettings, ReadCustomer, CreateCustomer, TallyPosSell, CreateOrder, ReadOrder), each pill adding height and breaking the line ragged, so it is the hardest block on the page to read. The phone cashier-sheet screenshot also shows a stray grey strip down its left edge.", "where": "quick-start.phone.04; at-the-till.phone.06"},
+    "C7": {"score": 9, "worst_defect": "The share card's subtitle wraps so that \"a normal order.\" sits alone on a second line, and the till screenshot is cut through the \"Add charge\" button at the bottom edge. Lighthouse LCP is 2.3 s on / and 2.6 s on /docs/quick-start (render-blocking and unused JS flagged).", "where": "og-image.png; tech.json lighthouse"}
+  },
+  "overall_worst": {
+    "criterion": "C6",
+    "defect": "Quick start step 4, the step every developer must get right, puts the till role's eight permissions as inline code pills in running prose. On a 390 px phone that becomes a five-line wall of pills with ragged breaks (\"TallyPosSell, ReadCatalog, ReadSettings, ReadCustomer and CreateCustomer. TallyPosSell (or CreateOrder...) ... Also add ReadOrder\"), and you can't see at a glance which permissions are required and which are optional.",
+    "where": "quick-start.phone.04 / quick-start.desktop.02, 4. Enable bearer authentication",
+    "fix": "Replace the sentence with a short bulleted list (or one code block) of the role's permissions: TallyPosSell, ReadCatalog, ReadSettings, ReadCustomer, CreateCustomer, ReadOrder. Follow it with one line noting that CreateOrder can stand in for TallyPosSell."
+  },
+  "mean": 8.4
+}
