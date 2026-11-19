@@ -169,6 +169,18 @@ test("step 4 names the plugin 0.3.0 till permissions and ReadOrder; the device-k
   assert.ok(html.slice(start, end < 0 ? undefined : end).includes('ReadOrder'));
 });
 
+// Round 46, J4 C6/C3: step 4's permissions are a list, not a run of inline code in prose.
+test('step 4 lists the till role permissions one per item', () => {
+  const step4 = stepSection('Enable bearer authentication', 'Allow the POS origin through CORS');
+  assert.ok(step4.includes('<ul'));
+  const items = Array.from(step4.matchAll(/<li\b[^>]*>((?:(?!<\/li>)[\s\S])*)<\/li>/g)).map(([, inner]) => textOf(inner).trim());
+  assert.equal(items.length, 6);
+  ['TallyPosSell', 'ReadCatalog', 'ReadSettings', 'ReadCustomer', 'CreateCustomer', 'ReadOrder'].forEach((permission, i) => {
+    assert.ok(items[i].startsWith(permission), items[i]);
+  });
+  assert.ok(items[0].includes('CreateOrder'), items[0]);
+});
+
 test('step 9 is a symptom → fix list and leaves the LAN http aside to Troubleshooting', () => {
   // Round 19, J4 C4: one bold symptom per item, each quoted till message kept verbatim.
   const section = stepSection('Troubleshoot', 'Optional: a device key for each till');

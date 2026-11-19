@@ -113,9 +113,15 @@ tokenMethod: ['bearer', 'cookie'],
 
 {/* Not part of the port; keep it when re-porting. Sources: vendurepos/app@2d3699e (plugin-v0.3.0) packages/vendure-plugin/src/config/pos-till-role.ts:6-8 (the five till permissions, no ReadOrder), src/api/commands.controller.ts:54 (TallyPosSell or CreateOrder); vendurepos/app@cc719c2 apps/pos/lib/order-history.ts:9,38 (the order list needs ReadOrder). Plugin 0.3.0 has no sales report route. */}
 
-Sign in with a Vendure administrator whose role in the till's channel has `TallyPosSell`, `ReadCatalog`,
-`ReadSettings`, `ReadCustomer` and `CreateCustomer`. `TallyPosSell` (or `CreateOrder`, which is broader) opens the
-plugin's sale routes. Also add `ReadOrder`, or the till sells but its order history is refused.
+Sign in with a Vendure administrator whose role in the till's channel has these permissions:
+
+- `TallyPosSell`, which opens the plugin's sale routes (`CreateOrder`, which is broader, also works)
+- `ReadCatalog`
+- `ReadSettings`
+- `ReadCustomer`
+- `CreateCustomer`
+- `ReadOrder`, or the till sells but its order history is refused
+
 Give each cashier their own administrator with only that role, not a shared login: see
 [Give each cashier their own account](/docs/connect-a-till#give-each-cashier-their-own-account).
 
