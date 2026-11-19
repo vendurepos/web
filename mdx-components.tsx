@@ -1,6 +1,6 @@
 import defaultMdxComponents from 'fumadocs-ui/mdx';
 import { CodeBlock, Pre } from 'fumadocs-ui/components/codeblock';
-import { Callout, CalloutContainer, CalloutDescription } from 'fumadocs-ui/components/callout';
+import { Callout, CalloutDescription } from 'fumadocs-ui/components/callout';
 import type { MDXComponents } from 'mdx/types';
 import type { ComponentProps } from 'react';
 import { TillFigure } from '@/components/till-figure';
@@ -11,16 +11,14 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     ...defaultMdxComponents,
     TillFigure,
     HostedTillVersion,
-    // <Callout fold> is a closed native <details> in the callout frame; its text stays in the HTML for search.
-    // Round 33, J4 C5: no info icon in a fold; the <summary> triangle is its one affordance.
+    // <Callout fold> is a closed native <details> with its text in the HTML for search.
+    // Round 52, J4 C5: a fold is a plain bordered disclosure, not a callout frame (no shadow, no coloured rule, no icon).
     Callout: ({ fold, title, children, ...props }: ComponentProps<typeof Callout> & { fold?: boolean }) =>
       fold ? (
-        <CalloutContainer icon={false} {...props}>
-          <details>
-            <summary className="cursor-pointer font-medium">{title}</summary>
-            <CalloutDescription className="mt-2">{children}</CalloutDescription>
-          </details>
-        </CalloutContainer>
+        <details className="my-4 rounded-lg border border-fd-border px-4 py-3 text-sm">
+          <summary className="cursor-pointer font-medium">{title}</summary>
+          <CalloutDescription className="mt-2">{children}</CalloutDescription>
+        </details>
       ) : (
         <Callout title={title} {...props}>{children}</Callout>
       ),
