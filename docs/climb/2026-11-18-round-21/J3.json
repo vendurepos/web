@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "The 25-sale acceptance and 200-send claims link to test source on main, without a dated passing run tied to the advertised plugin 0.3.0.",
+      "where": "text/home.txt, What it does today; tech.json, home.desktop.links"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The tax instructions prescribe different store-wide strategies for inclusive and exclusive channels, but tell mixed-mode stores only to 'account for the store-wide strategy', leaving their configuration decision unresolved.",
+      "where": "text/endpoint_llms_full_txt.txt, Quick start, step 6, Why these pairings"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "For a rejected till update, troubleshooting explains that later updates wait and the sync log offers no retry or discard, but gives no recovery procedure or escalation destination after copying the log.",
+      "where": "shots/troubleshooting.desktop.01.jpg, Act on a header notice, Till updates line; text/troubleshooting.txt"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop-dark.jpg; shots/home.desktop.01.jpg; shots/quick-start.desktop.01.jpg through quick-start.desktop.04.jpg"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.phone.01.jpg through home.phone.05.jpg; shots/quick-start.phone.01.jpg through quick-start.phone.09.jpg; tech.json"
+    },
+    "C7": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "tech.json; text/endpoint_llms_txt.txt; text/endpoint_llms_full_txt.txt; text/endpoint_api_search_query_offline.txt; text/endpoint_sitemap_xml.txt; text/endpoint_robots_txt.txt; shots/og-image.png; shots/not-found.desktop.01.jpg"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "A rejected register update blocks later till updates, yet the troubleshooting instructions end at inspecting or copying the sync log without explaining how the store owner proceeds.",
+    "where": "shots/troubleshooting.desktop.01.jpg, Act on a header notice, Till updates line; text/troubleshooting.txt",
+    "fix": "Document the supported recovery procedure, or explicitly state that this case requires maintainer assistance and link the escalation destination. Specify which log details to provide and how to preserve the queued records while awaiting help."
+  },
+  "mean": 9.0
+}

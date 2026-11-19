@@ -46,3 +46,114 @@ test('troubleshooting lists kept sales before resolving one, and says when to ch
   assert.match(prose, /Choose <code[^>]*>applied<\/code>/);
   assert.match(prose, /Choose <code[^>]*>rejected<\/code>/);
 });
+
+// Round 22, C4 (J3): a refused till update had no way to find its log line and no next step.
+test('troubleshooting says how to find a refused till update and what can and cannot clear it', () => {
+  const notices = section('act-on-a-header-notice', 'refresh-prices-and-stock');
+  for (const phrase of [
+    'choose <strong>All</strong>',
+    'Warnings and errors</strong> does not show',
+    'status=rejected',
+    'register_session_already_open',
+    'Choose another register',
+    'register_closure_number_invalid',
+    'never sent again',
+    'Do not clear the site',
+  ]) {
+    assert.ok(notices.includes(phrase), phrase);
+  }
+  assert.ok(!notices.includes('Take over'));
+});
+
+// Round 22, C4 (J2): the partial-sale section never said who it is for.
+test('troubleshooting says the partial-sale section is for whoever runs the Vendure server', () => {
+  const kept = section('resolve-a-sale-the-store-kept-part-way', 'check-browser-storage');
+  const text = kept.slice(kept.indexOf('</h2>')).replace(/<[^>]+>/g, '').trim();
+  assert.ok(text.startsWith('This section is for whoever runs your Vendure server.'), text.slice(0, 80));
+});
+
+// Round 25, C4 (J2): the refused till updates notice went straight to a developer procedure.
+test('troubleshooting says what to do at the counter before the sync log procedure', () => {
+  const text = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+  const start = text.indexOf('till updates need attention');
+  const end = text.indexOf('register_session_already_open', start);
+  assert.ok(start >= 0 && end > start);
+  const item = text.slice(start, end);
+  const counter = item.indexOf('At the counter:');
+  const owner = item.indexOf('For the store owner:');
+  const log = item.indexOf('Sync log', owner);
+  assert.ok(counter >= 0 && owner > counter && log > owner, `${counter} ${owner} ${log}`);
+  assert.ok(item.includes('do not reload it'));
+  assert.ok(item.includes('sales already made still send to the store'));
+  assert.ok(!item.includes('keep selling'));
+});
+
+// Round 26, C4 (J4, J2): the refused till updates item mixed the counter, the owner and a stray note in one paragraph.
+test('troubleshooting gives the counter and the store owner their own paragraphs for refused till updates', () => {
+  const start = html.indexOf('till updates need attention');
+  const end = html.indexOf('register_session_already_open', start);
+  assert.ok(start >= 0 && end > start);
+  const item = html.slice(start, end);
+  for (const label of ['<strong>At the counter:</strong>', '<strong>For the store owner:</strong>']) {
+    const at = item.indexOf(label);
+    assert.ok(at >= 0, label);
+    assert.match(item.slice(0, at), /<p(\s[^>]*)?>\s*$/, `${label} starts its own paragraph`);
+  }
+  const text = item.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+  const counter = text.indexOf('At the counter:');
+  const clear = text.indexOf('Do not clear the site');
+  const owner = text.indexOf('For the store owner:');
+  assert.ok(counter >= 0 && clear > counter && owner > clear, `${counter} ${clear} ${owner}`);
+  const tailStart = html.indexOf('runs your Vendure server.', end);
+  const tailEnd = html.indexOf('till updates waiting to sync', tailStart);
+  assert.ok(tailStart >= 0 && tailEnd > tailStart);
+  // The list is loose, so the next item opens with <li><p>; nothing may sit before that <li.
+  const tail = html.slice(tailStart, tailEnd);
+  const nextItem = tail.lastIndexOf('<li');
+  assert.ok(nextItem >= 0, 'the next item follows');
+  assert.ok(!tail.slice(0, nextItem).includes('<p'), 'no paragraph after the Any other code text');
+});
+
+// Round 27, C4 (J2): the store owner's paragraph went straight into the DEBUG line format with no plain step.
+test('troubleshooting gives the store owner a plain step before the sync log procedure', () => {
+  const text = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+  const start = text.indexOf('For the store owner:');
+  const end = text.indexOf('DEBUG', start);
+  assert.ok(start >= 0 && end > start, `${start} ${end}`);
+  const owner = text.slice(start, end);
+  const find = owner.indexOf('To find the line in the sync log');
+  assert.ok(find >= 0, 'To find the line in the sync log');
+  for (const phrase of [
+    'copy the refused line',
+    'choosing another register',
+    'fixes by itself',
+    'send the copied line to whoever runs your Vendure server',
+  ]) {
+    const at = owner.indexOf(phrase);
+    assert.ok(at >= 0, phrase);
+    assert.ok(at < find, `${phrase} comes before To find the line`);
+  }
+});
+
+// Round 28, C4 (J2): the sync-log procedure folds; the plain step and the errorCode list stay open.
+test('troubleshooting folds the sync log procedure inside the till updates item', () => {
+  const start = html.indexOf('For the store owner:');
+  const end = html.indexOf('register_session_already_open', start);
+  assert.ok(start >= 0 && end > start, `${start} ${end}`);
+  const item = html.slice(start, end);
+  const opens = item.match(/<details\b[^>]*>/g) ?? [];
+  assert.equal(opens.length, 1, 'exactly one <details>');
+  assert.doesNotMatch(opens[0], /\sopen\b/, 'the fold starts closed');
+  const detailsStart = item.indexOf('<details');
+  const detailsEnd = item.indexOf('</details>', detailsStart);
+  assert.ok(detailsStart > 0, 'For the store owner: comes before the fold');
+  assert.ok(detailsEnd > detailsStart, 'register_session_already_open comes after </details>');
+  assert.ok(!item.slice(0, detailsEnd).includes('</li>'), 'the fold sits in the same <li>');
+  const details = item.slice(detailsStart, detailsEnd);
+  const summary = details.match(/<summary\b[^>]*>([\s\S]*?)<\/summary>/);
+  assert.ok(summary, '<summary>');
+  assert.equal(summary[1].replace(/<[^>]+>/g, '').trim(), 'To find the line in the sync log');
+  for (const phrase of ['DEBUG', 'status=rejected', 'last 500 events']) {
+    assert.ok(details.includes(phrase), `${phrase} inside the fold`);
+  }
+});

@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero says what it is and gives two clear CTAs, but nothing on the home page says who it suits and who should not use it, for example a single-store shop already on Vendure+Postgres versus a multi-store retailer who needs a hardware till, a drawer kick or terminal integration. Today a buyer has to piece that together from the 'Before you start' bullets and Limitations.", "where": "home.desktop.01 hero; home.desktop.02 'Before you start'"},
+    "C2": {"score": 7, "worst_defect": "The site never says who builds and maintains VendurePOS, who runs app.vendurepos.com (the origin every till loads from), whether the hosted app is free or for how long, or where to report a bug or get support. The only hint of an operator is the unexplained third-party analytics host 'ph.wcpos.com'.", "where": "home.desktop.02 footer ('MIT licensed. Built with TallyUI.'), connect-a-till.desktop.01 'Where requests go'"},
+    "C3": {"score": 8, "worst_defect": "The role that the plugin's own 'New POS till key' button creates is missing a permission the till needs. The docs patch around this known 0.3.0 defect three times ('On plugin 0.3.0 the role it creates (vendurepos-pos-till) has the step 4 permissions except ReadOrder, so add ReadOrder to that role yourself') instead of the plugin fixing it. A first-time installer who follows the device-key path and skims past it gets 'order history is refused'.", "where": "quick-start.desktop.04 'Optional: a device key for each till'; connect-a-till text 'Give each cashier their own account' and 'Create and use a device key'"},
+    "C4": {"score": 8, "worst_defect": "The Changelog covers only @vendurepos/plugin; the till app has no version or changelog. The live-demo-only features ('the live demo also refunds at the till', the 'Customer note') cannot be tied to any release or date, and the last plugin release (0.3.0, 2026-10-06) is six weeks old.", "where": "changelog.desktop.01; at-the-till text 'Order details' and 'Refund at the till (live demo)'"},
+    "C5": {"score": 8, "worst_defect": "The docs sidebar lists 'Quick start' twice and has both 'Docs' and 'Overview' pointing to the same /docs page, so the nav looks unedited. On the home page, ten feature cards of identical weight make a flat grey wall with no visual hierarchy.", "where": "docs.desktop.01 sidebar (Docs / Live demo / Quick start, then Overview / Quick start ...); home.desktop.01-02 'What it does today'"},
+    "C6": {"score": 8, "worst_defect": "On a 390 px screen, code blocks soft-wrap mid-expression, for example generateMigration(config, { name: / 'AddVendurePos', outputDir: / './src/migrations' }) and the '.catch(error => ...' line. The hero till screenshot also cuts the cart's QTY header to 'Q...'.", "where": "quick-start.phone.03; home.phone.01"},
+    "C7": {"score": 9, "worst_defect": "Every sitemap <lastmod> is a build timestamp from 2026-11-17/18 (for example quick-start 2026-11-18T14:46:00), so it signals the deploy time rather than real content changes. Lighthouse, titles, descriptions, JSON-LD, llms.txt, search API and the 404 page are all sound.", "where": "text/endpoint_sitemap_xml.txt"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A buyer cannot tell who stands behind the product. No maintainer, company or support/issue channel is named, and nothing says who runs app.vendurepos.com, the hosted origin every till must load from, or whether it is free or will stay up. The only alternative, self-hosting, needs a paid RxDB Premium licence whose cost is never stated. I would not advise a client to put a shop's tills on that without knowing who to call.",
+    "where": "home.desktop.02 'Before you start' + footer; connect-a-till.desktop.01 'Where your data goes'",
+    "fix": "Add a short 'Who runs this' block on the home page and Overview: the maintainer, who operates app.vendurepos.com and on what terms (free, no SLA, pre-release), a link to GitHub issues for support, and a link to the RxDB Premium pricing for self-hosters."
+  },
+  "mean": 8.0
+}

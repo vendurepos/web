@@ -2,32 +2,41 @@
 title: Changelog
 description: Released versions of the @vendurepos/plugin package, newest first.
 ---
+{/* References link to vendurepos/app: ADRs at the plugin tag of their release, #N to that repo's pull requests; the 0.2.0 ReadOrder note under the tallyEnsurePosTillRole bullet is the site's: vendurepos/app@1404f42 packages/vendure-plugin/CHANGELOG.md:38, @2d3699e packages/vendure-plugin/src/config/pos-till-role.ts:6-8, @cc719c2 apps/pos/lib/order-history.ts:9,38 */}
 
 The source is `packages/vendure-plugin/CHANGELOG.md` in [vendurepos/app](https://github.com/vendurepos/app);
 the package is [`@vendurepos/plugin`](https://www.npmjs.com/package/@vendurepos/plugin) on npm.
 
+{/* Read at build and hourly from the hosted till's own /version.json (vendurepos/app#316); never typed by hand. */}
+<HostedTillVersion />
+
 ## 0.3.0 (2026-10-06)
+
+{/* Round 41, J4 C2: two releases on one date read as a slip. vendurepos/app ab7a504 (plugin-0.2.0 merged 2026-10-06 08:24 +0200) and 2d3699e (plugin-0.3.0 merged 2026-10-06 10:51 +0200). */}
+Released the same day as 0.2.0, a few hours later.
 
 **In short:** custom items, the shipping charge and fees from the till arrive in Vendure as real order lines, a shipping line and surcharges. Run the new migration when you upgrade.
 
-- `GET /tally/v1/info` advertises order.create 1–5 (ADR 0005).
-- order.create v5 custom lines are real order lines on a plugin-owned, disabled 'POS custom item' variant (SKU `TALLY-CUSTOM-ITEM`, category 'POS no tax'), created per channel at bootstrap; the till's name and SKU are on the line (`tallyCustomName`, `tallyCustomSku`) (ADR 0005).
-- order.create v5 shipping: one charge per order, applied as the order's ShippingLine (`tally-in-store`, priced from the `tallyShipping` order custom field); a second entry is refused as `shipping_single` (ADR 0005).
+- `GET /tally/v1/info` advertises `order.create` 1–5 ([ADR 0005](https://github.com/vendurepos/app/blob/plugin-v0.3.0/docs/adr/0005-order-create-v5.md)).
+- `order.create` v5 custom lines are real order lines on a plugin-owned, disabled 'POS custom item' variant (SKU `TALLY-CUSTOM-ITEM`, category 'POS no tax'), created per channel at bootstrap; the till's name and SKU are on the line (`tallyCustomName`, `tallyCustomSku`) ([ADR 0005](https://github.com/vendurepos/app/blob/plugin-v0.3.0/docs/adr/0005-order-create-v5.md)).
+- `order.create` v5 shipping: one charge per order, applied as the order's ShippingLine (`tally-in-store`, priced from the `tallyShipping` order custom field); a second entry is refused as `shipping_single` ([ADR 0005](https://github.com/vendurepos/app/blob/plugin-v0.3.0/docs/adr/0005-order-create-v5.md)).
 - `GET /tally/v1/info` returns `maxShippingLines: 1` and `lineTax: { none: true, classes: true }`.
 - Migration `TallyPosV51790900000000` adds the v5 custom fields (`order.tallyShipping`, `order_line.tallyCustomName`, `order_line.tallyCustomSku`).
-- order.create v5 fees are applied as Vendure Surcharges (`TALLY-FEE`), taxed by `taxStatus`/`taxClass`; an unknown `taxClass` is refused as `tax_class_unknown` (ADR 0005).
+- `order.create` v5 fees are applied as Vendure Surcharges (`TALLY-FEE`), taxed by `taxStatus`/`taxClass`; an unknown `taxClass` is refused as `tax_class_unknown` ([ADR 0005](https://github.com/vendurepos/app/blob/plugin-v0.3.0/docs/adr/0005-order-create-v5.md)).
 
 ## 0.2.0 (2026-10-06)
 
 **In short:** each till can sign in with its own device key, made with **New POS till key** in the Vendure Dashboard; a narrower `TallyPosSell` permission replaces `CreateOrder` for new tills; and a SuperAdmin can list and resolve sales kept for an admin.
 
 - The **New POS till key** dialog names the channel the key works in; Vendure's API keys are channel-aware.
-- `GET /tally/v1/info` returns `device: { name }` (the API key's name) when the caller signs in with an API key, and leaves it out for sessions; the till shows it as its cashier (ADR 0004).
-- Dashboard extension: **New POS till key** on Vendure's API keys page creates a named key with the POS till role and shows it once (ADR 0004).
+- `GET /tally/v1/info` returns `device: { name }` (the API key's name) when the caller signs in with an API key, and leaves it out for sessions; the till shows it as its cashier ([ADR 0004](https://github.com/vendurepos/app/blob/plugin-v0.2.0/docs/adr/0004-device-credentials.md)).
+- Dashboard extension: **New POS till key** on Vendure's API keys page creates a named key with the POS till role and shows it once ([ADR 0004](https://github.com/vendurepos/app/blob/plugin-v0.2.0/docs/adr/0004-device-credentials.md)).
 - Add the `TallyPosSell` permission. The `/tally/v1` routes accept it or `CreateOrder`, so existing installs keep working with no role change; give new tills' administrators `TallyPosSell` instead of the broader `CreateOrder`.
-- Admin API: `tallyNeedsAdminCommands` lists sales kept for an admin, and `tallyResolveNeedsAdmin(commandId, applied | rejected, note)` resolves one; both SuperAdmin only (#116).
-- order.create v4 results carry a `figures_mismatch` warning when the till's subtotal, tax or discount differs from the store's (#117).
-- Admin API: `tallyEnsurePosTillRole` (SuperAdmin) creates or extends the `vendurepos-pos-till` role: `TallyPosSell`, `ReadCatalog`, `ReadSettings`, `ReadCustomer`, `CreateCustomer` (exported as `POS_TILL_PERMISSIONS`), in every channel. It never removes a permission or channel. With Vendure's API keys (`tokenMethod` including `'api-key'`), a key with this role does everything a till does (ADR 0004).
+- Admin API: `tallyNeedsAdminCommands` lists sales kept for an admin, and `tallyResolveNeedsAdmin(commandId, applied | rejected, note)` resolves one; both SuperAdmin only ([#116](https://github.com/vendurepos/app/pull/116)).
+- `order.create` v4 results carry a `figures_mismatch` warning when the till's subtotal, tax or discount differs from the store's ([#117](https://github.com/vendurepos/app/pull/117)).
+- Admin API: `tallyEnsurePosTillRole` (SuperAdmin) creates or extends the `vendurepos-pos-till` role: `TallyPosSell`, `ReadCatalog`, `ReadSettings`, `ReadCustomer`, `CreateCustomer` (exported as `POS_TILL_PERMISSIONS`), in every channel. It never removes a permission or channel. With Vendure's API keys (`tokenMethod` including `'api-key'`), a key with this role does everything a till does ([ADR 0004](https://github.com/vendurepos/app/blob/plugin-v0.2.0/docs/adr/0004-device-credentials.md)).
+  Not in the release notes: in 0.2.0 and 0.3.0 this role has no `ReadOrder`, so the till's order history is refused
+  until you add it to the role; see [Create and use a device key](/docs/connect-a-till#create-and-use-a-device-key).
 
 ## 0.1.0 (2026-10-01)
 

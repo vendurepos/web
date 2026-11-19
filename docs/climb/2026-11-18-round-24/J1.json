@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero lede is one 47-word sentence with a parenthetical definition stuffed in the middle (\"...signs in to your own Vendure store (Vendure is an open-source headless commerce framework). It keeps selling...\"), and the badge above the H1 opens with jargon (\"Pre-release · plugin 0.3.0\") before the page has said what a plugin is for; it reads as four dense grey lines rather than a five-second answer.", "where": "home.desktop.01 and home.phone.01, hero"},
+    "C2": {"score": 8, "worst_defect": "The home comparison table says the demo \"sends ... anonymous usage events to ph.wcpos.com\", a different domain that the home page never explains (who is wcpos?), so a privacy line meant to build trust makes a newcomer wonder whose product this really is.", "where": "home.desktop.02 table row \"Sales reach Vendure, once each, even offline\"; home.phone.04"},
+    "C3": {"score": 8, "worst_defect": "Step 3 makes you hand-write two TypeScript scripts (src/generate-migration.ts and src/run-migrations.ts) and step 5 assumes \"the scaffold's CORS_ORIGINS allowlist\" exists without saying where it lives, so a developer who did not start from @vendure/create has to guess.", "where": "quick-start.desktop.01-02, steps 3 and 5"},
+    "C4": {"score": 8, "worst_defect": "The changelog is written for the maintainers: it cites \"(ADR 0005)\", \"(ADR 0004)\", \"(#116)\" and \"(#117)\" as plain text with no links or explanation, so those references are dead ends for a reader.", "where": "changelog.desktop.01, 0.3.0 and 0.2.0 sections"},
+    "C5": {"score": 8, "worst_defect": "The payment-screen screenshot on At the till shows a test product named \"Tally Fixture Mug\" in the cart, which looks like unfinished test data; on every docs page the grey sidebar panel also stops at about y=900 and leaves a two-tone strip down the left side below it.", "where": "at-the-till.desktop.02 (screenshot cart line 1); docs.desktop.01, limitations.desktop.01 left column below y≈900"},
+    "C6": {"score": 8, "worst_defect": "The phone version of the hero till screenshot cuts its quantity column header to \"Q...\", and the long single-column pages (quick start runs to 9,868 px) have nothing between the top \"On this page\" dropdown and the next heading to tell a reader where they are.", "where": "home.phone.01 (screenshot table header); quick-start.phone.01-09"},
+    "C7": {"score": 9, "worst_defect": "llms.txt lists the docs alphabetically (At the till, Changelog, Connect a till, Overview, Limitations...) rather than in reading order, so Overview and Quick start are buried mid-list; everything else (Lighthouse 98/100/100/100, sitemap, robots, search API, 404 status, share card) is in order.", "where": "text/endpoint_llms_txt.txt"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A newcomer who has never heard of VendurePOS reads on the home page that the demo sends usage events to \"ph.wcpos.com\", a third-party-looking domain that is never explained, which undercuts the otherwise careful, honest tone at the moment they are deciding whether to try the demo.",
+    "where": "home.desktop.02 / home.phone.04, \"Live demo or your own store\" table, last row",
+    "fix": "Name the owner in the same cell, e.g. \"...to our self-hosted PostHog at ph.wcpos.com (run by WCPOS, the team behind VendurePOS), with no cookie\", or link \"anonymous usage events\" straight to the Connect a till section that already explains it."
+  },
+  "mean": 8.1
+}

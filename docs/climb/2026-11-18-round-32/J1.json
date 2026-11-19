@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The first thing above the headline is the badge \"Pre-release · plugin 0.3.0\", which assumes the visitor already knows there is a plugin; someone who half knows Vendure only learns two lines later that a server plugin exists, and the British word \"till\" carries the whole hero sentence without being glossed.", "where": "home/desktop/01 and home/phone/01 (hero badge and lead paragraph)"},
+    "C2": {"score": 8, "worst_defect": "The home comparison table says the demo sends \"anonymous usage events to ph.wcpos.com, with no cookie\": the domain belongs to a different brand and the home page never says whose server it is (only Connect a till calls it a self-hosted PostHog), so a newcomer reads it as an unexplained third party.", "where": "home/desktop/02 'Live demo or your own store' table, last row; home/phone/04"},
+    "C3": {"score": 8, "worst_defect": "The quick start gives no estimate of the effort (nine numbered steps, two script files, a migration, CORS and tax strategy) before you begin, and step 2 opens with a naming caveat (\"The plugin's code names say Tally, not VendurePOS\") rather than progress, so a newcomer cannot tell up front whether this is a 10-minute or a 2-hour job.", "where": "quick-start/desktop/01 intro and step 2"},
+    "C4": {"score": 8, "worst_defect": "The setup docs have no images at all: quick-start, plugin-setup, connect-a-till and troubleshooting have no [image:] markers, so 'Sign in to Vendure', the header sync notices and 'Check it worked' (\"the payment is tally-pos, settled\") are described only in words, with no picture of the screen you should see.", "where": "text/quick-start.txt, connect-a-till.txt, troubleshooting.txt (0 image markers); quick-start/desktop/04 'Check it worked'"},
+    "C5": {"score": 8, "worst_defect": "The payment-screen screenshot on At the till shows a test-fixture product, \"Tally Fixture Mug\" (€8.00), in the cart, which reads as leftover test data in an otherwise polished demo image.", "where": "at-the-till/desktop/02 (payment screen screenshot, first cart line)"},
+    "C6": {"score": 9, "worst_defect": "In the phone hero screenshot the till's cart header \"QTY\" is truncated to \"Q...\"; everything else reflows well (the comparison table stacks into labelled rows, code wraps, no overflow).", "where": "home/phone/01 (hero screenshot, cart column header)"},
+    "C7": {"score": 9, "worst_defect": "Mobile Lighthouse LCP is 2.4 s on / and 2.6 s on /docs/quick-start (score 0.88), with render-blocking requests and about 52 KiB of unused JavaScript flagged; titles, descriptions, OG card, JSON-LD, llms.txt, search API, sitemap, robots and the 404 page are all in order.", "where": "tech.json lighthouse"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "On the home page, the only statement about data leaving the browser in the demo names \"ph.wcpos.com\", a domain from another brand with no explanation of who runs it, so a visitor who has never heard of VendurePOS meets an unexplained third party exactly where they are judging whether to trust the demo.",
+    "where": "home/desktop/02 and home/phone/04, 'Live demo or your own store' table, row 'Sales reach Vendure, once each, even offline'",
+    "fix": "In that cell, say whose it is, for example \"to our own self-hosted PostHog analytics (ph.wcpos.com, run by the WCPOS team that builds VendurePOS), with no cookie\", keeping the link to the Connect a till explanation."
+  },
+  "mean": 8.3
+}

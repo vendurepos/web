@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "At 390 px the hero lead paragraph ('VendurePOS is an open-source till for Vendure, the open-source headless commerce framework...') runs to seven centred lines in large grey type, so the CTA pair sits below a slab of ragged centred text that is hard to read.", "where": "home/phone/01"},
+    "C2": {"score": 8, "worst_defect": "The home comparison table says the demo 'sends ... anonymous usage events to ph.wcpos.com' without saying what wcpos.com is or how it relates to VendurePOS; a different brand's domain in the privacy row reads as unexplained.", "where": "home/desktop/02 (table row 'Sales reach Vendure, once each, even offline'); home/phone/04"},
+    "C3": {"score": 8, "worst_defect": "Step 8 'Sign in and make a sale' is nine lettered prose steps (a-i) with no picture of the sign-in form or the opening-float screen, so the first look a developer gets at the screen they must fill in comes later, on At the till.", "where": "quick-start/desktop/03-04; quick-start/phone/07-08"},
+    "C4": {"score": 8, "worst_defect": "Limitations is one flat list of 18 equal-weight bullets with no subheadings, so the right-hand 'On this page' rail is empty and no single limit (refunds, offline reload, Postgres only) can be scanned to or linked.", "where": "limitations/desktop/01; limitations/phone/01-03"},
+    "C5": {"score": 8, "worst_defect": "The At the till payment screenshot has a ~420 px empty white void in the cart column between the three line items and the Subtotal block, so the image is mostly dead space beside a dense keypad; the home hero screenshot also ends mid-tile, slicing a fourth product row at its bottom edge.", "where": "at-the-till/desktop/02; home/desktop/01 (also home.desktop-dark, og-image.png)"},
+    "C6": {"score": 8, "worst_defect": "On a phone the hero image is a cart-only till view about 1.4 screens tall, with its QTY header cut to 'Q...' and a second button under 'Order discount' clipped by the totals border, so the first visual below the CTAs is a cropped, truncated UI rather than the product.", "where": "home/phone/01-02"},
+    "C7": {"score": 9, "worst_defect": "Quick start's mobile LCP is 2.6 s (Lighthouse largest-contentful-paint 0.88) with render-blocking requests flagged; everything else (titles, descriptions, OG card, JSON-LD, llms.txt, sitemap, robots, search API, real 404) is in place.", "where": "tech.json lighthouse./docs/quick-start"}
+  },
+  "overall_worst": {
+    "criterion": "C6",
+    "defect": "The home page's phone hero image is a tall, cropped cart-only till screenshot (QTY header truncated to 'Q...', a button clipped by the totals border) that fills about 1.4 screens straight after the CTAs, so a phone visitor's first impression of the product is a cramped fragment of UI.",
+    "where": "home/phone/01-02",
+    "fix": "On phones, show a shorter crop or a capture made at a phone width that fits the column (e.g. products grid with the cart tab label), capped at about one screen tall with object-fit cover, so no headers are truncated and no buttons are clipped."
+  },
+  "mean": 8.1
+}

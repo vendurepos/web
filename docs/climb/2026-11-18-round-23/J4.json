@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero till screenshot is cut off at its bottom edge through a fourth row of product tiles (half-icons in mustard/red visible under Filter Coffee…Leather Keyring, and the 'Guest · 3 items' bar clipped), so the first image on the page looks unfinished rather than framed.", "where": "home/desktop/01, hero image bottom edge y≈1135-1155"},
+    "C2": {"score": 9, "worst_defect": "The comparison table's demo cell says it sends 'anonymous usage events to ph.wcpos.com' with no word on the home page about what wcpos.com is, so a third-party-looking domain appears unexplained on a VendurePOS page (the explanation only lives on Connect a till).", "where": "home/desktop/02, 'Live demo or your own store' table, last row"},
+    "C3": {"score": 8, "worst_defect": "Step 8 'Sign in and make a sale' is nine lettered text steps (a-i) with no image of the sign-in screen or a synced order, so 'what success looks like' is text only, even though At the till shows that a payment screenshot is available.", "where": "quick-start/desktop/03, step 8 list a-i"},
+    "C4": {"score": 8, "worst_defect": "Limitations is a single flat list of 15 equal-weight bullets ('Pre-release…', 'One browser tab per till.', 'Postgres only…') with no grouping by setup, till, payments or data, so it is hard to scan for the limit you care about.", "where": "limitations/desktop/01"},
+    "C5": {"score": 8, "worst_defect": "On the docs Overview, 'Next steps' is three cards followed immediately by a full-width 'Quick start ›' pager box in the same border, radius and fill, so the actual next step reads as an orphaned fourth card with right-aligned text under a 3-up grid.", "where": "docs/desktop/01, y≈870-1085"},
+    "C6": {"score": 8, "worst_defect": "The inline code 'packages/vendure-plugin/CHANGELOG.md' breaks at the hyphen into two separate chips ('packages/vendure-' / 'plugin/CHANGELOG.md') on the first line of the changelog at 390 px.", "where": "changelog/phone/01, first paragraph"},
+    "C7": {"score": 9, "worst_defect": "The share card crops the till screenshot through the 'In Stock' pills of the first product row and through the 'Add charge' button, so the card's bottom edge slices UI mid-element instead of ending on a clean boundary.", "where": "og-image.png, bottom 20 px"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "The product screenshot, the first image anyone sees on the home page and the share card, is cut mid-element: on desktop through a fourth row of half-visible product tiles and the clipped 'Guest · 3 items' bar, and on og-image.png through the 'In Stock' pills and 'Add charge' button. It looks like an accidental crop, not a framed image.",
+    "where": "home/desktop/01 hero image bottom edge (y≈1135-1155); home.desktop-dark.jpg same spot; og-image.png bottom edge",
+    "fix": "Capture or crop the till screenshot so it ends on a row boundary (after the third tile row, with the cart footer whole), or fade the bottom edge with a mask gradient. Use the same crop for the OG card."
+  },
+  "mean": 8.3
+}

@@ -1,0 +1,48 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The home never says what device or browser the till runs on. 'Before you start' says only 'A web till for now', and the fact that matters for buying hardware ('Its browser tests run in desktop Chrome; other browsers are not tested yet') appears only on Limitations. An owner with a tablet at the counter cannot tell from the home page whether it will work.",
+      "where": "home.desktop.02 / home.phone.03 ('Before you start'); limitations.phone.01"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The product screenshots contradict themselves and show test data. The phone hero shows 'Cart (4) · €59.59' while its footer reads 'Guest · 3 items'. The payment screenshot sells a 'Tally Fixture Mug'. The cashier sheet says 'open since 06:01' on desktop but '03:31' on phone. To a shop owner these look like a demo, not a till they can rely on.",
+      "where": "home.phone.01-02 (hero cart vs footer); at-the-till.desktop.02 ('Tally Fixture Mug'); at-the-till desktop vs phone cashier sheet"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The path is clear up to the first sale but breaks at refunds and refused sales. At the till says a refund stays Pending 'until an administrator settles it with the Admin API's settleRefund mutation', which is developer jargon, and it has no link to Plugin setup's 'Settle a Dashboard refund'. Troubleshooting's 'N till updates need attention … Ask the store owner to look at the sync log' is a dead end, because 'The sync log offers no retry or discard, and later till updates wait behind the refused one.'",
+      "where": "at-the-till.desktop.03-04 (refund section); troubleshooting ('Act on a header notice')"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "The cashier page's 'If the internet drops' section reassures staff but never states the one way to lose money. Only Limitations says 'Sales not yet sent are kept only in this browser. If this site's data is cleared, or the device is lost, while the header still shows N orders waiting to send, those sales are lost.' Smaller defects: Connect a till says both 'System → API keys' and 'Settings → API keys' for the same screen, and 'Hand over … leaves the drawer open for the next account' is ambiguous when the till 'does not open a cash drawer'.",
+      "where": "at-the-till.desktop.03 / at-the-till.phone.06-07 ('If the internet drops'); limitations; connect-a-till.desktop.01"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "Light and dark are clean and consistent. On desktop docs pages the grey sidebar panel stops at about y=900 and the left column changes tone below it, so the page looks unfinished when you scroll.",
+      "where": "quick-start.desktop.01 (left sidebar, below the nav list); same on at-the-till.desktop.01"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The phone layout reads well: no overflow, wrapped code, stacked tables. In the payment screenshot the quick amount '€50.00' wraps alone onto its own row, and at phone width the screenshots are too small to read the till's buttons, which are what a cashier is meant to learn from them.",
+      "where": "at-the-till.phone.03 (payment screenshot quick-amount row)"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The technical surface is strong: every page returns 200 with its own title and description, there is JSON-LD, llms.txt/llms-full, a sitemap, OG, Lighthouse 98/100/100/100 and CLS 0. The site search for 'offline' returns Troubleshooting, Quick start and Overview, but not At the till's 'If the internet drops' section, which is the page a cashier needs.",
+      "where": "endpoint_api_search_query_offline.txt"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "At the till's 'If the internet drops' section tells staff they can keep selling offline but never warns them that unsent sales live only in that browser. The warning appears only on Limitations: 'If this site's data is cleared, or the device is lost, while the header still shows N orders waiting to send, those sales are lost.' A cashier who clears browsing data or uses a private window during an outage loses the takings.",
+    "where": "at-the-till.desktop.03 / at-the-till.phone.06-07 ('If the internet drops'); the sentence is on limitations",
+    "fix": "Add to 'If the internet drops': 'Until the header stops showing N orders waiting to send, those sales exist only on this device. Do not clear browsing data, use a private window or swap devices until they have sent.' Then link to Limitations."
+  },
+  "mean": 8.0
+}

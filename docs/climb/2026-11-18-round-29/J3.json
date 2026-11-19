@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 9,
+      "worst_defect": "The quick start jumps from adding a product to choosing cash without naming the Checkout, Take payment and Complete sale controls explained in At the till.",
+      "where": "text/quick-start.txt, section 8; text/at-the-till.txt, Take payment"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Sell while offline says everything except customer search and creation works offline, but omits the keep-tab-open requirement and does not link to the reload warning in At the till.",
+      "where": "shots/troubleshooting.desktop.02.jpg, Sell while offline; shots/at-the-till.desktop.03.jpg, If the internet drops"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop-dark.jpg; shots/quick-start.desktop.01.jpg; shots/plugin-setup.desktop.02.jpg"
+    },
+    "C6": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "shots/home.phone.01.jpg; shots/quick-start.phone.06.jpg; shots/at-the-till.phone.03.jpg"
+    },
+    "C7": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "tech.json; text/endpoint_llms_txt.txt; text/endpoint_llms_full_txt.txt; shots/og-image.png"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "The offline troubleshooting entry, surfaced first by the captured offline search, omits that the app cannot reload or reopen without connectivity, although At the till documents this limitation.",
+    "where": "shots/troubleshooting.desktop.02.jpg, Sell while offline; text/endpoint_api_search_query_offline.txt",
+    "fix": "Add the keep-tab-open and no-offline-page-cache warning directly under Sell while offline, with a link to At the till's fuller explanation."
+  },
+  "mean": 9.4
+}

@@ -31,3 +31,10 @@ test('connect a till: the pnpm section names its file, imports resolve and says 
     assert.ok(text.includes(needle), needle);
   }
 });
+
+test('connect a till names one API keys path: Settings, not System', () => {
+  // Round 20, J2: plugin-v0.3.0 packages/vendure-plugin/README.md:166 says "the API keys page (Settings → API keys)".
+  const text = decode(html);
+  assert.ok(!text.includes('System → API keys'), 'no System → API keys');
+  assert.ok(text.includes('Settings → API keys → New POS till key'), 'Settings → API keys → New POS till key');
+});

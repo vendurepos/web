@@ -1,0 +1,48 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero ('Pre-release · plugin 0.3.0', 'Point of sale for Vendure', Live demo / Quick start) is clear, but nowhere on the home page does it say who builds or supports VendurePOS, who it is NOT for (e.g. stores needing card-terminal integration, cash drawers or Safari tills), or how it compares with Shopify POS, Square or Lightspeed. The 'What it does today' section is ten equal grey cards with no ranking, so the strongest proof (25-sale / 20-offline acceptance test, 200-send test) is buried among routine features.",
+      "where": "home.desktop.01-02; text/home.txt 'What it does today'"
+    },
+    "C2": {
+      "score": 6,
+      "worst_defect": "The hero framing says open source and the footer says 'MIT licensed', yet 'Before you start' admits that to 'build and host it yourself instead of using app.vendurepos.com, you need your own RxDB Premium licence token (RXDB_PREMIUM)', which is a paid dependency. It never says whether hosted app.vendurepos.com is free, who runs it, or what happens if it goes away. The site also names no maintainer and no support channel, and the demo's 'anonymous usage events to ph.wcpos.com' is unexplained on home (wcpos is never introduced). The changelog shows plugin 0.2.0 and 0.3.0 shipped the same day, 2026-10-06, then nothing for six weeks, despite a known bug: 'in 0.2.0 and 0.3.0 this role has no ReadOrder, so the till's order history is refused until you add it to the role'.",
+      "where": "home.desktop.02 'Before you start'; home footer; changelog.desktop.01; text/changelog.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The quick-start has nine ordered steps with exact commands and a 'Check it worked' list, but it asks for invasive store changes without a rollback note. Step 6 changes tax strategy, and the page says 'These settings are store-wide and also affect the web shop'. Step 4 tells you to 'Also add ReadOrder' because the plugin's own role ships broken. Swapping the email handler and running migrations against production Postgres also have no 'try on staging first / how to undo' line.",
+      "where": "quick-start.desktop.02-03 steps 4 and 6; quick-start.phone.04-06"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The docs are thorough, honest and cross-linked (limitations, troubleshooting, data-flow), but the changelog leaks internal references a client can't follow ('ADR 0005', 'ADR 0004', '#116', '#117') and wire-protocol jargon ('order.create v5', 'maxShippingLines'). Troubleshooting ends a section with 'the till has no retry or skip, and fixing the store does not make it send the update again', which gives no recovery path for refused register updates.",
+      "where": "changelog.desktop.01; text/troubleshooting.txt 'Any other code'"
+    },
+    "C5": {
+      "score": 7,
+      "worst_defect": "The home feature area is a wall of ten near-identical grey text cards with no icons, screenshots or hierarchy. After the hero there is no product imagery of the till at all on desktop, so it reads like a docs index rather than a product that competes visually with Square or Shopify POS. The rest of the site is clean, consistent Fumadocs styling, and dark mode holds up.",
+      "where": "home.desktop.01-02"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "There is no horizontal overflow, and the demo-vs-store table and tax table reflow into stacked cards well. But the phone pages are very long: quick-start is ~10,400 px of single-column text, and the home feature cards stack into a long uniform scroll (home.phone.02-03) with no in-page jump links surfaced at the top.",
+      "where": "quick-start.phone.01-09; home.phone.02-03"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "This is an excellent machine surface: Lighthouse 98/100/100/100, JSON-LD SoftwareApplication with MIT licence, llms.txt and llms-full.txt, sitemap, search API returning relevant 'offline' hits, and a real 404. Minor issues: og-image crops the till screenshot at the bottom edge ('Add charge' cut off), and every sitemap lastmod is 18-19 Nov 2026, which is a rebuild date rather than a content-change date.",
+      "where": "og-image.png; tech.json sitemap"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The till is sold as open source ('MIT licensed'), but self-hosting requires a paid RxDB Premium licence. That appears only as a 'Before you start' bullet, and the site never says who runs the hosted app.vendurepos.com, whether it stays free, or who maintains the project and where to get support. A sceptic advising a client reads this as 'free only while someone else's hosted app exists', and the six-week silence since plugin 0.3.0 with a known unpatched ReadOrder role bug reinforces it.",
+    "where": "home.desktop.01-02 (hero, 'Before you start', footer); changelog.desktop.01",
+    "fix": "Directly under the hero, add one plain line: 'The till app is MIT; the hosted till at app.vendurepos.com is free [state terms]; self-hosting needs a paid RxDB Premium licence.' Add a 'Who maintains this / support' line with a real channel. Ship 0.3.1 so the 'New POS till key' role includes ReadOrder, or say in the changelog when it will."
+  },
+  "mean": 7.7
+}

@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero's one-line pitch leans on developer terms ('Vendure, the open-source headless commerce framework') and on phone the top bar shows only 'Docs' plus a chevron, so the page a counter owner most wants ('At the till') is hidden behind the menu until the 'Before you start' footer paragraph.", "where": "home.phone.01 (header and hero paragraph); home.phone.05 ('For cashiers, At the till covers…')"},
+    "C2": {"score": 7, "worst_defect": "The home comparison table says a Dashboard refund 'stays Pending until it is settled', which sounds like one click. Only Limitations and Plugin setup reveal that every refund needs two Admin API GraphQL calls (look up the refund ID, then the settleRefund mutation with a transactionId), which in practice means calling my developer for each refund.", "where": "home.desktop.02 table row 'Refund a sale at the till' vs limitations.desktop.01 bullet 7 and text/plugin-setup.txt 'Settle a Dashboard refund'"},
+    "C3": {"score": 8, "worst_defect": "The till's permissions arrive as a run-on prose list ('TallyPosSell, ReadCatalog, ReadSettings, ReadCustomer and CreateCustomer… Also add ReadOrder'), with no checklist or Dashboard steps for creating the role. Further down, the device-key role 'has the step 4 permissions except ReadOrder, so add ReadOrder… yourself', which is easy to miss and leaves a till whose order history is refused.", "where": "quick-start.desktop.02 step 4; text/quick-start.txt 'Optional: a device key for each till'"},
+    "C4": {"score": 8, "worst_defect": "Troubleshooting's 'N till updates need attention' entry mixes counter advice and server work in one long block (errorCode names, 'Any other code: the till has no retry or skip…' as a single dense paragraph). A shop owner reading it between customers can't quickly tell what staff should do versus what goes to the developer.", "where": "troubleshooting.desktop.01 lower half, 'Till updates line' through 'Any other code'"},
+    "C5": {"score": 8, "worst_defect": "The At the till screenshots of the cashier sheet and the closure screen sit as a small card inside a second, larger bordered frame with wide empty padding, so they read as boxed-in thumbnails rather than the confident full-width payment screenshot above them.", "where": "at-the-till.desktop.03 (cashier sheet, closure frame start) and at-the-till.desktop.04 (closure card)"},
+    "C6": {"score": 8, "worst_defect": "On phone, inline code chips break mid-sentence onto their own lines ('The header shows' / 'N orders waiting to send, with · sending…' / 'while sending'), which makes the offline status lines a cashier must recognise hard to read on a 390 px screen.", "where": "at-the-till.phone.07 'While the connection is down' list; troubleshooting.phone.01 sync-status bullets"},
+    "C7": {"score": 9, "worst_defect": "The docs search for 'offline' ranks Troubleshooting and a quick-start line ahead of At the till's 'If the internet drops' section, which is the one a shop owner needs. Lighthouse also flags render-blocking requests and ~53 KiB unused JS (LCP 2.4 s).", "where": "text/endpoint_api_search_query_offline.txt; tech.json lighthouse '/'"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "Refunds are the one daily counter task the till can't do on a real store. The home page only says the Dashboard refund 'stays Pending until it is settled'. It does not say that settling means a developer running Admin API GraphQL (refund lookup plus settleRefund with a transactionId) for every refund, so an owner deciding whether staff can sell tomorrow finds out late.",
+    "where": "home.desktop.02 / home.phone.04 table row 'Refund a sale at the till'; at-the-till.desktop.02 'Refund a sale'",
+    "fix": "In the home table cell and the At the till 'Refund a sale' step, say plainly: 'settling it needs an Admin API call (settleRefund) by whoever runs your Vendure server; there is no Dashboard button', and link directly to Plugin setup's 'Settle a Dashboard refund' anchor."
+  },
+  "mean": 8.0
+}

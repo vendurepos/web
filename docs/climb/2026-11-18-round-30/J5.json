@@ -1,0 +1,48 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "Nothing near the top says who should NOT pick this over Shopify POS/Square/Lightspeed: integrated card terminals, cash drawers, direct receipt printers and non-Chrome browsers are unsupported, but you only learn that from the 'Before you start' bullets after ten equal-weight feature cards.",
+      "where": "home.desktop.01-02 (feature grid, then 'Before you start' bullets); home.phone.02-05"
+    },
+    "C2": {
+      "score": 7,
+      "worst_defect": "The site leans on 'open-source' and 'MIT licensed' but says self-hosting needs 'your own RxDB Premium licence token (RXDB_PREMIUM)' without ever saying that is a paid third-party commercial licence or what it costs. Nothing says who runs app.vendurepos.com, on what terms, or whether it stays free, so the only free path is a hosted app from an unnamed operator.",
+      "where": "home.desktop.02 'Before you start' bullet 5; text/connect-a-till.txt 'Where your data goes'; limitations.desktop.01 bullet 3"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The device-key route has a known plugin gap that is documented as a workaround rather than fixed: the vendurepos-pos-till role made by the plugin's own 'New POS till key' button lacks ReadOrder, so 'the till sells but its order history is refused' unless you edit the role by hand.",
+      "where": "quick-start 'Optional: a device key for each till' (text/quick-start.txt); connect-a-till.desktop.02-03 'Create and use a device key'"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "The changelog contradicts the docs. 0.2.0 says a key with the vendurepos-pos-till role 'does everything a till does', but Connect a till and the quick start say that role has no ReadOrder and the till's order history is refused. The changelog is also internal jargon ('order.create v5', 'ADR 0005', 'TallyPosV51790900000000') and covers only the plugin, never the till app.",
+      "where": "changelog.desktop.01 (0.2.0, tallyEnsurePosTillRole bullet) vs text/connect-a-till.txt 'Give each cashier their own account'"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The home hero screenshot is cut off mid-row at its bottom edge, so the fourth row of product tiles shows only coloured slivers. The 'What it does today' section is a wall of ten identical grey cards with no hierarchy between the two proven claims (with test links) and the minor features.",
+      "where": "home.desktop.01 (hero image bottom edge, y≈1140; card grid y≈1300 onward); same in home.desktop-dark.jpg"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The phone hero image is the cart view, whose first column header is truncated to 'Q...'. The quick start runs about 10,450 px tall on a 390 px screen, and every code block wraps imports over several lines.",
+      "where": "home.phone.01 (cart table header 'Q...'); quick-start.phone.01-09"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The SoftwareApplication JSON-LD carries no softwareVersion although the page badge says 'Pre-release · plugin 0.3.0'. Mobile LCP is 2.4 s on / and 2.5 s on /docs/quick-start, with 52 KiB of unused JS flagged.",
+      "where": "tech.json pages['home.desktop'].jsonLd; tech.json lighthouse"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The 'open-source, MIT licensed' pitch hides a cost. Running the till yourself needs a paid third-party RxDB Premium licence, and the site never says it is paid. The free alternative is app.vendurepos.com, with no word on who operates it, its terms, or its future. A sceptic advising a client reads this as vendor lock-in presented as open source.",
+    "where": "home.desktop.02 'Before you start' (RXDB_PREMIUM bullet); connect-a-till.desktop.01 MIT-licensed paragraph; limitations.desktop.01 bullet 3",
+    "fix": "In that home bullet and on Limitations, say plainly that RxDB Premium is a paid commercial licence from RxDB, and link its pricing. Add one sentence on who runs app.vendurepos.com and that it is free to use during pre-release."
+  },
+  "mean": 7.9
+}

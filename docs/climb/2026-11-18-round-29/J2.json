@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero explains the product in developer terms (\"the open-source headless commerce framework\") and does not say what a counter needs (a browser on desktop Chrome, a card terminal you already own, no cash-drawer kick). That only appears in the last section, \"Before you start\", so a shop owner cannot tell at a glance whether their counter setup will work.", "where": "home/desktop/01 hero paragraph; home/desktop/02 'Before you start'"},
+    "C2": {"score": 8, "worst_defect": "The home page claims \"keeps selling when the connection drops\" (hero and the 'Keeps selling offline' card) but leaves out the condition from At the till: \"Keep the till's tab open while the connection is down ... a reload, or closing and reopening the browser, needs the connection to load the till again\". The headline promise is wider than what the product actually does.", "where": "home/desktop/01 'Keeps selling offline' card vs at-the-till/desktop/03 'If the internet drops'"},
+    "C3": {"score": 8, "worst_defect": "Step 5 puts the .env line \"CORS_ORIGINS=https://app.vendurepos.com\" in a code block labelled \"Terminal\", so it reads as a command to run when it is a line to add to the .env file. Separately, the device-key option needs ReadOrder added by hand (\"add ReadOrder to that role yourself\"), which is easy to miss when handing the job to a freelancer.", "where": "quick-start/desktop/02 step 5 Terminal block; quick-start text 'Optional: a device key for each till'"},
+    "C4": {"score": 8, "worst_defect": "The section a shop owner most needs, \"If the internet drops\", is a single eight-sentence paragraph. Its key instructions (keep the tab open, don't clear site data, watch \"N orders waiting to send\") sit mid-paragraph rather than as a short list. Also, \"Refund a sale\" is a 1./2. numbered list whose items are not sequential steps.", "where": "at-the-till/desktop/03 'If the internet drops'; at-the-till/desktop/02 'Refund a sale'"},
+    "C5": {"score": 8, "worst_defect": "The hero till screenshot is cut off mid-row at its bottom edge: a fourth row of product tiles shows only their coloured tops. The image looks cropped rather than composed.", "where": "home/desktop/01 hero screenshot bottom edge (~y 1140); same in home.desktop-dark"},
+    "C6": {"score": 8, "worst_defect": "In the phone hero screenshot, the till's cart column header is truncated to \"Q...\" next to ITEM/TOTAL. This is the first product image a phone reader sees, and it shows a clipped header.", "where": "home/phone/01 hero screenshot cart header"},
+    "C7": {"score": 9, "worst_defect": "The share card's till screenshot runs off the bottom edge, cutting product tiles and the \"Add charge\" button in half. Everything else checks out: Lighthouse 98/100/100/100, the 404 page returns status 404, and llms.txt, sitemap, robots and search all respond.", "where": "og-image.png bottom edge"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The home page promises the till \"keeps selling when the connection drops\" without the condition that staff must not reload or close the tab while offline: the till cannot load again until the connection returns. A cashier who refreshes during an outage loses the till mid-shift, and the owner only learns this from a paragraph deep in At the till.",
+    "where": "home/desktop/01 hero and 'Keeps selling offline' card; condition only in at-the-till/desktop/03 'If the internet drops'",
+    "fix": "Add one sentence to the home 'Keeps selling offline' card: \"Keep the till's tab open: a reload or browser restart needs the connection back.\" Repeat it as the first bullet of a short list at the top of 'If the internet drops'."
+  },
+  "mean": 8.1
+}

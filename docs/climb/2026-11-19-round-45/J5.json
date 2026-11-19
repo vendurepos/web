@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero badge reads \"Pre-release · plugin 0.3.0\", so a buyer reads the server plugin's version as the product's maturity. The till they will actually use is \"till app version 0.1.0\", and that number appears only on the Changelog page.", "where": "home.desktop.01 hero badge vs changelog.desktop.01 second paragraph"},
+    "C2": {"score": 7, "worst_defect": "The site never says who builds or runs VendurePOS, who operates the hosted till at app.vendurepos.com, on what terms or for how long, or where to report a bug. The only hint at an operator is the unexplained third-party domain \"ph.wcpos.com\" in the demo row. Every store's till loads from app.vendurepos.com, and \"a reload ... cannot load the till until the connection is back\".", "where": "home.desktop.02 'Live demo or your own store' table and footer; connect-a-till.desktop.01 'Where requests go'; limitations.desktop.01"},
+    "C3": {"score": 8, "worst_defect": "The store-side config change for @vendure/email-plugin (\"swap its order-confirmation handler first\") is not one of the config steps. It is a warning callout inside step 8 'Sign in and make a sale', after step 7 has already told you to restart Vendure, so a store that sends email has to go back, edit the config and restart again before its first sale.", "where": "quick-start.desktop.03 '8. Sign in and make a sale' callout 'Before a sale on a live store'"},
+    "C4": {"score": 8, "worst_defect": "The Changelog covers only the plugin (last release 2026-10-06). The till app that shops actually run (\"version 0.1.0, built 19 Nov 2026 from commit a6ca2f3\") has no release notes, so behaviour changes to the hosted till are not recorded anywhere on the site. A known defect is also documented rather than fixed: \"Not in the release notes: in 0.2.0 and 0.3.0 this role has no ReadOrder\".", "where": "changelog.desktop.01"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' is ten identical grey text-only cards with no icons or visual weight. The two cards that carry proof ('Read the acceptance test', 'Read the 200-send test') look exactly like the claim-only cards, and below the single hero screenshot the page reads as a wall of grey boxes.", "where": "home.desktop.01-02 'What it does today' grid"},
+    "C6": {"score": 9, "worst_defect": "On the phone home page the header shows only 'Docs'. 'Live demo', 'Quick start' and 'At the till' are hidden behind an unlabelled chevron, so after the hero buttons scroll away there is no visible route to the demo.", "where": "home.phone.01 header"},
+    "C7": {"score": 9, "worst_defect": "The docs landing page's title is the generic \"Overview | VendurePOS\", and its description (\"What VendurePOS is, what it needs, and where it stands.\") never says point of sale or Vendure, so the docs entry point is weak in search results and share previews.", "where": "tech.json pages['docs.desktop'].title/description"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A consultant can't tell a client who stands behind this till. There is no maintainer or organisation, no support or issue-tracker link, and nothing on who operates app.vendurepos.com, what it costs or how long it will stay up. Yet every store's till is served from that host and cannot reload without it, and self-hosting needs a separate RxDB Premium licence the site doesn't explain. The only operator clue is an unexplained \"ph.wcpos.com\".",
+    "where": "home.desktop.02 'Before you start' and footer; connect-a-till.desktop.01 'Where requests go'",
+    "fix": "Add a short 'Who runs this' block to the home page and Overview. It should name the maintainer, link the GitHub issues page for support, and say in one line who hosts app.vendurepos.com, whether it is free, and what happens if it goes away. It should also say that RxDB Premium is a paid third-party licence."
+  },
+  "mean": 8.1
+}

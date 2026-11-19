@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "On a 390 px phone the home header shows only the wordmark, a search icon and an unlabelled chevron, so the hero's 'Docs' and 'Connect your store' entry points from the desktop nav are hidden. The desktop hero screenshot is also cut through a half-row of product tiles at its bottom edge.", "where": "home/phone/01 (header); home/desktop/01 (hero image bottom edge)"},
+    "C2": {"score": 8, "worst_defect": "The payment-screen screenshot used to show the real till has a cart line called 'Tally Fixture Mug', which reads as test-fixture data in what should look like a real sale.", "where": "at-the-till/desktop/02 (image 'The payment screen on the live demo till', first cart line)"},
+    "C3": {"score": 8, "worst_defect": "In Quick start step 3, the command a developer must run is buried in a prose sentence ('…and run it with npx tsx src/run-migrations.ts'). On desktop the inline pill breaks after 'src/run-', and there is no copyable terminal block like step 1 has.", "where": "quick-start/desktop/01 (step 3 paragraph, y≈1497–1528); quick-start/phone/03"},
+    "C4": {"score": 8, "worst_defect": "The Limitations page is one flat run of 15 bullets with no subheadings and no 'On this page' rail, unlike every other doc page. Unrelated items such as 'Postgres only', 'One browser tab per till' and the refund/settleRefund note sit side by side, which makes it hard to scan.", "where": "limitations/desktop/01"},
+    "C5": {"score": 8, "worst_defect": "Inline code pills split mid-token across lines ('npx tsx src/run-' / 'migrations.ts'), leaving half-pills at the line edge. The two collapsed callouts are styled inconsistently: 'Why these pairings' has no period and 'How POS sales take stock.' does.", "where": "quick-start/desktop/01 (step 3) and quick-start/desktop/03 (collapsed callouts above step 7 and under its bullets)"},
+    "C6": {"score": 8, "worst_defect": "At 390 px, long inline code still breaks inside the token ('packages/vendure-' / 'plugin/CHANGELOG.md'). Step 2's h2 carries a large monospace 'TallyPosPlugin' pill that pushes it to three heavy lines.", "where": "changelog/phone/01 (first paragraph); quick-start/phone/01 (step 2 heading)"},
+    "C7": {"score": 9, "worst_defect": "The share card crops the till screenshot through the 'Add charge' button and the product tiles' stock badges along its bottom edge. Lighthouse also flags 52 KiB of unused JavaScript and render-blocking requests on /.", "where": "og-image.png (bottom edge); tech.json lighthouse '/' failing"}
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "Run commands in the quick start's migration step sit inline in prose ('npx tsx src/generate-migration.ts', 'npx tsx src/run-migrations.ts') and break mid-token across lines on both desktop and phone. The one step most likely to fail has no copyable terminal block, while step 1 has one.",
+    "where": "quick-start/desktop/01 (step 3, y≈1437–1528); quick-start/phone/02–03",
+    "fix": "Put the two npx tsx commands in Terminal code blocks with copy buttons, as in step 1. Give short inline code `white-space: nowrap` (or break only at '/') so pills never split at a hyphen."
+  },
+  "mean": 8.14
+}

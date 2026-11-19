@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero leans on jargon a newcomer has to decode ('the open-source headless commerce framework', 'till'), and the second button 'Quick start' drops a non-developer straight into npm installs and TypeScript with no hint that a developer is needed; only the small grey line under the buttons hints at it ('Your own store needs the plugin on your Vendure server first').", "where": "home/desktop/01 hero paragraph and line under the CTAs; home/phone/01"},
+    "C2": {"score": 7, "worst_defect": "Nothing on the home page says who makes or maintains VendurePOS (footer: 'MIT licensed. Built with TallyUI. For Medusa, see MedusaPOS.'), yet the comparison table says the demo 'sends anonymous usage events to ph.wcpos.com', a second, unexplained brand. A first-time visitor reads that as an unknown third party collecting data. It is only explained on Connect a till ('a self-hosted PostHog analytics server').", "where": "home/desktop/02 table row 'Sales reach Vendure, once each, even offline' and footer; home/phone/04"},
+    "C3": {"score": 8, "worst_defect": "The new-user path through step 5 contains a collapsed legacy aside, 'If your store already allows vendurepos.vercel.app', which names a domain the reader has never seen and leaves them unsure whether it applies to them. Step 8 (sign in and make a sale) also has no picture of the sign-in screen or a synced order.", "where": "quick-start/desktop/02 bottom; quick-start/phone/05"},
+    "C4": {"score": 8, "worst_defect": "Below each 'In short' line, the changelog is written in internal protocol terms ('GET /tally/v1/info advertises order.create 1–5 (ADR 0005)', 'Migration TallyPosV51790900000000 adds the v5 custom fields'), so a reader cannot tell what changed for their store. 0.3.0 and 0.2.0 also share the same date (2026-10-06).", "where": "changelog/desktop/01; changelog/phone/01"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' is ten identical grey text cards with no icon, image or emphasis, a long uniform wall of text between the hero shot and the comparison table. 'Before you start' then adds seven dense bullets of similar weight.", "where": "home/desktop/01 bottom to home/desktop/02 top; home.desktop-dark"},
+    "C6": {"score": 8, "worst_defect": "On the home page the phone header's only navigation control is a bare chevron (top right, next to search) with no 'Menu' label, so Docs, Live demo and Quick start are hidden behind an icon that reads as 'expand' rather than 'menu'. The quick-start H2 '2. Add TallyPosPlugin to your existing Vendure config' also wraps to three lines around a code chip.", "where": "home/phone/01 header; quick-start/phone/02 top"},
+    "C7": {"score": 9, "worst_defect": "Mobile LCP is 2.4 s on both / and /docs/quick-start, with Lighthouse flagging 52 KiB of unused JavaScript and 150 ms of render-blocking requests on /. Everything else (titles, descriptions, OG card, llms.txt, sitemap, search API, real 404) is in place.", "where": "tech.json lighthouse['/']"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A first-time visitor never learns who is behind VendurePOS: the home page names no maker or maintainer, yet its comparison table says the demo sends usage events to 'ph.wcpos.com', an unexplained other brand, which reads as an unknown third party collecting data.",
+    "where": "home/desktop/02 comparison table and footer; home/phone/04-05",
+    "fix": "Add one footer line naming the maker (e.g. 'Made by the WCPOS team'), and in the table say 'to our own self-hosted analytics server (ph.wcpos.com)', linking to the Connect a till section that explains it."
+  },
+  "mean": 8.0
+}

@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 6 prescribes different store-wide tax strategies for inclusive and exclusive channels, but says only that a store mixing modes 'must account for the store-wide strategy', leaving its configuration unresolved.",
+      "where": "text/quick-start.txt, step 6 and 'Why these pairings'; shots/quick-start.desktop.03.jpg"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The changelog says the generated device-key role 'does everything a till does', without the ReadOrder caveat that Connect a till says is necessary for order history on plugin 0.3.0.",
+      "where": "text/changelog.txt, 0.2.0 final bullet; text/connect-a-till.txt, 'Create and use a device key'; text/endpoint_llms_full_txt.txt"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.desktop.02.jpg; shots/home.desktop-dark.jpg; shots/plugin-setup.desktop.02.jpg"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.phone.01.jpg through home.phone.05.jpg; shots/quick-start.phone.01.jpg through quick-start.phone.09.jpg; tech.json"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "tech.json; text/endpoint_llms_txt.txt; text/endpoint_llms_full_txt.txt; text/endpoint_api_search_query_offline.txt; shots/og-image.png"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "A developer maintaining channels with both tax-inclusive and tax-exclusive pricing cannot determine which store-wide order tax strategy to configure from the quick start.",
+    "where": "text/quick-start.txt, step 6 and 'Why these pairings'; shots/quick-start.desktop.03.jpg",
+    "fix": "State the supported configuration for mixed-pricing channels and how to verify totals in each mode. If that configuration is unsupported, say so explicitly."
+  },
+  "mean": 8.9
+}

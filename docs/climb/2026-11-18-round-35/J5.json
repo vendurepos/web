@@ -1,0 +1,48 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "Hero says \"Point of sale for Vendure\" with \"Pre-release · plugin 0.3.0\" but never says who it is for or not for, or how it compares with Shopify POS, Square, Lightspeed or a Vendure admin-only workflow; a sceptic has to infer fit from the \"What it does today\" cards.",
+      "where": "home.desktop.01, home.phone.01"
+    },
+    "C2": {
+      "score": 6,
+      "worst_defect": "Nothing names who builds or operates VendurePOS and the hosted till app.vendurepos.com: footer is only \"MIT licensed. Built with TallyUI. For Medusa, see MedusaPOS.\", there is no maintainer, support or issue link, and the hosted till has no version or changelog (\"Released versions of the @vendurepos/plugin package\" only) while self-hosting the 'MIT' till needs \"your own RxDB Premium licence token (RXDB_PREMIUM)\". Changelog also admits a two-release-old bug: \"Not in the release notes: in 0.2.0 and 0.3.0 this role has no ReadOrder\".",
+      "where": "home.desktop footer slice; changelog.desktop.01 / changelog.phone.01; connect-a-till.desktop"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Quick start is nine steps and very long (6699 px desktop, 10352 px phone), and a fresh install still needs a manual role fix because the device-key role has \"no ReadOrder, so the till's order history is refused until you add it\"; a legacy \"If your store already allows vendurepos.vercel.app\" aside adds noise.",
+      "where": "quick-start.desktop slices, quick-start.phone slices"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Overview's Requirements list (\"Vendure 3.6 or later on Postgres (tested on 3.7.3)\") omits Node \"^20.19 || >=22.12\" and the RxDB Premium caveat that Plugin setup and Connect a till carry, and the ReadOrder workaround is repeated across four pages instead of fixed once.",
+      "where": "docs.phone.01, plugin-setup.phone.01"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found beyond minor density: consistent sidebar, TOC and prev/next cards; dark mode holds up.",
+      "where": "home.desktop slices, docs pages desktop .01"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "Hero demo screenshot is too small on phone: its \"QTY\" column header truncates to \"Q...\"; quick start runs to 10352 px on phone with no collapse of optional steps.",
+      "where": "home.phone.01, quick-start.phone slices"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Organization JSON-LD carries no contact or founder, matching the site's silence on who runs it; otherwise clean (Lighthouse 98/100/100/100, llms.txt, sitemap, search all 200).",
+      "where": "tech.json home.desktop jsonld"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "No stated operator or support path: the site never says who builds VendurePOS or runs the hosted till app.vendurepos.com (footer: \"MIT licensed. Built with TallyUI. For Medusa, see MedusaPOS.\"), the hosted till is unversioned while \"Pre-release: expect changes before 1.0\", and the only exit from it needs a paid \"RxDB Premium licence token\". I would advise a client not to depend on an anonymous hosted till.",
+    "where": "home.desktop footer slice; limitations.phone.01; changelog.phone.01",
+    "fix": "Add a short 'Who runs this' block on home and Overview naming the maintainer/company, an issue-tracker and support link, and the hosted till's current version with its own changelog entry."
+  },
+  "mean": 8.0
+}

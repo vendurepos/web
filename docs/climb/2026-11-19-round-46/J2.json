@@ -1,0 +1,48 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero opens with \"open-source till for Vendure, the open-source headless commerce framework\": jargon a shop owner does not read past, while the plain answer they need (\"keeps selling when the connection drops\") comes second. On the phone, the header shows only \"Docs\" and \"Live demo\"; Quick start and At the till are hidden behind the chevron.",
+      "where": "home.desktop.01 hero copy; home.phone.01 header"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The refund story differs from page to page. Home says the refund \"stays Pending until an administrator settles it with two Admin API calls\", but Limitations names a single \"settleRefund mutation\". An owner cannot tell how much work the freelance dev is being asked to do.",
+      "where": "home.desktop.02 table row \"Refund a sale at the till\"; limitations text, refunds item"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Getting a working till on your own store is entirely developer work: npm install, tsx migration scripts, bearer tokenMethod, CORS_ORIGINS, a tax strategy table. On plugin 0.3.0 the role created by \"New POS till key\" also lacks ReadOrder (\"add ReadOrder to that role yourself\"), so a till set up with the button cannot show order history until someone fixes the role by hand.",
+      "where": "quick-start.desktop.01-04 steps 1-6; quick-start Optional device key; changelog.desktop.01 0.2.0 last bullet"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "At the till sends counter staff to \"whoever manages your Vendure store\" for refunds and says the refund stays Pending, but the settle steps live only in Plugin setup (\"Settle a Dashboard refund\"). Troubleshooting mixes counter-staff guidance with GraphQL needs_admin sections, so staff land on admin material.",
+      "where": "at-the-till.desktop.02 \"Refund a sale\"; troubleshooting needs_admin section"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The cashier sheet and day-closure screenshots sit as narrow images inside wide frames with large blank padding, which looks unfinished next to the polished home page. Dark mode holds up well.",
+      "where": "at-the-till.desktop.03 cashier sheet image; at-the-till.desktop.03-04 closure image"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The phone header shows only \"Docs  Live demo\"; the two pages an owner needs most (Quick start, At the till) are behind the chevron. At the till is a long text-only scroll on the phone. Tables collapse cleanly and code blocks wrap without overflow.",
+      "where": "home.phone.01 header; at-the-till.phone slices"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The og-image crops the till screenshot through the middle of the product cards, so the shared link preview shows half-cut tiles. Otherwise everything is clean: Lighthouse mobile 98/100/100/100 on / and 96/100/100/100 on quick-start, CLS 0, every endpoint returns 200, there is a real 404 page, and JSON-LD is present.",
+      "where": "og-image.png bottom edge"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "Refunds on your own store: the till cannot refund on plugin 0.3.0. At the till tells staff to ask \"whoever manages your Vendure store\" and says the refund stays Pending until an administrator settles it with Admin API calls. The settle steps sit only in Plugin setup, and home (\"two Admin API calls\") and Limitations (\"settleRefund mutation\") disagree on what that takes. A shop owner cannot see who does a refund at the counter or how long the customer waits.",
+    "where": "at-the-till.desktop.02 \"Refund a sale\"; home.desktop.02 refund row; limitations refunds item",
+    "fix": "In At the till's \"Refund a sale\", say in one plain paragraph who does the refund, what the customer is told and how long it stays Pending, and link straight to plugin-setup#settle-a-dashboard-refund. Make home and Limitations agree on the exact Admin API steps."
+  },
+  "mean": 8.1
+}

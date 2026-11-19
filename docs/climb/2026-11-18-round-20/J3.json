@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 9,
+      "worst_defect": "Device-key setup directs readers to System \u2192 API keys, but its pnpm verification step says Settings \u2192 API keys, leaving the Dashboard navigation inconsistent.",
+      "where": "shots/connect-a-till.desktop.02.jpg; text/connect-a-till.txt"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The changelog says a key with the generated role 'does everything a till does' without the current ReadOrder caveat, while Connect a till warns that order history is refused without manually adding that permission.",
+      "where": "shots/changelog.desktop.01.jpg, 0.2.0 entry; text/connect-a-till.txt, Give each cashier their own account"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.desktop.02.jpg; shots/home.desktop-dark.jpg; shots/quick-start.desktop.01.jpg"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.phone.01.jpg through home.phone.05.jpg; shots/quick-start.phone.01.jpg through quick-start.phone.09.jpg"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The homepage Lighthouse capture reports 52 KiB of unused JavaScript and an estimated 150 ms saving from render-blocking resources.",
+      "where": "tech.json, lighthouse./.failing"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "The changelog's unqualified claim that the generated device-key role 'does everything a till does' conflicts with the current setup warning that it lacks ReadOrder and cannot read order history.",
+    "where": "shots/changelog.desktop.01.jpg, 0.2.0 entry; text/connect-a-till.txt",
+    "fix": "Add a current-version note beside the historical permission claim stating that plugin 0.3.0 requires manually adding ReadOrder for order history, and link to the role setup instructions."
+  },
+  "mean": 9.0
+}

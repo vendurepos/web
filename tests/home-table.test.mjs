@@ -39,3 +39,14 @@ test('home table fixes its columns from 640px up so row labels fit on one line',
   const widths = Array.from(table.matchAll(/<th\b[^>]*>/g), ([th]) => classes(th).filter((c) => /(^|:)w-/.test(c)));
   assert.deepEqual(widths, [['sm:w-[34%]'], ['sm:w-[33%]'], []]);
 });
+
+test('Before you start says building the till yourself needs an RxDB Premium token', () => {
+  // Round 20, J5 C2: the self-build licence is on the home page, not only in Limitations and Connect a till.
+  const page = html();
+  const start = page.indexOf('Before you start</h2>');
+  assert.ok(start !== -1);
+  const list = page.slice(start).match(/<ul\b[^>]*>[\s\S]*?<\/ul>/)[0];
+  const item = list.match(/<li>(?:(?!<\/li>)[\s\S])*RXDB_PREMIUM[\s\S]*?<\/li>/)[0];
+  assert.ok(item.includes('RxDB Premium'));
+  assert.match(item, /<a\b[^>]*\shref="\/docs\/connect-a-till"[^>]*>Connect a till<\/a>/);
+});

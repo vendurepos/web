@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; shots/limitations.desktop.01.jpg"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The tax instructions prescribe different store-wide strategies for inclusive and exclusive channels, but say only that a store mixing pricing modes 'must account for the store-wide strategy', leaving its configuration unresolved.",
+      "where": "Quick start, step 6, 'Why these pairings'; text/endpoint_llms_full_txt.txt:844"
+    },
+    "C4": {
+      "score": 9,
+      "worst_defect": "The quick start sends pnpm users to the external plugin README for the missing device-key button setting instead of linking the concrete instructions already provided in Connect a till.",
+      "where": "text/quick-start.txt, 'Optional: a device key for each till'; text/connect-a-till.txt, 'Make the key button available in a pnpm project'"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.desktop.02.jpg; shots/home.desktop-dark.jpg; shots/quick-start.desktop.01.jpg through quick-start.desktop.04.jpg"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.phone.01.jpg through home.phone.05.jpg; shots/quick-start.phone.01.jpg through quick-start.phone.09.jpg; other pages' first phone slices"
+    },
+    "C7": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "tech.json; text/endpoint_llms_txt.txt; text/endpoint_llms_full_txt.txt; text/endpoint_api_search_query_offline.txt; shots/og-image.png; shots/not-found.desktop.01.jpg"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "A developer whose channels mix tax-inclusive and tax-exclusive pricing must guess how to satisfy the documented store-wide tax-strategy requirement.",
+    "where": "Quick start, step 6, 'Why these pairings'; text/endpoint_llms_full_txt.txt:844",
+    "fix": "State the supported configuration for mixed-pricing channels and how to verify its totals. If that combination is unsupported, say so explicitly beside the strategy table."
+  },
+  "mean": 9.3
+}

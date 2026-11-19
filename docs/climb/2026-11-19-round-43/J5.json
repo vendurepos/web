@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 9, "worst_defect": "The hero badge says only 'Pre-release · plugin 0.3.0'; that the till app itself is version 0.1.0 is only revealed deep in the Changelog ('till app version 0.1.0, built 19 Nov 2026'), so the first screen understates how early the till is.", "where": "home/desktop/01 badge vs changelog/desktop/01"},
+    "C2": {"score": 7, "worst_defect": "Nowhere on the site says who builds or maintains VendurePOS, how to report a bug or get help (no issues/support/contact link), and the demo's analytics host 'ph.wcpos.com' appears with no explanation of what WCPOS is; a buyer cannot judge whether this is a funded project or a weekend repo.", "where": "home/desktop/02 table row 'Sales reach Vendure' and footer; connect-a-till/desktop/01 'Where requests go'"},
+    "C3": {"score": 8, "worst_defect": "The plugin's own 'New POS till key' button creates a role without ReadOrder, so the device-key path ships broken order history and the reader must patch the role by hand ('add ReadOrder to that role yourself'); a known bug documented as a workaround in two releases instead of fixed.", "where": "quick-start text 'Optional: a device key for each till'; changelog/desktop/01 0.2.0 last bullet 'Not in the release notes'"},
+    "C4": {"score": 8, "worst_defect": "The home page 'Live demo or your own store' table lists refunds as the demo-only difference but omits the customer note, which At the till says exists only on the demo ('On plugin 0.3.0, Order details has no customer note. On the live demo, type a Customer note'), so the comparison the site invites is incomplete.", "where": "home/desktop/02 table vs at-the-till/desktop/01 'Order details'"},
+    "C5": {"score": 8, "worst_defect": "The hero intro runs five centred lines of grey body copy under the H1, a wall of text that weakens the hierarchy before the CTAs; the docs pages otherwise look like an unmodified docs-framework template.", "where": "home/desktop/01 hero paragraph"},
+    "C6": {"score": 9, "worst_defect": "none found of weight: tables collapse to labelled cards and code wraps; the long wrapped CORS sentence with inline code chips (',http://localhost:8081') is the most cramped spot.", "where": "quick-start/phone/05"},
+    "C7": {"score": 8, "worst_defect": "Lighthouse mobile performance on /docs/quick-start is 79 with total blocking time 790 ms and 2.6 s main-thread work, for a static docs page.", "where": "tech.json lighthouse /docs/quick-start"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "There is no sign of who stands behind VendurePOS or where a user gets help: no maintainer or company named, no issue tracker or support link, and the only hint (demo events sent to 'ph.wcpos.com') is unexplained. Combined with the last plugin release being 6 Oct with a known permissions bug left as a manual workaround, a sceptic would advise a client that this may be a one-person side project with no support path.",
+    "where": "home/desktop/02 footer and live-demo table; changelog/desktop/01",
+    "fix": "Add one line to the home footer and Overview naming who builds and maintains it (and that ph.wcpos.com belongs to them), with links to GitHub Issues for bugs and a support channel."
+  },
+  "mean": 8.1
+}

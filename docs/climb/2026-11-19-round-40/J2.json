@@ -1,0 +1,48 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero speaks to developers ('Vendure, the open-source headless commerce framework') and the page my staff need, 'At the till', is not a hero button: it shows only in the top nav and a paragraph at the bottom.",
+      "where": "home.desktop.01 hero (CTAs are only 'Live demo' and 'Quick start')"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "Two version numbers with no explanation on the home page: the hero badge says 'plugin 0.3.0' while the hosted till is 'till app version 0.1.0', explained only in the Changelog. The demo's analytics go to 'ph.wcpos.com', a domain from another brand, also unexplained.",
+      "where": "home.desktop.01 badge / changelog.desktop.01 intro / home.desktop.02 comparison table"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 8 'Sign in and make a sale' has no picture of the sign-in screen. With the optional device key, the till role on 0.3.0 'has no ReadOrder', so order history is refused until someone adds it by hand. A non-developer would not know how to do that.",
+      "where": "quick-start.desktop.03 step 8 / quick-start text 'Create and use a device key'"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "On the page my staff read, 'Refund a sale' says plugin 0.3.0 cannot refund at the till, then a long 'Refund at the till (live demo)' section walks through a flow they cannot use. Troubleshooting also mixes counter notices with GraphQL admin mutations ('tallyNeedsAdminCommands', 'tallyResolveNeedsAdmin').",
+      "where": "at-the-till.desktop.02-03 'Refund at the till (live demo)'; troubleshooting text"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The cashier-sheet and register-closure screenshots sit in oversized frames with large empty padding and are narrower than the text column, so they look unfinished next to the rest of the page.",
+      "where": "at-the-till.desktop.03 (cashier sheet), at-the-till.desktop.04 (closure)"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "The hero till screenshot takes about one and a half phone screens before 'What it does today' starts, and its category chips are cut off ('Gif'). Long headings wrap to three lines, e.g. '2. Add TallyPosPlugin to your existing Vendure config'.",
+      "where": "home.phone.01-02; quick-start.phone.02"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Mobile LCP is 2.4 s, just under the 2.5 s line. Lighthouse also flags render-blocking resources (~150 ms), 52 KiB of unused JS on / and 14 KiB of legacy JS.",
+      "where": "tech.json lighthouse mobile / and /docs/quick-start"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "At the till, the page staff read at the counter, spends a long section on 'Refund at the till (live demo)', a flow that does not work on plugin 0.3.0. A shop owner skimming on a phone can easily think staff can refund at the till.",
+    "where": "at-the-till.desktop.02-03, section 'Refund at the till (live demo)'",
+    "fix": "Collapse that section into one short boxed note labelled 'Live demo only, not on plugin 0.3.0' (or move it to the demo page). The At the till refund section should then only describe what works today: refund in the Vendure Dashboard, record cash with Pay out."
+  },
+  "mean": 8.4
+}

@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero is clear, but the feature cards right below it use point-of-sale and engineering jargon with no plain gloss: 'close it with a Z report', 'Open a register with a counted float', 'Keyboard-wedge scanners', 'records it in one transaction with an idempotency ledger'. A visitor who half knows Vendure stalls on these in the first scroll.", "where": "home desktop slice 01 ('What it does today' cards); home phone slices 02-03"},
+    "C2": {"score": 8, "worst_defect": "The home page never says who makes VendurePOS or whether the hosted app at app.vendurepos.com is free. The only clue to the maker is an unexplained third-party domain in the demo table: 'All it sends is anonymous usage events to ph.wcpos.com'. The page doesn't say what wcpos.com is until Connect a till.", "where": "home desktop slice 02 (comparison table, last row) and footer ('MIT licensed. Built with TallyUI.')"},
+    "C3": {"score": 8, "worst_defect": "Step 4 says to sign in with an administrator 'whose role in the till's channel has TallyPosSell, ReadCatalog, ReadSettings, ReadCustomer and CreateCustomer' plus ReadOrder, but gives no steps or link for creating that role. The device-key path's auto-created role 'has the step 4 permissions except ReadOrder', so the reader has to patch it by hand.", "where": "quick-start desktop slice 02 (step 4) and slice 04 (Optional: a device key)"},
+    "C4": {"score": 8, "worst_defect": "The changelog cites internal references the reader cannot follow ('(ADR 0005)', '(ADR 0004)', '(#116)', '(#117)') as plain text with no links, next to protocol terms like 'order.create v5' and 'TallyPosV51790900000000'.", "where": "changelog desktop slice 01 (0.3.0 and 0.2.0 bullets)"},
+    "C5": {"score": 8, "worst_defect": "The hero stacks three calls to action. Directly under the 'Quick start' button, a small grey line repeats 'the quick start' as an underlined link and adds a third link, 'try the till with your store'. That muddies an otherwise clean two-button hero.", "where": "home desktop slice 01 (line under the hero buttons); same in home.desktop-dark"},
+    "C6": {"score": 9, "worst_defect": "Code blocks soft-wrap mid-expression on a 390 px screen. In the generateMigration call, \"name: 'AddVendurePos', outputDir: './src/migrations' })\" and \".catch(... process.exitCode = 1; });\" break across four indented lines, which is harder to read than horizontal scroll.", "where": "quick-start phone slice 02 and slice 03 (migration snippets)"},
+    "C7": {"score": 9, "worst_defect": "The docs landing page is titled just 'Overview | VendurePOS', which says nothing in a search result. Every sitemap <lastmod> is a timestamp from the capture morning (for example 2026-11-18T09:19:31+01:00), so they look like deploy times rather than content changes.", "where": "tech.json pages['docs.desktop'].title; text/endpoint_sitemap_xml.txt"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "Someone arriving from a 'Vendure point of sale' search meets unexplained trade and engineering jargon in the first feature cards ('Z report', 'counted float', 'Keyboard-wedge scanners', 'idempotency ledger'). So the part that should sell the product in a minute reads as written for people who already run a till.",
+    "where": "home desktop slice 01 / home phone slices 02-03, 'What it does today' cards",
+    "fix": "Add a few plain words to each term in the cards, e.g. 'Z report (end-of-day cash summary)', 'opening float (the cash in the drawer at the start)', 'USB barcode scanners', and replace 'idempotency ledger' with 'a record of every sale id it has seen'."
+  },
+  "mean": 8.3
+}

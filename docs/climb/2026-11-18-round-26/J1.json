@@ -1,0 +1,48 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "Above the fold is clear (headline, one-line Vendure explainer, Live demo / Quick start), but the first pill a newcomer reads is 'Pre-release · plugin 0.3.0', and lower down 'Before you start' asks them to make sense of 'RxDB Premium licence token (RXDB_PREMIUM)', 'one tab per till and not a private window' and 'Z report' before anything tells them what they would pay or who the hosted app is for.",
+      "where": "home/desktop/01 (badge above h1); home/desktop/02 'Before you start' bullets 4-5"
+    },
+    "C2": {
+      "score": 7,
+      "worst_defect": "The site says 'open-source' in the hero and 'MIT licensed' in the footer, then says self-building needs 'your own RxDB Premium licence token', but no page says whether the hosted app at app.vendurepos.com is free, paid or limited, or what RxDB Premium is. The words free, price and cost appear nowhere in home, docs, quick-start, connect-a-till or limitations, so a newcomer cannot tell what the catch is.",
+      "where": "home/desktop/02 'Before you start' bullet 5; text/connect-a-till.txt 'Building it yourself needs your own RxDB Premium licence token'; text/limitations.txt bullet 3"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The quick start opens with 'Start with a working Vendure 3.6+ project backed by Postgres' but gives no link to how to get one, so a visitor without a Vendure store hits a dead end on line one. After that the nine numbered steps, the commands and 'Check it worked' are complete.",
+      "where": "quick-start/desktop/01, paragraph under 'Try it first'"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Connect a till says unsent sales 'are kept in SQLite databases inside this browser', while home, Overview and Limitations all say 'MySQL, MariaDB and SQLite are not supported', with no note that one is the till's in-browser store and the other the server database. A newcomer reads it as a contradiction.",
+      "where": "connect-a-till/desktop/01 'Stored in this browser' bullet 4 vs docs/desktop/01 Requirements"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The hero screenshot is cut off mid-row: a fourth row of product tiles shows only its coloured tops at the image's bottom edge, which looks like a cropping slip. Below it, 'What it does today' is ten identical text-only grey cards with no icon or visual anchor, a flat wall to scan.",
+      "where": "home/desktop/01 (bottom edge of the till screenshot); home/desktop/01-02 feature cards"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "On phone the hero image is the till's cart view, and its first column header is truncated to 'Q...' instead of 'QTY', so the first product image a phone visitor sees looks unfinished. Text, the stacked comparison table and code blocks otherwise read well with no overflow.",
+      "where": "home/phone/01, cart header row of the hero screenshot"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Nearly clean: Lighthouse 98/100/100/100, titles and descriptions on every page, a share card, JSON-LD, llms.txt, sitemap, robots and search API all work, and the 404 page returns a real 404. The only blemish is that the 404 page logs a console error ('Failed to load resource: ... 404').",
+      "where": "tech.json pages.not-found.*.consoleErrors"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A first-time visitor never learns what VendurePOS costs. The hero says open-source and the footer says MIT, but the hosted app's terms are never stated, and the only cost signal is an unexplained 'RxDB Premium licence token' needed to self-host, which reads like a hidden catch.",
+    "where": "home/desktop/02 'Before you start' bullet 5; no free, price or cost wording on any page",
+    "fix": "Add one plain line near the hero or in 'Before you start', e.g. 'app.vendurepos.com is free to use with your own Vendure store; self-hosting the till needs a paid RxDB Premium licence', or whatever the true terms are, and link RxDB Premium to its page."
+  },
+  "mean": 8.0
+}

@@ -1,0 +1,48 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The fold says what it is and offers two clear next steps, but never says who should not pick it. The deal-breakers a buyer comparing it with Square or Shopify POS needs (no integrated card terminal, no cash drawer, no receipt printer, Postgres only, Chrome only) sit in the sixth section, 'Before you start', below ten feature cards.",
+      "where": "home.desktop.01 hero vs home.desktop.02 'Before you start'; home.phone.04-05"
+    },
+    "C2": {
+      "score": 7,
+      "worst_defect": "The site leads with 'MIT licensed' and 'open-source till', but the only way to run the till without paying anyone is the hosted app.vendurepos.com. The site never names who runs that app or states its cost, terms or uptime. Self-hosting 'needs your own RxDB Premium licence token (RXDB_PREMIUM)' and never says this is a paid commercial licence or what it costs.",
+      "where": "home.desktop.02 'Before you start' bullet 5; limitations 'Setting up the store'; connect-a-till 'Where your data goes'"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 8c asks for 'an existing single text ProductVariant custom field, such as barcode'. Adding one means a config change and another migration (connect-a-till: 'Then run a database migration'). Step 3 runs the migration earlier, so a developer who wants scanning has to go back and generate a second migration after the server is already set up.",
+      "where": "quick-start.desktop.03 step 8c 'how to add one' vs step 3; connect-a-till 'Enter your store details'"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The Changelog covers only @vendurepos/plugin; the till app, which 'is pre-release: expect changes before 1.0', has no version and no release notes anywhere on the site. Its newest entry is 0.3.0 (2026-10-06), six weeks before this capture, and 0.2.0 shipped the same day. A known gap is carried as a note ('Not in the release notes: in 0.2.0 and 0.3.0 this role has no ReadOrder') instead of a fix, so a reader cannot tell whether the project is still active.",
+      "where": "changelog.desktop.01; changelog.txt 0.2.0 last bullet"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The hero screenshot is cut off mid-row, leaving a strip of half-visible product tiles at its bottom edge. The OG card also cuts off the till's 'Add charge' button. Below the hero, ten identical grey feature cards form a long, uniform wall with no visual anchor or proof imagery between them.",
+      "where": "home.desktop.01 (screenshot bottom edge, y≈1140; cards y≈1310-1790); og-image.png bottom edge"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The phone hero image shows the till's own narrow layout with its first column header truncated to 'Q...' above the cart lines. It is the first product image a phone visitor sees, and it looks unfinished.",
+      "where": "home.phone.01 (till screenshot, column header row)"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "llms-full.txt lists pages alphabetically, so it opens with '# At the till' (cashier steps) instead of the Overview or Quick start. An AI assistant reading it top-down meets the till UI before learning what the product is or how to install the plugin. Mobile LCP is 2.4-2.5 s with render-blocking requests flagged.",
+      "where": "text/endpoint_llms_full_txt.txt first line; tech.json lighthouse '/' LCP 2.5 s"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The site calls the till 'MIT licensed' and 'open-source', yet a client can only run it free through app.vendurepos.com, whose operator, cost, terms and availability are never stated. The self-hosting route needs an 'RxDB Premium licence token' that the site never identifies as a paid commercial licence. A sceptic advising a client cannot say what the till really depends on or what it will cost.",
+    "where": "home.desktop.02 'Before you start' bullet 5; limitations.desktop.01 'Setting up the store' bullet 1",
+    "fix": "Add one 'Who runs app.vendurepos.com' line on the home page and in Connect a till: name the operator, say it is free and what happens if it goes away. Next to RXDB_PREMIUM, state that RxDB Premium is a paid third-party licence and link its pricing."
+  },
+  "mean": 8.0
+}

@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero is clear, but the home page's closing 'Before you start' section turns into a developer checklist for a first-time reader: 'Node ^20.19 || >=22.12', 'RxDB Premium licence token (RXDB_PREMIUM)' and 'Vendure 3.6 or a later 3.x release on Postgres (tested on 3.7.3)' repeat the docs' Requirements word for word. The hero's own gloss, 'the open-source headless commerce framework', also leaves 'headless' unexplained.", "where": "home/desktop/02 (Before you start), home/phone/04-05; hero sentence in home/desktop/01"},
+    "C2": {"score": 8, "worst_defect": "The comparison table says the live demo sends 'anonymous usage events to ph.wcpos.com', a domain from a different brand that the home page never explains. A newcomer reading about VendurePOS sees data going to an unexplained third-party-looking host. Connect a till does explain it is a self-hosted PostHog server.", "where": "home/desktop/02, 'Sales reach Vendure, once each, even offline' row; home/phone/04"},
+    "C3": {"score": 8, "worst_defect": "Step 4 buries the cashier role's permissions in one prose paragraph ('TallyPosSell, ReadCatalog, ReadSettings, ReadCustomer and CreateCustomer ... Also add ReadOrder, or the till sells but its order history is refused'). It does not say where in the Vendure Dashboard to create the role, so ReadOrder is easy to miss and the role step is guesswork.", "where": "quick-start/desktop/02, '4. Enable bearer authentication'; quick-start/phone/04"},
+    "C4": {"score": 8, "worst_defect": "Troubleshooting's 'Till updates line' is a long nested wall of prose ('At the counter:' / 'For the store owner:' / errorCode bullets / 'Any other code: the till has no retry or skip...') with no table or short summary. It is hard to scan at the counter, and the phone version runs over several screens.", "where": "troubleshooting/desktop/01 (lower half), troubleshooting/phone/02"},
+    "C5": {"score": 8, "worst_defect": "In 'What it does today', the first two features are boxed cards with buttons and the next eight are plain unboxed heading+paragraph pairs. Below the hero image the home page is all grey text (features, table, bullet list) with no second visual, so the lower page reads flat and unfinished next to the polished hero.", "where": "home/desktop/01 bottom to home/desktop/02; same in home.desktop-dark.jpg"},
+    "C6": {"score": 8, "worst_defect": "On phone the hero till screenshot fills about one and a half screens (home/phone/01 from y≈1160 to home/phone/02 y≈270) and shows mostly a product grid with a clipped category chip ('Gif'). The first content heading, 'What it does today', only arrives after almost two full screens of scrolling. The phone header also hides 'Quick start' behind a chevron.", "where": "home/phone/01-02"},
+    "C7": {"score": 9, "worst_defect": "Nearly clean. The only real misses are Lighthouse findings on /docs/quick-start: LCP 2.6 s, max-potential-fid 160 ms and render-blocking requests. The 404 page's console 404 error is expected.", "where": "tech.json lighthouse./docs/quick-start"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "For a visitor who arrived from a search, the home page stops selling and starts configuring once past the features. The 'Before you start' section asks them to parse Node semver ranges, an RXDB_PREMIUM licence token and plugin-version refund caveats, and the comparison table talks about 'two Admin API calls' and ph.wcpos.com. All of that is docs-level detail that makes a simple product feel complicated.",
+    "where": "home/desktop/02 ('Live demo or your own store' refund row and 'Before you start'); home/phone/04-05",
+    "fix": "Cut 'Before you start' on the home page to three plain lines: Vendure 3.6+ on Postgres, install one npm plugin, open the hosted till in a browser. Link to Overview › Requirements for versions and self-hosting. In the table, shorten the refund cell to 'No, refund in the Vendure Dashboard (see Plugin setup)'."
+  },
+  "mean": 8.1
+}

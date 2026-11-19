@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 7, "worst_defect": "The home page speaks only to the developer: the nav is 'Docs / Live demo / Quick start' and the hero CTAs are 'Live demo' and 'Quick start'; the only pointer for staff ('For cashiers, At the till covers selling, taking payment and closing the day') is the last paragraph before the footer, below the 'Before you start' list full of Postgres, RXDB_PREMIUM and tokenMethod talk.", "where": "home/desktop/02 (bottom paragraph), home/phone/05; nav in home/desktop/01"},
+    "C2": {"score": 9, "worst_defect": "The live-demo column says 'All it sends is anonymous usage events to ph.wcpos.com, with no cookie': a different brand's domain (wcpos) appears with no word on who that is, which makes a non-developer wonder whose product this really is.", "where": "home/desktop/02, 'Live demo or your own store' table, last row"},
+    "C3": {"score": 8, "worst_defect": "The role a cashier needs is one long sentence in step 4 with ReadOrder bolted on afterwards ('Also add ReadOrder, or the till sells but its order history is refused'), and the device-key route then says the auto-created vendurepos-pos-till role lacks ReadOrder on 0.3.0, so the developer has to add it by hand: two places to get the same permission wrong, with no single permission checklist.", "where": "quick-start/desktop/02 step 4; quick-start text 'Optional: a device key for each till'"},
+    "C4": {"score": 8, "worst_defect": "At the till contradicts itself on what the drawer should hold: 'Reports ... opening float plus cash sales is what is expected in the drawer' versus the refund section's 'The register's expected cash counts the till's own payments, pay ins and pay outs', and a cash refund 'lowers the cash expected'; for closing the day the first formula is wrong.", "where": "at-the-till/desktop/03 'Check the register during the day' vs at-the-till/desktop/02 'Refund a sale' item 2"},
+    "C5": {"score": 8, "worst_defect": "The hero till screenshot is cropped mid-row, leaving a strip of half-cut product tiles along its bottom edge, and the ten 'What it does today' cards are all the same weight and grey, so the two that matter most at a counter (offline, close the register) do not stand out.", "where": "home/desktop/01, bottom of the hero screenshot and the card grid"},
+    "C6": {"score": 8, "worst_defect": "On the phone the hero till screenshot is a tall cart-only crop with the quantity column header truncated to 'Q...', and it takes more than a full screen before 'What it does today' starts.", "where": "home/phone/01 to home/phone/02"},
+    "C7": {"score": 9, "worst_defect": "Quick start's mobile Lighthouse shows LCP 2.4 s with render-blocking requests and 25 KiB unused JS flagged; otherwise titles, descriptions, sitemap, llms.txt, search API and the 404 (status 404, Home/Docs/Live demo buttons) are in order.", "where": "tech.json lighthouse['/docs/quick-start']"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "A shop owner landing on the home page finds no way in for staff near the top: nav and hero point only at the developer Quick start and the demo, and the cashier guide (At the till, which covers opening, offline, and closing the day with a Z report) is linked only from the last paragraph of the page and the docs sidebar.",
+    "where": "home/desktop/01 nav and hero CTAs; home/desktop/02 last paragraph",
+    "fix": "Add 'At the till' (or 'For staff') to the top nav and a one-line link under the hero CTAs, e.g. 'Running the counter? See At the till: selling, offline and closing the day.'"
+  },
+  "mean": 8.1
+}

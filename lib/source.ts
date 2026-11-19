@@ -23,6 +23,8 @@ export function getPageImage(page: InferPageType<typeof source>) {
 const mdxComment = /^\{\/\*[\s\S]*?\*\/\}[ \t]*\n?/gm;
 // A <TillFigure> is a React component, so plain-text readers would see raw JSX; give them the light screenshot instead.
 const tillFigure = /<TillFigure\s+name="([^"]+)"\s+alt="([^"]*)"\s*\/>/g;
+// <HostedTillVersion> reads the hosted till's live build at render time; the static llms text drops its line.
+const hostedTillVersion = /^[ \t]*<HostedTillVersion\s*\/>[ \t]*\n?/gm;
 // <Cards> is only a layout wrapper, so its open and close lines go.
 const cardsTag = /^[ \t]*<\/?Cards\b[^>]*>[ \t]*\n?/gm;
 // A <div> is a styling wrapper (the lettered quick-start steps), so its open and close lines go, with one blank line after.
@@ -43,6 +45,7 @@ export async function getLLMText(page: InferPageType<typeof source>) {
   const text = processed
     .replace(mdxComment, '')
     .replace(tillFigure, `![$2](${SITE_URL}/till/$1-light.png)`)
+    .replace(hostedTillVersion, '')
     .replace(cardsTag, '')
     .replace(divTag, '')
     .replace(card, (_, attrs: string, body: string) => {

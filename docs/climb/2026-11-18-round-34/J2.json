@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 9, "worst_defect": "The hero is clear ('Point of sale for Vendure', Live demo / Quick start, 'Pre-release · plugin 0.3.0'), but the small note 'Your own store needs the plugin on your Vendure server first…' is the only hint that a shop owner cannot just sign up; it's easy to miss under the two big buttons.", "where": "home/desktop/01 and home/phone/01"},
+    "C2": {"score": 9, "worst_defect": "The at-the-till payment screenshot shows a cart line named 'Tally Fixture Mug', a test-fixture name that looks out of place next to the real-looking catalogue ('Cold Brew', 'Canvas Apron') used everywhere else.", "where": "at-the-till/desktop/02"},
+    "C3": {"score": 8, "worst_defect": "The docs overview says the till 'signs in to your own Vendure store with an administrator account', while connect-a-till tells you to give each cashier a limited role and to add 'ReadOrder' by hand because the auto-created 'vendurepos-pos-till' role lacks it on 0.3.0. The overview reads as if staff need a full admin login.", "where": "docs/desktop/01 (text/docs.txt line 22) vs connect-a-till/desktop/01"},
+    "C4": {"score": 7, "worst_defect": "The troubleshooting entry for 'N till updates need attention' packs counter advice ('At the counter: leave the app open…'), owner instructions ('For the store owner: copy the refused line… One case you clear at the till by choosing another register, one the till fixes by itself, and for any other code…') and a server errorCode/GraphQL list into one dense block. The actual steps sit behind a collapsed 'To find the line in the sync log'.", "where": "troubleshooting/desktop/01, troubleshooting/phone/01 (text/troubleshooting.txt lines 49-55)"},
+    "C5": {"score": 8, "worst_defect": "The close-the-day (closure) screenshot has thin coloured slivers and cut-off content under the 'Done' button at the image's bottom edge, so it looks badly cropped.", "where": "at-the-till/desktop/04 (top)"},
+    "C6": {"score": 9, "worst_defect": "The same closure screenshot shows stray cut-off text under 'Done' on phone. Otherwise tables stack, code wraps and there is no horizontal overflow.", "where": "at-the-till/phone/08"},
+    "C7": {"score": 9, "worst_defect": "The only failing audits are minor: Lighthouse mobile flags about 52 KiB of unused JS and 140 ms of render-blocking resources, and LCP is 2.5 s on '/', right at the 'good' limit. Titles, descriptions, JSON-LD, llms.txt, search API, sitemap, robots, OG card and the 404 page are all present.", "where": "tech.json lighthouse ('/' and '/docs/quick-start')"}
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "When a till shows 'N till updates need attention', the shop owner lands on a troubleshooting block that mixes counter instructions, owner instructions and a developer errorCode/GraphQL list in one paragraph run. The how-to ('To find the line in the sync log') is collapsed, so the owner can't quickly see what to do at the counter versus what to send to their developer.",
+    "where": "troubleshooting/desktop/01 and troubleshooting/phone/01",
+    "fix": "Split the entry into three short labelled boxes: 'At the counter' (keep the tab open, keep selling), 'Store owner' (numbered steps to copy the sync-log line, expanded by default), and 'For your developer' (the errorCode list and GraphQL calls)."
+  },
+  "mean": 8.4
+}

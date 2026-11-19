@@ -2,7 +2,7 @@
 title: At the till
 description: Open the register, sell with charges and open sales, take or split a payment and close the day.
 ---
-{/* Sources: vendurepos/app 1404f42 (app.vendurepos.com production, 17 Nov 2026); plugin CHANGELOG at 1404f42; customer note: plugin CHANGELOG.md:6 ("kept as one public order note"), vendurepos/app#284 ("public to the customer"); note and refund gates: vendurepos/app cc719c2 apps/pos/lib/sale-cart.tsx:72 with lib/use-sale-settings.ts:23 (MIN_ORDER_CREATE_NOTE = 7), lib/refund-sheet.tsx:56 (Refund items needs order.refund), lib/demo/store.ts:12 (the demo advertises both); plugin-v0.3.0 (2d3699e, npm latest) packages/vendure-plugin/src/api/info.controller.ts:29 (order.create 1-5, no order.refund), src/config/strategies.ts:133-141 (tally-pos has no createRefund); https://docs.vendure.io/current/framework/reference/typescript-api/payment/payment-method-config-options (without createRefund, refunds "settled manually by an administrator"); https://docs.vendure.io/current/framework/reference/graphql-api/admin/mutations (settleRefund). */}
+{/* Sources: vendurepos/app 1404f42 (app.vendurepos.com production, 17 Nov 2026); plugin CHANGELOG at 1404f42; customer note: plugin CHANGELOG.md:6 ("kept as one public order note"), vendurepos/app#284 ("public to the customer"); note and refund gates: vendurepos/app cc719c2 apps/pos/lib/sale-cart.tsx:72 with lib/use-sale-settings.ts:23 (MIN_ORDER_CREATE_NOTE = 7), lib/refund-sheet.tsx:56 (Refund items needs order.refund), lib/demo/store.ts:12 (the demo advertises both); plugin-v0.3.0 (2d3699e, npm latest) packages/vendure-plugin/src/api/info.controller.ts:29 (order.create 1-5, no order.refund), src/config/strategies.ts:133-141 (tally-pos has no createRefund); https://docs.vendure.io/current/framework/reference/typescript-api/payment/payment-method-config-options (without createRefund, refunds "settled manually by an administrator"); https://docs.vendure.io/current/framework/reference/graphql-api/admin/mutations (settleRefund). The settle steps are in plugin-setup.mdx, with their sources. */}
 
 Some steps depend on the store's VendurePOS plugin. With no plugin, or one too old to sell,
 the till shows "This store's VendurePOS plugin is missing or out of date.
@@ -52,8 +52,8 @@ The ⋮ beside **Checkout** opens **Order details**.
 **Void** drops the sale from the till. Nothing has been sent to the store.
 A sale that is partly paid can't be voided.
 
-Type a **Customer note** to send with the order. The store keeps it as a public note in the order's history, so the customer can see it too.
-The live demo has the note. On plugin 0.3.0, **Order details** shows no note.
+On plugin 0.3.0, **Order details** has no customer note.
+On the live demo, type a **Customer note** to send with the order. The store keeps it as a public note in the order's history, so the customer can see it too.
 
 ## Take payment
 
@@ -63,7 +63,7 @@ On a narrow screen the payment pane fills the cart tab.
 
 <TillFigure
   name="payment"
-  alt="The payment screen on the live demo till for a €21.29 sale of three items: Split, Total €21.29, No payments yet, Cash and Card terminal, quick amounts Exact €21.29, €25.00, €30.00 and €50.00, the number keypad, Take €21.29 in Cash, Complete sale and Back."
+  alt="The payment screen on the live demo till for a €20.09 sale of Cold Brew, Chocolate Biscuits and Espresso Cup: Split, Total €20.09, No payments yet, Cash and Card terminal, quick amounts Exact €20.09, €25.00, €30.00 and €50.00, the number keypad, Take €20.09 in Cash, Complete sale and Back."
 />
 
 Pick cash or card. Type the amount on the keypad, or tap a quick amount, then take the payment.
@@ -90,11 +90,22 @@ If your till is set not to show the receipt after each sale, it shows "Sale comp
 
 ## Refund a sale
 
-On plugin 0.3.0 an order shows no **Refund items**: refund in the Vendure Dashboard. Vendure keeps that refund
-Pending until an administrator settles it with the Admin API's
-[`settleRefund`](https://docs.vendure.io/current/framework/reference/graphql-api/admin/mutations) mutation.
-The live demo refunds at the till:
+{/* Pay out for a Dashboard refund: plugin-v0.3.0 (2d3699e, npm latest) packages/vendure-plugin/src/service/register.service.ts:267-279 (the register counts each order's tallyPayments, written once when the till creates the order: order-create.service.ts:910, config/custom-fields.ts:35 readonly), :251 ("refunds stay 0"); src/vendored/register-figures.ts:22-27 (expected cash = counted float + those payments + paid_in - paid_out, non-voided); src/vendored/register-payload-shape.ts:60 (paid_in, paid_out, no_sale). A Dashboard refund changes none of these. */}
 
+On plugin 0.3.0 the till cannot refund. The order is refunded in the Vendure Dashboard instead.
+
+1. Ask whoever manages your Vendure store to refund the order in the Vendure Dashboard. The refund then shows as
+   Pending until they settle it; [Plugin setup](/docs/plugin-setup#settle-a-dashboard-refund) has the steps for them.
+2. If you hand back cash, record it on the till with **Pay out** (tap your name in the bar), the amount,
+   and the order code as the reason. The register's expected cash counts the till's own payments,
+   pay ins and pay outs, not Dashboard refunds, so without it the drawer count comes up short.
+
+### Refund at the till (live demo only)
+
+The till refunds only through a store that offers refunds. The live demo's store does; plugin 0.3.0 does not, so on
+your own store use the steps above.
+
+<Callout title="Refund steps on the live demo" fold>
 Open **Orders**, choose **This till** and open the sale. Only sales made on a till can be refunded.
 With the register closed, the order shows "Open the register to refund this order."
 
@@ -104,38 +115,49 @@ Enter a **Reason**, check the amount, and choose **Refund**.
 The till shows "Refunded … to the original payment." A cash refund lowers the cash expected in the drawer.
 
 If the store doesn't answer, don't hand back cash. Choose **Send again**; a refund is never made twice.
-
-A till key's role needs the `TallyPosRefund` permission, and the till role preset leaves it out.
-Without it, the till shows "This account can't refund.
-Ask the store's admin to add the TallyPosRefund permission to its role."
+</Callout>
 
 ## Check the register during the day
+
+{/* Reports: vendurepos/app@ebcd9e4 apps/pos/lib/till-nav.ts:14-20 (a nav item beside Orders), apps/pos/app/index.tsx:89 (the nav is a rail on a wide screen, else a drawer); the drawer card: apps/pos/lib/reports-drawer-card.tsx:33-37; expected cash: plugin-v0.3.0 packages/vendure-plugin/src/vendored/register-figures.ts:22-27 (float + cash payments + pay ins - pay outs) */}
 
 **Register ›** in the bar opens the **Register** panel.
 It shows the cash in the drawer, this session's sales and other tenders, and prints an X-report.
 
-**Reports** opens on the drawer card: opening float plus cash sales is what is expected in the drawer.
+**Reports**, in the till's side menu, opens on the drawer card. It shows the opening float, the cash sales
+and the cash expected in the drawer, which also counts any pay ins and pay outs.
 **Print X-report** prints the figures so far. The register stays open.
 
 Tap your name in the bar for your cashier sheet. It shows "Your sales today" and "In the drawer".
 
 <TillFigure
   name="cashier"
-  alt="The cashier sheet on the live demo till after one €21.29 cash sale: cashier@demo.vendurepos.com, VendurePOS demo store, the time the register opened, Your sales today €21.29, In the drawer €121.29, and the buttons Pay in, Pay out, Close register, Hand over and Sign out."
+  alt="The cashier sheet on the live demo till after that €20.09 cash sale on a €100 float: cashier@demo.vendurepos.com, VendurePOS demo store, the time the register opened, Your sales today €20.09, In the drawer €120.09, and the buttons Pay in, Pay out, Close register, Hand over and Sign out."
 />
 
 Choose **Pay in** or **Pay out** to record cash in or out, with an amount and a reason.
-**Hand over** signs you out and leaves the drawer open for [the next account](/docs/connect-a-till#give-each-cashier-their-own-account).
+**Hand over** signs you out and leaves the register open for [the next account](/docs/connect-a-till#give-each-cashier-their-own-account).
 
 ## If the internet drops
 
-{/* Sources: content/docs/troubleshooting.mdx:9-11 (sells offline; sent once, never twice), :15 (header line), :73-74 (customer search and adding a customer need a connection). */}
+{/* Sources: content/docs/troubleshooting.mdx:9-11 (sells offline; sent once, never twice), :15 (header line), :73-74 (customer search and adding a customer need a connection); content/docs/limitations.mdx:44-45 (unsent sales are kept only in this browser and lost if site data is cleared or the device is lost); ~/Projects/vendurepos ebcd9e4 (no service worker; apps/pos/vercel.json caches only /_expo/static), so a reload needs the connection. */}
 
-Once the catalogue has synced, the till keeps selling with the network off,
-except customer search and adding a customer, which need a connection to the store.
+Once the catalogue has synced, the till keeps selling offline, with the network off.
 Each sale waits on the till until the store is reachable, then lands in Vendure once, never twice.
-The header shows `N orders waiting to send`, with ` · sending…` while sending.
-[Troubleshooting](/docs/troubleshooting#check-whether-a-sale-has-reached-the-store) covers the other sync notices.
+
+{/* Round 37, J4 C4: header notices are code pills, as in Troubleshooting; labels such as Orders stay bold. */}
+<Callout type="warn" title="Keep the till's tab open while the connection is down">
+The app keeps no offline copy of its own page, so a reload, or closing and reopening the browser, needs the connection
+to load the till again. Until they send, those sales are kept only in this browser: if this site's data is cleared, or
+the device is lost, while the header still shows `N orders waiting to send`, they are lost
+([Limitations](/docs/limitations)).
+</Callout>
+
+While the connection is down:
+
+- Customer search and adding a customer need a connection to the store.
+- The header shows `N orders waiting to send`, with ` · sending…` while sending.
+- [Troubleshooting](/docs/troubleshooting#check-whether-a-sale-has-reached-the-store) covers the other sync notices.
 
 ## Count the drawer and close the day
 
@@ -147,6 +169,12 @@ If the difference is over this till's limit, **Manager approval** asks for the m
 The name is recorded as typed, not verified. **Cancel** leaves the count unchanged.
 
 The closure shows the expected and counted cash. Print the Z report there, then finish.
+
+<TillFigure
+  name="closure"
+  alt="The closure on the live demo till after a €100 float and one €20.09 cash sale: Register closed, Closure #1, Cash, Counted €120.09, Expected €120.09, Exact, and the buttons Print the Z report and Done."
+/>
+
 While orders are still sending, the till shows "Closing — waiting for" and the number of orders.
 **Closures** in your cashier sheet lists past closures and reprints a Z report as a copy.
 

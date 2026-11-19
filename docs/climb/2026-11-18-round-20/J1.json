@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The top nav puts \"Try with your store\" next to \"Live demo\" as an equal choice, but it links straight to https://app.vendurepos.com, which only works after a server plugin is installed; the warning appears only in the small grey line under the hero buttons, so a newcomer who clicks the nav link lands on a sign-in form asking for a store URL and admin password.", "where": "home.desktop.01 header nav + hint line under the CTAs; same link in the docs sidebar (quick-start.desktop.01)"},
+    "C2": {"score": 9, "worst_defect": "The home comparison table says the demo \"sends is anonymous usage events to ph.wcpos.com\" without saying what wcpos.com is or how it relates to VendurePOS. The explanation (a self-hosted PostHog) is only on Connect a till, and no page says who is behind the project.", "where": "home.desktop.02 table row \"Sales reach Vendure, once each, even offline\"; home.phone.04"},
+    "C3": {"score": 8, "worst_defect": "The Node version requirement (\"Node ^20.19 || >=22.12\") appears only on Plugin setup. Quick start's intro and the home page's \"Before you start\" list just Vendure 3.6+ and Postgres, so the quick start's own prerequisites are incomplete.", "where": "quick-start.desktop.01 intro paragraph vs plugin-setup.desktop.01 \"Check your store\""},
+    "C4": {"score": 8, "worst_defect": "The changelog is written in internal shorthand that is never linked or explained: \"(ADR 0005)\", \"order.create v5\", \"(#116)\", \"(#117)\". The ADR and issue references go nowhere, so a reader can't follow them.", "where": "changelog.desktop.01, 0.3.0 and 0.2.0 bullets"},
+    "C5": {"score": 8, "worst_defect": "The hero screenshot of the till is cropped through a fourth row of product tiles, so a strip of cut-off tile tops sits along its bottom edge and the image looks unfinished. The same happens in dark mode.", "where": "home.desktop.01 bottom of the hero image (y≈1140-1155); home.desktop-dark.jpg"},
+    "C6": {"score": 8, "worst_defect": "On a 390 px screen, code blocks soft-wrap in the middle of expressions. The generateMigration call breaks over five lines with 'AddVendurePos' and './src/migrations' split apart, and import paths drop onto their own lines, so it is hard to read and to check what you copied.", "where": "quick-start.phone.02 and quick-start.phone.05 (taxOptions block)"},
+    "C7": {"score": 9, "worst_defect": "Mobile LCP on / and /docs/quick-start is 2.4 s, close to the 2.5 s threshold, and Lighthouse flags 52 KiB of unused JavaScript and 150 ms of render-blocking requests on the home page.", "where": "tech.json lighthouse \"/\" failing audits"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "\"Try with your store\" is a top-level nav link (header and docs sidebar) that goes straight to the app's sign-in screen. A first-time visitor who doesn't yet have the plugin on a Vendure server hits a dead end asking for a store URL and admin password, and the only warning is a small caption under the hero buttons.",
+    "where": "home.desktop.01 header nav; quick-start.desktop.01 sidebar",
+    "fix": "Point the nav \"Try with your store\" link to /docs/quick-start (or a short anchor that says \"needs @vendurepos/plugin on your server first\" with the app link below), or relabel it \"Open the app (plugin required)\"."
+  },
+  "mean": 8.3
+}

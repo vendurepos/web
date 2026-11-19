@@ -1,8 +1,9 @@
 ---
 title: Notifications
-description: What the till's Notifications sheet shows, and what to do about the plugin update notice.
+description: What the till's Notifications sheet and short messages show, and which of them you can turn off.
 ---
 {/* Sources: vendurepos/app 30101e9; apps/pos/lib/till-nav.ts:12,22-25; apps/pos/app/index.tsx:112,229,280,298,300-326,424; apps/pos/lib/notifications-sheet.tsx:7,13,15,19-33; apps/pos/lib/notices.ts:6-18. */}
+{/* Round 41 (front desk row): vendurepos/app b198172 apps/pos/lib/add-toast.tsx; app/index.tsx:544-548,721-722; components/settings-panel.tsx:213; lib/auto-show-receipt-setting.ts; lib/demo/store.ts:13. No expo-notifications or Notification API in apps/pos. */}
 
 ## Open Notifications
 
@@ -29,8 +30,25 @@ Its body names what is held back, from these:
 - fee and shipping charges
 - the register
 
+The live demo's store offers everything the till needs, so the demo never shows this notice.
+
 Update the plugin on the store as in [Plugin setup](/docs/plugin-setup).
 [Troubleshooting](/docs/troubleshooting#act-on-a-header-notice) covers the till's other plugin messages.
+
+## Short messages at the till
+
+Two short messages show on the till itself, not in the sheet:
+
+- "… added to cart", with the product's name, at the top of the till each time a product goes into the sale.
+  It goes after a few seconds and needs no tap.
+- "Sale complete", after a sale, when the till is set not to show the receipt after each sale.
+
+## Turn notifications on or off
+
+- The **Notifications** sheet and the "added to cart" message have no setting. They are always on.
+- "Sale complete" shows only while **Settings › Printing › Show receipt after each sale** is off. It is on by default,
+  and each device keeps its own choice.
+- The till sends no phone, browser or email notifications and asks for no notification permission.
 
 ## Find problems with sending
 

@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "Below a strong hero, 'What it does today' is ten grey cards of exactly the same weight in a 5x2 grid. The three proven claims ('Keeps selling offline', 'Every sale lands once', with test links) sit at the same size as 'Barcode scanners' and 'Park a sale', so nothing in the section tells the reader what matters most.", "where": "home/desktop/01-02 (grid at y~1300 on 01 to y~255 on 02); home/phone/02-03"},
+    "C2": {"score": 8, "worst_defect": "The cashier guide's screenshots come from different sessions and don't agree. The payment shot contains a product named 'Tally Fixture Mug' (a test fixture name). The cashier sheet shows 'Your sales today €21.29 / In the drawer €121.29', but the closure shot right after it shows 'Counted €120.09 / Expected €120.09'.", "where": "at-the-till/desktop/02 (payment screen), 03 (cashier sheet and closure)"},
+    "C3": {"score": 8, "worst_defect": "The quick start is ~6,700 px on desktop and ~10,350 px on phone with no image at all (its text file has no [image:] marker). Step 8 'Sign in and make a sale' and 'Check it worked' describe the sign-in form and the synced order in prose only, so the reader never sees what success looks like.", "where": "quick-start/desktop/03-04; quick-start/phone/07-08"},
+    "C4": {"score": 8, "worst_defect": "The Overview's 'Next steps' row offers three cards (Live demo, Plugin setup, Source on GitHub) but not Quick start, the real next step. Quick start appears only in the full-width pager card stacked 16 px under them, styled like the cards, so it reads as an orphaned fourth card.", "where": "docs/desktop/01 (y~870-1085)"},
+    "C5": {"score": 7, "worst_defect": "The three screenshots on At the till are three different widths, all left-aligned: the payment screen fills the column (~836 px), the cashier sheet is ~384 px and the closure is ~512 px. The closure shot also shows slivers of red and dark UI under its bottom border. Together they look like ad-hoc crops, not a set.", "where": "at-the-till/desktop/02 (y 0-815), 03 (y 470-775 and 1540+), 04 (y~275 bottom edge)"},
+    "C6": {"score": 8, "worst_defect": "On phone the ten feature cards stack into one column more than two screens long (home.phone.02 y~600 to home.phone.03 y~1710), with nothing to break them up. In the mobile hero screenshot just above, the cart table's QTY header is truncated to 'Q...'.", "where": "home/phone/01 (y~1483 'Q...'), 02-03 (card stack)"},
+    "C7": {"score": 8, "worst_defect": "Mobile LCP is 2.5 s on / and 2.4 s on /docs/quick-start, right at the edge of 'good', with render-blocking requests and 52 KiB of unused JS flagged. Every docs search hit has the breadcrumb 'VendurePOS' instead of its page or section name.", "where": "tech.json lighthouse; text/endpoint_api_search_query_offline.txt"}
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "The three till screenshots on At the till don't look like a set. They are three widths, all left-aligned (payment ~836 px full column, cashier sheet ~384 px, closure ~512 px). The closure shot has red and dark slivers bleeding under its border. Their figures disagree too (sheet €21.29 / €121.29 in the drawer, closure €120.09 counted), and the payment shot shows 'Tally Fixture Mug'. This is the only page that shows the till in use, and it looks assembled from leftover crops.",
+    "where": "at-the-till/desktop/02-04",
+    "fix": "Capture all three in one demo session with a real-looking product so the numbers follow from screen to screen. Crop them cleanly with no bleed, and render them at one consistent width (full column, or one shared max-width, centred), with phone-sized shots paired side by side if kept narrow."
+  },
+  "mean": 7.9
+}

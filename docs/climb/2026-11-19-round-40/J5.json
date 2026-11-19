@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero says what it is ('Point of sale for Vendure', 'Pre-release · plugin 0.3.0') but nowhere says who builds or maintains it or who it is not for yet, so a buyer weighing it against Shopify POS or Square gets no 'not for you if…' framing up front.", "where": "home desktop.01 hero / home phone.01"},
+    "C2": {"score": 7, "worst_defect": "The footer says 'MIT licensed', yet self-building the till needs 'your own RxDB Premium licence token (RXDB_PREMIUM)' with no price or terms, and nothing says who runs app.vendurepos.com, whether it stays free, or why usage goes to 'ph.wcpos.com'.", "where": "home desktop.02 'Before you start' + footer; connect-a-till"},
+    "C3": {"score": 8, "worst_defect": "The path works only after a manual fix for a known shipped bug ('On plugin 0.3.0 that role has no ReadOrder: add it yourself'), and step 5 has an unexplained collapsed 'If your store already allows vendurepos.vercel.app', which names a different domain from the one the reader uses.", "where": "quick-start desktop.02 steps 4–5"},
+    "C4": {"score": 8, "worst_defect": "The changelog is written for insiders: 'advertises order.create 1–5 (ADR 0005)' and '(#116)' mean nothing to a store owner deciding whether to upgrade.", "where": "changelog desktop.01 / phone.01"},
+    "C5": {"score": 9, "worst_defect": "This is minor: the home grid and dark mode are clean, but the 'Before you start' copy reads 'Its browser tests run in desktop Chrome', and 'Its' has no clear subject.", "where": "home desktop.02"},
+    "C6": {"score": 9, "worst_defect": "This is minor: in the phone hero's till screenshot, the category tabs are cut off (the label reads 'Gif') at phone width.", "where": "home phone.01"},
+    "C7": {"score": 9, "worst_defect": "This is minor: the SoftwareApplication JSON-LD has no softwareVersion and og-image.png does not say 'open source' or 'pre-release'; Lighthouse also flags 52 KiB of unused JS.", "where": "tech.json (JSON-LD, Lighthouse) / og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The till is sold as 'MIT licensed', but self-hosting needs 'your own RxDB Premium licence token (RXDB_PREMIUM)' with no cost or terms. The site also never says who operates app.vendurepos.com (or the ph.wcpos.com analytics), whether the hosted till stays free, or for how long. A client cannot judge lock-in or total cost against Shopify POS or Square.",
+    "where": "home desktop.02 'Before you start' and footer; connect-a-till self-build steps",
+    "fix": "Add a short 'Who runs it and what it costs' block on home: name the maintainer behind vendurepos.com and ph.wcpos.com, state that the hosted till is free (and on what terms), and say what an RxDB Premium licence costs, noting it is needed only to build the till yourself."
+  },
+  "mean": 8.3
+}

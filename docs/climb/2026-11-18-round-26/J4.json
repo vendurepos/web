@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero lede is a single 4-line paragraph (7 lines at 390 px) that includes a parenthetical definition '(Vendure is an open-source headless commerce framework)', so the one-sentence promise gets lost in a block of grey text before the CTAs.", "where": "home.desktop.01 hero; home.phone.01"},
+    "C2": {"score": 8, "worst_defect": "The comparison table's demo cell says it sends 'anonymous usage events to ph.wcpos.com', a different brand's domain, and the home page never says what wcpos is or how it relates to VendurePOS, which reads as an unexplained third party.", "where": "home.desktop.02 'Live demo or your own store' table, last row"},
+    "C3": {"score": 8, "worst_defect": "Step 8 'Sign in and make a sale' is nine lettered sub-steps (a–i) of prose with no screenshot of the 'Sign in to Vendure' form or a synced order, so the first moment a developer touches the till has no visual check of what they should see.", "where": "quick-start.desktop.03, step 8"},
+    "C4": {"score": 7, "worst_defect": "In Troubleshooting, the bullet '\"N till updates need attention ...\"' is one 9-line paragraph on desktop (about 15 lines on phone) that mixes the cashier's action, the store owner's Settings > Sync log > All procedure and a DEBUG log string. It is followed by nested errorCode bullets and a stray indented paragraph 'Do not clear the site's data...' with no clear parent.", "where": "troubleshooting.desktop.01 'Till updates line'; troubleshooting.phone.03"},
+    "C5": {"score": 8, "worst_defect": "On Overview, the 3-up 'Next steps' card row (Live demo / Plugin setup / Source on GitHub) is followed 16 px below by a full-width 'Quick start >' pager card in the same style, so it reads as an odd fourth card. The sidebar also lists 'Quick start' twice and has both 'Docs' and 'Overview' for /docs.", "where": "docs.desktop.01 bottom; sidebar on every docs page"},
+    "C6": {"score": 8, "worst_defect": "Code blocks soft-wrap at 390 px instead of scrolling, so config lines break mid-expression ('taxLineCalculationStrategy: new' / 'DefaultTaxLineCalculationStrategy(),'; 'import { TallyPosPlugin } from' / ''@vendurepos/plugin';'), which makes the structure of the TypeScript hard to read.", "where": "quick-start.phone.02 and quick-start.phone.06"},
+    "C7": {"score": 9, "worst_defect": "The share card crops the till screenshot hard at the bottom edge, slicing through the product cards' 'In Stock' pills and leaving the 'Add charge' button half cut off at bottom right.", "where": "og-image.png bottom edge"}
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "The Troubleshooting 'Till updates line' section packs the cashier's action, the store owner's log-copy procedure, a DEBUG log pattern, three errorCode outcomes and a warning into one bullet with nested bullets and an orphaned trailing paragraph. On a phone this is a 15+ line wall that is very hard to follow when a till is actually failing.",
+    "where": "troubleshooting.desktop.01 / troubleshooting.phone.02-03",
+    "fix": "Split it into two short labelled blocks ('At the counter' and 'For the store owner': numbered steps 1–4), and put the errorCode outcomes in a two-column list or table, with the 'Do not clear the site's data' warning as a callout."
+  },
+  "mean": 8.0
+}

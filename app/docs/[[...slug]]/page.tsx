@@ -17,8 +17,9 @@ export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
 
   const MDX = page.data.body;
 
+  // Round 38, J4 C4: the Overview's pager only repeated its Next steps Quick start card.
   return (
-    <DocsPage toc={page.data.toc} full={page.data.full}>
+    <DocsPage toc={page.data.toc} full={page.data.full} footer={{ enabled: page.url !== '/docs' }}>
       <JsonLd data={docsBreadcrumbJsonLd({ url: page.url, title: page.data.title })} />
       <DocsTitle>{page.data.title}</DocsTitle>
       <DocsDescription className="mb-0">{page.data.description}</DocsDescription>

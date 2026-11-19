@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero says what it is but never says who it is for in plain words: the second paragraph spends its words on insider guarantees ('Every sale lands in your Vendure store once, as a normal order at the till's price') that a newcomer cannot weigh, instead of 'for shops that sell online with Vendure and also sell at a counter'.", "where": "home.desktop.01 / home.phone.01, hero paragraph under 'Point of sale for Vendure'"},
+    "C2": {"score": 8, "worst_defect": "The home comparison table says the demo sends 'anonymous usage events to ph.wcpos.com', a third domain from an unexplained brand (wcpos). A first-time visitor wonders who that is; Connect a till explains it, but the home page does not.", "where": "home.desktop.02, 'Live demo or your own store' table, last row; home.phone.04"},
+    "C3": {"score": 8, "worst_defect": "Step 4 says to 'Sign in with a Vendure administrator whose role in the till's channel has TallyPosSell, ReadCatalog, ReadSettings, ReadCustomer and CreateCustomer ... Also add ReadOrder' but gives no steps or Dashboard path for creating that role. This is the one setup step in the quick start where the developer has to work it out alone.", "where": "quick-start.desktop.02, '4. Enable bearer authentication'; quick-start.phone.04"},
+    "C4": {"score": 8, "worst_defect": "The quick start places the optional setup section 'Optional: a device key for each till' after '9. Troubleshoot'. The 'On this page' list shows configuration after troubleshooting, and step 4 sends readers 'below' past the troubleshooting list to reach it.", "where": "quick-start.desktop.01 right-hand 'On this page' list; text/quick-start.txt end"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' is ten identical grey text-only cards with no icon, image or emphasis to tell them apart, and 'Before you start' follows as a long body-size bullet list, so the lower two-thirds of the home page reads as a wall of text after the strong hero.", "where": "home.desktop.01 (from 'What it does today') through home.desktop.02; same in home.desktop-dark"},
+    "C6": {"score": 8, "worst_defect": "On a 390 px screen the quick start's code blocks soft-wrap mid-expression ('generateMigration(config, { name:' / ''AddVendurePos', outputDir:' / ''./src/migrations' })'), so copied-looking lines are not the real line breaks. The home header also shows only a search icon and a bare chevron, with no visible 'Docs' or 'Live demo'.", "where": "quick-start.phone.03 top; quick-start.phone.06 tax config; home.phone.01 header"},
+    "C7": {"score": 9, "worst_defect": "Docs pages carry only BreadcrumbList JSON-LD (no TechArticle/HowTo for the quick start), and Lighthouse still flags 52 KiB unused JavaScript and 150 ms of render-blocking requests on the home page (LCP 2.4 s on mobile).", "where": "tech.json pages.quick-start.desktop.jsonLd; tech.json lighthouse['/'].failing"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "In the five-second read the hero says what VendurePOS is, but its supporting sentence is written in guarantees a newcomer does not yet care about ('lands ... once', 'at the till's price'). It never states the plain use case: a shop running its online store on Vendure that also sells in person and wants those sales in the same orders and stock.",
+    "where": "home.desktop.01 / home.phone.01 hero paragraph",
+    "fix": "Replace the last sentence of the hero paragraph with one plain line naming the audience and the outcome, e.g. 'For shops that sell online with Vendure and in person: counter sales go into the same Vendure orders and stock.' Keep 'lands once' for the feature card below."
+  },
+  "mean": 8.1
+}

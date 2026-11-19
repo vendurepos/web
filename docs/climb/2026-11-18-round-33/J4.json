@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 9, "worst_defect": "Below the clear hero the feature grid's first row (two cards carrying links) is taller than every row under it, so the grid rhythm breaks right where the eye lands after the hero; the 'Before you start' bullets then repeat the docs Overview requirements in a dense list", "where": "home.desktop.01-02"},
+    "C2": {"score": 9, "worst_defect": "The at-the-till payment screenshot shows a product named 'Tally Fixture Mug', a test-fixture name that does not match the demo catalogue shown on home and reads as an internal artefact", "where": "at-the-till.desktop.02"},
+    "C3": {"score": 8, "worst_defect": "Docs Overview 'Next steps' gives Live demo / Plugin setup / Source on GitHub as equal cards and demotes 'Quick start ›', the actual path to a working till, to a right-aligned pager box under them that reads like an orphaned fourth card", "where": "docs.desktop.01, docs.phone.02"},
+    "C4": {"score": 8, "worst_defect": "Reference pages are walls of prose dense with inline code chips and bold UI labels (e.g. Troubleshooting's errorCode bullets run 15+ lines in one item); changelog uses internal jargon 'ADR 0005', 'order.create v5' and switches order.create between code chip and plain text", "where": "troubleshooting.phone.03, changelog.desktop.01"},
+    "C5": {"score": 8, "worst_defect": "Collapsibles stack an info icon and a disclosure triangle side by side ('Why these pairings', 'How POS sales take stock.', 'To find the line in the sync log'): two affordances for one control; cashier-sheet image sits half-width, left-aligned in a full-width column", "where": "quick-start.desktop.02-03, at-the-till.desktop.03"},
+    "C6": {"score": 8, "worst_defect": "The phone hero till screenshot is cropped so the cart header reads 'Q...' and the 'Add charge' button is cut off under 'Order discount'; the first image a phone visitor sees looks broken", "where": "home.phone.01"},
+    "C7": {"score": 9, "worst_defect": "OG card subtitle wraps leaving 'a normal order.' alone on its own line, and the till screenshot is cut through the product cards and 'Add charge' at the bottom edge; search API hits carry only the breadcrumb ['VendurePOS'] with no section", "where": "og-image.png, text/search"}
+  },
+  "overall_worst": {
+    "criterion": "C6",
+    "defect": "Phone hero till screenshot is cropped: cart header truncated to 'Q...' and the 'Add charge' button cut off under 'Order discount', so the first product image on a phone looks broken",
+    "where": "home.phone.01",
+    "fix": "Serve a phone-specific capture of the till (or a taller crop) that ends above the button row with no truncated header, via <picture> media sources"
+  },
+  "mean": 8.4
+}
