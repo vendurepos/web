@@ -193,6 +193,29 @@ test('limitations names the tested browser and says unsent sales live only in th
   assert.ok(text.includes('Sales not yet sent are kept only in this browser'));
 });
 
+// Round 44, J2 C2: the untested devices are named, from the same Playwright config.
+test('limitations and the home page say tablets and phones, an iPad included, are not tested yet', () => {
+  // Visible text only: drop <head> and every <script> (the RSC payload repeats the page's text), then the tags.
+  const visible = (page) => {
+    const html = readFileSync(join('.next/server/app', page), 'utf8');
+    return html
+      .slice(html.indexOf('</head>'))
+      .replace(/<script\b[\s\S]*?<\/script>/g, ' ')
+      .replaceAll('<!-- -->', '')
+      .replace(/<[^>]*>/g, ' ')
+      .replace(/&#x27;/g, "'")
+      .replace(/\s+/g, ' ');
+  };
+  const limitations = visible('docs/limitations.html');
+  const home = visible('index.html');
+  assert.ok(limitations.includes('other browsers, tablets and phones (an iPad included) are not tested yet.'));
+  assert.ok(home.includes('tablets and phones, an iPad included, are not tested yet.'));
+  for (const text of [limitations, home]) {
+    assert.ok(!text.includes('iPad is not supported'));
+    assert.ok(!text.includes('tablets are not supported'));
+  }
+});
+
 test('connect a till shows the barcode custom field in a code block', () => {
   // Round 16, C3: vendurepos/app@a257d16 apps/pos/lib/barcode-field.ts:22-23 needs a single string or text ProductVariant field.
   const html = readFileSync(join('.next/server/app', 'docs/connect-a-till.html'), 'utf8');

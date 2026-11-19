@@ -247,7 +247,8 @@ export default function HomePage() {
           {/* Same facts as content/docs/limitations.mdx:15, :30-31, :39, :41-42 (sources in its comments at :10-11). */}
           <li>
             At the counter: a browser on the till&apos;s device, one tab per till and not a private window. Its browser
-            tests run in desktop Chrome. Receipts print through the browser&apos;s print dialog; the till does not open a
+            tests run in desktop Chrome; tablets and phones, an iPad included, are not tested yet. Receipts print through
+            the browser&apos;s print dialog; the till does not open a
             cash drawer. See <Link href="/docs/limitations" className="underline">Limitations</Link>.
           </li>
           {/* vendurepos/app cc719c2 LICENSE:1 (MIT License), README.md:72-74 (RxDB Premium install needs the token in RXDB_PREMIUM), apps/pos/package.json:44 (rxdb-premium 17.5.0); content/docs/connect-a-till.mdx:50-52 and content/docs/limitations.mdx:16-17 say the same. */}
