@@ -17,8 +17,16 @@ test('docs overview next steps link quick start and plugin setup', () => {
     '/docs/plugin-setup',
     'https://github.com/vendurepos/app',
   ]);
-  // The pager below the page still leads to Quick start.
-  assert.ok(anchors.some((a) => href(a) === '/docs/quick-start' && !a.attrs.includes('data-card')));
+  // Round 38, J4 C4: no pager below the Overview; its Next steps card is the one link to Quick start.
+  const text = html.replace(/<script\b[\s\S]*?<\/script>/g, ' ').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ');
+  assert.equal(text.split('Install the plugin, configure Vendure and make your first sale.').length - 1, 1);
+});
+
+test('quick start keeps its pager to plugin setup', () => {
+  const page = readFileSync(join('.next/server/app', 'docs/quick-start.html'), 'utf8');
+  const main = page.replace(/<script\b[\s\S]*?<\/script>/g, ' ').split('</aside>').slice(1).join('</aside>');
+  const links = Array.from(main.matchAll(/<a ([^>]*)>([\s\S]*?)<\/a>/g), ([, attrs, inner]) => ({ attrs, inner }));
+  assert.ok(links.some((a) => href(a) === '/docs/plugin-setup' && !a.attrs.includes('data-active') && a.inner.includes('Plugin setup')));
 });
 
 test('docs overview marks only the sidebar Overview item active', () => {
