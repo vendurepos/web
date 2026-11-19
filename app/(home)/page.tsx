@@ -147,11 +147,13 @@ export default function HomePage() {
         <h1 className="mt-6 mb-6 text-4xl sm:text-5xl font-bold tracking-tight">
           Point of sale for Vendure
         </h1>
+        {/* Round 42, J1 C1: the hero names who it is for. */}
         <p className="max-w-2xl mx-auto text-base sm:text-lg text-fd-muted-foreground">
           VendurePOS is an open-source till for <a href="https://vendure.io" className="underline">Vendure</a>,
           {/* Source: https://docs.vendure.io/ "The open source headless commerce framework, community plugins, and the commercial paid plans, all in one place." (read 2026-11-18) */}
-          {' '}the open-source headless commerce framework. It runs in the browser and keeps selling when the
-          connection drops. Every sale lands in your Vendure store once, as a normal order at the till&apos;s price.
+          {' '}the open-source headless commerce framework. It is made for shops that sell online with Vendure and
+          also sell in person. It runs in the browser and keeps selling when the connection drops. Every sale
+          lands in your Vendure store once, as a normal order at the till&apos;s price.
         </p>
         <div className="mt-8 flex flex-wrap justify-start sm:justify-center gap-3">
           <a

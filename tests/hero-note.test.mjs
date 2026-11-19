@@ -65,6 +65,19 @@ test('hero lede links Vendure to vendure.io', () => {
   assert.ok(ledeStart !== -1 && !lede.includes('('), lede);
 });
 
+// Round 42, J1 C1: the hero names who it is for, right after saying what it is.
+test('hero lede says who VendurePOS is for', () => {
+  const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
+  const h1 = html.indexOf('<h1');
+  const figure = html.indexOf('<figure');
+  assert.ok(h1 !== -1 && figure > h1);
+  const hero = html.slice(h1, figure);
+  const text = hero.replace(/<!-- -->/g, '').replace(/<[^>]+>/g, '').replace(/&#x27;/g, "'");
+  const sentence =
+    'framework. It is made for shops that sell online with Vendure and also sell in person. It runs in the browser';
+  assert.equal(text.split(sentence).length - 1, 1, text);
+});
+
 test('hero is left-aligned with a smaller lead below 640px', () => {
   // Round 32, J4 C1: seven centred lines of large grey type on a phone.
   const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
