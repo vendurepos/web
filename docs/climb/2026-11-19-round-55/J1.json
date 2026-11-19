@@ -1,0 +1,48 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero is clear and the screenshot shows a till at once, but below the fold the home page switches to server internals that a newcomer who half-knows Vendure cannot follow: 'the Vendure plugin saves that id with the order in one step', 'settles it with two Admin API calls', 'Node ^20.19 || >=22.12', 'RxDB Premium licence token (RXDB_PREMIUM)'.",
+      "where": "home.desktop.01 ('Every sale lands once' card), home.desktop.02 ('Live demo or your own store' refund row, 'Setting up the store' list)"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The one data-sharing disclosure names an unrelated, unexplained domain: 'All it sends is anonymous usage events to ph.wcpos.com'. A newcomer sees 'wcpos', a brand the site never introduces, and wonders who that third party is.",
+      "where": "home.desktop.02 table row 'Sales reach Vendure, once each, even offline' / home.phone.04"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Before step 1, a 'Before a sale on a live store' warning sends the reader to two other pages (Set up email, Check your own code). Step 3 then has them create and run two new script files (src/generate-migration.ts, src/run-migrations.ts). So the path to the first sale has forks and stops that a 'quick' start doesn't suggest.",
+      "where": "quick-start.desktop.01 (warning callout and step 3) / quick-start.phone.01-03"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The docs sidebar is one flat list of nine items that mixes developer setup (Plugin setup, Connect a till, Changelog) with cashier guides (At the till, Notifications), with no group headings, so a reader can't tell which pages are for them.",
+      "where": "docs.desktop.01 sidebar (Overview … Changelog)"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "'What it does today' puts two boxed cards with buttons above eight plain unboxed text items in a two-column grid. The section's style changes halfway, and the long grey-text feature list looks unfinished next to the polished hero.",
+      "where": "home.desktop.01 bottom to home.desktop.02 top"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The phone hero screenshot is cropped to the product grid with only two product cards visible. The cart sits behind a 'Cart (3) · €20.09' tab, so the caption 'A sale in progress' shows no sale in progress.",
+      "where": "home.phone.01 (hero image and caption)"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Docs pages carry only BreadcrumbList JSON-LD (no article or software-documentation type), and the 404 page has no search box, only Home/Docs/Live demo buttons. Both are minor next to Lighthouse 98/100/100/100.",
+      "where": "tech.json pages.*.jsonLd; not-found.desktop.01"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "After a clear hero, the home page explains the product through server internals: 'saves that id with the order in one step', 'two Admin API calls', 'Node ^20.19 || >=22.12', 'RXDB_PREMIUM'. A first-time visitor who only half knows what Vendure is gets setup detail instead of the plain reasons to try the demo.",
+    "where": "home.desktop.01-02 ('Every sale lands once' card, refund row of the comparison table, 'Setting up the store' list)",
+    "fix": "Keep the home page's 'Before you start' and table cells to plain outcomes ('needs Vendure 3.6+ on Postgres'; 'refunds go through the Vendure Dashboard for now') and link to Limitations and Plugin setup for the Node range, the Admin API refund steps and the RxDB licence note."
+  },
+  "mean": 8.1
+}

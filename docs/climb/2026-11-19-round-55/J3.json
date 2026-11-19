@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The tax setup prescribes different store-wide strategies for inclusive and exclusive channels, but tells stores mixing pricing modes only to 'account for the store-wide strategy', leaving the configuration unresolved.",
+      "where": "text/endpoint_llms_full_txt.txt:843-872; Quick start, step 6 and 'Why these pairings'"
+    },
+    "C4": {
+      "score": 9,
+      "worst_defect": "The refund instructions cover Dashboard settlement and cash pay-outs but omit an explicit step to return card funds through the external terminal or provider.",
+      "where": "text/at-the-till.txt:81-87; text/plugin-setup.txt:131-162; shots/plugin-setup.desktop.03.jpg"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.desktop.02.jpg; shots/home.desktop-dark.jpg; desktop documentation slices"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.phone.01.jpg through home.phone.05.jpg; quick-start phone slices; shots/plugin-setup.phone.03.jpg and plugin-setup.phone.06.jpg"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Lighthouse identifies 51 KiB of unused JavaScript and approximately 150 ms of render-blocking savings on the homepage despite its strong performance score.",
+      "where": "tech.json, lighthouse['/'].failing"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "A developer maintaining tax-inclusive and tax-exclusive channels cannot determine the supported shared tax strategy from the installation instructions.",
+    "where": "Quick start, step 6; text/endpoint_llms_full_txt.txt:843-872",
+    "fix": "Add a concrete supported configuration for mixed pricing modes and explain its rounding consequences, or explicitly state that this configuration is unsupported."
+  },
+  "mean": 9.1
+}

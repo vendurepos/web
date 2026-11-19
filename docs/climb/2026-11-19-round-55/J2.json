@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The first line a shop owner reads after the H1 explains Vendure as 'the open-source headless commerce framework', and the badge above it reads 'Pre-release · plugin 0.3.0'. Both are developer terms. 'Till', 'keeps selling when the connection drops' and the two buttons do make the purpose clear.", "where": "home.desktop.01 / home.phone.01, hero badge and lede"},
+    "C2": {"score": 9, "worst_defect": "The phone hero screenshot shows the till in its narrow phone layout ('Products | Cart (3) · €20.09' tabs). Further down the same page says 'tablets and phones, an iPad included, are not tested yet', so the picture suggests phone use that the text then warns against.", "where": "home.phone.01 hero image vs home.phone.04 'Before you start'"},
+    "C3": {"score": 8, "worst_defect": "Barcode scanning needs a ProductVariant 'barcode' custom field and a second database migration. The quick start covers this only as a '(how to add one)' link inside step 8c, after the migration in step 3 has already run. A shop with a scanner finds out at sign-in that it has to go back to the server.", "where": "quick-start.desktop.03 step 8c / quick-start.phone.08; connect-a-till 'Enter your store details'"},
+    "C4": {"score": 8, "worst_defect": "The 'If the internet drops' section of At the till has no screenshot of the offline state. The header notice staff must recognise ('N orders waiting to send', '· sending…') appears only as monospace placeholder text. The page's three images show payment, the cashier sheet and the closure, but not the offline state, which is what an owner worries about most.", "where": "at-the-till.desktop.03 'If the internet drops'; troubleshooting.desktop.01 'Read the sync status in the header'"},
+    "C5": {"score": 8, "worst_defect": "The product screenshots mix clock formats: the home hero shows 'Last synced 11:10 PM' and the payment shot 'Last synced 10:06 PM', while the cashier sheet shows 'open since 22:06'. The cashier-sheet and closure images also sit in oversized padded frames with wide gaps between 'Counted', 'Expected' and 'Exact'.", "where": "home.desktop.01 hero image; at-the-till.desktop.02 payment image; at-the-till.desktop.03 cashier sheet; at-the-till.desktop.04 closure image"},
+    "C6": {"score": 8, "worst_defect": "The phone home header shows only 'Docs' and 'Live demo'. 'At the till', the page staff need, is hidden behind the chevron menu, and every phone docs page opens with a 'Copy Markdown / Open' developer toolbar above the content.", "where": "home.phone.01 header; at-the-till.phone.01 top"},
+    "C7": {"score": 9, "worst_defect": "The share card's screenshot is cut off at the bottom edge: the product cards and the 'Add charge' button are sliced mid-row. Lighthouse scores (98/100/100/100), JSON-LD, llms.txt, sitemap, search and the 404 page are all sound.", "where": "og-image.png bottom edge"}
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "For a shop owner, the key question is what staff will see when the internet drops. The docs answer it only in prose with monospace placeholders ('N orders waiting to send', '· sending…'). Nowhere on the site is there a picture of the till's offline or unsent-orders header, so staff cannot learn to recognise the one state where reloading or clearing data loses sales.",
+    "where": "at-the-till.desktop.03 / at-the-till phone 'If the internet drops'",
+    "fix": "Add one captioned screenshot of the live demo till header showing e.g. '3 orders waiting to send · sending…' under 'If the internet drops', with the warning 'do not reload while this shows' next to it."
+  },
+  "mean": 8.3
+}
