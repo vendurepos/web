@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The first screen says what it is, who it is for and what to click, but never what it costs: nothing near the hero says the hosted till at app.vendurepos.com is free to use, which is the first question a buyer comparing against Shopify POS or Square asks.", "where": "home/desktop/01 (hero and 'Your own store needs the plugin…' line)"},
+    "C2": {"score": 7, "worst_defect": "The default path runs your till from app.vendurepos.com, yet the site never says who operates it, whether it stays free or what happens if it goes away; the only exit, self-hosting, needs 'your own RxDB Premium licence token (RXDB_PREMIUM)' with no price or link, so 'MIT licensed' quietly depends on a paid third-party licence, and the analytics host ph.wcpos.com hints at a parent (WCPOS) the site never names.", "where": "home/desktop/02 'Before you start › Setting up the store'; connect-a-till/desktop/01 'Where requests go'"},
+    "C3": {"score": 8, "worst_defect": "The device-key path ships with a known permission bug the reader must patch by hand: 'On plugin 0.3.0 the role it creates (vendurepos-pos-till) has the step 4 permissions except ReadOrder, so add ReadOrder to that role yourself', six weeks after the last plugin release (0.3.0, 2026-10-06) with no fixed release named.", "where": "quick-start text 'Optional: a device key for each till'; connect-a-till 'Create and use a device key'"},
+    "C4": {"score": 8, "worst_defect": "The changelog is written for the authors, not users: entries such as 'GET /tally/v1/info advertises order.create 1–5 (ADR 0005)' and 'order.create v5 custom lines … created per channel at bootstrap' cite internal ADRs and protocol versions, and a 'Not in the release notes:' aside about the missing ReadOrder is buried at the end of a long 0.2.0 bullet.", "where": "changelog/desktop/01 (0.3.0 and 0.2.0 bullets)"},
+    "C5": {"score": 9, "worst_defect": "'What it does today' opens with two boxed proof cards, then switches to eight unboxed heading-and-paragraph items in a plain grid, so the feature section changes style halfway; otherwise clean, and dark mode holds up.", "where": "home/desktop/01 bottom to home/desktop/02 top"},
+    "C6": {"score": 9, "worst_defect": "On the phone header only 'Docs' and 'Live demo' show; 'Quick start' and 'At the till' sit behind an unlabeled chevron, and long code lines such as the generateMigration call wrap mid-argument, which makes them hard to read.", "where": "home/phone/01 header; quick-start/phone/03 code block"},
+    "C7": {"score": 9, "worst_defect": "Lighthouse flags largest-contentful-paint at 2.6 s on /docs/quick-start (score 0.88) plus about 150 ms of render-blocking requests on /; the 404 status, llms.txt, sitemap, search API and share card are all sound.", "where": "tech.json lighthouse['/docs/quick-start'].failing"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A consultant cannot tell a client who stands behind VendurePOS: the till they would run every sale through is hosted at app.vendurepos.com by an unnamed operator with no terms, the self-host fallback needs a paid RxDB Premium licence with no price, and the only clue to the maintainer is the unexplained ph.wcpos.com analytics domain.",
+    "where": "home/desktop/02 'Before you start'; connect-a-till/desktop/01 'Where requests go'",
+    "fix": "Add two sentences to 'Before you start': who maintains VendurePOS and runs app.vendurepos.com (and its relation to WCPOS/TallyUI), that the hosted till is free with no uptime promise, and a link to RxDB Premium's price for self-hosting."
+  },
+  "mean": 8.3
+}

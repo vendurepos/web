@@ -1,0 +1,48 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "At 390 px the hero proof image is a mobile till crop showing only two product cards, with the category chip row cut off at \"Gif\" and no cart visible, so the one picture meant to sell the product says very little on a phone.",
+      "where": "home.phone.01"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "A real limit is buried in a dense table cell: the \"Refund a sale at the till\" row runs four lines in the right column and says refunds need \"two Admin API calls\", while the demo column on \"Sales reach Vendure\" runs three lines. The table rhythm breaks exactly where the caveat sits.",
+      "where": "home.desktop.02"
+    },
+    "C3": {
+      "score": 7,
+      "worst_defect": "The quick start is 10,580 px tall on a phone and has no image at all. Step 8 (signing in at the till) and \"Check it worked\" (the order in the Vendure Dashboard) describe success in prose only, so the reader cannot match their screen to a picture.",
+      "where": "quick-start.desktop.03, quick-start.desktop.04, quick-start.phone (all slices)"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "One troubleshooting bullet holds too much: under \"Till updates line\" sit \"At the counter:\" and \"For the store owner:\" paragraphs, a \"To find the line in the sync log\" details box and a nested errorCode list whose third item is a 14-line paragraph. Bullet spacing is uneven, and the outer bullet \"N till updates waiting to sync\" lands at a different indent from the nested ones.",
+      "where": "troubleshooting.desktop.01, troubleshooting.phone.03"
+    },
+    "C5": {
+      "score": 7,
+      "worst_defect": "Disclosures and callouts look the same. The <details> toggles (\"If your store already allows vendurepos.vercel.app\", \"Why these pairings\", \"How POS sales take stock.\", \"To find the line in the sync log\") reuse the callout's blue left rule and drop shadow, so a closed toggle reads as an info note with a stray triangle. On the home page, two bordered feature cards are followed by eight unboxed text items, which changes the visual weight mid-section.",
+      "where": "quick-start.desktop.03, troubleshooting.phone.03, home.desktop.01"
+    },
+    "C6": {
+      "score": 7,
+      "worst_defect": "On a phone, inline code chips break body text into tall, uneven lines. The CORS and tax paragraphs in the quick start wrap around chips (\"orderConfirmationHandler\" / \"tallyOrderConfirmationHandler\" sit on lines of their own in plugin-setup). The changelog chip \"packages/vendure-plugin/CHANGELOG.md\" splits mid-chip across two lines. The step 6 table label \"taxOptions.orderTaxCalculationStrategy\" is a code chip on desktop but bold sans on a phone.",
+      "where": "quick-start.phone.05, quick-start.phone.06, plugin-setup.phone.03, changelog.phone.01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Small performance debt: /docs/quick-start has LCP 2.6 s, with 53 KiB and 25 KiB of unused JS, render-blocking requests and 14 KiB of legacy JS still flagged. There is no overflow, no images without alt text, and accessibility, best-practices and SEO all score 100.",
+      "where": "tech.json lighthouse /docs/quick-start"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "The quick start, the page that decides whether a developer adopts the tool, is 10,580 px of text and code on a phone with no screenshot anywhere. Neither the till's \"Sign in to Vendure\" screen in step 8 nor the synced POS order in the Vendure Dashboard under \"Check it worked\" is shown, so success is something the reader has to imagine.",
+    "where": "quick-start.desktop.03-04, quick-start.phone (all slices)",
+    "fix": "Add two captioned screenshots in the same framed style as the at-the-till images: the \"Sign in to Vendure\" till screen in step 8, and the synced POS order (with its tally-pos payment and tally-in-store shipping) in the Vendure Dashboard under \"Check it worked\". On a phone, crop them to the key panel so each stays under one screen tall."
+  },
+  "mean": 7.71
+}

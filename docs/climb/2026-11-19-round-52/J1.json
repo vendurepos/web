@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero is clear, but the sentence under the buttons ('Your own store needs the plugin on your Vendure server first: the quick start sets it up, then signs the till in and makes a sale') is a second, denser pitch, and the term 'till' is never glossed, so a visitor who searched 'point of sale' has to work out that till = the POS app.", "where": "home/desktop/01 and home/phone/01, hero"},
+    "C2": {"score": 7, "worst_defect": "The home page never says whether the hosted till at app.vendurepos.com costs anything, yet 'Before you start' says building it yourself 'you need your own RxDB Premium licence token (RXDB_PREMIUM)', and the demo row names an unexplained third-party domain 'ph.wcpos.com'. Together they make a first-timer suspect a paid catch or tracking behind 'open-source'.", "where": "home/desktop/02, 'Setting up the store' last bullet and the 'Sales reach Vendure' table row"},
+    "C3": {"score": 8, "worst_defect": "The quick start is complete and ends with a 'Check it worked' list, but it carries leftover side paths a newcomer must skip past: a collapsed 'If your store already allows vendurepos.vercel.app' note in step 5 and an 'Other ways to run the migration' box offering two alternatives with a warning not to combine them.", "where": "quick-start/desktop/03 top ('If your store already allows vendurepos.vercel.app') and quick-start/desktop/02 ('Other ways to run the migration')"},
+    "C4": {"score": 8, "worst_defect": "The changelog reads like internal engineering notes ('order.create v5 custom lines are real order lines on a plugin-owned, disabled POS custom item variant', 'ADR 0005', '#116'), and a known bug is tucked in as 'Not in the release notes: in 0.2.0 and 0.3.0 this role has no ReadOrder'.", "where": "changelog/desktop/01"},
+    "C5": {"score": 7, "worst_defect": "'What it does today' boxes two features as cards with buttons, then lists eight more as plain grey heading/paragraph pairs with no box or icon. Below the single hero screenshot the rest of the home page is a long wall of grey text with no second visual.", "where": "home/desktop/01 bottom to home/desktop/02 top"},
+    "C6": {"score": 8, "worst_defect": "The phone header shows only 'Docs' and 'Live demo'. 'Quick start' and 'At the till' are hidden behind an unlabelled chevron next to the search icon, and the hero screenshot is cut off mid-chip ('Gif') with only two product cards visible.", "where": "home/phone/01"},
+    "C7": {"score": 9, "worst_defect": "Search API results carry only the breadcrumb ['VendurePOS'] rather than the page and section, and every sitemap <lastmod> is within the last day, so the dates carry no signal. Otherwise Lighthouse 98/100/100/100, a good share card, llms.txt and a true 404.", "where": "text/endpoint_api_search_query_offline.txt; text/endpoint_sitemap_xml.txt"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A first-time visitor cannot tell what it costs. The home page says 'open-source' and 'MIT licensed' but never says whether app.vendurepos.com is free to use, while 'Before you start' brings up an 'RxDB Premium licence token' and the demo row names 'ph.wcpos.com'. That reads like a hidden paid dependency or tracker from an unrelated brand.",
+    "where": "home/desktop/02, 'Live demo or your own store' table and 'Before you start > Setting up the store'",
+    "fix": "Add one plain line near the hero or in 'Before you start', such as 'The hosted till at app.vendurepos.com is free to use; you only need an RxDB Premium licence if you build the till yourself'. Name ph.wcpos.com as the project's own analytics server, or link it to the explanation on Connect a till."
+  },
+  "mean": 7.9
+}
