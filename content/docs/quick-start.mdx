@@ -25,6 +25,12 @@ creates one with `npx @vendure/create my-shop`, and sets up Postgres for you if 
 
 The plugin needs Node `^20.19 || >=22.12`, as [Plugin setup](/docs/plugin-setup#check-your-store) says.
 
+{/* Not part of the port; keep it when re-porting. Round 53, J4 C3: before step 1, so step 8 starts with the sign-in. */}
+
+<Callout type="warn" title="Before a sale on a live store">
+If your store uses `@vendure/email-plugin`, swap its order-confirmation handler first: see [Set up email](/docs/plugin-setup#set-up-email). Each sale also runs in one database transaction, so read [Check your own code](/docs/plugin-setup#check-your-own-code) if your store has its own order hooks, event handlers or strategies.
+</Callout>
+
 ## 1. Install the plugin
 
 ```sh
@@ -221,12 +227,6 @@ the POS payment method enabled and its handler/checkers intact. Restart after
 adding a channel so it receives this setup.
 
 ## 8. Sign in and make a sale
-
-{/* Not part of the port; keep it when re-porting. */}
-
-<Callout type="warn" title="Before a sale on a live store">
-If your store uses `@vendure/email-plugin`, swap its order-confirmation handler first: see [Set up email](/docs/plugin-setup#set-up-email). Each sale also runs in one database transaction, so read [Check your own code](/docs/plugin-setup#check-your-own-code) if your store has its own order hooks, event handlers or strategies.
-</Callout>
 
 Open `https://app.vendurepos.com`, then:
 

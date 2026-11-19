@@ -29,6 +29,13 @@ test('quick start links the setup warnings before a live sale', () => {
   assert.ok(html.includes('Before a sale on a live store'));
   assert.ok(html.includes('href="/docs/plugin-setup#set-up-email"'));
   assert.ok(html.includes('href="/docs/plugin-setup#check-your-own-code"'));
+  // Round 53, J4 C3: the warning comes before step 1, not at the top of step 8.
+  const warning = html.indexOf('Before a sale on a live store');
+  const step1 = Array.from(html.matchAll(/<h2\b[^>]*>((?:(?!<\/h2>)[\s\S])*)<\/h2>/g)).find(([, inner]) => inner.includes('Install the plugin'));
+  assert.ok(warning > 0 && step1 && warning < step1.index);
+  const step8 = stepSection('Sign in and make a sale', 'Troubleshoot');
+  assert.ok(!step8.includes('plugin-setup#set-up-email'));
+  assert.ok(!step8.includes('Before a sale on a live store'));
 });
 
 test('quick start includes the success checklist', () => {
