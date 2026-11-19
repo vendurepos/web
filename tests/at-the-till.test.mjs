@@ -417,3 +417,22 @@ test('the header notice is a code pill wherever the docs name it', () => {
     assert.ok(count >= 1, `${name} names the notice`);
   }
 });
+
+// Round 46, J2 C2: Limitations and home agree that settling a Dashboard refund takes two Admin API calls.
+test('limitations says settling a refund takes two Admin API calls, like home', () => {
+  // The rendered markup only: the RSC payload in <script> repeats the text as JSON.
+  const textOf = (file) =>
+    readFileSync(file, 'utf8')
+      .replace(/<script[\s\S]*?<\/script>/g, '')
+      .replace(/<!-- -->/g, '')
+      .replace(/<[^>]+>/g, '')
+      .replace(/&#x27;|&#39;|&apos;/g, "'")
+      .replace(/\s+/g, ' ');
+  assert.ok(
+    textOf('.next/server/app/docs/limitations.html').includes(
+      "settles it with two Admin API calls: a query for the refund's ID, then the settleRefund mutation.",
+    ),
+    'limitations names both calls',
+  );
+  assert.ok(textOf('.next/server/app/index.html').includes('settles it with two Admin API calls'), 'home says two calls');
+});

@@ -28,7 +28,8 @@ Pre-release: expect changes before 1.0.
 - Coupon codes: not yet.
   Line and order discounts work at the till.
 - On plugin 0.3.0, refunds go through the Vendure Dashboard, and Vendure keeps a refund
-  of a POS order Pending until an administrator settles it with the Admin API's [`settleRefund`](/docs/plugin-setup#settle-a-dashboard-refund) mutation.
+  of a POS order Pending until an administrator settles it with two Admin API calls: a query for the refund's ID, then
+  the [`settleRefund`](/docs/plugin-setup#settle-a-dashboard-refund) mutation.
   The live demo refunds at the till.
 - Prices and stock: an open till picks up a price change within about a minute
   and a stock change within about five minutes.
