@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "The 25-sale and 200-send claims link to test source on main, without a versioned successful run establishing those results.",
+      "where": "text/home.txt, 'Keeps selling offline' and 'Every sale lands once'; tech.json, home.desktop.links"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Different global tax strategies are prescribed for inclusive and exclusive channels, but a store mixing both is only told to 'account for the store-wide strategy', leaving the configuration decision unresolved.",
+      "where": "Quick start, step 6, 'Why these pairings'; text/endpoint_llms_full_txt.txt:867"
+    },
+    "C4": {
+      "score": 9,
+      "worst_defect": "The optional device-key instructions send pnpm users to the GitHub README instead of linking the existing local section with the required configuration and verification steps.",
+      "where": "text/quick-start.txt:212; text/connect-a-till.txt, 'Make the key button available in a pnpm project'"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.desktop.02.jpg; shots/home.desktop-dark.jpg; desktop documentation slices"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.phone.01\u201305.jpg; shots/quick-start.phone.01\u201309.jpg; first phone slice of every other page"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Quick start's captured mobile LCP is 2.6 seconds, with 24 KiB of unused JavaScript and render-blocking requests reported.",
+      "where": "tech.json, lighthouse./docs/quick-start"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "A developer with both tax-inclusive and tax-exclusive channels must guess how to reconcile the recommended channel-dependent choices with the single store-wide tax strategy.",
+    "where": "Quick start, step 6, 'Why these pairings'; text/endpoint_llms_full_txt.txt:867\u2013868",
+    "fix": "Document the supported configuration for mixed pricing modes and a totals check for each mode. If that configuration is unsupported, state the restriction explicitly."
+  },
+  "mean": 9.0
+}

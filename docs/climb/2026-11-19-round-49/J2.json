@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The home page's 'Before you start' list mixes server requirements ('Node ^20.19 || >=22.12', 'RXDB_PREMIUM' licence token, Postgres) with what the counter needs, which sits in the 5th of 7 bullets ('At the counter: a browser on the till's device ... desktop Chrome; tablets and phones, an iPad included, are not tested yet'). A shop owner reading on a phone has to dig to see what hardware staff need tomorrow.", "where": "home.desktop.02 'Before you start'; home.phone.04"},
+    "C2": {"score": 9, "worst_defect": "The proof buttons 'Read the acceptance test' and 'Read the 200-send test' open raw TypeScript files on GitHub (offline.spec.ts, replay.e2e.ts), with no plain-language result or date of the last passing run, so a non-developer cannot check the claim.", "where": "home.desktop.01 'What it does today' cards; tech.json home.desktop links"},
+    "C3": {"score": 8, "worst_defect": "A known plugin gap is handed to the installer as a manual step: the device-key role 'vendurepos-pos-till' on plugin 0.3.0 lacks ReadOrder, 'so add ReadOrder to that role yourself', or 'the till sells but its order history is refused'. It is buried in the last optional section, which is easy to miss.", "where": "quick-start text 'Optional: a device key for each till'; connect-a-till 'Create and use a device key'"},
+    "C4": {"score": 8, "worst_defect": "Troubleshooting's 'N till updates need attention' entry runs to several paragraphs plus an errorCode list (register_session_already_open, register_closure_number_invalid, 'Any other code: the till has no retry or skip...'), mixing what counter staff should do with server-admin detail. Staff cannot scan it under pressure.", "where": "troubleshooting.desktop.01-02 'Act on a header notice > Till updates line'"},
+    "C5": {"score": 8, "worst_defect": "The cashier-sheet and closure screenshots on At the till sit as small cards inside larger framed boxes with wide empty padding, centred in a narrow column. They look unfinished next to the full-width payment-screen shot above them.", "where": "at-the-till.desktop.03 (cashier sheet) and at-the-till.desktop.03-04 (closure screen)"},
+    "C6": {"score": 8, "worst_defect": "The phone hero screenshot is captioned 'A sale in progress on the live demo till' but shows only the Products tab: two product cards and a category chip cut to 'Gif'. The cart, the sale itself, appears only as the tab label 'Cart (3) · €20.09'.", "where": "home.phone.01"},
+    "C7": {"score": 9, "worst_defect": "Minor: the docs pages carry only BreadcrumbList JSON-LD, and quick-start's mobile LCP is 2.6 s (Lighthouse flags render-blocking requests and about 24 KiB of unused JS). Everything else is in order: llms.txt, sitemap, search API, a real 404, share card.", "where": "tech.json lighthouse /docs/quick-start; quick-start.desktop jsonLd"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "A shop owner's first question, 'what does my counter need for staff to sell tomorrow?', has its answer buried as one long bullet inside a developer-oriented 'Before you start' list (Node version ranges, RXDB_PREMIUM, Postgres), so the counter story never stands on its own on the home page.",
+    "where": "home.desktop.02 / home.phone.04 'Before you start'",
+    "fix": "Split 'Before you start' into two short lists, 'At the counter' (a computer with desktop Chrome, a keyboard-style barcode scanner, any printer the browser can use, your own card terminal, one tab per till) and 'On your Vendure server' (Vendure 3.6+, Postgres, Node, the plugin)."
+  },
+  "mean": 8.3
+}

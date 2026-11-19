@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero stacks three blocks of text before the product image: a four-line lede, the two buttons, then a second small-print paragraph (\"Your own store needs the plugin on your Vendure server first...\"). On a phone this pushes the till screenshot below the first screen, so the first thing a visitor sees is text, not the product.", "where": "home.phone.01 / home.desktop.01"},
+    "C2": {"score": 9, "worst_defect": "The plugin 0.3.0 refund caveat appears three times on the home page: in the comparison table row \"Refund a sale at the till\", in the \"Coupon codes... refunds go through the Vendure Dashboard\" bullet, and again behind the Limitations link. Saying it three times reads as nervous rather than plain.", "where": "home.desktop.02"},
+    "C3": {"score": 8, "worst_defect": "Step 8 \"Sign in and make a sale\" is a nine-item lettered list (a–i) with no image of the sign-in or open-register screen, so the developer's first look at the real till is at the step where they are most likely to stall. The only till images are on At the till and the home page.", "where": "quick-start.desktop.03-04 / text/quick-start.txt (no [image:] markers)"},
+    "C4": {"score": 8, "worst_defect": "On Troubleshooting, the \"Orders line\" and \"Till updates line\" labels are bold paragraphs, not headings, so they are missing from the On this page rail. Under the second bullet, \"At the counter:\" / \"For the store owner:\" paragraphs, a collapsible and an errorCode list sit three levels deep inside a list item, which is hard to scan.", "where": "troubleshooting.desktop.01 / troubleshooting.phone.02"},
+    "C5": {"score": 8, "worst_defect": "The type scale on the home page is inconsistent. The \"Before you start\" bullets and the closing paragraph are set noticeably larger (~17px) than the feature descriptions and table cells (~15px) directly above them, so the least important tail of the page reads as the loudest body text. Separately, the docs callouts and collapsibles (\"Try it first\", \"Why these pairings\") stack a border, a left accent bar and a drop shadow, which looks like the framework default.", "where": "home.desktop.02; quick-start.desktop.01/03"},
+    "C6": {"score": 8, "worst_defect": "At 390 px, the inline code pill \"packages/vendure-plugin/CHANGELOG.md\" breaks across two lines into two half-pills (\"packages/vendure-\" / \"plugin/CHANGELOG.md\"). In the stacked tax table, the column label taxOptions.orderTaxCalculationStrategy loses its monospace and shows as bold sans.", "where": "changelog.phone.01; quick-start.phone.06"},
+    "C7": {"score": 9, "worst_defect": "The share card's till screenshot runs off the bottom edge mid-button: the \"Add charge\" button is cut in half at the card's bottom-right, so the crop looks accidental. Everything else is clean (Lighthouse 97-100, titles and descriptions on every page, llms.txt, sitemap, search API, a 404 with real exits).", "where": "og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "The home page ends in a heavy grey block. \"Before you start\" is a seven-bullet list set larger than every other body text on the page, mixing requirements (Vendure, Node, npm) with caveats (cash drawer, RxDB licence, coupons, refunds) already given in the table above. After a well-paced hero, feature grid and table, the page's rhythm collapses into its loudest and least-scannable section.",
+    "where": "home.desktop.02 / home.phone.04-05",
+    "fix": "Set the list to the same 15px secondary body size as the feature text. Keep only the four requirement bullets, and move the counter, licence and coupon/refund caveats into a single \"See Limitations\" line."
+  },
+  "mean": 8.3
+}
