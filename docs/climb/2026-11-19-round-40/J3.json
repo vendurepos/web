@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; shots/home.desktop.01.jpg"
+    },
+    "C2": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The tax instructions prescribe different store-wide strategies for inclusive and exclusive channels, but only say a store mixing pricing modes 'must account for the store-wide strategy', leaving its configuration unresolved.",
+      "where": "text/endpoint_llms_full_txt.txt:823-849, Quick start step 6"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The self-hosting paragraph jumps from obtaining RXDB_PREMIUM to running pnpm build:web without checkout or dependency-install instructions, or a link to a specific build guide.",
+      "where": "text/connect-a-till.txt, Where your data goes"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.desktop.02.jpg; shots/home.desktop-dark.jpg; quick-start desktop slices"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "home and quick-start phone slices; shots/at-the-till.phone.06.jpg; tech.json"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The llms-full.txt Changelog omits the hosted till's version, build date and commit that the visible Changelog supplies, leaving machine readers without that version provenance.",
+      "where": "text/endpoint_llms_full_txt.txt:173-184 versus text/changelog.txt:24"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "A developer with both tax-inclusive and tax-exclusive channels must guess how to satisfy the two different recommendations for one store-wide tax strategy.",
+    "where": "text/endpoint_llms_full_txt.txt:823-849, Quick start step 6",
+    "fix": "State the supported configuration and expected rounding behavior for mixed-pricing channels, or explicitly identify this configuration as unsupported."
+  },
+  "mean": 9.0
+}

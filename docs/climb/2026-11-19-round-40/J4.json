@@ -1,0 +1,48 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero helper line under the buttons (\"Your own store needs the plugin on your Vendure server first: the quick start sets it up…\") is set on a wider measure (~830 px) than the lead paragraph above it (~640 px), so a one-line strip of small grey text overhangs the centred column and breaks the hero's shape.",
+      "where": "home.desktop.01, hero below the Live demo / Quick start buttons"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The comparison table's demo cell names a foreign domain on a VendurePOS page: \"All it sends is anonymous usage events to ph.wcpos.com, with no cookie\". It is honest, but the wcpos.com host is unexplained and looks like a leftover from another product. The Refund cell also wraps to three lines (\"No, not on plugin 0.3.0: refund in the Vendure Dashboard, where the refund stays Pending until it is settled\"), which makes that row the tallest.",
+      "where": "home.desktop, \"Live demo or your own store\" table"
+    },
+    "C3": {
+      "score": 7,
+      "worst_defect": "Quick start is 9 numbered steps of text and code with no screenshot of the till's sign-in screen or of the first synced order in the Vendure Dashboard. The reader never sees what success looks like. \"Check it worked\" is an unnumbered H3 wedged between steps 8 and 9, so the path's rhythm breaks right at the payoff.",
+      "where": "quick-start.desktop.01-05, steps 7-9"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Troubleshooting crams several paragraphs (\"At the counter:\", \"For the store owner:\"), a collapsible and a nested bullet list of errorCodes into one bullet under \"Till updates line\". The result is three levels of indentation and a wall of text. Limitations uses loose list spacing (~48 px gaps even between one-liners like \"One browser tab per till.\"), while Overview and Requirements use tight lists.",
+      "where": "troubleshooting.desktop.01; limitations.desktop.01"
+    },
+    "C5": {
+      "score": 7,
+      "worst_defect": "The three At the till screenshots use three different treatments. The payment screen is full content width (~836 px). The cashier sheet is ~418 px, centred inside a bordered box with large empty side padding (card-in-card). The closure is ~546 px, also card-in-card. Image width and framing jump on every scroll. Separately, the home \"What it does today\" cards are uneven in height: only the first two carry links (\"Read the acceptance test\", \"Read the 200-send test\"), so row 1 is taller than the rest. In dark mode the outline Quick start button has low contrast.",
+      "where": "at-the-till.desktop.02-04; home.desktop.02; home.dark.01"
+    },
+    "C6": {
+      "score": 7,
+      "worst_defect": "The phone hero image is a mobile till capture about 1.2 screens tall. It shows the Products tab with only two rows of cards, and the category chip row is cut off at \"Gif\". The cart is hidden behind the \"Cart (3) · €20.09\" tab, so the caption \"A sale in progress on the live demo till.\" sits under an image that shows no sale. Further down, Quick start runs to 10,382 px. Inline code pills wrap into stacked rows (\"TallyPosSell, ReadCatalog, ReadSettings, ReadCustomer and CreateCustomer\"), `generateMigration(...)` soft-wraps across 5 lines, and step headings wrap to 3 lines (\"2. Add TallyPosPlugin to your existing Vendure config\").",
+      "where": "home.phone.01-02; quick-start.phone.02-04"
+    },
+    "C7": {
+      "score": 8,
+      "worst_defect": "The share card crops the till screenshot mid-card at the bottom edge (\"Add charge\" and the product cards are sliced off) and carries no URL or pre-release marker. The captured search response text (endpoint_api_search_query_offline.txt) is empty even though the endpoint returned 200 with 3050 B.",
+      "where": "og-image.png bottom edge; text/endpoint_api_search_query_offline.txt"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C6",
+    "defect": "On a 390 px phone, the first image under the hero is a 1.2-screen till capture on the Products tab: two rows of product cards, the chip row cut off at \"Gif\", and the cart hidden behind the \"Cart (3) · €20.09\" tab. The caption promises \"A sale in progress on the live demo till.\" and the picture shows none.",
+    "where": "home.phone.01-02, hero image and caption",
+    "fix": "Serve a phone-specific capture of the Cart view with the three lines, totals and Pay button, cropped to at most ~0.8 screen height (or use the desktop till image with object-position on the cart). Keep the caption only if the image shows the sale."
+  },
+  "mean": 7.6
+}

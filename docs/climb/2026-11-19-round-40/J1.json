@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The top of the home page is clear, but its second half reads like a developer spec sheet: 'Before you start' lists 'Node ^20.19 || >=22.12', 'RxDB Premium licence token (RXDB_PREMIUM)' and plugin-version refund caveats. A newcomer who only half knows Vendure hits this jargon before any plain 'who this is for' line.", "where": "home/desktop/02 'Before you start'; home/phone/04-05"},
+    "C2": {"score": 8, "worst_defect": "The demo row of the comparison table says 'All it sends is anonymous usage events to ph.wcpos.com, with no cookie'. The home page never says what wcpos.com is or why it is involved, so to a first-timer it looks like an unrelated third party tracking them. The explanation that it is a self-hosted PostHog server is only on Connect a till.", "where": "home/desktop/02 table row 'Sales reach Vendure, once each, even offline'; home/phone/04"},
+    "C3": {"score": 8, "worst_defect": "Step 4 says to sign in with an administrator whose role has TallyPosSell, ReadCatalog, ReadSettings, ReadCustomer, CreateCustomer and ReadOrder. These are spread across a prose paragraph, and the quick start gives no steps for creating that role; it sends you to another page ('Give each cashier their own account'). There is also a leftover collapsed note, 'If your store already allows vendurepos.vercel.app', about an old domain a newcomer never saw.", "where": "quick-start/desktop/02 step 4 and step 5 collapsible"},
+    "C4": {"score": 8, "worst_defect": "The Changelog is internal protocol notes rather than readable release notes. Lines such as 'GET /tally/v1/info advertises order.create 1–5 (ADR 0005)', 'maxShippingLines: 1' and 'Not in the release notes: in 0.2.0 and 0.3.0 this role has no ReadOrder' hide what changed for a store owner below the one-line 'In short'.", "where": "changelog/desktop/01"},
+    "C5": {"score": 8, "worst_defect": "The home page ends in two text-heavy blocks: a 7-row Yes/No table and a 7-bullet 'Before you start' list in long grey sentences. After the hero and the card grid they look flat and crowded, with no visual break. Dark mode itself holds up.", "where": "home/desktop/02; home.desktop-dark.jpg lower half"},
+    "C6": {"score": 8, "worst_defect": "On the phone the home page runs five tall slices: ten feature cards stack one per row before the demo/own-store comparison. Quick-start headings with inline code wrap to three lines ('2. Add TallyPosPlugin to your existing Vendure config'), so the page takes 9 slices of scrolling.", "where": "home/phone/02-03; quick-start/phone/02"},
+    "C7": {"score": 9, "worst_defect": "Mobile LCP is 2.4 s on both / and /docs/quick-start, with render-blocking requests and about 52 KiB of unused JavaScript flagged. Otherwise titles, descriptions, JSON-LD, og-image, llms.txt, sitemap, robots, the search API and a real 404 are all in place.", "where": "tech.json lighthouse"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The home page tells a first-time visitor that the demo sends usage events to 'ph.wcpos.com' without saying who or what wcpos.com is. A newcomer just learning what VendurePOS is reads that as an unknown third-party tracker.",
+    "where": "home/desktop/02 and home/phone/04, comparison table, 'Live demo' cell of 'Sales reach Vendure, once each, even offline'",
+    "fix": "Name it in place, e.g. 'anonymous usage events to our own self-hosted PostHog analytics (ph.wcpos.com), no cookie'. Or link the words straight to the Connect a till 'Where requests go' section."
+  },
+  "mean": 8.14
+}
