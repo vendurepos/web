@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; home desktop and phone screenshots"
+    },
+    "C2": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The tax setup recommends different store-wide strategies for inclusive and exclusive channels, but leaves mixed-mode stores with only 'must account for the store-wide strategy' and no supported configuration.",
+      "where": "text/quick-start.txt, step 6; text/endpoint_llms_full_txt.txt, 'Why these pairings'"
+    },
+    "C4": {
+      "score": 9,
+      "worst_defect": "The optional device-key instructions send pnpm users to a GitHub README on main instead of the site's existing, explicit pnpm setup subsection.",
+      "where": "text/quick-start.txt, 'Optional: a device key for each till'; text/connect-a-till.txt, 'Make the key button available in a pnpm project'"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop-dark.jpg; home, quick-start and plugin-setup desktop slices"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "home and quick-start phone slices; first phone slice of every other page; plugin-setup.phone.05\u201306.jpg"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The captured mobile Lighthouse report identifies 53 KiB of unused JavaScript and an estimated 150 ms of render-blocking savings on the homepage.",
+      "where": "tech.json, lighthouse['/'].failing"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "A developer maintaining channels with different pricesIncludeTax settings must guess how to satisfy the conflicting tax-strategy recommendations.",
+    "where": "Quick start, step 6 and 'Why these pairings'; text/endpoint_llms_full_txt.txt:840\u2013869",
+    "fix": "State the supported configuration for mixed inclusive/exclusive channels, or explicitly state that this setup is unsupported. Include the expected verification result for a sale in each pricing mode."
+  },
+  "mean": 9.1
+}
