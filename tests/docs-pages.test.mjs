@@ -365,3 +365,13 @@ test('limitations puts the counter limits under one heading and the store setup 
     assert.ok(!between.includes(phrase), `${phrase}, not at the counter`);
   }
 });
+
+// Round 39, J4 C4: order.create was code in 0.1.0 and plain text in 0.3.0 and 0.2.0.
+test('the changelog sets order.create as code everywhere', () => {
+  const source = readFileSync(join('content/docs', 'changelog.mdx'), 'utf8');
+  const prose = source.replace(/\{\/\*[\s\S]*?\*\/\}/g, '').replace(/`[^`]*`/g, '');
+  assert.ok(!prose.includes('order.create'), 'no order.create outside backticks');
+  const count = (needle) => source.split(needle).length - 1;
+  assert.ok(count('`order.create` v5') >= 3, '`order.create` v5 at least 3 times');
+  assert.equal(count('`order.create` 1–5'), 1, '`order.create` 1–5 once');
+});
