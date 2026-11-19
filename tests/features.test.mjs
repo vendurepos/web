@@ -241,3 +241,19 @@ test('home header links At the till; docs pages leave it to the sidebar', () => 
   );
   assert.equal(active.length, 1);
 });
+
+// Round 45, J2 C2: the home refund row says settling takes two Admin API calls and links the steps.
+test('home refund row says settling takes two Admin API calls and links Plugin setup', () => {
+  const raw = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
+  const html = raw.slice(raw.indexOf('</head>')).replace(/<script[\s\S]*?<\/script>/g, '');
+  const row = (html.match(/<tr\b[\s\S]*?<\/tr>/g) ?? []).find((tr) => tr.includes('Refund a sale at the till'));
+  assert.ok(row, 'the refund row');
+  const text = row.replaceAll('<!-- -->', '').replace(/<[^>]*>/g, '').replace(/\s+/g, ' ');
+  assert.ok(
+    text.includes('The refund stays Pending until an administrator settles it with two Admin API calls; see Plugin setup.'),
+    text,
+  );
+  assert.match(row, /<a\b[^>]*\shref="\/docs\/plugin-setup#settle-a-dashboard-refund"/);
+  const setup = readFileSync(join('.next/server/app', 'docs/plugin-setup.html'), 'utf8');
+  assert.ok(setup.includes('id="settle-a-dashboard-refund"'), 'the anchor exists');
+});
