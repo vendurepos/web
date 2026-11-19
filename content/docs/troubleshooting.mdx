@@ -95,7 +95,8 @@ register, cash movements and their voids, and the closure.
 
 - "This store's VendurePOS plugin is missing or out of date. Install or update it, then this till continues."
   The store must advertise `order.create` v4 and register v1, as every plugin release from 0.1.0
-  does. Install the current release as in [the quick start](/docs/quick-start#1-install-the-plugin),
+  does (0.3.0 advertises `order.create` 1–5, which includes v4). Install the current release as in
+  [the quick start](/docs/quick-start#1-install-the-plugin),
   apply its schema changes and restart Vendure; the till retries.
 - "Can't reach the store's settings yet. Retrying…"
   The till takes no sale until it has read the store's settings.
