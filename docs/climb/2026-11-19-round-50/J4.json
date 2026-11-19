@@ -1,0 +1,48 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {
+      "score": 9,
+      "worst_defect": "Hero lead paragraph runs four lines before the CTAs, and a second sub-note sits under the buttons, so the fold reads text-heavy next to the till screenshot",
+      "where": "home.desktop.01"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "The Yes/No comparison table's 'Your Vendure store' refund cell is a four-line paragraph ('No, not on plugin 0.3.0: refund in the Vendure Dashboard. The refund stays Pending until an administrator settles it with two Admin API calls; see Plugin setup.'), breaking the table's scan rhythm",
+      "where": "home.desktop.02"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 8 packs nine a–i sub-steps into one list with misaligned 'f.' and 'i.' markers; on phone the step H2s wrap to three lines ('2. Add TallyPosPlugin to your existing Vendure config')",
+      "where": "quick-start.desktop.04, quick-start.phone.08, quick-start.phone.02"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The 'Till updates line' bullet nests labelled paragraphs ('At the counter:' / 'For the store owner:'), a collapsible and a sub-list inside one bullet, with uneven bullet spacing; reads as a wall",
+      "where": "troubleshooting.desktop.01"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "At the till screenshots use three different widths and frames: the payment screen fills the column while the cashier sheet (~420px) and closure (~545px) float centered inside oversized padded outer frames (box in a box)",
+      "where": "at-the-till.desktop.02, at-the-till.desktop.03, at-the-till.desktop.04"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "Phone tax-table cards repeat the 'Channel pricing' label and drop code styling on the 'taxOptions.orderTaxCalculationStrategy' header; the changelog's inline code chip breaks mid-path ('packages/vendure–' / 'plugin/CHANGELOG.md')",
+      "where": "quick-start.phone.06, changelog.phone.01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "og-image crops the till screenshot at the bottom edge (the 'Add charge' button is cut off); Lighthouse flags 53 KiB unused JS on /",
+      "where": "og-image.png, tech.json lighthouse /"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "At the till screenshots use three different widths and frames: the payment screen fills the column while the cashier sheet (~420px) and closure (~545px) float centered inside oversized padded outer frames (box in a box)",
+    "where": "at-the-till.desktop.03, at-the-till.desktop.04",
+    "fix": "Render all till screenshots at the full content-column width with one shared frame style, and drop the extra padded outer frame around the cashier sheet and closure crops"
+  },
+  "mean": 8.4
+}

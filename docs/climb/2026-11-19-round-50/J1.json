@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The first feature card, 'Keeps selling offline', warns that 'sales not yet sent are lost if this site's data is cleared'. On vendurepos.com, 'this site' reads as the marketing site, not the till app. It also puts a data-loss caveat in the first thing a newcomer reads below the hero.", "where": "home/desktop/01 (card 'Keeps selling offline'); home/phone/02"},
+    "C2": {"score": 8, "worst_defect": "The home page never says who makes VendurePOS. The footer says only 'Built with TallyUI. For Medusa, see MedusaPOS.' The only hint of an owner is the unexplained third-party domain in the comparison table: 'All it sends is anonymous usage events to ph.wcpos.com, with no cookie'.", "where": "home/desktop/02 (table row 'Sales reach Vendure, once each, even offline', and the footer)"},
+    "C3": {"score": 8, "worst_defect": "The quick start has no image at all. Neither step 8 'Sign in and make a sale' nor 'Check it worked' shows the sign-in screen, the till's Synced status or the resulting order in the Vendure Dashboard, so success is described only in prose bullets.", "where": "quick-start/desktop/03-04 (text/quick-start.txt has no [image:] marker)"},
+    "C4": {"score": 8, "worst_defect": "The changelog bullets are written for maintainers, for example 'GET /tally/v1/info advertises order.create 1–5 (ADR 0005)' and 'order.create v5 custom lines are real order lines on a plugin-owned, disabled ... variant'. The ADR links and protocol versions mean nothing to a store owner, and only the one-line 'In short' is readable.", "where": "changelog/desktop/01"},
+    "C5": {"score": 8, "worst_defect": "After the hero screenshot the home page is all text: eight unboxed two-column feature blurbs with no icons or images, then a table and two bullet lists. It reads as a long, uniform wall of grey text, and only the first two features get card styling.", "where": "home/desktop/01 bottom to home/desktop/02 top ('Paid, fulfilled...' through 'Line and order discounts')"},
+    "C6": {"score": 9, "worst_defect": "The hero screenshot on phone crops the till to two product cards, with the category chip row cut mid-word at 'Gif'. It shows little of the product, and the cut-off chip looks like a crop error.", "where": "home/phone/01"},
+    "C7": {"score": 9, "worst_defect": "Mobile Lighthouse LCP is 2.3 s on / and 2.5 s on /docs/quick-start, right at the edge of 'good', with 140 ms of render-blocking requests and 53 KiB of unused JavaScript on the home page. Everything else checks out: titles, descriptions, OG card, JSON-LD, llms.txt, search API, sitemap, robots and a real 404.", "where": "tech.json lighthouse"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A first-time visitor weighing a pre-release till for their shop cannot tell who is behind it. No maker or team is named anywhere on the home page, and the only clue is an unexplained 'ph.wcpos.com' analytics domain in the comparison table, which looks like data going to an unknown third party.",
+    "where": "home/desktop/02 (comparison table, last row, and footer)",
+    "fix": "Add one footer line naming the maker (for example 'Made by the team behind WCPOS, wcpos.com'). Where ph.wcpos.com appears, say it is that team's own self-hosted analytics server."
+  },
+  "mean": 8.3
+}

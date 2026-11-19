@@ -1,0 +1,48 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "On a phone the header shows only \"Docs\" and \"Live demo\" plus a chevron, so \"At the till\", the one page my staff need, is hidden behind a menu; the hero also leads with developer words (\"headless commerce framework\", \"plugin 0.3.0\") rather than what a counter gets.",
+      "where": "home.phone.01 (header); home.desktop.01 hero"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "\"Keeps selling offline\" sits next to \"A reload needs the connection, and sales not yet sent are lost if this site's data is cleared\", and \"Its browser tests run in desktop Chrome; tablets and phones, an iPad included, are not tested yet\". Both are honest, but the home page never says which counter device and browser to use.",
+      "where": "home.desktop.01-02 'What it does today' / 'Before you start'; text/limitations.txt"
+    },
+    "C3": {
+      "score": 7,
+      "worst_defect": "The path to a working till is developer-only and has hidden manual steps. On plugin 0.3.0 \"the vendurepos-pos-till role has no ReadOrder, so the till's order history is refused until you add it to the role\" is mentioned only in the device-key section and the changelog. There is no short checklist an owner can hand the freelancer or check off at the counter (which PC, which browser, scanner set up, one account per cashier).",
+      "where": "quick-start.desktop.01-04; changelog.desktop.01 (0.2.0 last bullet); connect-a-till 'Create and use a device key'"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "Troubleshooting mixes counter problems with developer internals on one page: GraphQL tallyNeedsAdminCommands / tallyResolveNeedsAdmin and VENDUREPOS_WEB_ALLOW_LAN_HTTP sit beside \"At the counter:\" fixes. Refunds, a daily counter task, are only \"Ask whoever manages your Vendure store to refund the order in the Vendure Dashboard\", with the settle steps on Plugin setup.",
+      "where": "troubleshooting.desktop.01 / text/troubleshooting.txt; at-the-till 'Refund a sale'; plugin-setup 'Settle a Dashboard refund'"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The closure-screen image on At the till is mostly empty white panel around a small form, so the 'close the day' illustration reads as a blank box. The 404 page is a short block over an otherwise empty viewport.",
+      "where": "at-the-till.desktop.03-04 (closure screen image); not-found.desktop.01"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The hero till screenshot is shrunk so far on a phone that its category chips are cut off (\"Gif…\") and its text is unreadable. The main nav (Quick start, At the till) is hidden behind the header chevron.",
+      "where": "home.phone.01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The share card crops the till screenshot at the bottom edge, so the \"Add charge\" button is cut in half. The 404 page logs a console error (\"Failed to load resource: the server responded with a status of 404 ()\").",
+      "where": "og-image.png; tech.json not-found consoleErrors"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "For a shop owner, refunding a real sale on their own store is not a counter task the site can walk staff through. The home table says \"No, not on plugin 0.3.0: refund in the Vendure Dashboard. The refund stays Pending until an administrator settles it with two Admin API calls\". At the till then tells staff to also record a Pay out \"or the drawer count comes up short\". The owner, who is not a developer, is left with a three-party, API-call job for a normal customer return.",
+    "where": "home.desktop.02 'Live demo or your own store' table, row 'Refund a sale at the till'; at-the-till 'Refund a sale'; plugin-setup 'Settle a Dashboard refund'",
+    "fix": "Add a boxed 'Refunds on your own store (plugin 0.3.0)' checklist on At the till that names who does each step: the cashier records the Pay out, the owner refunds in the Dashboard, and the freelancer runs the two settle calls once (paste-ready). Link that box from the home table row."
+  },
+  "mean": 8.0
+}
