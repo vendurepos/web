@@ -1,0 +1,48 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero is clear (\"Point of sale for Vendure\", Vendure explained in one clause, Live demo / Quick start), but the lower half of the home page switches to developer jargon a newcomer cannot parse: \"Node ^20.19 || >=22.12\", \"RxDB Premium licence token (RXDB_PREMIUM)\", and in the comparison table \"The refund stays Pending until an administrator settles it with two Admin API calls\". The badge \"Pre-release · plugin 0.3.0\" also assumes you already know there is a plugin.",
+      "where": "home.desktop.02 ('Live demo or your own store' Refund row, 'Before you start' list); home.phone.04"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The demo row says \"All it sends is anonymous usage events to ph.wcpos.com\" without ever saying who or what wcpos is. On a VendurePOS site an unexplained third-party domain reads as an odd, unexplained link. Elsewhere the honesty is strong: pre-release is stated, Limitations is linked, and claims are backed by 'Read the acceptance test' / 'Read the 200-send test'.",
+      "where": "home.desktop.02, table row 'Sales reach Vendure, once each, even offline'; home.phone.04"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The quick start makes you choose between paths, and there is legacy noise along the way. Step 3 offers a generated migration, `npx vendure migrate` or the bundled migrations, with a warning not to mix them. Step 5 ends in a collapsed \"If your store already allows vendurepos.vercel.app\" note that means nothing to a new user. The permissions list for signing in sits under step 4 'Enable bearer authentication', four steps before the sign-in it applies to (step 8).",
+      "where": "quick-start.desktop.02 (step 3 'Other ways to run the migration', step 4 permissions), quick-start.desktop.03 (vercel.app collapsible)"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The Changelog is written for the maintainers, not for readers. Bullets cite internal references like \"(ADR 0005)\", \"(#116)\" and \"order.create v5 ... refused as shipping_single\", so the 'In short' line is the only part a non-maintainer can follow. Apart from At the till, the docs pages (Quick start, Connect a till, Troubleshooting) show no screenshot of the screens they describe, such as the 'Sign in to Vendure' form.",
+      "where": "changelog.desktop.01; connect-a-till.desktop.01; quick-start.desktop.03 step 8"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The 'What it does today' section mixes two styles. Two features sit in bordered cards with buttons, and the other eight are plain unboxed heading + paragraph pairs. Below the hero screenshot the page is long, all text and has no visuals, so it reads as unfinished compared with the polished hero. Dark mode holds up.",
+      "where": "home.desktop.01 bottom to home.desktop.02 top"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "On the phone the hero screenshot is cropped to the till's product tab, showing two product cards and no cart. The caption \"A sale in progress on the live demo till.\" then describes a sale you cannot see. Tables collapse into readable stacked rows and nothing overflows.",
+      "where": "home.phone.01 (hero image and caption)"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "llms-full.txt still has docs-framework anchor residue in headings (\"Open the register [#open-the-register]\") and runs of blank lines. Otherwise everything holds up: Lighthouse 98/100/100/100, a real 404 status, a good share card, JSON-LD, and working sitemap, robots and search.",
+      "where": "text/endpoint_llms_full_txt.txt (first lines)"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "After a clear hero, the home page's 'Live demo or your own store' table and 'Before you start' list turn into a developer requirements sheet: semver ranges, an env var name (RXDB_PREMIUM), 'two Admin API calls', 'ph.wcpos.com'. A first-time visitor trying to tell whether this is for them hits jargon instead of a plain answer.",
+    "where": "home.desktop.02 / home.phone.04",
+    "fix": "On the home page, replace 'Before you start' with one plain line (\"Needs a Vendure 3.6+ store on Postgres and the free VendurePOS server plugin\") linking to the docs Requirements. Cut the Refund cell to \"Not yet: refund in the Vendure Dashboard\", and move the Node range, the RXDB_PREMIUM detail and the Admin API detail into the docs."
+  },
+  "mean": 8.3
+}
