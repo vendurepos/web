@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero headline, the two buttons and the till screenshot make the product clear in seconds, but the home page's 'Before you start' block then lists developer details a newcomer cannot parse: 'Node ^20.19 || >=22.12', 'RxDB Premium licence token (RXDB_PREMIUM)', 'one tab per till and not a private window'.", "where": "home desktop 02 / phone 04-05, 'Before you start'"},
+    "C2": {"score": 8, "worst_defect": "The hero and footer say 'open-source' and 'MIT licensed', but the same page then says building the till yourself 'you need your own RxDB Premium licence token', and the demo row names an unexplained third-party domain ('anonymous usage events to ph.wcpos.com'). To a newcomer both read as a hidden catch.", "where": "home desktop 02 / phone 04-05: 'Live demo or your own store' table, last row, and 'Before you start' bullet 6"},
+    "C3": {"score": 8, "worst_defect": "The quick start is ordered and complete, with a 'Check it worked' list, but step 5 includes an unexplained collapsible, 'If your store already allows vendurepos.vercel.app', about a domain the reader has never seen, and step 6 asks them to choose Vendure tax-calculation strategies before they have made a single sale.", "where": "quick-start desktop 02 (bottom) and 03 (top) / phone 05-06"},
+    "C4": {"score": 8, "worst_defect": "The changelog bullets cite internal references a reader cannot follow without context ('(ADR 0005)', '(#116)', '(#117)'), and the 0.2.0 entry hides a known gap in a long bullet: 'Not in the release notes: in 0.2.0 and 0.3.0 this role has no ReadOrder'.", "where": "changelog desktop 01 / phone 01"},
+    "C5": {"score": 8, "worst_defect": "After the hero, 'What it does today' is ten identical grey text-only cards with no icon, image or visual difference between them, so the middle of the home page reads as a wall of text; dark mode holds up.", "where": "home desktop 01 (bottom) - 02 (top), home.desktop-dark"},
+    "C6": {"score": 9, "worst_defect": "Small: the inline code path breaks mid-word across lines, 'packages/vendure-' / 'plugin/CHANGELOG.md', in the changelog's first sentence. Tables otherwise stack cleanly into labelled rows and nothing overflows (overflowX false on every page).", "where": "changelog phone 01"},
+    "C7": {"score": 8, "worst_defect": "Lighthouse mobile scores /docs/quick-start at performance 79, with total blocking time 790 ms and main-thread work 2.6 s; titles, descriptions, JSON-LD, llms.txt, sitemap, search API, share card and the 404 page are all in order.", "where": "tech.json lighthouse['/docs/quick-start']"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A first-time visitor reads 'open-source', 'MIT licensed' and 'nothing to install', then hits 'you need your own RxDB Premium licence token (RXDB_PREMIUM)' and 'usage events to ph.wcpos.com' on the same home page with no explanation, and starts to wonder about paid lock-in and who WCPOS is.",
+    "where": "home desktop 02 / phone 04-05, 'Live demo or your own store' table and 'Before you start'",
+    "fix": "Say in one plain sentence that the hosted till at app.vendurepos.com is free to use and the RxDB licence only matters if you build the till yourself (or move that bullet to Connect a till), and add a few words saying what ph.wcpos.com is (the project's own analytics server)."
+  },
+  "mean": 8.14
+}
