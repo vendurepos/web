@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "On the phone the hero till screenshot is cropped to two product tiles (Canvas Apron, Chocolate Biscuits) with the category chips cut at \"Gif\" and no cart, total or Pay button visible, so a shop owner reading on a phone never sees what a sale looks like above the fold.", "where": "home.phone.01"},
+    "C2": {"score": 8, "worst_defect": "Home promises every sale \"lands in Vendure once\" and keeps selling offline, but the cost of that (a reload or reopened browser needs the connection; unsent sales are lost if site data is cleared; refused register open/close updates never reach Vendure, \"keep the printed Z reports\") is only stated on At the till and Limitations, not next to the offline claim on Home.", "where": "home.desktop.01 hero vs at-the-till.desktop.03 \"If the internet drops\" and limitations.desktop.01"},
+    "C3": {"score": 7, "worst_defect": "No page says what to put on the counter: At the till is written for touch (\"Tap a product\", \"tap a tab\") while Home and Limitations say only desktop Chrome is tested and \"tablets and phones, an iPad included, are not tested yet\", and the scanner, receipt printer, card terminal and cash drawer are only covered as things the till does not do.", "where": "at-the-till.desktop.01 vs limitations.desktop.01 and home \"Before you start\""},
+    "C4": {"score": 7, "worst_defect": "Troubleshooting's \"Till updates line\" puts \"At the counter:\" instructions for staff on the same page as errorCode strings (register_session_already_open, register_closure_number_invalid) and GraphQL admin calls (tallyNeedsAdminCommands / tallyResolveNeedsAdmin), so counter staff cannot find their one action quickly.", "where": "troubleshooting.desktop.01-02"},
+    "C5": {"score": 8, "worst_defect": "The cashier sheet image on At the till floats as a narrow card inside a large, mostly empty frame, and the day-closure image has wide empty gaps between Counted / Expected / Exact, so both look unfinished next to the tight text column.", "where": "at-the-till.desktop.03 and at-the-till.desktop.04"},
+    "C6": {"score": 8, "worst_defect": "The phone home header shows only \"Docs  Live demo\" with Quick start and At the till hidden behind a chevron, and the hero image crop (two tiles, chips cut at \"Gif\") is the first thing a phone reader sees; quick-start and at-the-till phone captures were also clipped (tech.json clipped:true).", "where": "home.phone.01; tech.json quick-start/at-the-till phone"},
+    "C7": {"score": 9, "worst_defect": "Small leftovers only: Lighthouse flags 53 KiB of unused JavaScript and 130 ms of render-blocking resources on / (score 98), and the 404 page logs its own 404 console error.", "where": "tech.json lighthouse / ; not-found console"}
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "A shop owner asking \"can my staff sell with this tomorrow\" gets no counter setup: At the till says \"Tap a product\" as if on a tablet, while Home and Limitations say only desktop Chrome is tested and iPads, tablets and phones are not, and the scanner, printer, card terminal and drawer appear only as limitations.",
+    "where": "at-the-till.desktop.01 (top) vs limitations.desktop.01 and home \"Before you start\"",
+    "fix": "Add a short \"What you need at the counter\" box at the top of At the till: a desktop or laptop running Chrome, a USB barcode scanner that types like a keyboard, any printer the browser can print to, the card terminal run separately with the amount keyed in, and the drawer opened by hand. Change \"tap\" to \"click\"."
+  },
+  "mean": 7.9
+}

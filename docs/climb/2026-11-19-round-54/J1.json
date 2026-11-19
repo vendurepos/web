@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero itself is clear, but the home page below it turns into docs a first-timer cannot parse: the comparison table's refund cell reads \"The refund stays Pending until an administrator settles it with two Admin API calls\", and \"Before you start\" lists \"Node ^20.19 || >=22.12\" and \"RxDB Premium licence token (RXDB_PREMIUM)\" on the marketing page.", "where": "home/desktop/02 ('Live demo or your own store' refund row, 'Before you start'); home/phone/04"},
+    "C2": {"score": 8, "worst_defect": "The home page's demo row says the demo \"sends anonymous usage events to ph.wcpos.com\". A second brand's domain shows up with no word on who wcpos is or how it relates to VendurePOS, so a newcomer wonders whose product this really is.", "where": "home/desktop/02 'Sales reach Vendure, once each, even offline' row; home/phone/04"},
+    "C3": {"score": 8, "worst_defect": "Step 6 makes you change the store-wide orderTaxCalculationStrategy and warns \"These settings are store-wide and also affect the web shop\". It never says what changes for the existing web shop's totals, so a developer with a live store has to guess whether turning on the POS will move their online prices.", "where": "quick-start/desktop/03 '6. Choose tax rounding for your pricing mode'"},
+    "C4": {"score": 8, "worst_defect": "The changelog's \"In short\" summaries help, but its bullets are internal shorthand nobody outside the project can read: \"order.create v5 custom lines ... (ADR 0005)\", \"TallyPosV51790900000000\", \"lineTax: { none: true, classes: true }\". The ADR and issue links point into the repo and are never explained on the site.", "where": "changelog/desktop/01 0.3.0 and 0.2.0 bullets"},
+    "C5": {"score": 8, "worst_defect": "In 'What it does today', the first two features sit in bordered cards with buttons and the other eight are plain unboxed text in a two-column grid. The section looks half-converted rather than deliberately ranked.", "where": "home/desktop/01 bottom to home/desktop/02 top"},
+    "C6": {"score": 9, "worst_defect": "Headings with inline code wrap to three lines and crowd the top of each step on a phone, e.g. \"2. Add TallyPosPlugin to your existing Vendure config\" and \"3. Generate and run the migration before starting the server\".", "where": "quick-start/phone/02"},
+    "C7": {"score": 9, "worst_defect": "The share card's demo screenshot is cropped hard at the bottom edge, through the product price badges and the half-visible \"Add charge\" button, so the card looks cut off rather than framed.", "where": "og-image.png bottom edge"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "After a clear hero, the home page's lower half reads as setup docs: the refund cell explains Pending refunds and \"two Admin API calls\", and 'Before you start' lists Node semver ranges, Postgres versions and an RXDB_PREMIUM licence token. A first-time visitor deciding in under a minute meets this jargon wall and gets no plain 'what you need' summary.",
+    "where": "home/desktop/02 and home/phone/04 ('Live demo or your own store' refund row, 'Before you start')",
+    "fix": "Shorten the refund cell to \"No, refund in the Vendure Dashboard for now (see Limitations)\". Cut 'Before you start' down to three plain lines (a Vendure 3.6+ store on Postgres, the plugin, a desktop browser) linking to the Overview's requirements, and move the Node, RxDB and Admin API details there."
+  },
+  "mean": 8.3
+}

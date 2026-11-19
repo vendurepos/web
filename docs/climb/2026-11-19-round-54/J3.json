@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The tax guidance says a store mixing pricing modes must account for the store-wide strategy, but provides no configuration or verification procedure for that case.",
+      "where": "text/endpoint_llms_full_txt.txt, Quick start step 6, 'Why these pairings'; shots/quick-start.desktop.03.jpg"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The self-hosting instructions jump from obtaining RXDB_PREMIUM to running pnpm build:web without documenting checkout, dependency installation or linking a complete build procedure.",
+      "where": "text/connect-a-till.txt, 'Where your data goes'; shots/connect-a-till.desktop.01.jpg"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop-dark.jpg; shots/home.desktop.01.jpg; shots/plugin-setup.desktop.02.jpg"
+    },
+    "C6": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "shots/home.phone.01.jpg; shots/quick-start.phone.02.jpg; shots/quick-start.phone.06.jpg; tech.json"
+    },
+    "C7": {
+      "score": 8,
+      "worst_defect": "The full machine-readable documentation omits the changelog paragraph identifying hosted till version 0.1.0, its build date and commit, so machine readers lose the explicit distinction between deployed app and plugin versions.",
+      "where": "text/endpoint_llms_full_txt.txt, Changelog introduction; text/changelog.txt:24"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "A developer with tax-inclusive and tax-exclusive channels is told to account for a store-wide tax strategy without being told how to configure or verify it.",
+    "where": "text/endpoint_llms_full_txt.txt, Quick start step 6, 'Why these pairings'; shots/quick-start.desktop.03.jpg",
+    "fix": "Add an explicit recommendation for mixed-pricing stores, or state the supported configuration constraint. Include a small sale example showing the expected tax and rounding result in each channel."
+  },
+  "mean": 8.9
+}
