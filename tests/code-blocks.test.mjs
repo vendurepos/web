@@ -24,3 +24,14 @@ test('code block headers label TypeScript and terminal commands', () => {
 test('code blocks do not use floating copy actions', () => {
   assert.ok(!html.includes('absolute top-3 right-2'));
 });
+
+// Round 48, J5: the runMigrations snippet on Plugin setup imports config.
+test('plugin setup runMigrations snippet imports config', () => {
+  const page = readFileSync('.next/server/app/docs/plugin-setup.html', 'utf8');
+  const blocks = Array.from(page.matchAll(/<figure\b[^>]*class="[^"]*\bshiki\b[^"]*"[^>]*>([\s\S]*?)<\/figure>/g)).map(
+    ([, body]) => body.replace(/<[^>]+>/g, '').replace(/&#x27;|&#39;/g, "'"),
+  );
+  const block = blocks.find(text => text.includes('runMigrations(config)'));
+  assert.ok(block);
+  assert.ok(block.includes("import { config } from './vendure-config';"));
+});
