@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero explains Vendure in jargon: \"the open-source headless commerce framework\". Someone who only half knows Vendure gets no plain meaning of 'headless', and the badge above the h1, \"Pre-release · plugin 0.3.0\", starts with a version number before saying what the product is.", "where": "home/desktop/01 hero paragraph and badge; home/phone/01"},
+    "C2": {"score": 7, "worst_defect": "Nowhere on the site does it say who makes VendurePOS: the footer gives only \"MIT licensed. Built with TallyUI\". Yet the home comparison table says the demo sends \"anonymous usage events to ph.wcpos.com\", another brand's domain that the home page never explains. Even Connect a till only calls it \"a self-hosted PostHog analytics server\" and never says whose it is.", "where": "home/desktop/02 'Live demo or your own store' table, last row; footer; connect-a-till 'Where requests go'"},
+    "C3": {"score": 8, "worst_defect": "Quick start step 5 has an unexplained collapsible, \"If your store already allows vendurepos.vercel.app\", that names a domain mentioned nowhere else. Its own step-9 troubleshooting entry reads \"The store must advertise order.create v4 and register v1; plugin 0.3.0 advertises order.create 1–5\", which is protocol jargon a new user cannot act on.", "where": "quick-start/desktop/03 top (vercel.app details); quick-start text, section 9 'plugin is missing or out of date'"},
+    "C4": {"score": 8, "worst_defect": "The Changelog is internal engineering notes rather than user-facing release notes. Bullets like \"order.create v5 custom lines are real order lines on a plugin-owned, disabled 'POS custom item' variant\", \"Migration TallyPosV51790900000000\" and repeated \"(ADR 0005)\" links mean nothing to a reader without the repo.", "where": "changelog/desktop/01, 0.3.0 and 0.2.0 bullet lists"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' shows two bordered cards (Keeps selling offline, Every sale lands once), then eight unboxed grey text blocks with no icons. It reads as two mismatched sections and a wall of grey paragraphs. The first card's headline slot is also half caveats (\"A reload needs the connection, and sales not yet sent are lost…\").", "where": "home/desktop/01 bottom to home/desktop/02 top"},
+    "C6": {"score": 8, "worst_defect": "On a 390 px screen the code blocks soft-wrap mid-expression, so 'generateMigration(config, { name: 'AddVendurePos', outputDir: './src/migrations' })' breaks over four ragged lines. That makes the copied-and-read setup code hard to follow. The mobile top bar also hides 'Quick start' behind a chevron and shows only Docs and Live demo.", "where": "quick-start/phone/03 top code block; home/phone/01 header"},
+    "C7": {"score": 9, "worst_defect": "Minor: the 404 page loads with a console error ('Failed to load resource… 404'), and Lighthouse still flags about 53 KiB of unused JavaScript and render-blocking requests on /. Titles, descriptions, JSON-LD breadcrumbs, the OG card, llms.txt, the sitemap, robots and the search API are all present and correct.", "where": "tech.json not-found.consoleErrors; lighthouse['/'].failing"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A stranger can't tell who is behind VendurePOS: no maker, company or person is named anywhere. The only outside party the home page shows is an unexplained 'ph.wcpos.com' receiving demo usage events, which makes a newcomer wonder whose project this is and where their data goes.",
+    "where": "home/desktop/02 comparison table last row and footer ('MIT licensed. Built with TallyUI.')",
+    "fix": "Add one footer line naming who builds and maintains VendurePOS (with a link). Where ph.wcpos.com appears, say in a few words that it is that maker's own self-hosted analytics."
+  },
+  "mean": 8.0
+}

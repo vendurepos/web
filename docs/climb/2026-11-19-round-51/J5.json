@@ -1,0 +1,48 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {
+      "score": 9,
+      "worst_defect": "Home says what it is ('Point of sale for Vendure', 'Pre-release · plugin 0.3.0') and gives the next click, but never says who should not use it or how it compares with a hosted till (Shopify POS, Square, Lightspeed). A buyer weighing options has to work out from 'Before you start' that a shop needing a cash drawer, card-terminal integration or a tested iPad till is better served elsewhere.",
+      "where": "home.desktop.01-02, home.phone.01-05 ('Before you start' block; no 'Who it is not for' or comparison section)"
+    },
+    "C2": {
+      "score": 7,
+      "worst_defect": "The live demo sells features the shippable plugin lacks. The home table says refunds are 'Yes' on the live demo but 'No, not on plugin 0.3.0' on your own store, and at-the-till says 'On plugin 0.3.0, Order details has no customer note. On the live demo…'. Meanwhile the changelog shows 0.1.0, 0.2.0 and 0.3.0 all inside six days (2026-10-01 to 2026-10-06, '0.3.0 Released the same day as 0.2.0, a few hours later'), with no plugin release in the six weeks since, and a known shipped bug is still open ('Not in the release notes: in 0.2.0 and 0.3.0 this role has no ReadOrder'). To a sceptic that reads as a demo that runs ahead of a stalled package.",
+      "where": "home.desktop.02 ('Live demo or your own store' table); at-the-till.desktop.01 (Order details note); changelog.desktop.01 / changelog.phone.01 (release dates, ReadOrder note)"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The quick start is well numbered and ends with 'Check it worked', but on 0.3.0 the device-key path needs a manual fix: the role the plugin creates 'has no ReadOrder', so the till's order history is refused until the user edits the role. The plugin-setup page's 'runMigrations(config);' snippet also drops the '.catch' that the quick start's version has, so the two pages disagree.",
+      "where": "quick-start.desktop.04 / quick-start.phone.08-09 (device key section); plugin-setup.desktop.01 (migrations snippet)"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "The changelog is written for the maintainer, not a buyer: 'GET /tally/v1/info advertises order.create 1–5 (ADR 0005)', 'order.create v5 custom lines…', '#116', 'TallyPosV51790900000000'. A store owner cannot tell from it what changed for them. Smaller issues: a collapsed aside titled 'If your store already allows vendurepos.vercel.app' points at a legacy domain without explaining it, and troubleshooting is a dense wall of error codes.",
+      "where": "changelog.desktop.01 / changelog.phone.01; quick-start.desktop.02 (CORS aside); troubleshooting.desktop.01"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "Below the hero and the two linked proof cards ('Keeps selling offline', 'Every sale lands once'), the 'What it does today' section turns into a long run of plain text blocks with no visual rhythm, which looks unfinished next to the polished hero. Doc pages are clean and consistent, and dark mode holds.",
+      "where": "home.desktop.02 ('What it does today' list); home.dark"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "On phone, the 'Live demo or your own store' table becomes a long column of repeated 'Live demo: Yes / Your Vendure store: Yes' rows that is tedious to scan, and the one row that matters (refunds: 'No, not on plugin 0.3.0') is buried in it. There is no horizontal overflow, code blocks wrap, and the quick-start tax table stacks cleanly.",
+      "where": "home.phone.03-04"
+    },
+    "C7": {
+      "score": 8,
+      "worst_defect": "Strong surface: every page returns 200, the 404 page returns 404, every page has a title and description, home has Organization and SoftwareApplication JSON-LD, llms.txt, llms-full.txt and a sitemap with lastmod all exist, and Lighthouse mobile scores 98/100/100/100. What is left: Lighthouse still flags about 53 KiB of unused JS and 130 ms of render-blocking resources on / and /docs/quick-start, and the 404 page has no JSON-LD.",
+      "where": "tech.json (lighthouse opportunities for / and /docs/quick-start; not-found jsonld empty)"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The live demo shows refunds at the till and an order customer note that plugin 0.3.0 cannot do ('Refunds … No, not on plugin 0.3.0'; 'On plugin 0.3.0, Order details has no customer note. On the live demo…'). All three plugin releases came within six days, the last on 2026-10-06, and none has shipped since, while a known role bug ('this role has no ReadOrder … Not in the release notes') is still in the current release. A competitor-aware adviser would warn a client that the demo overstates what they can install today and that the package may have stalled.",
+    "where": "home.desktop.02 ('Live demo or your own store' table); at-the-till.desktop.01; changelog.desktop.01",
+    "fix": "Ship a plugin release that closes the gap (refunds at the till, customer note, ReadOrder in the device-key role), or make the demo run plugin 0.3.0 and label demo-only features inside the demo. Also show 'last plugin release: <date>' plus a short roadmap line on home, so the release gap reads as planned work rather than abandonment."
+  },
+  "mean": 7.86
+}
