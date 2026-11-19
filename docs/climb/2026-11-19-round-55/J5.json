@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The first screen never gives the hardware envelope a buyer comparing against Square or Shopify POS checks first. It does not say the till is tested only in desktop Chrome, does not drive the card terminal and opens no cash drawer. Those facts sit under 'Before you start' near the bottom of the page.", "where": "home.desktop.01 hero vs home.desktop.02 'Before you start' / home.phone.04"},
+    "C2": {"score": 7, "worst_defect": "The site never says who builds or supports VendurePOS, how to get help, or what comes next. It names no maintainer or company, links no issue tracker or support channel and has no roadmap, only 'Built with TallyUI' and an unexplained ph.wcpos.com. The changelog shows three plugin releases in five days (2026-10-01 to 2026-10-06) and none since. The demo already refunds at the till and takes a customer note, which plugin 0.3.0 cannot, and no version or date is given for when they ship.", "where": "home.desktop.02 footer + demo table; changelog.desktop.01; at-the-till 'Order details' / 'Refund at the till (live demo only)'"},
+    "C3": {"score": 9, "worst_defect": "Step 8d says 'Wait for the catalogue and settings' but never says what the till shows when it is ready or how long a real catalogue takes. A first-time installer cannot tell a slow sync from a stuck one until they reach Troubleshooting.", "where": "quick-start.desktop.03-04 step 8 d / quick-start.phone.08"},
+    "C4": {"score": 8, "worst_defect": "Below each 'In short' line, the changelog entries are internal developer notes a store owner cannot use: 'order.create v5', 'lineTax: { none: true, classes: true }', 'ADR 0005', '#116'. The one fact that matters to an operator, that the device-key role lacks ReadOrder, appears only as a trailing 'Not in the release notes' aside.", "where": "changelog.desktop.01"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' sets two boxed cards with buttons above eight unboxed heading-and-paragraph items. The section reads as two different components, and the second half looks like default prose.", "where": "home.desktop.01 bottom to home.desktop.02 top"},
+    "C6": {"score": 8, "worst_defect": "The phone footer's GitHub, npm, Limitations and Changelog links are small inline text links packed onto one line, so they are cramped tap targets. On phone the header also hides Quick start behind a chevron.", "where": "home.phone.05 footer; home.phone.01 header"},
+    "C7": {"score": 9, "worst_defect": "The social card makes the strongest claim ('every sale lands in Vendure once') but drops both 'open-source' and 'pre-release'. A shared link therefore reads as a finished product. The SoftwareApplication JSON-LD also carries no softwareVersion.", "where": "og-image.png; tech.json home jsonLd"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "I cannot recommend a till to a client without knowing who stands behind it, and this site never says. It names no maintainer or company and gives no support or issue channel, no roadmap or dates for the gaps it admits (refunds at the till, coupons), and a plugin changelog that went quiet after a five-day burst of releases ending 2026-10-06. The site is honest about limits but silent on continuity, and continuity is what separates a project from a toy for a POS buyer.",
+    "where": "home.desktop.02 footer; changelog.desktop.01; limitations.desktop.01",
+    "fix": "Add a short 'Who maintains this' block on the home page and docs Overview. It should name the maintainer, link GitHub Issues as the support channel, and give the next plugin release with what it brings (refunds at the till) and a rough date."
+  },
+  "mean": 8.1
+}
