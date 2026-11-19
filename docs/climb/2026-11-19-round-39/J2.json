@@ -1,0 +1,48 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero says 'Point of sale for Vendure' clearly, but the line under it leans on developer jargon ('the open-source headless commerce framework'), which means nothing to a shop owner whose store a freelancer built.",
+      "where": "home.desktop.01 / home.phone.01, hero subtitle"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "The home badge reads 'Pre-release · plugin 0.3.0' while the changelog says 'The hosted till at app.vendurepos.com is version 0.1.0'. Two version numbers for one product, with nothing on the home page saying which one I'm running.",
+      "where": "home.desktop.01 badge vs changelog.desktop.01 / changelog.phone.01 intro"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The staff-till setup hands a permission chore to the owner: 'On plugin 0.3.0 that role has no ReadOrder: add it yourself, or the till sells but its order history is refused'. Without that step, staff can't look up past orders on day one.",
+      "where": "quick-start step 4 (quick-start.desktop.02 / phone); repeated in changelog.desktop.01 0.2.0 notes and connect-a-till"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The cashier guide mixes steps that only work on the live demo into the real-store steps: 'Refund at the till (live demo)' and 'On the live demo, type a Customer note' sit next to 'Refund a sale', which says the refund goes through the Vendure Dashboard on plugin 0.3.0. Troubleshooting also sends staff round in a loop: 'Ask the store owner to look at the sync log…', then sends the owner on to whoever runs the server.",
+      "where": "at-the-till.desktop.02–03 (Refund a sale / Refund at the till (live demo)); troubleshooting.desktop.01"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The register-closing screenshot on At the till sits in an oversized frame with a lot of empty padding, and the home page's ten feature cards are all the same grey box, so nothing stands out. Dark mode holds up.",
+      "where": "at-the-till.desktop.03–04 close-the-day figure; home.desktop.01–02 feature cards; home.desktop-dark"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "On a phone, the hero till screenshot takes about a screen and a half, and its category chips are cut off ('Gif'), before 'What it does today' appears. Tables stack well and nothing scrolls sideways.",
+      "where": "home.phone.01–02, hero product image"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Lighthouse is 98/100/100/100, but LCP is 2.4 s with render-blocking requests and about 52 KiB of unused JavaScript. Every endpoint (llms.txt, sitemap, robots, search API, og image) returns 200, and the 404 page is a proper one.",
+      "where": "tech.json lighthouse for / and /docs/quick-start"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "At the till, the page my staff will actually use, mixes steps that only work on the live demo ('Refund at the till (live demo)', 'On the live demo, type a Customer note') into the instructions for a real store. A cashier on plugin 0.3.0 reads a refund procedure their till cannot do.",
+    "where": "at-the-till.desktop.02–03, sections 'Refund a sale' and 'Refund at the till (live demo)'",
+    "fix": "Put everything that only works on the demo into one clearly labelled 'Only on the live demo' box, or take it out of the cashier guide. Keep 'Refund a sale' (Vendure Dashboard plus Pay out) as the only refund procedure for a real shop."
+  },
+  "mean": 8.3
+}

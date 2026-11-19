@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 9, "worst_defect": "The hero stacks three text blocks of different widths: the centred lede is about 640 px wide, but the caption under the buttons ('Your own store needs the plugin on your Vendure server first: the quick start sets it up…') runs about 830 px, wider than the lede it sits under, so the centred column loses its shape just above the till screenshot.", "where": "home/desktop/01"},
+    "C2": {"score": 9, "worst_defect": "The changelog says 'The hosted till at app.vendurepos.com is version 0.1.0' directly above '0.3.0 (2026-10-06)', and the home badge says 'plugin 0.3.0'. App and plugin versions are never told apart in a sentence, so the two version lines look contradictory at a glance.", "where": "changelog/desktop/01"},
+    "C3": {"score": 8, "worst_defect": "'Check it worked' is a text-only checklist ('the payment is tally-pos, settled; the fulfilment is delivered…'). The quick start shows no picture of a synced order in the till or in the Vendure Dashboard, so success has to be pictured from prose at the end of a 6,700 px page.", "where": "quick-start/desktop/04"},
+    "C4": {"score": 8, "worst_defect": "Changelog typography is inconsistent: 'order.create v5 custom lines…' and 'order.create 1–5' are plain text while every other identifier on the same lines (tallyCustomName, GET /tally/v1/info, TALLY-FEE) is set as code. The search API also gives every hit the breadcrumb 'VendurePOS' only, with no page name.", "where": "changelog/desktop/01; text/endpoint_api_search_query_offline.txt"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' is a grid of ten flat grey cards that all carry the same weight. The two claims that are proven and linked ('Keeps selling offline', 'Every sale lands once') look the same as 'Barcode scanners' or 'Park a sale', and only those two cards have links, so rows 1 and 2+ have different internal rhythm.", "where": "home/desktop/01-02"},
+    "C6": {"score": 8, "worst_defect": "At 390 px the inline code chip 'packages/vendure-plugin/CHANGELOG.md' breaks across lines at the hyphen ('packages/vendure–' / 'plugin/CHANGELOG.md'), leaving two half-chips. The home feature cards stack into roughly 2,200 px of identical boxes before the demo-vs-store comparison.", "where": "changelog/phone/01; home/phone/02-03"},
+    "C7": {"score": 9, "worst_defect": "Search results for 'offline' carry only the breadcrumb ['VendurePOS'] on every hit, not the page title, so a search UI or agent cannot show where a hit lives without the URL. Everything else is strong: Lighthouse 98/100/100/100, llms.txt plus llms-full.txt, sitemap, JSON-LD, a real 404 status and a good share card.", "where": "text/endpoint_api_search_query_offline.txt"}
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "The home page's main block is ten equal-weight grey cards. The two tested, linked claims that set VendurePOS apart (offline selling, every sale lands once) get no more emphasis than 'Barcode scanners'. On a 390 px phone the grid becomes about 2,200 px of identical boxes, which buries the demo-vs-your-store comparison and the prerequisites below it.",
+    "where": "home/desktop/01-02; home/phone/02-03",
+    "fix": "Make the two tested claims a full-width, highlighted pair with their test links. Set the other eight as a compact two-column list (one column on phone) without card chrome, so the section is about half its current height."
+  },
+  "mean": 8.4
+}
