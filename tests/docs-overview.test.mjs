@@ -15,6 +15,8 @@ test('docs overview next steps link quick start and plugin setup', () => {
     '/docs/quick-start',
     'https://demo.vendurepos.com/demo',
     '/docs/plugin-setup',
+    '/docs/at-the-till',
+    '/docs/limitations',
     'https://github.com/vendurepos/app',
   ]);
   // Round 38, J4 C4: no pager below the Overview; its Next steps card is the one link to Quick start.
@@ -98,6 +100,15 @@ test('overview next steps lead with Quick start, two by two', () => {
   assert.ok(gridClass.includes('sm:grid-cols-2'), gridClass);
   assert.ok(!gridClass.includes('sm:grid-cols-3'), gridClass);
   const cards = Array.from(slice.matchAll(/<a ([^>]*data-card="true"[^>]*)>/g), ([, attrs]) => href({ attrs }));
-  assert.equal(cards.length, 4);
+  assert.equal(cards.length, 6);
   assert.equal(cards[0], '/docs/quick-start');
+});
+
+test('overview next steps give owners At the till and Limitations, in their pages\' own words (round 72, J2 C4)', () => {
+  const text = html.replace(/<script\b[\s\S]*?<\/script>/g, ' ').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ');
+  for (const [slug, title] of [['at-the-till', 'At the till'], ['limitations', 'Limitations']]) {
+    const page = readFileSync(join('content/docs', `${slug}.mdx`), 'utf8');
+    const description = page.match(/^description: (.+)$/m)[1];
+    assert.ok(text.includes(`${title} ${description}`), `${title} uses its page description`);
+  }
 });
