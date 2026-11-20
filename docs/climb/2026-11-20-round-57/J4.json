@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "On the phone the hero screenshot, captioned 'A sale in progress on the live demo till.', shows only the Products tab: two product cards, a category row cut at 'Gif', and the cart only as a 'Cart (3) · €20.09' tab label. Above the fold, phone readers see a product grid and never see the sale.", "where": "home/phone/01"},
+    "C2": {"score": 9, "worst_defect": "The card heading 'Keeps selling offline' promises more than its own body text, which says 'A reload needs the connection, and sales not yet sent are lost if this site's data is cleared'. The caveat is honest but it sits under a headline that reads as unconditional.", "where": "home/desktop/01, 'What it does today' first card"},
+    "C3": {"score": 8, "worst_defect": "Step '8. Sign in and make a sale' is nine lettered sub-steps (a–i) of plain text, from the sign-in form through the opening float and the tender. No screenshot shows the sign-in screen or the 'synced' state the reader has to recognise. The quick start has no images at all (no [image:] marker in quick-start.txt).", "where": "quick-start/desktop/03-04, quick-start/phone/07-08"},
+    "C4": {"score": 8, "worst_defect": "Inline code inside parentheses renders with visible gaps: 'Tax-exclusive ( pricesIncludeTax: false )' in the step 6 table, and '( tallyCustomName, tallyCustomSku )' and '( order.tallyShipping ,' in the changelog. The parentheses look detached from what they enclose.", "where": "quick-start/desktop/03 tax table; changelog/desktop/01"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' changes pattern halfway: two bordered cards with buttons, then eight unboxed heading-plus-paragraph items in a two-column list with no container. The section reads as two different components stacked, not one deliberate hierarchy. At the till then runs about 1,700 px of solid text (slice 01) before its first screenshot.", "where": "home/desktop/01 (y≈1300-1800); at-the-till/desktop/01"},
+    "C6": {"score": 8, "worst_defect": "On the phone the step 6 tax table collapses into cards. Each card shows the header chip 'taxOptions.orderTaxCalculationStrategy' directly above the value chip 'new OrderLevelTaxCalculationStrategy()' with no label, so two code chips sit stacked and it is unclear which is the key and which is the value. The other column's header ('Channel pricing') is shown as a bold label.", "where": "quick-start/phone/06"},
+    "C7": {"score": 9, "worst_defect": "Lighthouse mobile on / still flags LCP at 2.6 s (score 0.89) and a render-blocking request (est. 120 ms). Everything else (llms.txt, sitemap, robots, search API, the 404 status, the share card, JSON-LD) is in place.", "where": "tech.json lighthouse '/'"}
+  },
+  "overall_worst": {
+    "criterion": "C6",
+    "defect": "The quick start's one decision table (step 6, which order tax strategy to pick) falls apart at 390 px. Each stacked card puts the unlabeled header chip 'taxOptions.orderTaxCalculationStrategy' on top of the value chip, so a phone reader sees two code chips per row and cannot tell the setting from its value, on the step that changes store-wide tax.",
+    "where": "quick-start/phone/06",
+    "fix": "In the stacked layout, give the second column the same bold-label treatment as 'Channel pricing' (for example 'orderTaxCalculationStrategy:' as plain bold text, then the value chip). Or replace the table with two lines, 'Tax-exclusive → new OrderLevelTaxCalculationStrategy()'. Drop the spaces inside '( pricesIncludeTax… )' at the same time."
+  },
+  "mean": 8.3
+}

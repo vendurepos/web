@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero ('Point of sale for Vendure', 'Pre-release · plugin 0.3.0') says what it is, but nothing on home says who should not use it or how it differs from a hosted till (Shopify POS, Square) or another open-source one, so a buyer weighing options has no reason given to pick it.", "where": "home/desktop/01-02"},
+    "C2": {"score": 7, "worst_defect": "No person, company or contact is named anywhere; the footer gives only 'MIT licensed. Built with TallyUI. For Medusa, see MedusaPOS.', while the demo and the site send analytics to 'ph.wcpos.com', a domain the site never explains. Also, the latest plugin release, 0.3.0, is dated 2026-10-06 and still ships the role bug the changelog itself flags as 'Not in the release notes: in 0.2.0 and 0.3.0 this role has no ReadOrder'.", "where": "home/desktop/02 footer and demo table; connect-a-till/desktop/01 'Where requests go'; changelog/desktop/01"},
+    "C3": {"score": 8, "worst_defect": "The path is complete and ends in 'Check it worked', but a developer still has to patch the plugin's own till role by hand ('On plugin 0.3.0 that role has no ReadOrder: add it yourself') and change the store-wide tax strategy, which is friction a released plugin should not need.", "where": "quick-start/desktop/02-03"},
+    "C4": {"score": 8, "worst_defect": "The changelog cites internal references a reader cannot follow ('(ADR 0005)', '(#116)'), and the same ReadOrder caveat is repeated in quick-start, connect-a-till and the changelog instead of living in one place that the others link to.", "where": "changelog/desktop/01; connect-a-till/desktop/01"},
+    "C5": {"score": 8, "worst_defect": "In home 'What it does today', two boxed cards with test links sit above eight unboxed plain items, so the section looks half-finished; the 404 page is three buttons over an otherwise empty screen.", "where": "home/desktop/01 bottom; not-found/desktop/01"},
+    "C6": {"score": 8, "worst_defect": "On phone, the quick-start tax table stacks into repeated 'Channel pricing' labels with a 'taxOptions.orderTaxCalculationStrategy' code chip above each value, so it reads as a wall of repeated tokens instead of a table.", "where": "quick-start/phone/06"},
+    "C7": {"score": 9, "worst_defect": "The share card crops the till screenshot through the 'Add charge' button at the bottom edge; everything else is strong (Lighthouse 97-100, a real 404, JSON-LD, llms.txt, the search API).", "where": "og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "No person, company or contact is named anywhere on the site, while the demo and the site send analytics to 'ph.wcpos.com', a domain the site never explains. A sceptic advising a client cannot tell who stands behind a pre-release till whose last plugin release is six weeks old.",
+    "where": "home/desktop/02 footer and 'Live demo or your own store' table; connect-a-till/desktop/01 'Where requests go'",
+    "fix": "Add one line to the home footer and the Overview page naming who builds and maintains VendurePOS, how it is supported, and its relation to wcpos.com (the owner of ph.wcpos.com)."
+  },
+  "mean": 8.0
+}
