@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero says what it is ('Point of sale for Vendure', 'Pre-release · plugin 0.3.0') but nowhere says what the hosted till at app.vendurepos.com costs or who runs it, so a shop owner cannot tell at a glance whether using it is free.", "where": "home.desktop.01 hero; home.phone.01"},
+    "C2": {"score": 8, "worst_defect": "The fact that matters most to a counter with a tablet, 'tablets and phones, an iPad included, are not tested yet', is buried mid-sentence in the 'Before you start' bullet about browsers instead of being stated as a plain limit.", "where": "home.desktop.02 'Before you start'; home.phone.04"},
+    "C3": {"score": 7, "worst_defect": "On your own store a refund cannot be done at the till: 'refund in the Vendure Dashboard. The refund stays Pending until an administrator settles it with two Admin API calls; see Plugin setup', and the till role 'vendurepos-pos-till' lacks ReadOrder so it must be added by hand, so tomorrow's first return needs the freelancer.", "where": "home.desktop.02 'Live demo or your own store' table, row 'Refund a sale at the till'; at-the-till.desktop.02 'Refund a sale'; quick-start device-key step"},
+    "C4": {"score": 8, "worst_defect": "At the till, the page staff will actually read, opens with a plugin error ('This store's VendurePOS plugin is missing or out of date…') before any how-to, and the troubleshooting 'Till updates line' entry is a dense wall of error codes.", "where": "at-the-till.desktop.01 first paragraph; troubleshooting.desktop.01"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' mixes two bordered cards ('Keeps selling offline', 'Every sale lands once') with eight unboxed two-column items, so the section looks uneven; the cashier-sheet screenshot sits small inside a large empty grey frame.", "where": "home.desktop.01-02; at-the-till.desktop.03"},
+    "C6": {"score": 8, "worst_defect": "The 'Keeps selling offline' card becomes a long, dense paragraph on a 390 px screen, and the phone header shows only Docs and Live demo, hiding Quick start and At the till behind the menu.", "where": "home.phone.02; home.phone.01 header"},
+    "C7": {"score": 9, "worst_defect": "Minor only: the 404 page has no JSON-LD and the quick-start mobile LCP is 2.6 s; everything else (titles, descriptions, og-image, llms.txt, search API, sitemap, robots) is in place.", "where": "tech.json not-found and lighthouse /docs/quick-start"}
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "For an owner's own store, the site says a refund 'stays Pending until an administrator settles it with two Admin API calls; see Plugin setup' and points to a developer page, so there is no procedure the owner or staff can follow for a return without calling the freelancer.",
+    "where": "home.desktop.02 table row 'Refund a sale at the till'; at-the-till 'Refund a sale'",
+    "fix": "Add a short who-does-what box to at-the-till 'Refund a sale' (cashier: Pay out cash or refund on the terminal; manager: refund in the Dashboard and run this copy-paste settle step), and link the home table row to that box instead of Plugin setup."
+  },
+  "mean": 8.0
+}

@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/quick-start.txt; text/plugin-setup.txt; text/connect-a-till.txt"
+    },
+    "C4": {
+      "score": 9,
+      "worst_defect": "Observed: installation pins @vendurepos/plugin@0.3.0, but the full plugin reference and optional device-key instructions link to the moving main-branch README rather than a matching release.",
+      "where": "text/plugin-setup.txt, 'Check your own code'; text/quick-start.txt, optional device key; tech.json links"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.desktop.02.jpg; shots/home.desktop-dark.jpg; desktop documentation slices"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.phone.01.jpg through home.phone.05.jpg; quick-start phone slices; tech.json overflowX"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Observed: the quick-start mobile Lighthouse capture reports 2.6-second LCP and an estimated 23 KiB of unused JavaScript.",
+      "where": "tech.json, lighthouse./docs/quick-start"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "Version-pinned installation relies on an unversioned supplementary plugin reference, leaving its applicability to plugin 0.3.0 unclear.",
+    "where": "text/plugin-setup.txt, 'Check your own code'; text/quick-start.txt, optional device key; tech.json links",
+    "fix": "Pin the full plugin README link to plugin-v0.3.0. Link the quick start's pnpm guidance directly to the existing Connect a till instructions."
+  },
+  "mean": 9.4
+}

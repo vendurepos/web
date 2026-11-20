@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The first feature card under the hero, 'Keeps selling offline', spends most of its text on caveats ('a reload needs the connection, and clearing that browser's data for the till loses them'), so the headline benefit reads like a warning to a newcomer before any plain benefit lands.", "where": "home/desktop/01 (and home/phone/02), 'What it does today' first card"},
+    "C2": {"score": 8, "worst_defect": "The home comparison table says the demo 'sends ... anonymous usage events to ph.wcpos.com' with no word on who wcpos is. A newcomer sees a domain under a different brand getting their data and nothing explains it until Connect a till.", "where": "home/desktop/02, 'Live demo or your own store' table, last row"},
+    "C3": {"score": 8, "worst_defect": "Quick start has no image anywhere (no [image:] marker in text/quick-start.txt). Step 8 'Sign in and make a sale' describes the sign-in form (store URL, channel token, barcode field, opening float) only in words, so a newcomer cannot see what the screen should look like or what success looks like on the till.", "where": "quick-start/desktop/03-04, step 8"},
+    "C4": {"score": 8, "worst_defect": "The product is VendurePOS, but the docs keep using Tally names: TallyPosPlugin, TallyPosSell, tally-pos, tally-in-store, /tally/v1 and migrations like 'TallyPosV51790900000000'. One note in Quick start step 2 explains it; Plugin setup and the Changelog never do.", "where": "plugin-setup/desktop/01, 'Configure the plugin and migrations'"},
+    "C5": {"score": 8, "worst_defect": "In 'What it does today', two boxed cards with buttons are followed by eight unboxed grey heading-plus-paragraph items in a different style. This middle part of the home page becomes a long wall of grey text with no icons or images.", "where": "home/desktop/01-02, 'What it does today'"},
+    "C6": {"score": 8, "worst_defect": "On phone the hero screenshot shows only two product tiles and a category chip cut off at 'Gif'. The cart is hidden behind the 'Cart (3) · €20.09' tab, so the caption 'A sale in progress on the live demo till.' sits under an image that shows no sale.", "where": "home/phone/01, hero screenshot"},
+    "C7": {"score": 9, "worst_defect": "Quick start's mobile LCP is 2.6 s and the audit flags 'largest-contentful-paint (0.88)' and render-blocking requests. Everything else is sound: titles and descriptions, OG card, JSON-LD, llms.txt, sitemap, search API and a real 404.", "where": "tech.json lighthouse /docs/quick-start"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "In the home page table the demo sends 'anonymous usage events to ph.wcpos.com', a domain under a brand the visitor has never heard of, with no explanation on the page. For someone who has just arrived, that is the one line that reads like hidden tracking by a third party.",
+    "where": "home/desktop/02 and home/phone/04, 'Live demo or your own store' table, 'Sales reach Vendure' row",
+    "fix": "On the home page, say who owns it in plain words (for example 'to our own self-hosted analytics, with no cookie') and keep the ph.wcpos.com domain and event list on Connect a till, which the link already points to."
+  },
+  "mean": 8.1
+}
