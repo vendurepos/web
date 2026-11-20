@@ -1,0 +1,48 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero opens with the badge \"Pre-release · plugin 0.3.0\" and the line \"the open-source headless commerce framework\". That is developer jargon. Before the shop owner has learned what the till does for the counter, they are asked to parse plugin versions and \"headless\".",
+      "where": "home.desktop.01 / home.phone.01"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "The refund burden is real and is stated honestly. But it sits inside a table cell: \"The refund stays Pending until an administrator settles it with two Admin API calls.\" An owner who skims the table can miss that refunds need their developer.",
+      "where": "home.desktop.02 (comparison table, refund row)"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The path has a manual gotcha: \"On plugin 0.3.0 the role it creates (vendurepos-pos-till) has the step 4 permissions except ReadOrder, so add ReadOrder to that role yourself.\" The owner has to pass a hand-fix in Vendure roles to their freelancer before staff can sell.",
+      "where": "quick-start (Optional: a device key) / connect-a-till"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The cashier page tells staff to \"record it on the till with Pay out (choose your initial at the right of the bar)\". On screen the control is a round lettered avatar (\"C\"), so a cashier cannot tell what \"your initial\" refers to. The page also opens with a plugin-version caveat (\"With no plugin, or one too old to sell…\") before \"Open the register\".",
+      "where": "at-the-till.desktop.01 / at-the-till.desktop.03 / at-the-till.phone.05"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The cashier-sheet and closure screenshots are small and centred, with wide empty bands either side. The Z report screen, the one thing an owner wants to see, is hard to read. The home \"What it does today\" section mixes two boxed cards with eight unboxed items, so the rhythm is uneven.",
+      "where": "at-the-till.desktop.03 / at-the-till.desktop.04 / home.desktop.01"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "On phone the hero screenshot shows only the Products tab with two product cards: no cart, no total, no payment. It does not show a sale. The phone header shows only \"Docs\" and \"Live demo\", which hides Quick start and At the till.",
+      "where": "home.phone.01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Lighthouse mobile on / still flags \"unused-javascript Est savings of 53 KiB\", 120 ms render-blocking and 14 KiB legacy-javascript. Scores are 98/100/100/100 with LCP 2.3 s.",
+      "where": "tech.json (lighthouse /)"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "At the till is the page an owner hands to staff, and it reads partly like a developer page. It opens with a plugin-version caveat (\"Some steps depend on the store's VendurePOS plugin. With no plugin, or one too old to sell…\"). It carries a demo-only refund section. It tells cashiers to \"choose your initial at the right of the bar\", but the control is an unlabeled round letter avatar. A cashier reading on a phone meets store-setup caveats before \"Open the register\".",
+    "where": "at-the-till.phone.01 / at-the-till.desktop.01 / at-the-till.desktop.03 / at-the-till.phone.05",
+    "fix": "Move the plugin-version note to the end of the page or into Troubleshooting. Collapse \"Refund at the till (live demo only)\" into a one-line note. Name the control as it looks: \"tap the round letter button at the top right of the till and pick your name\"."
+  },
+  "mean": 8.3
+}

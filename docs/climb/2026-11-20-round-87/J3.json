@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 6 prescribes different store-wide tax strategies for inclusive and exclusive channels, but says only that a store mixing modes 'must account for the store-wide strategy', leaving the configuration decision unresolved.",
+      "where": "shots/quick-start.desktop.03.jpg; text/endpoint_llms_full_txt.txt, Quick start / Why these pairings"
+    },
+    "C4": {
+      "score": 9,
+      "worst_defect": "The changelog documents a figures_mismatch warning for subtotal, tax or discount discrepancies, but Troubleshooting provides no explanation of how to investigate that warning.",
+      "where": "text/endpoint_llms_full_txt.txt, Changelog / 0.2.0; text/troubleshooting.txt"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop-dark.jpg; desktop screenshots of Quick start, Plugin setup and At the till"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/quick-start.phone.06.jpg; required phone screenshots; tech.json overflowX checks"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The captured mobile Lighthouse audit identifies 53 KiB of unused JavaScript and an estimated 120 ms of render-blocking savings on the homepage.",
+      "where": "tech.json, lighthouse / / / failing"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "A developer maintaining channels with both inclusive and exclusive pricing must guess which store-wide tax strategy to use.",
+    "where": "shots/quick-start.desktop.03.jpg; text/endpoint_llms_full_txt.txt, Quick start / Why these pairings",
+    "fix": "State the supported configuration for mixed pricing modes, or explicitly state that this setup is unsupported. Add receipt-versus-Vendure tax and total checks for each supported mode to 'Check it worked'."
+  },
+  "mean": 9.1
+}
