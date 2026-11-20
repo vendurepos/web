@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 9, "worst_defect": "The hero's proof image, captioned 'A sale in progress on the live demo till.', is scaled down so far on desktop that its prices, tax lines and 'Checkout €20.09' render at roughly 9 px and cannot be read without zooming.", "where": "home.desktop.01 (hero screenshot)"},
+    "C2": {"score": 7, "worst_defect": "Nowhere does the site say who builds or maintains VendurePOS, or where to report a bug or get support. The only clues are a footer 'Built with TallyUI. For Medusa, see MedusaPOS.' and an unexplained third-party domain, 'ph.wcpos.com', in the demo row of the comparison table. Separately, 'Barcode scanners … work out of the box' oversells a feature that needs a ProductVariant custom field and a database migration (Connect a till).", "where": "home.desktop.02 (table row 'Sales reach Vendure…' and footer); home.desktop.01 'Barcode scanners'"},
+    "C3": {"score": 8, "worst_defect": "Step 8c asks for 'an existing single text ProductVariant custom field, such as barcode' (how to add one). Adding that field means another database migration, so a developer who followed step 3 has to go back and generate and run a second migration. Step 3 never mentions declaring the barcode field before migrating.", "where": "quick-start.desktop.03 bottom / quick-start.phone.08 step c"},
+    "C4": {"score": 8, "worst_defect": "The changelog covers only the plugin: three releases between 2026-10-01 and 2026-10-06, nothing since. The hosted till is reported as 'till app version 0.1.0, built 20 Nov 2026 from … commit 68c22b8', but the app has no change history at all, so the part that changes most is undocumented and the project looks dormant since early October.", "where": "changelog.desktop.01"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' opens with two bordered cards and then runs eight more features as unboxed grey text pairs ('Paid, fulfilled…' through 'Line and order discounts') with no visual separation, which reads as a wall of text. The docs keep the stock template chrome ('Copy Markdown' / 'Open') unchanged.", "where": "home.desktop.01 bottom to home.desktop.02 top"},
+    "C6": {"score": 8, "worst_defect": "On the phone, the hero screenshot is cropped to the till header and two product tiles (Canvas Apron, Chocolate Biscuits). The cart is hidden behind the 'Cart (3) · €20.09' tab, so the caption 'A sale in progress on the live demo till.' describes nothing the reader can see. The top bar also hides 'Quick start' behind the chevron.", "where": "home.phone.01"},
+    "C7": {"score": 9, "worst_defect": "The home SoftwareApplication JSON-LD has no softwareVersion, even though the page badge says 'Pre-release · plugin 0.3.0', so machine readers cannot tell the version or the pre-release status. Everything else is strong: Lighthouse 97–100, a correct 404 page, a working search API, and llms.txt, the sitemap and robots.txt all present.", "where": "tech.json pages.home.desktop.jsonLd"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A buyer cannot tell who is behind VendurePOS, how it is supported, or whether it is maintained. The site names no maintainer, gives no issue or support route beyond a bare GitHub icon, and leaves 'ph.wcpos.com' (a different brand) unexplained on the home page. The plugin changelog shows nothing since 2026-10-06. Together these are exactly what would make me advise a client to wait.",
+    "where": "home.desktop.02 (demo row and footer); changelog.desktop.01",
+    "fix": "Add one line to 'Before you start' or the footer that names who maintains VendurePOS and says what wcpos.com is, and link the GitHub issue tracker as the support channel. Add a short till-app entry to the changelog so recent activity is visible."
+  },
+  "mean": 8.1
+}

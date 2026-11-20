@@ -1,0 +1,48 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero speaks to developers only: \"VendurePOS is an open-source till for Vendure, the open-source headless commerce framework\", and its two buttons are \"Live demo\" and \"Quick start\" (a server install guide). The hero has no entry for a shop owner or cashier. \"At the till\" appears only in the desktop nav and the closing paragraph.",
+      "where": "home.desktop.01, home.phone.01"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "The home comparison table shows \"Refund a sale at the till\" as Yes in the demo column, but on the owner's own store the refund \"stays Pending until an administrator settles it with two Admin API calls\". A quick reader can take the Yes away and miss the caveat.",
+      "where": "home.desktop.02 (Live demo or your own store table)"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 8, \"Sign in and make a sale\", sends you to app.vendurepos.com but has no screenshot of the sign-in screen, so after nine developer steps (migrations, CORS, tokenMethod, tax strategy) the owner cannot see what the staff login looks like. The optional device key section was also clipped in the capture.",
+      "where": "quick-start.desktop.03/04 (step 8), tech.json clipped=true"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Troubleshooting, \"When till updates need attention\", mixes counter instructions with server jargon: errorCode names such as `register_session_already_open` and `register_closure_number_invalid`, plus \"copy the refused line from this till's sync log\". A cashier cannot tell which lines are meant for them.",
+      "where": "troubleshooting.desktop.01/02"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "In \"What it does today\", two boxed cards are followed by an unboxed two-column text list, so the section looks unfinished. On At the till, the cashier-sheet and closure screenshots are small and centred with large empty margins.",
+      "where": "home.desktop.01 to 02; at-the-till.desktop.03/04"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The phone header shows only \"Docs\" and \"Live demo\". \"Quick start\" and \"At the till\", the cashier's page, are hidden behind the chevron. On the payment screenshot the quick-amount buttons wrap and leave \"€50.00\" alone on a second row.",
+      "where": "home.phone.01; at-the-till.phone.04"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The OG image cuts the till screenshot off mid product card at the bottom edge. Everything else is strong: Lighthouse 98/97 with 100s, JSON-LD on every page, llms.txt and llms-full.txt, a 10-URL sitemap, working search and a real 404.",
+      "where": "og-image.png"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "The home page gives a shop owner or cashier no route of their own. The hero offers only \"Live demo\" and \"Quick start\", a developer install guide with migrations, CORS and tax strategies. The cashier guide \"At the till\" is missing from the hero and hidden from the phone header, so staff who need to sell tomorrow have to hunt for it.",
+    "where": "home.desktop.01, home.phone.01",
+    "fix": "Add a third hero link, \"For cashiers: At the till\", and keep \"At the till\" visible in the phone header next to Docs and Live demo."
+  },
+  "mean": 8.3
+}

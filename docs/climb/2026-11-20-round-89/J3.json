@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 6 prescribes different store-wide tax strategies for inclusive and exclusive channels, but 'A store mixing pricing modes must account for the store-wide strategy' leaves developers without a configuration recommendation or verification procedure for that case.",
+      "where": "text/quick-start.txt, step 6; text/endpoint_llms_full_txt.txt:876\u2013905"
+    },
+    "C4": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "text/plugin-setup.txt; text/connect-a-till.txt; text/troubleshooting.txt; text/endpoint_api_search_query_offline.txt"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop-dark.jpg; shots/plugin-setup.desktop.02.jpg; shots/quick-start.desktop.01.jpg"
+    },
+    "C6": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "shots/home.phone.01.jpg through home.phone.05.jpg; shots/quick-start.phone.01.jpg through quick-start.phone.09.jpg; shots/plugin-setup.phone.02.jpg"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The captured mobile Quick start audit reports a 2.6-second LCP, with render-blocking requests and an estimated 25 KiB of unused JavaScript.",
+      "where": "tech.json, lighthouse./docs/quick-start"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "A developer maintaining channels with both inclusive and exclusive pricing must guess how to resolve the conflicting recommendations for the single store-wide tax strategy.",
+    "where": "Quick start, step 6; text/endpoint_llms_full_txt.txt:876\u2013905",
+    "fix": "Add a tested recommendation for mixed-pricing channels, or explicitly state the unsupported combination. Include how to verify receipt and Vendure tax totals for each pricing mode before accepting live sales."
+  },
+  "mean": 9.3
+}
