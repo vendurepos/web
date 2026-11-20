@@ -77,12 +77,6 @@ const features = [
     description:
       "Discount a line or the whole sale. The plugin applies the same discounts, and the order in Vendure matches the receipt's totals.",
   },
-  {
-    // vendurepos/app 694cf3e apps/pos/e2e/sign-in.spec.ts:1931 ("fees, a shipping charge and a custom item, one with a tax class, are applied by the plugin with the receipt's totals"); changelog.mdx 0.3.0 (round 66, J5 C1)
-    title: 'Custom items, fees and shipping',
-    description:
-      "Add a custom item, a fee or a shipping charge to the sale, with a tax class if it needs one. The plugin adds them to the Vendure order as an order line, a surcharge and the shipping line, and the order matches the receipt's totals.",
-  },
 ];
 
 // What the live demo shows next to a real store. Each row names the vendurepos/app tests behind it, like the features above.
