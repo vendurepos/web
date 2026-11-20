@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The first feature card a newcomer reads, \"Keeps selling offline\", spends most of its text on failure caveats (\"a reload needs the connection, and clearing that browser's data for the till loses them\"), so the headline benefit reads like a warning before it reads like a benefit.", "where": "home.desktop.01 / home.phone.02, 'What it does today' first card"},
+    "C2": {"score": 8, "worst_defect": "The home comparison table says the demo \"sends ... anonymous usage events to ph.wcpos.com\" without ever saying what wcpos is, so a stranger sees an unrelated third-party domain on a VendurePOS page with no explanation of who owns it.", "where": "home.desktop.02 / home.phone.04, row 'Sales reach Vendure, once each, even offline'"},
+    "C3": {"score": 8, "worst_defect": "The 'Quick start' is a 9-step, ~6,900 px page whose success check ('Check it worked') is text only, with no screenshot of the till's sign-in screen or of the synced order in the Vendure Dashboard, so a first-timer has no picture of what 'working' looks like.", "where": "quick-start.desktop.03-04, steps 8 and 'Check it worked'"},
+    "C4": {"score": 8, "worst_defect": "The Changelog is written for the plugin's developers, with bullets like \"Migration TallyPosV51790900000000 adds the v5 custom fields\" and \"order.create v5 ... (ADR 0005)\" and with ADR links into the repo, so a visitor cannot scan it to learn what changed for them.", "where": "changelog.desktop.01 / changelog.phone.01, 0.3.0 section"},
+    "C5": {"score": 8, "worst_defect": "Below the hero, the home page is plain text blocks: eight icon-less feature paragraphs, then a two-column 'Before you start' bullet list that puts \"Node ^20.19 || >=22.12\" and \"RXDB_PREMIUM\" next to cashier notes, and then a CTA row that repeats the hero, which makes the lower half read like docs rather than a landing page.", "where": "home.desktop.02, 'Before you start'"},
+    "C6": {"score": 8, "worst_defect": "On the phone, the hero screenshot is cropped to the product tab with two tiles, so the cart and the €20.09 total are not shown, yet the caption still says \"A sale in progress on the live demo till\".", "where": "home.phone.01, hero image and caption"},
+    "C7": {"score": 9, "worst_defect": "Minor: the share card says \"Point of sale for Vendure\" but never says open-source or free, which is the first thing a searcher would want to know from a link preview; everything else is solid (Lighthouse 98/100/100/100, llms.txt, sitemap, search API and a real 404).", "where": "og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The home page tells first-time visitors that the demo sends usage events to ph.wcpos.com, an unexplained third-party domain, which makes a stranger wonder who else is behind the product just as they decide whether to click 'Live demo'.",
+    "where": "home.desktop.02 / home.phone.04, comparison table row 'Sales reach Vendure, once each, even offline'",
+    "fix": "Name it in place, for example \"anonymous usage events to our self-hosted PostHog (ph.wcpos.com, run by the WCPOS team that builds VendurePOS), with no cookie\", or keep only \"anonymous usage events, no cookie\" and leave the domain on the Connect a till page."
+  },
+  "mean": 8.1
+}
