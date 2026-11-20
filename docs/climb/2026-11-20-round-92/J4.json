@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 9, "worst_defect": "The hero gives the same two destinations twice: three CTAs (Live demo, Quick start, an underlined 'For cashiers: At the till' text link), then a second paragraph with another underlined 'quick start' link. On phone the text link drops onto a line of its own between the buttons and the note, so the CTA group looks crowded.", "where": "home.desktop.01 hero; home.phone.01"},
+    "C2": {"score": 9, "worst_defect": "The home comparison table says the demo sends 'anonymous usage events to ph.wcpos.com' but never says what wcpos is. A reader of a VendurePOS site meets another brand's domain with no explanation.", "where": "home.desktop.02, 'Live demo or your own store' table, last row"},
+    "C3": {"score": 8, "worst_defect": "Step 4 links to 'Optional: a device key for each till' as an alternative sign-in, but that section sits after '9. Troubleshoot' at the very end of a 6,925 px page. The second sign-in path is buried below the error list.", "where": "quick-start.desktop.02 step 4 link; quick-start.txt end; TOC in quick-start.desktop.01"},
+    "C4": {"score": 8, "worst_defect": "The till role's permission list (TallyPosSell, ReadCatalog, ReadSettings, ReadCustomer, CreateCustomer, ReadOrder) is written out in full three times: quick start step 4, 'Sign in with a staff account', and 'Give each cashier their own account' step 1. That is long to scan, and the copies can drift apart.", "where": "quick-start.desktop.02; connect-a-till.desktop.01"},
+    "C5": {"score": 8, "worst_defect": "The payment screenshot is a full-width till capture whose right half is mostly blank: three cart lines, then about 420 px of empty white cart pane above the subtotal. Roughly a third of the figure is dead space and the keypad side looks cramped beside it.", "where": "at-the-till.desktop.02, figure 'The payment screen on the live demo till.'"},
+    "C6": {"score": 8, "worst_defect": "On the changelog the inline code chip 'packages/vendure-plugin/CHANGELOG.md' breaks mid-token across two lines ('packages/vendure–' / 'plugin/CHANGELOG.md'), splitting one chip into two boxes. Separately, in the phone payment screenshot the '€50.00' quick-amount button is orphaned on a second row.", "where": "changelog.phone.01; at-the-till.phone.04"},
+    "C7": {"score": 9, "worst_defect": "The docs search API returns raw markdown in its snippets: the content field contains '`/tally/v1/commands`' with literal backticks, so a search result shows the backticks as text.", "where": "text/endpoint_api_search_query_offline.txt, id /docs-5"}
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "The only screenshot of the payment flow, the core moment of a POS, is a wide capture whose cart half is about 420 px of empty white between three line items and the totals. The figure looks unfinished and the keypad, which is the subject, gets only half the width.",
+    "where": "at-the-till.desktop.02",
+    "fix": "Recapture the payment screen at a narrower till viewport (about 1000 px) or with five or six cart lines, so the cart pane fills. Alternatively crop the figure to the payment pane plus totals."
+  },
+  "mean": 8.4
+}

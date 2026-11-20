@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero is clear, but the home page's 'Before you start' block gives a newcomer raw developer detail: 'Node ^20.19 || >=22.12' as a semver range and 'your own RxDB Premium licence token (RXDB_PREMIUM)'. Both belong on the setup pages.", "where": "home desktop slice 02 / phone slice 04-05, 'Setting up the store' list"},
+    "C2": {"score": 8, "worst_defect": "The home comparison table says the demo 'sends ... anonymous usage events to ph.wcpos.com' and never says what wcpos.com is or why another brand's domain gets data. The explanation (a self-hosted PostHog server) is only on Connect a till.", "where": "home desktop slice 02 / phone slice 04, row 'Sales reach Vendure, once each, even offline'"},
+    "C3": {"score": 8, "worst_defect": "The quick start points newcomers to 'npx @vendure/create my-shop', which makes a local store. Step 8a's only store URL example is 'https://store.example.com', and step 9 says 'Use HTTPS for a remote store'. That http://localhost is allowed is only on Troubleshooting. Step 5 also suggests a 'local POS origin ... http://localhost:8081' but never says where a local POS comes from.", "where": "quick-start desktop slices 02-04 (steps 5, 8a, 9) / phone slices 05, 07, 09"},
+    "C4": {"score": 8, "worst_defect": "Limitations, 'Setting up the store', lists 'Device keys need plugin 0.2.0 or later; see Plugin setup'. That is a version note, not a limitation, and it is stale next to the 0.3.0 the docs install everywhere. The quick start and Plugin setup also both give the migration steps in different forms, so a reader has to work out which one applies.", "where": "limitations desktop slice 01 (last bullet) / plugin-setup desktop slice 01"},
+    "C5": {"score": 8, "worst_defect": "The hero's third call to action, 'For cashiers: At the till', is a grey underlined text link beside two real buttons, so the CTA row looks unfinished. Under 'What it does today', two features are boxed cards and the other eight are plain text, so the cards look like a different section.", "where": "home desktop slice 01 (hero CTA row and feature grid)"},
+    "C6": {"score": 9, "worst_defect": "On the home page the phone top bar shows only 'Docs' and 'Live demo'. 'Quick start' and 'At the till' are behind the chevron. Otherwise tables stack well and code wraps cleanly.", "where": "home phone slice 01 (header)"},
+    "C7": {"score": 9, "worst_defect": "Lighthouse still flags 53 KiB of unused JavaScript and ~130 ms of render-blocking requests on /, and mobile LCP is 2.3 s. Titles, descriptions, OG card, JSON-LD, llms.txt, sitemap, robots and search all look right.", "where": "tech.json lighthouse['/'].failing"}
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "A first-time visitor who follows the quick start's own advice ('npx @vendure/create my-shop') ends up with a store on http://localhost. Step 8 never says what store URL to type for it, and step 9 only says 'Use HTTPS for a remote store'. They have to guess whether the hosted https till can reach their local store, and the answer is only on Troubleshooting.",
+    "where": "quick-start desktop slices 03-04, step 8a and step 9 / phone slices 07, 09",
+    "fix": "In step 8a, add: 'Trying it on a local store? Enter http://localhost:3000; the hosted till allows http://localhost and http://127.0.0.1 for development.' In step 5, either drop the localhost:8081 example or say that it is only for a self-built till."
+  },
+  "mean": 8.3
+}
