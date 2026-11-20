@@ -1,0 +1,48 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero is clear, but the home table's refund cell for your own store reads \"No, not on plugin 0.3.0: refund in the Vendure Dashboard. The refund stays Pending until an administrator settles it with two Admin API calls\". That is admin-API jargon on the marketing page and makes a newcomer think the product is half-built.",
+      "where": "home.desktop.02 'Live demo or your own store' table, row 'Refund a sale at the till'; home.phone.04"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The home table says the demo sends \"anonymous usage events to ph.wcpos.com\". A visitor who has never heard of wcpos sees a different brand's domain with no explanation on this page; it is only explained on Connect a till as \"a self-hosted PostHog analytics server\".",
+      "where": "home.desktop.02 table row 'Sales reach Vendure, once each, even offline', Live demo column; home.phone.04"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The 'Quick start' is about 6,900 px of nine steps. It includes writing two of your own TypeScript migration scripts (src/generate-migration.ts and src/run-migrations.ts) and a collapsed leftover, \"If your store already allows vendurepos.vercel.app\", which points at an old domain the reader has never seen.",
+      "where": "quick-start.desktop.01-03 (step 3 and the step 5 disclosure); quick-start.phone.06"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The changelog reads as internal notes rather than user-facing release notes. Examples: \"GET /tally/v1/info advertises order.create 1–5 (ADR 0005)\", \"Migration TallyPosV51790900000000 adds the v5 custom fields\", and repeated ADR 0004/0005 links. A reader can't tell what changed for them without decoding protocol versions.",
+      "where": "changelog.desktop.01, sections 0.3.0 and 0.2.0"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "Under 'What it does today' only the first two features get bordered cards with buttons. The next eight are a two-column wall of grey body text with no icons or images, so the page below the hero screenshot looks like a docs page rather than a product page.",
+      "where": "home.desktop.01 bottom to home.desktop.02 top ('Paid, fulfilled, at the till's price' through 'Line and order discounts')"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "The phone header on home shows only 'Docs' and 'Live demo' beside the logo; Quick start sits behind the chevron. The hero till screenshot is cropped to two product tiles, with the category chip row cut at \"Gif\" on the right edge.",
+      "where": "home.phone.01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The share card's till screenshot is cut off at the bottom edge through the first row of product cards, so the price badges are clipped. Otherwise Lighthouse scores 98/100/100/100, the 404 page returns a real 404, and llms.txt, the sitemap and the search API all respond.",
+      "where": "og-image.png bottom edge"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "Past the hero, the home page speaks to someone already running Vendure. The 'Live demo or your own store' table and 'Before you start' put admin-API refund settlement, an unexplained ph.wcpos.com domain, Node semver ranges and an RXDB_PREMIUM licence token in front of a visitor still deciding whether to try the demo.",
+    "where": "home.desktop.02 ('Live demo or your own store' table and 'Before you start'); home.phone.04-05",
+    "fix": "On the home page, cut the refund cell to \"Not yet on plugin 0.3.0: refund in the Vendure Dashboard\" and the demo cell to \"No: the demo store lives in your browser (privacy note)\", linking to the details. Move the Node and RXDB_PREMIUM lines into the docs Overview requirements."
+  },
+  "mean": 8.3
+}
