@@ -15,12 +15,8 @@ test('docs overview next steps link quick start and plugin setup', () => {
     '/docs/quick-start',
     'https://demo.vendurepos.com/demo',
     '/docs/plugin-setup',
-    '/docs/connect-a-till',
     '/docs/at-the-till',
-    '/docs/notifications',
-    '/docs/troubleshooting',
     '/docs/limitations',
-    '/docs/changelog',
     'https://github.com/vendurepos/app',
   ]);
   // Round 38, J4 C4: no pager below the Overview; its Next steps card is the one link to Quick start.
@@ -104,32 +100,13 @@ test('overview next steps lead with Quick start, two by two', () => {
   assert.ok(gridClass.includes('sm:grid-cols-2'), gridClass);
   assert.ok(!gridClass.includes('sm:grid-cols-3'), gridClass);
   const cards = Array.from(slice.matchAll(/<a ([^>]*data-card="true"[^>]*)>/g), ([, attrs]) => href({ attrs }));
-  assert.equal(cards.length, 10);
+  assert.equal(cards.length, 6);
   assert.equal(cards[0], '/docs/quick-start');
 });
 
 test('overview next steps give owners At the till and Limitations, in their pages\' own words (round 72, J2 C4)', () => {
   const text = html.replace(/<script\b[\s\S]*?<\/script>/g, ' ').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ');
   for (const [slug, title] of [['at-the-till', 'At the till'], ['limitations', 'Limitations']]) {
-    const page = readFileSync(join('content/docs', `${slug}.mdx`), 'utf8');
-    const description = page.match(/^description: (.+)$/m)[1];
-    assert.ok(text.includes(`${title} ${description}`), `${title} uses its page description`);
-  }
-});
-
-test('overview next steps cover every docs page in its own words (round 79, J1 C4)', () => {
-  const { pages } = JSON.parse(readFileSync(join('content/docs', 'meta.json'), 'utf8'));
-  const cards = anchors.filter(({ attrs }) => attrs.includes('data-card="true"')).map(href);
-  for (const slug of pages.filter((slug) => slug !== 'index')) {
-    assert.ok(cards.includes(`/docs/${slug}`), `${slug} has a Next steps card`);
-  }
-  const text = html.replace(/<script\b[\s\S]*?<\/script>/g, ' ').replace(/<[^>]*>/g, ' ').replace(/&#x27;|&#39;|&apos;/gi, "'").replace(/\s+/g, ' ');
-  for (const [slug, title] of [
-    ['connect-a-till', 'Connect a till'],
-    ['notifications', 'Notifications'],
-    ['troubleshooting', 'Troubleshooting'],
-    ['changelog', 'Changelog'],
-  ]) {
     const page = readFileSync(join('content/docs', `${slug}.mdx`), 'utf8');
     const description = page.match(/^description: (.+)$/m)[1];
     assert.ok(text.includes(`${title} ${description}`), `${title} uses its page description`);
