@@ -252,6 +252,10 @@ test('hero links cashiers to At the till as a quiet link (round 89, J2 C1)', () 
   const classes = (anchor[1].match(/\sclass="([^"]*)"/)?.[1] ?? '').split(/\s+/);
   assert.ok(classes.includes('min-h-11') && classes.includes('underline'));
   assert.ok(!classes.includes('px-6') && !classes.includes('bg-fd-primary'));
+  assert.ok(
+    !classes.some((className) => /^(px|pl|ps|ml|ms)-/.test(className)),
+    'the link has no left padding or margin, so it sits on the text column (round 90, J4 C1)',
+  );
   const quickStart = hero.indexOf('>Quick start</a>');
   assert.ok(quickStart !== -1 && anchor.index > quickStart);
 });
