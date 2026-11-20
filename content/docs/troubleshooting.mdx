@@ -31,7 +31,7 @@ apps/pos/lib/log-buffer.ts:41-48,94-96, apps/pos/e2e/sign-in.spec.ts:818-828 (sy
 apps/pos/app/index.tsx:333-335 (Send again), :340-343 (no button on the till updates line);
 apps/pos/e2e/sign-in.spec.ts:446-452 (Retry under Needs attention). */}
 
-### Orders line
+**Orders line**
 
 - "The store refused this sign-in. Sign in again below; orders are kept."
   Sign in again in the bar that appears.
@@ -48,53 +48,50 @@ register/register-adoption.ts:20-70, :151-173. Plugin 2d3699e register.service.t
 index.tsx:216-221 (printZ), lib/closure-history-sheet.tsx:14-19, :38-47; pos register-outbox.ts:178-181
 (closure waits). Counter line: index.tsx:133 vs :157; log-buffer.ts:3-4, :41-49. */}
 
-### Till updates line
+**Till updates line**
 
 Till updates are the register's records the till sends to the store: opening and closing the
 register, cash movements and their voids, and the closure.
 
 - "Till updates aren't sending: this till needs to sign in to the online store again."
   Sign in to the online store again.
+- "N till updates need attention · The online store refused them, and later till updates wait
+  behind them. Ask the store owner to look at the sync log in this till's Settings."
+
+  **At the counter:** leave the app open and do not reload it until the store owner has copied the refused line;
+  sales already made still send to the store. Do not clear the site's data or reinstall to get past it: that
+  deletes this till's unsent sales and register records along with the refused update.
+
+  **For the store owner:** copy the refused line from this till's sync log, and match its `errorCode` in the list
+  below. One case you clear at the till by choosing another register, one the till fixes by itself, and for any
+  other code you send the copied line to whoever runs your Vendure server.
+
+  <Callout title="To find the line in the sync log" fold>
+  Open **Settings**, then **Sync log**, and choose **All**: the refusal is a `DEBUG` line,
+  `Register command result … status=rejected errorCode=… error=…`, which **Warnings and errors** does not show.
+  Copy it (**Share** on a phone) before you close or reload the app: the log holds only this till's last 500 events
+  since the app opened, and the refused update is never sent again, so the line does not come back.
+  </Callout>
+
+  What happens next depends on the `errorCode`:
+  - `register_session_already_open`: the store already has this register open, on another till or from a session
+    never closed there. The till offers **Choose another register**; this till's records for that session then stay
+    on this till and are not sent.
+  - `register_closure_number_invalid`: the till renumbers the closure and sends it again by itself, once.
+  - Any other code: the till has no retry or skip, and fixing the store does not make it send the update again.
+    **Sync now**, signing out and in, and closing the register do not clear it. Later till updates for this register
+    stay saved on this till; sales keep syncing as normal.
+    What still works: keep selling, and close the register as usual. The Z report still prints, and **Closures** in
+    your cashier sheet keeps each closure on this till to print again as a copy. Those closures and cash records
+    do not reach your Vendure store from this till, so keep the printed Z reports and the copied log line for whoever
+    runs your Vendure server.
 - "N till updates waiting to sync · The online store refused the last send. This till will try
   again with the next till update, or when the app is reopened."
 - "Till updates aren't reaching the online store. Keep selling: they're saved on this till and
   will send by themselves."
   Keep selling.
 
-### When till updates need attention
-
-The header shows "N till updates need attention · The online store refused them, and later till updates wait
-behind them. Ask the store owner to look at the sync log in this till's Settings."
-
-**At the counter:** leave the app open and do not reload it until the store owner has copied the refused line;
-sales already made still send to the store. Do not clear the site's data or reinstall to get past it: that
-deletes this till's unsent sales and register records along with the refused update.
-
-**For the store owner:** copy the refused line from this till's sync log, and match its `errorCode` in the list
-below. One case you clear at the till by choosing another register, one the till fixes by itself, and for any
-other code you send the copied line to whoever runs your Vendure server.
-
-<Callout title="To find the line in the sync log" fold>
-Open **Settings**, then **Sync log**, and choose **All**: the refusal is a `DEBUG` line,
-`Register command result … status=rejected errorCode=… error=…`, which **Warnings and errors** does not show.
-Copy it (**Share** on a phone) before you close or reload the app: the log holds only this till's last 500 events
-since the app opened, and the refused update is never sent again, so the line does not come back.
-</Callout>
-
-What happens next depends on the `errorCode`:
-- `register_session_already_open`: the store already has this register open, on another till or from a session
-  never closed there. The till offers **Choose another register**; this till's records for that session then stay
-  on this till and are not sent.
-- `register_closure_number_invalid`: the till renumbers the closure and sends it again by itself, once.
-- Any other code: the till has no retry or skip, and fixing the store does not make it send the update again.
-  **Sync now**, signing out and in, and closing the register do not clear it. Later till updates for this register
-  stay saved on this till; sales keep syncing as normal.
-  What still works: keep selling, and close the register as usual. The Z report still prints, and **Closures** in
-  your cashier sheet keeps each closure on this till to print again as a copy. Those closures and cash records
-  do not reach your Vendure store from this till, so keep the printed Z reports and the copied log line for whoever
-  runs your Vendure server.
-
-### Store settings
+**Store settings**
 
 - "This store's VendurePOS plugin is missing or out of date. Install or update it, then this till continues."
   The store must advertise `order.create` v4 and register v1, as every plugin release from 0.1.0

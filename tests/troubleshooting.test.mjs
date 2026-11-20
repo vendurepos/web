@@ -104,7 +104,14 @@ test('troubleshooting gives the counter and the store owner their own paragraphs
   const clear = text.indexOf('Do not clear the site');
   const owner = text.indexOf('For the store owner:');
   assert.ok(counter >= 0 && clear > counter && owner > clear, `${counter} ${clear} ${owner}`);
-  assert.ok(html.indexOf('runs your Vendure server.', end) < html.indexOf('id="store-settings"', end));
+  const tailStart = html.indexOf('runs your Vendure server.', end);
+  const tailEnd = html.indexOf('till updates waiting to sync', tailStart);
+  assert.ok(tailStart >= 0 && tailEnd > tailStart);
+  // The list is loose, so the next item opens with <li><p>; nothing may sit before that <li.
+  const tail = html.slice(tailStart, tailEnd);
+  const nextItem = tail.lastIndexOf('<li');
+  assert.ok(nextItem >= 0, 'the next item follows');
+  assert.ok(!tail.slice(0, nextItem).includes('<p'), 'no paragraph after the Any other code text');
 });
 
 // Round 27, C4 (J2): the store owner's paragraph went straight into the DEBUG line format with no plain step.
@@ -169,29 +176,4 @@ test('sell while offline says to keep the till tab open', () => {
   );
   assert.ok(!text.includes('everything at the till works offline'), 'no everything works offline');
   assert.ok(slice.includes('href="/docs/at-the-till#if-the-internet-drops"'), 'links At the till');
-});
-
-test('troubleshooting gives refused till updates their own section after the till updates list (round 74, J4 C4)', () => {
-  const header = html.indexOf('id="act-on-a-header-notice"');
-  const orders = html.indexOf('id="orders-line"');
-  const till = html.indexOf('id="till-updates-line"');
-  const attention = html.indexOf('id="when-till-updates-need-attention"');
-  const settings = html.indexOf('id="store-settings"');
-  const refresh = html.indexOf('id="refresh-prices-and-stock"');
-  assert.ok(header >= 0 && orders > header && till > orders && attention > till && settings > attention && refresh > settings);
-
-  const updates = html.slice(till, attention);
-  assert.ok(updates.includes('till updates waiting to sync'));
-  assert.ok(!updates.includes('need attention'));
-
-  const refused = html.slice(attention, settings);
-  for (const phrase of [
-    'Ask the store owner',
-    '<strong>At the counter:</strong>',
-    '<strong>For the store owner:</strong>',
-    'register_session_already_open',
-  ]) {
-    assert.ok(refused.includes(phrase), phrase);
-  }
-  assert.ok(!refused.slice(0, refused.indexOf('<strong>At the counter:</strong>')).includes('<li'));
 });
