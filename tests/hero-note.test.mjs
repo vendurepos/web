@@ -223,3 +223,19 @@ test('hero lede balances its lines (round 82, J4 C1)', () => {
   const classes = (tag.match(/\sclass="([^"]*)"/)?.[1] ?? '').split(/\s+/);
   assert.ok(classes.includes('text-balance'));
 });
+
+test('phone hero starts close under the header (round 85, J4 C1)', () => {
+  const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
+  const text = html.indexOf('Point of sale for Vendure');
+  assert.ok(text !== -1);
+  const sectionStart = html.lastIndexOf('<section', text);
+  assert.ok(sectionStart !== -1);
+  const tag = html.slice(sectionStart, html.indexOf('>', sectionStart) + 1);
+  const classes = (tag.match(/\sclass="([^"]*)"/)?.[1] ?? '').split(/\s+/);
+  assert.ok(classes.includes('pt-8') && classes.includes('sm:pt-20'));
+  assert.ok(!classes.includes('pt-20'));
+  const stylesheets = readdirSync('.next/static', { recursive: true })
+    .filter((file) => file.endsWith('.css'))
+    .map((file) => readFileSync(join('.next/static', file), 'utf8'));
+  assert.ok(stylesheets.some((css) => /\.pt-8\{padding-top:/.test(css)));
+});
