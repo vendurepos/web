@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 9, "worst_defect": "The only maturity signal in the hero is the badge 'Pre-release · plugin 0.3.0', which cites the server plugin's version; the till a shop actually uses is 'till app version 0.1.0' (stated only on the Changelog), so the badge makes it look further along than the app is.", "where": "home/desktop/01 badge vs changelog/desktop/01 second paragraph"},
+    "C2": {"score": 7, "worst_defect": "The site never says who builds or maintains VendurePOS, whether any shop runs it in production, or where to get support. The footer ('Built with TallyUI. For Medusa, see MedusaPOS') and the home table's 'anonymous usage events to ph.wcpos.com' point to a wider organisation that is never named. The table titled 'This is what it shows today' also leaves out one demo-only feature: At the till says 'On plugin 0.3.0, Order details has no customer note. On the live demo, type a Customer note'.", "where": "home/desktop/02 'Live demo or your own store' table and footer; at-the-till.txt 'Order details'"},
+    "C3": {"score": 8, "worst_defect": "A known plugin gap is left for the installer to patch by hand rather than fixed in a release. The device-key role 'vendurepos-pos-till' has no ReadOrder on 0.3.0, so the till's order history is refused until you edit the role. This warning appears in four places (quick start step 4 and the device-key section, connect-a-till twice, the changelog's 'Not in the release notes'), and no fix date is given.", "where": "quick-start.txt 'Optional: a device key for each till'; changelog/desktop/01 last bullet of 0.2.0"},
+    "C4": {"score": 8, "worst_defect": "Below each 'In short' line, the Changelog is written for maintainers, not adopters: 'order.create v5 custom lines are real order lines on a plugin-owned, disabled ... variant', '(ADR 0005)' repeated four times, 'Migration TallyPosV51790900000000'. The issue refs '(#116)' and '(#117)' give no context, so a buyer cannot judge what changed for them.", "where": "changelog/desktop/01 0.3.0 and 0.2.0 bullets"},
+    "C5": {"score": 8, "worst_defect": "On the home page, 'What it does today' styles two features as bordered cards with buttons ('Keeps selling offline', 'Every sale lands once') and the other eight as plain headed paragraphs. The section reads as two tiers without explaining why. The OG card also cuts the product tiles off mid-card at the bottom edge.", "where": "home/desktop/01-02 'What it does today'; og-image.png bottom edge"},
+    "C6": {"score": 8, "worst_defect": "On a phone, the hero's demo screenshot is cropped to two product tiles, and its category chips are clipped at 'Gif'. The one-line TypeScript calls in quick start step 3 (generateMigration(...).catch(...)) wrap to five ragged lines, which makes the code harder to read before copying.", "where": "home/phone/01 hero image; quick-start/phone/03 code blocks"},
+    "C7": {"score": 9, "worst_defect": "The docs landing page's title is the generic 'Overview | VendurePOS', which says nothing in a search result. The SoftwareApplication JSON-LD has no softwareVersion, even though the site states versions everywhere else. Otherwise strong: Lighthouse 98/100/100/100, llms.txt, sitemap, search API and a real 404.", "where": "tech.json pages['docs.desktop'].title and home jsonLd"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A sceptic advising a client cannot find out who stands behind VendurePOS: no maintainer or company is named, there is no support channel beyond a GitHub footer link, and nothing says whether any shop runs it in production. Meanwhile the site hints at an unexplained parent ('ph.wcpos.com', TallyUI, MedusaPOS), which looks like a side project spread across several platforms.",
+    "where": "home/desktop/02 table row 'Sales reach Vendure...' and footer",
+    "fix": "Add a two-line 'Who builds it' block above the home footer. It should name the maintainer or company and its link to WCPOS/TallyUI, say where to report issues or get help, and state plainly how many production shops run it (even 'none yet')."
+  },
+  "mean": 8.1
+}

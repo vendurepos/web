@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero is clear, but the first feature a newcomer reads, 'Keeps selling offline', spends most of its six lines on caveats and test details ('a reload needs the connection, and clearing that browser's data for the till loses them. Our acceptance run makes 25 sales, 20 of them offline...'), and the next card's button reads 'Read the 200-send test'. Below the fold it reads like an engineering report, not a pitch.", "where": "home.desktop.01 'What it does today' cards; home.phone.02"},
+    "C2": {"score": 8, "worst_defect": "The demo row on the home page says 'All it sends is anonymous usage events to ph.wcpos.com, with no cookie'. The page never says what wcpos.com is or why a VendurePOS demo reports to it; only Connect a till explains that it is a self-hosted PostHog server. To a stranger, an unexplained third-party domain looks like something being hidden.", "where": "home.desktop.02 'Live demo or your own store' table, last row; home.phone.04"},
+    "C3": {"score": 8, "worst_defect": "Quick start sends a newcomer through nine steps, including changing store-wide tax strategies (step 6) and a collapsed aside titled 'If your store already allows vendurepos.vercel.app', an old domain that is never introduced. No screenshot shows the sign-in screen or what success looks like; 'Check it worked' is text only.", "where": "quick-start.desktop.03 (vercel.app details, step 6); quick-start.desktop.04 'Check it worked'"},
+    "C4": {"score": 8, "worst_defect": "The changelog, which nav and footer both link from the home page, is written for the maintainers. The 0.3.0 bullets read 'GET /tally/v1/info advertises order.create 1–5 (ADR 0005)' and 'Migration TallyPosV51790900000000 adds the v5 custom fields', with ADR links that a reader has no context for.", "where": "changelog.desktop.01; changelog.phone.01"},
+    "C5": {"score": 7, "worst_defect": "After the hero screenshot the home page is one long run of grey body text: eight two-column feature blocks with no icons or images, a plain table, two bullet lists and a repeated CTA pair. Nothing shows the register close, the receipt or offline sync, even though At the till has three such screenshots. The lower two-thirds of the home page look flat and default.", "where": "home.desktop.01 bottom half and home.desktop.02; same in home.desktop-dark"},
+    "C6": {"score": 8, "worst_defect": "Code blocks on the phone soft-wrap rather than scroll, so the config snippet breaks into 'plugins: [/* your existing plugins, */' with 'TallyPosPlugin],' on its own indented line. The migration call wraps over five lines, which makes code that will be copied harder to read. The phone header also drops 'Quick start' and 'At the till' behind a chevron.", "where": "quick-start.phone.02 and quick-start.phone.03; home.phone.01 header"},
+    "C7": {"score": 9, "worst_defect": "Little is wrong. Lighthouse mobile still flags 53 KiB of unused JavaScript and 110 ms of render-blocking requests on /, with LCP at 2.3 s, and the 404 page logs a console error.", "where": "tech.json lighthouse['/'].failing; pages not-found.consoleErrors"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "Past the hero, a first-time visitor who only half knows Vendure gets caveat-first engineering prose: the opening feature card is mostly about data loss on reload and acceptance-run counts, a button says 'Read the 200-send test', and 'Before you start' exposes 'Node ^20.19 || >=22.12' and an 'RxDB Premium licence token (RXDB_PREMIUM)'. The visitor learns the limits before the benefits and leaves unsure whether this is for them.",
+    "where": "home.desktop.01 'What it does today'; home.desktop.02 'Before you start'",
+    "fix": "Cut each feature card to one plain benefit sentence, with the caveats behind a 'limits' link and the test links renamed (for example 'See the proof'). Move the Node range and the RXDB_PREMIUM self-hosting note from the home page into the quick start."
+  },
+  "mean": 8.0
+}

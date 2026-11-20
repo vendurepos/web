@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero puts two centred body blocks around the buttons: a 4-line centred lede that ends on the short line 'connection drops.', then a second smaller centred note under the CTAs ('Your own store needs the plugin on your Vendure server first: ...'). That gives three text tiers before the screenshot and slows the five-second read.", "where": "home.desktop.01 (hero) and home.phone.01"},
+    "C2": {"score": 8, "worst_defect": "The refund caveat is repeated almost word for word in three places on the home page alone: the table row 'No, not on plugin 0.3.0: refund in the Vendure Dashboard. The refund stays Pending until an administrator settles it with two Admin API calls', the 'Before you start' bullet, and again in Limitations. The fourth line of the table row makes that cell the tallest on the page, so a plain limit reads as a hedge.", "where": "home.desktop.02 (Live demo or your own store table, 'Refund a sale at the till' row)"},
+    "C3": {"score": 8, "worst_defect": "Step 8 'Sign in and make a sale' is a 9-item lettered list (a.-i.) with no image of the sign-in screen, and 'Check it worked' lists five Dashboard checks with no picture of a synced order. The success state is described but never shown, even though At the till already has real till screenshots.", "where": "quick-start.desktop.03-04, quick-start.phone.07-08"},
+    "C4": {"score": 8, "worst_defect": "UI strings are styled inconsistently. Sync statuses are mono code pills ('N orders waiting to send', 'Closing — waiting for N orders'), but the header notices directly below are plain quoted sentences in bullets ('\"The store refused this sign-in. Sign in again below; orders are kept.\"'). The page becomes long undifferentiated prose that is hard to scan for the message on screen.", "where": "troubleshooting.desktop.01 ('Read the sync status' vs 'Orders line' / 'Till updates line')"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' switches component mid-section: two bordered cards with buttons, then eight unbordered heading+paragraph blocks. In the right card ('Every sale lands once') the 'Read the 200-send test' button is pushed down to match the taller left card, leaving about 70 px of dead space under its text. Dark mode holds up.", "where": "home.desktop.01 (lower half) / home.desktop-dark.jpg"},
+    "C6": {"score": 8, "worst_defect": "At 390 px, code blocks soft-wrap mid-expression and look like real line breaks: generateMigration(config, { name: 'AddVendurePos', outputDir: './src/migrations' }) wraps over three lines, and 'import {' wraps away from its module path. Step headings with inline code ('2. Add TallyPosPlugin to your existing Vendure config') wrap to three lines. The sticky 'On this page' bar already reads '1. Install the plugin' while the reader is still in the intro.", "where": "quick-start.phone.01-03, quick-start.phone.06"},
+    "C7": {"score": 9, "worst_defect": "The share card's subtitle wraps so the short line 'a normal order.' stands alone. The till screenshot is cut through the product cards at the bottom edge, with stock badges half visible. Everything else is strong: Lighthouse 98/100/100/100, JSON-LD on every page, llms.txt, a search API that returns anchors, and a real 404 status.", "where": "og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "The home page's main feature section mixes two component styles: two bordered proof cards, the right one with a bottom-aligned button and a dead gap above it, followed by eight loose unbordered blocks. The page's most important section looks unfinished next to an otherwise disciplined layout.",
+    "where": "home.desktop.01 'What it does today' (and the same in home.desktop-dark.jpg)",
+    "fix": "Put the button directly after the text in each proof card (stop stretching it to the bottom), or make the two cards one full-width proof band. Give the eight features a single shared treatment: a 2-column grid with hairline dividers or a light card, all the same."
+  },
+  "mean": 8.1
+}

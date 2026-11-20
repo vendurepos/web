@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The tax instructions prescribe different store-wide strategies for inclusive and exclusive channels but leave mixed-pricing stores with only 'must account for the store-wide strategy', without an actionable configuration.",
+      "where": "shots/quick-start.desktop.03.jpg, step 6; text/endpoint_llms_full_txt.txt:862\u2013891"
+    },
+    "C4": {
+      "score": 9,
+      "worst_defect": "Quick start specifies 'Vendure 3.6+' while Plugin setup specifies '^3.6.0' and explicitly restricts support to 3.x, leaving the prerequisite wording inconsistent.",
+      "where": "text/quick-start.txt, introduction; text/plugin-setup.txt, Check your store"
+    },
+    "C5": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop-dark.jpg; shots/home.desktop.01.jpg; shots/plugin-setup.desktop.01.jpg"
+    },
+    "C6": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "shots/home.phone.01.jpg\u201305.jpg; shots/quick-start.phone.01.jpg\u201309.jpg"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The captured mobile Lighthouse audit identifies an estimated 53 KiB of unused JavaScript on the homepage.",
+      "where": "tech.json, lighthouse./.failing"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "A developer with both tax-inclusive and tax-exclusive channels must guess how to satisfy the conflicting recommendations for the single store-wide tax strategy.",
+    "where": "shots/quick-start.desktop.03.jpg, step 6; text/endpoint_llms_full_txt.txt, Why these pairings",
+    "fix": "State whether mixed-pricing channels are supported. If supported, give the exact strategy configuration and a verification example for each pricing mode; otherwise state the restriction explicitly."
+  },
+  "mean": 9.4
+}
