@@ -495,3 +495,19 @@ test('at the till lists what goes on the counter before opening the register (ro
   assert.ok(section.includes('href="/docs/limitations"'), 'links Limitations');
   assert.doesNotMatch(text, /recommend|supported|iPad/i);
 });
+
+test('at the till opens with a jump line to the counter tasks (round 93, J2 C6)', () => {
+  const start = html.indexOf('<strong>Jump to:</strong>');
+  const end = html.indexOf('id="what-you-need-at-the-counter"');
+  assert.ok(start >= 0 && end > start, 'jump line comes before the counter section');
+  let previous = start;
+  for (const id of [
+    'open-the-register', 'take-payment', 'refund-a-sale',
+    'if-the-internet-drops', 'count-the-drawer-and-close-the-day',
+  ]) {
+    const link = html.indexOf(`href="#${id}"`, previous);
+    assert.ok(link > previous && link < end, `${id} link appears in order before the counter section`);
+    assert.ok(html.includes(`id="${id}"`), `${id} target exists`);
+    previous = link;
+  }
+});
