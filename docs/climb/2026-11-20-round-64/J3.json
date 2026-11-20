@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "The offline and replay proof links point to moving main-branch test files without identifying the successful run or tested revision behind the claims.",
+      "where": "text/home.txt, 'What it does today'; tech.json, home.desktop.links"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Stores mixing inclusive and exclusive channel pricing are told to 'account for the store-wide strategy' without a supported configuration or verification procedure.",
+      "where": "Quick start, section 6, 'Why these pairings'; text/endpoint_llms_full_txt.txt"
+    },
+    "C4": {
+      "score": 9,
+      "worst_defect": "The self-hosting paragraph jumps from obtaining an RxDB Premium token to running pnpm build:web without dependency-install commands or a complete build procedure.",
+      "where": "text/connect-a-till.txt, 'Where your data goes'"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "Desktop screenshots, including shots/home.desktop-dark.jpg"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "Phone screenshots, including all home and quick-start slices"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The home Lighthouse capture reports 53 KiB of unused JavaScript and an estimated 120 ms of render-blocking savings.",
+      "where": "tech.json, lighthouse./.failing"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "The tax-strategy instructions leave developers with mixed inclusive/exclusive channels to determine the supported store-wide configuration themselves.",
+    "where": "Quick start, section 6, 'Why these pairings'; text/endpoint_llms_full_txt.txt",
+    "fix": "State whether mixed pricing modes are supported. Provide the supported strategy and a concrete totals-verification example, or explicitly identify this configuration as unsupported."
+  },
+  "mean": 9.0
+}

@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero is clear, but below it the home page turns into server-admin detail a newcomer cannot parse. The 'Before you start > Setting up the store' column shows 'Node ^20.19 || >=22.12' and 'your own RxDB Premium licence token (RXDB_PREMIUM)', and the comparison table's refund row says 'settles it with two Admin API calls'.", "where": "home.desktop.02 'Before you start' and 'Live demo or your own store' table; home.phone.04"},
+    "C2": {"score": 8, "worst_defect": "The home table says the demo's only traffic is 'anonymous usage events to ph.wcpos.com, with no cookie'. A visitor who has never heard of wcpos sees an unexplained domain from another brand right where the page is trying to reassure them. Only Connect a till explains that it is a self-hosted PostHog server.", "where": "home.desktop.02 table row 'Sales reach Vendure, once each, even offline'; home.phone.04"},
+    "C3": {"score": 8, "worst_defect": "Before step 1, the quick start's 'Before a sale on a live store' warning sends the reader to two other pages ('Set up email', 'Check your own code'). Steps 3 and 6 also make them write two script files and change store-wide tax strategies that 'also affect the web shop'. The path is complete but long, with detours before the first command.", "where": "quick-start.desktop.01 warning box; quick-start.desktop.03 step 6"},
+    "C4": {"score": 8, "worst_defect": "The sidebar is one flat list of nine pages that mixes developer setup (Plugin setup, Connect a till) with cashier pages (At the till, Notifications). The Changelog leads with internal references ('order.create v5', 'ADR 0005', 'TallyPosV51790900000000') that a newcomer cannot follow.", "where": "docs.desktop.01 sidebar; changelog.desktop.01"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' shows two bordered cards with buttons, then switches to eight unboxed text blocks in two columns. After the hero, the home page has no picture at all: about 2,000 px of text, tables and bullets.", "where": "home.desktop.01 bottom to home.desktop.02"},
+    "C6": {"score": 9, "worst_defect": "Code blocks soft-wrap mid-expression at 390 px. 'generateMigration(config, { name:' breaks before 'AddVendurePos', and the import lines split after 'from', which makes the snippets harder to read on a phone.", "where": "quick-start.phone.03; quick-start.phone.06 tax snippet"},
+    "C7": {"score": 9, "worst_defect": "Mobile Lighthouse flags 53 KiB of unused JavaScript and render-blocking requests on /, with LCP at 2.3 s. Otherwise titles, descriptions, JSON-LD, llms.txt, sitemap, the search API and the 404 page are all in place.", "where": "tech.json lighthouse['/'].failing"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "A first-time visitor scrolling past the clear hero reaches deployment detail meant for the person installing the plugin: Node semver ranges, an RXDB_PREMIUM licence token, Admin API refund settling and an unexplained ph.wcpos.com. The home page reads as harder and more caveated than the product is.",
+    "where": "home.desktop.02 'Live demo or your own store' table and 'Before you start'; home.phone.04-05",
+    "fix": "Replace the 'Setting up the store' column with one line ('Needs a Vendure 3.6+ store on Postgres; the quick start covers the rest') and move the Node, RxDB and Admin API details to the quick start and Limitations. Name ph.wcpos.com as 'our own analytics server' where it appears."
+  },
+  "mean": 8.3
+}

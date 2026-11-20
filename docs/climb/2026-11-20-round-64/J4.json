@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "Above the fold there are three stacked text blocks before the product image: a 4-line centred lede that spends a clause explaining Vendure to Vendure developers ('open-source software for running an online shop'), the CTA pair, then a second 2-line grey note ('Your own store needs the plugin on your Vendure server first...'). The hero reads as prose, not a headline plus action, and the lede ends on a short widow line 'connection drops.'", "where": "home.desktop.01 (hero, y≈260-500); home.phone.01"},
+    "C2": {"score": 9, "worst_defect": "The hero pill says 'Pre-release · plugin 0.3.0', but the till app actually served at app.vendurepos.com is version 0.1.0. Only the changelog says so ('till app version 0.1.0, built 20 Nov 2026'), so the one version badge on the home page describes the server package, not the product a visitor will open.", "where": "home.desktop.01 pill vs changelog.desktop.01 second paragraph"},
+    "C3": {"score": 8, "worst_defect": "Step 8c sends the reader to 'how to add one' (a ProductVariant barcode custom field), which requires another database migration after step 3's migration has already been run and the server restarted in step 7. The ordered path doubles back. 'Check it worked' is also a text-only checklist with no screenshot of a synced order in the till or Dashboard.", "where": "quick-start.desktop.03 step 8c / quick-start.desktop.04 'Check it worked'"},
+    "C4": {"score": 8, "worst_defect": "Changelog entries are walls of inline code chips and internal 'ADR 0004'/'ADR 0005' and '#116' links. On 0.2.0 the last bullet runs 7 lines with 9 chips and buries a real gotcha ('Not in the release notes: ... this role has no ReadOrder') at its tail, where a scanner will miss it.", "where": "changelog.desktop.01 (0.2.0 last bullet); changelog.phone.03"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' uses two visual systems in one section: two bordered cards with buttons ('Keeps selling offline', 'Every sale lands once'), then eight unboxed heading+text pairs in the same 2-column grid. The right card has about 3 lines of dead space above its button because its body is 4 lines against the left card's 6, and the plain items below look like leftovers rather than a designed list.", "where": "home.desktop.01 y≈1300-1790 into home.desktop.02 top; same in home.desktop-dark"},
+    "C6": {"score": 8, "worst_defect": "At 390 px, long inline code chips break mid-chip across lines with split borders ('tallyResolveNeedsAdmin(commandId, applied |' / 'rejected, note)'; 'packages/vendure-' / 'plugin/CHANGELOG.md'). Chip-heavy paragraphs get uneven line spacing because each chip pushes its line taller.", "where": "changelog.phone.03 (Admin API bullet); changelog.phone.01 first paragraph; quick-start.phone.05 CORS paragraph"},
+    "C7": {"score": 9, "worst_defect": "The search API returns breadcrumbs ['VendurePOS'] for every hit instead of the page path, and llms.txt lists the docs alphabetically ('At the till' and 'Changelog' before 'Overview' and 'Quick start') instead of in reading order.", "where": "text/endpoint_api_search_query_offline.txt; text/endpoint_llms_txt.txt"}
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "The home page's main proof section, 'What it does today', mixes two bordered cards (unequal body lengths, leaving a dead band in the right card above 'Read the 200-send test') with eight unboxed text pairs in the same grid, so the section that sells the product reads as two unrelated layouts stitched together.",
+    "where": "home.desktop.01 bottom to home.desktop.02 top (also home.desktop-dark, home.phone.02)",
+    "fix": "Give the two proof cards a distinct full-width treatment (a 2-up band with matched heights and the test link as a text link at the card foot), then set the eight features as a clearly separate 2-column list under its own small subheading, e.g. 'Also at the till'."
+  },
+  "mean": 8.3
+}
