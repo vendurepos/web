@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "The homepage cites an acceptance run and a 200-send test, but its evidence links target mutable main-branch test source rather than a versioned run result.",
+      "where": "text/home.txt, 'What it does today'; tech.json, home.desktop.links"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The guide prescribes different store-wide tax strategies for inclusive and exclusive channels, then only says a store mixing pricing modes 'must account for' that constraint, leaving the configuration decision unresolved.",
+      "where": "text/endpoint_llms_full_txt.txt, Quick start \u00a76, 'Why these pairings'; shots/quick-start.desktop.03.jpg"
+    },
+    "C4": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "text/plugin-setup.txt; text/connect-a-till.txt; text/troubleshooting.txt; text/endpoint_api_search_query_offline.txt"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop-dark.jpg; desktop home, quick-start and documentation slices"
+    },
+    "C6": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "Phone home and quick-start slices; first phone slice of every other page; tech.json overflowX fields"
+    },
+    "C7": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "tech.json; text/endpoint_llms_txt.txt; text/endpoint_llms_full_txt.txt; shots/og-image.png; not-found screenshots"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "A developer maintaining channels with both tax-inclusive and tax-exclusive pricing must guess how to choose the single store-wide order tax strategy.",
+    "where": "Quick start \u00a76, 'Why these pairings', in text/endpoint_llms_full_txt.txt; shots/quick-start.desktop.03.jpg",
+    "fix": "State the supported configuration or explicit limitation for mixed pricing modes. Include the expected rounding behavior and a concrete sale-total verification for each mode."
+  },
+  "mean": 9.3
+}
