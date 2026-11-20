@@ -474,3 +474,11 @@ test('the changelog says 0.3.0 came out the same day as 0.2.0', () => {
   assert.ok(heading >= 0 && heading < at, 'after the 0.3.0 heading');
   assert.ok(at < text.indexOf('In short:', heading), 'before In short:');
 });
+
+test('troubleshooting does not name till refunds as lost when site data is cleared (round 64, J5 C4)', () => {
+  // On plugin 0.3.0 the till cannot refund (at-the-till.mdx:95, limitations.mdx:30-33).
+  const html = readFileSync(join('.next/server/app', 'docs/troubleshooting.html'), 'utf8')
+    .replace(/&#x27;|&#39;|&apos;/g, "'");
+  assert.ok(html.includes("deletes this till's unsent sales and register records along with the refused update."));
+  assert.ok(!html.includes('unsent sales, refunds'), 'no till refunds in the sentence');
+});
