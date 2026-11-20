@@ -1,0 +1,48 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {
+      "score": 9,
+      "worst_defect": "Hero says \"Point of sale for Vendure\" with a pre-release badge and clear CTAs, but nowhere says who should not use it or how it differs from Shopify POS, Square, Lightspeed or a Vendure-native alternative; a buyer comparing tills gets no positioning.",
+      "where": "home.desktop.01 (hero) and home.desktop.02-03"
+    },
+    "C2": {
+      "score": 7,
+      "worst_defect": "Footer says \"MIT licensed\", yet \"To build and host it yourself instead of using app.vendurepos.com, you need your own RxDB Premium licence token (RXDB_PREMIUM)\" — the free open-source self-host path depends on a paid third-party licence whose cost is never stated. Also: changelog admits \"in 0.2.0 and 0.3.0 this role has no ReadOrder\" (shipped twice, documented not fixed), last plugin release 2026-10-06 (0.2.0 and 0.3.0 same day), and no maintainer, support channel or roadmap statement anywhere.",
+      "where": "home.desktop.02 (Setting up the store); connect-a-till; limitations; changelog.desktop.01"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Quick start is thorough but long (9 steps, 9 phone slices) and step 6 changes the store-wide tax strategy that \"also affect[s] the web shop\"; step 4 needs a manual ReadOrder workaround for a known plugin bug; no one-command starter or example store.",
+      "where": "docs/quick-start desktop.02-03, phone.04-06"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Changelog is written in internal jargon a buyer cannot parse (\"ADR 0005\", \"order.create v5\", \"TallyPosV51790900000000\"); a leftover legacy note \"If your store already allows vendurepos.vercel.app\" remains in the quick start; Tally* code names and ph.wcpos.com analytics add a third and fourth brand to explain.",
+      "where": "changelog.desktop.01; quick-start.desktop.03 / phone.06"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "Below the two evidence cards, the home feature list is a dense text grid with no visuals, so the page loses momentum after the hero; dark mode otherwise holds up.",
+      "where": "home.desktop.02-03"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found beyond length: quick start runs to 9 phone slices; code wraps and tables stack legibly.",
+      "where": "quick-start.phone.01-09"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Quick-start LCP 2.6 s with the largest-contentful-paint audit failing (0.88) and 53 KiB unused JS on home; everything else (llms.txt, sitemap, JSON-LD, 404, search API) is in place.",
+      "where": "tech.json lighthouse /docs/quick-start"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "\"MIT licensed\" till whose self-host path requires \"your own RxDB Premium licence token (RXDB_PREMIUM)\" — a paid proprietary dependency with no price or terms given, which a sceptic would flag to a client as a hidden cost and lock-in to app.vendurepos.com.",
+    "where": "home.desktop.02 (Setting up the store); footer \"MIT licensed\"",
+    "fix": "Next to \"MIT licensed\" and on the self-host instructions, state plainly that self-hosting needs a paid RxDB Premium licence, what it costs or link its pricing, and that app.vendurepos.com is the free alternative; add a short who-maintains-it / support line."
+  },
+  "mean": 8.43
+}
