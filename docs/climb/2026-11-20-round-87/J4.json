@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 9, "worst_defect": "On the phone the hero screenshot is the till's phone layout cropped to the tab bar and two product cards (Canvas Apron, Chocolate Biscuits), so the caption 'A sale in progress on the live demo till.' sits under a picture with no visible cart or total; the sale only shows as the 'Cart (3) · €20.09' tab label.", "where": "home/phone/01"},
+    "C2": {"score": 9, "worst_defect": "The comparison table says the demo 'sends ... anonymous usage events to ph.wcpos.com', a third domain the site never explains next to vendurepos.com. The wording is honest, but the unexplained domain is the one line a careful reader would stop on.", "where": "home/desktop/02, 'Live demo or your own store' table, last row"},
+    "C3": {"score": 8, "worst_defect": "'Check it worked' describes success as five text bullets ('the payment is tally-pos, settled; the fulfilment is delivered...') with no screenshot of the synced order in the Vendure Dashboard. On a 10,580 px phone page, the end state is the one place a picture would remove all guessing.", "where": "quick-start/desktop/04 and quick-start/phone/08"},
+    "C4": {"score": 8, "worst_defect": "Notifications documents a UI surface ('the Notifications sheet on the right', badge, 'No notifications' empty state) in text only, with no image, while At the till shows each screen it describes.", "where": "notifications/desktop/01"},
+    "C5": {"score": 8, "worst_defect": "The three figures on At the till use three different widths: the payment screen fills the 836 px column, the cashier sheet is about 384 px and the closure about 512 px. The narrow two are centred with roughly 80 px of empty band above, and their captions start at the image edge instead of the text column, so the page loses its vertical rhythm.", "where": "at-the-till/desktop/02, 03, 04"},
+    "C6": {"score": 8, "worst_defect": "In quick start step 4 the permissions are six separate bullets, each one a lone mono code chip (ReadCatalog, ReadSettings, ReadCustomer, CreateCustomer...), with full paragraph spacing. They fill most of a phone screen for six words; Connect a till sets the same list inline in two lines.", "where": "quick-start/phone/04"},
+    "C7": {"score": 9, "worst_defect": "llms.txt lists the docs alphabetically ('At the till', 'Changelog', 'Connect a till' before 'Overview' and 'Quick start'), not in the reading order the sidebar uses. The share card's subtitle also wraps to leave 'a normal order.' alone on line two.", "where": "text/endpoint_llms_txt.txt; og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "The figures on At the till (the only docs page with product images) are inconsistent: 836 px full-column, about 384 px centred and about 512 px centred, with a dead band above the centred ones and captions that move between the text column and the image edge.",
+    "where": "at-the-till/desktop/02-04",
+    "fix": "Give every docs figure one rule, for example max-width 560 px, left-aligned to the text column, no top padding inside the frame, with the caption always under the image's left edge. Re-export the cashier sheet and closure at that width."
+  },
+  "mean": 8.4
+}

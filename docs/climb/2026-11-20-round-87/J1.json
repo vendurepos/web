@@ -1,0 +1,48 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The first feature card a newcomer reads, 'Keeps selling offline', leads with caveats in dense grey text ('a reload needs the connection, and clearing that browser's data for the till loses them') and a test count before saying plainly why offline matters, so the selling point reads as a warning.",
+      "where": "home/desktop/01 'What it does today' first card; home/phone/02"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The site never says who makes VendurePOS, and the only clue a visitor sees is an unexplained third-party domain in the comparison table: 'All it sends is anonymous usage events to ph.wcpos.com, with no cookie'. A stranger is left asking what WCPOS is and why demo data goes there.",
+      "where": "home/desktop/02 'Live demo or your own store' table, last row; home/phone/04"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Before step 1 the quick start sends readers to two other pages ('Before a sale on a live store … see Set up email … read Check your own code'), and a leftover legacy toggle 'If your store already allows vendurepos.vercel.app' sits in step 5. A newcomer can't tell whether either one applies to them.",
+      "where": "quick-start/desktop/01 warning callout; quick-start/desktop/03 collapsible under step 5"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Plugin setup lists four bundled migrations by opaque timestamp names ('TallyPos1790648006022, TallyPosVp2a1790720000000, TallyPosRegister1790800000000, TallyPosV51790900000000') and explains only that 'TallyPosV5… ships in 0.3.0', so a reader upgrading from 0.1 or 0.2 can't tell which ones are new to them.",
+      "where": "plugin-setup/desktop/01 'Configure the plugin and migrations'"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "'What it does today' gives two features bordered cards with buttons, then switches to eight unboxed text blocks in a plain two-column list with no icons or images. Below the hero the page is a long wall of grey text, so the second half looks less finished than the first.",
+      "where": "home/desktop/01 bottom to home/desktop/02 top (same in home.desktop-dark)"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "The phone hero image is the mobile till cropped to just two product tiles, with the category chips cut off mid-word at 'Gif'. On a phone the first visual barely shows a sale in progress, even though the caption says 'A sale in progress on the live demo till'.",
+      "where": "home/phone/01 hero screenshot"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The share card crops the till screenshot at the bottom edge through the first row of product tiles, cutting off the 'In Stock' pills. Otherwise the surface is strong: Lighthouse 98/100/100/100, a real 404 status with a helpful page, llms.txt, a sitemap and search all work.",
+      "where": "og-image.png bottom edge"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A first-time visitor can't find out who is behind VendurePOS: no maker, team or company is named on the home page, and the only hint is an unexplained 'ph.wcpos.com' receiving demo usage events. That reads as a mystery third party right where trust is being decided.",
+    "where": "home/desktop/02 comparison table, row 'Sales reach Vendure, once each, even offline'; footer 'MIT licensed. Built with TallyUI.'",
+    "fix": "Name the maker once in the footer or hero (for example 'Made by the WCPOS team'), and in the table say 'to our own self-hosted analytics (ph.wcpos.com)'."
+  },
+  "mean": 8.3
+}

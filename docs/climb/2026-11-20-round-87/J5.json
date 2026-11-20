@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero says who it is for (\"made for shops that sell online with Vendure and also sell in person\") but nowhere says when a client is better off with a hosted till such as Shopify POS or Square, so the 'who should not use this' half is left to the Before you start bullets further down.", "where": "home/desktop/01 (hero) and home/desktop/02 (Before you start)"},
+    "C2": {"score": 8, "worst_defect": "The footer on every page says \"MIT licensed. Built with TallyUI.\" with no caveat, while self-hosting the till needs \"your own RxDB Premium licence token (RXDB_PREMIUM)\", a commercial licence whose cost is never stated; the caveat appears only in the home Before you start list and in Limitations.", "where": "footer on all pages (home/desktop last slice); home text line 85; limitations text line 40"},
+    "C3": {"score": 8, "worst_defect": "The Dashboard's own \"New POS till key\" button creates a role that does not work fully: \"On plugin 0.3.0 the vendurepos-pos-till role has no ReadOrder: add it yourself, or the till sells but its order history is refused\". The docs state this honestly, but a developer following the button path has to apply a manual fix.", "where": "quick-start (device key paragraph); connect-a-till/desktop/02"},
+    "C4": {"score": 8, "worst_defect": "The docs overview \"Next steps\" cards skip Connect a till and Troubleshooting, so two of the nine pages are reachable only from the sidebar or search.", "where": "docs/desktop/01"},
+    "C5": {"score": 8, "worst_defect": "In the hero till screenshot (\"A sale in progress on the live demo till\") the product names and cart lines are too small to read at desktop width, so the main proof image reads as texture, not as a till.", "where": "home/desktop/01"},
+    "C6": {"score": 8, "worst_defect": "The phone hero screenshot crops the till's category chips mid-word (\"Gif\"), and long doc headings such as \"Check whether a sale has reached the store\" wrap to two or three lines at 390 px.", "where": "home/phone/01; troubleshooting/phone/01"},
+    "C7": {"score": 9, "worst_defect": "Lighthouse mobile on / flags about 53 KiB of unused JavaScript and render-blocking resources, with LCP at 2.3 s; the 404 page carries no JSON-LD (harmless). Otherwise titles, descriptions, OG card, llms.txt, sitemap, robots and the search API are all clean.", "where": "tech.json lighthouse['/']"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "To a sceptic advising a client, the \"MIT licensed\" footer on every page reads as fully open source, but the only route to a self-hosted till needs a commercial RxDB Premium token whose price and terms the site never states. It is the open-core catch, and it is disclosed in only two bullets.",
+    "where": "footer on all pages; home/desktop/02 Before you start (\"you need your own RxDB Premium licence token\")",
+    "fix": "Change the footer to \"MIT licensed · self-hosting the till needs a paid RxDB Premium token\", linking to one Limitations line that names who sells the token and what it roughly costs (or says the hosted app.vendurepos.com avoids it)."
+  },
+  "mean": 8.1
+}
