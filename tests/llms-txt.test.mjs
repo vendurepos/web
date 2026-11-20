@@ -55,3 +55,14 @@ test('built llms text has no raw div wrapper and no line of raw JSX or HTML outs
     assert.doesNotMatch(prose, /^[ \t]*<\/?[A-Za-z]/m, file);
   }
 });
+
+test('llms.txt and llms-full.txt list the docs in sidebar order (round 91, J1 and J4 C7)', () => {
+  const meta = JSON.parse(readFileSync(new URL('../content/docs/meta.json', import.meta.url), 'utf8'));
+  const expected = meta.pages.map((slug) => slug === 'index' ? `${SITE_URL}/docs` : `${SITE_URL}/docs/${slug}`);
+  const body = readFileSync('.next/server/app/llms.txt.body', 'utf8');
+  const links = [...body.matchAll(/\]\(([^)]+)\)/g)].map((m) => m[1]).filter((url) => url.startsWith(`${SITE_URL}/docs`));
+  assert.deepEqual(links, expected);
+  const full = readFileSync('.next/server/app/llms-full.txt.body', 'utf8');
+  const urls = full.split('\n').filter((line) => line.startsWith('URL: ')).map((line) => line.slice(5));
+  assert.deepEqual(urls, expected);
+});
