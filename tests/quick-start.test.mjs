@@ -108,7 +108,7 @@ test('step 7 leads with its actions', () => {
   const items = Array.from(list[1].matchAll(/<li\b[^>]*>((?:(?!<\/li>)[\s\S])*)<\/li>/g));
   assert.equal(items.length, 3);
   assert.ok(items[0][1].includes('Assign the products'));
-  assert.ok(section.indexOf('How POS sales take stock.') > list.index + list[0].length);
+  assert.ok(section.indexOf('How POS sales take stock') > list.index + list[0].length);
 });
 
 // Round 20, J4 C6: steps 6 and 7 fold their explanations into one closed block each; the text stays in the HTML.
@@ -134,7 +134,7 @@ test('step 6 keeps its action visible and folds why the pairings work', () => {
 
 test('step 7 folds how POS sales take stock and keeps the server-start actions visible', () => {
   const section = stepSection('Prepare the channel and stock, then restart Vendure', 'Sign in and make a sale');
-  const { block, start, text } = closedBlock(section, 'How POS sales take stock.');
+  const { block, start, text } = closedBlock(section, 'How POS sales take stock');
   assert.ok(text.includes('A per-sale locationId is refused'));
   const actions = section.indexOf('On server start the plugin creates');
   assert.ok(actions > start + block.length);
@@ -143,7 +143,7 @@ test('step 7 folds how POS sales take stock and keeps the server-start actions v
 test('the folded step 6 and step 7 text stays in the llms text, as titled asides', () => {
   const llms = readFileSync('.next/server/app/llms.mdx/docs/quick-start.body', 'utf8');
   assert.ok(llms.includes('> **Why these pairings:** The single-rate totals match'));
-  assert.match(llms, /^> \*\*How POS sales take stock\.:?\*\* The plugin wraps/m);
+  assert.match(llms, /^> \*\*How POS sales take stock:\*\* The plugin wraps/m);
 });
 
 test('step 8c links how to add the barcode field', () => {
@@ -368,4 +368,26 @@ test('a folded callout is a plain bordered disclosure, not a callout frame; plai
   const start = html.lastIndexOf(frame, title);
   assert.ok(start >= 0);
   assert.ok(html.slice(start, title).includes('<svg'));
+});
+
+test('folds show a muted chevron that turns when open, not the browser marker (round 69, J4 C5)', () => {
+  for (const page of ['quick-start', 'troubleshooting', 'at-the-till']) {
+    const doc = readFileSync(`.next/server/app/docs/${page}.html`, 'utf8');
+    const folds = Array.from(doc.matchAll(/<details\b[^>]*>/g));
+    assert.ok(folds.length >= 1, page);
+    for (const { 0: tag, index } of folds) {
+      const where = `${page} @${index}`;
+      assert.ok(tag.match(/\bclass="([^"]*)"/)[1].split(/\s+/).includes('group'), where);
+      const body = doc.slice(index, doc.indexOf('</details>', index));
+      const summary = body.match(/<summary\b([^>]*)>([\s\S]*?)<\/summary>/);
+      assert.ok(summary, where);
+      const classes = summary[1].match(/\bclass="([^"]*)"/)[1].split(/\s+/);
+      assert.ok(classes.includes('list-none'), where);
+      assert.ok(classes.includes('[&amp;::-webkit-details-marker]:hidden'), where);
+      const svg = summary[2].match(/^\s*(<svg\b[^>]*>)/);
+      assert.ok(svg, where);
+      assert.match(svg[1], /\baria-hidden="true"/, where);
+      assert.match(svg[1], /\bgroup-open:rotate-90\b/, where);
+    }
+  }
 });
