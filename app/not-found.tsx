@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { HomeLayout } from 'fumadocs-ui/layouts/home';
 import { baseOptions } from '@/lib/layout.shared';
 import { DEMO_URL } from '@/lib/site';
+import { source } from '@/lib/source';
 
 export const metadata: Metadata = { title: 'Page not found', description: 'There is no page at this address.' };
 
@@ -20,6 +21,18 @@ export default function NotFound() {
             <Link href="/docs" className="rounded-md border border-fd-border px-6 py-3 hover:bg-fd-accent">Docs</Link>
             <a href={DEMO_URL} className="rounded-md border border-fd-border px-6 py-3 hover:bg-fd-accent">Live demo</a>
           </div>
+          <nav aria-label="Docs pages" className="mt-12">
+            <h2 className="mb-3 text-sm font-medium text-fd-muted-foreground">Or go straight to a docs page</h2>
+            <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+              {source.getPageTree().children.map((node) =>
+                node.type === 'page' ? (
+                  <li key={node.url}>
+                    <Link href={node.url} className="text-fd-primary underline-offset-4 hover:underline">{node.name}</Link>
+                  </li>
+                ) : null,
+              )}
+            </ul>
+          </nav>
         </section>
       </main>
     </HomeLayout>
