@@ -1,0 +1,48 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The first thing above the headline is the badge \"Pre-release · plugin 0.3.0\", which shows a plugin version before the page has said a plugin exists. Further down, the home page's \"Setting up the store\" column hands a newcomer raw jargon: \"Node ^20.19 || >=22.12\" and \"RxDB Premium licence token (RXDB_PREMIUM)\".",
+      "where": "home.desktop.01 (badge), home.desktop.02 / home.phone.04-05 (Before you start)"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The home page calls the till MIT-licensed open source, then says self-hosting needs \"your own RxDB Premium licence token (RXDB_PREMIUM)\". It never explains what RxDB Premium is or what it costs, and never says whether app.vendurepos.com is free. A first-timer reads that as a hidden catch. A smaller point: demo usage events go to \"ph.wcpos.com\", a domain from a different brand that the page never explains.",
+      "where": "home.desktop.02 'Setting up the store' last bullet and comparison table last row; text/home.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 3 has the reader write and run two scratch files (src/generate-migration.ts, src/run-migrations.ts). The one-line alternative for @vendure/create projects, \"npx vendure migrate\", is tucked into the \"Other ways to run the migration\" callout below them. Step 6 also makes a store-wide tax-strategy change that \"also affect[s] the web shop\" before the first sale. Both make the path feel heavier than it is.",
+      "where": "quick-start.desktop.01-02 (step 3), quick-start.desktop.03 (step 6)"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Plugin setup lists opaque migration class names (\"TallyPos1790648006022, TallyPosVp2a1790720000000, TallyPosRegister1790800000000, TallyPosV51790900000000\") under a muddled sentence, \"As of 0.3.0 there are four bundled migrations; TallyPosV51790900000000 ships in 0.3.0\". Nothing says which migration covers which change or which ones an upgrader needs.",
+      "where": "plugin-setup.desktop.01 / plugin-setup.phone.02 'Configure the plugin and migrations'"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "In \"What it does today\", the first two features are bordered cards with buttons, and the other eight are plain unboxed text in a two-column grid. The sudden change in treatment makes the section look half-finished.",
+      "where": "home.desktop.01 bottom to home.desktop.02 top"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "On a phone, the hero screenshot is the till's Products tab cropped after two product cards, with the cart hidden behind \"Cart (3)\". The caption \"A sale in progress on the live demo till\" sits under an image that shows no sale. The phone header also shows only Docs and Live demo; Quick start is hidden behind the chevron.",
+      "where": "home.phone.01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Very little to fault. Lighthouse on / still flags \"unused-javascript: Est savings of 53 KiB\" and \"render-blocking: Est savings of 130 ms\" (LCP 2.3 s). Titles, descriptions, JSON-LD, share card, llms.txt, search API, sitemap, robots and a real 404 status are all present.",
+      "where": "tech.json lighthouse['/']"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A first-time visitor never learns what VendurePOS costs. The home page says \"open-source\" and \"MIT licensed\", but its only money-related line is that self-hosting needs \"your own RxDB Premium licence token (RXDB_PREMIUM)\", with no word on whether the hosted app.vendurepos.com is free. That reads as a hidden catch exactly when the visitor is deciding whether to stay.",
+    "where": "home.desktop.02 / home.phone.04-05, 'Before you start' > 'Setting up the store', last bullet",
+    "fix": "Add one plain sentence near the hero or in Before you start saying whether the hosted till at app.vendurepos.com is free to use (and needs no licence). Move the RxDB Premium self-host note to Connect a till with a short explanation of what RxDB Premium is."
+  },
+  "mean": 8.1
+}
