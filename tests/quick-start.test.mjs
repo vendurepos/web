@@ -380,3 +380,11 @@ test('step 4 links its device-key pointer to the section (round 80, J4 C3)', () 
   assert.doesNotMatch(paragraph[0], /<strong\b/);
   assert.match(html, /<[^>]+\bid="optional-a-device-key-for-each-till"/);
 });
+
+test('step 9 says a store on your own machine can stay on http (round 92, J1 C3)', () => {
+  const body = readFileSync('.next/server/app/llms.mdx/docs/quick-start.body', 'utf8');
+  const sentence = 'A store on your own machine can stay on plain http at `http://localhost` or `http://127.0.0.1`';
+  const heading = body.indexOf('9. Troubleshoot [#9-troubleshoot]');
+  assert.ok(body.includes(sentence));
+  assert.ok(heading >= 0 && body.indexOf(sentence) > heading);
+});
