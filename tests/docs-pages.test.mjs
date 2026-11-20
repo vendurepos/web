@@ -525,3 +525,13 @@ test('each changelog release folds its full notes under its In short (round 78, 
     assert.ok(section.indexOf('<li') > details.index, release);
   }
 });
+
+test('connect a till names the role that lacks ReadOrder (round 81, J2 C4)', () => {
+  const text = readFileSync(join('.next/server/app', 'docs/connect-a-till.html'), 'utf8')
+    .replace(/<script\b[\s\S]*?<\/script>/g, ' ')
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/&#x27;|&#39;|&apos;/g, "'")
+    .replace(/\s+/g, ' ');
+  assert.ok(text.includes('On plugin 0.3.0 the vendurepos-pos-till role has no ReadOrder'));
+  assert.ok(!text.includes('that role has no'));
+});

@@ -51,8 +51,8 @@ Each cashier signs in to the till with their own Vendure administrator account, 
 
 1. Use the `vendurepos-pos-till` role that **New POS till key** creates (plugin 0.2.0+), or in the Vendure Dashboard
    create a role in the till's channel with `TallyPosSell`, `ReadCatalog`, `ReadSettings`, `ReadCustomer`, `CreateCustomer`
-   and `ReadOrder`. On plugin 0.3.0 that role has no `ReadOrder`: add it yourself, or the till sells but its order
-   history is refused.
+   and `ReadOrder`. On plugin 0.3.0 the `vendurepos-pos-till` role has no `ReadOrder`: add it yourself, or the till
+   sells but its order history is refused.
 2. Create one administrator per cashier, with only that role.
 3. Each cashier signs in with **Email and password**; the till names them by their email. At the end of a shift,
    [**Hand over**](/docs/at-the-till#check-the-register-during-the-day) signs them out and the next cashier signs in.
