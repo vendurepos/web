@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 9, "worst_defect": "The centred hero lede runs four lines at 1440 px and the last line, 'connection drops.', sits alone as a short centred orphan under three long lines, which softens an otherwise clean hero.", "where": "home/desktop/01 (hero paragraph under 'Point of sale for Vendure')"},
+    "C2": {"score": 9, "worst_defect": "The hero badge reads 'Pre-release · plugin 0.3.0', but the till's own version ('till app version 0.1.0, built 20 Nov 2026') only appears deep in the Changelog intro, so the one version a visitor sees describes the plugin, not the app they are about to open.", "where": "home/desktop/01 badge vs changelog/phone/01 intro"},
+    "C3": {"score": 8, "worst_defect": "Step '8. Sign in and make a sale' is a nine-item lettered list (a–i) with no picture of the sign-in screen ('Email and password' / 'Device key', store URL, channel token, barcode field), the only form a new user must fill in. The page's 'Check it worked' is also text only, while the till screenshots live on Home and At the till.", "where": "quick-start/desktop/03-04, quick-start/phone/07-08"},
+    "C4": {"score": 8, "worst_defect": "Under 'Till updates line', the bullet '\"N till updates need attention ...\"' nests two bold-led paragraphs ('At the counter:', 'For the store owner:'), a 'To find the line in the sync log' disclosure, a lead-in sentence and a three-item errorCode sub-list. The gap before it is visibly larger than between the other bullets. It reads as a wall of text, not a scannable fix.", "where": "troubleshooting/desktop/01 (lower half)"},
+    "C5": {"score": 8, "worst_defect": "The 'What it does today' grid mixes two treatments. Two bordered, filled cards with buttons ('Keeps selling offline', 'Every sale lands once') are followed by eight bare heading-plus-paragraph items in the same two columns. The right card's shorter body also leaves about two lines of empty fill above 'Read the 200-send test', so the first section after the hero looks unfinished, not deliberately tiered.", "where": "home/desktop/01 bottom to home/desktop/02 top (same in home.desktop-dark)"},
+    "C6": {"score": 8, "worst_defect": "The inline code chip 'packages/vendure-plugin/CHANGELOG.md' breaks across two lines at the hyphen and renders as two separate boxed chips ('packages/vendure–' / 'plugin/CHANGELOG.md'). Elsewhere, chip padding pushes parentheses apart, as in 'Run it ( tsx is...' and 'Tax-exclusive ( pricesIncludeTax: false )'.", "where": "changelog/phone/01; quick-start/phone/03 and /06"},
+    "C7": {"score": 9, "worst_defect": "The share card crops the till screenshot through the middle of the product grid's second component row: the 'In Stock' pills under Canvas Apron to Cotton Beanie and the 'Order discount' button are cut by the bottom edge, so the card ends on half-shown UI.", "where": "og-image.png (bottom edge)"}
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "The first content section after the hero, 'What it does today', puts two bordered cards with buttons and eight unbordered text items in one two-column grid. The right card ('Every sale lands once') has dead space above its button, so the section reads as two orphaned cards over a list, not one designed hierarchy, on desktop and in dark mode.",
+    "where": "home/desktop/01-02, home.desktop-dark",
+    "fix": "Pull the two proof cards into their own full-width row (or a single 'Proven by tests' band) above a clearly separate feature list. Alternatively, give all ten items the same treatment, and align the two cards' buttons with equal body heights."
+  },
+  "mean": 8.4
+}

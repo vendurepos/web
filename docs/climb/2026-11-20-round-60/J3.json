@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; shots/home.desktop.01.jpg"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "The quantified acceptance-run claims link to test source on main rather than a dated run result identifying the tested revision.",
+      "where": "text/home.txt, 'What it does today'; tech.json, home.desktop.links"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The tax instructions say a store mixing pricing modes 'must account for the store-wide strategy' without specifying a supported configuration or verification procedure for that case.",
+      "where": "text/quick-start.txt, step 6; text/endpoint_llms_full_txt.txt, 'Why these pairings'"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The refund procedure explains Pending and settleRefund but omits the external card-terminal refund step and its relationship to recording settlement.",
+      "where": "shots/plugin-setup.desktop.03.jpg; text/at-the-till.txt, 'Refund a sale'"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "Desktop screenshots, including shots/home.desktop-dark.jpg"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "Home and quick-start phone slices; first phone slice of every other page"
+    },
+    "C7": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "tech.json; text/endpoint_*.txt; shots/og-image.png; not-found screenshots"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "A developer following the documented refund procedure can mark the Vendure refund settled without being explicitly instructed to return the customer's card payment through the external terminal.",
+    "where": "shots/plugin-setup.desktop.03.jpg, 'Settle a Dashboard refund'; text/at-the-till.txt, 'Refund a sale'",
+    "fix": "Before settleRefund, explicitly instruct the operator to complete the refund through the external card terminal and retain its reference. Clarify that recording settlement in Vendure does not itself return money through that terminal."
+  },
+  "mean": 9.0
+}
