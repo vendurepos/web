@@ -3,8 +3,11 @@ title: Troubleshooting
 description: Sync status, selling offline, orders that need attention, and sign-in problems.
 ---
 {/* Sources: vendurepos/app 41d722d; packages/vendure-plugin/README.md at plugin-v0.3.0; @tallyui/components 3.3.0. */}
+{/* Round 94, J2 C4 (also rounds 92 and 93): the page mixed counter staff, the store owner and the server admin. Grouped by audience; content re-sorted, not changed (front desk ruling, 2026-11-20). */}
 
-## Check whether a sale has reached the store
+## At the counter
+
+### Check whether a sale has reached the store
 
 The till keeps the catalogue in a local database in your browser and sells with the network off.
 Each sale waits on the till until the store is reachable, then lands in Vendure once,
@@ -20,7 +23,7 @@ Open **Orders** to see the till's recent sales with a status: **Waiting to sync*
 **Synced** or **Not accepted**. Sales the store refused appear under **Needs attention**
 in Orders, with a **Retry**. Choose **Back to sale** to return without losing your cart.
 
-## Act on a header notice
+### Act on a header notice
 
 {/* Sources: vendurepos/app@1404f42 apps/pos/app/index.tsx:305-307 (sign-in bar), :313-318
 (Send again), :377, :381, :423-427 (outboxNotice); apps/pos/lib/register-sync.ts:9 (updates),
@@ -31,7 +34,7 @@ apps/pos/lib/log-buffer.ts:41-48,94-96, apps/pos/e2e/sign-in.spec.ts:818-828 (sy
 apps/pos/app/index.tsx:333-335 (Send again), :340-343 (no button on the till updates line);
 apps/pos/e2e/sign-in.spec.ts:446-452 (Retry under Needs attention). */}
 
-### Orders line
+#### Orders line
 
 - "The store refused this sign-in. Sign in again below; orders are kept."
   Sign in again in the bar that appears.
@@ -48,7 +51,7 @@ register/register-adoption.ts:20-70, :151-173. Plugin 2d3699e register.service.t
 index.tsx:216-221 (printZ), lib/closure-history-sheet.tsx:14-19, :38-47; pos register-outbox.ts:178-181
 (closure waits). Counter line: index.tsx:133 vs :157; log-buffer.ts:3-4, :41-49. */}
 
-### Till updates line
+#### Till updates line
 
 Till updates are the register's records the till sends to the store: opening and closing the
 register, cash movements and their voids, and the closure.
@@ -61,18 +64,54 @@ register, cash movements and their voids, and the closure.
   will send by themselves."
   Keep selling.
 
-### When till updates need attention
+#### When till updates need attention
 
 The header shows "N till updates need attention · The online store refused them, and later till updates wait
 behind them. Ask the store owner to look at the sync log in this till's Settings."
 
-**At the counter:** leave the app open and do not reload it until the store owner has copied the refused line;
-sales already made still send to the store. Do not clear the site's data or reinstall to get past it: that
+Leave the app open and do not reload it until the store owner has copied the refused line
+([For the store owner](#for-the-store-owner)); sales already made still send to the store. Do not clear the site's
+data or reinstall to get past it: that
 deletes this till's unsent sales and register records along with the refused update.
 
-**For the store owner:** copy the refused line from this till's sync log, and match its `errorCode` in the list
-below. One case you clear at the till by choosing another register, one the till fixes by itself, and for any
-other code you send the copied line to whoever runs your Vendure server.
+#### Store settings
+
+- "This store's VendurePOS plugin is missing or out of date. Install or update it, then this till continues."
+  The store must advertise `order.create` v4 and register v1, as every plugin release from 0.1.0
+  does (0.3.0 advertises `order.create` 1–5, which includes v4). Install the current release as in
+  [the quick start](/docs/quick-start#1-install-the-plugin),
+  apply its schema changes and restart Vendure; the till retries.
+- "Can't reach the store's settings yet. Retrying…"
+  The till takes no sale until it has read the store's settings.
+
+### Refresh prices and stock
+
+An open till picks up a price change made in Vendure within about a minute and a
+stock change within about five minutes. Each product shows its stock "as of" the last check.
+
+To pull the whole catalogue fresh, sign out and sign in again. Signing out removes
+the local catalogue but never the orders. Unsent orders and the register wait on
+that device for the next sign-in to the same store and channel.
+Sign out waits while a sale is saving ("Sign out waits until the sale is saved.")
+or the register is closing.
+
+### Sell while offline
+
+Once the catalogue has synced, the till keeps selling offline while its tab stays open. Customer search and adding a
+customer need a connection to the store. Don't reload or close the till's tab until the connection is back: the app
+keeps no offline copy of its own page, so it cannot load again until then
+([At the till](/docs/at-the-till#if-the-internet-drops)).
+
+### Check browser storage
+
+If the local database cannot start, the till shows the error with a **Reload** button.
+Private windows that give a site no storage, such as Safari's, cannot run the till.
+
+## For the store owner
+
+When the header shows "N till updates need attention", copy the refused line from this till's sync log, and
+match its `errorCode` in the list below. One case you clear at the till by choosing another register, one the till
+fixes by itself, and for any other code you send the copied line to whoever runs your Vendure server.
 
 <Callout title="To find the line in the sync log" fold>
 Open **Settings**, then **Sync log**, and choose **All**: the refusal is a `DEBUG` line,
@@ -94,37 +133,10 @@ What happens next depends on the `errorCode`:
   do not reach your Vendure store from this till, so keep the printed Z reports and the copied log line for whoever
   runs your Vendure server.
 
-### Store settings
+## For whoever runs your Vendure server
 
-- "This store's VendurePOS plugin is missing or out of date. Install or update it, then this till continues."
-  The store must advertise `order.create` v4 and register v1, as every plugin release from 0.1.0
-  does (0.3.0 advertises `order.create` 1–5, which includes v4). Install the current release as in
-  [the quick start](/docs/quick-start#1-install-the-plugin),
-  apply its schema changes and restart Vendure; the till retries.
-- "Can't reach the store's settings yet. Retrying…"
-  The till takes no sale until it has read the store's settings.
+### Resolve a sale the store kept part-way
 
-## Refresh prices and stock
-
-An open till picks up a price change made in Vendure within about a minute and a
-stock change within about five minutes. Each product shows its stock "as of" the last check.
-
-To pull the whole catalogue fresh, sign out and sign in again. Signing out removes
-the local catalogue but never the orders. Unsent orders and the register wait on
-that device for the next sign-in to the same store and channel.
-Sign out waits while a sale is saving ("Sign out waits until the sale is saved.")
-or the register is closing.
-
-## Sell while offline
-
-Once the catalogue has synced, the till keeps selling offline while its tab stays open. Customer search and adding a
-customer need a connection to the store. Don't reload or close the till's tab until the connection is back: the app
-keeps no offline copy of its own page, so it cannot load again until then
-([At the till](/docs/at-the-till#if-the-internet-drops)).
-
-## Resolve a sale the store kept part-way
-
-This section is for whoever runs your Vendure server.
 A sale marked `needs_admin` answers 409 until an admin resolves it through the
 Admin API with SuperAdmin access. List these sales with `tallyNeedsAdminCommands`;
 each `id` is the `commandId` you resolve:
@@ -172,12 +184,7 @@ Send a rejection with the sale's channel token (`vendure-token`).
 An order flagged `tallyRejected` counts as never placed: leave it out of register
 and sales figures, and use the till's **Retry** for the sale that counts.
 
-## Check browser storage
-
-If the local database cannot start, the till shows the error with a **Reload** button.
-Private windows that give a site no storage, such as Safari's, cannot run the till.
-
-## Fix CORS, 401 or plain-http store problems
+### Fix CORS, 401 or plain-http store problems
 
 Follow [Troubleshoot in the quick start](/docs/quick-start#9-troubleshoot).
 A till served over https talks only to https stores; `http://localhost` and
