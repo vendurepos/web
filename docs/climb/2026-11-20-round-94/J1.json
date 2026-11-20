@@ -1,0 +1,48 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The home page's 'Live demo or your own store' table puts admin jargon in front of a newcomer: the refund row reads 'No, not on plugin 0.3.0: refund in the Vendure Dashboard. The refund stays Pending until an administrator settles it with two Admin API calls; see Plugin setup', a four-line paragraph inside an otherwise Yes/Yes table.",
+      "where": "home/desktop/02 (table, 'Refund a sale at the till' row); home/phone/04"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The site never says what VendurePOS costs. Home says 'The till's source is MIT licensed. To build and host it yourself instead of using app.vendurepos.com, you need your own RxDB Premium licence token (RXDB_PREMIUM)', but no page says whether app.vendurepos.com is free or that RxDB Premium is a paid third-party licence. 'Open source' then comes with an unpriced catch.",
+      "where": "home/desktop/02 ('Setting up the store', last bullet); text/home.txt line 86; limitations 'Setting up the store'"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 8 'Sign in and make a sale', the step where the visitor finally sees the till, is text only: there is no screenshot of the app.vendurepos.com sign-in screen or of the 'synced' state that 'Check it worked' relies on ('Once the till shows the order as synced'). quick-start.txt has zero [image:] markers.",
+      "where": "quick-start/desktop/03-04 (8. Sign in and make a sale, Check it worked)"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The two sign-in instructions disagree in detail. Connect a till says 'On Sign in to Vendure, choose Email and password or Device key', but quick start step 8a jumps straight to 'Enter the store URL ..., your administrator email and password' without naming that first choice, so a reader following the quick start meets a screen the step does not describe.",
+      "where": "quick-start/desktop/03 step 8a vs connect-a-till/desktop/01 'Open your till'"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "'What it does today' is styled two ways: two boxed cards ('Keeps selling offline', 'Every sale lands once') sit above eight unboxed items. The second card's shorter text leaves a large empty band above its 'Read the 200-send test' button, so the pair looks unbalanced.",
+      "where": "home/desktop/01 (lower half); also home.desktop-dark"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The phone header shows only 'Docs' and 'Live demo'; 'Quick start' and 'At the till' sit behind an unlabelled chevron. In the hero, 'For cashiers: At the till' drops to its own line under the two buttons, so the three calls to action read as two plus a stray link.",
+      "where": "home/phone/01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The share card's till screenshot is cut off at the bottom edge through the first row of product cards (the 'In Stock' pills under Canvas Apron to Cotton Beanie are sliced), so the card looks cropped by accident. Separately, Lighthouse still flags 53 KiB of unused JavaScript on /.",
+      "where": "og-image.png; tech.json lighthouse['/'].failing"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A first-time visitor cannot find out what it costs. Home says the source is MIT licensed, but self-hosting needs 'your own RxDB Premium licence token', and nothing says whether the hosted till at app.vendurepos.com is free, paid or free only during pre-release. The licence note reads like a catch the site is not explaining.",
+    "where": "home/desktop/02 'Setting up the store' (text/home.txt line 86); no page states pricing",
+    "fix": "Add one plain line near the hero or in 'Before you start' stating whether app.vendurepos.com is free to use (and for how long), and that RxDB Premium is a paid licence that only people building the till themselves need."
+  },
+  "mean": 8.1
+}
