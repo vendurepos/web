@@ -1,0 +1,48 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero says what it is and who it is for, but nothing on the home page tells a buyer who should NOT pick it or how it differs from Shopify POS, Square or Lightspeed. The disqualifiers (desktop Chrome only, no cash drawer, no card-terminal link, refunds outside the till, Postgres only) are scattered across 'Before you start' bullets and the demo table instead of one plain 'Not for you if…' line.",
+      "where": "home.desktop.01 hero / home.desktop.02 'Before you start'"
+    },
+    "C2": {
+      "score": 7,
+      "worst_defect": "The changelog contradicts itself in one bullet: 'a key with this role does everything a till does (ADR 0004). Not in the release notes: in 0.2.0 and 0.3.0 this role has no ReadOrder, so the till's order history is refused'. That known defect has carried through two plugin releases, and the last one is dated 2026-10-06. Nowhere does the site say who maintains the project, where to report issues or when a fix is planned. The demo also posts analytics to an unexplained third-party domain, ph.wcpos.com.",
+      "where": "changelog.desktop.01 (0.2.0, last bullet); text/connect-a-till.txt 'Where requests go'"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The steps are out of order for barcodes. Quick start step 8c asks for 'an existing single text ProductVariant custom field, such as barcode' at sign-in, and its 'how to add one' link sends you to add a custom field and run another database migration. You find this out only after steps 3 and 7 have already run the migration and restarted Vendure.",
+      "where": "quick-start.desktop.03 step 8c; connect-a-till 'Enter your store details'"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The changelog is written for maintainers, not upgraders. Bullets cite 'ADR 0005', '#116', 'order.create v5', 'lineTax: { none: true, classes: true }' and 'TallyPosV51790900000000', and the only upgrade guidance for 0.3.0 is 'Run the new migration when you upgrade', with no steps and no link to Plugin setup's migration list.",
+      "where": "changelog.desktop.01, 0.3.0 section"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "Below the two cards, 'What it does today' is nine text-only grey paragraphs in two columns, and the last item, 'Custom items, fees and shipping', sits alone on the left with an empty right column. It reads as a wall of text, with no visual proof beyond the single hero screenshot.",
+      "where": "home.desktop.02 top"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "Long quick-start headings wrap to three or four lines at 390 px ('2. Add TallyPosPlugin to your existing Vendure config', '3. Generate and run the migration before starting the server'), and the inline code pill in the heading makes the step number hard to scan.",
+      "where": "quick-start.phone.02"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The SoftwareApplication JSON-LD has no softwareVersion or dateModified, although the page headlines 'Pre-release · plugin 0.3.0'. Everything else is clean: Lighthouse 98/100/100/100, llms.txt, sitemap, search API, the share card, and a 404 page that returns a real 404.",
+      "where": "tech.json pages.home.desktop.jsonLd"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "Nothing on the site shows the project is maintained or supported. There is no maintainer, no issue tracker or support link, and no roadmap to 1.0. The only plugin dates (three releases between 2026-10-01 and 2026-10-06, nothing since) sit beside known defects that the docs work around instead of fixing or scheduling: the auto-created till role missing ReadOrder, and Dashboard refunds stuck Pending until someone hand-writes two GraphQL calls. The changelog even says that role 'does everything a till does' in the sentence before admitting it does not. I would not advise a client to rely on that without asking who answers when it breaks.",
+    "where": "changelog.desktop.01 (0.2.0 last bullet); home.desktop.02 refund row; footer of home.desktop.02",
+    "fix": "Add a short 'Status and support' block to the home page and Overview: who maintains it, where to file issues, and what the next plugin release fixes (ReadOrder in the till role, refunds at the till). Delete 'does everything a till does' from the changelog bullet."
+  },
+  "mean": 8.0
+}

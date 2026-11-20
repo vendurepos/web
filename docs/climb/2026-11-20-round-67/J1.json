@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero passes the five-second test, but its first explanation leans on jargon a half-aware visitor cannot decode: \"Vendure, the open-source headless commerce framework\", topped by a \"Pre-release · plugin 0.3.0\" badge that names a plugin before the page has said what one is for.", "where": "home/desktop/01 hero (same on home/phone/01)"},
+    "C2": {"score": 8, "worst_defect": "The home page calls the till \"open-source\" and the footer says \"MIT licensed\", yet 'Setting up the store' says self-hosting needs \"your own RxDB Premium licence token (RXDB_PREMIUM)\" without saying what RxDB Premium is or whether it costs money, so the catch is stated but not explained.", "where": "home/desktop/02 'Before you start' > 'Setting up the store', last bullet; home/phone/05"},
+    "C3": {"score": 8, "worst_defect": "Step 5 of the quick start ends with a collapsed \"If your store already allows vendurepos.vercel.app\". It names an old domain a new user has never seen and has no context, so it reads like a leftover in the middle of the critical CORS step.", "where": "quick-start/desktop/03 top; quick-start/phone/06 top"},
+    "C4": {"score": 8, "worst_defect": "The product's name splits halfway through the docs. Step 2 is headed \"Add TallyPosPlugin\", and the permission, routes, payment method and fields are all Tally (TallyPosSell, /tally/v1, tally-pos, tallySaleAt, TallyPosV51790900000000). A one-paragraph aside explains it, but a newcomer has to keep translating.", "where": "quick-start/desktop/01 step 2; plugin-setup/desktop/01 migrations block"},
+    "C5": {"score": 8, "worst_defect": "After the two boxed cards, 'What it does today' is nine text-only items of equal weight with no visuals. The last item, \"Custom items, fees and shipping\", sits alone in the left column with an empty right column beside it.", "where": "home/desktop/01 bottom to home/desktop/02 top"},
+    "C6": {"score": 8, "worst_defect": "The phone hero screenshot is the till's narrow layout cut off after the first row of two products. The cart sits behind a 'Cart (3) · €20.09' tab, so the caption \"A sale in progress on the live demo till\" sits under a picture with no visible sale.", "where": "home/phone/01 bottom"},
+    "C7": {"score": 9, "worst_defect": "Mobile Lighthouse on / still flags 53 KiB of unused JavaScript and render-blocking requests, with LCP at 2.3 s. Titles, descriptions, JSON-LD, llms.txt, sitemap, search API and the 404 are all in order.", "where": "tech.json lighthouse['/']"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A first-time visitor is told the till is open source and MIT licensed. The same page then says self-hosting needs \"your own RxDB Premium licence token (RXDB_PREMIUM)\", with no word on what that is or whether it is paid. The visitor either skims past a cost they don't know about or stops trusting the 'open-source' claim.",
+    "where": "home/desktop/02 'Setting up the store', last bullet (also connect-a-till and limitations 'Setting up the store')",
+    "fix": "In that bullet, say in plain words that RxDB Premium is a commercial database licence from a third party and that you need it only if you build the till yourself, not if you use app.vendurepos.com, with a link to its pricing."
+  },
+  "mean": 8.1
+}
