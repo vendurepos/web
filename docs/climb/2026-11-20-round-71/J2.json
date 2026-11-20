@@ -1,0 +1,48 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero ('Point of sale for Vendure', an open-source till for Vendure, the open-source headless commerce framework, with a note about the plugin on your Vendure server) is written for the developer. Nothing up top tells the owner, in plain words, 'your staff sell from a browser; your developer sets it up once'. The cashier guide 'At the till' is reachable only from the top nav and the closing paragraph.",
+      "where": "home.desktop.01 hero; home.phone.01"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The refund row reads 'No, not on plugin 0.3.0: refund in the Vendure Dashboard. The refund stays Pending until an administrator settles it with two Admin API calls'. It is honest, but to an owner it says refunds are half-finished and need a developer, and it is phrased in jargon. A smaller mixed signal: 'tablets and phones, an iPad included, are not tested yet', while the phone hero shows a phone-layout till.",
+      "where": "home.desktop.02 'Live demo or your own store' table and 'Before you start'; home.phone.01"
+    },
+    "C3": {
+      "score": 7,
+      "worst_defect": "Every quick-start step is server work for the developer: npm install @vendurepos/plugin@0.3.0, TallyPosPlugin config, tsx migrations, bearer auth and permissions, CORS_ORIGINS, a tax-strategy table, channel and stock. 'Sign in and make a sale' only arrives at step 8. There is no time estimate and no 'what to hand your developer / what your staff need' line, so the owner cannot tell whether staff can sell tomorrow.",
+      "where": "quick-start.desktop.01-03, steps 1-7; quick-start.phone.02"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "Troubleshooting mixes counter problems with developer internals. The owner is told to copy an errorCode from the sync log and then meets 'register_session_already_open', the tallyNeedsAdminCommands/tallyResolveNeedsAdmin GraphQL, and 'VENDUREPOS_WEB_ALLOW_LAN_HTTP ... connect-src'. There is no split between 'staff can fix this' and 'call your developer'. At the till is good, but there is no printable one-page cashier card for the counter.",
+      "where": "troubleshooting.desktop.01-03"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The cashier-sheet screenshot sits in a double frame: an outer card with wide empty padding around the inner card, so the image looks small and floats. The closure-screen image has the same loose padding. Elsewhere the design is clean, and it holds up in dark mode.",
+      "where": "at-the-till.desktop.03; at-the-till.desktop.04"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "Long code-styled step headings wrap over three lines on phone ('2. Add TallyPosPlugin to your existing Vendure config'), which is heavy to scan between customers. In the home phone hero, the till screenshot's category chips are cut off at 'Gif'. There is no overflow, and the tables reflow well.",
+      "where": "quick-start.phone.02; home.phone.01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Lighthouse on / still flags about 53 KiB of unused JavaScript, render-blocking requests and legacy JS, and LCP is 2.4 s. Everything else is clean: 200s, a real 404, JSON-LD, llms.txt, sitemap, OG image and a working search API.",
+      "where": "tech.json lighthouse mobile /"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "No page answers the owner's first question, 'can my staff sell with this tomorrow?', in owner terms. The quick start is seven developer server steps (npm, TallyPosPlugin, tsx migrations, bearer auth, CORS_ORIGINS, tax strategy, channel/stock) before 'sign in and make a sale', with no time estimate and no split between what the developer does once and what the counter needs.",
+    "where": "quick-start.desktop.01-03; home.desktop.01",
+    "fix": "Add a short 'For the shop owner' box at the top of the quick start and under the home hero. It should say: your developer does steps 1-7 once (about N minutes); your staff need desktop Chrome, one open tab, your existing card terminal and a keyboard-style barcode scanner; then link 'At the till' for staff and 'Limitations' for what it does not do (no terminal link, no cash drawer, refunds in the Dashboard)."
+  },
+  "mean": 7.9
+}

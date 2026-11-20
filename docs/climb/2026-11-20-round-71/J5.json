@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero says what it is and who it is for, but nothing near the top says who should not pick it over Shopify POS, Square or Lightspeed (no integrated card terminal, no cash drawer, iPad untested, no refunds at the till on a real store); those deal-breakers first appear in 'Before you start' at the very bottom of the page.", "where": "home/desktop/01 hero vs home/desktop/02 'Before you start'"},
+    "C2": {"score": 7, "worst_defect": "The headline says 'open-source till' and the footer says 'MIT licensed', but self-hosting the till 'needs your own RxDB Premium licence token (RXDB_PREMIUM)', a paid licence whose cost is never stated. That leaves the project's own app.vendurepos.com as the only free route, and no page says who runs it, whether it stays free or what happens if it goes away. The demo's analytics go to an unexplained third-party domain, ph.wcpos.com, and no maintainer or organisation is named anywhere.", "where": "home/desktop/02 'Setting up the store' last bullet; text/connect-a-till.txt 'Where requests go'; home footer"},
+    "C3": {"score": 8, "worst_defect": "Step 6 makes you change the store-wide taxOptions.orderTaxCalculationStrategy ('also affect the web shop'). Whether that is mandatory, and what breaks if you skip it, is hidden in a collapsed 'Why these pairings' panel, so a store owner can't judge the risk to their live web shop before installing.", "where": "quick-start/desktop/03 '6. Choose tax rounding for your pricing mode'"},
+    "C4": {"score": 8, "worst_defect": "The Changelog reads as an internal dev log rather than release notes: 'order.create v5 ... (ADR 0005)', 'maxShippingLines: 1 and lineTax: { none: true, classes: true }'. A known bug is also noted inline as 'Not in the release notes: in 0.2.0 and 0.3.0 this role has no ReadOrder', with a manual workaround but no fix release in six weeks.", "where": "changelog/desktop/01"},
+    "C5": {"score": 8, "worst_defect": "In 'What it does today', the 'Every sale lands once' card has a large empty gap above its 'Read the 200-send test' button so it lines up with the longer offline card. The two boxed cards are then followed by eight unboxed items in a different style, so the section looks half-finished.", "where": "home/desktop/01 bottom"},
+    "C6": {"score": 8, "worst_defect": "On the phone, the header shows only 'Docs' and 'Live demo'. 'Quick start' and 'At the till' sit behind an unlabelled chevron, and the hero till screenshot is cropped to two product cards, so it shows little of the product.", "where": "home/phone/01"},
+    "C7": {"score": 9, "worst_defect": "Mobile LCP is 2.4 s, with render-blocking requests and 53 KiB of unused JS on '/'. The SoftwareApplication JSON-LD has no softwareVersion, although the page shows a 'plugin 0.3.0' badge.", "where": "tech.json lighthouse '/' and home.desktop jsonLd"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The site sells an 'open-source, MIT licensed' till, but self-hosting needs a paid RxDB Premium licence of unstated cost. The only free path is the project's hosted app.vendurepos.com, and no page says who operates it, what it costs or will cost, or how long it will be supported. No maintainer is named, and demo telemetry goes to an unexplained ph.wcpos.com. I would warn a client that this is a lock-in and abandonment risk.",
+    "where": "home/desktop/02 'Setting up the store'; text/connect-a-till.txt 'Where requests go'; docs overview",
+    "fix": "Add a short 'Who runs this and what it costs' block to the Overview and home 'Before you start': who maintains it, that app.vendurepos.com is free (and for how long or on what terms), the rough cost of an RxDB Premium licence for self-hosting, and what ph.wcpos.com / WCPOS is."
+  },
+  "mean": 8.0
+}
