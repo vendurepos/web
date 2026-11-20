@@ -1,0 +1,48 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "On phone the hero's proof screenshot (till mid-sale) crops to two product cards and the category chip row is cut mid-word at \"Gif\", so the first phone view undersells the till.",
+      "where": "home.phone.01"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "None that hurts trust. The honest caveat inside the \"Keeps selling offline\" card is long for a home-page card, but it reads as candour, not weakness.",
+      "where": "home.desktop.01"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "\"Check it worked\" is an unnumbered h3 between step 8 and \"9. Troubleshoot\", and the device-key option comes after the troubleshoot step, so the numbered path breaks just before the finish line.",
+      "where": "quick-start.desktop.03 / quick-start.phone.07-08"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "In step 4 the six required permissions each sit on their own bullet as a lone code pill with tall line spacing: a long, airy column of pills with no grouping or explanation. On phone the sub-step markers \"f.\" and \"i.\" sit offset from a-h.",
+      "where": "quick-start.desktop.02, quick-start.phone.04, quick-start.phone.08"
+    },
+    "C5": {
+      "score": 7,
+      "worst_defect": "\"What it does today\" mixes two treatments: two bordered cards (\"Keeps selling offline\", \"Every sale lands once\"; the second leaves an empty band above \"Read the 200-send test\") sit over eight unboxed feature items. Separately, the at-the-till figures change width from slice to slice: payment full column, cashier sheet ~380px centred, closure ~510px.",
+      "where": "home.desktop.01; at-the-till.desktop.02-04"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "Code blocks soft-wrap mid-statement (\".catch(error => { console.error(error);\" / \"process.exitCode = 1; });\") instead of scrolling. The h2 \"2. Add TallyPosPlugin to your existing Vendure config\" runs to three lines around a code pill. \"packages/vendure-plugin/CHANGELOG.md\" breaks at \"vendure-\".",
+      "where": "quick-start.phone.02-03, quick-start.phone.06, changelog.phone.01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "None that matters. Docs meta descriptions are terse (Overview: \"What VendurePOS is, what it needs, and where it stands.\"). Everything else is solid: 200s on every route, llms.txt/llms-full/sitemap (10 locs)/robots/search API, JSON-LD on home and docs, Lighthouse mobile 98/100/100/100, CLS 0.",
+      "where": "endpoint_llms_txt, tech.json"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "\"What it does today\" on the home page mixes two bordered proof cards (\"Keeps selling offline\", \"Every sale lands once\") with eight unboxed feature items below them. The second card's short body leaves an empty band above its \"Read the 200-send test\" button, so the section's two treatments clash and it has a visible hole.",
+    "where": "home.desktop.01",
+    "fix": "Pick one treatment. Either put the two proof cards in a matched-height row with the action links pinned to the card bottom (flex column, mt-auto) and set the eight features as a uniform 2- or 4-column list under a small subheading, or give all ten items the same unboxed treatment and pull the two proofs out as a separate 'Proof' strip."
+  },
+  "mean": 8.1
+}
