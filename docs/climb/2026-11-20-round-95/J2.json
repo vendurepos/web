@@ -1,0 +1,48 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero says what it is and the 'Live demo / Quick start / For cashiers: At the till' row is clear, but nowhere on the home page (or the docs) does it say whether using the hosted till at app.vendurepos.com costs anything or who runs it; 'MIT licensed' in the footer covers the source, not the hosted service my staff would sign in to.",
+      "where": "home.desktop.01 hero and home.desktop.02 'Before you start' / footer; quick-start.txt 'The hosted POS is live at https://app.vendurepos.com'"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "Limits are stated plainly everywhere (tab must stay open offline, unsent sales lost if browser data is cleared, no cash drawer, iPad untested), but the only operator named on the home page is an unexplained third-party domain: 'All it sends is anonymous usage events to ph.wcpos.com'. Only Connect a till explains what ph.wcpos.com is, and no page says who stands behind app.vendurepos.com.",
+      "where": "home.desktop.02 'Live demo or your own store' table, last row; connect-a-till.txt privacy lines"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 4 tells my developer to 'Sign in with a Vendure administrator whose role in the till's channel has these permissions' but gives no Dashboard steps for making that role; the steps are on another page ('Give each cashier their own account'), so the numbered path breaks off at the account step.",
+      "where": "quick-start.desktop.02 / quick-start.phone.04-05, step 4"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The cashier page uses wording a new cashier won't know: 'choose your initial at the right of the bar' (for Pay out and the cashier sheet). It also lists 'or the device's camera' as a scanner under a 'computer with desktop Chrome', and the 'For the store owner' paragraph is a hard-to-follow run-on ('One case you clear at the till by choosing another register, one the till fixes by itself, and for any other code...').",
+      "where": "at-the-till.desktop.01 'What you need at the counter'; at-the-till.desktop.03 'Refund a sale' step 2 and 'Check the register during the day'; troubleshooting.txt 'For the store owner'"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The home hero till screenshot is shrunk so far that product names, prices and the cart totals are tiny type at 1440 px. Below the two boxed cards, 'What it does today' turns into eight plain grey text blocks with no icons or images, so the feature section reads as a wall of text.",
+      "where": "home.desktop.01 hero image and lower half; home.desktop.02 top"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "No overflow and the comparison table restacks well, but on a phone 'What it does today' runs for about two screens of grey paragraphs with nothing to break it up before 'Live demo or your own store'.",
+      "where": "home.phone.02-03"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Lighthouse mobile is 98/100/100/100 with every page in the sitemap, llms.txt, a working search API, a real 404 and a good share card. The only remaining flags are 'unused-javascript' (~53 KiB) and 'render-blocking' (~150 ms) on the home page.",
+      "where": "tech.json lighthouse '/' failing"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "A shop owner deciding whether staff can sell on it tomorrow cannot find out whether the hosted till at app.vendurepos.com is free, paid or best-effort, or who runs it. The site explains the plugin, the data path and every limit, but never the terms of the service the till runs on.",
+    "where": "home.desktop.02 'Before you start' (and quick-start.txt intro: 'The hosted POS is live at https://app.vendurepos.com')",
+    "fix": "Add one line under 'Before you start › At the counter' (and the quick start intro) saying who runs app.vendurepos.com, that it costs nothing (or what it costs), and that the till only talks to your own store."
+  },
+  "mean": 8.3
+}
