@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero is clear, but just below it the home page turns into developer jargon a first-timer can't parse: the comparison table's refund cell says \"The refund stays Pending until an administrator settles it with two Admin API calls\", and 'Before you start' lists \"Node ^20.19 || >=22.12\" and \"RxDB Premium licence token (RXDB_PREMIUM)\".", "where": "home/desktop/02 (table 'Refund a sale at the till' row, 'Setting up the store' list); home/phone/04-05"},
+    "C2": {"score": 8, "worst_defect": "The site never says who makes VendurePOS. The only clue is an unexplained third-party domain in the demo row (\"All it sends is anonymous usage events to ph.wcpos.com\"), and the footer's \"Built with TallyUI. For Medusa, see MedusaPOS\" doesn't answer it either, so a newcomer can't tell who stands behind the product.", "where": "home/desktop/02 table last row and footer"},
+    "C3": {"score": 8, "worst_defect": "The quick start runs to nine steps and asks the reader to absorb a naming mismatch (\"The plugin's code names say Tally, not VendurePOS: TallyPosPlugin, the TallyPosSell permission and the /tally/v1 routes\"). Step 5 also has a leftover collapsible, \"If your store already allows vendurepos.vercel.app\", that refers to an old domain the reader has never seen.", "where": "quick-start/desktop/01 step 2; quick-start/desktop/03 and phone/06 step 5 collapsible"},
+    "C4": {"score": 8, "worst_defect": "The public changelog is raw internal release notes: \"GET /tally/v1/info advertises order.create 1–5 (ADR 0005)\" and \"order.create v5 custom lines are real order lines on a plugin-owned, disabled 'POS custom item' variant\". It cites ADRs and protocol versions with no plain-language summary per bullet, beyond the one 'In short' line.", "where": "changelog/phone/01; text/changelog.txt"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' is inconsistent: the first two features sit in bordered cards with buttons, and the next eight are plain unboxed text in a two-column list. There's no image or icon between the hero screenshot and the table, so the middle of the page reads as a wall of grey text.", "where": "home/desktop/01 bottom to home/desktop/02 top"},
+    "C6": {"score": 8, "worst_defect": "On the phone, the hero screenshot shows only the top of the till: two product tiles and a category row clipped at \"Gif\", with no cart or total in view. It doesn't show a sale the way the desktop image does, and the caption \"A sale in progress\" falls off the bottom of the slice.", "where": "home/phone/01"},
+    "C7": {"score": 9, "worst_defect": "Mobile LCP is 2.4–2.5 s on both audited pages (quick-start's largest-contentful-paint scores only 0.89), with 53 KiB of unused JS and render-blocking requests flagged on the home page. Titles, share card, JSON-LD, llms.txt, search, sitemap and the 404 page are all in order.", "where": "tech.json lighthouse / and /docs/quick-start"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "After a clear hero, the rest of the home page talks to someone who already runs a Vendure server. The table and 'Before you start' use 'two Admin API calls', 'Node ^20.19 || >=22.12' and 'RxDB Premium licence token (RXDB_PREMIUM)', and the page never says who makes VendurePOS. A first-time visitor half-sure what Vendure is loses the thread, and the demo stays the only clear next step.",
+    "where": "home/desktop/02 and home/phone/04-05",
+    "fix": "On the home page, cut the refund cell to \"No, not yet: refund in the Vendure Dashboard (see Limitations)\". Move the Node range and the RxDB self-hosting note to the Overview or Connect a till page, and add one footer line saying who builds and maintains VendurePOS."
+  },
+  "mean": 8.1
+}

@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero screenshot shows the cart's 'Add charge' button, but 'What it does today' never mentions custom items, fees or shipping charges. Those are the headline of the latest plugin release (0.3.0), so a buyer comparing feature lists misses them.", "where": "home/desktop/01 hero image vs 'What it does today' grid; changelog 0.3.0 'In short'"},
+    "C2": {"score": 7, "worst_defect": "Nowhere does the site say who builds or maintains VendurePOS, where to get help, or what is planned before 1.0 and when. The only hint of an owner is that demo telemetry goes to 'ph.wcpos.com', a domain that is never explained. Meanwhile the live demo, the first CTA, does things a real store cannot: refund at the till and the customer note.", "where": "home/desktop/02 footer and 'Live demo or your own store' table; connect-a-till 'Where requests go'; at-the-till 'Order details'"},
+    "C3": {"score": 8, "worst_defect": "Step 8 ends at 'Once the till shows the order as synced' but never shows the sign-in screen (store URL, channel token, Barcode field) or what 'synced' looks like on the till. The only success checks are in the Dashboard.", "where": "quick-start/desktop/03-04, '8. Sign in and make a sale' and 'Check it worked'"},
+    "C4": {"score": 8, "worst_defect": "At the till spends a whole subsection, 'Refund at the till (live demo only)', and the 'Customer note' paragraph on features no installed store has on plugin 0.3.0. The till's own device-key role lacks ReadOrder, and that workaround is repeated on four pages (quick start, connect a till, changelog, home) instead of being fixed once.", "where": "at-the-till/desktop/02 'Refund at the till (live demo only)'; at-the-till/desktop/01 'Order details'; quick-start 'Optional: a device key'"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' boxes two features as cards with buttons, then lists eight more as unboxed text in a two-column grid. The section looks unfinished, and on desktop the second card has a large empty gap above its button.", "where": "home/desktop/01 lower half, 'Every sale lands once' card"},
+    "C6": {"score": 9, "worst_defect": "On phone, code blocks wrap long calls mid-argument, e.g. generateMigration(config, { name: / 'AddVendurePos', outputDir: / './src/migrations' }). It reads, but copying by eye is error-prone. No overflow anywhere.", "where": "quick-start/phone/03"},
+    "C7": {"score": 9, "worst_defect": "The share card crops the till screenshot through the middle of the product cards, cutting off the price chips at the bottom edge. The SoftwareApplication JSON-LD carries no softwareVersion or dateModified, though the site leans on 'plugin 0.3.0'.", "where": "og-image.png bottom edge; tech.json home.desktop jsonLd"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A sceptic advising a client cannot find out who is behind VendurePOS, how to get support or report bugs, or when the gaps it admits (refunds at the till, the ReadOrder role bug present since 0.2.0, coupons, 1.0) will close. The demo meanwhile shows features the released plugin lacks, and the only ownership clue is an unexplained 'ph.wcpos.com' analytics host.",
+    "where": "home/desktop/02 'Before you start' and footer; changelog/desktop/01 (last plugin release 2026-10-06); connect-a-till/desktop/01 'Where requests go'",
+    "fix": "Add a short 'Project status' block on home and the Overview: who maintains it (and its link to WCPOS/TallyUI), where to get help (GitHub issues link), and the next plugin release with what it brings (refund at the till, ReadOrder in the till role), with a target date."
+  },
+  "mean": 8.1
+}

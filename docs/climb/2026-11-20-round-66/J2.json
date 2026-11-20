@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero's two buttons are 'Live demo' and 'Quick start' (a developer config walkthrough), and the hero copy leads with 'headless commerce framework'. The staff guide only shows up in the closing paragraph ('For cashiers, At the till covers selling, taking payment and closing the day'). On phone, the top bar shows only 'Docs' and 'Live demo', so 'At the till' is hidden.", "where": "home.phone.01 (header, hero) and home.phone.05 (closing paragraph)"},
+    "C2": {"score": 8, "worst_defect": "The live-demo row says 'All it sends is anonymous usage events to ph.wcpos.com, with no cookie', but 'wcpos.com' appears nowhere else on the site, so an owner can't tell who that third party is or why the demo reports to it.", "where": "home.desktop.02 'Live demo or your own store' table, last row; home.phone.04"},
+    "C3": {"score": 8, "worst_defect": "The device-key route ends on a known gap the developer has to patch by hand: 'On plugin 0.3.0 the role it creates (vendurepos-pos-till) has the step 4 permissions except ReadOrder, so add ReadOrder to that role yourself'. It sits in the last, optional section, after 'Check it worked', so someone following steps 1-8 with a key misses it.", "where": "quick-start text, 'Optional: a device key for each till' (past quick-start.desktop.04)"},
+    "C4": {"score": 8, "worst_defect": "Troubleshooting mixes counter instructions with server-admin material. Under 'Till updates line', one bullet runs on through errorCode values (register_session_already_open, register_closure_number_invalid), and GraphQL mutations follow on the same page. A cashier with a header notice has to dig for the one line meant for them ('leave the app open and do not reload it').", "where": "troubleshooting.desktop.01 'Act on a header notice' and the 'Resolve a sale the store kept part-way' section"},
+    "C5": {"score": 9, "worst_defect": "The cashier-sheet screenshot mixes clock formats: 'Register · open since 22:07' sits above 'Last synced 10:07 PM' in the same card.", "where": "at-the-till.phone.06 cashier sheet image"},
+    "C6": {"score": 9, "worst_defect": "On phone the home header shows only 'Docs' and 'Live demo' plus a chevron, so 'Quick start' and 'At the till' (both in the desktop top bar) take an extra tap to find.", "where": "home.phone.01 header"},
+    "C7": {"score": 9, "worst_defect": "The share card cuts the till screenshot at its bottom edge, slicing the first row of product cards (Canvas Apron, Chocolate Biscuits...) through their stock badges.", "where": "og-image.png bottom edge"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "A shop owner checking on a phone whether staff can sell tomorrow gets two choices: a demo, or a developer setup guide. The page written for them ('At the till': selling, payment, closing the day, what happens when the internet drops) is missing from the phone header and the hero, and only appears in the last paragraph of the page.",
+    "where": "home.phone.01 hero and header; home.phone.05 closing paragraph",
+    "fix": "Under the hero buttons, add one line such as 'Running the counter? At the till covers selling, the internet dropping and closing the day', linked to /docs/at-the-till, and keep 'At the till' visible in the phone header."
+  },
+  "mean": 8.4
+}
