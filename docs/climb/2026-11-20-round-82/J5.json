@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "Nothing near the top tells a buyer who it is not for or how it sits against alternatives: the hero says what it is and who it suits, but a shop weighing it against Shopify POS, Square or a hosted till only learns that it is desktop-Chrome only and has no card-terminal link, cash drawer or coupons further down, in 'Before you start' and on Limitations.", "where": "home.desktop.01 hero / home.desktop.02 'Before you start'"},
+    "C2": {"score": 8, "worst_defect": "The site never names who builds or maintains VendurePOS. The only clues are the footer's 'Built with TallyUI. For Medusa, see MedusaPOS.' and the demo analytics host 'ph.wcpos.com' (the domain of another POS product), which is not explained. On top of that, the changelog shows the plugin's last release as 0.3.0 on 2026-10-06, 'the same day as 0.2.0, a few hours later', six weeks ago. A sceptic cannot tell whether a team stands behind it.", "where": "home.desktop.02 table row 'Sales reach Vendure…' and footer; changelog.desktop.01"},
+    "C3": {"score": 8, "worst_defect": "The quick start's troubleshooting answer to the plugin-missing message is protocol jargon a developer cannot act on: 'The store must advertise order.create v4 and register v1; plugin 0.3.0 advertises order.create 1–5, which includes v4'. The device-key role also needs a manual ReadOrder fix ('On plugin 0.3.0 the role it creates … has the step 4 permissions except ReadOrder'), and that warning sits at the bottom of the page.", "where": "quick-start text, '9. Troubleshoot' and 'Optional: a device key for each till' (quick-start.desktop.04)"},
+    "C4": {"score": 8, "worst_defect": "The Overview's 'Next steps' cards skip Connect a till, Troubleshooting and Notifications. A collapsed note on step 5, 'If your store already allows vendurepos.vercel.app', points at an old domain that no other page explains, so the docs show leftovers of a migration.", "where": "docs.desktop.01 Next steps; quick-start.desktop.03 under step 5"},
+    "C5": {"score": 8, "worst_defect": "In 'What it does today' only the first two features get bordered cards with buttons, and the remaining eight run as a plain two-column text list with no icons or images. The section loses its rhythm and the eight read like an afterthought. The home page has no product image after the hero.", "where": "home.desktop.01 bottom to home.desktop.02 top"},
+    "C6": {"score": 8, "worst_defect": "On phone, the home header shows only 'Docs' and 'Live demo' and hides Quick start and At the till behind a bare chevron. The hero image is the till in its narrow phone layout (Products / Cart (3) tabs), while the same page says 'tablets and phones, an iPad included, are not tested yet'.", "where": "home.phone.01 header and hero image; home.phone.04 'At the counter'"},
+    "C7": {"score": 9, "worst_defect": "The SoftwareApplication JSON-LD has no softwareVersion or dateModified, so the pre-release status ('Pre-release · plugin 0.3.0') is invisible to machines. Lighthouse otherwise scores 98/100/100/100, and llms.txt, the sitemap, search, the 404 status and the share card are all sound.", "where": "tech.json pages['home.desktop'].jsonLd[0]"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "No maintainer, company or team is named anywhere. The only trace is the unexplained third-party analytics host 'ph.wcpos.com', and the changelog shows no plugin release since 2026-10-06. A competitor-aware reviewer cannot tell a client who supports this till or whether it is still active, which is the first question before recommending an open-source POS for a live shop.",
+    "where": "home.desktop.02 footer and live-demo table; connect-a-till 'Where your data goes'; changelog.desktop.01",
+    "fix": "Add one line to the home footer and the Overview naming who builds and maintains VendurePOS, how it relates to WCPOS, TallyUI and MedusaPOS (which explains ph.wcpos.com), and where to get support. Link it to the GitHub org."
+  },
+  "mean": 8.1
+}
