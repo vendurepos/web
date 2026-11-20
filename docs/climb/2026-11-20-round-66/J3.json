@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "home.desktop.01.jpg; home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The tax guidance says a store mixing pricing modes 'must account for the store-wide strategy' without explaining the supported configuration or stating that this combination is unsupported.",
+      "where": "Quick start, step 6, 'Why these pairings'; text/endpoint_llms_full_txt.txt:874"
+    },
+    "C4": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "text/plugin-setup.txt; text/connect-a-till.txt; text/troubleshooting.txt; text/endpoint_api_search_query_offline.txt"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "home.desktop.01.jpg; home.desktop.02.jpg; home.desktop-dark.jpg; quick-start.desktop.01.jpg"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "home.phone.01\u201305.jpg; quick-start.phone.01\u201309.jpg; tech.json"
+    },
+    "C7": {
+      "score": 8,
+      "worst_defect": "llms-full.txt omits the Changelog paragraph identifying the hosted till's version 0.1.0, build date and commit 985edae, so machine readers lose version context available on the rendered page.",
+      "where": "text/endpoint_llms_full_txt.txt:179; text/changelog.txt:24; changelog.desktop.01.jpg"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "Developers with both tax-inclusive and tax-exclusive channels must guess how to reconcile the two recommended tax strategies with a store-wide setting.",
+    "where": "Quick start, step 6, 'Why these pairings'; text/endpoint_llms_full_txt.txt:874",
+    "fix": "Document the supported configuration for mixed pricing modes and how to verify its totals. If that combination is unsupported, state the limitation explicitly."
+  },
+  "mean": 9.0
+}
