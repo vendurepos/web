@@ -91,8 +91,8 @@ test('stack rule is phone-only', () => {
   ), 'docs stacked cells show attr(data-label) through ::before');
 });
 
-test('a code column label keeps its code style on phones', () => {
-  // Round 56 (J4 C6): the code header's phone label is a code chip, as the header is on desktop.
+test('a code column label is a mono label, not a chip, on phones', () => {
+  // Round 56 (J4 C6): the code header's phone label keeps the mono font; round 57 (J4 C6): no chip, and labels end in a colon.
   const html = readFileSync('.next/server/app/docs/quick-start.html', 'utf8');
   const [table] = Array.from(html.matchAll(/<table\b[^>]*\sdata-stack=""[\s\S]*?<\/table>/g), ([t]) => t);
   const rows = Array.from(table.match(/<tbody\b[\s\S]*?<\/tbody>/)[0].matchAll(/<tr\b[\s\S]*?<\/tr>/g), ([row]) => row);
@@ -113,8 +113,14 @@ test('a code column label keeps its code style on phones', () => {
     if (/max-width\s*:\s*639px|max-width\s*:\s*39\.9375rem|width\s*<\s*640px/.test(match[1]))
       phone.push(...css.slice(match.index + match[0].length, end - 1).matchAll(/([^{};]+)\{([^{}]*)\}/g));
   }
+  const codeLabels = phone.filter(([, selector]) =>
+    selector.split(',').some((part) => /\.prose\b.*data-stack.*td\[data-label-code\]::?before/.test(part)));
+  assert.ok(codeLabels.length > 0 && codeLabels.every(([, , declarations]) =>
+    /(?:^|;)\s*font-family\s*:/.test(declarations)
+      && !/(?:^|;)\s*(?:background(?:-color)?|border|border-radius|padding)\s*:/.test(declarations)
+  ), 'docs stacked code labels have a mono font and no chip box on phones');
   assert.ok(phone.some(([, selector, declarations]) =>
-    selector.split(',').some((part) => /\.prose\b.*data-stack.*td\[data-label-code\]::?before/.test(part))
-      && /(?:^|;)\s*font-family\s*:/.test(declarations) && /(?:^|;)\s*background(?:-color)?\s*:/.test(declarations)
-  ), 'docs stacked code labels have a code font and background on phones');
+    selector.split(',').some((part) => /\.prose\b.*data-stack.*td\[data-label\]::?before/.test(part))
+      && /content\s*:\s*attr\(data-label\)\s*["']:["']/.test(declarations)
+  ), 'docs stacked labels end in a colon on phones');
 });
