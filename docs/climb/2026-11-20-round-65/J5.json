@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "Home never positions the product against the alternatives a buyer is weighing (Shopify POS, Square, Lightspeed, other open-source tills) and has no explicit 'not for you if…' line; the only positioning is the footer 'For Medusa, see MedusaPOS.'", "where": "home/desktop/01-02 and footer slice"},
+    "C2": {"score": 7, "worst_defect": "The live demo is ahead of what anyone can install: 'Refund at the till (live demo only)' and the customer note exist only in the demo, while the installable plugin has been 'plugin 0.3.0' since 2026-10-06 and the changelog admits 'in 0.2.0 and 0.3.0 this role has no ReadOrder', which is still unpatched about 6 weeks later; no maintainer is named, and the demo's 'anonymous usage events to ph.wcpos.com' is not explained on home.", "where": "home/desktop/01 badge + comparison table; at-the-till/desktop/02 'Refund at the till (live demo only)'; changelog text"},
+    "C3": {"score": 8, "worst_defect": "Every new install has to apply the device-key ReadOrder workaround by hand (Quick start step 4, repeated in Connect a till and Changelog). Success is described only as a text checklist ('tally-pos settled, fulfilment delivered…'), with no screenshot of the sign-in screen or of the resulting order in the Vendure Dashboard. A leftover 'If your store already allows vendurepos.vercel.app' collapsible points at an old domain.", "where": "quick-start/desktop slices (step 4, 'Check it worked', CORS step)"},
+    "C4": {"score": 8, "worst_defect": "The same ReadOrder fix is restated in three pages instead of being kept in one place and linked. Troubleshooting is a long, dense wall of operator procedures ('Any other code: the till has no retry or skip…') with almost no visuals: the payment screen in At the till is the only image in the docs.", "where": "troubleshooting/desktop + phone/01; quick-start, connect-a-till, changelog text"},
+    "C5": {"score": 8, "worst_defect": "The docs are almost all text: apart from the hero till screenshot and one payment-screen image, no page shows the till or the Dashboard result, so long pages like Troubleshooting and Limitations read as unbroken grey prose. Dark mode is fine.", "where": "troubleshooting/desktop/01, limitations/desktop/01"},
+    "C6": {"score": 8, "worst_defect": "The phone home header shows only 'Docs' and 'Live demo' plus icons, so 'Quick start' is only reachable from the hero button. The hero till screenshot is shrunk so far that its category chips (cut at 'Gif') and prices are unreadable at 390 px.", "where": "home/phone/01"},
+    "C7": {"score": 9, "worst_defect": "The share card reads 'Point of sale for Vendure. Sell from the browser, keep selling offline…' with no pre-release or version flag, so a shared link oversells maturity. Lighthouse also flags 53 KiB of unused JS and 14 KiB of legacy JS.", "where": "og-image.png; tech.json lighthouse /"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "For someone advising a client, the live demo oversells what can be installed. It refunds at the till and takes customer notes, but the only installable plugin is 0.3.0. That release came out on 2026-10-06 with nothing since. It cannot refund, and its device-key role ships without ReadOrder, a bug the changelog admits but has not patched. The demo looks like a newer product than the one a client would actually run, and no dated 'next release' line says when the gap closes.",
+    "where": "home/desktop/01 ('Pre-release · plugin 0.3.0', Live demo vs your store table); at-the-till/desktop/02 ('Refund at the till (live demo only)'); changelog text",
+    "fix": "Either ship the plugin release that matches the demo (refund, customer note, ReadOrder in the role) or pin the demo to plugin 0.3.0 behaviour. In both cases, add one dated status line on home, e.g. 'Next plugin release: <date>, adds refunds', with a link to the tracking issue."
+  },
+  "mean": 8.0
+}
