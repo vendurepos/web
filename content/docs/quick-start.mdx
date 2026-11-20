@@ -272,7 +272,7 @@ Once the till shows the order as synced, open the order in the Vendure Dashboard
 
 - **The till cannot reach the store (CORS)**\
   Check the exact POS origin in `CORS_ORIGINS`, the object-valued `apiOptions.cors`, and restart the server.
-  Use HTTPS for a remote store; for a LAN store over plain http, see [Troubleshooting](/docs/troubleshooting#fix-cors-401-or-plain-http-store-problems).
+  Use HTTPS for a remote store. A store on your own machine can stay on plain http at `http://localhost` or `http://127.0.0.1`; for a LAN store over plain http, see [Troubleshooting](/docs/troubleshooting#fix-cors-401-or-plain-http-store-problems).
 - **HTTP 401**\
   Verify `'bearer'` in `tokenMethod`.
 - **“Your session has ended. Sign in again to keep selling.”** or **“The store refused this sign-in. Sign in again below; orders are kept.”**\
