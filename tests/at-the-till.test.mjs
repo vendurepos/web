@@ -457,3 +457,23 @@ test('at the till says to choose your initial, not your name', () => {
   // Round 54, J2 C3: only desktop Chrome is tested, so the page says "choose", not "tap".
   assert.doesNotMatch(text, /\btap\b/i);
 });
+
+// Round 60, J3 C4: a sale paid by card is also refunded on your own card terminal.
+test('at the till refund steps send a card refund to your own card terminal', () => {
+  const toText = (markup) =>
+    markup.replace(/<!-- -->/g, '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+  const page = html.replace(/<script[\s\S]*?<\/script>/g, '');
+  const start = page.indexOf('id="refund-a-sale"');
+  const end = page.indexOf('id="refund-at-the-till-live-demo-only"', start);
+  assert.ok(start >= 0 && end > start, 'refund section found');
+  const section = page.slice(start, end);
+  const items = section.slice(section.indexOf('<ol'), section.indexOf('</ol>')).split(/<li[\s>]/).slice(1);
+  assert.equal(items.length, 3, 'three refund steps');
+  const texts = items.map(toText);
+  assert.ok(texts[0].startsWith('Ask whoever manages your Vendure store to refund the order'), 'Dashboard refund first');
+  assert.ok(texts[1].startsWith('If you hand back cash'), 'Pay out second');
+  assert.ok(texts[2].startsWith('If the customer paid by card, refund the card on your own card terminal'), 'card third');
+  assert.ok(items[2].includes('href="/docs/limitations#at-the-counter"'), 'card step links Limitations');
+  const limitations = readFileSync('.next/server/app/docs/limitations.html', 'utf8');
+  assert.ok(limitations.includes('id="at-the-counter"'), 'Limitations has the at-the-counter id');
+});

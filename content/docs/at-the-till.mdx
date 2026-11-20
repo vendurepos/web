@@ -99,6 +99,9 @@ On plugin 0.3.0 the till cannot refund. The order is refunded in the Vendure Das
 2. If you hand back cash, record it on the till with **Pay out** (choose your initial at the right of the bar),
    the amount, and the order code as the reason. The register's expected cash counts the till's own payments,
    pay ins and pay outs, not Dashboard refunds, so without it the drawer count comes up short.
+3. If the customer paid by card, refund the card on your own card terminal as well. The till does not talk to the
+   terminal ([Limitations](/docs/limitations#at-the-counter)), so the Dashboard refund does not return the money to
+   the card.
 
 ### Refund at the till (live demo only)
 
