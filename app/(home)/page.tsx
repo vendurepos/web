@@ -179,7 +179,8 @@ export default function HomePage() {
           </Link>
         </div>
         {/* Round 40, J4 C1: the note overhung the lede's measure. */}
-        <p className="mt-4 max-w-2xl mx-auto text-sm text-fd-muted-foreground">
+        {/* Round 71, J4 C1: balanced lines, so the note does not end on an orphan. */}
+        <p className="mt-4 max-w-2xl mx-auto text-sm text-balance text-fd-muted-foreground">
           Your own store needs the plugin on your Vendure server first: the{' '}
           <Link href="/docs/quick-start" className="underline">quick start</Link> sets it up, then signs the till in and makes a
           sale.
