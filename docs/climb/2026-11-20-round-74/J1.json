@@ -1,0 +1,48 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero is clear (\"Point of sale for Vendure\", Live demo / Quick start). Further down the home page, the 'Before you start' section and the demo table switch to developer jargon a half-informed visitor can't parse: \"Node ^20.19 || >=22.12\", \"you need your own RxDB Premium licence token (RXDB_PREMIUM)\", and \"The refund stays Pending until an administrator settles it with two Admin API calls\".",
+      "where": "home desktop 02; home phone 04-05"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The page is honest about its limits ('Pre-release · plugin 0.3.0', a refund caveat, a Limitations page), but the home page never says what it costs or who runs the hosted till. The words free, cost and price (of the product) appear nowhere. Meanwhile it says self-hosting needs \"your own RxDB Premium licence token\", and that the demo sends \"anonymous usage events to ph.wcpos.com\", a domain it never explains. The visitor's first question, 'is this free and who is behind it?', goes unanswered.",
+      "where": "home desktop 02 ('Live demo or your own store' table and 'Before you start')"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Quick start has numbered steps 1-9 and a 'Check it worked' list. One required change sits outside the numbering: a warning callout says \"Before a sale on a live store: If your store uses @vendure/email-plugin, swap its order-confirmation handler first: see Set up email\". Every @vendure/create store has that plugin, so this is a step that needs a jump to another page. Step 3 says \"include it in config.dbConnectionOptions.migrations\" with no code. The page also has no screenshot of the app.vendurepos.com sign-in screen the user is sent to.",
+      "where": "quick-start desktop 01 / phone 01 (callout); quick-start desktop 02 (step 3)"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The docs have a sidebar, ⌘K search, an on-page TOC and prev/next cards, and At the till has real screenshots. The changelog, though, reads like internal engineering notes: \"order.create v5 custom lines … (ADR 0005)\" and \"TALLY-CUSTOM-ITEM\". The Tally/VendurePOS naming split also needs an explanation inside quick-start step 2: \"The plugin's code names say Tally, not VendurePOS…\".",
+      "where": "changelog desktop 01; quick-start desktop 01-02 (step 2)"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "In 'What it does today', two bordered cards sit above eight unboxed feature items, so the section is visually inconsistent. The first card, \"Keeps selling offline\", is mostly a dense caveat paragraph and outweighs the rest of the section. Light and dark themes are otherwise polished, and the hero till screenshot is strong.",
+      "where": "home desktop 01-02 ('What it does today')"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "This is minor. The phone header shows only \"Docs\" and \"Live demo\", and \"Quick start\" is reachable only from the hero button or the docs menu. Otherwise there is no overflow, tables stack into label lists, code wraps, and docs pages get a TOC dropdown.",
+      "where": "home phone 01; quick-start phone 01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "This is minor. The mobile Lighthouse run for quick-start flags \"unused-javascript\", \"render-blocking\" and \"legacy-javascript\", with LCP 2.6 s (home is 98/100/100/100). Everything else is in place: all pages return 200, the 404 page returns a real 404, JSON-LD is on home and docs, and llms.txt, llms-full.txt, sitemap, robots, the og image and the /api/search endpoint all work.",
+      "where": "tech.json lighthouse quick-start"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The home page never says whether VendurePOS, or the hosted till at app.vendurepos.com, costs anything, or who runs it. It does mention needing \"your own RxDB Premium licence token (RXDB_PREMIUM)\" to self-host, and that demo usage goes to an unexplained \"ph.wcpos.com\". A first-time visitor can't tell whether this is free, paid, or tied to some other company.",
+    "where": "home desktop 02 / phone 04-05 ('Live demo or your own store', 'Before you start')",
+    "fix": "Add one plain sentence by the hero CTAs or at the top of 'Before you start', such as: \"The plugin is MIT-licensed and the hosted till at app.vendurepos.com is free; self-hosting the till needs a paid RxDB Premium licence.\" Add a short note that VendurePOS is made by the WCPOS team, which explains ph.wcpos.com."
+  },
+  "mean": 8.3
+}

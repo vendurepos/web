@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "On phone the top bar shows only 'VendurePOS', 'Docs' and 'Live demo' (plus search and a chevron), so Quick start, the second hero action, is not in the nav. The phone hero crop of the till shows only two product cards (Canvas Apron, Chocolate Biscuits) and cuts the category chips at 'Gif'.", "where": "home.phone.01"},
+    "C2": {"score": 9, "worst_defect": "The hero caption promises a till with a 'cart of three items totalling €20.09', but the phone crop shows only a 'Cart (3) · €20.09' tab, not the cart itself, so a phone reader cannot see what the caption describes.", "where": "home.phone.01-02"},
+    "C3": {"score": 8, "worst_defect": "Quick start has no screenshot at all: the till sign-in screen and the 'Check it worked' success state (tally-pos settled, stock went down) are described only in text across a page about 6900 px long.", "where": "quick-start.desktop.01-04"},
+    "C4": {"score": 8, "worst_defect": "Troubleshooting is a dense wall of deeply nested bullets, with bold 'At the counter:' and 'For the store owner:' paragraphs inside each item. On Connect a till, the long 'Where your data goes' privacy section comes before 'Enter your store details', so the task the page is named for is pushed down.", "where": "troubleshooting.desktop.01; connect-a-till.desktop.01"},
+    "C5": {"score": 8, "worst_defect": "In the till screenshots the cart pane has a large dead white band between the last line item or 'Add charge' and the Subtotal, about 420 px on the payment shot, so the product imagery looks unfinished. In the comparison table, the four-line 'Refund a sale at the till' cell ('No, not on plugin 0.3.0: refund in the Vendure Dashboard...') makes that one row much taller than the others.", "where": "home.desktop.01 (hero screenshot); at-the-till.desktop.02; home.desktop.02 (table)"},
+    "C6": {"score": 8, "worst_defect": "In the phone payment screenshot the quick-amount chips wrap so that '€50.00' is orphaned alone on a second row. Long H2s such as '3. Generate and run the migration before starting the server' wrap to three lines, and there is a large empty gap above 'Live demo or your own store'.", "where": "at-the-till.phone.04; quick-start.phone.02; home.phone.03"},
+    "C7": {"score": 9, "worst_defect": "The og-image crop cuts through the till's 'In Stock' pills along the bottom edge, and the card shows neither the URL nor the pre-release marker. llms.txt lists 'Overview' after 'Connect a till', and search hits carry only the generic breadcrumb ['VendurePOS'].", "where": "og-image.png; text/endpoint_llms.txt; text/endpoint_search"}
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "The product screenshots, the site's main visual proof, have an empty white band in the cart pane between the line items or 'Add charge' and the Subtotal (about 420 px on the payment shot), so the till looks half-empty and unpolished in the hero and on At the till.",
+    "where": "home.desktop.01 (hero screenshot); at-the-till.desktop.02",
+    "fix": "Recapture the till screenshots at a shorter viewport height, or with more cart lines, so the cart pane fills; or crop the empty band out of the cart column."
+  },
+  "mean": 8.3
+}

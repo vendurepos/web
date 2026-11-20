@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Tax setup recommends different store-wide strategies for inclusive and exclusive channels, but says only that a store mixing pricing modes 'must account for the store-wide strategy', leaving the configuration decision unresolved.",
+      "where": "shots/quick-start.desktop.03.jpg; text/endpoint_llms_full_txt.txt, Quick start, 'Why these pairings'"
+    },
+    "C4": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "text/plugin-setup.txt; text/connect-a-till.txt; text/troubleshooting.txt; text/endpoint_api_search_query_offline.txt"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop-dark.jpg; shots/home.desktop.01.jpg; shots/plugin-setup.desktop.02.jpg"
+    },
+    "C6": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "shots/home.phone.01.jpg through home.phone.05.jpg; shots/quick-start.phone.01.jpg through quick-start.phone.09.jpg; shots/plugin-setup.phone.02.jpg"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The llms-full.txt changelog omits the web changelog's hosted till version 0.1.0, build date and commit ef68a12, leaving machine readers without that version distinction and provenance.",
+      "where": "text/changelog.txt:24 versus text/endpoint_llms_full_txt.txt, Changelog section"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "A developer with both tax-inclusive and tax-exclusive channels must guess which store-wide order tax strategy to configure.",
+    "where": "shots/quick-start.desktop.03.jpg; text/endpoint_llms_full_txt.txt, Quick start, 'Why these pairings'",
+    "fix": "Add explicit guidance for mixed-pricing channels: document a supported configuration and verification example, or state that this combination is not covered by the setup instructions."
+  },
+  "mean": 9.3
+}

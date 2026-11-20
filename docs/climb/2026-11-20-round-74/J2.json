@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The first sentence a shop owner reads explains the product with developer jargon: \"an open-source till for Vendure, the open-source headless commerce framework\"; and on the phone the top bar shows only \"Docs\" and \"Live demo\", so the owner's own page \"At the till\" is hidden behind the chevron.", "where": "home.desktop.01 / home.phone.01 (text/home.txt line 12)"},
+    "C2": {"score": 9, "worst_defect": "The comparison table row \"Refund a sale at the till: Yes\" for the live demo sits beside \"No, not on plugin 0.3.0\" for your own store, so the demo shows staff a refund flow they will not have in the shop.", "where": "home.desktop.02 / home.phone.04 (\"Live demo or your own store\" table)"},
+    "C3": {"score": 8, "worst_defect": "The refund path for a real store ends in developer work the owner cannot do: \"The refund stays Pending until an administrator settles it with two Admin API calls; see Plugin setup\", with no plain statement of who in a two-person shop does that or when.", "where": "home.phone.04 / at-the-till (Refund a sale) / plugin-setup (Settle a Dashboard refund)"},
+    "C4": {"score": 8, "worst_defect": "The cashier sheet screenshot mixes clock formats in one picture, \"Register · open since 22:07\" and \"Last synced 10:07 PM\"; troubleshooting and changelog are written for developers (errorCode, needs_admin GraphQL, ADR links), not for staff at the counter.", "where": "at-the-till.phone.07; troubleshooting.desktop.01; changelog.desktop.01"},
+    "C5": {"score": 8, "worst_defect": "The cashier sheet and closure screen images sit small inside wide, mostly empty frames on desktop, leaving large blank gaps in the At the till page.", "where": "at-the-till.desktop.03 / at-the-till.desktop.04"},
+    "C6": {"score": 8, "worst_defect": "The phone header on home collapses Quick start and At the till behind a chevron next to \"Docs\" and \"Live demo\", and At the till runs to nine phone slices with no back-to-top, so finding \"Count the drawer and close the day\" between customers takes the section dropdown or a long scroll.", "where": "home.phone.01; at-the-till.phone.01-09"},
+    "C7": {"score": 9, "worst_defect": "Minor: the quick-start page's mobile LCP is 2.6 s (Lighthouse 97) and the 404 page carries no JSON-LD; everything else (titles, descriptions, og card, llms.txt, sitemap, search API for \"offline\") is in place.", "where": "tech.json (lighthouse /docs/quick-start; not-found jsonld)"}
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "On plugin 0.3.0 a customer refund cannot be done at the till: the owner must refund in the Vendure Dashboard, where \"The refund stays Pending until an administrator settles it with two Admin API calls\", then record a Pay out and refund the card on the terminal; the site never says in plain words who in a small shop does the API step, while the demo shows refunds at the till as \"Yes\".",
+    "where": "home.phone.04 / home.desktop.02 (table row \"Refund a sale at the till\"); at-the-till (Refund a sale)",
+    "fix": "In the refund row and the At the till refund section, add one sentence saying the settle step is a one-time job for your developer (or link a ready script), and link straight to Plugin setup's \"Settle a Dashboard refund\" anchor instead of the page."
+  },
+  "mean": 8.3
+}
