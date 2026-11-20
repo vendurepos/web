@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 9, "worst_defect": "The hero lede under 'Point of sale for Vendure' is a 60-word, four-line centred paragraph (six ragged lines on phone). Centred body copy that long is slow to scan in five seconds, and a second centred note under the buttons ('Your own store needs the plugin…') adds more grey text to the fold.", "where": "home.desktop.01 hero; home.phone.01"},
+    "C2": {"score": 9, "worst_defect": "The comparison table's demo cell says 'All it sends is anonymous usage events to ph.wcpos.com'. A third-party-looking domain (wcpos) is named with no word on why a VendurePOS demo reports there, which is the one line that reads as something unexplained.", "where": "home.desktop.02 'Live demo or your own store' table, last row"},
+    "C3": {"score": 9, "worst_defect": "Five blocks come before '1. Install the plugin': the 'Try it first' callout, three paragraphs (hosted URL, @vendure/create, Node) and the 'Before a sale on a live store' warning. Step 1 starts about 740 px down on desktop and only on the second phone slice.", "where": "quick-start.desktop.01; quick-start.phone.01-02"},
+    "C4": {"score": 9, "worst_defect": "Step 4 says 'For a key per till instead, see Optional: a device key for each till below' with the section name in bold but not as a link, while every other cross-reference on the page is an underlined link.", "where": "quick-start.desktop.02, end of '4. Enable bearer authentication'"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' uses two visual systems: two bordered cards with buttons, then eight unboxed heading+text items in a loose two-column list. The right card ('Every sale lands once') also has about two lines of dead space above its button next to the taller left card. Smaller faults: the changelog's lone 'Limitations' previous-page card is stretched to the full content width, and on At the till the cashier-sheet figure floats at roughly half width in a padded frame while the payment figure above it is full width.", "where": "home.desktop.01 bottom / home.desktop.02 top; changelog.desktop.01 bottom; at-the-till.desktop.03"},
+    "C6": {"score": 8, "worst_defect": "The phone hero image is captioned 'A sale in progress on the live demo till.' but only shows the Products tab: two product tiles cut off at the bottom and a category chip clipped to 'Gif' at the right edge. The cart, the sale itself, is hidden behind the 'Cart (3) · €20.09' tab. Also, in the phone payment figure on At the till, the '€50.00' quick-amount chip wraps onto a row by itself.", "where": "home.phone.01; at-the-till.phone.04"},
+    "C7": {"score": 9, "worst_defect": "The share card's till screenshot runs off the bottom edge through the first product row, cutting the 'In Stock' pills and leaving prices on the border. The mobile Lighthouse LCP is 2.4 s on both / and /docs/quick-start, with 53 KiB of unused JS on the home page.", "where": "og-image.png; tech.json lighthouse"}
+  },
+  "overall_worst": {
+    "criterion": "C6",
+    "defect": "On a 390 px screen the hero image, the first visual a phone visitor sees, does not show what its caption promises: it is the Products tab with two cropped tiles and a chip clipped to 'Gif', and the cart holding the €20.09 sale is hidden behind a tab.",
+    "where": "home.phone.01",
+    "fix": "For phone, use a capture of the Cart tab (three lines, total, Checkout €20.09), or crop to show the cart. Or change the phone caption to match what is shown."
+  },
+  "mean": 8.7
+}
