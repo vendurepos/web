@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 test('hero explains what Try with your store needs', () => {
@@ -173,6 +173,21 @@ test('hero helper note sits on the lede measure', () => {
     const cls = classes(html.slice(start, html.indexOf('>', start) + 1));
     assert.ok(cls.includes('max-w-2xl') && cls.includes('mx-auto'), `${name}: ${cls.join(' ')}`);
   }
+});
+
+test('hero helper note balances its lines (round 71, J4 C1)', () => {
+  const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
+  const text = html.indexOf('Your own store needs the plugin on your Vendure server first');
+  assert.ok(text !== -1);
+  const noteStart = html.lastIndexOf('<p', text);
+  assert.ok(noteStart !== -1);
+  const tag = html.slice(noteStart, html.indexOf('>', noteStart) + 1);
+  const classes = (tag.match(/\sclass="([^"]*)"/)?.[1] ?? '').split(/\s+/);
+  assert.ok(classes.includes('text-balance'));
+  const stylesheets = readdirSync('.next/static', { recursive: true })
+    .filter((file) => file.endsWith('.css'))
+    .map((file) => readFileSync(join('.next/static', file), 'utf8'));
+  assert.ok(stylesheets.some((css) => /\.text-balance\{text-wrap:balance\}/.test(css)));
 });
 
 // Round 44, J1 C6 and J2 C6: the phone header keeps a visible Docs link; Fumadocs hides the others below 640px.
