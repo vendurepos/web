@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero is clear, but the home page's 'Before you start' block falls into developer jargon a first-time visitor cannot use to decide anything: 'Node ^20.19 || >=22.12', 'your own RxDB Premium licence token (RXDB_PREMIUM)', and in the comparison table 'settles it with two Admin API calls'.", "where": "home.desktop.02 'Before you start' and 'Refund a sale at the till' row; home.phone.04-05"},
+    "C2": {"score": 8, "worst_defect": "The home table says the demo 'sends ... anonymous usage events to ph.wcpos.com' but nothing on the home page says what wcpos is or who makes VendurePOS, so an unknown third-party domain shows up with no explanation. Only Connect a till says it is a self-hosted PostHog server.", "where": "home.desktop.02 'Sales reach Vendure, once each, even offline' row; home.phone.04"},
+    "C3": {"score": 8, "worst_defect": "The quick start has nine text-only steps. No screenshot shows the app.vendurepos.com sign-in screen in step 8 or the synced order in 'Check it worked', so the reader has to imagine what success looks like.", "where": "quick-start.desktop.03-04 '8. Sign in and make a sale' / 'Check it worked'"},
+    "C4": {"score": 8, "worst_defect": "The Changelog is written for the maintainers. 'order.create v5 custom lines are real order lines on a plugin-owned, disabled POS custom item variant', the 'ADR 0005' and '#116' references, and 'till app version 0.1.0' set against plugin 0.3.0 leave a newcomer unsure which version they would be running.", "where": "changelog.desktop.01, changelog.phone.01"},
+    "C5": {"score": 8, "worst_defect": "Below the hero the home page has one image. 'What it does today' is two boxed cards followed by eight plain heading-and-paragraph blocks with no icons or visuals, so it reads like a docs page, not a product page.", "where": "home.desktop.01 lower half to home.desktop.02 top"},
+    "C6": {"score": 8, "worst_defect": "On the phone the hero image is captioned 'A sale in progress on the live demo till', but it shows only two product tiles and a 'Cart (3) · €20.09' tab. The sale itself isn't visible, and the category chips are cut off at 'Gif'.", "where": "home.phone.01"},
+    "C7": {"score": 9, "worst_defect": "The docs landing page's title is just 'Overview | VendurePOS', which says nothing about the page in search results. Everything else is strong: Lighthouse 98/100/100/100, a real 404 status, JSON-LD, llms.txt, a sitemap and a working search API.", "where": "tech.json pages.docs.desktop.title"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "After a clear hero, the home page asks a first-time visitor to read installer-level detail ('Node ^20.19 || >=22.12', 'RxDB Premium licence token (RXDB_PREMIUM)', refunds settled 'with two Admin API calls'). That makes the product look harder and less finished than it is, at exactly the moment the visitor is deciding whether to stay.",
+    "where": "home.desktop.02 'Live demo or your own store' table and 'Before you start'; home.phone.04-05",
+    "fix": "Shrink 'Before you start' to one plain line ('Needs Vendure 3.6+ on Postgres and our server plugin — see the quick start'), shorten the refund row to 'No, refund in the Vendure Dashboard for now', and leave the Node range, RXDB_PREMIUM and Admin API detail to the docs."
+  },
+  "mean": 8.1
+}

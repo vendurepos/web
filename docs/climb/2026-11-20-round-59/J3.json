@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 6 prescribes different store-wide tax strategies for inclusive and exclusive channels, but says only that a mixed-mode store 'must account for the store-wide strategy', leaving its configuration and verification unspecified.",
+      "where": "text/quick-start.txt, step 6, 'Why these pairings'; text/endpoint_llms_full_txt.txt, lines 843\u2013872"
+    },
+    "C4": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "text/plugin-setup.txt; text/connect-a-till.txt; text/troubleshooting.txt; text/endpoint_api_search_query_offline.txt"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop-dark.jpg; shots/home.desktop.01.jpg; shots/quick-start.desktop.03.jpg; shots/plugin-setup.desktop.02.jpg"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.phone.01.jpg through home.phone.05.jpg; shots/quick-start.phone.01.jpg through quick-start.phone.09.jpg; shots/plugin-setup.phone.02.jpg"
+    },
+    "C7": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "tech.json; text/endpoint_llms_txt.txt; text/endpoint_llms_full_txt.txt; text/endpoint_sitemap_xml.txt; text/endpoint_robots_txt.txt; shots/og-image.png"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "A developer with tax-inclusive and tax-exclusive channels must guess how to reconcile the two prescribed strategies with the single store-wide setting.",
+    "where": "text/quick-start.txt, step 6, 'Why these pairings'; shots/quick-start.desktop.03.jpg",
+    "fix": "State whether mixed pricing modes are supported. If supported, document the tested strategy and concrete checks for both channel modes; otherwise state that limitation explicitly."
+  },
+  "mean": 9.3
+}

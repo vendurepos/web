@@ -1,0 +1,48 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero ('Point of sale for Vendure', Live demo / Quick start) is clear, but nothing on the page says who builds VendurePOS. The only provenance is the footer 'Built with TallyUI. For Medusa, see MedusaPOS.', which is never explained.",
+      "where": "home.desktop.01 hero; home.desktop.02 footer"
+    },
+    "C2": {
+      "score": 7,
+      "worst_defect": "Home gives no maintainer, organisation or activity signal, and no 'not for you if…' or comparison with Shopify POS / Square / Lightspeed. The changelog shows three plugin releases between 1 and 6 Oct 2026 and none since. It also admits an unfixed gap ('in 0.2.0 and 0.3.0 this role has no ReadOrder'), so the project looks stalled to a sceptic.",
+      "where": "home.desktop.02; changelog.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The quick start is ordered and has a success check. A real store still needs manual extra steps: adding ReadOrder to the device-key role by hand, and settling a till refund with two Admin API calls ('a query for the refund's ID, then the settleRefund mutation').",
+      "where": "quick-start.txt / plugin-setup.txt; limitations.phone.01"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The changelog uses internal references a reader cannot follow ('(ADR 0005)', '(#116)'). Troubleshooting talks about recovering 'unsent sales, refunds and register records' although till refunds work only on the demo.",
+      "where": "changelog.txt; troubleshooting.txt"
+    },
+    "C5": {
+      "score": 7,
+      "worst_defect": "The docs are stock Fumadocs and the home feature grid is plain text blocks with no icons or product imagery between them. The og-image till screenshot is clipped at the bottom edge ('Add charge' row cut off).",
+      "where": "home.desktop.02 feature grid; og-image.png"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "Long inline code wraps mid-token on a 390 px screen, e.g. 'packages/vendure-plugin/CHANGELOG.md' breaks across lines.",
+      "where": "changelog.phone.01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The 404 page logs a console error ('Failed to load resource: the server responded with a status of 404 ()') and carries no JSON-LD. Everything else (Lighthouse 98/100/100/100, llms.txt, search API, sitemap) is solid.",
+      "where": "tech.json not-found"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A consultant comparing this with Shopify POS, Square or a WooCommerce till finds nothing on the site that says who maintains VendurePOS or how active it is. The footer names only 'MIT licensed. Built with TallyUI. For Medusa, see MedusaPOS.', ph.wcpos.com appears unexplained, and the changelog's last release is 6 Oct 2026. There is also no plain 'who should not use this' section, so the persona can't tell a maintained pre-release from an abandoned toy.",
+    "where": "home.desktop.02 (footer and comparison table); changelog.txt",
+    "fix": "Add a short 'Who's behind it / project status' line to home: the maintainer, release cadence and a link to recent repo activity. Next to it, add a 'Not for you if…' box (needs Postgres and Vendure 3.6+, desktop Chrome only, no card-terminal or cash-drawer integration)."
+  },
+  "mean": 8.0
+}
