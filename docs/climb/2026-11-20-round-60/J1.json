@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero is clear, but further down the home page 'Before you start' shows a newcomer developer-only detail like 'Node ^20.19 || >=22.12' and 'your own RxDB Premium licence token (RXDB_PREMIUM)', and the first feature card ('Keeps selling offline') spends most of its text on how sales can be lost ('a reload needs the connection, and clearing that browser's data for the till loses them') before the reader knows why they would want it.", "where": "home/desktop/02 'Before you start'; home/desktop/01 'Keeps selling offline' card"},
+    "C2": {"score": 8, "worst_defect": "The home page never says what the hosted till at app.vendurepos.com costs or how long it stays available, but it does say self-hosting needs 'your own RxDB Premium licence token', so a newcomer is left wondering whether there is a hidden paid part.", "where": "home/desktop/02 'Setting up the store' last bullet; home footer 'MIT licensed'"},
+    "C3": {"score": 8, "worst_defect": "The quick start never links to the till itself: 'The hosted POS is live at https://app.vendurepos.com' and step 8 'Open https://app.vendurepos.com, then:' are inline code with no link (tech.json quick-start.desktop links contain no app.vendurepos.com), so at the moment you need the till you have to copy the URL by hand.", "where": "quick-start/desktop/01 intro paragraph and quick-start/desktop/03 step 8"},
+    "C4": {"score": 8, "worst_defect": "The sign-in steps (store URL, optional channel token, barcode field, opening float) are described only in words. quick-start.txt and connect-a-till.txt contain no [image:] marker, so a reader can't check that the screen they see is the right one.", "where": "quick-start/desktop/03-04 step 8 a-d; connect-a-till/desktop/01 'Enter your store details'"},
+    "C5": {"score": 8, "worst_defect": "The hero screenshot of the till is scaled down so far at 1440 px that its product names, prices and cart text ('Cold Brew €4.50', 'incl. Reduced DE 7%') are barely readable, so the one picture of the product is hard to read.", "where": "home/desktop/01 hero image"},
+    "C6": {"score": 9, "worst_defect": "In the phone hero screenshot the till's category chip row is cut mid-word at 'Gif' on the right edge, so the image looks cropped by mistake.", "where": "home/phone/01 hero image, category chips row"},
+    "C7": {"score": 9, "worst_defect": "The home page's SoftwareApplication JSON-LD has no 'offers' (for example price 0), which leaves it ineligible for software rich results and also misses a machine-readable place to say the product is free.", "where": "tech.json pages.home.desktop.jsonLd"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A first-time visitor can't find out from the home page whether VendurePOS costs anything. It says 'open-source' and 'MIT licensed', but the hosted till's terms are never stated, while the only money-related mention is a paid 'RxDB Premium licence token' for self-hosting. It reads as if a cost is being left unsaid.",
+    "where": "home/desktop/02 'Before you start' > 'Setting up the store'",
+    "fix": "Add one plain line near the hero or in 'Before you start' saying what using app.vendurepos.com costs during pre-release, and that the RxDB Premium licence is only needed if you build and host the till yourself."
+  },
+  "mean": 8.3
+}

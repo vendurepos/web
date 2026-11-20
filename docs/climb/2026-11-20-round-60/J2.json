@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero tells a shop owner what it is, but the next step is only for a developer: 'Your own store needs the plugin on your Vendure server first' sends you to a quick start that opens with npm and migrations. Nothing above the fold says 'staff guide: At the till', so you can't see how your cashiers would use it.", "where": "home.desktop.01 / home.phone.01, line under the Live demo / Quick start buttons"},
+    "C2": {"score": 9, "worst_defect": "The home comparison table says the demo 'sends anonymous usage events to ph.wcpos.com' and never says who wcpos is. On a VendurePOS site an unexplained third-party domain reads like something being slipped in; only Connect a till says it is a self-hosted PostHog server.", "where": "home.desktop.02, 'Live demo or your own store' table, last row"},
+    "C3": {"score": 8, "worst_defect": "Step 8 and 'Check it worked' say 'Once the till shows the order as synced' but don't say where the till shows it (the header line or the Orders list is only explained on Troubleshooting). There is also no picture of the sign-in screen or of a synced order, so whoever sets it up has to guess what success looks like on the till.", "where": "quick-start.desktop.04 / quick-start.phone.08, 'Check it worked'"},
+    "C4": {"score": 8, "worst_defect": "Troubleshooting is linked from the cashier's 'If the internet drops' section, but the same page puts counter instructions next to errorCode lists (register_session_already_open) and SuperAdmin GraphQL (tallyNeedsAdminCommands, tallyResolveNeedsAdmin). A cashier has to scroll through server-admin material to find what applies to them.", "where": "troubleshooting.desktop.01-03 / troubleshooting.phone.01-07"},
+    "C5": {"score": 8, "worst_defect": "The cashier-sheet screenshot is a small card (about 360 px) inside a much larger empty frame, so it looks like a thumbnail that failed to scale. On the home page, 'What it does today' starts with two boxed cards and then switches to six unboxed text pairs, which looks inconsistent.", "where": "at-the-till.desktop.03 (cashier sheet image); home.desktop.01-02 feature section"},
+    "C6": {"score": 8, "worst_defect": "On the phone the home header shows only 'Docs' and 'Live demo'; 'Quick start' and 'At the till' sit behind a chevron. An owner checking the staff guide between customers can't reach it from the top bar, and Quick start runs about 10,600 px (9 screens) with no jump-to-step control except the 'On this page' dropdown.", "where": "home.phone.01 header; quick-start.phone.01-09"},
+    "C7": {"score": 9, "worst_defect": "Mobile LCP is 2.3 s on / and 2.4 s on /docs/quick-start, with 53 KiB of unused JavaScript and render-blocking requests flagged by Lighthouse. Docs pages carry only BreadcrumbList JSON-LD, with no article or HowTo markup on the quick start.", "where": "tech.json lighthouse; tech.json pages.*.jsonLd for docs pages"}
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "The cashier guide (At the till) sends staff to Troubleshooting for sync notices, and that page mixes counter-staff steps with server-admin errorCodes and SuperAdmin GraphQL mutations on one long page (7 phone screens). Staff reading on a phone mid-shift can't tell what they're supposed to do and what to hand to the developer.",
+    "where": "troubleshooting.phone.01-07; at-the-till 'If the internet drops' link",
+    "fix": "Move 'Resolve a sale the store kept part-way', the errorCode list and the plain-http/CSP notes into a 'For whoever runs your Vendure server' page or section at the end. Open Troubleshooting with a short cashier-only list: each header message and what to tap."
+  },
+  "mean": 8.3
+}
