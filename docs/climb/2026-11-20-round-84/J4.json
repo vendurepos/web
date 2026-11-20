@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero stacks three text blocks before the product shot: a 4-line subhead (6 lines at 390 px), the button pair, then a further 3-line note 'Your own store needs the plugin on your Vendure server first...'. On a phone the till screenshot only starts near the bottom of the first screen.", "where": "home.desktop.01 hero; home.phone.01"},
+    "C2": {"score": 8, "worst_defect": "The comparison table's last row says the demo 'sends ... anonymous usage events to ph.wcpos.com'. That is an unexplained third-party domain (wcpos) on a VendurePOS site, sitting in the same row as the core sync claim.", "where": "home.desktop.02 'Live demo or your own store' table, last row; home.phone.04"},
+    "C3": {"score": 8, "worst_defect": "Step 8 'Sign in and make a sale' and 'Check it worked' are text only: nine lettered sub-steps (a-i) and a five-bullet Dashboard checklist with no image of the sign-in form or of the synced order in the Vendure Dashboard. The reader has no picture of what success looks like.", "where": "quick-start.desktop.03-04; quick-start.phone.07-08"},
+    "C4": {"score": 8, "worst_defect": "At the till runs 6,900 px with only three screenshots (payment, cashier sheet, closure). 'Find and add products', 'Discount or change a price', 'Add a charge' and 'Open sales, park and the customer' describe UI by bolded button names alone, as a wall of prose.", "where": "at-the-till.desktop.01"},
+    "C5": {"score": 7, "worst_defect": "Inline code is padded but has almost no visible background on the light theme, so the padding reads as stray spaces before punctuation all over the docs: 'Run it ( tsx is', 'https://app.vendurepos.com .', '( pricesIncludeTax: false )', 'plugins , the migration'. On home, 'What it does today' also switches from two bordered cards (the right one has a dead gap above 'Read the 200-send test') to eight unboxed text pairs, so one section uses two visual systems.", "where": "quick-start.desktop.01 (lines 'The hosted POS is live at...', 'Run it'); plugin-setup.desktop.01; home.desktop.01 bottom"},
+    "C6": {"score": 8, "worst_defect": "On phone the tax table collapses into cards that repeat the bold monospace label 'taxOptions.orderTaxCalculationStrategy:' in each card, and long inline code breaks at hyphens mid-token ('packages/vendure-' / 'plugin/CHANGELOG.md'; 'X-' / 'report').", "where": "quick-start.phone.06; changelog.phone.01; at-the-till.phone.06"},
+    "C7": {"score": 9, "worst_defect": "On the share card the subtitle wraps, leaving the widow 'a normal order.' on line 2, and the till screenshot is cropped by the bottom edge through the 'In Stock' pills, so the card looks cut off rather than framed.", "where": "og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "Inline code across every docs page is padded but its background is nearly invisible on the light theme. Each code token appears to have loose spaces around it ('Run it ( tsx is', 'app.vendurepos.com .', '( pricesIncludeTax: false )'). The code-dense quick start and plugin setup read as sloppy typesetting, and the tall padded tokens also open up line spacing on phones.",
+    "where": "quick-start.desktop.01-03, quick-start.phone.03-06, plugin-setup.desktop.01",
+    "fix": "Give inline code a visible tinted background (for example a 6-8% foreground mix) with a 1 px border, or drop the horizontal padding to about 0.2em, so the token reads as a chip rather than spaced-out text."
+  },
+  "mean": 8.0
+}
