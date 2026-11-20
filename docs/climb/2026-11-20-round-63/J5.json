@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero says what it is and who it is for, but nothing above the fold says who should NOT pick it. Someone comparing it with Shopify POS, Square or Lightspeed only finds out it is browser-only, has no card-terminal integration, opens no cash drawer and is untested on tablets in 'Before you start', at the bottom of slice 02.", "where": "home.desktop.01 hero vs home.desktop.02 'Before you start'"},
+    "C2": {"score": 7, "worst_defect": "A known plugin bug is shipped as a documentation workaround instead of a fix. The changelog admits 'Not in the release notes: in 0.2.0 and 0.3.0 this role has no ReadOrder, so the till's order history is refused', and the same caveat is repeated in quick-start, connect-a-till (twice) and changelog. Yet the last plugin release is 0.3.0 on 2026-10-06: three releases in five days, then six weeks with no fix. That reads as a project that patches its docs, not its code.", "where": "text/changelog.txt 0.2.0 last bullet; changelog.desktop.01; quick-start 'Optional: a device key'; connect-a-till 'Give each cashier their own account'"},
+    "C3": {"score": 8, "worst_defect": "Step 3 has you hand-write two migration scripts and run 'npx tsx src/generate-migration.ts' and 'npx tsx src/run-migrations.ts', but never shows what success looks like: no expected output, no table names to check. A developer cannot tell whether the migration worked until a sale fails at step 8.", "where": "quick-start.desktop.01-02 step 3; quick-start.phone.03"},
+    "C4": {"score": 8, "worst_defect": "The changelog covers only the plugin and leans on internal jargon ('order.create v5', 'ADR 0005', 'TALLY-CUSTOM-ITEM', 'maxShippingLines: 1'). It also says the hosted till 'is till app version 0.1.0 … has its own version number' but gives no changelog for the app. What changed in the till itself, the part cashiers use, is invisible.", "where": "changelog.desktop.01; text/changelog.txt intro"},
+    "C5": {"score": 8, "worst_defect": "In 'What it does today' the first two features sit in bordered cards with buttons and the next eight are plain unboxed text, so the grid looks unfinished. Apart from the hero screenshot, the long home page has no visual proof (no receipt, Z report or Vendure order screenshot).", "where": "home.desktop.01 bottom to home.desktop.02 top"},
+    "C6": {"score": 8, "worst_defect": "On the phone home page the hero screenshot is cropped to the till's phone layout showing only two product cards and no cart total. It also shows the till running on a phone, while the same page says 'tablets and phones … are not tested yet'.", "where": "home.phone.01 hero image vs home.phone.04 'Before you start'"},
+    "C7": {"score": 9, "worst_defect": "Docs pages carry only BreadcrumbList JSON-LD (no TechArticle/dateModified), so search engines and LLM crawlers get no freshness signal for the docs, even though the sitemap lastmod values are current. Everything else is strong: Lighthouse 98/100/100/100, llms.txt and llms-full.txt, a working search API, and a real 404.", "where": "tech.json pages.*.jsonLd (docs pages)"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "Docs on four pages work around the device-key role's missing ReadOrder permission, and the changelog admits it was left out of the release notes. With no plugin release since 2026-10-06, a sceptic reads it as a pre-release project whose known bugs live on as caveats instead of being fixed, which is the main reason to warn a client off.",
+    "where": "text/changelog.txt 0.2.0 last bullet; quick-start 'Optional: a device key'; connect-a-till 'Create and use a device key'",
+    "fix": "Ship a 0.3.1 plugin that adds ReadOrder to vendurepos-pos-till and remove the four caveats. Until then, add one line to the changelog naming the issue and saying when the fix is due."
+  },
+  "mean": 8.0
+}

@@ -1,0 +1,48 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero subhead talks to developers (\"…the open-source headless commerce framework…\"), not to a shop owner asking 'can my staff sell with this tomorrow'. On phone the top nav shows only \"Docs\" and \"Live demo\", so the staff guide \"At the till\" is not one tap away.",
+      "where": "home.desktop.01 hero subhead; home.phone.01 top nav"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "The limits are stated plainly. One nit: the refund row says \"Live demo: Yes\" but \"Your Vendure store: No, not on plugin 0.3.0 … stays Pending until an administrator settles it with two Admin API calls\", so the demo shows something the owner's own till cannot do.",
+      "where": "home.desktop.02, 'Live demo or your own store' table, refund row"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The path to a first sale is complete and ends with \"Check it worked\". But step 3 asks for two hand-made files plus tsx to run the migration, and every refund on 0.3.0 needs the freelancer to run settleRefund, so the owner still depends on a developer after day one.",
+      "where": "quick-start.desktop.02 step 3; limitations.phone.01 refund bullet"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The cashier guide mixes live-demo-only features and plugin-version caveats into staff steps: \"Refund at the till (live demo only)\" and \"On plugin 0.3.0, Order details has no customer note. On the live demo, type a Customer note…\". Troubleshooting's 'Till updates line' is a wall of error codes (register_session_already_open, register_closure_number_invalid, \"Any other code…\").",
+      "where": "at-the-till.desktop.01-03; troubleshooting.desktop.01"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The cashier-sheet and closure screenshots sit in oversized frames with large empty padding, so the till UI shows up small. Below the two lead cards, the feature list is plain text blocks with no visuals.",
+      "where": "at-the-till.desktop.03 and .04; home.desktop.01-02 feature list"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "Nothing overflows, and tables become cards on phone. But the phone header hides 'At the till' and 'Quick start' behind the chevron, and the cashier guide runs 9 phone slices (about 9,200 px), with no 'jump to: close the day / offline' near the top for an owner reading between customers.",
+      "where": "home.phone.01 header; at-the-till.phone.01-09"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Only nits. Mobile Lighthouse is 98/100/100/100 for home and quick-start (LCP 2.3 s and 2.4 s), with 53 KiB of unused JS. The 404 page logs the expected 'Failed to load resource: 404' console error.",
+      "where": "tech.json lighthouse and console"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "The 'At the till' staff guide mixes live-demo-only features and plugin-0.3.0 caveats into the cashier steps (\"Refund at the till (live demo only)\"; \"On plugin 0.3.0, Order details has no customer note. On the live demo, type a Customer note…\"), so staff reading it cannot tell what their own till actually does.",
+    "where": "at-the-till.desktop.01-03, 'Refund at the till' and 'Order details' sections",
+    "fix": "Write 'At the till' only for a store on plugin 0.3.0: give the refund steps as 'manager refunds in Dashboard → Pay out cash on the till → refund card on terminal', and move the demo-only extras into one 'On the live demo you will also see…' callout or the home comparison table."
+  },
+  "mean": 8.3
+}
