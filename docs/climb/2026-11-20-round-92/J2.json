@@ -1,0 +1,48 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The one link meant for my staff, \"For cashiers: At the till\", is a small underlined text line under the two big buttons (Live demo / Quick start). On the phone header only \"Docs\" and \"Live demo\" show; Quick start and At the till are hidden behind the chevron.",
+      "where": "home.desktop.01 hero; home.phone.01 header"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The limits are stated plainly. But the home table's refund row tells a shop owner the refund \"stays Pending until an administrator settles it with two Admin API calls; see Plugin setup\": developer wording on the page where I decide whether to trust it.",
+      "where": "home.desktop 'Live demo or your own store' table, row 'Refund a sale at the till'; text/home.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The quick start is long and store-wide. In Step 6 the tax-strategy choice warns it will \"also affect the web shop\", and Step 8 has sub-steps a–i, so my freelancer has to change the live web shop's config before staff can sell. The capture also ends partway through \"9. Troubleshoot\" without a clear finish line.",
+      "where": "quick-start.desktop steps 6 and 8, last slice; quick-start.phone last slice"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "Troubleshooting mixes counter help with server internals on one page: errorCode values such as \"register_session_already_open\", GraphQL blocks for tallyNeedsAdminCommands / tallyResolveNeedsAdmin, and VENDUREPOS_WEB_ALLOW_LAN_HTTP. The line \"Those closures and cash records do not reach your Vendure store from this till, so keep the printed Z reports\" gives staff no plain next step.",
+      "where": "troubleshooting.desktop.01-03 / troubleshooting.phone, section 'When till updates need attention'"
+    },
+    "C5": {
+      "score": 7,
+      "worst_defect": "On At the till desktop, the cashier-sheet screenshot is small and centred in a wide empty frame, and the closure screenshot sits in an oversized empty card. On the home page, the two bordered feature cards are followed by a plain, icon-less two-column text list that looks unfinished.",
+      "where": "at-the-till.desktop.03 and .04; home.desktop 'What it does today'"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "Nothing overflows and the tables reflow into stacked rows. But the phone home header hides Quick start and At the till behind a chevron, and the hero till screenshot is a cropped phone-layout till cut off at the product cards.",
+      "where": "home.phone.01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Minor: Lighthouse mobile flags 53 KiB of unused JS and 14 KiB of legacy JS (LCP 2.3–2.4 s). The share card's till screenshot is cut off at the bottom edge.",
+      "where": "tech.json lighthouse; og-image.png"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "The troubleshooting page puts counter-facing notices on the same page as developer material (errorCode strings like \"register_session_already_open\", tallyResolveNeedsAdmin GraphQL blocks, VENDUREPOS_WEB_ALLOW_LAN_HTTP). A shop owner reading it on a phone hits \"Those closures and cash records do not reach your Vendure store from this till\" and gets no plain step for what staff should do next.",
+    "where": "troubleshooting.desktop.01-03 / troubleshooting.phone, 'When till updates need attention'",
+    "fix": "Split the page in two. 'At the counter' keeps each notice with one plain action (e.g. 'keep the printed Z report and tell whoever runs your store'). 'For whoever runs your Vendure server' holds the errorCodes, the GraphQL and the LAN http note."
+  },
+  "mean": 7.9
+}

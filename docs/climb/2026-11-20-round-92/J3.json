@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The tax instructions prescribe different store-wide strategies for inclusive and exclusive channels, but say only that a store mixing pricing modes 'must account for the store-wide strategy', leaving its configuration unresolved.",
+      "where": "shots/quick-start.desktop.03.jpg, step 6; text/endpoint_llms_full_txt.txt:226-228"
+    },
+    "C4": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "text/plugin-setup.txt; text/connect-a-till.txt; text/troubleshooting.txt; text/endpoint_api_search_query_offline.txt"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop-dark.jpg; desktop slices of home, quick-start and plugin-setup"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "phone slices of home and quick-start; shots/plugin-setup.phone.03.jpg; tech.json"
+    },
+    "C7": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "tech.json; text/endpoint_llms_txt.txt; text/endpoint_llms_full_txt.txt; captured search, robots and sitemap endpoints; shots/og-image.png"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "A developer with both tax-inclusive and tax-exclusive channels must guess how to reconcile the recommended tax strategies with the single store-wide setting.",
+    "where": "Quick start, step 6, shots/quick-start.desktop.03.jpg; text/endpoint_llms_full_txt.txt:226-228",
+    "fix": "State the supported configuration for mixed pricing modes and how to verify its totals, or explicitly identify this configuration as unsupported."
+  },
+  "mean": 9.3
+}
