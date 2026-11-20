@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "On phone the hero proof is the till in a phone layout (Products / Cart (3) tabs), yet the text two screens down says 'tablets and phones, an iPad included, are not tested yet', so the first image suggests a device the site will not stand behind; and nothing near the top says who should not pick this over Shopify POS or Square (no hardware, no card integration).", "where": "home.phone.01 hero image vs home.phone.04 'Before you start'"},
+    "C2": {"score": 7, "worst_defect": "The site never says who builds or maintains VendurePOS: the footer gives only 'MIT licensed. Built with TallyUI. For Medusa, see MedusaPOS.', and the only clue on the home page is an unexplained third-party domain, 'anonymous usage events to ph.wcpos.com', in the demo table. The changelog also says 0.1.0 'records each one in Vendure exactly once' for register records, while Limitations says a refused register update is never re-sent and 'None of those register records reach your Vendure store'.", "where": "home.desktop.02 footer and table row 'Sales reach Vendure'; changelog.desktop.01 0.1.0 vs limitations.desktop.01"},
+    "C3": {"score": 8, "worst_defect": "Step 8 'Sign in and make a sale' and 'Check it worked' are text only, with no image of the sign-in screen or of a synced order in the Dashboard; a newcomer also meets an unexplained collapsible, 'If your store already allows vendurepos.vercel.app', in the middle of the CORS step.", "where": "quick-start.desktop.03 (vercel.app collapsible, step 8) and quick-start.desktop.04"},
+    "C4": {"score": 8, "worst_defect": "The Changelog covers only the plugin. The till app users actually run is 'till app version 0.1.0, built 20 Nov 2026 from commit 718709d' and has no release notes at all, so what changed in the till cannot be found anywhere in the docs.", "where": "changelog.desktop.01, second paragraph"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' gives two features bordered cards with buttons, then drops to eight plain unboxed text blocks, so the hierarchy changes style halfway down; the demo/store table's 'Refund a sale at the till' cell is a four-line paragraph crammed into a table cell.", "where": "home.desktop.01 bottom / home.desktop.02 top; home.desktop.02 table"},
+    "C6": {"score": 8, "worst_defect": "The phone hero screenshot is cropped to the till header and just two product tiles, with the category chips cut off at 'Gif', so the sale it claims to show (the €20.09 cart) is not visible on phone at all.", "where": "home.phone.01"},
+    "C7": {"score": 9, "worst_defect": "The home JSON-LD SoftwareApplication has no softwareVersion or dateModified even though the page badge says 'Pre-release · plugin 0.3.0'; otherwise the technical surface is strong (Lighthouse 98/100/100/100, llms.txt, sitemap, search API, a real 404 status).", "where": "tech.json pages.home.desktop.jsonLd"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A buyer cannot tell who stands behind this till: no maintainer, company, support channel or funding is named anywhere, and the home page's only hint is the unexplained 'ph.wcpos.com' analytics domain. For a POS that holds a shop's unsent sales in one browser, an unknown bus factor is the first reason I would advise a client against it.",
+    "where": "home.desktop.02 footer and 'Live demo or your own store' table",
+    "fix": "Add one line to the home footer and the Overview saying who maintains VendurePOS (e.g. the WCPOS team, which also runs ph.wcpos.com), where to file issues and get support, and how the project is funded."
+  },
+  "mean": 8.0
+}

@@ -1,0 +1,48 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The first and biggest feature card, 'Keeps selling offline', gives four of its six lines to caveats ('a reload needs the connection, and clearing that browser's data for the till loses them'), so the headline benefit reads like a warning before a newcomer knows what the product is.",
+      "where": "home/desktop/01 and home/phone/02, 'What it does today' first card"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "Nowhere on the home page or the docs does it say who makes or maintains VendurePOS. The only clue is an unexplained third-party domain in the comparison table: 'All it sends is anonymous usage events to ph.wcpos.com'. A newcomer has never heard of wcpos and has no way to tell who is collecting the data.",
+      "where": "home/desktop/02 'Live demo or your own store' table, last row; home footer 'MIT licensed. Built with TallyUI.'"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 8 'Sign in and make a sale' lists the sign-in fields as text only (store URL, channel token, barcode field), with no image of the 'Sign in to Vendure' form at app.vendurepos.com. The reader also has to write two script files in step 3 before they see the till at all.",
+      "where": "quick-start/desktop/03-04, '8. Sign in and make a sale' a-i; quick-start/desktop/01-02 step 3"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The product is VendurePOS, but every identifier the docs ask you to type is named Tally (TallyPosPlugin, TallyPosSell, /tally/v1, tally-pos, tallySaleAt, TallyPosV51790900000000), and an aside has to apologise for it: 'The plugin's code names say Tally, not VendurePOS'.",
+      "where": "quick-start/desktop/01 step 2; plugin-setup/desktop/01 'Configure the plugin and migrations'"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The home page is custom, but the docs pages use the stock docs-template look: grey 'Copy Markdown' and 'Open' buttons under every title and a plain grey sidebar. The two halves feel like different sites. On the home table, the 'Refund a sale at the till' cell runs to four lines and makes the rows uneven.",
+      "where": "docs/desktop/01 and every docs page header; home/desktop/02 comparison table"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "Code blocks wrap on the phone instead of scrolling, so 'generateMigration(config, { name: 'AddVendurePos', outputDir: './src/migrations' })' breaks across three ragged lines and is hard to copy-check by eye. The phone top bar shows only 'Docs' and 'Live demo', so 'Quick start' sits behind the chevron.",
+      "where": "quick-start/phone/03 and quick-start/phone/06 tax code block; home/phone/01 header"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The Organization JSON-LD gives its logo as an SVG ('logo':'https://vendurepos.com/icon.svg'), which search engines do not accept as a logo image. Everything else is solid: Lighthouse 98/100/100/100, llms.txt, sitemap, search API, a real 404 with links and an OG card.",
+      "where": "tech.json pages.home.desktop.jsonLd"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A first-time visitor cannot find out who is behind VendurePOS. The only hint is the unexplained 'ph.wcpos.com' analytics domain in the live-demo row of the comparison table, which makes an unknown open-source project look less trustworthy, not more.",
+    "where": "home/desktop/02 'Live demo or your own store' table, last row, and the home footer",
+    "fix": "Add one line to the footer (and the docs Overview) naming who builds and maintains VendurePOS. Turn 'ph.wcpos.com' into a short phrase saying whose analytics host it is."
+  },
+  "mean": 8.1
+}
