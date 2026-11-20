@@ -15,7 +15,9 @@ test('docs overview next steps link quick start and plugin setup', () => {
     '/docs/quick-start',
     'https://demo.vendurepos.com/demo',
     '/docs/plugin-setup',
+    '/docs/connect-a-till',
     '/docs/at-the-till',
+    '/docs/troubleshooting',
     '/docs/limitations',
     'https://github.com/vendurepos/app',
   ]);
@@ -100,7 +102,7 @@ test('overview next steps lead with Quick start, two by two', () => {
   assert.ok(gridClass.includes('sm:grid-cols-2'), gridClass);
   assert.ok(!gridClass.includes('sm:grid-cols-3'), gridClass);
   const cards = Array.from(slice.matchAll(/<a ([^>]*data-card="true"[^>]*)>/g), ([, attrs]) => href({ attrs }));
-  assert.equal(cards.length, 6);
+  assert.equal(cards.length, 8);
   assert.equal(cards[0], '/docs/quick-start');
 });
 
