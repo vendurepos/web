@@ -1,0 +1,48 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero subtitle opens with developer jargon, \"an open-source till for Vendure, the open-source headless commerce framework\", before it says what my staff can do at the counter. On a phone, the \"For cashiers: At the till\" link wraps onto its own orphan line under the two buttons.",
+      "where": "home.desktop.01; home.phone.01"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "The demo-vs-store table is honest that refunds are \"No, not on plugin 0.3.0 … stays Pending until an administrator settles it with two Admin API calls\". It doesn't tell a shop owner who that administrator is (my freelance developer?) or how quickly a customer's refund actually settles.",
+      "where": "home.desktop.02 (demo vs your store table)"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 3 runs `npx tsx src/generate-migration.ts` and calls tsx only \"the TypeScript runner VendurePOS's own dev store uses\". It never says tsx must be installed in the store project. That is a likely first-run stumble for a freelance developer whose setup is different.",
+      "where": "quick-start.desktop.01 (step 3)"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "At the till, the cashier's page, runs 4 desktop and 9 phone slices of dense prose with no short 'day at the till' checklist. Its refund section sends the cashier to the developer page: \"Plugin setup has the steps for them\".",
+      "where": "at-the-till.desktop.03; at-the-till.phone.01-09"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The cashier-sheet screenshot mixes clock formats in one panel: \"Register · open since 22:06\" sits next to \"Last synced 10:06 PM\". It is a small inconsistency in an otherwise polished, calm design that holds up in dark mode.",
+      "where": "at-the-till.desktop.03 (also at-the-till.phone.07: \"open since 22:07\" / \"Last synced 10:07 PM\")"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "There's no overflow, and tables stack well. But At the till is 9 phone screens of dense text with no checklist to scan between customers, and the home hero leaves \"For cashiers: At the till\" orphaned on its own line.",
+      "where": "at-the-till.phone.01-09; home.phone.01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Lighthouse LCP on /docs/quick-start is 2.6 s (score 0.88), and home reports \"unused-javascript\" of 53 KiB. Everything else is clean: 200s, llms.txt/llms-full.txt, sitemap, JSON-LD, a 404 page with useful links.",
+      "where": "tech.json lighthouse (/docs/quick-start, /)"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "At the till is the one page my staff would actually use, and it is a long, dense read with no short 'day at the till' checklist (open with float → scan and sell → card on our own terminal, then record it → keep the tab open if the internet drops → close, count, print Z). Its refund steps hand the cashier off to the developer page with \"Plugin setup has the steps for them\".",
+    "where": "at-the-till.phone.01-09; at-the-till.desktop.03",
+    "fix": "Put a 6-8 line printable checklist at the top of At the till covering opening, selling, card, offline and closing. Replace the refund pointer with one cashier instruction (\"Write down the order code and tell the store manager; the refund is settled from the admin side\") and keep the Admin API steps on Plugin setup only."
+  },
+  "mean": 8.3
+}

@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 9, "worst_defect": "On the phone the hero CTA row wraps, leaving the 'For cashiers: At the till' text link alone on a second row, indented about 7 px from the text column's left edge. The hero till screenshot's category chips are also cut at 'Gif'.", "where": "home.phone.01"},
+    "C2": {"score": 9, "worst_defect": "In the comparison table the 'Refund a sale at the till' row has a 4-line 'Your Vendure store' cell, which makes that row much taller than its neighbours and breaks the table's rhythm.", "where": "home.desktop.02"},
+    "C3": {"score": 8, "worst_defect": "The sticky 'On this page' bar already reads '1. Install the plugin' at scroll 0, before the reader reaches that step. The role permissions are bullets here but a run-on paragraph of chips on Connect a till, so the same step looks different on two pages.", "where": "quick-start.phone.01; quick-start.desktop.02 vs connect-a-till.desktop.01"},
+    "C4": {"score": 8, "worst_defect": "The role permissions are set as one dense paragraph of inline code chips ('TallyPosSell (plugin 0.2.0+; or the broader CreateOrder), ReadCatalog, ReadSettings, ReadCustomer and CreateCustomer'), while Quick start lists them as bullets. Inline code chips also leave stray spaces inside brackets: 'Run it ( tsx is…' and 'Tax-exclusive ( pricesIncludeTax: false )'.", "where": "connect-a-till.desktop.01; quick-start.desktop.01, quick-start.desktop.03"},
+    "C5": {"score": 7, "worst_defect": "The three At the till screenshots use three different treatments: the payment screen is full content width, the cashier sheet is a ~380 px centred card and the closure is a ~510 px centred card. About 70 px of dead space sits above the last two. On the home page, 'What it does today' mixes 2 boxed cards with 8 unboxed items, and the 'Every sale lands once' card leaves an empty gap above 'Read the 200-send test'.", "where": "at-the-till.desktop.02-04; home.desktop.01"},
+    "C6": {"score": 8, "worst_defect": "Three small breaks on the phone. The hero link 'For cashiers: At the till' is orphaned and misaligned (home.phone.01). The '€50.00' quick-amount button wraps alone onto its own row in the payment screenshot (at-the-till.phone.04). The path chip 'packages/vendure-plugin/CHANGELOG.md' breaks mid-word at 'vendure–' (changelog.phone.01).", "where": "home.phone.01; at-the-till.phone.04; changelog.phone.01"},
+    "C7": {"score": 9, "worst_defect": "Quick start has Lighthouse performance 97 with LCP 2.6 s (home is 2.3 s). Everything else is clean: no overflow, no images without alt text, JSON-LD on every page, and llms.txt, sitemap, search API and OG image all return 200.", "where": "tech.json lighthouse /docs/quick-start"}
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "The At the till docs screenshots are drawn at three different widths and in three different frame styles (full width, ~380 px card, ~510 px card), with about 70 px of extra top whitespace on the last two, so the page has no consistent figure rhythm.",
+    "where": "at-the-till.desktop.02, at-the-till.desktop.03, at-the-till.desktop.04",
+    "fix": "Give every docs screenshot one figure component: the same max-width (or full content width with phone-shaped shots centred inside a fixed frame), the same border, radius and caption alignment, and the standard paragraph-to-figure top margin."
+  },
+  "mean": 8.3
+}
