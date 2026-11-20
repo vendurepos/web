@@ -507,3 +507,21 @@ test('connect a till puts where your data goes after the sign-in steps (round 75
   assert.ok(details < problem, 'store details precede sign-in problems');
   assert.ok(problem < data, 'sign-in problems precede data details');
 });
+
+test('each changelog release folds its full notes under its In short (round 78, J1 C4)', () => {
+  const html = readFileSync(join('.next/server/app', 'docs/changelog.html'), 'utf8');
+  const visible = html.slice(html.indexOf('</head>')).replace(/<script[\s\S]*?<\/script>/g, '');
+  const sections = visible.split(/<h2[\s>]/).slice(1);
+  for (const release of ['0.3.0 (2026-10-06)', '0.2.0 (2026-10-06)', '0.1.0 (2026-10-01)']) {
+    const section = sections.find((part) => part.includes(release));
+    assert.ok(section, release);
+    const details = /<details\b[^>]*>/.exec(section);
+    assert.ok(details, release);
+    assert.doesNotMatch(details[0], /\sopen(?:\s|=|>)/i, release);
+    assert.ok(section.includes('Full release notes'), release);
+    const inShort = section.search(/<p>\s*<strong>In short:<\/strong>/);
+    assert.ok(inShort >= 0, release);
+    assert.ok(inShort < details.index, release);
+    assert.ok(section.indexOf('<li') > details.index, release);
+  }
+});
