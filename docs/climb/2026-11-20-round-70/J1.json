@@ -1,0 +1,48 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero is clear, but the rest of the home page turns into a setup checklist that a newcomer can't parse. 'Before you start' gives 'Node ^20.19 || >=22.12', 'tested on 3.7.3' and 'your own RxDB Premium licence token (RXDB_PREMIUM)', and the badge above the H1 says 'Pre-release · plugin 0.3.0' before the page has said what the plugin is.",
+      "where": "home.desktop.01 (badge) and home.desktop.02 / home.phone.04-05 ('Before you start')"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The live-demo row of the comparison table says 'All it sends is anonymous usage events to ph.wcpos.com, with no cookie'. A newcomer sees a different brand's domain receiving data with no word on who that is. The explanation (a self-hosted PostHog server that also counts this site's page views) appears only on Connect a till.",
+      "where": "home.desktop.02 table row 'Sales reach Vendure, once each, even offline'; home.phone.04"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The quick start has no picture of the sign-in screen, the open-register card or a synced order. 'Check it worked' starts 'Once the till shows the order as synced' but never says what synced looks like on the till. That is the 'N orders waiting to send' header text, which only Troubleshooting explains.",
+      "where": "quick-start.desktop.03-04 (step 8 and 'Check it worked'); text/quick-start.txt"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The Changelog reads as internal engineering notes, not release notes. Examples: 'order.create v5 custom lines are real order lines on a plugin-owned, disabled 'POS custom item' variant (SKU TALLY-CUSTOM-ITEM ...) (ADR 0005)' and 'Migration TallyPosV51790900000000 adds the v5 custom fields'. Only the 'In short' lines help a reader. Connect a till also says sales are 'kept in SQLite databases inside this browser' while every requirements list says 'SQLite are not supported', which a skimmer will trip on.",
+      "where": "changelog.desktop.01; connect-a-till.desktop.01 'Stored in this browser'"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "'What it does today' gives two features bordered cards with buttons and lists the other eight as plain unboxed text, so the section looks half-finished. The docs pages use the stock docs-theme look (Copy Markdown / Open buttons, plain sidebar) with no brand colour or mark anywhere.",
+      "where": "home.desktop.01 bottom to home.desktop.02 top; docs.desktop.01"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "On the phone, the home header shows only 'Docs' and 'Live demo' plus a bare chevron (⌄) where a menu icon would be expected. 'Quick start' and 'At the till' are hidden behind an icon that doesn't look like a menu. Otherwise nothing overflows, tables become readable stacked rows, and code wraps cleanly.",
+      "where": "home.phone.01 header; not-found.phone.01 header"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Mobile Lighthouse on / is 98/100/100/100, but LCP is 2.3 s, with 'unused-javascript: Est savings of 51 KiB' and 150 ms of render-blocking requests. That is the only measurable weak spot: titles, descriptions, OG card, JSON-LD, llms.txt, sitemap, robots, the search API and a real 404 status are all in place.",
+      "where": "tech.json lighthouse['/']"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The home page's demo-versus-own-store table says the demo sends 'anonymous usage events to ph.wcpos.com'. For a visitor who has never heard of VendurePOS, an unexplained third-party domain receiving data from the demo is the line most likely to make them hesitate before clicking 'Live demo'.",
+    "where": "home.desktop.02 / home.phone.04, row 'Sales reach Vendure, once each, even offline', Live demo column",
+    "fix": "Say who it is in place, e.g. 'All it sends is anonymous usage events to our own self-hosted analytics (ph.wcpos.com, the same server that counts this site's page views), with no cookie', and keep the link to the details."
+  },
+  "mean": 8.3
+}
