@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 9, "worst_defect": "The hero promises it \"keeps selling when the connection drops\" without the keep-the-tab-open condition, which only appears in the first feature card below; and on phone the header shows only \"Docs\" and \"Live demo\", so the cashier page \"At the till\" is hidden behind the menu.", "where": "home.desktop.01 hero / home.phone.01 header"},
+    "C2": {"score": 9, "worst_defect": "For an own store, refunds are \"Pending until an administrator settles it with two Admin API calls\", stated as a bare fact with no plain line that a non-developer owner will need their developer for every refund.", "where": "home (live demo vs own store table, Refund row) / limitations.desktop.01"},
+    "C3": {"score": 8, "worst_defect": "No recommended counter device: \"tablets and phones, an iPad included, are not tested yet\" and tests \"run in desktop Chrome\" leave the owner guessing what hardware to put on the counter tomorrow.", "where": "home 'Before you start' / limitations.desktop.01"},
+    "C4": {"score": 8, "worst_defect": "The docs Overview \"Next steps\" cards are only Quick start, Live demo, Plugin setup and Source on GitHub: no At the till or Limitations card, so an owner arriving at Docs is pointed only at developer setup.", "where": "docs.desktop.01 / text/docs.txt 'Next steps'"},
+    "C5": {"score": 8, "worst_defect": "The cashier-sheet and closure screenshots on At the till sit as a small inner card inside a wide, mostly empty double frame, which looks unfinished next to the full-width payment screenshot.", "where": "at-the-till.desktop.03, at-the-till.desktop.04"},
+    "C6": {"score": 8, "worst_defect": "At the till runs to 9 phone slices, and the only way to jump to \"If the internet drops\" or closing the day is the collapsed \"On this page\" dropdown; the phone home header also hides Quick start and At the till.", "where": "at-the-till.phone.01-09 / home.phone.01"},
+    "C7": {"score": 9, "worst_defect": "Lighthouse still flags \"unused JavaScript\" (53 KiB), legacy JavaScript (14 KiB) and 150 ms render-blocking; otherwise titles, JSON-LD, share card, llms.txt, search API, sitemap and 404 are all sound.", "where": "tech.json lighthouse (/ and /docs/quick-start)"}
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "The docs Overview 'Next steps' offers only developer setup (Quick start, Plugin setup, GitHub) and no At the till or Limitations card, so a shop owner opening Docs to learn how staff sell, ride out an outage and close the day is not shown where that lives.",
+    "where": "docs.desktop.01 / text/docs.txt 'Next steps'",
+    "fix": "Add an 'At the till' card (open the register, take payment, close the day) and a 'Limitations' card to the Overview Next steps."
+  },
+  "mean": 8.4
+}

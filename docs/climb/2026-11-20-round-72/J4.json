@@ -1,0 +1,48 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "On phone the H1 wraps as \"Point of sale for / Vendure\", leaving \"Vendure\" alone on the second line, and on desktop the centred four-line hero paragraph ends on a short orphan line \"connection drops.\"",
+      "where": "home.phone.01; home.desktop.01"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "The comparison table's \"Refund a sale at the till\" own-store cell is a four-line caveat (\"No, not on plugin 0.3.0: refund in the Vendure Dashboard. The refund stays Pending until an administrator settles it with two Admin API calls…\"). It is the densest cell on the page and buries the limitation in small table text.",
+      "where": "home.desktop.02"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 2's H2 embeds a code chip, \"2. Add `TallyPosPlugin` to your existing Vendure config\", which wraps to three lines on phone, and the plugin-name mismatch then has to be explained in prose.",
+      "where": "quick-start.phone.02"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Troubleshooting nests errorCode bullets three levels deep. On phone, the third-level \"Any other code:\" item runs as one 17-line bullet before the parent list resumes with \"N till updates waiting to sync…\", so the hierarchy is lost. Changelog bullets are inline-code soup, and the `packages/vendure-plugin/CHANGELOG.md` chip breaks across lines.",
+      "where": "troubleshooting.phone.03; changelog.phone.01"
+    },
+    "C5": {
+      "score": 7,
+      "worst_defect": "In \"What it does today\", two bordered cards (\"Keeps selling offline\", \"Every sale lands once\") are followed by eight unboxed text items in the same 2-column grid. The shorter \"Every sale lands once\" card leaves an empty band above its bottom-aligned \"Read the 200-send test\" button. Separately, the cashier-sheet image on At the till sits narrow and centred in a double frame while the payment screenshot above it is full column width, and the 404's docs-link row is plain unstyled black text.",
+      "where": "home.desktop.01; at-the-till.desktop.02/03; not-found.desktop.01"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "On phone, the comparison table collapses into seven stacked \"Live demo: … / Your Vendure store: …\" blocks, and the ten feature items run about 1.5 screens before it. Inline code chips crowd body paragraphs, e.g. \"Left empty, it allows no origins unless APP_ENV is dev…\".",
+      "where": "home.phone.02–04; quick-start.phone.05"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The share card's till screenshot is cut off at the bottom edge, with the \"Order discount\" button half visible. Lighthouse on / flags 53 KiB of unused JS and 150 ms of render-blocking resources (scores are still 98/100/100/100).",
+      "where": "og-image.png; tech.json lighthouse /"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "Home \"What it does today\" mixes two bordered cards with eight unboxed text items in one 2-column grid, and the shorter \"Every sale lands once\" card leaves an empty band above its button, so the section reads as two unrelated components.",
+    "where": "home.desktop.01 (and home.phone.02)",
+    "fix": "Give all ten items one treatment: either equal-height cards throughout, or the two proof items as one full-width callout band above a plain list. Place each card's button directly under its text instead of bottom-aligning it."
+  },
+  "mean": 8.1
+}

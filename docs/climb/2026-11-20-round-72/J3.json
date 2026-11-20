@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 6 prescribes different store-wide tax strategies for inclusive and exclusive channels, but tells mixed-mode stores only to 'account for the store-wide strategy' without explaining what to configure.",
+      "where": "text/endpoint_llms_full_txt.txt:846-875; Quick start, step 6 and 'Why these pairings'"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The quick start's optional device-key section sends pnpm users to an external README instead of linking the site's existing Vite configuration and verification instructions.",
+      "where": "text/quick-start.txt:212; text/connect-a-till.txt, 'Make the key button available in a pnpm project'"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.desktop.02.jpg; shots/home.desktop-dark.jpg; shots/plugin-setup.desktop.02.jpg"
+    },
+    "C6": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "shots/home.phone.01.jpg through home.phone.05.jpg; shots/quick-start.phone.01.jpg through quick-start.phone.09.jpg"
+    },
+    "C7": {
+      "score": 8,
+      "worst_defect": "The full machine-readable documentation omits the hosted till's version, build date and commit that the visible changelog supplies, leaving automated readers without that deployment provenance.",
+      "where": "text/changelog.txt:24 versus text/endpoint_llms_full_txt.txt:179-190; shots/changelog.desktop.01.jpg"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "A developer with tax-inclusive and tax-exclusive channels must guess which store-wide order tax strategy to configure.",
+    "where": "Quick start, step 6, 'Why these pairings'; text/endpoint_llms_full_txt.txt:846-875",
+    "fix": "Add explicit guidance for mixed-mode stores, including the supported strategy choice and how to verify totals in each pricing mode. If that configuration is unsupported, state the restriction directly."
+  },
+  "mean": 8.9
+}
