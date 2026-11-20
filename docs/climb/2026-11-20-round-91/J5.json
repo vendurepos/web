@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The home page never says who should not pick it over Shopify POS, Square or Lightspeed; the deal-breakers (no card-terminal link, no cash-drawer kick, tablets/iPad 'not tested yet', refunds only via Dashboard plus two Admin API calls) are scattered through 'Before you start' bullets and the comparison table instead of a plain 'Not for you if…' line.", "where": "home/desktop/02 'Before you start'; home.txt"},
+    "C2": {"score": 7, "worst_defect": "Changelog says 'The hosted till at app.vendurepos.com is till app version 0.1.0, built 20 Nov 2026 from vendurepos/app commit 7bd49a1' but there are no till-app release notes at all, only the plugin's (last release 2026-10-06), so the software cashiers run changes with no record. The only way out, self-hosting, needs 'your own RxDB Premium licence token', and the site never says what that costs or where to get it. Nowhere does the site say who maintains the project.", "where": "changelog/desktop/01 intro paragraph; home/desktop/02 'Setting up the store' last bullet; connect-a-till.txt 'Where your data goes'"},
+    "C3": {"score": 8, "worst_defect": "A known plugin defect is written up as a workaround instead of fixed: 'On plugin 0.3.0 the role it creates (vendurepos-pos-till) has the step 4 permissions except ReadOrder, so add ReadOrder to that role yourself', which appears on three pages. Anyone who follows the device-key path without reading it gets a till whose order history is refused.", "where": "quick-start.txt 'Optional: a device key for each till'; connect-a-till/desktop/01 'Give each cashier their own account' step 1"},
+    "C4": {"score": 8, "worst_defect": "The main quick-start path still carries a leftover from a domain move, the collapsed 'If your store already allows vendurepos.vercel.app', which suggests churn and is never explained in the Changelog. The Changelog also covers only the plugin, so the app's own behaviour changes have no documented history.", "where": "quick-start/desktop/03 under step 5; quick-start/phone/06"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' gives the first two features bordered cards with buttons, then drops the other eight into borderless two-column text. The section looks half-styled, and the hero screenshot's 10-11 px till text is too small to read at 1440 px.", "where": "home/desktop/01 lower half to home/desktop/02 top"},
+    "C6": {"score": 8, "worst_defect": "The phone hero shows the till in its narrow phone layout ('Products | Cart (3) · €20.09'), cropped after two product cards with its caption pushed into the next slice. The site states 'tablets and phones … are not tested yet', so the first image a phone visitor sees advertises a configuration the project does not stand behind.", "where": "home/phone/01 to home/phone/02 top"},
+    "C7": {"score": 9, "worst_defect": "The SoftwareApplication JSON-LD has no softwareVersion or offers and lists only GitHub in sameAs (no npm), so machine readers cannot see the pre-release status or the package. Everything else is clean: Lighthouse 98/100/100/100, llms.txt, sitemap, search API and a real 404 page.", "where": "tech.json pages['home.desktop'].jsonLd"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The hosted till that every store uses (app.vendurepos.com) is an unversioned rolling build ('till app version 0.1.0, built 20 Nov 2026 from … commit 7bd49a1') with no release notes, and the only alternative, self-hosting, depends on a paid RxDB Premium licence whose cost is never stated. A client cannot tell what changes under their cashiers or what leaving would cost, so I would advise against it for a live shop.",
+    "where": "changelog/desktop/01 intro; home/desktop/02 'Setting up the store'",
+    "fix": "Add a 'Till app' section to the Changelog with dated entries and a sentence on how app.vendurepos.com updates (and whether a store can pin a version). Add one line linking RxDB Premium's licence page with its price, so the self-host route has a known cost."
+  },
+  "mean": 8.0
+}

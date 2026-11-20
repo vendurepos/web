@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The home page's 'Live demo or your own store' table puts admin jargon in front of a newcomer: the refund cell reads 'The refund stays Pending until an administrator settles it with two Admin API calls; see Plugin setup', four lines of internals in an otherwise Yes/Yes comparison.", "where": "home/desktop/02 (table row 'Refund a sale at the till'); home/phone/04"},
+    "C2": {"score": 8, "worst_defect": "The home page says the demo's only traffic is 'anonymous usage events to ph.wcpos.com' without saying who wcpos.com is or how it relates to VendurePOS, so a visitor who has never heard of either sees an unexplained third-party brand on the trust line.", "where": "home/desktop/02 (table row 'Sales reach Vendure, once each, even offline'); home/phone/04"},
+    "C3": {"score": 8, "worst_defect": "Step 8 'Sign in and make a sale' describes a four-field sign-in form (store URL, channel token, barcode field, email/password) in text alone, with no screenshot of the sign-in screen. That screen is where a first setup succeeds or fails, while later steps such as payment get one.", "where": "quick-start/desktop/03-04 (8. Sign in and make a sale, items a-d); quick-start/phone/07-08"},
+    "C4": {"score": 8, "worst_defect": "Some limitations are written as one dense sentence chain that is hard to scan, e.g. 'When the store refuses a till update ... the till does not send it again, except a closure refused for its number, which it renumbers and sends once. Later till updates for that register stay on this till; sales keep sending.'", "where": "limitations/desktop/01 (At the counter, second-to-last bullet)"},
+    "C5": {"score": 8, "worst_defect": "The comparison table is visually unbalanced: almost every cell is a one-word 'Yes', but the 'Refund a sale at the till' cell runs four lines and the 'Sales reach Vendure' demo cell three, so the last two rows look crammed compared with the tidy rows above.", "where": "home/desktop/02, 'Live demo or your own store' table"},
+    "C6": {"score": 9, "worst_defect": "On the phone home hero the tertiary 'For cashiers: At the till' link drops onto its own line between the two buttons and the setup note, giving three stacked link styles before the screenshot. Otherwise the layout adapts well: the table becomes cards and the screenshots switch to the till's phone layout.", "where": "home/phone/01"},
+    "C7": {"score": 9, "worst_defect": "llms.txt lists the docs alphabetically by slug, so 'Overview' comes fifth and 'Quick start' ninth instead of in reading order (Overview, Quick start, Plugin setup ...), which matches the site nav poorly for an agent following it.", "where": "text/endpoint_llms_txt.txt"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "On the home page, the one sentence about what the demo sends names an unexplained outside domain, 'ph.wcpos.com'. A visitor who knows neither VendurePOS nor WCPOS can't tell who collects the data or who stands behind the project.",
+    "where": "home/desktop/02 and home/phone/04, table row 'Sales reach Vendure, once each, even offline'",
+    "fix": "In that cell, add a few words saying who runs ph.wcpos.com and how it relates to VendurePOS (for example 'usage analytics run by the VendurePOS team at WCPOS'), and link it to the existing 'Where your data goes' section."
+  },
+  "mean": 8.3
+}

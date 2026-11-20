@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The tax guide prescribes different store-wide strategies for inclusive and exclusive channels, but says only that a store mixing pricing modes 'must account for the store-wide strategy', leaving its configuration and verification unresolved.",
+      "where": "shots/quick-start.desktop.03.jpg, step 6; text/endpoint_llms_full_txt.txt, Quick start > Why these pairings"
+    },
+    "C4": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "text/docs.txt; text/plugin-setup.txt; text/troubleshooting.txt; text/endpoint_api_search_query_offline.txt"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.desktop.02.jpg; shots/home.desktop-dark.jpg; shots/plugin-setup.desktop.03.jpg"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.phone.01.jpg through home.phone.05.jpg; shots/quick-start.phone.01.jpg through quick-start.phone.09.jpg; shots/plugin-setup.phone.06.jpg"
+    },
+    "C7": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "tech.json; text/endpoint_llms_txt.txt; text/endpoint_llms_full_txt.txt; text/endpoint_sitemap_xml.txt; text/endpoint_robots_txt.txt; shots/og-image.png"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "A developer with both tax-inclusive and tax-exclusive channels is warned about the shared tax strategy but given no actionable configuration or verification path.",
+    "where": "Quick start, step 6 and Why these pairings; text/endpoint_llms_full_txt.txt",
+    "fix": "Add a mixed-channel instruction stating the supported strategy choice or explicit support boundary. Include a concrete receipt-versus-order tax-total check for each pricing mode."
+  },
+  "mean": 9.3
+}
