@@ -50,3 +50,19 @@ export function docsBreadcrumbJsonLd(page: { url: string; title: string }) {
     itemListElement,
   };
 }
+
+// Round 65, J1 and J4 C7: docs pages describe themselves as articles. No dates or author: there is no reliable per-page date source.
+export function docsArticleJsonLd(page: { url: string; title: string; description?: string }) {
+  const url = `${SITE_URL}${page.url}`;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    headline: page.title,
+    ...(page.description ? { description: page.description } : {}),
+    url,
+    mainEntityOfPage: url,
+    inLanguage: 'en',
+    isPartOf: { '@type': 'WebSite', name: SITE_NAME, url: SITE_URL },
+    publisher: { '@type': 'Organization', '@id': ORG_ID, name: SITE_NAME, url: SITE_URL },
+  };
+}
