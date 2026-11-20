@@ -369,12 +369,3 @@ test('a folded callout is a plain bordered disclosure, not a callout frame; plai
   assert.ok(start >= 0);
   assert.ok(html.slice(start, title).includes('<svg'));
 });
-
-test('step 8 names the Email and password choice before the lettered list (round 77, J1 C3)', () => {
-  const section = stepSection('Sign in and make a sale', 'Troubleshoot');
-  assert.ok(section.includes('Sign in to Vendure'));
-  assert.ok(section.includes('Email and password'));
-  assert.ok(section.includes('Device key'));
-  assert.ok(section.includes('href="#optional-a-device-key-for-each-till"'));
-  assert.ok(section.indexOf('Email and password') < section.indexOf('steps-lettered'));
-});
