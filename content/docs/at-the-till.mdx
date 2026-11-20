@@ -3,9 +3,6 @@ title: At the till
 description: Open the register, sell with charges and open sales, take or split a payment and close the day.
 ---
 {/* Sources: vendurepos/app 1404f42 (app.vendurepos.com production, 17 Nov 2026); plugin CHANGELOG at 1404f42; customer note: plugin CHANGELOG.md:6 ("kept as one public order note"), vendurepos/app#284 ("public to the customer"); note and refund gates: vendurepos/app cc719c2 apps/pos/lib/sale-cart.tsx:72 with lib/use-sale-settings.ts:23 (MIN_ORDER_CREATE_NOTE = 7), lib/refund-sheet.tsx:56 (Refund items needs order.refund), lib/demo/store.ts:12 (the demo advertises both); plugin-v0.3.0 (2d3699e, npm latest) packages/vendure-plugin/src/api/info.controller.ts:29 (order.create 1-5, no order.refund), src/config/strategies.ts:133-141 (tally-pos has no createRefund); https://docs.vendure.io/current/framework/reference/typescript-api/payment/payment-method-config-options (without createRefund, refunds "settled manually by an administrator"); https://docs.vendure.io/current/framework/reference/graphql-api/admin/mutations (settleRefund). The settle steps are in plugin-setup.mdx, with their sources. */}
-{/* Round 93, J2 C6: on a phone the page is about ten screens long; one line takes staff straight to the counter tasks. Links only, no new claims. */}
-**Jump to:** [Open the register](#open-the-register) · [Take payment](#take-payment) · [Refund a sale](#refund-a-sale) · [If the internet drops](#if-the-internet-drops) · [Count the drawer and close the day](#count-the-drawer-and-close-the-day)
-
 
 Some steps depend on the store's VendurePOS plugin. With no plugin, or one too old to sell,
 the till shows "This store's VendurePOS plugin is missing or out of date.
