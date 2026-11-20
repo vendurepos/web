@@ -52,15 +52,16 @@ export function TillFigure({ name, alt, sizes = '(max-width: 768px) 100vw, (max-
   );
   // Round 34, J4 C5: narrow shots sit centred, not left-aligned. Round 36, J2/J4 C5: a column-wide panel left them
   // tiny in empty grey, so the panel hugs the shot (its CSS width + 2 × 16 px padding + 2 × 1 px border).
-  // Below 640px the phone captures (390 CSS px for cashier and closure) fit under that maxWidth (418, 546), so the phone
+  // Below 640px the phone captures (390 CSS px for cashier and closure) fit under that maxWidth (384, 512), so the phone
   // shot is no narrower than before.
   const width = WIDE_SIZE[name][0];
   const narrow = width / 2 < 600;
-  const hug = narrow ? { maxWidth: width / 2 + 34 } : undefined;
+  // Round 82, J4 C5 and J2 C5: the grey panel put a second border round the cashier sheet; narrow shots now sit centred with one border, like the home till image.
+  const hug = narrow ? { maxWidth: width / 2 } : undefined;
   // Round 37, J4 C5: a narrow shot's caption sat at the column's left edge, not under its panel.
   return (
     <figure className={className}>
-      {narrow ? <div className="sm:mx-auto sm:flex sm:justify-center sm:rounded-lg sm:border sm:border-fd-border sm:bg-fd-muted sm:p-4" style={hug}>{pictures}</div> : pictures}
+      {narrow ? <div className="sm:mx-auto sm:flex sm:justify-center" style={hug}>{pictures}</div> : pictures}
       {caption && <figcaption className={`mt-3 text-sm text-fd-muted-foreground${narrow ? ' sm:mx-auto' : ''}`} style={hug}>{caption}</figcaption>}
       {children}
     </figure>

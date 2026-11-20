@@ -310,8 +310,9 @@ test('at the till shots are one session: the alts agree on €20.09 and €120.0
   }
 });
 
-test('at the till narrow shots sit centred on a column-wide panel; the closure has one border', () => {
+test('at the till narrow shots sit centred with one border each (round 82, J4 C5)', () => {
   // Round 34, J4 C5: three shot widths left-aligned read as unplanned; narrow shots sit centred on a column-wide panel.
+  // Round 82, J4 C5 and J2 C5: no grey panel; the shot's own border is the only one.
   const figureIn = (id) => {
     const start = html.indexOf(`id="${id}"`);
     assert.ok(start >= 0, id);
@@ -321,10 +322,12 @@ test('at the till narrow shots sit centred on a column-wide panel; the closure h
   const imgOf = (figure, file) => figure.match(new RegExp(`<img[^>]*%2Ftill%2F${file}[^>]*>`))?.[0] ?? '';
   for (const [id, name] of [['check-the-register-during-the-day', 'cashier'], ['count-the-drawer-and-close-the-day', 'closure']]) {
     const figure = figureIn(id);
-    const panel = figure.match(/<div class="([^"]*)"( style="[^"]*")?>/);
-    assert.ok(panel?.[1].includes('sm:bg-fd-muted') && panel[1].includes('sm:justify-center'), `${name} panel`);
-    const inside = figure.slice(panel.index, figure.lastIndexOf('</div>'));
-    for (const scheme of ['light', 'dark']) assert.ok(imgOf(inside, `${name}-${scheme}.png`), `${name}-${scheme} inside the panel`);
+    const wrapper = figure.match(/<div class="([^"]*)"( style="[^"]*")?>/);
+    const classes = wrapper[1].split(' ');
+    assert.ok(classes.includes('sm:justify-center') && classes.includes('sm:mx-auto'), `${name} wrapper centred`);
+    assert.ok(!['sm:bg-fd-muted', 'sm:border', 'sm:p-4', 'sm:rounded-lg'].some((cls) => classes.includes(cls)), `${name} wrapper has no panel`);
+    const inside = figure.slice(wrapper.index, figure.lastIndexOf('</div>'));
+    for (const scheme of ['light', 'dark']) assert.ok(imgOf(inside, `${name}-${scheme}.png`), `${name}-${scheme} inside the wrapper`);
     assert.match(imgOf(figure, `${name}-light.png`), /class="[^"]*\bmx-auto\b/, `${name} img centred in its picture`);
   }
   assert.ok(!figureIn('take-payment').includes('sm:bg-fd-muted'), 'payment has no panel');
@@ -337,21 +340,21 @@ test('at the till narrow shots sit centred on a column-wide panel; the closure h
   assert.ok(sale && !sale.includes('sm:bg-fd-muted'), 'home sale has no panel');
 });
 
-test('at the till narrow panels hug their shots', () => {
+test('at the till narrow wrappers are their shots\' width', () => {
   // Round 36, J2/J4 C5: column-wide panels left the narrow shots small in empty grey.
-  for (const [id, name, max] of [['check-the-register-during-the-day', 'cashier', 418], ['count-the-drawer-and-close-the-day', 'closure', 546]]) {
+  for (const [id, name, max] of [['check-the-register-during-the-day', 'cashier', 384], ['count-the-drawer-and-close-the-day', 'closure', 512]]) {
     const start = html.indexOf(`id="${id}"`);
     assert.ok(start >= 0, id);
     const figure = html.slice(html.indexOf('<figure', start), html.indexOf('</figure>', start));
     const panel = figure.match(/<div class="([^"]*)" style="([^"]*)">/);
     assert.ok(panel, `${name} panel`);
     const classes = panel[1].split(' ');
-    assert.ok(classes.includes('sm:mx-auto') && classes.includes('sm:p-4') && !classes.includes('sm:p-8'), `${name} panel classes`);
+    assert.ok(classes.includes('sm:mx-auto') && !classes.includes('sm:p-4'), `${name} panel classes`);
     assert.match(panel[2], new RegExp(`max-width:${max}px`), `${name} panel max-width`);
   }
 });
 
-test('at the till narrow captions sit under their panels', () => {
+test('at the till narrow captions sit under their shots', () => {
   // Round 37, J4 C5: the narrow shots' captions sat at the column's left edge.
   const captionOf = (id) => {
     const start = html.indexOf(`id="${id}"`);
@@ -361,10 +364,10 @@ test('at the till narrow captions sit under their panels', () => {
     assert.ok(tag, `${id} figcaption`);
     return { cls: (tag.match(/class="([^"]*)"/)?.[1] ?? '').split(' '), style: tag.match(/style="([^"]*)"/)?.[1] };
   };
-  for (const [id, name, max] of [['check-the-register-during-the-day', 'cashier', 418], ['count-the-drawer-and-close-the-day', 'closure', 546]]) {
+  for (const [id, name, max] of [['check-the-register-during-the-day', 'cashier', 384], ['count-the-drawer-and-close-the-day', 'closure', 512]]) {
     const { cls, style } = captionOf(id);
     assert.ok(cls.includes('sm:mx-auto'), `${name} caption centred`);
-    assert.equal(style, `max-width:${max}px`, `${name} caption max-width matches its panel`);
+    assert.equal(style, `max-width:${max}px`, `${name} caption max-width matches its shot`);
   }
   const payment = captionOf('take-payment');
   assert.ok(!payment.cls.includes('sm:mx-auto'), 'payment caption not centred');
