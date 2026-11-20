@@ -1,0 +1,48 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {
+      "score": 9,
+      "worst_defect": "On phone the hero opens with a ~150px blank gap above the 'Pre-release · plugin 0.3.0' pill, so the first screen spends space on nothing before the headline.",
+      "where": "home.phone.01"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "The claims are honest and backed by linked tests ('25 sales, 20 offline', '200 sends make one order'). But the comparison table's refund row is a four-line hedge paragraph, which reads as fine print rather than a clear yes/no.",
+      "where": "home.desktop.02 (comparison table, 'Refund a sale at the till' row)"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 3 (migrations) is the heaviest step on the path: two files to save and two commands to run, with a choice between generating your own migration and registering four bundled migration classes. That is a lot to hold before the first sale.",
+      "where": "quick-start step 3; plugin-setup.phone.02"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "At-the-till is long text walls: 13 sections with only 3 screenshots, and the cashier sheet image sits narrow and centred under a left-aligned caption, unlike the full-width payment screenshot above it. Limitations' 'Pre-release: expect changes before 1.0.' is a plain paragraph, not a callout.",
+      "where": "at-the-till.desktop.02-03, at-the-till.phone.06; limitations"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "'What it does today' mixes two bordered cards with six unbordered items. The right card 'Every sale lands once' has a large dead gap above its 'Read the 200-send test' button, so the two lead cards look unfinished against the plain list beside them.",
+      "where": "home.desktop.01 ('What it does today' section)"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The quick-start h2 '2. Add `TallyPosPlugin` to your existing Vendure config' puts a large boxed code chip inside the heading, which wraps to three lines with uneven leading. The sticky TOC bar already reads '1. Install the plugin' at the page top. The hero also has a blank gap above the pill.",
+      "where": "quick-start.phone.01-02; home.phone.01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The OG image tagline wraps with an orphan line 'a normal order.', and the till screenshot inside the card is cropped hard at the bottom edge. Everything else is clean: Lighthouse 98/100/100/100, CLS 0, valid JSON-LD, llms.txt and llms-full, a real 404, no overflow, no missing alt text.",
+      "where": "opengraph-image (og-image.png)"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "The home 'What it does today' section mixes two bordered cards with six unbordered items. 'Every sale lands once' has a dead gap above its button, so the section's lead cards look unfinished and the grid has no single rhythm.",
+    "where": "home.desktop.01 ('What it does today')",
+    "fix": "Give all eight items one treatment: either all cards in an even grid with buttons pinned to the card bottom, or all plain items with the two test links as inline text links. Remove the empty space above 'Read the 200-send test'."
+  },
+  "mean": 8.43
+}

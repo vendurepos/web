@@ -1,0 +1,48 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "Below the two proof cards ('Keeps selling offline', 'The same sale sent 200 times makes one order') the home page becomes eight plain text features with no visual, and nothing up top says why I'd pick this over Shopify POS or Square; on phone the header shows only Docs and Live demo, with Quick start behind the chevron.",
+      "where": "home.desktop.01-02; home.phone.01"
+    },
+    "C2": {
+      "score": 7,
+      "worst_defect": "No maintainer or company is named anywhere (the footer says only 'MIT licensed. Built with TallyUI'), there's no 'not for you if…' line and no comparison with established POS options, and 'open-source … MIT licensed' sits next to 'you need your own RxDB Premium licence token (RXDB_PREMIUM)' for self-hosting, with no cost or terms given.",
+      "where": "home 'Before you start' and footer; home.desktop.02"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The shipped 0.3.0 'POS till' role lacks ReadOrder, so the docs have the user patch the permission by hand, and a leftover collapsed 'If your store already allows vendurepos.vercel.app' block adds noise to the path.",
+      "where": "quick-start 'Optional: a device key' and connect-a-till; quick-start.desktop.03"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The version messages disagree: quick start says 'plugin 0.3.0 advertises order.create 1–5', while troubleshooting adds 'as every plugin release from 0.1.0 does', so I can't tell whether the out-of-date notice is about 0.3.0 or every release.",
+      "where": "quick-start step 9 vs troubleshooting; troubleshooting.phone.01"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The lower half of the home page is a dense text grid, and the long 'Refund a sale at the till … two Admin API calls' cell in the comparison table makes the rows uneven; dark mode holds up.",
+      "where": "home.desktop.02; home.dark"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The phone home header gives first-class links only to Docs and Live demo, so Quick start (the main conversion path) sits behind a chevron; the stacked table and wrapped code blocks otherwise read well.",
+      "where": "home.phone.01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "None of weight: the not-found page logs a console error (the 404 resource itself); every other page has a title, description and JSON-LD, Lighthouse mobile scores 98/100/100/100 and CLS is 0.",
+      "where": "tech.json not-found"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The site never says who maintains VendurePOS or who it's not for, never compares itself with established POS options, and calls itself 'open-source … MIT licensed' while self-hosting needs a paid 'RxDB Premium licence token (RXDB_PREMIUM)' with no cost stated.",
+    "where": "home 'Before you start' and footer; home.desktop.02",
+    "fix": "Add one line under 'Before you start' saying who builds and supports it and who should not use it yet (e.g. multi-lane retail needing a cash drawer or card terminal), and state the RxDB Premium terms or price next to RXDB_PREMIUM."
+  },
+  "mean": 8.0
+}
