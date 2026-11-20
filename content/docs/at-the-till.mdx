@@ -8,6 +8,18 @@ Some steps depend on the store's VendurePOS plugin. With no plugin, or one too o
 the till shows "This store's VendurePOS plugin is missing or out of date.
 Install or update it, then this till continues."
 
+## What you need at the counter
+
+{/* Round 73, J2 C3: owners could not tell what to put on the counter. Each line restates a sourced fact: desktop Chrome (limitations.mdx, playwright.config.ts), scanners (this page's Find and add products; the home Barcode scanners card), printer and drawer (this page's Receipt and next sale), card terminal (this page's Take payment). */}
+
+- A computer with desktop Chrome, the browser the till's tests run in. Tablets and phones are not tested yet.
+- A barcode scanner that types the code like a keyboard (a keyboard-wedge scanner), or the device's camera.
+- Any printer that browser can print to, for receipts.
+- Your own card terminal: take the card payment on it, then record it on the till.
+- A cash drawer you open by hand. The till does not open it.
+
+More on what the till does not do yet: [Limitations](/docs/limitations).
+
 ## Open the register
 
 After the catalogue and settings load, enter the opening float you counted and open the register.

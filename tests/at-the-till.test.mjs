@@ -479,3 +479,16 @@ test('at the till refund steps send a card refund to your own card terminal', ()
   const limitations = readFileSync('.next/server/app/docs/limitations.html', 'utf8');
   assert.ok(limitations.includes('id="at-the-counter"'), 'Limitations has the at-the-counter id');
 });
+
+test('at the till lists what goes on the counter before opening the register (round 73, J2 C3)', () => {
+  const start = html.indexOf('id="what-you-need-at-the-counter"');
+  const end = html.indexOf('id="open-the-register"');
+  assert.ok(start >= 0 && end > start, 'counter section comes before opening the register');
+  const section = html.slice(start, end);
+  const text = section.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ');
+  for (const phrase of ['desktop Chrome', 'keyboard-wedge scanner', 'camera', 'printer', 'card terminal', 'open by hand']) {
+    assert.ok(text.includes(phrase), phrase);
+  }
+  assert.ok(section.includes('href="/docs/limitations"'), 'links Limitations');
+  assert.doesNotMatch(text, /recommend|supported|iPad/i);
+});
