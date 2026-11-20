@@ -161,7 +161,8 @@ export default function HomePage() {
         <p className="max-w-2xl mx-auto text-base sm:text-lg text-fd-muted-foreground">
           VendurePOS is an open-source till for <a href="https://vendure.io" className="underline">Vendure</a>,
           {/* Source: https://docs.vendure.io/ "The open source headless commerce framework, community plugins, and the commercial paid plans, all in one place." (read 2026-11-18) */}
-          {' '}the open-source headless commerce framework. It is made for shops that sell online with Vendure and
+          {/* Round 64, J1 C1: plain words for that definition, so a shop owner does not read the hero as a developer tool. */}
+          {' '}open-source software for running an online shop. It is made for shops that sell online with Vendure and
           also sell in person. It runs in the browser and keeps selling when the connection drops.
         </p>
         <div className="mt-8 flex flex-wrap justify-start sm:justify-center gap-3">
