@@ -1,0 +1,48 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {
+      "score": 9,
+      "worst_defect": "On phone the nav collapses to 'VendurePOS', search and a chevron, so 'Quick start' and 'At the till' leave the header, and the hero paragraph ('VendurePOS is an open-source till for Vendure, the open-source headless commerce framework...') runs about six lines before the buttons appear.",
+      "where": "home.phone.01"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "The 'Every sale lands once' card is stretched to match its taller neighbour, which leaves an empty band above its 'Read the 200-send test' button and makes it look like content is missing.",
+      "where": "home.desktop.01 ('What it does today' bordered cards)"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The quick start (about 6,900 px) has no screenshots at all. Step 8, 'Sign in and make a sale', and 'Check it worked' are text only: there is no image of the POS sign-in form or of the synced order in the Vendure Dashboard, the two screens a first-time user most needs to recognise.",
+      "where": "quick-start.desktop.04 / text/quick-start.txt (no [image:] markers)"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "A single Troubleshooting bullet holds an 'At the counter:' paragraph, a 'For the store owner:' paragraph, a collapsible and an errorCode sub-list. This is the densest block on the site and hard to scan.",
+      "where": "troubleshooting.desktop.01"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "At the till's three screenshots use three figure treatments. The payment screen spans the full ~836 px column. The cashier sheet (~420 px) and the closure (~545 px) are centred and narrower, each double-framed (an outer border around an inner card) with ~50 px of empty padding above the image.",
+      "where": "at-the-till.desktop.03, at-the-till.desktop.04"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "In the payment screenshot the quick-amount buttons wrap, leaving '€50.00' alone on its own row. On the changelog, the code pill 'packages/vendure-plugin/CHANGELOG.md' breaks across two lines as two separate boxes.",
+      "where": "at-the-till.phone.04; changelog.phone.01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The OG card's till screenshot is cut by the bottom edge mid-row: the product cards lose their buttons and the 'Order discount' button is sliced, so the share image looks cropped rather than composed.",
+      "where": "og-image.png"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "At the till's screenshots use three inconsistent figure treatments: a full-column payment screen, then a centred ~420 px cashier sheet and a ~545 px closure, both double-framed with ~50 px of empty padding above the inner card.",
+    "where": "at-the-till.desktop.03, at-the-till.desktop.04",
+    "fix": "Give every docs screenshot one figure style: full content-column width (or one shared max width), a single border, and no inner card or top padding."
+  },
+  "mean": 8.4
+}
