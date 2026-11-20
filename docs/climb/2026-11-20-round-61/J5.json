@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero says what it is but not who should NOT pick it over Square/Shopify POS; the deal-breakers a buyer compares on (no cash-drawer kick, no card-terminal integration, iPad untested, real-store refunds via Admin API) only appear in 'Before you start' at the bottom of the page, and the share card ('Sell from the browser, keep selling offline...') drops 'open-source' and 'pre-release' entirely.", "where": "home.desktop.01 hero vs home.desktop.02 'Before you start'; og-image.png"},
+    "C2": {"score": 7, "worst_defect": "Nowhere on the site says who builds or supports VendurePOS (no maintainer, company, support channel or issue link in footer/overview), yet the demo and site send analytics to an unexplained third-party domain 'ph.wcpos.com'; together with the plugin's last release being 0.3.0 on 2026-10-06 and a known defect carried in two releases ('Not in the release notes: in 0.2.0 and 0.3.0 this role has no ReadOrder'), a sceptic cannot tell whether this is backed or a side project.", "where": "home.desktop.02 footer and 'Live demo or your own store' table; connect-a-till.desktop.01 'Where requests go'; changelog.desktop.01"},
+    "C3": {"score": 9, "worst_defect": "The device-key route is a trap: the plugin's own tallyEnsurePosTillRole/'New POS till key' role omits ReadOrder on 0.3.0, so a developer following the button gets a till whose order history is refused unless they read the 'add ReadOrder to that role yourself' aside.", "where": "quick-start text 'Optional: a device key for each till'; changelog 0.2.0 last bullet"},
+    "C4": {"score": 8, "worst_defect": "The changelog is written for the plugin's authors, not users: 'order.create v5 custom lines ... (ADR 0005)', 'GET /tally/v1/info returns maxShippingLines: 1 and lineTax: { none: true, classes: true }', migration class names; and the Overview's 'Next steps' cards (Quick start, Live demo, Plugin setup, GitHub) omit Limitations despite the page promising 'where it stands'.", "where": "changelog.desktop.01; docs.desktop.01 Next steps"},
+    "C5": {"score": 9, "worst_defect": "The 'What it does today' section mixes two boxed cards with eight unboxed text items below, so the grid changes style mid-section and the eight items read as an afterthought.", "where": "home.desktop.01 bottom / home.desktop.02 top"},
+    "C6": {"score": 9, "worst_defect": "The phone header shows only 'Docs' and 'Live demo'; Quick start and At the till are hidden behind an unlabelled chevron, so the primary developer path isn't one tap from the top bar (the hero button covers it on home only).", "where": "home.phone.01 header"},
+    "C7": {"score": 9, "worst_defect": "The SoftwareApplication JSON-LD carries no softwareVersion or pre-release signal and the og-image omits 'pre-release', so shared links and rich results present it as a finished product; quick-start LCP is 2.6 s on mobile Lighthouse.", "where": "tech.json home.desktop jsonLd; og-image.png; tech.json lighthouse /docs/quick-start"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The site never says who maintains VendurePOS, how it is supported or how long it will be maintained. The only clue is an unexplained analytics domain, ph.wcpos.com. The plugin's last release was 0.3.0 on 2026-10-06, and that release still carries a ReadOrder role bug. A consultant cannot tell a client whether this till is backed or abandoned.",
+    "where": "home.desktop.02 footer ('MIT licensed. Built with TallyUI. For Medusa, see MedusaPOS.'); connect-a-till.desktop.01 'Where requests go'; changelog.desktop.01",
+    "fix": "Add one line to the footer and the Overview naming the maintainer (and that ph.wcpos.com is theirs), where to get support (GitHub issues link), and the next planned plugin release or its status."
+  },
+  "mean": 8.4
+}

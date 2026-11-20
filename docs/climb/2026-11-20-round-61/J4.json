@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 9, "worst_defect": "Too much centred text in the hero: under 'Point of sale for Vendure' sits a four-line centred lead paragraph, and below the buttons a second, two-line centred note ('Your own store needs the plugin on your Vendure server first...'). The CTAs end up sandwiched between two grey text blocks instead of anchoring the fold.", "where": "home.desktop.01 (hero)"},
+    "C2": {"score": 9, "worst_defect": "The changelog's 0.3.0 and 0.2.0 bullets are full of internal references, '(ADR 0005)' five times and '(ADR 0004)' three times, plus '#116' and '#117'. To a visitor this reads like a raw commit log, not release notes.", "where": "changelog.desktop.01"},
+    "C3": {"score": 8, "worst_defect": "The setup path has no pictures. Quick start is 6,925 px tall on desktop and 10,580 px on phone, all text and code. Step 8's sign-in screen ('Sign in to Vendure', 'Email and password' / 'Device key') is never shown, and 'Check it worked' is a small H3 bullet list with no picture of the synced order in the Dashboard.", "where": "quick-start.desktop.03-04, quick-start.phone.08; connect-a-till.desktop.01"},
+    "C4": {"score": 8, "worst_defect": "Troubleshooting 'Act on a header notice' is a wall of quoted messages, bold run-in labels ('At the counter:', 'For the store owner:'), a disclosure and nested errorCode bullets, three indent levels deep. It shows no picture of the header line it describes, so the messages are hard to match to the screen.", "where": "troubleshooting.desktop.01"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' uses two component styles. Two bordered cards with buttons ('Keeps selling offline', 'Every sale lands once') are followed by eight borderless title-plus-text items in the same grid. The right card is stretched to the left card's height, which leaves an empty band of about 70 px above 'Read the 200-send test'.", "where": "home.desktop.01 (lower half) into home.desktop.02"},
+    "C6": {"score": 8, "worst_defect": "On phone, code soft-wraps in the middle of expressions. The generateMigration call breaks into 'generateMigration(config, { name:' / ''AddVendurePos', outputDir:' / ''./src/migrations' })', and the changelog's path chip splits as 'packages/vendure-' / 'plugin/CHANGELOG.md'. The At the till payment screenshot also runs about 1.5 screens tall, with the '€50.00' quick-amount button orphaned on its own row.", "where": "quick-start.phone.03; changelog.phone.01; at-the-till.phone.03-04"},
+    "C7": {"score": 9, "worst_defect": "The share card crops the till screenshot through the first product row at the bottom edge: the 'In Stock' chips under Canvas Apron to Cotton Beanie are sliced off, which looks accidental at small sizes. Quick start LCP is 2.6 s (Lighthouse score 0.88).", "where": "og-image.png; tech.json lighthouse /docs/quick-start"}
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "The path from install to a working till is all text. Quick start (10,580 px on phone) and Connect a till show no picture of the till's sign-in screen or of a synced POS order in the Vendure Dashboard, so a developer has nothing to compare against at the two moments that decide whether setup worked. The only product images in the docs are on At the till.",
+    "where": "quick-start.desktop.03-04 / quick-start.phone.07-08 (step 8 and 'Check it worked'); connect-a-till.desktop.01",
+    "fix": "Add one screenshot of the 'Sign in to Vendure' screen to step 8 (and to Connect a till), and one of the synced order in the Dashboard (tally-pos settled, fulfilment delivered) to 'Check it worked'. Serve the phone crop on phone, as At the till already does."
+  },
+  "mean": 8.4
+}
