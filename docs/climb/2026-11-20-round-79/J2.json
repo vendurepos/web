@@ -1,0 +1,48 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero's two buttons are \"Live demo\" and \"Quick start\" (a developer install); the owner/cashier guide appears only as the closing sentence \"For cashiers, At the till covers selling, taking payment and closing the day.\", and on phone the header shows just Docs and Live demo, with Quick start and At the till hidden behind the chevron.",
+      "where": "home/desktop/01 (hero CTAs), home/phone/01 (header nav), text/home.txt last paragraph"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "The demo-vs-own-store table's refund row says the refund \"stays Pending until an administrator settles it with two Admin API calls\", which leaves a non-developer owner unsure who settles refunds day to day; separately, the home \"Barcode scanners\" card mentions only keyboard-wedge scanners while At the till also offers \"the device's camera\".",
+      "where": "home/desktop/02 (refund row), home/phone/04; at-the-till text"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Quick start step 3 has the reader create src/generate-migration.ts and src/run-migrations.ts, then says \"include it in config.dbConnectionOptions.migrations\" without showing that config edit, which is the one guess the freelancer has to make; step 5's collapsed \"If your store already allows vendurepos.vercel.app\" is also unexplained at first read.",
+      "where": "quick-start/desktop/01-02 (step 3), quick-start/desktop/03 (step 5 disclosure)"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Troubleshooting mixes cashier-facing header notices with developer GraphQL (\"tallyNeedsAdminCommands\", \"tallyResolveNeedsAdmin\") and errorCode lists on one page, so staff looking up \"what does this notice mean\" land in API detail; At the till also says \"Pick cash or card\" while its own screenshot's button reads \"Card terminal\".",
+      "where": "troubleshooting/desktop/01-02; at-the-till/desktop/02"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The \"What it does today\" section shows two boxed cards followed by eight unboxed items in a different treatment, and the closure and cashier-sheet screenshots on At the till sit in oversized frames with wide blank padding around a small image.",
+      "where": "home/desktop/01-02; at-the-till/desktop/03-04"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The hero till screenshot on phone is cropped so the category chip row is cut mid-word (\"Gif\") and only two products show, and the guides a shop owner reads on a phone are very long (quick-start 10,580 px, at-the-till 9,811 px tall); no overflow anywhere and tables stack cleanly.",
+      "where": "home/phone/01; tech.json quick-start.phone / at-the-till.phone heights"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Lighthouse mobile on / reports LCP 2.4 s with \"unused-javascript\" (~53 KiB), render-blocking resources (120 ms) and legacy JavaScript (14 KiB); everything else (404 status and page, og card, JSON-LD, llms.txt, sitemap, search API) is sound.",
+      "where": "tech.json lighthouse['/']"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "A shop owner who wants to know \"can my staff sell with this tomorrow and how do we close the day\" gets no button for it: both hero CTAs go to the demo or the developer quick start, the cashier guide \"At the till\" is only a sentence at the bottom of home, and on phone it is hidden behind the nav chevron.",
+    "where": "home/desktop/01, home/phone/01",
+    "fix": "Add a third hero link, \"For your staff: At the till\", beside Live demo and Quick start, and show At the till in the phone header instead of behind the chevron."
+  },
+  "mean": 8.3
+}

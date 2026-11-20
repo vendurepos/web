@@ -1,0 +1,48 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero leans on words a newcomer may not know: the badge says \"Pre-release · plugin 0.3.0\" before the visitor knows there is a plugin, and the intro calls Vendure a \"headless commerce framework\" and the product a \"till\" without saying what either means. The first feature card, \"Keeps selling offline\", opens with its caveats (\"a reload needs the connection, and clearing that browser's data for the till loses them\") before the reader knows why offline selling matters.",
+      "where": "home.desktop.01 (hero badge, intro paragraph, 'Keeps selling offline' card)"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The comparison table says the demo \"sends anonymous usage events to ph.wcpos.com\". wcpos.com is named nowhere else on the site, so a first-time visitor sees an unexplained third-party domain receiving data and may start to distrust the site.",
+      "where": "home.desktop.02, 'Live demo or your own store' table, last row; home.phone.04"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 5 ends with a collapsed note, \"If your store already allows vendurepos.vercel.app\", about a domain the guide never introduces. It reads like a leftover from an old deployment and makes the reader wonder which origin is the right one.",
+      "where": "quick-start.desktop.03 top (step 5); quick-start.phone.06"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The Overview's 'Next steps' cards list Quick start, Live demo, Plugin setup, At the till, Limitations and GitHub, but leave out Connect a till, Troubleshooting and Notifications. A reader who starts at the docs landing page does not see three of the nine pages there. Separately, Limitations still says \"Device keys need plugin 0.2.0 or later\" while every install command pins 0.3.0.",
+      "where": "docs.desktop.01 'Next steps'; limitations.desktop.01 last bullet"
+    },
+    "C5": {
+      "score": 7,
+      "worst_defect": "After the one hero screenshot, 'What it does today' gives two features bordered cards, then drops the other eight ('Paid, fulfilled…' through 'Line and order discounts') to plain grey text with no card, icon or image. That is followed by a 7-row text table and two bullet lists, so most of the home page is an unbroken wall of grey text with nothing visual to show the register, receipt or offline state.",
+      "where": "home.desktop.01 bottom through home.desktop.02"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The phone header shows only 'Docs' and 'Live demo', plus an unlabelled chevron. 'Quick start' and 'At the till' are hidden behind that chevron, so the main next step for a developer is not in the nav on a phone.",
+      "where": "home.phone.01 header"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "On mobile, Lighthouse measures LCP at 2.4 s, just under the 2.5 s 'good' limit, for a mostly static page. It also flags about 53 KiB of unused JavaScript and render-blocking requests on /. Everything else is in place: JSON-LD, llms.txt, sitemap, robots, a real 404 status and a good share card.",
+      "where": "tech.json lighthouse['/']"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "A first-time visitor who skims for under a minute gets one product screenshot and then a long run of plain grey text. Eight of the ten features have no card or visual, and the table and bullet lists below are text only. Nothing beyond the hero shows the claims, such as a Z report, a receipt or the offline 'orders waiting to send' state, so the page reads as a spec sheet rather than a product.",
+    "where": "home.desktop.01 bottom through home.desktop.02; home.phone.02-04",
+    "fix": "Give the eight plain features the same card treatment as the first two and add two or three small screenshots from the demo (offline banner, Z report, receipt) beside the matching features."
+  },
+  "mean": 8.0
+}

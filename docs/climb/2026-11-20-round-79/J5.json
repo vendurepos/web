@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero says what it is and who it is for, but nothing on the home page tells a buyer who should NOT pick it over Shopify POS, Square or Lightspeed (no hardware integrations, desktop Chrome only, no card-terminal link); that is only implied by scattered limits further down.", "where": "home.desktop.01 hero; home.txt 'Before you start'"},
+    "C2": {"score": 7, "worst_defect": "The site never says who builds or maintains VendurePOS, whether app.vendurepos.com is free and will stay up, or why demo analytics go to ph.wcpos.com; and 'MIT licensed' / JSON-LD isAccessibleForFree sit next to 'you need your own RxDB Premium licence token' without saying that is a paid commercial licence, so the 'open-source' till can in practice only be run from the project's hosted app.", "where": "home.desktop.02 'Setting up the store' + footer 'MIT licensed'; home table 'ph.wcpos.com'; connect-a-till.txt 'Where requests go'; tech.json home jsonLd"},
+    "C3": {"score": 8, "worst_defect": "Scanning needs a ProductVariant 'barcode' custom field, but the quick start only mentions it at step 8c ('how to add one'), after the step 3 migration has been generated and run, so a developer who wants scanning has to generate and run a second migration and restart; it belongs before step 3.", "where": "quick-start.desktop.03 step 8c; connect-a-till.txt 'If your store has no such field'"},
+    "C4": {"score": 8, "worst_defect": "The changelog covers only the plugin (three releases, last 2026-10-06) while the hosted till app that cashiers actually use ('till app version 0.1.0, built 20 Nov 2026 from commit 53e133b') has no release notes at all, so there is no record of what changed in the till.", "where": "changelog.desktop.01"},
+    "C5": {"score": 9, "worst_defect": "Under 'What it does today' two boxed cards are followed by eight unboxed grey heading-plus-paragraph pairs, which reads as a long text wall with weaker hierarchy than the cards above it.", "where": "home.desktop.01 bottom / home.desktop.02 top"},
+    "C6": {"score": 9, "worst_defect": "On the phone the hero screenshot of 'a sale in progress' crops to the Products tab with two tiles and a clipped 'Gif' chip, so the cart and total that make it a sale are not visible.", "where": "home.phone.01"},
+    "C7": {"score": 9, "worst_defect": "The SoftwareApplication JSON-LD has no softwareVersion (0.3.0) or dateModified, though the site states both elsewhere; otherwise titles, descriptions, share card, llms.txt, search API, sitemap and the 404 are all in order.", "where": "tech.json pages.home.desktop.jsonLd"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A sceptic advising a client cannot tell who stands behind VendurePOS, whether the hosted till at app.vendurepos.com is free and supported, or what self-hosting costs: 'MIT licensed' is headlined while the only way to build the till yourself needs an RxDB Premium licence the site never says is paid, and the ph.wcpos.com domain hints at an unnamed parent project.",
+    "where": "home.desktop.02 'Setting up the store' and footer; connect-a-till.txt 'Where requests go'",
+    "fix": "Add one 'Who runs this' line to the home page and Overview naming the maintainer, saying app.vendurepos.com is free with no account, and stating that RxDB Premium is a paid commercial licence, so self-hosting the till has that cost."
+  },
+  "mean": 8.3
+}
