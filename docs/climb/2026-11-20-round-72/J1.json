@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero's main button 'Live demo' does not say the demo needs no sign-up or install; the reassuring line ('a simulated store in your browser, with nothing to install') only appears in the third section, 'Live demo or your own store'. Meanwhile the badge 'Pre-release · plugin 0.3.0' names a plugin the visitor hasn't heard of yet.", "where": "home/desktop/01 hero and badge; home/desktop/02 'Live demo or your own store'"},
+    "C2": {"score": 8, "worst_defect": "The home page never says who makes or maintains VendurePOS (the footer has only 'MIT licensed. Built with TallyUI. For Medusa, see MedusaPOS.'), yet the demo row says it 'sends anonymous usage events to ph.wcpos.com', a third domain that home never explains. A newcomer can't tell whose analytics that is.", "where": "home/desktop/02 table row 'Sales reach Vendure, once each, even offline' and footer"},
+    "C3": {"score": 8, "worst_defect": "Before step 1, the box 'Before a sale on a live store' tells you to 'swap its order-confirmation handler first: see Set up email' and to read 'Check your own code', both on another page, without saying what goes wrong if you skip them. The first-run path forks before it starts.", "where": "quick-start/desktop/01 warning callout"},
+    "C4": {"score": 8, "worst_defect": "The till role's permission list lives in three places with caveats that differ: quick-start step 4 lists six permissions including ReadOrder; the optional device-key section says the generated 'vendurepos-pos-till' role lacks ReadOrder; and the changelog 0.2.0 entry repeats this as 'Not in the release notes'. A reader has to piece the rule together across pages.", "where": "quick-start/desktop/02 step 4; quick-start text 'Optional: a device key for each till'; changelog/desktop/01"},
+    "C5": {"score": 8, "worst_defect": "In 'What it does today', the right-hand card 'Every sale lands once' is much shorter than its neighbour, so a large empty gap sits above its 'Read the 200-send test' button. Under the two cards the remaining eight features fall into plain unboxed text, so the section looks half-styled.", "where": "home/desktop/01 lower half"},
+    "C6": {"score": 8, "worst_defect": "In the phone hero screenshot the till's category chips run off the right edge, with 'Gif' cut mid-word, and the product grid is cut after two tiles. To a first-time visitor it reads as a cropped, unfinished image. The phone header also drops 'Quick start' behind the chevron.", "where": "home/phone/01"},
+    "C7": {"score": 9, "worst_defect": "Mobile LCP is 2.4 s on both / and /docs/quick-start, just under the 2.5 s 'good' limit. Lighthouse flags render-blocking requests (est. 150 ms) and 53 KiB of unused JavaScript on the home page.", "where": "tech.json lighthouse"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A first-time visitor can't find out who is behind VendurePOS. The home page names no maker or maintainer, and the only hint is an unexplained 'ph.wcpos.com' analytics domain in the demo comparison table, which looks odd rather than reassuring on a site the visitor is deciding whether to trust.",
+    "where": "home/desktop/02 demo table row and footer",
+    "fix": "Add one footer line naming who builds and maintains VendurePOS, with a link. In the demo row, say that ph.wcpos.com is that maintainer's self-hosted analytics, as the Connect a till page already does."
+  },
+  "mean": 8.1
+}

@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 9, "worst_defect": "On the phone the hero image crops the till to two product cards (Canvas Apron, Chocolate Biscuits), so the cart and the EUR 20.09 checkout that the caption 'A sale in progress' promises are not visible.", "where": "home/phone/01"},
+    "C2": {"score": 7, "worst_defect": "The home page and footer say 'open-source' and 'MIT licensed', but self-hosting the till needs 'your own RxDB Premium licence token (RXDB_PREMIUM)'. No page says this is a paid commercial licence, what it costs, or who runs app.vendurepos.com. So in practice a shop depends on an unnamed hosted app. Also, the 'Live demo or your own store' table says 'This is what it shows today' but leaves out that the Customer note works only on the demo (At the till: 'On plugin 0.3.0, Order details has no customer note').", "where": "home/desktop/02 'Setting up the store' bullet and the demo-vs-store table; connect-a-till/desktop/01; at-the-till text 'Order details'"},
+    "C3": {"score": 8, "worst_defect": "The plugin's own 'New POS till key' role (vendurepos-pos-till) ships without ReadOrder on 0.3.0. The one-click device-key path therefore leaves the till's order history refused unless the reader finds the manual fix. That fix is repeated as a caveat in four places instead of being fixed in the plugin.", "where": "quick-start 'Optional: a device key for each till'; connect-a-till 'Create and use a device key'; changelog/desktop/01 0.2.0 'Not in the release notes'"},
+    "C4": {"score": 8, "worst_defect": "The changelog reads like internal dev notes for an evaluator: 'order.create v5', 'maxShippingLines: 1', 'lineTax: { none: true, classes: true }', repeated '(ADR 0005)' references, and a 'Not in the release notes:' aside inside the release notes. There is no plain summary of what changed for a shop.", "where": "changelog/desktop/01"},
+    "C5": {"score": 8, "worst_defect": "Under 'What it does today' only two features get bordered cards with buttons, and six more sit as plain text below. In the right-hand card ('Every sale lands once') a large empty gap sits above 'Read the 200-send test' because the left card's text is longer.", "where": "home/desktop/01"},
+    "C6": {"score": 8, "worst_defect": "On a 390 px screen the quick-start code blocks soft-wrap mid-expression ('generateMigration(config, { name:' / ''AddVendurePos', outputDir:'), so the migration script is hard to read on a phone.", "where": "quick-start/phone/03"},
+    "C7": {"score": 9, "worst_defect": "The SoftwareApplication JSON-LD has no softwareVersion or dateModified, although the page badge says 'Pre-release · plugin 0.3.0' and the changelog dates releases. The Organization logo is an SVG (icon.svg).", "where": "tech.json home.desktop jsonLd"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The site leads with 'open-source' and 'MIT licensed', yet building and hosting the till yourself needs an RxDB Premium licence. The site never says this is a paid third-party licence or what it costs, and never says who operates app.vendurepos.com. So a client cannot judge lock-in or what self-hosting would cost, and I would advise caution until that is clear.",
+    "where": "home/desktop/02 'Setting up the store' last bullet; limitations/desktop/01 'Setting up the store'; connect-a-till/desktop/01",
+    "fix": "Say plainly in that bullet and in Limitations that RxDB Premium is a paid commercial licence (with a link to its price), and add one line naming who runs app.vendurepos.com and how it is kept up."
+  },
+  "mean": 8.1
+}
