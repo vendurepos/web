@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero is clear, but the first feature card below it, 'Keeps selling offline', spends most of its words on caveats ('a reload needs the connection, and clearing that browser's data for the till loses them'). The rest of 'What it does today' uses terms a newcomer has to stop on: 'a settled payment and a delivered fulfilment', 'keyboard-wedge scanners', 'Z report'.", "where": "home.desktop.01 'What it does today' cards; home.phone.02"},
+    "C2": {"score": 7, "worst_defect": "The home page never says what anything costs. The hosted till at app.vendurepos.com has no price or 'free' statement, and 'Setting up the store' says self-hosting needs 'your own RxDB Premium licence token (RXDB_PREMIUM)' without saying that this is a paid third-party licence. The only visible licensing statement is 'MIT licensed', so 'open-source' reads as possibly hiding a cost. The demo row also names an unexplained third-party domain ('anonymous usage events to ph.wcpos.com').", "where": "home.desktop.02 'Before you start > Setting up the store' and the 'Live demo or your own store' table; home.phone.04-05"},
+    "C3": {"score": 8, "worst_defect": "Step 6, 'Choose tax rounding for your pricing mode', asks the developer to change the store-wide orderTaxCalculationStrategy, which the step itself says 'also affect[s] the web shop'. The reason for this is folded inside a collapsed 'Why these pairings' toggle, so a live storefront's tax behaviour changes before you can see why.", "where": "quick-start.desktop.03 step 6; quick-start.phone.06-07"},
+    "C4": {"score": 8, "worst_defect": "Connect a till walks through the 'Sign in to Vendure' screen field by field (store URL, channel token, 'Barcode field (optional)', Email and password or Device key) but shows no picture of that screen. The Changelog is written in internal codes ('order.create v5', 'ADR 0005', 'TallyPosV51790900000000') that a newcomer cannot use.", "where": "connect-a-till.desktop.01; changelog.desktop.01"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' mixes two boxed cards with eight unboxed text items. The two cards are uneven: 'Every sale lands once' leaves a tall empty gap above its button next to the longer offline card. The section reads as two different designs stuck together.", "where": "home.desktop.01 bottom (cards at y~1300-1550) into home.desktop.02 top"},
+    "C6": {"score": 8, "worst_defect": "On the phone, the home hero screenshot is cut off after one row of two products, with the category chip clipped to 'Gif' at the right edge, so the till looks cropped rather than shown. The top nav also shows only 'Docs' and 'Live demo'; 'Quick start' sits behind the chevron.", "where": "home.phone.01"},
+    "C7": {"score": 9, "worst_defect": "Mobile Lighthouse on / still flags LCP 2.3 s, about 53 KiB of unused JavaScript and 150 ms of render-blocking requests (/docs/quick-start: LCP 2.4 s, 1.7 s boot-up time). Titles, descriptions, the share card, JSON-LD, llms.txt, the sitemap, the search API and the 404 page are all in order.", "where": "tech.json lighthouse '/' and '/docs/quick-start'"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A first-time visitor cannot tell whether VendurePOS costs anything. The home page never says whether the hosted till at app.vendurepos.com is free, and self-hosting the 'MIT licensed' till needs 'your own RxDB Premium licence token' with no word that this is a paid third-party licence. 'Open-source' therefore reads as possibly hiding a cost.",
+    "where": "home.desktop.02 'Before you start > Setting up the store' (also home.phone.04-05)",
+    "fix": "Add one plain sentence to 'Before you start': what using app.vendurepos.com costs (for example 'free, no account with us'), and that building the till yourself needs a paid RxDB Premium licence from its vendor."
+  },
+  "mean": 8.0
+}
