@@ -1,0 +1,48 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {
+      "score": 9,
+      "worst_defect": "On phone the in-app category chip row in the hero till screenshot is cut mid-word ('Gif') at the screenshot frame edge, so the first image reads as clipped rather than intentionally cropped.",
+      "where": "home.phone.01 (hero screenshot, chip row)"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "The product screenshots disagree on clock format: the payment screen shows 'Last synced 10:06 PM' while the cashier sheet shows 'Register · open since 22:06'. A sharp reader notices that two captures of the same till don't match.",
+      "where": "at-the-till.desktop.02 vs at-the-till.desktop.03"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 8 packs nine lettered sub-actions (a–i) into one step with no image of the sign-in screen or of the synced order in the Dashboard, and 'Check it worked' is text only, so the densest step in the path has no visual confirmation.",
+      "where": "quick-start.desktop.03–04, step 8 and 'Check it worked'"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The 'Act on a header notice' bullets have uneven vertical rhythm, with nested paragraphs and a details element inside a bullet, so items sit at different gaps. The Overview 'Next steps' cards have no arrow or link affordance.",
+      "where": "troubleshooting.desktop.01; docs.desktop.01 (Next steps cards)"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The 'What it does today' list gets two treatments: two bordered cards (the 'Every sale lands once' card has ~90 px of dead space above its button) followed by eight unboxed items. The disclosures are browser-default black ▶ triangles next to styled callouts, one with a stray trailing period ('How POS sales take stock.'). The cashier-sheet image is a card inside a bordered frame with ~50 px of empty padding at about half column width.",
+      "where": "home.desktop.01 (What it does today); quick-start.desktop.03 (details disclosures); at-the-till.desktop.03 (cashier sheet frame)"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The inline code chip 'packages/vendure-plugin/CHANGELOG.md' breaks at the hyphen across two lines and renders as two separate pills. Long H2s wrap to three lines on a 390 px screen ('2. Add TallyPosPlugin to your existing Vendure config').",
+      "where": "changelog.phone.01; quick-start.phone.02"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The og-image crops the till screenshot through the product cards, so the 'In Stock' pills are cut off at the bottom edge of the share card. Mobile LCP is 2.3–2.4 s, just under the 2.5 s line.",
+      "where": "og-image.png (bottom edge); tech.json Lighthouse mobile"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "Home 'What it does today' gives one feature list two treatments: two bordered cards of unequal content (the 'Every sale lands once' card has ~90 px of dead space above its button), then eight unboxed text items. The section looks unfinished, as if the card treatment ran out partway.",
+    "where": "home.desktop.01, 'What it does today' section",
+    "fix": "Use one component for all ten features: either equal-height cards in a 2-column grid with buttons pinned to the card bottom, or no boxes at all, with the two test links as inline 'See the test →' links under their items."
+  },
+  "mean": 8.4
+}

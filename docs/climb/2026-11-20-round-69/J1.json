@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero leans on jargon a searcher may not know ('till', 'the open-source headless commerce framework') without a plain-words line, and the first feature card 'Keeps selling offline' opens with a dense block of caveats ('a reload needs the connection, and clearing that browser's data for the till loses them') before the reader knows why offline matters.", "where": "home/desktop/01 hero paragraph and 'Keeps selling offline' card"},
+    "C2": {"score": 8, "worst_defect": "Nowhere on the home page does it say who builds or maintains VendurePOS (footer only says 'MIT licensed. Built with TallyUI.'). The only clue to an owner is an unexplained third-party domain in the comparison table: 'All it sends is anonymous usage events to ph.wcpos.com'.", "where": "home/desktop/02 'Live demo or your own store' table, last row, and footer"},
+    "C3": {"score": 8, "worst_defect": "'Check it worked' starts with 'Once the till shows the order as synced' but the quick start never says what 'synced' looks like on the till (the header text 'N orders waiting to send' / Orders status 'Synced' is only in Troubleshooting), and step 8 has no screenshot of the sign-in screen or a synced sale.", "where": "quick-start/desktop/04 'Check it worked'; quick-start/desktop/03 step 8"},
+    "C4": {"score": 8, "worst_defect": "The quick start carries a leftover collapsed block 'If your store already allows vendurepos.vercel.app' in step 5, which refers to an old host a new reader has never seen. Also, the Overview's 'Next steps' cards skip Connect a till and At the till.", "where": "quick-start/desktop/03 top (step 5); docs/desktop/01 Next steps"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' uses two treatments: two boxed cards with grey buttons, then eight unboxed heading-plus-paragraph items. The section reads as two different designs, and the till screenshot in the hero is small enough that its text is hard to read at 1440 px.", "where": "home/desktop/01 lower half to home/desktop/02 top"},
+    "C6": {"score": 9, "worst_defect": "The phone hero screenshot crops to two product tiles. The cart its caption talks about ('A sale in progress') is hidden behind a 'Cart (3)' tab, so the image shows no sale.", "where": "home/phone/01 bottom"},
+    "C7": {"score": 9, "worst_defect": "The share card's till screenshot is cut off mid-tile at the bottom edge (product prices and stock badges sliced). Lighthouse still flags 53 KiB of unused JavaScript on /.", "where": "og-image.png; tech.json lighthouse./.failing"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A first-time visitor cannot tell who is behind VendurePOS: no maker, team or company is named on the home page or the docs overview. The only hint is 'anonymous usage events to ph.wcpos.com' in the comparison table, which makes an unknown third-party domain the first sign of ownership.",
+    "where": "home/desktop/02 comparison table last row and footer",
+    "fix": "Add one footer or hero line naming who builds and maintains VendurePOS (with a link), and say in the table row that ph.wcpos.com is the maker's own self-hosted analytics server."
+  },
+  "mean": 8.29
+}
