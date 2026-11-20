@@ -1,0 +1,19 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The home page's comparison table and 'Before you start' block carry admin-level detail a newcomer can't parse: the 'Refund a sale at the till' row reads 'The refund stays Pending until an administrator settles it with two Admin API calls', and the setup list names 'RxDB Premium licence token (RXDB_PREMIUM)' and 'Node ^20.19 || >=22.12'. The clear hero ends up followed by docs-grade jargon.", "where": "home.desktop.02 ('Live demo or your own store' table, 'Before you start'); home.phone.04"},
+    "C2": {"score": 9, "worst_defect": "The demo column says 'All it sends is anonymous usage events to ph.wcpos.com, with no cookie'. That is an unrelated brand's domain, unexplained on the page, and a newcomer wonders whose product this really is.", "where": "home.desktop.02 / home.phone.04, row 'Sales reach Vendure, once each, even offline'"},
+    "C3": {"score": 9, "worst_defect": "Step 5 ends in a collapsed 'If your store already allows vendurepos.vercel.app' panel, which points to an old domain and reads like leftover migration notes. Separately, the 'Before a sale on a live store' callout sends the reader off to Plugin setup (Set up email, Check your own code) before step 1.", "where": "quick-start.desktop.03 (top), quick-start.phone.06; quick-start.desktop.01 callout"},
+    "C4": {"score": 8, "worst_defect": "The changelog reads like internal developer notes: entries cite 'ADR 0005', 'ADR 0004', '#116', 'figures_mismatch', 'order.create v5'. It also opens by saying the hosted till is 'till app version 0.1.0' while every other page badges 'plugin 0.3.0', so it is unclear which version the product is at.", "where": "changelog.desktop.01 / changelog.phone.01"},
+    "C5": {"score": 8, "worst_defect": "In 'What it does today', the first two features get boxed cards with buttons and the other eight are plain unboxed text pairs with no icons. The home page's lower half then runs on as long grey paragraphs ('Before you start', the closing paragraph above the repeated CTA buttons) and looks like a docs page.", "where": "home.desktop.01 bottom to home.desktop.02"},
+    "C6": {"score": 9, "worst_defect": "Headings with inline code wrap awkwardly at 390 px: '2. Add TallyPosPlugin to your existing Vendure config' runs to three lines with a boxed code chip mid-heading. Code blocks soft-wrap imports onto indented continuation lines ('import { TallyPosPlugin } from' / ''@vendurepos/plugin';').", "where": "quick-start.phone.02, quick-start.phone.03"},
+    "C7": {"score": 9, "worst_defect": "Lighthouse mobile LCP is 2.5 s on /docs/quick-start and 2.3 s on /, with flagged unused JavaScript (25-53 KiB) and render-blocking requests. That is borderline next to otherwise clean titles, descriptions, JSON-LD, llms.txt, sitemap and the 404 page.", "where": "tech.json lighthouse['/docs/quick-start'], lighthouse['/']"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "After a clear hero, the home page asks a newcomer to read admin internals ('settles it with two Admin API calls', 'RxDB Premium licence token (RXDB_PREMIUM)', 'Node ^20.19 || >=22.12', 'ph.wcpos.com'). The product starts to look unfinished and complicated just as the visitor is deciding whether to try the demo.", "where": "home.desktop.02 / home.phone.04-05 ('Live demo or your own store' table and 'Before you start')",
+    "fix": "On the home page, shorten the refund cell to 'Not yet: refund in the Vendure Dashboard (see Limitations)' and move the Node range, RXDB_PREMIUM and the usage-events domain detail into the docs, keeping one plain line per point plus a link."
+  },
+  "mean": 8.6
+}
