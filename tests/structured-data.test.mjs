@@ -38,7 +38,7 @@ test('no block carries offers, price or rating', () => {
 
 test('docs index has a two-item BreadcrumbList', () => {
   const data = blocks('docs.html');
-  assert.equal(data.length, 1);
+  assert.equal(data.length, 2);
   assert.equal(data[0]['@type'], 'BreadcrumbList');
   assert.deepEqual(data[0].itemListElement, [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://vendurepos.com' },
@@ -48,7 +48,7 @@ test('docs index has a two-item BreadcrumbList', () => {
 
 test('docs page has a three-item BreadcrumbList ending at the page', () => {
   const data = blocks('docs/quick-start.html');
-  assert.equal(data.length, 1);
+  assert.equal(data.length, 2);
   assert.equal(data[0]['@type'], 'BreadcrumbList');
   assert.equal(data[0].itemListElement.length, 3);
   assert.deepEqual(data[0].itemListElement[2], {
@@ -61,7 +61,7 @@ test('docs page has a three-item BreadcrumbList ending at the page', () => {
 
 test('changelog page is built, in the sitemap, and its breadcrumb ends at Changelog', () => {
   const data = blocks('docs/changelog.html');
-  assert.equal(data.length, 1);
+  assert.equal(data.length, 2);
   assert.equal(data[0]['@type'], 'BreadcrumbList');
   assert.deepEqual(data[0].itemListElement[2], {
     '@type': 'ListItem',
@@ -73,4 +73,34 @@ test('changelog page is built, in the sitemap, and its breadcrumb ends at Change
   assert.ok(sitemap.includes('<loc>https://vendurepos.com/docs/changelog</loc>'));
   const home = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
   assert.ok(home.includes('href="/docs/changelog"'));
+});
+
+test('every docs page carries a TechArticle built from its own title and description (round 65, J1 and J4 C7)', () => {
+  const pages = [
+    ['docs.html', '/docs', 'Overview', 'What VendurePOS is, what it needs, and where it stands.'],
+    [
+      'docs/quick-start.html',
+      '/docs/quick-start',
+      'Quick start',
+      'Install the plugin, configure Vendure and make your first sale.',
+    ],
+    [
+      'docs/changelog.html',
+      '/docs/changelog',
+      'Changelog',
+      'Released versions of the @vendurepos/plugin package, newest first.',
+    ],
+  ];
+  for (const [file, path, headline, description] of pages) {
+    const article = blocks(file)[1];
+    assert.equal(article['@context'], 'https://schema.org');
+    assert.equal(article['@type'], 'TechArticle');
+    assert.equal(article.headline, headline);
+    assert.equal(article.description, description);
+    assert.equal(article.url, `https://vendurepos.com${path}`);
+    assert.equal(article.mainEntityOfPage, `https://vendurepos.com${path}`);
+    assert.equal(article.inLanguage, 'en');
+    assert.equal(article.publisher['@id'], 'https://vendurepos.com/#organization');
+    for (const key of ['datePublished', 'dateModified', 'author']) assert.ok(!(key in article), key);
+  }
 });

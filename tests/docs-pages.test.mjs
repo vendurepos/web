@@ -19,7 +19,7 @@ for (const [slug, title] of pages) {
     const url = `https://vendurepos.com/docs/${slug}`;
     assert.ok(html.includes(`<link rel="canonical" href="${url}"/>`));
     const data = Array.from(html.matchAll(blockPattern), ([, body]) => JSON.parse(body));
-    assert.equal(data.length, 1);
+    assert.equal(data.length, 2);
     assert.equal(data[0]['@type'], 'BreadcrumbList');
     assert.equal(data[0].itemListElement.length, 3);
     assert.deepEqual(data[0].itemListElement[2], {
