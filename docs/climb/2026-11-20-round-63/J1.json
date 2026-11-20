@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero lead explains Vendure only as 'the open-source headless commerce framework', which tells a visitor who half knows Vendure nothing; and the first thing above the H1 is the badge 'Pre-release · plugin 0.3.0', which names a plugin before the page has said what the plugin is.", "where": "home/desktop/01 and home/phone/01, hero badge and lead paragraph"},
+    "C2": {"score": 8, "worst_defect": "The home comparison table says the demo sends 'anonymous usage events to ph.wcpos.com', a different brand's domain with no word on home about who wcpos is. A newcomer reads that as an unexplained third party collecting data.", "where": "home/desktop/02, 'Live demo or your own store' table, last row; home/phone/04"},
+    "C3": {"score": 8, "worst_defect": "Step 4 says 'Sign in with a Vendure administrator whose role in the till's channel has these permissions' and lists six permission names, but it never says where or how to create that role and administrator in the Dashboard. That is sent off to another page ('Give each cashier their own account'), so step 4 cannot be finished from the quick start alone.", "where": "quick-start/desktop/02, '4. Enable bearer authentication'"},
+    "C4": {"score": 8, "worst_defect": "The changelog is written in internal shorthand that no other docs page explains: '(ADR 0005)', 'order.create v5', 'advertises order.create 1–5', 'lineTax: { none: true, classes: true }'. The 'In short' lines help, but the bullets read as commit notes.", "where": "changelog/desktop/01, 0.3.0 and 0.2.0 bullets"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' opens with two boxed cards that have buttons, then switches to six unboxed heading-and-paragraph items in the same grid, so the section looks half-styled. The refund cell in the comparison table is a four-line paragraph that makes one row much heavier than the 'Yes' rows.", "where": "home/desktop/01 (bottom) and home/desktop/02 (top and table)"},
+    "C6": {"score": 9, "worst_defect": "Code blocks wrap mid-statement at 390 px, so `generateMigration(config, { name: 'AddVendurePos', outputDir: './src/migrations' })` splits over three lines and `import { TallyPosPlugin } from` breaks before the package name. It is readable and has a copy button, but it is awkward to scan. Phone nav also tucks 'Quick start' behind the chevron.", "where": "quick-start/phone/02 and quick-start/phone/03; home/phone/01 header"},
+    "C7": {"score": 9, "worst_defect": "The share card's screenshot is cut off at the bottom edge through the first product row (prices visible, 'In Stock' pills sliced), so the card looks cropped rather than composed.", "where": "og-image.png, bottom edge"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "A visitor who arrives from 'Vendure point of sale' without really knowing Vendure gets 'the open-source headless commerce framework' as the only explanation, under a 'plugin 0.3.0' badge, so in the first five seconds it reads as a developer tool rather than a till for their shop.",
+    "where": "home/desktop/01 and home/phone/01, hero",
+    "fix": "Gloss Vendure in plain words, e.g. 'Vendure, the open-source software that runs your online shop', and change the badge to 'Pre-release' alone or 'Pre-release · free and open source'."
+  },
+  "mean": 8.3
+}
