@@ -1,0 +1,48 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {
+      "score": 9,
+      "worst_defect": "Hero subcopy under the headline is a four-line centred paragraph; centred multi-line body text is slow to scan and weakens an otherwise tight hero (clear product line, Live demo / Quick start CTAs, till screenshot).",
+      "where": "home.desktop.01 hero"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "The demo privacy line \"All it sends is anonymous usage events to ph.wcpos.com\" names a different brand's domain (wcpos) with no word on who that is, which reads as an unexplained third party on an otherwise candid site (Limitations page, pre-release pill, linked 200-send test).",
+      "where": "home (demo section), home.phone slices"
+    },
+    "C3": {
+      "score": 9,
+      "worst_defect": "Step 3 asks the reader to hand-write two TypeScript files (generate-migration.ts and run-migrations.ts) before the first sale; the path is ordered and has a \"Check it worked\" step, but this is the one point where a copy-paste path turns into authoring.",
+      "where": "quick-start.desktop.02 / quick-start.phone.03"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Search results carry only \"VendurePOS\" as the breadcrumb for every hit, so results from Quick start, At the till and Troubleshooting look identical apart from the title; the phone TOC bar also shows the first section heading (\"Open Notifications\", \"0.3.0 (2026-10-06)\") while the reader is still at the page title.",
+      "where": "search API text; notifications.phone.01, changelog.phone.01"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "Figures on At the till use three different widths and frames: the payment screen spans the full column, the cashier sheet is a narrow ~380 px centred card with an extra top gap, and the Z-report closure card sits centred at ~510 px, so the page reads as pasted rather than designed. On home, \"What it does today\" mixes two boxed cards with buttons (\"Keeps selling offline\", \"Every sale lands once\") and eight unboxed text items in one section, and the right card has dead space above \"Read the 200-send test\".",
+      "where": "at-the-till.desktop.02-04; home.desktop.01 \"What it does today\""
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The cashier-sheet screenshot shows a grey vertical strip down its left edge plus stray lines, a crop artefact of the sheet overlay that looks broken at phone size; quick-start code also soft-wraps with misleading hanging indents (\"'./src/migrations' })\" on its own line).",
+      "where": "at-the-till.phone.07; quick-start.phone.03"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "og-image.png crops the till screenshot at its bottom edge so the product cards' \"In Stock\" badges are cut in half, which is the first thing a link preview shows. Everything else is clean: all 200s, real 404, no overflow, no missing alt, JSON-LD on home and docs, Lighthouse 97-98/100/100/100, llms.txt and llms-full.txt, sitemap and robots present.",
+      "where": "og-image.png"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C6",
+    "defect": "The cashier-sheet figure on At the till carries a grey vertical strip down its left edge and stray lines (a crop of the sheet overlay), and on desktop the same page's three till figures sit at three different widths (full column, ~380 px centred card, ~510 px centred card).",
+    "where": "at-the-till.phone.07; at-the-till.desktop.02-04",
+    "fix": "Re-crop the cashier-sheet screenshot to the sheet's own bounds with no overlay edge, and give every till figure one rule: same max width (full content column or one fixed figure width), same frame, border and radius, and the same top/bottom spacing."
+  },
+  "mean": 8.6
+}

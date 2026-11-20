@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero is clear, but past the feature list the home page turns into a spec sheet for someone who has not decided yet: the 'Before you start' block lists 'Node ^20.19 || >=22.12', 'your own RxDB Premium licence token (RXDB_PREMIUM)' and 'Vendure 3.6 or a later 3.x release on Postgres (tested on 3.7.3)', and the comparison table says a refund 'stays Pending until an administrator settles it with two Admin API calls'. A newcomer has to wade through admin and config detail on the marketing page.", "where": "home desktop slice 02 / phone slices 04-05 ('Before you start', 'Refund a sale at the till' row)"},
+    "C2": {"score": 8, "worst_defect": "The live demo row says 'All it sends is anonymous usage events to ph.wcpos.com, with no cookie'. A visitor who has never heard of VendurePOS now sees data going to a different, unnamed brand's domain (wcpos.com) with no word on who that is, so an honest disclosure reads like a hidden third party.", "where": "home desktop slice 02 and phone slice 04, 'Sales reach Vendure, once each, even offline' row"},
+    "C3": {"score": 8, "worst_defect": "Step 7 'Prepare the channel and stock' is a checklist with no how-to or Dashboard path: 'Check its currency, pricesIncludeTax, default tax zone and enabled tax rates (including a zero rate where appropriate)' leaves the reader to guess what 'usable default stock location' and 'where appropriate' mean, while every other step gives exact code or commands.", "where": "quick-start desktop slice 03 / phone slice 07, step 7"},
+    "C4": {"score": 8, "worst_defect": "Quick start step 5 has a collapsed note 'If your store already allows vendurepos.vercel.app' that drops in an old hosting domain with no context. Requirements are also repeated almost word for word on Home, Overview, Quick start and Plugin setup, so the same facts have four places that can drift apart.", "where": "quick-start desktop slice 03 (top) / phone slice 06; docs desktop slice 01 'Requirements'"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' puts two boxed cards above eight unboxed text items in the same grid, and the right card ('Every sale lands once') is shorter than its neighbour, which leaves an empty band above its 'Read the 200-send test' button. The section looks like two layouts joined together.", "where": "home desktop slice 01, bottom third"},
+    "C6": {"score": 8, "worst_defect": "The phone hero screenshot shows only two product tiles, and the category chip row is cut mid-word at the right edge ('Gif'), so the product shot reads as a cropped fragment instead of a sale in progress.", "where": "home phone slice 01, hero image"},
+    "C7": {"score": 9, "worst_defect": "None that matters. The share card crops the till screenshot through the first row of product tiles at its bottom edge, and the quick-start Lighthouse run flags LCP 2.6 s with render-blocking requests (0.5).", "where": "og-image.png bottom edge; tech.json lighthouse /docs/quick-start"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The home page tells a first-time visitor that the demo sends 'anonymous usage events to ph.wcpos.com' without saying who wcpos is or how it relates to VendurePOS. Right before the 'try the demo' decision, an unexplained third-party domain is exactly what makes a stranger hesitate.",
+    "where": "home desktop slice 02 / phone slice 04, comparison table, last row",
+    "fix": "Name the owner in the same sentence, e.g. 'to our own analytics server (ph.wcpos.com, run by WCPOS, the team behind VendurePOS)', and keep the link to 'Where your data goes'."
+  },
+  "mean": 8.1
+}
