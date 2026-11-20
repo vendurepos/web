@@ -177,6 +177,13 @@ export default function HomePage() {
           >
             Quick start
           </Link>
+          {/* Round 89, J2 C1: owners and cashiers get a quiet route to the counter guide; a link, not a third button. */}
+          <Link
+            href="/docs/at-the-till"
+            className="inline-flex min-h-11 items-center px-1 text-fd-muted-foreground underline hover:text-fd-foreground"
+          >
+            For cashiers: At the till
+          </Link>
         </div>
         {/* Round 40, J4 C1: the note overhung the lede's measure. */}
         {/* Round 71, J4 C1: balanced lines, so the note does not end on an orphan. */}

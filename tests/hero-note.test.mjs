@@ -239,3 +239,19 @@ test('phone hero starts close under the header (round 85, J4 C1)', () => {
     .map((file) => readFileSync(join('.next/static', file), 'utf8'));
   assert.ok(stylesheets.some((css) => /\.pt-8\{padding-top:/.test(css)));
 });
+
+test('hero links cashiers to At the till as a quiet link (round 89, J2 C1)', () => {
+  const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
+  const h1 = html.indexOf('<h1');
+  const figure = html.indexOf('<figure');
+  assert.ok(h1 !== -1 && figure > h1);
+  const hero = html.slice(h1, figure);
+  const anchor = hero.match(/<a\b([^>]*)>For cashiers: At the till<\/a>/);
+  assert.ok(anchor);
+  assert.match(anchor[1], /\shref="\/docs\/at-the-till"/);
+  const classes = (anchor[1].match(/\sclass="([^"]*)"/)?.[1] ?? '').split(/\s+/);
+  assert.ok(classes.includes('min-h-11') && classes.includes('underline'));
+  assert.ok(!classes.includes('px-6') && !classes.includes('bg-fd-primary'));
+  const quickStart = hero.indexOf('>Quick start</a>');
+  assert.ok(quickStart !== -1 && anchor.index > quickStart);
+});
