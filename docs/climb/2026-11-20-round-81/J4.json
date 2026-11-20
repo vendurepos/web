@@ -1,0 +1,48 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {
+      "score": 9,
+      "worst_defect": "Hero is clear and well composed (Pre-release pill, H1, Live demo / Quick start, real till screenshot); only nit is the lede running long beside a dense screenshot, so the eye has no single resting point",
+      "where": "home.desktop.01, hero lede"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "Till figures disagree on time: 'Last synced 10:06 PM' in the At the till payment figure vs 'Last synced 11:10 PM' in the home hero screenshot; small, but a careful reader notices staged shots",
+      "where": "at-the-till.desktop.02 vs home.desktop.01"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Quick start is a long nine-step page with real setup (e.g. 'How POS sales take stock.') tucked inside collapsibles; the disclosure label carries a stray full stop and '( pricesIncludeTax: false )' has spaces inside the parentheses",
+      "where": "quick-start.desktop.03"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Troubleshooting reads as a wall of quoted error strings with a three-level table of contents; hard to scan for the one message you have",
+      "where": "troubleshooting.desktop.01-02"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "'What it does today' mixes two bordered cards with buttons ('Keeps selling offline', 'Every sale lands once') and eight unboxed text items; 'Every sale lands once' has ~70 px of dead space above 'Read the 200-send test'",
+      "where": "home.desktop.01-02, What it does today"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "Several small phone flaws: sticky TOC bar already reads '1. Install the plugin' at page top; paragraphs heavy with inline-code chips get ~54 px line spacing (CORS paragraph); changelog path breaks mid-word 'packages/vendure-' / 'plugin/CHANGELOG.md'; At the till quick amounts wrap leaving '€50.00' alone",
+      "where": "quick-start.phone.01, quick-start.phone.05, changelog.phone.01, at-the-till.phone.04"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "OG image subtitle wraps leaving 'a normal order.' orphaned and the till screenshot's product cards are cut mid-card at the bottom edge; 53 KiB unused JS on home",
+      "where": "og-image.png; tech.json lighthouse home"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "Home 'What it does today' mixes two bordered cards with buttons ('Keeps selling offline', 'Every sale lands once') with eight unboxed text items, and 'Every sale lands once' has ~70 px of dead space above its 'Read the 200-send test' button",
+    "where": "home.desktop.01-02, What it does today",
+    "fix": "Give all ten features one treatment: either a uniform card grid, or all unboxed with an inline 'Read the test' link on the two proven items; bottom-align card buttons so no dead band appears"
+  },
+  "mean": 8.43
+}

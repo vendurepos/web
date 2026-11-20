@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "The 25-sale and 200-send proof links point to tests on mutable main rather than a version-pinned test run supporting the claims.",
+      "where": "text/home.txt, What it does today; tech.json, home.desktop.links"
+    },
+    "C3": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/quick-start.txt; text/plugin-setup.txt; text/connect-a-till.txt"
+    },
+    "C4": {
+      "score": 9,
+      "worst_defect": "Quick start directs pnpm users to an external README instead of linking the existing local instructions for making the device-key button available.",
+      "where": "text/quick-start.txt, Optional: a device key for each till; text/connect-a-till.txt, Make the key button available in a pnpm project"
+    },
+    "C5": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.desktop.02.jpg; shots/home.desktop-dark.jpg; shots/plugin-setup.desktop.03.jpg"
+    },
+    "C6": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "shots/home.phone.01.jpg\u2013home.phone.05.jpg; shots/quick-start.phone.01.jpg\u2013quick-start.phone.09.jpg; shots/plugin-setup.phone.06.jpg"
+    },
+    "C7": {
+      "score": 8,
+      "worst_defect": "The full machine-readable documentation omits the changelog paragraph identifying hosted till version 0.1.0, build date 20 Nov 2026 and commit 718709d.",
+      "where": "text/endpoint_llms_full_txt.txt, Changelog; text/changelog.txt:24; shots/changelog.desktop.01.jpg"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C7",
+    "defect": "The visible changelog identifies the deployed till precisely, but llms-full.txt omits that information, leaving machine readers without the same version context.",
+    "where": "text/endpoint_llms_full_txt.txt, Changelog; text/changelog.txt:24",
+    "fix": "Include the hosted till's version, build date and commit paragraph in the full documentation export, including the distinction between till and plugin versions."
+  },
+  "mean": 9.4
+}
