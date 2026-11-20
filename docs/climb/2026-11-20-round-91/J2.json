@@ -1,0 +1,48 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {
+      "score": 9,
+      "worst_defect": "On the phone the top bar shows only \"VendurePOS\", \"Docs\" and \"Live demo\", so \"For cashiers: At the till\", the page my staff need, is only reachable from the hero button or after opening Docs. Otherwise \"Point of sale for Vendure\" plus \"Pre-release · plugin 0.3.0\" and \"Your own store needs the plugin on your Vendure server first\" tells me in five seconds what this is and what I need.",
+      "where": "home.phone.01"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "The Changelog lists only plugin releases (0.3.0, 0.2.0, 0.1.0). The till my staff actually use is labelled \"till app version 0.1.0, built 20 Nov 2026 from vendurepos/app commit 7bd49a1\", but it has no change history, so I can't tell what changed at the counter since yesterday. The limits are stated honestly elsewhere: refunds go to the Vendure Dashboard on 0.3.0, no cash drawer, desktop Chrome only.",
+      "where": "changelog.desktop.01 / changelog.phone.01"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The quick start is complete for my developer: steps 1-9, a \"Check it worked\" section and Troubleshoot. But it carries a collapsed legacy block, \"If your store already allows vendurepos.vercel.app\", which is noise for a new install. The connect step also needs a manual role fix: \"On plugin 0.3.0 the vendurepos-pos-till role has no ReadOrder: add it yourself, or the till sells but its order history is refused\". That is an extra trap before staff can sell tomorrow.",
+      "where": "quick-start.desktop.03; connect-a-till.desktop.01"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "My question is what happens when the end-of-day closure doesn't reach my store. The answer is spread across developer language: \"When the store refuses a till update (the register's open, close, cash movements or closure), the till does not send it again, except a closure refused for its number… None of those register records reach your Vendure store from this till, so keep the printed Z reports\". Troubleshooting adds errorCode names such as register_session_already_open and register_closure_number_invalid. At the till also says \"If the difference is over this till's limit, Manager approval asks for the manager's name\" but never says where that limit is set.",
+      "where": "limitations.desktop.01; troubleshooting.desktop.01; at-the-till.desktop.04"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "In At the till, the cashier-sheet and closure screenshots sit as small centred cards with wide empty margins either side. On a 1440 px desktop the till detail I'm meant to recognise is hard to read. Otherwise the type, code blocks, sidebar and dark mode are clean and consistent.",
+      "where": "at-the-till.desktop.03 / at-the-till.desktop.04"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "On the phone the Changelog's inline code path \"packages/vendure-plugin/CHANGELOG.md\" breaks mid-chip across lines. Long code identifiers such as \"authOptions.tokenMethod\" and the migration class names make Plugin setup choppy on a phone between customers. Nothing overflows, and the home comparison table stacks properly.",
+      "where": "changelog.phone.01; plugin-setup.phone.01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Small: the mobile LCP is 2.3-2.4 s on / and /docs/quick-start, and Lighthouse flags unused JavaScript. Everything else is solid: Lighthouse 98/100/100/100, CLS 0, no images missing alt text, no horizontal overflow, a real 404 that links every docs page, JSON-LD, llms.txt and llms-full.txt, a sitemap with 10 URLs, an OG image, and /api/search?query=offline returning relevant hits.",
+      "where": "tech.json (lighthouse /, /docs/quick-start)"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "A shop owner can't find a plain-language answer to \"my closure or cash movement didn't reach Vendure, what now?\". The answer is in developer terms: \"till update\", \"refused for its number\", the errorCodes register_session_already_open and register_closure_number_invalid. It is split across Limitations and Troubleshooting rather than sitting in At the till's close-the-day section. The manager-approval \"till's limit\" is never located either.",
+    "where": "limitations.desktop.01; troubleshooting.desktop.01; at-the-till.desktop.04",
+    "fix": "Add a short box under At the till's \"Close the day\" section headed \"If the closure doesn't reach your store\": keep the printed Z report, what the till shows, and who to call (your developer). Link Troubleshooting for the errorCodes. Also say where the over/short limit for manager approval is set."
+  },
+  "mean": 8.4
+}
