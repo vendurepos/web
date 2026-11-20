@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The lead under the hero speaks to developers before shop owners: \"VendurePOS is an open-source till for Vendure, the open-source headless commerce framework\"; a shop owner has to read on to \"made for shops that sell online with Vendure and also sell in person\" to see it is for them.", "where": "home/desktop/01 and home/phone/01 (text/home.txt line 12)"},
+    "C2": {"score": 9, "worst_defect": "None that hurts trust. The limits are stated plainly (tab must stay open offline, clearing browser data loses unsent sales, refunds stay Pending on plugin 0.3.0, only desktop Chrome tested). The one loose end is the changelog line \"Not in the release notes: in 0.2.0 and 0.3.0 this role has no ReadOrder\", which is honest but sits only on the changelog page, not in Limitations.", "where": "changelog/desktop+phone"},
+    "C3": {"score": 7, "worst_defect": "At a real store the counter cannot finish a refund: \"Refund a sale\" tells the cashier to \"Ask whoever manages your Vendure store to refund the order in the Vendure Dashboard. The refund then shows as Pending until they settle it; Plugin setup has the steps for them.\" It gives no counter procedure for the customer standing at the till (cash back, card terminal refund, what to note).", "where": "at-the-till/desktop/02, at-the-till/phone/05"},
+    "C4": {"score": 7, "worst_defect": "Troubleshooting puts developer internals in the same page as cashier advice: errorCode strings such as \"register_session_already_open\" and a GraphQL mutation \"Resolve one with tallyResolveNeedsAdmin, using applied or rejected as the resolution\" sit beside \"At the counter:\" steps, so staff have to hunt for the part meant for them.", "where": "troubleshooting/desktop+phone (text/troubleshooting.txt lines 59, 101-106)"},
+    "C5": {"score": 8, "worst_defect": "The \"What it does today\" feature grid ends with \"Custom items, fees and shipping\" alone in the left column and an empty right column, in light and dark mode.", "where": "home/desktop/02, home.desktop-dark"},
+    "C6": {"score": 9, "worst_defect": "none found: tables collapse to stacked rows, code blocks wrap, every docs page has an \"On this page\" jump bar, and tech.json shows no horizontal overflow.", "where": "all phone slices"},
+    "C7": {"score": 9, "worst_defect": "Only minor Lighthouse items: about 53 KiB of unused JS and about 120 ms of render-blocking resources on / and /docs/quick-start (scores 98/100/100/100). Titles, descriptions, JSON-LD, llms.txt, search API, sitemap, robots, the share card and the 404 page are all correct.", "where": "tech.json lighthouse"}
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "The refund flow is the one everyday counter task that the site leaves the shop without a procedure for. At the till it only says \"Ask whoever manages your Vendure store to refund the order in the Vendure Dashboard. The refund then shows as Pending until they settle it\", so a two-person shop does not know what to do while the customer is waiting.",
+    "where": "at-the-till/desktop/02, at-the-till/phone/05",
+    "fix": "Open the \"Refund a sale\" section with a short \"Customer wants money back now\" box: what staff do at the counter (refund on the card terminal or hand back cash, write the order number down), and say that the Dashboard refund and settle are a back-office follow-up for whoever runs the store."
+  },
+  "mean": 8.1
+}
