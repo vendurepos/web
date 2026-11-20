@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero says what it is and who it is for, but nothing above the fold says who should not pick it over Shopify POS or Square (no integrated card terminal, no cash drawer, desktop Chrome only, refunds outside the till). Those deal-breakers only appear in 'Before you start' at the bottom of the page.", "where": "home.desktop.01 hero vs home.desktop.02 'Before you start'"},
+    "C2": {"score": 7, "worst_defect": "No maintainer is named anywhere: the footer reads only 'MIT licensed. Built with TallyUI. For Medusa, see MedusaPOS.', with no support or issue link. The demo also sends analytics to 'ph.wcpos.com', a domain the site never explains. The changelog shows three plugin releases in five days and nothing since 2026-10-06, so a buyer cannot tell whether a team stands behind it.", "where": "home.desktop.02 footer; home table row 'Sales reach Vendure…'; changelog.desktop.01"},
+    "C3": {"score": 8, "worst_defect": "Step 4 tells you to 'Sign in with a Vendure administrator whose role in the till's channel has these permissions' but does not say how to create that role in the Dashboard; you have to leave for Connect a till. A stale collapsed note 'If your store already allows vendurepos.vercel.app' sits in step 5.", "where": "quick-start.desktop.02 step 4; quick-start.desktop.03 step 5"},
+    "C4": {"score": 8, "worst_defect": "The ReadOrder gap is repeated as a workaround on four pages (quick start, connect-a-till twice, changelog 'Not in the release notes…'). Connect a till's sentence 'Use the vendurepos-pos-till role … or … create a role … with … ReadOrder. On plugin 0.3.0 that role has no ReadOrder' leaves it unclear which role 'that role' means.", "where": "connect-a-till.txt 'Give each cashier their own account'; changelog.desktop.01 0.2.0 last bullet"},
+    "C5": {"score": 8, "worst_defect": "The home comparison table is a Yes/No grid, but its 'Refund a sale at the till' cell for your store is a four-line paragraph about Pending refunds and Admin API calls. That breaks the table's rhythm and makes it the tallest row.", "where": "home.desktop.02 'Live demo or your own store' table"},
+    "C6": {"score": 9, "worst_defect": "Long code lines wrap mid-expression on the phone (generateMigration(config, { name: / 'AddVendurePos', outputDir: …), which is readable but awkward to scan. Nothing overflows.", "where": "quick-start.phone.03"},
+    "C7": {"score": 9, "worst_defect": "The SoftwareApplication JSON-LD has no softwareVersion or dateModified, although the page shows 'Pre-release · plugin 0.3.0' and the changelog names till app 0.1.0. Everything else (Lighthouse 98/100/100/100, llms.txt, search API, sitemap, 404) is sound.", "where": "tech.json pages.home.desktop.jsonLd"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "Nothing on the site says who builds or supports VendurePOS: no maintainer, no company, no issue tracker or support link. The demo's analytics go to an unexplained third-party-looking domain (ph.wcpos.com). The only signs of life are a plugin changelog that stops at 2026-10-06 and a till build hash. A sceptic advising a client cannot judge whether this is a maintained product or a weekend project.",
+    "where": "home.desktop.02 footer and comparison table; changelog.desktop.01",
+    "fix": "Add one footer and Overview line naming who maintains it and how (e.g. 'Maintained by <maker of WCPOS>, issues at github.com/vendurepos/app/issues'), and say in the demo row that ph.wcpos.com is that maintainer's own analytics server."
+  },
+  "mean": 8.1
+}

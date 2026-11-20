@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "Three blocks of grey copy stand between the H1 and the product shot: a 4-line lede (6 lines at 390 px), the button row, then a second 2-line note \"Your own store needs the plugin on your Vendure server first...\" under the buttons. At phone width the screenshot only starts at about y=1160 px, so the first screen is all text.", "where": "home.desktop.01 (hero), home.phone.01"},
+    "C2": {"score": 9, "worst_defect": "The one mixed signal is the comparison table. The live demo answers \"Yes\" to \"Refund a sale at the till\" while a real store gets a 4-line \"No, not on plugin 0.3.0...\" cell. The demo visibly does more than the product does, and only the table says so.", "where": "home.desktop.02, 'Live demo or your own store' table, Refund row"},
+    "C3": {"score": 8, "worst_defect": "Quick start is 9 steps and ~12 code/terminal blocks with no screenshot at all. Step 8 'Sign in and make a sale' (a-i) and 'Check it worked' describe the sign-in screen and the synced Vendure order in words only, so there is no picture of what success looks like.", "where": "quick-start.desktop.03-04, step 8 and 'Check it worked'"},
+    "C4": {"score": 8, "worst_defect": "UI strings are styled two ways on the same page. Header states are monospace code chips (\"N orders waiting to send\", \"Closing — waiting for N orders\"), while the header notices a few lines below are plain quoted body text (\"The store refused this sign-in...\"). A reader can't tell which style means 'exact text on screen'.", "where": "troubleshooting.desktop.01, 'Check whether a sale has reached the store' vs 'Act on a header notice'"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' has two treatments. Two bordered cards with buttons are followed by eight unboxed heading+paragraph pairs, so the grid looks half-finished. The right card 'Every sale lands once' also has a ~60 px dead gap above its button, because it is stretched to match the taller left card.", "where": "home.desktop.01 bottom to home.desktop.02 top"},
+    "C6": {"score": 8, "worst_defect": "On 390 px, code blocks soft-wrap with a hanging indent that looks like real nesting. In generateMigration(config, { name:\n  'AddVendurePos', outputDir:\n  './src/migrations' }) and taxLineCalculationStrategy: new\n    DefaultTaxLineCalculationStrategy(), continuation lines sit at the same indent as real child lines, so the structure of the snippet reads wrong.", "where": "quick-start.phone.03 (generate-migration.ts), quick-start.phone.06 (taxOptions)"},
+    "C7": {"score": 9, "worst_defect": "Search API snippets carry raw hard line breaks mid-sentence (\"Customer search and adding a\\ncustomer need a connection...\"), so a result preview renders ragged. Otherwise the 404 status, llms.txt, sitemap, JSON-LD and Lighthouse 98/100/100/100 are all clean.", "where": "text/endpoint_api_search_query_offline.txt (troubleshooting-36, quick-start-66)"}
+  },
+  "overall_worst": {
+    "criterion": "C6",
+    "defect": "At 390 px, the quick start's code blocks soft-wrap with continuation lines indented exactly like real nested lines. generate-migration.ts and the taxOptions block read as different code from what they are, and these are the snippets a developer copies and checks by eye on the main install path.",
+    "where": "quick-start.phone.03, quick-start.phone.06",
+    "fix": "Either reformat the long snippets so no line exceeds ~42 characters (break at argument and property boundaries), or keep horizontal scroll for code blocks below 640 px instead of soft wrap."
+  },
+  "mean": 8.3
+}

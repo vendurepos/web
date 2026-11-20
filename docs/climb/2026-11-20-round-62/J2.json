@@ -1,0 +1,48 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero opens on developer language (\"the open-source headless commerce framework\") rather than what staff do at the counter. The top nav (Docs / Live demo / Quick start / At the till) has no Limitations link; 'what it does not do yet' is only in the body and the footer.",
+      "where": "home.desktop.01"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The comparison row \"Refund a sale at the till\" reads Live demo \"Yes\" against Your Vendure store \"No, not on plugin 0.3.0 ... settles it with two Admin API calls\". Staff who practise on the demo learn a refund flow the real till lacks, and the cell never says what to do at the counter instead.",
+      "where": "home.desktop.02"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The optional device-key step carries a trap the owner has to remember: \"the role it creates (vendurepos-pos-till) has the step 4 permissions except ReadOrder, so add ReadOrder to that role yourself\".",
+      "where": "text/quick-start"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "On \"N till updates need attention\", the owner is sent to the sync log to match an errorCode. For \"Any other code: the till has no retry or skip, and fixing the store does not make it send the update again\" there is no plain next step a shop owner can take.",
+      "where": "troubleshooting.desktop.01"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The cashier-sheet and close-the-day screenshots sit small inside large empty grey frames. Clock formats differ between images (\"Last synced 10:06 PM\" against \"open since 22:06\").",
+      "where": "at-the-till.desktop.03, at-the-till.desktop.04"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "On a phone, the hero till screenshot is cropped to two product tiles, with the category chip cut off at \"Gif\". Step headings wrap to three lines (\"2. Add TallyPosPlugin to your existing Vendure config\").",
+      "where": "home.phone.01, quick-start.phone.02"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Doc pages carry only BreadcrumbList JSON-LD (no TechArticle/HowTo for the till guide), and LCP is 2.3 s on / and 2.4 s on /docs/quick-start. Everything else is clean: 98/100/100/100, CLS 0, unique titles, a 404 that returns 404.",
+      "where": "tech.json"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The home comparison row \"Refund a sale at the till\" tells a shop owner only that the refund \"stays Pending until an administrator settles it with two Admin API calls\". It never says what staff do when a customer wants money back at the counter, and the demo they practise on shows \"Yes\".",
+    "where": "home.desktop.02",
+    "fix": "Add one line to that cell: \"At the counter: hand back cash with Pay out and refund cards on your terminal; see At the till › Refund a sale\", and link it."
+  },
+  "mean": 8.1
+}
