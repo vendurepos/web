@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The first thing above the headline is the pill \"Pre-release · plugin 0.3.0\", which means nothing to someone who has not yet learned there is a plugin. The hero paragraph runs four lines. What separates \"Live demo\" from \"Quick start\" is explained only in the small grey line under the buttons.", "where": "home/desktop/01 hero; home/phone/01"},
+    "C2": {"score": 8, "worst_defect": "The demo row of the comparison table says \"All it sends is anonymous usage events to ph.wcpos.com, with no cookie\". To a newcomer, a VendurePOS demo sending data to another brand's domain (wcpos) with no word on who that is looks like something being hidden, even though the link explains it one click away.", "where": "home/desktop/02 'Sales reach Vendure, once each, even offline' row; home/phone/04"},
+    "C3": {"score": 8, "worst_defect": "Step 3 makes you create two TypeScript script files (src/generate-migration.ts, src/run-migrations.ts). It then offers two more routes in an \"Other ways to run the migration\" box (npx vendure migrate, the bundled migrations on Plugin setup), so the one step that touches the database has three paths and no clear default for a store made with @vendure/create.", "where": "quick-start/desktop/01-02 step 3"},
+    "C4": {"score": 8, "worst_defect": "Plugin setup's bundled-migration section asks readers to copy unreadable class names (\"TallyPos1790648006022, TallyPosVp2a1790720000000, TallyPosRegister1790800000000, TallyPosV51790900000000\") with only \"TallyPosV51790900000000 ships in 0.3.0\" as explanation. The quick start also keeps a leftover \"If your store already allows vendurepos.vercel.app\" toggle that refers to a domain the site never mentions anywhere else.", "where": "plugin-setup/desktop/01; quick-start/desktop/03"},
+    "C5": {"score": 8, "worst_defect": "\"What it does today\" mixes two bordered cards with buttons and eight plain-text items. The right card, \"Every sale lands once\", has a large empty gap above its \"Read the 200-send test\" button because it is shorter than the left card, so the section looks half-styled.", "where": "home/desktop/01 bottom; home.desktop-dark"},
+    "C6": {"score": 8, "worst_defect": "The phone hero image of the till is cropped to two product tiles, with the category chips cut off mid-word (\"Gif\"). The first thing a phone visitor sees of the product looks clipped rather than deliberate. On top of that, the phone header shows only Docs and Live demo, with Quick start hidden behind the chevron.", "where": "home/phone/01"},
+    "C7": {"score": 9, "worst_defect": "Lighthouse (mobile) on / still flags unused-javascript (est. 53 KiB) and render-blocking requests (est. 150 ms), with LCP 2.3 s. llms.txt lists the docs alphabetically by slug (At the till, Changelog, Connect a till, Overview…) rather than in reading order.", "where": "tech.json lighthouse '/'; text/endpoint_llms_txt.txt"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The home page comparison table says the demo sends \"anonymous usage events to ph.wcpos.com\". For a first-time visitor, a VendurePOS demo reporting to an unexplained other brand's domain is the one line that makes the site feel like it is hiding something.",
+    "where": "home/desktop/02 table row 'Sales reach Vendure, once each, even offline'; home/phone/04",
+    "fix": "Say who that is in the same cell, e.g. \"to our analytics server (ph.wcpos.com, run by the WCPOS team that builds VendurePOS)\", or use a vendurepos.com analytics host."
+  },
+  "mean": 8.1
+}

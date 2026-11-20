@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero is clear, but the home page's 'Before you start' block mixes counter needs with developer-only lines a shop owner cannot act on: 'Node ^20.19 || >=22.12' and 'your own RxDB Premium licence token (RXDB_PREMIUM)'. On a phone these push 'At the till' (the page for my staff) down to the last paragraph.", "where": "home/desktop/02 and home/phone/04-05, 'Before you start' > 'Setting up the store'"},
+    "C2": {"score": 8, "worst_defect": "The home table answers 'Open and close a register with a Z report' with a plain 'Yes' for your own store. Only Limitations and Troubleshooting say that when the store refuses a till update, 'None of those register records reach your Vendure store from this till, so keep the printed Z reports'.", "where": "home/desktop/02 'Live demo or your own store' table vs limitations/desktop/01 last 'At the counter' bullet"},
+    "C3": {"score": 8, "worst_defect": "A till set up with the documented 'New POS till key' button gets a role without ReadOrder on plugin 0.3.0, so its order history is refused until someone edits the role by hand. This trap shows up only as a mid-paragraph aside in the optional device-key section and in Connect a till step 1. No step in the main sequence checks for it.", "where": "quick-start text 'Optional: a device key for each till'; connect-a-till/desktop/01 'Give each cashier their own account' step 1"},
+    "C4": {"score": 8, "worst_defect": "Troubleshooting is described as covering 'Sync status, selling offline...', so a cashier or owner would open it, but it jumps from header messages into raw GraphQL ('tallyNeedsAdminCommands', 'tallyResolveNeedsAdmin') and 'VENDUREPOS_WEB_ALLOW_LAN_HTTP'. The counter part and the server-admin part are not split into separate pages or clearly marked blocks, apart from one 'This section is for whoever runs your Vendure server' line.", "where": "troubleshooting/desktop/02-03, 'Resolve a sale the store kept part-way' and 'Fix CORS, 401 or plain-http store problems'"},
+    "C5": {"score": 8, "worst_defect": "The closure screenshot in 'Count the drawer and close the day' is shown at about 510 px. It is mostly empty card ('Counted €120.09 / Expected €120.09 / Exact' with large gaps above a full-width purple 'Print the Z report' button), so it looks oversized next to the tighter cashier-sheet image above it.", "where": "at-the-till/desktop/04"},
+    "C6": {"score": 8, "worst_defect": "On a phone, the home comparison table becomes seven stacked blocks that each repeat 'Live demo: Yes / Your Vendure store: Yes'. The one row that matters to an owner (refunds: 'No, not on plugin 0.3.0...') is buried two screens down and is hard to scan between customers.", "where": "home/phone/03-04"},
+    "C7": {"score": 9, "worst_defect": "The share card cuts the till screenshot off mid-row at the bottom edge: product cards are sliced through their 'In Stock' badges and the cart's 'Order discount' button is half-cropped.", "where": "og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The home page's owner-facing comparison tells me my till cannot refund and that 'The refund stays Pending until an administrator settles it with two Admin API calls; see Plugin setup'. That is developer jargon pointing at a developer page. It does not tell a shop owner what actually happens at the counter: hand back cash with Pay out, refund the card on the terminal, ask the person who runs Vendure to settle it. Those practical steps exist only in At the till › Refund a sale.",
+    "where": "home/desktop/02 and home/phone/04, 'Refund a sale at the till' row",
+    "fix": "Rewrite that cell in shop terms ('No on plugin 0.3.0: refund in the Vendure Dashboard and record cash with Pay out') and link it to /docs/at-the-till#refund-a-sale instead of Plugin setup."
+  },
+  "mean": 8.1
+}

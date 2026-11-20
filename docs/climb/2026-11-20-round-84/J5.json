@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero badge says \"Pre-release · plugin 0.3.0\" as if that were the product's version, but the till you actually use is \"till app version 0.1.0\", which only the Changelog says. A buyer can't tell from the home page how mature the till itself is.", "where": "home/desktop/01 badge vs changelog/desktop/01 second paragraph"},
+    "C2": {"score": 7, "worst_defect": "No page names who builds or maintains VendurePOS: there is no person, company, support channel or issue tracker beyond a GitHub icon. The one outside party that is named, \"ph.wcpos.com\", is never explained. All three plugin releases came out between 1 and 6 Oct with nothing since, so a sceptic can't judge whether anyone is behind it.", "where": "home/desktop/02 table row 'Sales reach Vendure' + footer; changelog/desktop/01"},
+    "C3": {"score": 8, "worst_defect": "Step 8c sends you off mid-sign-in to add a barcode ProductVariant custom field (\"how to add one\"). That field needs a second database migration and restart, but the quick start already generated and ran its migration in step 3. Someone who wants scanning has to redo step 3 after the fact.", "where": "quick-start/desktop/03 step 8c; connect-a-till/desktop/01 'Then run a database migration'"},
+    "C4": {"score": 8, "worst_defect": "The help for plain-http stores goes in a circle. Quick start step 9 says \"for a LAN store over plain http, see Troubleshooting\". Troubleshooting's \"Fix CORS, 401 or plain-http store problems\" sends you back to \"Follow Troubleshoot in the quick start\", then only says to leave VENDUREPOS_WEB_ALLOW_LAN_HTTP unset. It never says what a LAN-http store owner should actually do.", "where": "quick-start/desktop/04 '9. Troubleshoot'; troubleshooting text, last section"},
+    "C5": {"score": 8, "worst_defect": "\"What it does today\" gives two features bordered cards with buttons, then lists eight features as plain unboxed text. The section looks half-finished, not deliberately ranked. Apart from three images on At the till, the docs pages are all text.", "where": "home/desktop/01 bottom to home/desktop/02 top"},
+    "C6": {"score": 9, "worst_defect": "The phone header shows only \"Docs\" and \"Live demo\". \"Quick start\", the main path for a developer, is hidden behind the chevron menu. Everything else reads well on phone: tables become stacked rows, code wraps and nothing overflows.", "where": "home/phone/01 header"},
+    "C7": {"score": 9, "worst_defect": "The home page's SoftwareApplication JSON-LD has no softwareVersion and no offers/price, even though the site makes a point of the version (0.3.0) and of being free. Everything else is clean: Lighthouse 98/100/100/100, llms.txt and search work, and the 404 page is real.", "where": "tech.json pages.home.desktop.jsonLd"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "As a sceptic advising a client, I can't tell who stands behind this till. No maintainer, organisation or support route is named anywhere. The only outside domain, ph.wcpos.com, is unexplained. The plugin has had no release since 6 Oct 2026. A shop owner can't judge whether the project will still be maintained in a year, which is the first question anyone asks of a pre-release open-source POS.",
+    "where": "home/desktop/02 footer and demo table row; changelog/desktop/01",
+    "fix": "Add one line to the home footer and the Overview saying who maintains VendurePOS (and that ph.wcpos.com is theirs), with links to GitHub issues for bugs and support. Also say when the next plugin release is planned."
+  },
+  "mean": 8.1
+}
