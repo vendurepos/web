@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 6 recommends different order-tax strategies for inclusive and exclusive channels, but tells stores mixing those modes only to account for the store-wide strategy, leaving the actual configuration unresolved.",
+      "where": "Quick start, step 6; text/endpoint_llms_full_txt.txt:846\u2013875"
+    },
+    "C4": {
+      "score": 9,
+      "worst_defect": "The mixed-pricing tax caveat provides neither a worked configuration nor a linked procedure for checking rounding across affected channels.",
+      "where": "Quick start, 'Why these pairings'; text/endpoint_llms_full_txt.txt:873\u2013875"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop-dark.jpg; desktop screenshots of home, quick-start and plugin-setup"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "Phone screenshots of home and quick-start; first phone slice of every other page; tech.json overflowX measurements"
+    },
+    "C7": {
+      "score": 8,
+      "worst_defect": "llms-full.txt omits the changelog's hosted-till version, build date and commit, so machine readers miss the explicit distinction between the deployed app and plugin releases.",
+      "where": "text/changelog.txt:24 and shots/changelog.desktop.01.jpg versus text/endpoint_llms_full_txt.txt:179\u2013192"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "A developer with tax-inclusive and tax-exclusive channels cannot determine the supported store-wide tax strategy from the setup instructions.",
+    "where": "Quick start, step 6 and 'Why these pairings'; text/endpoint_llms_full_txt.txt:846\u2013875",
+    "fix": "Add an explicit configuration recommendation for mixed pricing modes, or state that this setup is unsupported. Include a small verification example showing the expected till and Vendure totals for each mode."
+  },
+  "mean": 9.0
+}

@@ -1,0 +1,48 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "Home says who it is for ('made for shops that sell online with Vendure and also sell in person') but never who should not use it or how it compares with Shopify POS, Square or Lightspeed. 'Before you start' lists gaps such as no cash drawer, no coupon codes and only desktop Chrome tested, but never concludes 'if you need X, use Y instead'. Home also never says who maintains the project or where to get support.",
+      "where": "home.desktop.01-02, home.phone.01-05 ('Before you start', footer 'MIT licensed. Built with TallyUI. For Medusa, see MedusaPOS.')"
+    },
+    "C2": {
+      "score": 7,
+      "worst_defect": "The shipped plugin has had no release since 2026-10-06 (0.3.0), and the role it creates is knowingly broken. The changelog admits it: 'Not in the release notes: in 0.2.0 and 0.3.0 this role has no ReadOrder'. Connect a till says 'On plugin 0.3.0 that role has no ReadOrder: add it yourself'. Six weeks on there is no 0.3.1, only workaround notes on four or more pages. The live demo also runs ahead of what a store can install: refund at the till is 'Yes' on the demo but 'No, not on plugin 0.3.0', and the customer note exists only on the demo. A sceptic reads this as a demo that oversells a stalled plugin.",
+      "where": "changelog.desktop.01 / text changelog; connect-a-till text; home 'Live demo or your own store' table; at-the-till text ('On plugin 0.3.0, Order details has no customer note. On the live demo, type a Customer note')"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The quick start is complete but long: nine steps with migrations, tokenMethod, CORS, a tax-strategy table and channel/stock prep. A working till still needs manual role surgery ('ReadOrder, or the till sells but its order history is refused'). Refunds made in the Dashboard then need two raw Admin API calls (orders query plus settleRefund). There is no screenshot of the till's sign-in or synced state to confirm success visually. The collapsed legacy note 'If your store already allows vendurepos.vercel.app' adds noise to a first install.",
+      "where": "quick-start.desktop.01-04, quick-start.phone.01-09; plugin-setup text ('Settle a Dashboard refund')"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "The changelog is written for the maintainer, not the store owner: 'ADR 0005', 'order.create v5', '#116', migration class names such as TallyPosV51790900000000, and the internal code names TallyPosPlugin and /tally/v1 against the VendurePOS brand. The notifications page is thin ('Today the till has one notice'). Workarounds for the same ReadOrder defect are repeated across quick-start, connect-a-till, changelog and troubleshooting instead of living in one place.",
+      "where": "changelog.desktop.01, changelog.phone.01; notifications.desktop.01, notifications.phone.01; plugin-setup.desktop.01"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The design is clean and consistent: sidebar plus 'On this page' TOC, and dark mode holds up. But it is a generic docs-template look with nothing to set it apart from a dozen other open-source projects. The home page's proof cards and comparison table are text-dense walls next to a single till screenshot. There is no visual of the offline/sync states the copy leans on.",
+      "where": "home.desktop.01-02, home.desktop-dark; docs.desktop.01"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "There is no overflow and code wraps. However, the home comparison table collapses into long stacked 'Live demo: / Your Vendure store:' rows, so the demo-vs-store differences (the most important caveat for a buyer) are hard to compare on a phone. Quick start runs to nine slices of dense steps on mobile.",
+      "where": "home.phone.03-04; quick-start.phone.01-09"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Minor: the 404 page logs a console error ('Failed to load resource… 404'). Lighthouse flags 53 KiB of unused JS, 130 ms of render-blocking and legacy JS. The demo sends analytics to ph.wcpos.com, a different brand's domain, and only the docs explain it, not home.",
+      "where": "tech.json (not-found console, Lighthouse mobile / and /docs/quick-start); connect-a-till text 'where requests go'"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The installable plugin has stalled at 0.3.0 (2026-10-06) with a known defect in its own vendurepos-pos-till role. The changelog says 'Not in the release notes: in 0.2.0 and 0.3.0 this role has no ReadOrder', and connect-a-till says 'that role has no ReadOrder: add it yourself'. Meanwhile the live demo shows refund at the till and a customer note that 0.3.0 cannot do. A competitor-aware buyer sees a demo running ahead of a plugin nobody has patched in six weeks.",
+    "where": "changelog; connect-a-till; quick-start step 8; home 'Live demo or your own store' table; at-the-till",
+    "fix": "Ship plugin 0.3.1 with ReadOrder added to the till role, then delete the 'add it yourself' workarounds. On home, state the release cadence and maintainer, and when demo-only features (refund at the till, customer note) will reach a published plugin."
+  },
+  "mean": 7.86
+}

@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero is clear, but below the fold the home page turns into a server checklist a first-timer cannot read: 'Node ^20.19 || >=22.12 on the server that runs Vendure', 'RxDB Premium licence token (RXDB_PREMIUM)', 'keyboard-wedge scanners', 'Z report'. Nothing says in one line who the till is for at the counter (shop staff) and who sets it up (a Vendure developer).", "where": "home.desktop.02 'Before you start' / home.phone.04-05"},
+    "C2": {"score": 8, "worst_defect": "The home comparison table says the demo sends 'anonymous usage events to ph.wcpos.com' and does not say what wcpos.com is or how it relates to VendurePOS. Only Connect a till explains it is a self-hosted PostHog server. The home page also never says who builds or maintains the project.", "where": "home.desktop.02 table row 'Sales reach Vendure, once each, even offline' / home.phone.04"},
+    "C3": {"score": 8, "worst_defect": "The quick start is complete and ends with a clear 'Check it worked' list. But it opens with a warning box about @vendure/email-plugin and 'one database transaction' before step 1, and step 2 spends a paragraph on why the code is named Tally rather than VendurePOS. A newcomer hits caveats before the first command.", "where": "quick-start.desktop.01 'Before a sale on a live store' and step 2 / quick-start.phone.01-02"},
+    "C4": {"score": 8, "worst_defect": "Changelog entries are written in internal shorthand: 'order.create v5', '(ADR 0005)', '(#116)', 'Migration TallyPosV51790900000000', 'tallyResolveNeedsAdmin(commandId, applied | rejected, note)'. The one-line 'In short' summary is the only readable part for anyone outside the project.", "where": "changelog.desktop.01 / changelog.phone.01"},
+    "C5": {"score": 8, "worst_defect": "After the two boxed cards, the home page's eight remaining features are a plain two-column grid of heading-plus-grey-paragraph with no icon, image or visual break. The 'Before you start' section that follows is another dense block of small grey bullets, so the second half of the page reads as a wall of text.", "where": "home.desktop.01 bottom to home.desktop.02 top; home.desktop-dark same area"},
+    "C6": {"score": 8, "worst_defect": "On phone docs pages, the sticky 'On this page' bar names a section the reader has not reached yet while the page title is still on screen. Overview shows 'How a sale reaches Vendure' and Quick start shows '1. Install the plugin' above the H1. The phone hero screenshot is also cut off at the right edge ('Gif' chip clipped).", "where": "docs.phone.01, quick-start.phone.01, home.phone.01"},
+    "C7": {"score": 9, "worst_defect": "Mobile Lighthouse still reports 'unused-javascript: Est savings of 53 KiB' and 'render-blocking-insight: Est savings of 130 ms' on the home page (LCP 2.3 s). Everything else is in place: 200s on every endpoint, a 404 page with a 404 status, the share card, JSON-LD, llms.txt and a search API.", "where": "tech.json lighthouse['/']"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "On a site called VendurePOS, the home page's comparison table says the demo sends usage events to 'ph.wcpos.com' and never explains that domain. The home page also never names who makes the project. A first-time visitor from search is left wondering whose product this really is and who is tracking the demo.",
+    "where": "home.desktop.02 comparison table, last row / home.phone.04",
+    "fix": "In that cell, say what the domain is (for example: 'to our self-hosted PostHog analytics at ph.wcpos.com, run by the WCPOS team that builds VendurePOS'). Add a footer line naming the maintainer next to 'MIT licensed. Built with TallyUI.'"
+  },
+  "mean": 8.1
+}
