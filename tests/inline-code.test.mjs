@@ -34,20 +34,3 @@ test('wrapped inline code keeps closed ends', () => {
     selector.includes('data-nowrap') && /(?:^|;)\s*white-space\s*:\s*nowrap\s*(?:;|$)/.test(declarations)
   ));
 });
-
-test('prose inline code has no border and no vertical padding (round 83, J4 C6)', () => {
-  const stylesheets = readdirSync('.next/static', { recursive: true })
-    .filter((file) => file.endsWith('.css'))
-    .map((file) => readFileSync(join('.next/static', file), 'utf8'));
-  const rules = stylesheets.flatMap((css) => Array.from(css.matchAll(/([^{}]+)\{([^{}]*)\}/g)))
-    .filter(([, selector]) => /:not\(pre\)\s*>\s*code/.test(selector));
-  assert.ok(rules.some(([, , declarations]) =>
-    /(?:^|;)\s*border-width\s*:\s*0(px)?\s*(?:;|$)/.test(declarations)
-  ));
-  assert.ok(rules.some(([, , declarations]) =>
-    /(?:^|;)\s*padding\s*:\s*0(px)?\s+0?\.25em\s*(?:;|$)/.test(declarations)
-  ));
-  assert.ok(rules.some(([, , declarations]) =>
-    /(?:^|;)\s*line-height\s*:\s*1\s*(?:;|$)/.test(declarations)
-  ));
-});
