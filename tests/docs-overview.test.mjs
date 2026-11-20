@@ -17,8 +17,10 @@ test('docs overview next steps link quick start and plugin setup', () => {
     '/docs/plugin-setup',
     '/docs/connect-a-till',
     '/docs/at-the-till',
+    '/docs/notifications',
     '/docs/troubleshooting',
     '/docs/limitations',
+    '/docs/changelog',
     'https://github.com/vendurepos/app',
   ]);
   // Round 38, J4 C4: no pager below the Overview; its Next steps card is the one link to Quick start.
@@ -102,7 +104,7 @@ test('overview next steps lead with Quick start, two by two', () => {
   assert.ok(gridClass.includes('sm:grid-cols-2'), gridClass);
   assert.ok(!gridClass.includes('sm:grid-cols-3'), gridClass);
   const cards = Array.from(slice.matchAll(/<a ([^>]*data-card="true"[^>]*)>/g), ([, attrs]) => href({ attrs }));
-  assert.equal(cards.length, 8);
+  assert.equal(cards.length, 10);
   assert.equal(cards[0], '/docs/quick-start');
 });
 
