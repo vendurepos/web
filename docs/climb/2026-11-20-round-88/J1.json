@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero explains Vendure only as \"the open-source headless commerce framework\", and the badge reads \"Pre-release · plugin 0.3.0\". A visitor who half knows Vendure gets two terms (\"headless\", \"plugin 0.3.0\") with no meaning attached in the first five seconds.", "where": "home desktop slice 01 (hero paragraph and badge); same on home phone 01"},
+    "C2": {"score": 8, "worst_defect": "The comparison table says the demo \"sends ... anonymous usage events to ph.wcpos.com\". The site never says who or what wcpos.com is, so a newcomer sees data going to an unrelated-looking third-party domain.", "where": "home desktop slice 02, 'Live demo or your own store' table, last row; home phone 04"},
+    "C3": {"score": 8, "worst_defect": "Step 5 of the quick start has a collapsed \"If your store already allows vendurepos.vercel.app\". It is a legacy-domain branch inside the new-user path that a first-time installer cannot judge and has to open to rule out.", "where": "quick-start desktop slice 03 (under the CORS code block); quick-start phone 06"},
+    "C4": {"score": 8, "worst_defect": "The Overview's \"Next steps\" cards cover every docs page except Notifications and Changelog. Two sidebar pages cannot be reached from the hub page that is meant to route readers.", "where": "docs desktop slice 01, Next steps grid; text/docs.txt"},
+    "C5": {"score": 8, "worst_defect": "In 'What it does today', only the first two features get boxed cards with buttons. The other eight are plain unboxed text pairs with no icons, so the section's styling changes halfway and reads as a wall of grey text.", "where": "home desktop slice 01 bottom into slice 02 top"},
+    "C6": {"score": 8, "worst_defect": "On the phone, the hero screenshot is cropped to two product tiles (Canvas Apron, Chocolate Biscuits) under the caption \"A sale in progress on the live demo till.\" No cart, total or checkout shows, so the image does not show a sale.", "where": "home phone slice 01"},
+    "C7": {"score": 9, "worst_defect": "The docs landing page's title is a bare \"Overview | VendurePOS\", which says nothing in a search result or browser tab. Lighthouse also flags 53 KiB of unused JavaScript on /.", "where": "tech.json pages.docs.desktop.title; tech.json lighthouse['/'].failing"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The home page's demo/own-store table says the demo's only outbound traffic is \"anonymous usage events to ph.wcpos.com\", without saying who runs wcpos.com. A first-time visitor sees an unexplained third-party domain right where the site is trying to show it can be trusted.",
+    "where": "home desktop slice 02, 'Live demo or your own store' table, row 'Sales reach Vendure, once each, even offline'; home phone 04",
+    "fix": "Name the owner in that cell, for example \"anonymous usage events to our analytics host (ph.wcpos.com, run by WCPOS, the team behind VendurePOS), with no cookie\"."
+  },
+  "mean": 8.1
+}
