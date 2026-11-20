@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The first thing under the hero shot, the 'Keeps selling offline' card, spends most of its six lines on caveats ('a reload needs the connection, and clearing that browser's data for the till loses them') before the reassurance, so a newcomer skimming for what this does gets a dense wall of qualifications in the most prominent card; and the hero line still leans on 'headless commerce framework' without a plainer gloss.", "where": "home/desktop/01 and home/phone/02, 'What it does today' first card"},
+    "C2": {"score": 8, "worst_defect": "The comparison table says the demo sends 'anonymous usage events to ph.wcpos.com' — a different brand's domain, never explained anywhere on the home page, so a newcomer wonders who wcpos is and why their data goes there.", "where": "home/desktop/02, 'Live demo or your own store' table, last row"},
+    "C3": {"score": 8, "worst_defect": "Step 8 'Sign in and make a sale' and 'Check it worked' are text only: there is no picture of the app.vendurepos.com sign-in screen or of a synced order, so a newcomer can't see what success looks like until they've finished all seven server steps.", "where": "quick-start/desktop/03-04, '8. Sign in and make a sale' / 'Check it worked'"},
+    "C4": {"score": 8, "worst_defect": "Internal names leak into the reader's path: the quick start needs a whole paragraph to explain why the plugin is called 'TallyPosPlugin' with '/tally/v1' routes, and Plugin setup asks readers to paste opaque migration class names such as 'TallyPosV51790900000000'.", "where": "quick-start/desktop/01 step 2; plugin-setup/desktop/01 'Configure the plugin and migrations'"},
+    "C5": {"score": 8, "worst_defect": "After the hero screenshot the home page is all grey text: eight feature blocks, a table and two bullet columns with no second visual, icon or accent, so the lower page looks like an unstyled doc rather than a product page.", "where": "home/desktop/01 lower half through home/desktop/02"},
+    "C6": {"score": 8, "worst_defect": "The tax table in quick start becomes stacked cards on phone that repeat the long bold mono label 'taxOptions.orderTaxCalculationStrategy:' in each card, cramped against the right edge; the home phone header also hides Quick start behind an unlabelled chevron.", "where": "quick-start/phone/06; home/phone/01 header"},
+    "C7": {"score": 9, "worst_defect": "Small leftovers only: Lighthouse flags 53 KiB of unused JavaScript on / (LCP 2.3 s), and the 404 page logs a console resource error.", "where": "tech.json lighthouse '/' failing; not-found consoleErrors"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "The first thing a newcomer reads after the hero is the 'Keeps selling offline' card, and it is mostly a paragraph of data-loss caveats, so the product's headline promise reads as hedged and hard to skim in the first minute.",
+    "where": "home/desktop/01 and home/phone/02, 'Keeps selling offline' card",
+    "fix": "Cut the card to the promise plus the 25-sale proof ('Sales made offline go to Vendure when it reconnects; our test makes 25 sales, 20 offline, and finds exactly 25 orders'), and move the reload and cleared-data caveat into a one-line 'Keep the tab open' note that links to Limitations."
+  },
+  "mean": 8.1
+}

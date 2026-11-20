@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "On a phone the header shows only \"Docs\", \"Live demo\", search and a chevron, so \"Quick start\" and the \"For cashiers: At the till\" link, the page an owner most needs, sit behind the chevron or further down the page.", "where": "home.phone.01"},
+    "C2": {"score": 8, "worst_defect": "The \"Live demo or your own store\" table says refunds work in the demo (\"Yes\") but for your own store \"The refund stays Pending until an administrator settles it with two Admin API calls\": honest, but it is developer jargon that a shop owner cannot act on and that makes the gap sound bigger than it is.", "where": "home.desktop.02 / home.phone.04"},
+    "C3": {"score": 8, "worst_defect": "On plugin 0.3.0 the till role \"vendurepos-pos-till\" lacks ReadOrder and has to be added by hand, a manual fix-up in the middle of setup that the developer can easily miss.", "where": "quick-start (\"Optional: a device key\") / connect-a-till"},
+    "C4": {"score": 8, "worst_defect": "Settling a Dashboard refund is explained only in developer terms in Plugin setup; At the till just says \"Plugin setup has the steps for them\", so an owner gets no plain list of who does what. On a phone the docs overview's in-page contents dropdown opens on \"How a sale reaches Vendure\" rather than the top of the page.", "where": "at-the-till.phone.05; docs.phone.01"},
+    "C5": {"score": 8, "worst_defect": "In the hero, \"For cashiers: At the till\" is a plain underlined text link next to two buttons, so it looks like an afterthought, and the feature list under the cards is flat pairs of text with little hierarchy.", "where": "home.desktop.01 / home.desktop.02"},
+    "C6": {"score": 8, "worst_defect": "At the till is 9,811 px tall on a phone with no short cheat sheet at the top, so staff scroll through about ten screens to find \"If the internet drops\" or \"Count the drawer and close the day\". The screenshots and the warning callout do read well.", "where": "at-the-till.phone.01-08 (tech.json phone height 9811)"},
+    "C7": {"score": 9, "worst_defect": "Lighthouse on /docs/quick-start gives LCP 2.6 s (score 0.88), and / reports 53 KiB of unused JavaScript; everything else is clean (all 200s, JSON-LD, llms.txt, search API, a proper 404).", "where": "tech.json lighthouse"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The home page's refund row for \"Your Vendure store\" reads \"The refund stays Pending until an administrator settles it with two Admin API calls; see Plugin setup.\" To a shop owner this sounds like refunds are broken and need a programmer every time, at the moment they are deciding whether to trust the till.",
+    "where": "home.desktop.02 / home.phone.04 (\"Live demo or your own store\" table)",
+    "fix": "Say it in owner terms, for example \"No, not on plugin 0.3.0: refund in the Vendure Dashboard (your developer sets up settling once)\", and link to At the till › Refund a sale instead of Plugin setup."
+  },
+  "mean": 8.1
+}
