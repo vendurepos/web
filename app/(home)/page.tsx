@@ -178,9 +178,10 @@ export default function HomePage() {
             Quick start
           </Link>
           {/* Round 89, J2 C1: owners and cashiers get a quiet route to the counter guide; a link, not a third button. */}
+          {/* Round 90, J4 C1: no side padding, so on the phone the wrapped link sits on the text column's edge. */}
           <Link
             href="/docs/at-the-till"
-            className="inline-flex min-h-11 items-center px-1 text-fd-muted-foreground underline hover:text-fd-foreground"
+            className="inline-flex min-h-11 items-center text-fd-muted-foreground underline hover:text-fd-foreground"
           >
             For cashiers: At the till
           </Link>
