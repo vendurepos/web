@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "The acceptance-run and 200-send claims link to test source on main without identifying a passing run or tested revision.",
+      "where": "text/home.txt, What it does today; tech.json, home.desktop.links"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The tax instructions prescribe different store-wide strategies for inclusive and exclusive channels, but only say a store mixing pricing modes 'must account for the store-wide strategy', leaving its configuration and verification unresolved.",
+      "where": "shots/quick-start.desktop.03.jpg, step 6; text/endpoint_llms_full_txt.txt:893-895"
+    },
+    "C4": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "text/plugin-setup.txt; text/connect-a-till.txt; text/troubleshooting.txt; text/endpoint_api_search_query_offline.txt"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.desktop.02.jpg; shots/home.desktop-dark.jpg; desktop documentation slices"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "home.phone and quick-start.phone slices; shots/plugin-setup.phone.05.jpg; tech.json phone overflowX values"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The full machine-readable documentation omits the changelog's hosted till version, build date and commit, so machine readers lose the distinction between the deployed app version and plugin releases.",
+      "where": "text/changelog.txt:24 versus text/endpoint_llms_full_txt.txt, Changelog section"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "A developer maintaining channels with both inclusive and exclusive pricing must guess how to satisfy the conflicting store-wide tax-strategy recommendations.",
+    "where": "Quick start, step 6 and Why these pairings; text/endpoint_llms_full_txt.txt:893-895",
+    "fix": "Document the supported strategy and receipt-versus-order verification steps for mixed pricing modes. If that configuration is unverified, state that boundary explicitly instead of leaving 'must account' as the instruction."
+  },
+  "mean": 9.0
+}

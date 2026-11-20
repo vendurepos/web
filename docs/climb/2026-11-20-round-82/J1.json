@@ -1,0 +1,48 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero is clear, but the home page then turns into a server checklist a newcomer can't parse: 'Node ^20.19 || >=22.12', 'RxDB Premium licence token (RXDB_PREMIUM)' and 'settles it with two Admin API calls' sit on the marketing page under 'Before you start' and in the comparison table.",
+      "where": "home.desktop.02 ('Live demo or your own store' table, 'Before you start' > 'Setting up the store'); home.phone.04-05"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The demo row says 'All it sends is anonymous usage events to ph.wcpos.com, with no cookie'. That is a third domain under another brand that the site never explains, and it appears right before the visitor clicks Live demo.",
+      "where": "home.desktop.02, 'Sales reach Vendure, once each, even offline' row; home.phone.04"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 5 ends with a collapsed 'If your store already allows vendurepos.vercel.app' box. It refers to an old hosting domain a new user never saw, and with the migration side-box ('Do not also run the bundled migrations') it adds branches to a path that should be linear.",
+      "where": "quick-start.desktop.03 (top), quick-start.phone.06; quick-start.desktop.02 'Other ways to run the migration'"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The same requirements block is repeated on home, Overview, Quick start and Plugin setup, and two pages point at each other: 'The plugin needs Node ^20.19 || >=22.12, as Plugin setup says'. The Changelog adds 'till app version 0.1.0' next to plugin 0.3.0 without saying which version a user should care about.",
+      "where": "quick-start.desktop.01 ('as Plugin setup says'); docs.desktop.01 Requirements; changelog.desktop.01 second paragraph"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "In 'What it does today' only the first two features sit in bordered cards with buttons, and the other eight are plain unboxed text in two columns. The section looks like two different designs, and the second half reads like a wall of grey paragraphs.",
+      "where": "home.desktop.01 bottom to home.desktop.02 top; same in home.desktop-dark"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "Code blocks wrap mid-expression at 390 px, for example 'generateMigration(config, { name:' / 'AddVendurePos', outputDir:' / './src/migrations' })', so the snippets are hard to read and to check before copying on a phone.",
+      "where": "quick-start.phone.03 (generate-migration and run-migrations blocks); quick-start.phone.06 tax block"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Minor only: the og-image crops the till screenshot through the middle of the product cards and the cart (prices cut at the bottom edge), and Lighthouse flags quick-start LCP at 2.6 s along with about 51 KiB of unused JS on the home page.",
+      "where": "og-image.png bottom edge; tech.json lighthouse /docs/quick-start LCP, / unused-javascript"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "Just before the visitor tries the demo, the comparison table says the demo sends 'anonymous usage events to ph.wcpos.com'. That domain belongs to an unexplained other brand, so a newcomer who has never heard of VendurePOS is left asking who receives their data.",
+    "where": "home.desktop.02 'Live demo or your own store' table, last row; home.phone.04",
+    "fix": "Name who runs ph.wcpos.com and why, in a few plain words (e.g. 'usage analytics run by the VendurePOS maintainers'), or move the analytics detail to the linked data page and keep a plain 'nothing leaves your browser except anonymous usage stats' in the table."
+  },
+  "mean": 8.1
+}
