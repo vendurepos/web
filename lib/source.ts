@@ -10,6 +10,13 @@ export const source = loader({
   plugins: [lucideIconsPlugin()],
 });
 
+// The docs pages in sidebar order (content/docs/meta.json), so the llms text reads like the nav (round 91, J1 and J4 C7).
+export function getPagesInNavOrder() {
+  const urls = source.getPageTree().children.filter((node) => node.type === 'page').map((node) => node.url);
+  const order = new Map(urls.map((url, index) => [url, index]));
+  return [...source.getPages()].sort((a, b) => (order.get(a.url) ?? urls.length) - (order.get(b.url) ?? urls.length));
+}
+
 export function getPageImage(page: InferPageType<typeof source>) {
   const segments = [...page.slugs, 'image.webp'];
 
