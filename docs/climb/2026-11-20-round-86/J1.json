@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero is clear, but below it the home page switches to developer wording a newcomer cannot parse: the refund row says 'The refund stays Pending until an administrator settles it with two Admin API calls', and 'Before you start' lists 'Node ^20.19 || >=22.12' and 'RxDB Premium licence token (RXDB_PREMIUM)'.", "where": "home.desktop.02 ('Live demo or your own store' table, 'Refund a sale at the till' row; 'Setting up the store' list); home.phone.04"},
+    "C2": {"score": 8, "worst_defect": "The demo row says 'All it sends is anonymous usage events to ph.wcpos.com, with no cookie', but the site never says what wcpos.com is or how it relates to VendurePOS, so a stranger sees a different brand's domain getting their data.", "where": "home.desktop.02, 'Sales reach Vendure, once each, even offline' row, Live demo column; home.phone.04"},
+    "C3": {"score": 8, "worst_defect": "Step 5 of the quick start has a collapsed toggle 'If your store already allows vendurepos.vercel.app'. It names an old domain that appears nowhere else, which makes a newcomer wonder whether they are missing a step.", "where": "quick-start.desktop.03 (just under the cors code block); quick-start.phone.06"},
+    "C4": {"score": 8, "worst_defect": "The docs still carry caveats for older plugin versions even though install is pinned to 0.3.0: 'Device keys need plugin 0.2.0 or later', '(plugin 0.2.0+; or the broader CreateOrder)', 'Charges need plugin 0.3.0. On an older plugin the cart shows no Add charge'. This is clutter a new user has to read past.", "where": "limitations.desktop.01 (last bullet of 'Setting up the store'); connect-a-till.desktop.01 ('Sign in with a staff account', 'Create and use a device key'); at-the-till.desktop.01 ('Add a charge')"},
+    "C5": {"score": 8, "worst_defect": "After the hero, the home page is one long run of grey body text. 'What it does today', the comparison table and 'Before you start' have no picture or visual break, so the lower half reads like a docs page, not a product page.", "where": "home.desktop.01 bottom through home.desktop.02"},
+    "C6": {"score": 8, "worst_defect": "On the phone, the hero screenshot is cropped to two product tiles and a 'Cart (3) · €20.09' tab, so the caption 'A sale in progress on the live demo till.' sits under an image where no sale is visible.", "where": "home.phone.01 (hero screenshot and caption)"},
+    "C7": {"score": 9, "worst_defect": "Lighthouse (mobile) still flags /docs/quick-start for largest-contentful-paint 2.6 s (score 0.88) and render-blocking requests (0.5). This is minor; titles, descriptions, JSON-LD, llms.txt, sitemap, robots, the search API and a real 404 status are all in place.", "where": "tech.json lighthouse['/docs/quick-start'].failing"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "For someone who arrived from a search and half knows Vendure, the home page drifts into server and API detail ('settles it with two Admin API calls', 'Node ^20.19 || >=22.12', 'RXDB_PREMIUM', 'ph.wcpos.com'). That makes it look like a tool only for Vendure developers just when the visitor is deciding whether to read on or try the demo.",
+    "where": "home.desktop.02 / home.phone.04 ('Live demo or your own store' table and 'Before you start')",
+    "fix": "On the home page, say each row in plain words (e.g. 'No, not yet: refund in the Vendure Dashboard'). Move the Admin API, Node range and RxDB token details into a single 'Requirements' link to the docs."
+  },
+  "mean": 8.1
+}

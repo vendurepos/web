@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 9, "worst_defect": "The hero badge reads \"Pre-release · plugin 0.3.0\", which versions the server plugin, not the till a shop actually uses; the till's own version (0.1.0) appears only on the Changelog page, so the first screen understates how early the till is.", "where": "home/desktop/01 hero badge; changelog/desktop/01 \"till app version 0.1.0\""},
+    "C2": {"score": 7, "worst_defect": "The hero says \"open-source till\" and the footer says \"MIT licensed\", but self-hosting the till needs \"your own RxDB Premium licence token (RXDB_PREMIUM)\". The site never says that licence is a paid commercial product or what it costs. It also never says who runs app.vendurepos.com or who is behind the project; the only hint is analytics going to an unexplained ph.wcpos.com.", "where": "home/desktop/02 'Setting up the store' last bullet; limitations 'Setting up the store'; connect-a-till 'Where your data goes'"},
+    "C3": {"score": 9, "worst_defect": "Step 8c asks for an existing barcode custom field at sign-in, and its \"how to add one\" link leads to Connect a till, which says to add the field and run another database migration. A developer who followed step 3 has to go back and migrate again after the server is already set up.", "where": "quick-start/desktop/03 step 8c; connect-a-till 'Enter your store details'"},
+    "C4": {"score": 8, "worst_defect": "The Changelog covers only the plugin (last release 2026-10-06). The till app, which was rebuilt on 20 Nov 2026 and is what cashiers use, has a version (0.1.0) and a commit hash but no release notes. A buyer cannot see what changed in the till or how active its development is.", "where": "changelog/desktop/01 \"the releases below are the plugin's\""},
+    "C5": {"score": 9, "worst_defect": "\"What it does today\" boxes two features as bordered cards with buttons, then lists eight more as plain heading-and-paragraph pairs. The section's style changes halfway down.", "where": "home/desktop/01 lower half into home/desktop/02 top"},
+    "C6": {"score": 9, "worst_defect": "The phone hero screenshot crops the till to two product cards with the category chips cut at \"Gif\", so on a phone the product image shows little of the till. It also shows the till in its phone layout, though the same page says phones are not tested yet.", "where": "home/phone/01 screenshot; home/phone/04 'At the counter' bullet 2"},
+    "C7": {"score": 9, "worst_defect": "Quick start's mobile LCP is 2.6 s, with render-blocking requests (score 0.5) and 25 KiB of unused JS flagged. The SoftwareApplication JSON-LD has no softwareVersion, although the version is the main fact a pre-release buyer checks.", "where": "tech.json lighthouse /docs/quick-start; tech.json home.desktop jsonLd"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The site sells an \"open-source\", \"MIT licensed\" till, but building it yourself depends on an RxDB Premium licence. The site does not say this licence is paid, what it costs, or that the free path means relying on a hosted app.vendurepos.com whose operator, terms and longevity are never stated. That is the first thing I would raise with a client before recommending it.",
+    "where": "home/desktop/02 'Setting up the store' bullet 4; connect-a-till 'Where your data goes'; footer",
+    "fix": "In that bullet, add one sentence saying RxDB Premium is a paid commercial licence, with a link to its pricing. Add a short line naming who runs app.vendurepos.com and on what terms (free, no account, data goes only to your store)."
+  },
+  "mean": 8.6
+}

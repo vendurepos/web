@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 9,
+      "worst_defect": "Quick start specifies 'Vendure 3.6+' without the upper major-version boundary that Plugin setup explicitly gives as '^3.6.0', meaning later 3.x releases.",
+      "where": "text/quick-start.txt, prerequisites; text/plugin-setup.txt, Check your store; text/endpoint_llms_full_txt.txt, Quick start"
+    },
+    "C4": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/plugin-setup.txt; text/connect-a-till.txt; text/troubleshooting.txt; text/endpoint_api_search_query_offline.txt"
+    },
+    "C5": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop-dark.jpg; home and quick-start desktop slices; shots/plugin-setup.desktop.02.jpg"
+    },
+    "C6": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "home and quick-start phone slices; shots/plugin-setup.phone.02.jpg; shots/connect-a-till.phone.04.jpg; tech.json"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The supplied mobile Lighthouse run reports quick start's largest contentful paint at 2.6 seconds, slightly above the good threshold.",
+      "where": "tech.json, lighthouse./docs/quick-start.LCP and failing"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "Quick start's 'Vendure 3.6+' prerequisite is broader than Plugin setup's explicit support for Vendure 3.6 and later 3.x releases.",
+    "where": "text/quick-start.txt, prerequisites; text/plugin-setup.txt, Check your store; text/endpoint_llms_full_txt.txt, Quick start",
+    "fix": "Replace 'Vendure 3.6+' with 'Vendure 3.6 or a later 3.x release' in quick start and its machine-readable rendition, retaining the tested version."
+  },
+  "mean": 9.7
+}

@@ -1,0 +1,48 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "Hero stacks a 4-line grey centred intro and then a second 2-line grey note under the CTAs ('Your own store needs the plugin…') before the till image appears, so the eye meets two grey paragraphs of equal weight around the buttons",
+      "where": "home.desktop.01 / home.phone.01"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "In the Yes/No comparison table the Refund row's 'Your Vendure store' cell is a 4-line paragraph ('No, not on plugin 0.3.0: refund in the Vendure Dashboard. The refund stays Pending until an administrator settles it with two Admin API calls; see Plugin setup.'), which breaks the table's scan rhythm",
+      "where": "home.desktop.02"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 8 'Sign in and make a sale' is a nine-item a–i sub-list, and the 'Check it worked' h3 sits between step 8 and '9. Troubleshoot', so the numbered rhythm breaks right at the payoff",
+      "where": "quick-start.desktop.03-04, quick-start.phone.08"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Docs Overview ends on the 3×2 'Next steps' card grid with no prev/next pager, while Notifications, Limitations and Changelog end with the 2-card pager, so the docs footer pattern is inconsistent",
+      "where": "docs.desktop.01"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The payment screenshot is mostly dead space: about 420 px of empty white cart pane between the 'Espresso Cup' row and 'Subtotal'. The till screenshots are also at mismatched scales (the closure image is about 510 px wide, the cashier sheet about 380 px wide with an extra gap of about 70 px above it)",
+      "where": "at-the-till.desktop.02-04"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "At 390 px the inline code pill 'packages/vendure-plugin/CHANGELOG.md' breaks after 'vendure-' into two separate pill boxes. In the phone payment screenshot the '€50.00' quick amount is orphaned on its own row",
+      "where": "changelog.phone.01, at-the-till.phone.04"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The OG card's till screenshot is cut by the bottom edge through the middle of the product cards, so the share card ends on a half-tile",
+      "where": "og-image.png"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "The payment screenshot on At the till, the largest image in the docs, is mostly dead space: about 420 px of empty white cart pane between the Espresso Cup row and Subtotal",
+    "where": "at-the-till.desktop.02",
+    "fix": "Recapture the payment screen in a shorter browser window (about 760 px tall), or crop it so the cart pane ends just below the lines, and match its width to the other till screenshots"
+  },
+  "mean": 8.3
+}
