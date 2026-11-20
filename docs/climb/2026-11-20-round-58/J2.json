@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The home page never says what using the hosted till at app.vendurepos.com costs or whether it is free; the only hint is 'MIT licensed' in the footer and 'The till's source is MIT licensed' under Setting up the store, so a shop owner cannot tell if there is a subscription.", "where": "home desktop 01-02 / phone 04-05"},
+    "C2": {"score": 8, "worst_defect": "The two proof cards ('Read the acceptance test', 'Read the 200-send test') link straight to test source files on GitHub (offline.spec.ts, replay.e2e.ts) with no visible pass result or date, so a non-developer gets code, not evidence that the claim holds today.", "where": "home desktop 01 / phone 02, 'What it does today' cards"},
+    "C3": {"score": 7, "worst_defect": "Step 6 tells the developer to change the store-wide order tax strategy and admits it 'also affect[s] the web shop', but does not say whether existing online-shop totals will change; the reasoning is folded into a collapsed 'Why these pairings', so my freelancer has to guess the risk to my web shop.", "where": "quick-start desktop 03 / phone 06-07, step 6"},
+    "C4": {"score": 7, "worst_defect": "At the till never says plainly whether staff can finish closing the register and print the Z report while the internet is down: 'If the internet drops' says nothing about closing, and 'Count the drawer and close the day' only mentions 'Closing — waiting for' plus a Z report line 'How many orders were still syncing at close', leaving the cashier unsure whether to wait or finish.", "where": "at-the-till desktop 03-04 / phone 07-08, 'If the internet drops' and 'Count the drawer and close the day'"},
+    "C5": {"score": 8, "worst_defect": "The cashier-sheet and closure screenshots sit small and centred inside an oversized bordered frame with wide empty padding (frame inside a frame), unlike the full-width payment screenshot just above, so the page's images look inconsistent.", "where": "at-the-till desktop 03 (cashier sheet) and 03-04 (closure screen)"},
+    "C6": {"score": 8, "worst_defect": "On the phone home header only 'Docs' and 'Live demo' show; 'At the till', the page my staff need, is hidden behind the chevron and only appears as an inline link in the last paragraph of slice 05.", "where": "home phone 01 header, home phone 05"},
+    "C7": {"score": 9, "worst_defect": "The share card crops the till screenshot at the bottom edge, cutting the 'Add charge' button and the In Stock badges in half.", "where": "og-image.png, bottom edge"}
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "For a shop owner the two questions that matter together, 'what if the internet drops' and 'how do I close the day', are never answered together: the docs do not say whether the register can be closed and the Z report printed while offline, or what the cashier should do when the till shows 'Closing — waiting for N orders'.",
+    "where": "at-the-till desktop 03-04 / phone 07-08",
+    "fix": "Add one sentence under 'If the internet drops' (and echo it in 'Count the drawer and close the day') saying whether closing finishes and the Z report prints while offline, and what to do on 'Closing — waiting for N orders' (wait, or close and let them send later)."
+  },
+  "mean": 7.9
+}

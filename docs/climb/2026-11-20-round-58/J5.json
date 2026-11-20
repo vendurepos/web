@@ -1,0 +1,48 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The only sign that this is a 0.x pre-release is a small 'Pre-release · plugin 0.3.0' pill above the hero. The share card says nothing about pre-release or open source, so a link pasted into Slack looks like a finished product next to Shopify POS or Square.",
+      "where": "home.desktop.01 (hero pill); og-image.png"
+    },
+    "C2": {
+      "score": 6,
+      "worst_defect": "Three plugin releases came out in five days (0.1.0 on 2026-10-01, then 0.2.0 and 0.3.0 both on 2026-10-06), and there has been nothing in the six weeks since. The changelog admits a known bug: 'in 0.2.0 and 0.3.0 this role has no ReadOrder, so the till's order history is refused'. Four pages document a manual workaround, but no fix has shipped. No maintainer, company or support contact is named anywhere, and the demo sends usage events to ph.wcpos.com without saying who runs it. A client would ask who stands behind this.",
+      "where": "changelog.desktop.01 (0.2.0 entry, 'Not in the release notes'); home.desktop.02 (demo table, footer)"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The 'New POS till key' device-key path creates a role without ReadOrder. A developer who follows the button gets a till whose order history is refused unless they read the aside. Settling a refund on their own store also means running two GraphQL calls by hand.",
+      "where": "quick-start 'Optional: a device key for each till'; connect-a-till; plugin-setup (settle refund)"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The changelog covers only the plugin. The hosted till app the user actually runs (0.1.0, built 20 Nov 2026) has no release notes. Entries also cite internal references ('ADR 0005', 'ADR 0004', '#116', '#117') that a reader cannot follow.",
+      "where": "changelog.desktop.01"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "On the home page, 'What it does today' puts two boxed cards with test links next to eight unboxed items under the same heading, so the rhythm is uneven. The 404 page is a bare stub with a large empty area below.",
+      "where": "home.desktop.01-02; not-found.desktop.01"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "On phone docs pages, the sticky 'on this page' bar marks a section as current ('1. Install the plugin', 'How a sale reaches Vendure', 'At the counter') while the reader is still at the page title.",
+      "where": "quick-start.phone.01; docs.phone.01; limitations.phone.01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The share image (og-image.png) carries no pre-release or open-source signal. Everything else holds up: Lighthouse 98/100/100/100 on / and /docs/quick-start, llms.txt and llms-full, a sitemap with lastmod, a working search API, a real 404, Organization and SoftwareApplication JSON-LD, and no overflow or missing alt text.",
+      "where": "og-image.png"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The plugin has had no release since 2026-10-06. It carries a known, documented bug (the till role lacks ReadOrder, so order history is refused) that is handled with a manual workaround on four pages instead of a fix, and no maintainer or support contact is named anywhere. To a sceptic comparing it with Shopify POS, Square or Lightspeed, this reads as a project that might be abandoned.",
+    "where": "changelog.desktop.01 (0.2.0 entry, 'Not in the release notes' bullet); home footer",
+    "fix": "Ship plugin 0.3.1 that adds ReadOrder to the vendurepos-pos-till role, or state on the changelog when a fix is due. Add one line to the home footer or overview naming who maintains VendurePOS, where to get support, and who runs ph.wcpos.com."
+  },
+  "mean": 7.9
+}

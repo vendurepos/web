@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero and both CTAs are clear, but the first selling point a visitor reads ('Keeps selling offline') spends half its text on loss cases in confusing terms: 'A reload needs the connection, and sales not yet sent are lost if this site's data is cleared'. A newcomer cannot tell whether 'this site' means vendurepos.com or the till.", "where": "home.desktop.01 (first feature card); home.phone.02"},
+    "C2": {"score": 8, "worst_defect": "The comparison table says the demo sends 'anonymous usage events to ph.wcpos.com'. That is an unexplained domain from a different brand, and together with 'Built with TallyUI' and the Tally* code names it makes a stranger wonder who actually runs this.", "where": "home.desktop.02 'Live demo or your own store' table, last row; home.phone.04"},
+    "C3": {"score": 8, "worst_defect": "The quick start is complete and ends with 'Check it worked', but step 6 sends a newcomer into store-wide tax-strategy changes ('These settings are store-wide and also affect the web shop') without saying whether a default Vendure store can skip it. The device-key path also needs a manual fix: the role it creates 'has the step 4 permissions except ReadOrder, so add ReadOrder to that role yourself'.", "where": "quick-start.desktop.03 step 6; quick-start text 'Optional: a device key for each till'"},
+    "C4": {"score": 8, "worst_defect": "The docs are dense and full of internals with little scaffolding. The changelog's first screen is protocol jargon ('order.create v5 custom lines are real order lines on a plugin-owned, disabled POS custom item variant ... (ADR 0005)'), and Troubleshooting's 'Till updates line' runs as a long errorCode essay. Neither has a plain summary on top for someone deciding whether to adopt.", "where": "changelog.desktop.01; troubleshooting.desktop.01"},
+    "C5": {"score": 8, "worst_defect": "Below the two bordered cards, 'What it does today' turns into eight plain grey title-plus-paragraph blocks with no icons, images or visual break. The middle of the home page reads as a uniform wall of text before the table. Dark mode holds up.", "where": "home.desktop.01 bottom to home.desktop.02 top"},
+    "C6": {"score": 8, "worst_defect": "On the phone, the hero screenshot is the till's narrow layout cropped to two product cards ('Canvas Apron', 'Chocolate Biscuits'), so the 'sale in progress' its caption promises is not visible. 'Quick start' and 'At the till' are hidden behind the header chevron.", "where": "home.phone.01"},
+    "C7": {"score": 9, "worst_defect": "None of substance. Lighthouse scores are 98/100/100/100 on both pages, titles and descriptions are unique, and the share card, JSON-LD, llms.txt, sitemap and search API all work. The 404 page returns a real 404 with Home, Docs and Live demo exits. Minor: the og-image cuts the till screenshot off mid-button ('Add charge' clipped at the bottom edge).", "where": "og-image.png bottom edge"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "The first proof point a first-time visitor reads leads with how sales get lost ('A reload needs the connection, and sales not yet sent are lost if this site's data is cleared'). 'This site' is ambiguous, so the caveat reads as a scare rather than a clear limit.",
+    "where": "home.desktop.01, 'Keeps selling offline' card; home.phone.02",
+    "fix": "Lead the card with the proof (25 sales, 20 offline, exactly 25 orders) and move the caveat to one plain line naming the place: 'Keep the till's tab open while offline; unsent sales live in that browser, so clearing its data loses them.'"
+  },
+  "mean": 8.1
+}
