@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 9, "worst_defect": "On the phone hero the third call to action 'For cashiers: At the till' wraps to its own line below the two buttons, so the first screen ends up with three different next steps.", "where": "home/phone/01"},
+    "C2": {"score": 7, "worst_defect": "Nowhere on the site says who maintains VendurePOS or how to report a bug or get help: no issue tracker, support channel or maintainer name, only a GitHub icon. Troubleshooting's last resort for an unknown errorCode is to 'send the copied line to whoever runs your Vendure server'. For a till that can lose unsent sales, that is a bus-factor red flag I would raise with a client.", "where": "troubleshooting/desktop/01 ('For the store owner' paragraph); home/desktop/02 footer"},
+    "C3": {"score": 8, "worst_defect": "Step 6 tells you to change the store-wide orderTaxCalculationStrategy, which 'also affect[s] the web shop'. It never says what goes wrong if you keep your current strategy, because that reason sits in the collapsed 'Why these pairings', so the developer is asked to change live storefront tax behaviour on trust.", "where": "quick-start/desktop/03, step 6"},
+    "C4": {"score": 8, "worst_defect": "Connect a till, Troubleshooting and Quick start step 8 describe screens and header notices ('Sign in to Vendure', 'N orders need attention', the Device key choice) in words only, with no screenshot. Only At the till and the home page have images.", "where": "connect-a-till.txt and troubleshooting.txt (0 [image:] markers); troubleshooting/desktop/01"},
+    "C5": {"score": 8, "worst_defect": "The home 'What it does today' section boxes the first two features as cards with buttons, then drops to a plain unboxed two-column text list for the other eight, so the section looks half-finished. The docs pages are unbroken text walls.", "where": "home/desktop/01 to 02"},
+    "C6": {"score": 9, "worst_defect": "Long TypeScript lines in the code blocks soft-wrap mid-expression on 390 px (e.g. '.catch(error => { console.error(error);' / 'process.exitCode = 1; });'), which makes the copied shape harder to read. Otherwise there is no overflow, and tables reflow to cards.", "where": "quick-start/phone/03"},
+    "C7": {"score": 9, "worst_defect": "Lighthouse on /docs/quick-start flags 'largest-contentful-paint (0.88): 2.6 s' and render-blocking requests, the only failing audit outside JS-size hints.", "where": "tech.json lighthouse /docs/quick-start"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The site never says who stands behind the project or where to go when something breaks: there is no maintainer, issue-tracker link or support channel. The demo's analytics go to ph.wcpos.com, a different brand that the home page never explains. A pre-1.0 till that can lose unsent sales therefore reads as a possible solo side project with no support route, and I would advise a client against putting it on a live counter.",
+    "where": "home/desktop/02 (footer and the 'ph.wcpos.com' table row); troubleshooting/desktop/01",
+    "fix": "Add one 'Who maintains this and how to get help' line, on the home page above the footer and at the end of Troubleshooting. It should name the maintainer, link GitHub Issues for bugs, and say in a few words how ph.wcpos.com relates to VendurePOS."
+  },
+  "mean": 8.3
+}
