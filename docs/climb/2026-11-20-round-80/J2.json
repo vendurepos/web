@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero's two buttons are 'Live demo' and 'Quick start' (a developer install guide); the cashier page 'At the till' is only a small top-nav link on desktop and is missing from the phone header, which shows just 'Docs' and 'Live demo'.", "where": "home.desktop.01 / home.phone.01"},
+    "C2": {"score": 9, "worst_defect": "The till screenshots mix clock formats in one image ('open since 22:07' next to 'Last synced 10:07 PM'), which makes them look stitched together.", "where": "at-the-till.phone.07 (also at-the-till.desktop.02/03)"},
+    "C3": {"score": 8, "worst_defect": "On plugin 0.3.0, the role created by 'New POS till key' lacks ReadOrder, so a till set up via the device-key path sells but has its order history refused until someone adds the permission by hand. The site states this honestly, but it is a trap left in the path.", "where": "quick-start 'Optional: a device key' / connect-a-till"},
+    "C4": {"score": 8, "worst_defect": "Troubleshooting 'When till updates need attention' mixes counter instructions with developer material (errorCode values such as register_session_already_open and register_closure_number_invalid, and GraphQL), and at-the-till keeps 'Refund steps on the live demo' in a collapsed block.", "where": "troubleshooting.desktop.01-02; at-the-till text 'Refund steps on the live demo'"},
+    "C5": {"score": 8, "worst_defect": "The cashier-sheet and register-closure screenshots sit in oversized framed boxes with wide empty padding, so the images are narrower than the text column and the page feels gappy there.", "where": "at-the-till.desktop.03 / at-the-till.desktop.04"},
+    "C6": {"score": 8, "worst_defect": "Long numbered headings wrap to three lines ('2. Add TallyPosPlugin to your existing Vendure config'), the home hero till screenshot is cropped to about two product tiles, and the phone header offers no 'At the till' link.", "where": "quick-start.phone.02; home.phone.01"},
+    "C7": {"score": 9, "worst_defect": "The 404 page logs a console error ('Failed to load resource: the server responded with a status of 404 ()'), and the share card carries no pre-release marker, unlike the home badge 'Pre-release · plugin 0.3.0'.", "where": "tech.json not-found console; og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "A shop owner reading on a phone gets no direct way to the cashier guide: the phone header shows only 'Docs' and 'Live demo', and the hero offers only 'Live demo' and the developer 'Quick start'. 'Can my staff sell with this tomorrow?' is answered on 'At the till', which they have to dig for through the docs menu.",
+    "where": "home.phone.01 (also home.desktop.01 hero)",
+    "fix": "Add 'At the till' to the phone header, and add a third hero link such as 'Running the counter? At the till' next to Live demo and Quick start."
+  },
+  "mean": 8.3
+}

@@ -1,0 +1,48 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {
+      "score": 9,
+      "worst_defect": "The line that tells a Vendure developer what they need ('Your own store needs the plugin on your Vendure server first: the quick start sets it up…') is set in small grey text below the CTAs. It carries less weight than the hero lede does.",
+      "where": "home/desktop/01"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "In the comparison table, the 'Refund a sale at the till' row reads 'Yes' for the live demo but runs to a four-line 'No, not on plugin 0.3.0…' for your own store. The demo therefore shows a feature real stores lack. The table says so plainly, but the heavy right cell is easy to skim past.",
+      "where": "home/desktop/02"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 4 reads 'For a key per till instead, see Optional: a device key for each till below.' The section name is bold text, not an anchor link, while the page's other cross-references are links.",
+      "where": "quick-start/desktop/02"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The Overview's 'Next steps' repeats all ten sidebar entries as cards. On a phone they become one long ten-card stack before the footer. Separately, the step 6 table cells read 'Tax-exclusive ( pricesIncludeTax: false )' with stray spaces inside the parentheses around the code pill.",
+      "where": "docs/phone/02; quick-start/desktop/03"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The cashier-sheet screenshot is a small card centred inside an oversized bordered frame, a frame within a frame, with its caption aligned to that narrow frame. The payment-screen figure above it spans the full column. Separately, on home, the 'Every sale lands once' proof card has a dead gap above its button and does not match its neighbour's height.",
+      "where": "at-the-till/desktop/03; home/desktop/01"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "Paragraphs dense with inline code pills get ragged, double-height lines, e.g. 'Left empty, it allows no origins unless APP_ENV is dev … sets the origins in apiOptions in vendure-config.ts'. Step headings wrap to three lines, e.g. '3. Generate and run the migration before starting the server'.",
+      "where": "quick-start/phone/05; quick-start/phone/02"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Lighthouse on / still flags unused JavaScript (est. 53 KiB), render-blocking requests (150 ms) and legacy JavaScript (14 KiB). The 404 page carries no JSON-LD.",
+      "where": "tech.json lighthouse['/']; not-found"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "The docs screenshots use two different figure treatments. The payment screen fills the column, but the cashier sheet sits as a small card centred in an oversized outer frame, with its caption aligned to the frame rather than the text column.",
+    "where": "at-the-till/desktop/03",
+    "fix": "Give every screenshot the same full-column figure frame, or drop the outer frame for small ones and let the image sit left-aligned at its natural width. Align every caption to the text column."
+  },
+  "mean": 8.4
+}

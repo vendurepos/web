@@ -1,0 +1,48 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {
+      "score": 7,
+      "worst_defect": "Home never says who should NOT use this or how it compares with Shopify POS, Square, Lightspeed or Odoo POS; no maintainer or company named. The demo row says it sends 'anonymous usage events to ph.wcpos.com' and the wcpos domain is never explained.",
+      "where": "home.desktop.02 'Live demo or your own store' table; home footer 'MIT licensed. Built with TallyUI. For Medusa, see MedusaPOS.'"
+    },
+    "C2": {
+      "score": 7,
+      "worst_defect": "The till is sold as 'MIT licensed', but self-hosting it needs 'your own RxDB Premium licence token (RXDB_PREMIUM)' and no price or explanation is given. The plugin also went quiet after three releases in six days (0.1.0 2026-10-01, 0.2.0 and 0.3.0 both 2026-10-06), with nothing since.",
+      "where": "home.desktop.02 'Before you start'; limitations.desktop.01; changelog.desktop.01"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The 9-step quick start has no screenshots. Step 8a says enter 'your administrator email and password' but never mentions the Email and password / Device key choice on the sign-in screen. A leftover collapsible reads 'If your store already allows vendurepos.vercel.app'.",
+      "where": "quick-start.desktop.03 / quick-start.phone.06; quick-start step 8a"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The docs disagree on scanning: At the till says 'A barcode scanner ... or the device's camera', while the home 'Barcode scanners' card mentions only keyboard-wedge scanners. The changelog covers only the plugin: the hosted till is 'till app version 0.1.0 ... commit 53e133b' with no history of its own. The device-key role 'has the step 4 permissions except ReadOrder, so add ReadOrder to that role yourself' is a trap.",
+      "where": "at-the-till.desktop.01 vs home Barcode scanners card; changelog.desktop.01; quick-start optional device-key section"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The 404 page leaves a large empty lower half on desktop below its button and link rows. The home comparison table's wide prose cells read as a wall of text. Otherwise the look is consistent and polished, and dark mode works.",
+      "where": "404.desktop.01; home.desktop.02 comparison table"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "On a phone the hero till screenshot crops down to two product tiles and hides the cart. The top nav offers only 'Docs' and 'Live demo', so Quick start is not one tap away.",
+      "where": "home.phone.01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Only nits: the 404 page logs the console error 'Failed to load resource: 404' (expected for a 404). Lighthouse mobile scores are 98/100/100/100 on both pages audited, and JSON-LD, llms.txt, sitemap, OG image and search all work.",
+      "where": "tech.json 404 console; tech.json lighthouse"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The headline is an 'MIT licensed' open-source till, but self-hosting it needs 'your own RxDB Premium licence token (RXDB_PREMIUM)' with no price, licence terms or explanation. A sceptic comparing it with Shopify POS or Square reads this as a hidden paid dependency.",
+    "where": "home.desktop.02 'Before you start'; limitations.desktop.01",
+    "fix": "On home and in Limitations, say in one sentence what RxDB Premium is, what it costs and who sells it, and that the hosted app.vendurepos.com till is the free path that needs no token. Alternatively, qualify 'MIT licensed' wherever self-hosting is mentioned."
+  },
+  "mean": 7.86
+}
