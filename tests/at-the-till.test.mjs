@@ -208,16 +208,18 @@ test('limitations links settleRefund to the plugin setup steps', () => {
   assert.ok(limitations.includes('href="/docs/plugin-setup#settle-a-dashboard-refund"'));
 });
 
-test('at the till says unsent sales are lost if site data is cleared or the device is lost', () => {
+test('at the till says unsent sales are lost if the till browser data is cleared or the device is lost', () => {
   // Round 20, J2 C4/C7: limitations.mdx:44-45 was the only page that said so, and "offline" did not find it.
+  // Round 61: names the till's browser, not "this site", as the home card does since #261 (round 58, J1 C1).
   const start = html.indexOf('id="if-the-internet-drops"');
   const end = html.indexOf('id="count-the-drawer-and-close-the-day"');
   assert.ok(start >= 0 && end > start);
   const section = html.slice(start, end);
-  const text = section.replace(/<!-- -->/g, '').replace(/<[^>]+>/g, '');
-  for (const words of ['offline', 'kept only in this browser', 'device is lost']) {
+  const text = section.replace(/<!-- -->/g, '').replace(/<[^>]+>/g, '').replace(/&#x27;|&#39;|&apos;/g, "'");
+  for (const words of ['offline', "kept only in the till's browser", 'device is lost']) {
     assert.ok(text.includes(words), words);
   }
+  assert.ok(!text.includes("this site's data"), 'no longer says "this site\'s data"');
   assert.match(section, /href="\/docs\/limitations(#[^"]+)?"/);
 });
 

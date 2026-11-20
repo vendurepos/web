@@ -185,12 +185,13 @@ test('limitations has a bullet naming the browser print dialog and the cash draw
   assert.match(bullet, /does not open a cash drawer/);
 });
 
-test('limitations names the tested browser and says unsent sales live only in this browser', () => {
+test("limitations names the tested browser and says unsent sales live only in the till's browser", () => {
   // Round 16, C2: vendurepos/app@a257d16 tests in desktop Chrome only; unsent orders are in the browser's SQLite.
   const html = readFileSync(join('.next/server/app', 'docs/limitations.html'), 'utf8');
-  const text = html.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ');
+  const text = html.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').replace(/&#x27;|&#39;|&apos;/g, "'");
   assert.ok(text.includes('Its browser tests run in desktop Chrome'));
-  assert.ok(text.includes('Sales not yet sent are kept only in this browser'));
+  assert.ok(text.includes("Sales not yet sent are kept only in the till's browser"));
+  assert.ok(!text.includes("this site's data"), 'no longer says "this site\'s data"');
 });
 
 // Round 44, J2 C2: the untested devices are named, from the same Playwright config.
@@ -305,8 +306,8 @@ test('limitations lists the refused till update right after the unsent sales and
   // Round 23, J5 C2: same facts as troubleshooting.mdx (Till updates line); vendurepos/app@ebcd9e4, @tallyui/pos 3.20.0.
   const html = readFileSync(join('.next/server/app', 'docs/limitations.html'), 'utf8');
   const items = html.match(/<li[^>]*>(?:(?!<\/li>)[\s\S])*<\/li>/g) ?? [];
-  const text = (li) => li.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ');
-  const unsent = items.findIndex((li) => text(li).includes('Sales not yet sent are kept only in this browser'));
+  const text = (li) => li.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').replace(/&#x27;|&#39;|&apos;/g, "'");
+  const unsent = items.findIndex((li) => text(li).includes("Sales not yet sent are kept only in the till's browser"));
   assert.ok(unsent >= 0, 'the unsent-sales item');
   const refused = items[unsent + 1];
   assert.ok(refused, 'an item follows the unsent-sales item');
@@ -322,8 +323,8 @@ test('limitations lists the refused till update right after the unsent sales and
 test('limitations says refused register records do not reach the Vendure store', () => {
   const html = readFileSync(join('.next/server/app', 'docs/limitations.html'), 'utf8');
   const items = html.match(/<li[^>]*>(?:(?!<\/li>)[\s\S])*<\/li>/g) ?? [];
-  const text = (li) => li.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ');
-  const unsent = items.findIndex((li) => text(li).includes('Sales not yet sent are kept only in this browser'));
+  const text = (li) => li.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').replace(/&#x27;|&#39;|&apos;/g, "'");
+  const unsent = items.findIndex((li) => text(li).includes("Sales not yet sent are kept only in the till's browser"));
   assert.ok(unsent >= 0, 'the unsent-sales item');
   const refused = items[unsent + 1];
   assert.ok(refused, 'an item follows the unsent-sales item');
