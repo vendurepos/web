@@ -39,3 +39,22 @@ test('the 404 page has its own description, not the home one', () => {
   assert.ok(html.includes('<meta name="description" content="There is no page at this address."'));
   assert.ok(!html.includes(SITE_DESCRIPTION));
 });
+
+test('the 404 page lists every docs page in sidebar order (round 68, J4 C7)', () => {
+  const html = readFileSync(join('.next/server/app', '_not-found.html'), 'utf8');
+  const nav = html.match(/aria-label="Docs pages"[\s\S]*?<\/nav>/)?.[0];
+  assert.ok(nav);
+  const links = [...nav.matchAll(/<a\b[^>]*\bhref="([^"]+)"[^>]*>([^<]*)<\/a>/g)]
+    .map(([, href, text]) => [href, text]);
+  assert.deepEqual(links, [
+    ['/docs', 'Overview'],
+    ['/docs/quick-start', 'Quick start'],
+    ['/docs/plugin-setup', 'Plugin setup'],
+    ['/docs/connect-a-till', 'Connect a till'],
+    ['/docs/at-the-till', 'At the till'],
+    ['/docs/notifications', 'Notifications'],
+    ['/docs/troubleshooting', 'Troubleshooting'],
+    ['/docs/limitations', 'Limitations'],
+    ['/docs/changelog', 'Changelog'],
+  ]);
+});
