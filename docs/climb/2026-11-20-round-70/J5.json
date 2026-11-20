@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "Nothing on the home page says who makes or maintains VendurePOS: the only hint is the footer line 'MIT licensed. Built with TallyUI. For Medusa, see MedusaPOS.', so a buyer comparing it with Square or Shopify POS cannot tell a company product from a side project.", "where": "home.desktop.02 footer; home.phone.05"},
+    "C2": {"score": 7, "worst_defect": "The hero says 'open-source till' and the footer 'MIT licensed', but self-hosting needs 'your own RxDB Premium licence token (RXDB_PREMIUM)'. The site never says whether that licence costs money or who sells it, and never says who runs app.vendurepos.com or on what terms. So the practical route is a third-party hosted till with no named operator, while the demo reports to an unexplained ph.wcpos.com.", "where": "home.desktop.02 'Setting up the store'; connect-a-till.desktop.01 'Where requests go'"},
+    "C3": {"score": 8, "worst_defect": "Quick start step 8h and 'Check it worked' say 'Once the till shows the order as synced' but never say where the till shows that: the Orders list status 'Synced', or the header 'N orders waiting to send' clearing. That is only on Troubleshooting, so the success signal on the till is a guess.", "where": "quick-start.desktop.04 / quick-start.phone.08"},
+    "C4": {"score": 7, "worst_defect": "The changelog is written in internal protocol jargon ('order.create v5 custom lines ... (ADR 0005)', 'GET /tally/v1/info returns maxShippingLines: 1', '(#116)') that a store owner cannot act on. Meanwhile one known defect, the device-key role lacking ReadOrder, is explained again on quick start, connect-a-till (twice) and changelog instead of being fixed in one place.", "where": "changelog.desktop.01; connect-a-till text 'Give each cashier their own account'"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' gives two features bordered cards with buttons and then eight more as plain unboxed text blocks. The section reads as two different designs, and the home page below the hero is a long text wall with only one product screenshot.", "where": "home.desktop.01 bottom to home.desktop.02 top"},
+    "C6": {"score": 8, "worst_defect": "On the phone the inline code 'packages/vendure-plugin/CHANGELOG.md' breaks mid-path across two pills ('packages/vendure-' / 'plugin/CHANGELOG.md'), and long inline code such as 'taxOptions.orderTaxCalculationStrategy:' crowds the tax table cards.", "where": "changelog.phone.01; quick-start.phone.06"},
+    "C7": {"score": 9, "worst_defect": "The home SoftwareApplication JSON-LD gives softwareVersion '0.3.0', which is the plugin's version, while the changelog says the hosted till app is 'till app version 0.1.0'. The structured data mislabels what the version refers to.", "where": "tech.json pages.home.desktop.jsonLd; text/changelog.txt"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "For a sceptic advising a client, the site does not say who stands behind the product or what self-hosting really needs. The 'open-source, MIT' till needs an 'RxDB Premium licence token' to build, with no word on whether that is paid or where to get it. The alternative is app.vendurepos.com, with no named operator, terms or continuity. No maintainer is named, and the demo's analytics go to an unexplained ph.wcpos.com. Together with a plugin changelog that stops at 2026-10-06, a client cannot judge lock-in or longevity.",
+    "where": "home.desktop.02 'Setting up the store' + footer; connect-a-till.desktop.01 'Where requests go'; changelog.desktop.01",
+    "fix": "Add a short 'Who runs this' line to the home 'Before you start' block: who maintains VendurePOS and hosts app.vendurepos.com (and that ph.wcpos.com belongs to them), whether the hosted till is free and for how long, and whether the RxDB Premium licence costs money, with a link to where to get it."
+  },
+  "mean": 7.9
+}

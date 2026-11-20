@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 9, "worst_defect": "The hero puts a 58-word, four-line centred paragraph ('VendurePOS is an open-source till for Vendure, the open-source headless commerce framework. It is made for shops ... keeps selling when the connection drops.') between the H1 and the CTAs, and its last line 'connection drops.' sits alone. That is a lot to read in five seconds.", "where": "home/desktop/01 hero; home/phone/01"},
+    "C2": {"score": 9, "worst_defect": "The home comparison table says the demo 'sends anonymous usage events to ph.wcpos.com' and never says on that page why a VendurePOS demo reports to a wcpos.com host. An unexplained third-party domain is the one line that reads as something left unsaid.", "where": "home/desktop/02 'Live demo or your own store' table, last row"},
+    "C3": {"score": 8, "worst_defect": "Step 8 'Sign in and make a sale' lists nine lettered sub-steps (a. store URL, b. channel token, c. barcode field ... i. offline) describing a sign-in form and register screen with no picture of either, so the reader cannot see what success looks like until 'Check it worked'. The only till screenshots are on At the till.", "where": "quick-start/desktop/03-04; quick-start/phone/07-08"},
+    "C4": {"score": 8, "worst_defect": "Under 'Till updates line', one bullet ('N till updates need attention ...') nests a bold 'At the counter:' paragraph, a bold 'For the store owner:' paragraph, a collapsed 'To find the line in the sync log' details block, and a second bullet list of errorCodes. That is three levels deep inside one list item and hard to scan.", "where": "troubleshooting/desktop/01"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' gives two features bordered cards and the other eight plain text. In the card pair, 'Every sale lands once' has about 60 px of empty space above its 'Read the 200-send test' button because its copy runs two lines shorter than 'Keeps selling offline', so the pair looks unbalanced. The jump from cards to bare text also reads as two different components.", "where": "home/desktop/01 lower half"},
+    "C6": {"score": 8, "worst_defect": "At 390 px, code blocks soft-wrap with a hanging indent instead of scrolling, so the code's shape changes: generateMigration(config, { name: / 'AddVendurePos', outputDir: / './src/migrations' }) breaks over three lines, and inline pills split mid-token in the changelog ('lineTax: { none:' / 'true, classes: true }', 'ADR' / '0005').", "where": "quick-start/phone/03; changelog/phone/02"},
+    "C7": {"score": 9, "worst_defect": "The share card's till screenshot is cut by the bottom edge straight through the first row of product cards: the 'In Stock' pills are sliced in half, so the card ends on a clipped UI fragment and not a clean crop.", "where": "og-image.png bottom edge"}
+  },
+  "overall_worst": {
+    "criterion": "C6",
+    "defect": "On a phone, the Quick start's TypeScript blocks soft-wrap with a hanging indent. generateMigration(config, { name: 'AddVendurePos', outputDir: './src/migrations' }) and the runMigrations, cors and taxOptions snippets break into fragments that no longer match the code's real structure, on the one page a developer follows line by line.",
+    "where": "quick-start/phone/03, 05, 06",
+    "fix": "Below 640 px, make code blocks scroll horizontally (white-space: pre; overflow-x: auto). Alternatively, re-format the snippets so each argument and property sits on its own line under about 40 characters."
+  },
+  "mean": 8.4
+}
