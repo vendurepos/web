@@ -1,0 +1,48 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "Hero leads with \"an open-source till for Vendure, the open-source headless commerce framework\" and only the small line under the buttons, \"Your own store needs the plugin on your Vendure server first\", tells an owner that their developer has to install something before staff can sell.",
+      "where": "home.desktop.01 / home.phone.01"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "Home table refund row: \"The refund stays Pending until an administrator settles it with two Admin API calls; see Plugin setup\" is developer jargon that hides what the owner actually has to do; the demo row's \"anonymous usage events to ph.wcpos.com\" names an unexplained third-party domain.",
+      "where": "home.desktop.02 (Live demo or your own store table)"
+    },
+    "C3": {
+      "score": 7,
+      "worst_defect": "No staff-ready path: \"At the till\" opens with the plugin error text \"This store's VendurePOS plugin is missing or out of date…\" instead of a first-day-at-the-counter start, and the only setup path is the developer Quick start (npm install, migrations, CORS).",
+      "where": "at-the-till.desktop.01 / at-the-till.phone.01; quick-start.desktop.01"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "\"Count the drawer and close the day\" and the Z report list never say how the card total is checked against the card terminal's own end-of-day batch, though \"your own card terminal\" is listed under What you need at the counter.",
+      "where": "at-the-till.desktop.04 / text/at-the-till.txt"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The cashier sheet screenshot differs by device: the desktop image has no \"Last synced\" / \"Sync now\" row while the phone image shows them, so the same step looks different depending on where you read it.",
+      "where": "at-the-till.desktop.03 vs at-the-till.phone.07"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "On phone the header shows only \"Docs\" and \"Live demo\" with Quick start and At the till hidden behind a chevron, and long inline code such as \"DefaultTaxLineCalculationStrategy\" breaks lines awkwardly in the tax step.",
+      "where": "home.phone.01; quick-start.phone.06"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Lighthouse flags render-blocking resources (150 ms) and 53 KiB of unused JavaScript on /, and 2.3 s main-thread work on /docs/quick-start; scores still 98/100/100/100.",
+      "where": "tech.json lighthouse"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "Refunds on your own store are explained only in developer terms: the till cannot refund on plugin 0.3.0 and the refund \"stays Pending until an administrator settles it with two Admin API calls: a query for the refund's ID, then the settleRefund mutation\", while At the till's \"Refund a sale\" just says to ask whoever manages the store, so an owner cannot tell who does what or how long the customer's refund sits Pending.",
+    "where": "home.desktop.02 refund row; limitations.desktop.01; at-the-till.desktop.03 (Refund a sale); plugin-setup.desktop.01 TOC \"Settle a Dashboard refund\"",
+    "fix": "In At the till › Refund a sale, add a short plain-language block: who does each step (counter, owner, developer), that the refund shows Pending until settled, and a direct link to Plugin setup › Settle a Dashboard refund labelled \"send this to your developer\"."
+  },
+  "mean": 8.0
+}

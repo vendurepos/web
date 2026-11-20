@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero carries a four-line centred lede ('VendurePOS is an open-source till for Vendure, the open-source headless commerce framework. It is made for shops ... when the connection drops.') and then a second centred two-line note under the buttons ('Your own store needs the plugin on your Vendure server first...'), so the fold reads as two ragged centred text blocks around the CTAs instead of one sharp line.", "where": "home.desktop.01 (y 255-500); home.phone.01"},
+    "C2": {"score": 9, "worst_defect": "The comparison table says the demo's only outbound traffic is 'anonymous usage events to ph.wcpos.com', a domain from a different product that the page never explains, so a careful reader stops to wonder who wcpos is.", "where": "home.desktop.02 'Sales reach Vendure, once each, even offline' row; home.phone.04"},
+    "C3": {"score": 8, "worst_defect": "Step 8 'Sign in and make a sale' lists nine lettered UI sub-steps (store URL, channel token, barcode field, opening float, tender...), and 'Check it worked' lists five Dashboard checks, but neither has a screenshot of the sign-in form or of a synced order. The reader has to picture both screens.", "where": "quick-start.desktop.03-04; quick-start.phone.07-09"},
+    "C4": {"score": 8, "worst_defect": "Step 4's permission list gives six single-item bullets, each a lone code chip (ReadCatalog, ReadSettings, ReadCustomer, CreateCustomer...) with full paragraph spacing, so about 200 px of the page holds five words. The same list appears inline in one sentence on Connect a till.", "where": "quick-start.desktop.02 (y 1030-1240); quick-start.phone.04"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' boxes two features as bordered cards and leaves the next eight as plain heading-and-text pairs. In the card row, 'Every sale lands once' has about three lines of empty space above its 'Read the 200-send test' button because its text is shorter than the neighbouring card's.", "where": "home.desktop.01 (y 1300-1550)"},
+    "C6": {"score": 8, "worst_defect": "At 390 px the code blocks soft-wrap mid-expression: generateMigration(config, { name: / 'AddVendurePos', outputDir: / './src/migrations' }) and the import lines break into hanging fragments, which are hard to read and risky to retype. The sticky 'On this page' bar also already reads '1. Install the plugin' while the reader is still at the page title.", "where": "quick-start.phone.03; quick-start.phone.06 (taxOptions block); quick-start.phone.01 (TOC bar)"},
+    "C7": {"score": 9, "worst_defect": "On the share card the subtitle wraps and leaves 'a normal order.' alone on a short second line, and the app screenshot is cut at the bottom edge before the cart total, so the card shows a till with no total.", "where": "og-image.png"}
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "Quick start is the page that turns a visitor into a user, and it runs about 7,000 px of prose and code with no image at all. Step 8's nine UI sub-steps and the 'Check it worked' Dashboard checks have no picture, while At the till, the cashier page, has three screenshots.",
+    "where": "quick-start.desktop.03-04 / quick-start.phone.07-09",
+    "fix": "Add one captioned screenshot of the 'Sign in to Vendure' form (Email and password tab, store URL and channel token filled) at the top of step 8, and one of the synced order in the Vendure Dashboard (tally-pos payment Settled, fulfilment Delivered) under 'Check it worked'."
+  },
+  "mean": 8.3
+}
