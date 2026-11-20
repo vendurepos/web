@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero's two buttons are 'Live demo' and 'Quick start' (a developer guide of npm installs and migrations); the staff guide 'At the till' only appears in the desktop top nav and in a sentence near the footer ('For cashiers, At the till covers selling...'), and on phone the header shows only 'Docs' and 'Live demo' with the rest behind a chevron.", "where": "home.phone.01 header and hero buttons; home.desktop.02 closing paragraph"},
+    "C2": {"score": 9, "worst_defect": "The demo row says 'All it sends is anonymous usage events to ph.wcpos.com' without saying what wcpos.com is or why a VendurePOS demo reports to another product's domain, which leaves an owner wondering who gets the data.", "where": "home.desktop.02 'Live demo or your own store' table, last row; home.phone.04"},
+    "C3": {"score": 8, "worst_defect": "Step 8 'Sign in and make a sale' and 'Check it worked' have no screenshot of the sign-in screen or of what 'the till shows the order as synced' looks like, so the success state at the till is described only in words.", "where": "quick-start.desktop.03-04 / quick-start.phone.07-08"},
+    "C4": {"score": 8, "worst_defect": "'If the internet drops' in At the till, the section a shop owner needs most, has no screenshot: the signal staff must watch for exists only as code-styled text ('N orders waiting to send', '· sending…'), while the payment, cashier-sheet and closure sections all get pictures.", "where": "at-the-till.desktop.03 / at-the-till.phone.07"},
+    "C5": {"score": 8, "worst_defect": "The cashier-sheet and closure screenshots each sit as a small card inside a second, larger bordered grey frame with wide empty padding (a box in a box), so they look unfinished next to the full-width payment screenshot; the closure card's three lines ('Counted €120.09', 'Expected €120.09', 'Exact') also float in a lot of white space.", "where": "at-the-till.desktop.03 (cashier sheet) and at-the-till.desktop.04 (closure)"},
+    "C6": {"score": 8, "worst_defect": "On phone the hero till screenshot shows only the Products tab with two product tiles; the cart ('Cart (3) · €20.09') is a hidden tab and the category chips cut off at 'Gif', so the phone reader never sees a sale in progress, despite the caption 'A sale in progress on the live demo till.'", "where": "home.phone.01 hero image"},
+    "C7": {"score": 9, "worst_defect": "The share card (og-image.png) crops the till screenshot mid-row at the bottom edge, slicing off the 'In Stock' pills under the second product row; mobile LCP is 2.3-2.4 s with unused-JS and render-blocking warnings.", "where": "og-image.png bottom edge; tech.json lighthouse / and /docs/quick-start"}
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "My first question, what happens when the internet drops, is answered in clear text but never shown: At the till's 'If the internet drops' section has no picture of the till's header in the offline state, so I can't show my staff the 'N orders waiting to send' line they must watch for and must not reload over.",
+    "where": "at-the-till.desktop.03 / at-the-till.phone.07, section 'If the internet drops'",
+    "fix": "Add one captioned screenshot of the live demo till's header showing '2 orders waiting to send' next to the 'Keep the till's tab open' warning, like the payment and closure screenshots already on that page."
+  },
+  "mean": 8.3
+}

@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; shots/home.desktop.01.jpg"
+    },
+    "C2": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 6 prescribes different store-wide tax strategies for inclusive and exclusive channels, but only says a store mixing pricing modes 'must account for the store-wide strategy', leaving that configuration decision unresolved.",
+      "where": "shots/quick-start.desktop.03.jpg; text/endpoint_llms_full_txt.txt:873\u2013875"
+    },
+    "C4": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "text/plugin-setup.txt; text/connect-a-till.txt; text/troubleshooting.txt"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop-dark.jpg; shots/quick-start.desktop.01.jpg; shots/plugin-setup.desktop.02.jpg"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.phone.01.jpg\u201305.jpg; shots/quick-start.phone.01.jpg\u201309.jpg; shots/plugin-setup.phone.02.jpg"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The supplied Lighthouse audit identifies 53 KiB of unused JavaScript and an estimated 120 ms of render-blocking savings on the homepage.",
+      "where": "tech.json: lighthouse./.failing"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "The tax setup leaves developers with both inclusive and exclusive channels to determine how the two prescribed strategies fit one store-wide setting.",
+    "where": "shots/quick-start.desktop.03.jpg; text/endpoint_llms_full_txt.txt:873\u2013875",
+    "fix": "State whether mixed pricing modes are supported and provide the supported configuration or an explicit limitation beside the strategy table."
+  },
+  "mean": 9.1
+}
