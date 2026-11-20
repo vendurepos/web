@@ -1,0 +1,48 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero explains Vendure as a 'headless commerce framework', which means nothing to a shop owner. On the phone the top bar offers only 'Docs' and 'Live demo', so 'what happens when the internet drops' takes scrolling to find.",
+      "where": "home.desktop.01 hero subline; home.phone.01 header"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The comparison table says the live demo refunds at the till ('Refund a sale at the till | Yes'). On plugin 0.3.0 a real store cannot do this: the refund goes through the Vendure Dashboard and 'stays Pending until an administrator settles it with two Admin API calls'. That limit is easy to miss next to the demo's 'Yes'. Smaller point: the demo shots show 'Last synced 10:06 PM' next to 'open since 22:06', two time formats in one screen.",
+      "where": "home.desktop.02 / home.phone.04 comparison table; at-the-till 'Refund a sale'"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The steps are numbered 1-9 and 'Check it worked' says what success looks like. But the collapsed note 'If your store already allows vendurepos.vercel.app' appears with no explanation of why it matters. Steps 3-6 (migrations, tokenMethod, CORS_ORIGINS, the tax strategy table) are developer-only, and nothing tells the owner to hand them to their freelancer.",
+      "where": "quick-start.desktop.03; quick-start.phone steps 3-6"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The changelog is written for developers ('GET /tally/v1/info advertises order.create 1–5 (ADR 0005)', 'disabled POS custom item variant (SKU TALLY-CUSTOM-ITEM)'), and there is no plain-language line on what changed for the counter. The At the till refund section sends a cashier off to Plugin setup.",
+      "where": "changelog.desktop.01 / changelog.phone.01; at-the-till 'Refund a sale'"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The cashier-sheet and day-closure screenshots sit inside oversized frames with wide empty padding, so the receipt-sized content looks lost. The home feature grid switches from boxed cards to plain text partway down.",
+      "where": "at-the-till.desktop.03 and .04; home.desktop.02 feature grid"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "Nothing overflows and tables collapse into cards, but the long import lists wrap into tall code blocks that take several thumb-scrolls. The hero till screenshot on the phone shows only two products, so it barely reads as a till. The quick start is about 10,580 px tall on a phone with no 'jump to step' control.",
+      "where": "plugin-setup.phone.02; home.phone.01; quick-start.phone.01-09"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Lighthouse scores 98/100/100/100, but LCP is 2.4 s on / and the failing audits list 53 KiB of unused JS and 150 ms of render-blocking. The og-image crops the till mid-cart, so the 'Add charge' row is cut off.",
+      "where": "tech.json lighthouse /; og-image.png"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "On plugin 0.3.0 staff cannot refund at the till: refunds go through the Vendure Dashboard and stay Pending until an administrator makes 'two Admin API calls'. Yet the home comparison table shows 'Refund a sale at the till | Yes' for the live demo, so an owner trying the demo will expect refunds to work at their own counter tomorrow.",
+    "where": "home.desktop.02 / home.phone.04 comparison table; at-the-till 'Refund a sale'",
+    "fix": "Label the demo cell 'Demo only — not on plugin 0.3.0'. Add a one-line 'Refunds: not at the till yet — done in the Vendure Dashboard by whoever runs your store' to the home 'Before you start' list, and give the at-the-till refund section a plain-language workaround for staff (Pay out the cash, note the order number) instead of a link to Plugin setup."
+  },
+  "mean": 8.1
+}
