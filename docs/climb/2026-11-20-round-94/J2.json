@@ -1,0 +1,48 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "On the phone header only 'Docs' and 'Live demo' show; 'Quick start' and 'For cashiers: At the till' are behind the chevron or below the hero, so a shop owner checking between customers has to scroll to find the page their staff need.",
+      "where": "home.phone.01"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The demo row says 'All it sends is anonymous usage events to ph.wcpos.com, with no cookie' without saying who ph.wcpos.com is, so an unexplained third-party domain shows up on a VendurePOS page; quick-start also carries a collapsed 'If your store already allows vendurepos.vercel.app' note about an old domain nobody introduced.",
+      "where": "home.desktop.02 / home.phone.03 ('Live demo or your own store' table); quick-start.desktop.02"
+    },
+    "C3": {
+      "score": 7,
+      "worst_defect": "For an own store, a refund is 'No, not on plugin 0.3.0: refund in the Vendure Dashboard. The refund stays Pending until an administrator settles it with two Admin API calls; see Plugin setup', so the owner learns that closing out a refund needs the freelance developer every time, with no counter-side wording of who does what.",
+      "where": "home.desktop.02 table refund row; at-the-till.desktop.03 'Refund a sale' step 1 ('Plugin setup has the steps for them')"
+    },
+    "C4": {
+      "score": 7,
+      "worst_defect": "Troubleshooting mixes counter staff, store owner and server admin on one page: 'When till updates need attention' tells the owner to 'copy the refused line from this till's sync log, and match its errorCode', hides how under a collapsed 'To find the line in the sync log', and goes straight on to GraphQL tallyNeedsAdminCommands / tallyResolveNeedsAdmin and VENDUREPOS_WEB_ALLOW_LAN_HTTP.",
+      "where": "troubleshooting.desktop.01 / troubleshooting.phone.01 and text/troubleshooting.txt"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "On at-the-till the small cashier-sheet and closure screenshots sit centred in wide empty bands of the content column, and the cashier-sheet image differs between desktop and phone (phone shows 'Last synced 10:07 PM / Sync now'), which reads as two different tills.",
+      "where": "at-the-till.desktop.03, at-the-till.desktop.04 vs at-the-till.phone.07"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The cashier-sheet image on the phone has a grey vertical stripe down its left edge, and the till guide runs to many slices, so a cashier looking up 'If the internet drops' or 'close the day' on a phone scrolls a long way past the Jump-to links.",
+      "where": "at-the-till.phone.07"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Lighthouse mobile still lists failing audits on the home page: 'Reduce unused JavaScript' (~53 KiB), render-blocking requests (~150 ms) and ~14 KiB legacy JavaScript; everything else (titles, descriptions, JSON-LD, og image, llms.txt, sitemap, search API, helpful 404) is in place.",
+      "where": "tech.json lighthouse['/']"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "When something goes wrong at the counter, Troubleshooting hands the shop owner developer material ('copy the refused line from this till's sync log, and match its errorCode', a collapsed sync-log how-to, GraphQL tallyNeedsAdminCommands) instead of a short 'what staff do now, what to tell your developer' answer.",
+    "where": "troubleshooting.desktop.01 / troubleshooting.phone.01, section 'When till updates need attention'",
+    "fix": "Open that section with a two-line 'At the counter' box (keep selling, keep the printed Z report, tell your developer the code shown) and move errorCode matching and the GraphQL calls under a 'For your developer' sub-heading."
+  },
+  "mean": 7.9
+}

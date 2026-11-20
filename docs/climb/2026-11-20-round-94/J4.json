@@ -1,0 +1,48 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {
+      "score": 9,
+      "worst_defect": "On phone the hero CTA row wraps, so the text link \"For cashiers: At the till\" sits alone on a third line under \"Live demo\" / \"Quick start\"; the phone hero till screenshot also clips its category chip row at \"Gif\" on the right edge",
+      "where": "home.phone.01"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "home.desktop.01-02, home.phone.02-05, limitations, changelog"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "\"Check it worked\" is text bullets only: no screenshot of the signed-in till or of the synced order in the Vendure Dashboard, so the finish line of the quick start has nothing to compare against",
+      "where": "quick-start.desktop.04, quick-start.phone.08"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Notifications and Troubleshooting describe the header notices (\"N orders waiting to send\", \"· sending…\") and the Notifications sheet in prose and inline-code pills only, with no screenshot of what the cashier actually sees; step 4's permission list is six bullets of lone inline-code pills, tall and sparse",
+      "where": "notifications.desktop.01, troubleshooting.desktop.01, at-the-till.phone.08, quick-start.desktop.02"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The payment screenshot on At the till carries roughly 420 px of empty cart pane between the line items and the subtotal, dead white space in the page's main visual; the changelog pager is a single \"‹ Limitations\" card stretched full width, unlike the two-up pager elsewhere; right ToC text runs to ~x=1421 of 1440 (\"Refund at the till (live demo only)\")",
+      "where": "at-the-till.desktop.02, changelog.desktop.01, at-the-till.desktop.03"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "Code blocks soft-wrap mid-expression with hanging indents on phone (\"generateMigration(config, { name:\" / \"'AddVendurePos', outputDir:\", and the \"import {\" wrap), so the TypeScript reads as broken; the phone payment screenshot's quick-amount row wraps leaving \"€50.00\" orphaned on its own row",
+      "where": "quick-start.phone.03, quick-start.phone.06, at-the-till.phone.04"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "OG card subhead wraps leaving the widow \"a normal order.\" alone on its last line; Lighthouse residuals are minor (render-blocking 150 ms, unused JS 53 KiB)",
+      "where": "og-image.png, tech.json lighthouse"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C6",
+    "defect": "Quick-start code blocks soft-wrap mid-expression on phone (\"generateMigration(config, { name:\" / \"'AddVendurePos', outputDir:\"), making the copy-paste setup code look broken on the page a developer follows step by step",
+    "where": "quick-start.phone.03, quick-start.phone.06",
+    "fix": "Turn off soft-wrap on code blocks below 640 px and let them scroll horizontally, or hand-break the snippets into short lines (one argument per line) so they read cleanly at 390 px"
+  },
+  "mean": 8.4
+}
