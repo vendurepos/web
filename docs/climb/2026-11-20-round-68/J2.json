@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The first explanatory line is written for developers, not shopkeepers: \"Vendure, the open-source headless commerce framework\"; a shop owner has to work past jargon before reading that it is \"made for shops that sell online with Vendure and also sell in person\".", "where": "home.desktop.01 / text/home.txt line 12"},
+    "C2": {"score": 8, "worst_defect": "The home comparison table answers \"Refund a sale at the till\" with \"Yes\" for the demo but \"No ... stays Pending until an administrator settles it with two Admin API calls\" for your store, so the demo shows a smoother day than a real shop gets; and the till role missing ReadOrder is admitted only as \"Not in the release notes\" deep in the changelog.", "where": "home.desktop.02 comparison table; changelog.desktop.01 0.2.0 last bullet"},
+    "C3": {"score": 7, "worst_defect": "Nowhere says plainly what device to put on the counter: Before you start says \"tablets and phones, an iPad included, are not tested yet\" while the phone home page shows the till running on a phone, and Quick start step 8 \"Sign in and make a sale\" never names a device, browser or scanner setup.", "where": "home.phone.01 hero image vs text/home.txt line 79; quick-start.desktop.03 step 8"},
+    "C4": {"score": 8, "worst_defect": "\"Check the register during the day\" gives two overlapping routes that both print an X-report (\"Register › in the bar opens the Register panel ... prints an X-report\" and \"Reports, in the till's side menu ... Print X-report\") without saying which one staff should use; Troubleshooting also mixes cashier steps with server-side errorCode/GraphQL detail.", "where": "at-the-till.desktop.03 / text/at-the-till.txt lines 98-100; troubleshooting.desktop"},
+    "C5": {"score": 8, "worst_defect": "\"What it does today\" boxes its first two items as cards and then runs the remaining items as unboxed text, so the section looks half-finished.", "where": "home.desktop.01-02 \"What it does today\""},
+    "C6": {"score": 8, "worst_defect": "On the phone the site header keeps only \"Docs\" and \"Live demo\" visible, with Quick start and At the till hidden behind the chevron, and long import lines in code blocks wrap mid-statement.", "where": "home.phone.01 header; quick-start.phone.03 code block"},
+    "C7": {"score": 9, "worst_defect": "Lighthouse mobile still flags \"unused-javascript: Est savings of 53 KiB\" and LCP 2.3 s on the home page; otherwise titles, descriptions, JSON-LD, llms.txt, sitemap, robots, search API and a real 404 are all in place.", "where": "tech.json lighthouse \"/\""}
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "A shop owner can't find out what to run the till on at the counter: the site says tablets, phones and iPads are untested, yet its phone home page shows the till on a phone, and the setup steps never name a device, browser or scanner arrangement.",
+    "where": "home.phone.01 hero image; text/home.txt \"Before you start\"; quick-start step 8",
+    "fix": "Add one \"Counter setup\" line to Before you start and At the till: for example, a laptop or desktop running Chrome, one tab per till, a USB barcode scanner that types like a keyboard, receipts through the browser print dialog. Caption the phone screenshot \"phone layout, not tested yet\"."
+  },
+  "mean": 8.0
+}

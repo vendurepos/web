@@ -1,0 +1,48 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {
+      "score": 9,
+      "worst_defect": "Phone hero opens with a ~100px empty band above the \"Pre-release · plugin 0.3.0\" pill, and the phone header keeps only \"Docs\" and \"Live demo\", dropping \"Quick start\" from the nav",
+      "where": "home.phone.01"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "In the comparison table the \"Refund a sale at the till\" row's store cell is a 4-line paragraph (\"No, not on plugin 0.3.0: … two Admin API calls; see Plugin setup\") that buries the key caveat inside a table cell and breaks the scan rhythm of the other one-line cells",
+      "where": "home.desktop.02"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Quick start has no images at all: step \"8. Sign in and make a sale\" is a text-only a–i list and \"Check it worked\" is five bullets, with no picture of the \"Sign in to Vendure\" form or of the synced order in the Vendure Dashboard, so the reader cannot see what success looks like",
+      "where": "quick-start.desktop.03, quick-start.desktop.04, quick-start.phone.07, quick-start.phone.08"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Troubleshooting's \"N till updates need attention\" bullet nests \"At the counter:\" and \"For the store owner:\" paragraphs, a \"To find the line in the sync log\" collapsible and an errorCode sub-list inside one list item; connect-a-till also puts \"Where your data goes\" ahead of \"Enter your store details\", interrupting the task flow",
+      "where": "troubleshooting.desktop.01, troubleshooting.phone.03, connect-a-till.desktop.01"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "At-the-till's cashier-sheet and closure figures sit as narrow centred boxes inside a second padded frame (double border, ~50px dead grey), with captions starting at the figure edge (x≈511/447) instead of the 302px text column, unlike the full-width payment figure; on home the \"Every sale lands once\" card has an uneven empty gap above its button",
+      "where": "at-the-till.desktop.03, at-the-till.desktop.04, home.desktop.01"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "On phone the inline-code pill \"packages/vendure–plugin/CHANGELOG.md\" breaks mid-pill across two lines; troubleshooting phone collapses to a double-indented ~16-line paragraph (\"Any other code: the till has no retry…\"); the home phone till screenshot's category chips clip at \"Gif\"",
+      "where": "changelog.phone.01, troubleshooting.phone.03, home.phone.01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The 404 page offers only Home / Docs / Live demo buttons with no list of doc pages to recover to, and the rest of the screen is empty; Lighthouse flags 53 KiB unused JavaScript on /",
+      "where": "not-found.desktop.01, tech.json"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "Quick start step \"8. Sign in and make a sale\" and \"Check it worked\" are text only: no visual of the sign-in screen or of the resulting order in Vendure, so a developer cannot see what success looks like",
+    "where": "quick-start.desktop.03, quick-start.desktop.04",
+    "fix": "Add a screenshot of the filled \"Sign in to Vendure\" form under step 8a and one of the synced order (tally-pos payment settled, fulfilment delivered) in the Vendure Dashboard under \"Check it worked\""
+  },
+  "mean": 8.4
+}
