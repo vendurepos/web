@@ -1,0 +1,48 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "Home tells me what it is (\"Point of sale for Vendure\", live demo, till screenshot) but never answers in plain words whether my two staff can sell with it tomorrow; instead the owner meets developer requirements such as \"Node ^20.19 || >=22.12\" and \"RXDB_PREMIUM\" in \"Before you start\".",
+      "where": "home.desktop.02 / home.phone.04-05, \"Before you start\""
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "Honest to a fault, but the refund caveat is alarming and left unresolved for an owner: \"No, not on plugin 0.3.0: refund in the Vendure Dashboard. The refund stays Pending until an administrator settles it with two Admin API calls\".",
+      "where": "home \"Live demo or your own store\" table, refund row (home.desktop.02, home.phone.03)"
+    },
+    "C3": {
+      "score": 7,
+      "worst_defect": "The path to a till runs through nine developer steps (migration, bearer auth, CORS, tax strategy) that only my freelancer can do, and the counter hardware question ends in \"tablets and phones, an iPad included, are not tested yet\", so a shop with an iPad at the counter cannot tell if it will work.",
+      "where": "quick-start.desktop.01-03; home \"Before you start\"; limitations.desktop.01"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Troubleshooting hands the non-developer owner a developer task: \"For the store owner: copy the refused line from this till's sync log, and match its errorCode in the list below\", then says \"Any other code: the till has no retry or skip, and fixing the store does not make it send the update again\".",
+      "where": "troubleshooting.desktop.01-02"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "Polished in light and dark, but the docs pages are long walls of text and code chips with few visual anchors; At the till opens with the plugin-missing message rather than a cashier overview.",
+      "where": "at-the-till.desktop.01; connect-a-till.desktop.01"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "On phone the tax-strategy table turns into stacked cards that repeat \"Channel pricing\" with the column header shown as a bare code chip \"taxOptions.orderTaxCalculationStrategy\"; and the phone home nav shows only \"Docs\" and \"Live demo\", so Quick start and At the till sit behind the chevron.",
+      "where": "quick-start.phone.06; home.phone.01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Very clean surface (all 200s, Lighthouse 97-100, llms.txt, sitemap, search finds \"offline\"); only nit is the 404 page logging \"Failed to load resource: the server responded with a status of 404 ()\" and carrying no JSON-LD.",
+      "where": "tech.json, 404 page"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "A shop owner cannot learn whether their counter setup will work: the site says \"tablets and phones, an iPad included, are not tested yet\" and refunds on their own store \"stay Pending until an administrator settles it with two Admin API calls\", with no owner-level answer to either.",
+    "where": "home \"Before you start\" and refund row (home.desktop.02); limitations.desktop.01",
+    "fix": "Add a short \"For shop owners\" box on home or At the till: the exact counter hardware that is known to work (desktop Chrome + USB scanner + standalone card terminal), what to do today on an iPad, and a step-by-step Dashboard refund path the owner can follow without API calls."
+  },
+  "mean": 8.3
+}

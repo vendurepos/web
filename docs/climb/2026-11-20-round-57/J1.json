@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero itself is clear, but the lower half of the home page switches to server-admin detail a newcomer can't use: the refund row says \"The refund stays Pending until an administrator settles it with two Admin API calls\", and \"Before you start\" lists \"Node ^20.19 || >=22.12\" and \"RxDB Premium licence token (RXDB_PREMIUM)\".", "where": "home.desktop.02 ('Live demo or your own store' table, 'Before you start'); home.phone.04"},
+    "C2": {"score": 8, "worst_defect": "The comparison table says the demo sends \"anonymous usage events to ph.wcpos.com\", but the home page never says who or what wcpos is. A visitor sees data going to an unrelated domain with no explanation; Connect a till explains it later as a self-hosted PostHog server.", "where": "home.desktop.02 table row 'Sales reach Vendure, once each, even offline'; home.phone.04"},
+    "C3": {"score": 8, "worst_defect": "Step 5 has a collapsed \"If your store already allows vendurepos.vercel.app\". A new developer has never seen that domain and can't tell whether it applies to them. Step 8c's barcode field also sends them to another page and a second migration in the middle of the first sale.", "where": "quick-start.desktop.03 / quick-start.phone.06 (step 5 details); quick-start.phone.08 step c 'how to add one'"},
+    "C4": {"score": 8, "worst_defect": "The Changelog is written for maintainers: \"order.create v5 custom lines are real order lines on a plugin-owned, disabled 'POS custom item' variant\", \"(ADR 0005)\", \"Released the same day as 0.2.0, a few hours later\". Its plain-language 'In short' lines are buried under internal protocol and ADR references.", "where": "changelog.desktop.01"},
+    "C5": {"score": 7, "worst_defect": "Below the two bordered cards, 'What it does today' turns into eight unstyled heading-and-paragraph blocks with no icons or other visuals, so the section reads as a wall of grey text. In the comparison table, the four-line refund cell next to one-word 'Yes' cells makes the rows uneven.", "where": "home.desktop.01 bottom to home.desktop.02 top; home.desktop.02 table 'Refund a sale at the till'"},
+    "C6": {"score": 8, "worst_defect": "On a phone, the quick start's tax table becomes stacked cards. In each card the column header 'taxOptions.orderTaxCalculationStrategy' appears as an unlabelled code pill above the value, which makes it look like two settings rather than a label and its value.", "where": "quick-start.phone.06 (step 6 table)"},
+    "C7": {"score": 9, "worst_defect": "Mobile Lighthouse on / flags LCP at 2.6 s (score 0.89) with about 53 KiB of unused JavaScript and render-blocking requests. Everything else is solid: titles, descriptions, JSON-LD, llms.txt, sitemap, search API and a real 404.", "where": "tech.json lighthouse['/']"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "After a clear hero, the home page's 'Live demo or your own store' table and 'Before you start' block give a first-time visitor setup details they can't use yet (two Admin API calls to settle a refund, Node semver ranges, an RXDB_PREMIUM licence token, an unexplained ph.wcpos.com). It reads like the docs, not a pitch, and makes the product look harder to adopt than the demo suggests.",
+    "where": "home.desktop.02 / home.phone.04",
+    "fix": "Cut the refund cell to 'No, refund in the Vendure Dashboard on plugin 0.3.0 (see Limitations)' and say who runs ph.wcpos.com in a few words. Shrink 'Setting up the store' to one line ('Vendure 3.6+ on Postgres, plus our npm plugin'), and leave the Node range and RxDB licence to the quick start."
+  },
+  "mean": 8.0
+}
