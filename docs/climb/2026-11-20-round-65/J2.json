@@ -1,0 +1,48 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The two hero buttons are 'Live demo' and the developer 'Quick start' (npm install, migrations, CORS). The cashier guide 'At the till' (open register, sell, if the internet drops, close the day) only shows up as a text link in the last paragraph of the home page. A shop owner asking whether staff can sell tomorrow gets pointed at server setup first.",
+      "where": "home.desktop.01 hero CTAs; home.desktop.02 final paragraph"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The home page never says who runs app.vendurepos.com or what the hosted till costs. 'Free' only appears in JSON-LD (isAccessibleForFree), and the 'Pre-release · plugin 0.3.0' badge sits next to it with no word on support or pricing.",
+      "where": "home.desktop.01 hero; home.desktop.02 'Before you start'"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 8 'Sign in and make a sale' has no screenshot of the sign-in screen. On the device-key route you also have to add a missing permission by hand: 'the role it creates (vendurepos-pos-till) has the step 4 permissions except ReadOrder'. That is easy for a non-developer to miss, and if they do the till's order history is refused.",
+      "where": "quick-start.desktop.03/04 step 8"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Troubleshooting puts counter-staff guidance ('N till updates need attention', keep printed Z reports) on the same page as SuperAdmin GraphQL (tallyNeedsAdminCommands / tallyResolveNeedsAdmin). The At the till screenshots don't agree on the clock: 'Last synced 10:06 PM' in one, 'open since 22:06' in the next.",
+      "where": "troubleshooting text; at-the-till.desktop.02/03"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The cashier-sheet and day-closure screenshots sit in oversized frames with large empty areas around them. On the home page, 'What it does today' shows two boxed cards and then eight unboxed items, so the section looks half-finished.",
+      "where": "at-the-till.desktop.03/04; home.desktop.01/02 'What it does today'"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "On a phone the home header shows only 'Docs' and 'Live demo'. 'Quick start' and 'At the till' are hidden behind the chevron. At the till runs to nine phone screens with no back-to-top or section jump.",
+      "where": "home.phone.01 header; at-the-till.phone.01-09"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The 404 page offers only Home / Docs / Live demo buttons, with no search box or list of docs, above a large empty area. Lighthouse mobile also flags 53 KiB of unused JavaScript and 140 ms of render-blocking resources (perf 98).",
+      "where": "not-found.desktop.01 / not-found.phone.01; tech.json lighthouse"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "The home page sends a shop owner to the developer Quick start. The cashier guide (open register, take payment, if the internet drops, close the day) is a text link at the bottom of the page and is hidden behind the chevron in the phone header.",
+    "where": "home.desktop.01 / home.phone.01",
+    "fix": "Add a third hero button 'A day at the till', or a short card row linking to the At the till sections (open register, take payment, if the internet drops, close the day). Show 'At the till' in the phone header next to Docs and Live demo."
+  },
+  "mean": 8.1
+}

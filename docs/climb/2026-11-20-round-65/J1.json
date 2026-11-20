@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero passes the five-second test, but the 'Before you start' block that follows turns into a developer spec sheet a newcomer cannot parse: 'Node ^20.19 || >=22.12', 'your own RxDB Premium licence token (RXDB_PREMIUM)', 'MySQL, MariaDB and SQLite are not supported', all shown before the closing CTAs.", "where": "home desktop slice 02 / phone slices 04-05, 'Before you start' > 'Setting up the store'"},
+    "C2": {"score": 8, "worst_defect": "The demo row of the comparison table says 'All it sends is anonymous usage events to ph.wcpos.com, with no cookie'. That is a third-party-looking domain the home page never explains (who is wcpos?), so a careful line reads as something being hidden. Only Connect a till says it is a self-hosted PostHog server.", "where": "home desktop slice 02 / phone slice 04, table row 'Sales reach Vendure, once each, even offline'"},
+    "C3": {"score": 8, "worst_defect": "Step 6 asks a newcomer to change store-wide tax strategy ('These settings are store-wide and also affect the web shop; the plugin does not choose them for you'). What this does to the live storefront is hidden in a collapsed 'Why these pairings', so the riskiest step of setup is also the least explained.", "where": "quick-start desktop slice 03 / phone slices 06-07, '6. Choose tax rounding for your pricing mode'"},
+    "C4": {"score": 8, "worst_defect": "Some limitation bullets are hard to understand, e.g. 'When the store refuses a till update ... the till does not send it again, except a closure refused for its number, which it renumbers and sends once. Later till updates for that register stay on this till'. A reader cannot tell what action to take.", "where": "limitations desktop slice 01, 'At the counter' second-to-last bullet"},
+    "C5": {"score": 8, "worst_defect": "After the hero screenshot the home page is ten feature blocks of plain text (two bordered cards, then eight unboxed heading+paragraph pairs) with no icon or second image. The middle of the page looks like a document rather than a product page.", "where": "home desktop slices 01-02, 'What it does today'"},
+    "C6": {"score": 8, "worst_defect": "On phone the comparison table becomes a stacked list that repeats 'Live demo: Yes / Your Vendure store: Yes' row after row, and the refund cell runs to four lines. The section fills most of two slices for seven facts.", "where": "home phone slices 03-04, 'Live demo or your own store'"},
+    "C7": {"score": 9, "worst_defect": "Mobile Lighthouse is 98 but still flags 53 KiB unused JavaScript and render-blocking requests (LCP 2.3 s). Docs pages carry only BreadcrumbList JSON-LD, no article markup.", "where": "tech.json lighthouse '/' failing audits; pages docs.desktop jsonLd"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The home page's own demo row sends the visitor's events to 'ph.wcpos.com' without saying who runs that domain or why it is not vendurepos.com. A first-time visitor who has never heard of VendurePOS meets an unexplained outside domain at the exact moment the site asks for trust.",
+    "where": "home desktop slice 02 / phone slice 04, table cell 'No: the demo store lives in your browser. All it sends is anonymous usage events to ph.wcpos.com, with no cookie'",
+    "fix": "Name the owner in that cell, e.g. 'to our self-hosted PostHog analytics server (ph.wcpos.com, run by the team behind VendurePOS), with no cookie', and keep the link to Connect a till for the event list."
+  },
+  "mean": 8.1
+}
