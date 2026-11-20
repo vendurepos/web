@@ -34,3 +34,13 @@ test('no page says the plugin is not on npm', () => {
     }
   }
 });
+
+test('the home SoftwareApplication JSON-LD carries the plugin version (round 69, J5 C7)', () => {
+  const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
+  const block = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+  assert.ok(block);
+  const data = JSON.parse(block[1]);
+  const app = data['@graph'].find((item) => item['@type'] === 'SoftwareApplication');
+  assert.ok(app);
+  assert.equal(app.softwareVersion, version);
+});
