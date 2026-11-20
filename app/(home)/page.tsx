@@ -157,8 +157,8 @@ export default function HomePage() {
         <h1 className="mt-6 mb-6 text-4xl sm:text-5xl font-bold tracking-tight">
           Point of sale for Vendure
         </h1>
-        {/* Round 42, J1 C1: the hero names who it is for. Round 43, J4 C1: three sentences; the guarantee lives on the 'Every sale lands once' card. */}
-        <p className="max-w-2xl mx-auto text-base sm:text-lg text-fd-muted-foreground">
+        {/* Round 42, J1 C1: the hero names who it is for. Round 43, J4 C1: three sentences; the guarantee lives on the 'Every sale lands once' card. Round 82, J4 C1: balanced, so 'connection drops.' is not a widow. */}
+        <p className="max-w-2xl mx-auto text-base sm:text-lg text-fd-muted-foreground text-balance">
           VendurePOS is an open-source till for <a href="https://vendure.io" className="underline">Vendure</a>,
           {/* Source: https://docs.vendure.io/ "The open source headless commerce framework, community plugins, and the commercial paid plans, all in one place." (read 2026-11-18) */}
           {' '}the open-source headless commerce framework. It is made for shops that sell online with Vendure and

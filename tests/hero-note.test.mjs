@@ -212,3 +212,14 @@ test('phone header keeps a visible Docs link on the home page only', () => {
   assert.equal(demo.replace(/<!-- -->/g, '').replace(/<[^>]+>/g, '').trim(), 'Live demo');
   assert.ok(!anchors(docs).some(phoneDemo), 'docs layout has no phone Live demo link');
 });
+
+test('hero lede balances its lines (round 82, J4 C1)', () => {
+  const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
+  const text = html.indexOf('It runs in the browser and keeps selling when the connection drops');
+  assert.ok(text !== -1);
+  const ledeStart = html.lastIndexOf('<p', text);
+  assert.ok(ledeStart !== -1);
+  const tag = html.slice(ledeStart, html.indexOf('>', ledeStart) + 1);
+  const classes = (tag.match(/\sclass="([^"]*)"/)?.[1] ?? '').split(/\s+/);
+  assert.ok(classes.includes('text-balance'));
+});
