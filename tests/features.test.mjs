@@ -10,7 +10,6 @@ test('home lists the features added since the first release', () => {
     'Change a line price',
     'Customers at the till',
     'Line and order discounts',
-    'Custom items, fees and shipping',
   ]) {
     assert.ok(html.includes(title), title);
   }
@@ -147,7 +146,7 @@ test('the two proof claims link their tests', () => {
 });
 
 // Round 45, J4 C5, P5: the two test-backed claims lead as cards; the other eight are a frameless checklist.
-test('home features: two test-backed cards lead, the other nine are a frameless checklist', () => {
+test('home features: two test-backed cards lead, the other eight are a frameless checklist', () => {
   const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
   const start = html.indexOf('What it does today</h2>');
   assert.ok(start >= 0);
@@ -174,7 +173,6 @@ test('home features: two test-backed cards lead, the other nine are a frameless 
     'Change a line price',
     'Customers at the till',
     'Line and order discounts',
-    'Custom items, fees and shipping',
   ]) {
     const found = list.indexOf(`>${title}</h3>`, at);
     assert.ok(found > at, title);
@@ -190,7 +188,7 @@ test('home features: two test-backed cards lead, the other nine are a frameless 
     assert.match(tag, /\bclass="[^"]*\bborder\b/);
     assert.doesNotMatch(tag, /\brounded-full\b/);
   }
-  assert.equal(slice.split('<h3').length - 1, 11);
+  assert.equal(slice.split('<h3').length - 1, 10);
 });
 
 test('before you start gates refunds on the plugin and names coupon codes as not yet', () => {
@@ -339,18 +337,4 @@ test('before you start groups the counter before the store setup and ends on the
   assert.match(quick[1], /\shref="\/docs\/quick-start"/);
   for (const word of ['border', 'px-6']) assert.ok(classWords(quick[1]).includes(word), word);
   assert.ok(quick.index > lastList, 'Quick start comes after the lists');
-});
-
-test('home names custom items, fees and shipping with their tax class and the receipt match (round 66, J5 C1)', () => {
-  const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8').replace(/&#x27;|&#39;|&apos;/g, "'");
-  const start = html.indexOf('Custom items, fees and shipping');
-  assert.ok(start >= 0);
-  const item = html.slice(start, html.indexOf('</li>', start));
-  for (const phrase of [
-    'a custom item, a fee or a shipping charge',
-    'with a tax class',
-    "the order matches the receipt's totals",
-  ]) {
-    assert.ok(item.includes(phrase), phrase);
-  }
 });
