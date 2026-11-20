@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero is clear (\"Point of sale for Vendure\", Vendure explained, Live demo / Quick start), but the lower half of the home page turns into server-admin detail a newcomer cannot parse: the refund row says \"The refund stays Pending until an administrator settles it with two Admin API calls\", and 'Before you start' lists \"Node ^20.19 || >=22.12\" and \"RxDB Premium licence token (RXDB_PREMIUM)\".", "where": "home.desktop.02 ('Live demo or your own store' table, 'Before you start'); home.phone.04-05"},
+    "C2": {"score": 8, "worst_defect": "The demo row says \"All it sends is anonymous usage events to ph.wcpos.com\" but nowhere explains what wcpos.com is or how it relates to VendurePOS, so an unknown third-party domain shows up on a trust line.", "where": "home.desktop.02 'Sales reach Vendure, once each, even offline' row; home.phone.04"},
+    "C3": {"score": 8, "worst_defect": "The quick start is complete and ordered, with commands and a 'Check it worked' list, but it has no image at all (no [image:] marker in quick-start.txt). Nothing shows the till's sign-in screen or a synced order in the Vendure Dashboard, and step 8a just says \"Enter the store URL ... your administrator email and password\" without the 'Email and password' / 'Device key' choice that Connect a till says comes first.", "where": "quick-start.desktop.03-04 step 8 and 'Check it worked'; connect-a-till.desktop.01 'Open your till'"},
+    "C4": {"score": 8, "worst_defect": "The changelog bullets read as internal engineering notes, not release notes: \"GET /tally/v1/info advertises order.create 1–5 (ADR 0005)\", \"Migration TallyPosV51790900000000 adds the v5 custom fields\", plus an aside \"Not in the release notes: ...\". Only the 'In short' line speaks to a store owner.", "where": "changelog.desktop.01 / changelog.phone.01"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' shows two bordered cards with buttons ('Keeps selling offline', 'Every sale lands once') followed by eight plain unboxed text blocks, so the section looks like two styles stitched together. It is also long, small grey prose with no icons or visual anchors.", "where": "home.desktop.01 bottom to home.desktop.02 top"},
+    "C6": {"score": 8, "worst_defect": "No overflow and the tables collapse well, but long code lines wrap mid-expression on a 390 px screen. In step 3, 'generateMigration(config, { name: / 'AddVendurePos', outputDir: / './src/migrations' })' breaks across lines, which makes the snippet hard to check by eye before copying.", "where": "quick-start.phone.03 (generate-migration snippet); quick-start.phone.06 tax snippet"},
+    "C7": {"score": 9, "worst_defect": "Small: Lighthouse on / still flags about 53 KiB of unused JavaScript and render-blocking requests (130 ms), with LCP 2.3 s. Everything else is in place: titles, descriptions, OG card, JSON-LD, llms.txt, search API, sitemap, robots and a real 404.", "where": "tech.json lighthouse['/'].failing"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "After a clear hero, the home page's comparison table and 'Before you start' block are written for a Vendure server admin, not a first-time visitor. A newcomer reads \"settles it with two Admin API calls\", \"Node ^20.19 || >=22.12\", \"RxDB Premium licence token (RXDB_PREMIUM)\" and \"ph.wcpos.com\" and concludes the product is not for them yet.",
+    "where": "home.desktop.02 / home.phone.04-05",
+    "fix": "On the home page, shorten the refund cell to \"Not yet: refund in the Vendure Dashboard\" and say in a few words who ph.wcpos.com is. Move the Node range and the RXDB_PREMIUM self-host note to Overview or Plugin setup, keeping a one-line \"Needs Vendure 3.6+ on Postgres\" here."
+  },
+  "mean": 8.1
+}
