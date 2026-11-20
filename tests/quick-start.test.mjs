@@ -369,3 +369,14 @@ test('a folded callout is a plain bordered disclosure, not a callout frame; plai
   assert.ok(start >= 0);
   assert.ok(html.slice(start, title).includes('<svg'));
 });
+
+test('step 4 links its device-key pointer to the section (round 80, J4 C3)', () => {
+  const paragraph = Array.from(html.matchAll(/<p\b[^>]*>[\s\S]*?<\/p>/g))
+    .find(([p]) => textOf(p).startsWith('For a key per till instead, see'));
+  assert.ok(paragraph);
+  const link = paragraph[0].match(/<a\b[^>]*\bhref="#optional-a-device-key-for-each-till"[^>]*>([\s\S]*?)<\/a>/);
+  assert.ok(link);
+  assert.equal(textOf(link[1]), 'Optional: a device key for each till');
+  assert.doesNotMatch(paragraph[0], /<strong\b/);
+  assert.match(html, /<[^>]+\bid="optional-a-device-key-for-each-till"/);
+});
