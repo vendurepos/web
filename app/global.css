@@ -37,10 +37,15 @@ figure.shiki .fd-scroll-container,
   overflow-wrap: break-word;
 }
 
+/* Round 83, J4 C6: prose code is a faint tint with no border and no vertical padding, so it sits on the text line. */
 /* Keep short prose code together and close the pill ends of wrapped inline code. */
 .prose :not(pre) > code {
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
+  border-width: 0;
+  padding: 0 0.25em;
+  border-radius: 4px;
+  line-height: 1;
 }
 
 .prose code[data-nowrap] {
