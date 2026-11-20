@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "The 25-sale acceptance and 200-send claims link to test source on main without identifying a passing run or the release tested.",
+      "where": "text/home.txt, 'Keeps selling offline' and 'Every sale lands once'; tech.json, home.desktop.links"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 6 prescribes different store-wide tax strategies for inclusive and exclusive channels, but 'A store mixing pricing modes must account for the store-wide strategy' gives no actionable choice or verification procedure for that case.",
+      "where": "shots/quick-start.desktop.03.jpg; text/endpoint_llms_full_txt.txt, '6. Choose tax rounding for your pricing mode'"
+    },
+    "C4": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "text/plugin-setup.txt; text/connect-a-till.txt; text/troubleshooting.txt; text/endpoint_api_search_query_offline.txt"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.desktop.02.jpg; shots/home.desktop-dark.jpg; desktop documentation slices"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "All home and quick-start phone slices; shots/plugin-setup.phone.02.jpg; shots/plugin-setup.phone.03.jpg; tech.json phone overflow measurements"
+    },
+    "C7": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "tech.json; text/endpoint_llms_txt.txt; text/endpoint_llms_full_txt.txt; search, robots and sitemap captures; shots/og-image.png; not-found screenshots"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "The tax configuration instructions leave developers with mixed inclusive/exclusive channels to choose between two conflicting recommendations for one store-wide setting.",
+    "where": "Quick start, step 6; shots/quick-start.desktop.03.jpg; text/endpoint_llms_full_txt.txt, 'Why these pairings'",
+    "fix": "Add an explicit mixed-pricing case stating the supported configuration or its limitation. Include a concrete check of POS and storefront tax totals for both channel modes."
+  },
+  "mean": 9.1
+}

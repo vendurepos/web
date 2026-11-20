@@ -1,0 +1,48 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero is clear in seconds (\"Point of sale for Vendure\", Vendure explained, Live demo / Quick start), but the lower home page turns into server-admin talk a newcomer can't parse: \"Node ^20.19 || >=22.12\", \"your own RxDB Premium licence token (RXDB_PREMIUM)\" and, in the comparison table, \"The refund stays Pending until an administrator settles it with two Admin API calls\".",
+      "where": "home.desktop.02 (Live demo or your own store table, Refund row; Before you start > Setting up the store); home.phone.04-05"
+    },
+    "C2": {
+      "score": 8,
+      "worst_defect": "The home table says the demo \"sends ... anonymous usage events to ph.wcpos.com\", a domain on another brand the visitor has never heard of, and the home page never says what wcpos is. Only Connect a till explains that it is a self-hosted PostHog server, so here it reads like unexplained third-party tracking.",
+      "where": "home.desktop.02, table row \"Sales reach Vendure, once each, even offline\"; home.phone.04"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 8a-b asks for \"the optional channel token to select a channel\", and the device-key path says to paste \"the till's channel token\", but no page says where in the Vendure Dashboard to find that token.",
+      "where": "quick-start.desktop.03 (8. Sign in and make a sale, item b); quick-start.phone.08; connect-a-till.desktop.01 (Enter your store details)"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Quick start step 3 says \"Review the generated migration and include it in config.dbConnectionOptions.migrations (or your existing migration glob)\" with no snippet. The only migrations-array example is on Plugin setup, and it is for the bundled migrations the reader was told not to mix in.",
+      "where": "quick-start.desktop.02 top; quick-start.phone.03; plugin-setup.desktop.01"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "In \"What it does today\", the first two features sit in bordered cards with buttons and the other eight are plain unboxed text in a grid, so the section looks half-styled. The comparison table's Refund cell is a four-line paragraph among one-word \"Yes\" cells.",
+      "where": "home.desktop.01 bottom to home.desktop.02 top; home.desktop.02 table"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "On the phone, the hero screenshot is cropped to the Products tab with two product cards, and the cart sits behind a \"Cart (3) · €20.09\" tab. The caption \"A sale in progress on the live demo till\" therefore shows no sale. Quick start is also missing from the phone top bar (only Docs and Live demo show).",
+      "where": "home.phone.01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Lighthouse mobile still flags \"unused-javascript: Est savings of 53 KiB\" and render-blocking requests (140 ms) on /, with LCP 2.4 s. Everything else holds: a real 404, JSON-LD, llms.txt, the search API, the sitemap and the share card.",
+      "where": "tech.json lighthouse['/']"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "After a clear hero, the home page's \"Live demo or your own store\" table and \"Before you start\" lists talk to someone already running a Vendure server: Admin API calls to settle refunds, semver Node ranges, an RXDB_PREMIUM licence token, and an unexplained ph.wcpos.com. A first-time visitor deciding whether to try the demo hits a wall of insider detail.",
+    "where": "home.desktop.02 / home.phone.04-05",
+    "fix": "On the home page, shorten the Refund cell to \"No on plugin 0.3.0: refund in the Vendure Dashboard (see Limitations)\". Move the Node range and the RXDB_PREMIUM note to the Quick start and Connect a till pages, and leave a single \"Needs Vendure 3.6+ on Postgres\" line on the home page."
+  },
+  "mean": 8.1
+}

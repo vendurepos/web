@@ -1,0 +1,48 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "On a phone the top bar shows only \"Docs\" and \"Live demo\"; the page a shop owner actually wants, \"At the till\" (the cashier guide), is hidden until you open the chevron menu, and the hero never says in plain words that a developer has to install the plugin before staff can sell.",
+      "where": "home.phone.01 (header and hero)"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "The hero badge \"Pre-release · plugin 0.3.0\" is honest but doesn't tell an owner whether it is fit for real takings today; the till app has a separate version (0.1.0), which only the changelog mentions.",
+      "where": "home.desktop.01 hero badge; changelog.phone.01"
+    },
+    "C3": {
+      "score": 7,
+      "worst_defect": "On a real store, refunds can't be done at the till: \"No, not on plugin 0.3.0: refund in the Vendure Dashboard. The refund stays Pending until an administrator settles it with two Admin API calls\". A shop owner reads that as \"my staff can't give a customer their money back without the freelancer\". The counter workaround (Pay out the cash, refund the card on the terminal) appears only on At the till, not where the owner first reads the problem.",
+      "where": "home.desktop.02 / home.phone table (Refund row); limitations.phone.01 (\"a query for the refund's ID, then the settleRefund mutation\")"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "At the till lists what the Z report contains but shows no picture of a printed receipt or Z report, only the closure screen, so an owner can't see what the customer or the end-of-day paper looks like. The Overview \"Next steps\" cards also leave out Connect a till and Troubleshooting.",
+      "where": "at-the-till.desktop.04 (Count the drawer and close the day); docs.desktop.01 (Next steps)"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "The cashier sheet screenshot on At the till is narrow and centred with wide empty margins, so it reads small next to the full-width payment screen image above it.",
+      "where": "at-the-till.desktop.03"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "Long lines in the Quick start code blocks wrap on a phone (the migration and CORS lines), which makes them hard to read or copy correctly from a phone.",
+      "where": "quick-start.phone.03"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Lighthouse mobile flags unused JavaScript (about 53 KiB) and render-blocking requests on / and /docs/quick-start (LCP 2.3–2.4 s). Otherwise everything is clean: all endpoints return 200, there is no overflow, and no image lacks alt text.",
+      "where": "tech.json lighthouse (/ and /docs/quick-start)"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "The home comparison table tells a shop owner that, on their own store, a refund \"stays Pending until an administrator settles it with two Admin API calls\". To a non-developer that means staff can't refund a customer at the counter, and the plain-words workaround is buried on another page.",
+    "where": "home.desktop.02 / home.phone (Live demo or your own store table, Refund row); limitations.phone.01",
+    "fix": "In that home cell (and the Limitations bullet), first say in plain words what staff do at the counter: refund the order in the Vendure Dashboard, use Pay out for cash handed back, and refund the card on the terminal. Link to At the till › Refund a sale, and leave the Admin API settle step as a note for the developer."
+  },
+  "mean": 8.1
+}
