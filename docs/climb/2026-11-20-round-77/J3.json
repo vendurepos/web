@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The tax guide prescribes different store-wide strategies for inclusive and exclusive channels, but says only that a store mixing pricing modes 'must account for the store-wide strategy', leaving its configuration unresolved.",
+      "where": "text/endpoint_llms_full_txt.txt, Quick start, step 6, 'Why these pairings'"
+    },
+    "C4": {
+      "score": 9,
+      "worst_defect": "Quick start sends pnpm users to the external plugin README for the device-key Dashboard setting instead of linking the complete instructions already provided in Connect a till.",
+      "where": "text/quick-start.txt, 'Optional: a device key for each till'; text/connect-a-till.txt, 'Make the key button available in a pnpm project'"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop-dark.jpg; shots/home.desktop.01.jpg; shots/plugin-setup.desktop.02.jpg"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.phone.01.jpg through home.phone.05.jpg; shots/quick-start.phone.01.jpg through quick-start.phone.09.jpg"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "tech.json; text/endpoint_llms_txt.txt; text/endpoint_llms_full_txt.txt; text/endpoint_api_search_query_offline.txt; shots/og-image.png"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "A developer whose Vendure store mixes tax-inclusive and tax-exclusive channels must guess how to satisfy the conflicting tax-strategy recommendations.",
+    "where": "text/endpoint_llms_full_txt.txt, Quick start, step 6, 'Why these pairings'",
+    "fix": "State the supported configuration for mixed pricing modes, or explicitly state that this configuration is unsupported. Include the expected tax-total checks for both channel modes and explain the effect on the existing web shop."
+  },
+  "mean": 9.0
+}

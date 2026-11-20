@@ -1,0 +1,48 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero says what it is (\"open-source point of sale for Vendure\", badge \"Pre-release · plugin 0.3.0\") but never says who it is not for or how it compares with Shopify POS, Square or Lightspeed. A merchant weighing a hosted till gets no 'choose this if / choose something else if' line. The footer gives no maker beyond \"MIT licensed. Built with TallyUI.\"",
+      "where": "home.desktop.01 (hero), home footer"
+    },
+    "C2": {
+      "score": 7,
+      "worst_defect": "There are signs of a thinly maintained project. The changelog's last plugin release is 0.3.0 on 2026-10-06 (\"Released the same day as 0.2.0, a few hours later\"), with nothing in the six weeks since. A known bug is documented but not fixed: \"Not in the release notes: in 0.2.0 and 0.3.0 this role has no ReadOrder\". No maintainer, company or support channel is named anywhere. The demo sends \"anonymous usage events to ph.wcpos.com\", a domain the home page never explains.",
+      "where": "changelog.desktop.01; home.desktop.02 (demo vs store table); footer"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The path works, but a fresh 0.3.0 install still needs a hand-fix: the device-key role lacks ReadOrder, so \"the till's order history is refused until you add it to the role\". Quick start step 6 also changes tax settings that are \"store-wide and also affect the web shop\", a side effect on the live shop that a cautious adopter must accept to get a till running.",
+      "where": "quick-start.desktop.03 (step 6 tax); plugin-setup / changelog (ReadOrder note)"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The Overview's \"Next steps\" cards leave out Connect a till, Troubleshooting and Changelog, which are only in the sidebar. Scanner support also contradicts itself: the home \"Barcode scanners\" card names keyboard-wedge scanners only, while At the till adds \"or the device's camera\" in the same list that says \"Tablets and phones are not tested yet.\"",
+      "where": "docs.desktop.01 (Next steps); at-the-till.phone.01 vs home.desktop.02 (Barcode scanners card)"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "After the first two feature cards, the home feature section becomes a dense two-column text list with no visuals. A buyer comparing it with Square's or Shopify POS's feature pages scans a wall of prose instead of seeing the till do things.",
+      "where": "home.desktop.02 (features below the first two cards)"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "The hero app screenshot is scaled so small on the phone that its category chips are cut off mid-word (\"Gif\"). The phone header shows only Docs and Live demo, so Quick start is hidden behind the chevron.",
+      "where": "home.phone.01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Docs titles are generic, e.g. \"Overview | VendurePOS\", so a search result or tab gives no hint it is the POS docs overview. Otherwise solid: Lighthouse mobile 98/100/100/100, CLS 0, llms.txt, llms-full.txt, sitemap (10 URLs), JSON-LD and /api/search all 200, and the 404 page returns a real 404.",
+      "where": "tech.json (docs page titles)"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The site never says who builds or supports VendurePOS (the footer only says \"MIT licensed. Built with TallyUI.\"). The plugin has not shipped since 0.3.0 on 2026-10-06, and a known ReadOrder role bug is documented (\"Not in the release notes…\") instead of fixed. A sceptic advising a client on a till that handles money cannot judge support or longevity, so they would steer the client to Shopify POS or Square.",
+    "where": "changelog.desktop.01; home footer; home.desktop.01",
+    "fix": "Add a short 'Who builds this' line on home and the docs Overview: maintainer or company, release cadence, issue tracker and support channel. Then ship a plugin patch that adds ReadOrder to the device-key role, or state when it lands."
+  },
+  "mean": 8.1
+}
