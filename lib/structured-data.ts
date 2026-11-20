@@ -1,5 +1,5 @@
 // Schema.org JSON-LD for search engines. No offers, price or rating: pricing is undecided.
-import { GITHUB_URL, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/site';
+import { GITHUB_URL, PLUGIN_VERSION, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/site';
 
 const ORG_ID = `${SITE_URL}/#organization`;
 
@@ -22,6 +22,8 @@ export function homeJsonLd() {
         url: SITE_URL,
         applicationCategory: 'BusinessApplication',
         operatingSystem: 'Web',
+        // Round 69, J5 C7: the installable release, the same version the hero badge names.
+        softwareVersion: PLUGIN_VERSION,
         license: 'https://opensource.org/licenses/MIT',
         isAccessibleForFree: true,
         sameAs: [GITHUB_URL],
