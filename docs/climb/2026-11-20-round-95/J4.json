@@ -1,0 +1,20 @@
+{
+  "judge": "J4",
+  "persona": "Designer",
+  "scores": {
+    "C1": {"score": 9, "worst_defect": "The hero subcopy is a four-line centred paragraph ('VendurePOS is an open-source till for Vendure, the open-source headless commerce framework. It is made for shops ... keeps selling when the connection drops.'). Under it come three CTAs plus a two-line note, so the eye has to get through about seven lines of grey text before reaching the screenshot.", "where": "home.desktop.01 (hero, y≈260-500); home.phone.01"},
+    "C2": {"score": 9, "worst_defect": "The comparison table's 'Live demo' cell says the demo sends 'anonymous usage events to ph.wcpos.com'. That is a domain from a different product, and the cell never says why. It is honest, but it reads as an unexplained third party inside a trust table.", "where": "home.desktop.02, 'Live demo or your own store' table, last row"},
+    "C3": {"score": 8, "worst_defect": "Step 3 asks the reader to create two TypeScript files (src/generate-migration.ts and src/run-migrations.ts) and run them, and then puts the one-line 'npx vendure migrate' alternative for @vendure/create projects in a callout below them. A reader with the default scaffold goes through the long path before finding the short one.", "where": "quick-start.desktop.01-02, '3. Generate and run the migration' and the 'Other ways to run the migration' callout"},
+    "C4": {"score": 8, "worst_defect": "The Troubleshooting right rail nests three levels deep (At the counter > Act on a header notice > Orders line / Till updates line / When till updates need attention / Store settings) across 17 entries. Most of the page's headings are quoted error strings, so it scans as a wall of quotation marks, not as a list of symptoms.", "where": "troubleshooting.desktop.01, 'On this page' rail and 'Act on a header notice'"},
+    "C5": {"score": 8, "worst_defect": "The three till screenshots on At the till use three different widths. The payment screen fills the 836 px column, the cashier sheet is a ~380 px card centred with about 70 px of extra empty space above it and its caption hanging left under the centred image, and the closure is a ~510 px centred card. The page's figure rhythm looks accidental.", "where": "at-the-till.desktop.02 (payment, full width) vs at-the-till.desktop.03 (cashier sheet, y≈830-1240) vs at-the-till.desktop.04 (closure, y≈330-870)"},
+    "C6": {"score": 8, "worst_defect": "The phone hero screenshot is the till's phone layout cropped to two product cards. The category chip row is clipped at the right edge ('Gif'), and the cart and €20.09 total named in the alt text are never visible, so a phone visitor sees a search box and two tiles, not a sale.", "where": "home.phone.01, hero image (y≈1175-1965)"},
+    "C7": {"score": 9, "worst_defect": "The share card crops the till screenshot through the middle of the first product row: the 'In Stock' pills under Canvas Apron to Cotton Beanie are sliced at the bottom edge, and the cart pane ends on a half-visible 'Order discount' button.", "where": "og-image.png, bottom 60 px"}
+  },
+  "overall_worst": {
+    "criterion": "C5",
+    "defect": "On At the till, the only docs page with screenshots, the three figures are set at three unrelated widths (full column, ~380 px centred, ~510 px centred). The narrow ones also carry extra empty space above them and left-hung captions, so the cashier guide's visual rhythm breaks at every figure.",
+    "where": "at-the-till.desktop.02-04",
+    "fix": "Put every till screenshot in the same figure frame: full content width with the card centred on a neutral backdrop, or one fixed max-width. Use the same top and bottom margins for all of them and centre each caption under its image."
+  },
+  "mean": 8.4
+}

@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero passes the five-second test, but the lower home page puts developer jargon in front of a newcomer: the comparison table's refund cell says 'The refund stays Pending until an administrator settles it with two Admin API calls', and 'Before you start' lists 'Node ^20.19 || >=22.12' and 'RxDB Premium licence token (RXDB_PREMIUM)' with no plain-language summary of what a shop owner actually needs.", "where": "home/desktop/02 ('Live demo or your own store' table and 'Before you start'); home/phone/04-05"},
+    "C2": {"score": 7, "worst_defect": "The home page calls the till 'open-source' and 'MIT licensed', then says building and hosting it yourself 'needs your own RxDB Premium licence token (RXDB_PREMIUM)'. It never says this is a paid third-party licence, or whether the hosted till at app.vendurepos.com is free, who runs it, or on what terms, so a newcomer can't tell what using it will really cost.", "where": "home/desktop/02 'Setting up the store' last bullet; home/phone/04-05; connect-a-till text 'Where your data goes'"},
+    "C3": {"score": 8, "worst_defect": "Step 6 'Choose tax rounding for your pricing mode' tells the reader to change store-wide tax strategies that 'also affect the web shop'. Why this is needed sits in a collapsed 'Why these pairings' box, and the page doesn't say whether a sale fails or only rounds differently if the step is skipped, which leaves a live-store owner guessing whether the change is safe.", "where": "quick-start/desktop/03 step 6; quick-start/phone/06-07"},
+    "C4": {"score": 8, "worst_defect": "Plugin setup and Quick start each install and migrate in their own way, and Plugin setup's 'Configure the plugin and migrations' just says 'Follow the quick start for the plugin in plugins, the migration, bearer…', so readers bounce between two pages for one task. The ReadOrder gotcha for device-key roles is also repeated across Quick start, Connect a till and Plugin setup instead of living in one place.", "where": "plugin-setup/desktop/01 'Configure the plugin and migrations'; quick-start text 'Optional: a device key for each till'"},
+    "C5": {"score": 8, "worst_defect": "In 'What it does today', the first two features ('Keeps selling offline', 'Every sale lands once') are bordered cards with buttons and the other eight are plain unboxed text, so the grid looks half-finished. The final Live demo / Quick start button pair is left-aligned under a centred hero.", "where": "home/desktop/01 bottom to home/desktop/02 top; home/desktop/02 bottom CTA row"},
+    "C6": {"score": 8, "worst_defect": "Code blocks on phone soft-wrap mid-expression ('generateMigration(config, { name: / 'AddVendurePos', outputDir: / './src/migrations' })' and the tax import), so the copied shape doesn't match what you read. Step headings with inline code ('2. Add TallyPosPlugin to your existing Vendure config') wrap to three heavy lines.", "where": "quick-start/phone/02-03, quick-start/phone/06"},
+    "C7": {"score": 9, "worst_defect": "Lighthouse (mobile) still flags 'unused-javascript' (est. savings 53 KiB) and render-blocking requests on /, with LCP 2.3 s. Otherwise titles, descriptions, JSON-LD, og-image, llms.txt, search API, sitemap/robots and the 404 status are all in place.", "where": "tech.json lighthouse['/'].failing"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "A newcomer is told VendurePOS is 'open-source' and 'MIT licensed', but the only self-host route 'needs your own RxDB Premium licence token', and the site never says that licence is paid or whether the hosted app.vendurepos.com till is free, who runs it, and on what terms. The visitor can't tell what using it will cost before investing in setup.",
+    "where": "home/desktop/02 'Before you start › Setting up the store'; home/phone/05",
+    "fix": "Add one plain sentence beside 'Before you start' (and in Overview) saying whether app.vendurepos.com is free to use, who operates it, and that RxDB Premium is a separate paid licence needed only to build the till yourself."
+  },
+  "mean": 8.0
+}

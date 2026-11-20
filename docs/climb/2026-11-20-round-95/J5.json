@@ -1,0 +1,48 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero ('Pre-release · plugin 0.3.0', 'Point of sale for Vendure') never says who runs the project or whether the hosted till at app.vendurepos.com is free to use. A sceptic comparing it with paid POS options has to guess both.",
+      "where": "home.desktop.01 hero"
+    },
+    "C2": {
+      "score": 7,
+      "worst_defect": "No page names a maintainer, a support channel or an issue tracker. The footer has only 'MIT licensed. Built with TallyUI. For Medusa, see MedusaPOS.' plus GitHub, npm, Limitations and Changelog, and the last plugin release (0.3.0) was 2026-10-06. The site also states 'MIT licensed' but leaves the cost of the required RxDB Premium licence (RXDB_PREMIUM) for self-hosting unstated.",
+      "where": "home.desktop.02 footer and 'Before you start'; changelog.phone.01"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Step 4 lists the permissions (TallyPosSell, ReadCatalog, ReadSettings, ReadCustomer, CreateCustomer, ReadOrder) but gives no Dashboard steps for creating the role and the cashier administrator. It sends the reader to Connect a till instead.",
+      "where": "quick-start.desktop.02 step 4"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "Troubleshooting speaks the protocol's internal language to an operator. Examples: 'The store must advertise order.create v4 and register v1; plugin 0.3.0 advertises order.create 1–5', and the dense needs_admin/tallyRejected resolution prose. It is accurate but hard to act on.",
+      "where": "quick-start.desktop.04 Troubleshoot; troubleshooting.phone.06"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "On home, 'What it does today' starts with two bordered cards and then switches to unbordered text tiles. Below the hero the page is a dense run of text and tables with few visual anchors.",
+      "where": "home.desktop.01 / home.desktop.02"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "On a phone, home runs to five tall slices. The feature list and the demo-vs-store table stack into long label rows, so the comparison takes about three screens of scrolling.",
+      "where": "home.phone.02–home.phone.04"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The SoftwareApplication JSON-LD on home carries no softwareVersion or offers. The site's own page views go to ph.wcpos.com, but there is no privacy page; the only explanation is a paragraph inside connect-a-till.",
+      "where": "tech.json home JSON-LD; connect-a-till 'Where your data goes'"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The site never says who maintains VendurePOS or where to get help or report a bug. There is no maintainer name, support channel or issue-tracker link in the footer, home or docs, and the plugin was last released 2026-10-06. A sceptic weighing this against a supported POS cannot tell whether anyone will answer.",
+    "where": "home.desktop.02 footer; all pages",
+    "fix": "Add one line to the home footer and the docs Overview. It should name the maintainer, link GitHub issues and a support channel, and say plainly whether app.vendurepos.com is free to use."
+  },
+  "mean": 8.0
+}
