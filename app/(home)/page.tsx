@@ -149,8 +149,8 @@ export default function HomePage() {
   return (
     <main className="max-w-5xl mx-auto w-full px-4">
       <JsonLd data={homeJsonLd()} />
-      <section className="pt-20 pb-16 text-left sm:text-center">
-        {/* Round 32, J4 C1: below 640px the hero is left-aligned and its lead one size smaller; from sm up it is centred as before. */}
+      <section className="pt-8 sm:pt-20 pb-16 text-left sm:text-center">
+        {/* Round 32, J4 C1: below 640px the hero is left-aligned and its lead one size smaller; from sm up it is centred as before. Round 85, J4 C1: the phone hero starts 32px under the header, not 80px. */}
         <span className="rounded-md border border-fd-border px-2 py-0.5 text-sm text-fd-muted-foreground">
           {`Pre-release · plugin ${PLUGIN_VERSION}`}
         </span>
