@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 9, "worst_defect": "The hero says what it is and who it is for, but nothing above the fold says who should NOT pick it over a hosted till such as Shopify POS or Square. A buyer has to scroll to 'Before you start' or open Limitations to learn it is desktop-Chrome only, has no cash-drawer or terminal integration, and refunds go through the Dashboard.", "where": "home/desktop/01 hero"},
+    "C2": {"score": 7, "worst_defect": "The site leads with 'open-source' and 'The till's source is MIT licensed', then says building it yourself needs 'your own RxDB Premium licence token (RXDB_PREMIUM)'. It never says this is a paid, third-party commercial licence or what it costs. A sceptic reads that as hiding that the till cannot be self-hosted from the MIT source alone. The demo row 'All it sends is anonymous usage events to ph.wcpos.com' also names an unexplained third-party domain on the home page.", "where": "home/desktop/02 'Setting up the store' last bullet and comparison table last row; limitations 'Setting up the store'"},
+    "C3": {"score": 8, "worst_defect": "Step 8c asks for 'an existing single text ProductVariant custom field, such as barcode'. Adding that field needs another database migration (connect-a-till 'Then run a database migration'). The quick start never says to add the field before step 3, so a developer who wants scanning finds out only at sign-in and has to go back and migrate again.", "where": "quick-start/desktop/03 step 8c, and connect-a-till 'Enter your store details'"},
+    "C4": {"score": 8, "worst_defect": "The troubleshooting text explains a cashier-facing error in internal protocol jargon: 'The store must advertise order.create v4 and register v1; plugin 0.3.0 advertises order.create 1–5, which includes v4'. It does not say which plugin version to install. The cashier guide also has a whole 'Refund at the till (live demo only)' section for a feature real stores do not have.", "where": "quick-start 9. Troubleshoot; troubleshooting 'Store settings'; at-the-till TOC 'Refund at the till (live demo only)'"},
+    "C5": {"score": 8, "worst_defect": "The docs pages look like the stock docs-framework template: default 'Copy Markdown' / 'Open' buttons, default sidebar and TOC. On the home page, the 'Refund a sale at the till' row of the comparison table wraps to four lines in the 'Your Vendure store' column while every other row is one line, which unbalances the table.", "where": "docs.desktop.01 header buttons; home/desktop/02 comparison table"},
+    "C6": {"score": 9, "worst_defect": "On the phone, the third hero call to action, 'For cashiers: At the till', drops to its own line as a bare underlined link below the two buttons. It is a smaller tap target that looks orphaned, and the hero product screenshot clips the category chip to 'Gif'.", "where": "home/phone/01"},
+    "C7": {"score": 9, "worst_defect": "The docs search API's breadcrumbs are just ['VendurePOS'] for every hit, with no section path. The SoftwareApplication JSON-LD has no softwareVersion, although the site states 'plugin 0.3.0' everywhere. Lighthouse otherwise scores 97–100 with a correct 404.", "where": "endpoint_api_search_query_offline.txt; tech.json home.desktop jsonLd"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "'Open-source, MIT licensed' is the headline claim, but self-building the till needs 'your own RxDB Premium licence token' with no word that this is a paid commercial licence from a third party. A sceptic advising a client would flag it as an undisclosed cost and lock-in to the hosted app.vendurepos.com.",
+    "where": "home/desktop/02 'Before you start' → 'Setting up the store', last bullet; limitations 'Setting up the store' first bullet",
+    "fix": "Say plainly in that bullet and in Limitations that RxDB Premium is a paid licence sold by RxDB (link its pricing). Add that the hosted app.vendurepos.com needs no licence from you, and that the plugin is fully MIT with no paid dependency."
+  },
+  "mean": 8.3
+}
