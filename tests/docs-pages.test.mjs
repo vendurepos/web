@@ -495,3 +495,15 @@ test('the 0.3.0 In short links its migration step to Plugin setup (round 67, J5 
   const setup = readFileSync(join('.next/server/app', 'docs/plugin-setup.html'), 'utf8');
   assert.ok(setup.includes('id="configure-the-plugin-and-migrations"'), 'the anchor exists');
 });
+
+test('connect a till puts where your data goes after the sign-in steps (round 75, J2 C4)', () => {
+  const html = readFileSync(join('.next/server/app', 'docs/connect-a-till.html'), 'utf8');
+  const details = html.indexOf('id="enter-your-store-details"');
+  const problem = html.indexOf('id="fix-a-sign-in-problem"');
+  const data = html.indexOf('id="where-your-data-goes"');
+  assert.ok(details >= 0, 'store details heading exists');
+  assert.ok(problem >= 0, 'sign-in problem heading exists');
+  assert.ok(data >= 0, 'data heading exists');
+  assert.ok(details < problem, 'store details precede sign-in problems');
+  assert.ok(problem < data, 'sign-in problems precede data details');
+});
