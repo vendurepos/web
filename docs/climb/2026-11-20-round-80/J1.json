@@ -1,0 +1,20 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero is clear and the two buttons are obvious, but below the fold the marketing page turns into admin detail a newcomer can't parse: the comparison table's refund cell says the refund 'stays Pending until an administrator settles it with two Admin API calls', and 'Before you start' lists 'Node ^20.19 || >=22.12' and 'your own RxDB Premium licence token (RXDB_PREMIUM)'.", "where": "home/desktop/02 (Live demo or your own store table, Before you start); home/phone/04-05"},
+    "C2": {"score": 9, "worst_defect": "The demo row says 'All it sends is anonymous usage events to ph.wcpos.com'. The home page never says who wcpos is, so to a newcomer an unrelated brand's domain receiving data looks odd. The explanation (self-hosted PostHog) is only on Connect a till.", "where": "home/desktop/02, last table row; text/home.txt line 75"},
+    "C3": {"score": 8, "worst_defect": "Step 5 ends with a collapsed 'If your store already allows vendurepos.vercel.app' box. A new user has never heard of that domain, so it reads as a leftover from an older setup in the middle of the main path.", "where": "quick-start/desktop/03 (just above step 6); quick-start/phone/06"},
+    "C4": {"score": 8, "worst_defect": "The Overview's 'Next steps' cards offer both 'Quick start: Install the plugin, configure Vendure and make your first sale' and 'Plugin setup: Install the plugin and the settings it needs' with nearly the same description, so a newcomer can't tell which to read first or whether they must read both.", "where": "docs/desktop/01, Next steps grid"},
+    "C5": {"score": 8, "worst_defect": "In 'What it does today', the first two features get bordered cards with buttons and the next eight are plain unboxed text. After that the page is mostly text (table, then two bullet columns), with no second visual after the hero screenshot.", "where": "home/desktop/01 bottom to home/desktop/02; same in home.desktop-dark"},
+    "C6": {"score": 8, "worst_defect": "The phone home header shows only 'Docs' and 'Live demo' beside the logo plus an unlabeled chevron, so 'Quick start' and 'At the till' are hidden behind an icon that doesn't look like a menu. On docs pages the sticky bar already reads '1. Install the plugin' while the reader is still on the intro.", "where": "home/phone/01 header; quick-start/phone/01 sticky bar"},
+    "C7": {"score": 9, "worst_defect": "The docs landing page's title is just 'Overview | VendurePOS', which says nothing in a search result or tab. Docs pages carry only BreadcrumbList JSON-LD. Everything else is strong: Lighthouse 98/100/100/100, a good share card, llms.txt, sitemap, search API and a helpful 404.", "where": "tech.json pages['docs.desktop'].title and jsonLd"}
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "After a clear hero, the home page's lower half (comparison table and 'Before you start') is written for a Vendure administrator, not a visitor: 'two Admin API calls', 'Node ^20.19 || >=22.12', 'RxDB Premium licence token (RXDB_PREMIUM)', 'ph.wcpos.com'. Someone deciding in a minute whether to read on hits jargon instead of a plain 'what you need'.",
+    "where": "home/desktop/02 and home/phone/04-05",
+    "fix": "On the home page, keep each table cell and 'Before you start' bullet to plain words (e.g. 'Refunds: in the Vendure Dashboard for now', 'A Vendure 3.6+ store on Postgres') and link to the Overview/Limitations pages for the Node range, RXDB_PREMIUM and the settleRefund detail."
+  },
+  "mean": 8.3
+}
