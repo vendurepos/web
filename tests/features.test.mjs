@@ -262,8 +262,9 @@ test('home offline card says a reload needs the connection and unsent sales live
     .replace(/<script[\s\S]*?<\/script>/g, '')
     .replace(/&#x27;|&#39;|&apos;/g, "'")
     .replaceAll('<!-- -->', '');
-  const caveat = "A reload needs the connection, and sales not yet sent are lost if this site's data is cleared.";
+  const caveat = "Until they are sent, those sales live only in the till's browser: a reload needs the connection, and clearing that browser's data for the till loses them.";
   assert.equal(html.split(caveat).length - 1, 1);
+  assert.ok(!html.includes("this site's data"), 'no longer says "this site\'s data"');
   const at = html.indexOf(caveat);
   const promise = html.indexOf("With the till's tab left open");
   const run = html.indexOf('Our acceptance run makes 25 sales');
