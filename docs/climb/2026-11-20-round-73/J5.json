@@ -1,0 +1,20 @@
+{
+  "judge": "J5",
+  "persona": "Competitor-aware sceptic",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The hero and the ten 'What it does today' cards never say who the till is not for. Its hard limits (desktop Chrome only, no cash drawer, no card-terminal link, Postgres only) only appear two screens down under 'Before you start', so a buyer comparing it with Square or Shopify POS reads the strengths first and the deal-breakers late.", "where": "home.desktop.01 (hero + 'What it does today') vs home.desktop.02 ('Before you start')"},
+    "C2": {"score": 7, "worst_defect": "The footer says 'MIT licensed', but the only way off the hosted app is gated: building the till yourself 'needs your own RxDB Premium licence token (RXDB_PREMIUM)', and the site never says this is a paid commercial licence or what it costs. The site also never names who operates app.vendurepos.com, which is where you type your Vendure administrator password, or why the demo reports to ph.wcpos.com.", "where": "home.desktop.02 'Setting up the store' last bullet + footer; text/connect-a-till.txt 'Where your data goes'; text/limitations.txt 'Setting up the store'"},
+    "C3": {"score": 8, "worst_defect": "Quick start step 5 says 'For testing, add the exact local POS origin ... for example ,http://localhost:8081', but running the till locally needs the paid RxDB Premium token, and the quick start never mentions that. A developer who follows the testing hint finds the requirement on another page.", "where": "quick-start.desktop.02 step 5 / quick-start.phone.05"},
+    "C4": {"score": 8, "worst_defect": "The changelog covers only the plugin: 0.1.0 to 0.3.0, all within 1-6 Oct, nothing since. The hosted till ('till app version 0.1.0, built 20 Nov 2026 from commit ef68a12') has no release notes anywhere, so a buyer cannot see what changed in the part cashiers use. Plugin entries lean on internal references ('ADR 0005', '#116', 'order.create v5') with no plain explanation.", "where": "changelog.desktop.01"},
+    "C5": {"score": 8, "worst_defect": "'What it does today' boxes its first two cards ('Keeps selling offline', 'Every sale lands once') with buttons, then drops the remaining eight to unboxed plain text in two columns. After the hero, the home page has no further visual: a long grey text run up to the comparison table.", "where": "home.desktop.01 bottom to home.desktop.02 top"},
+    "C6": {"score": 8, "worst_defect": "The phone header shows only 'Docs' and 'Live demo'; Quick start sits behind the chevron. The phone hero screenshot is cropped to two product tiles with the category chips cut off at 'Gif', so it shows almost nothing of a sale. The quick start runs to 10,580 px on the phone.", "where": "home.phone.01; tech.json quick-start.phone height"},
+    "C7": {"score": 9, "worst_defect": "Lighthouse flags 53 KiB of unused JavaScript and 130 ms of render-blocking requests on /. The Organization JSON-LD names no maintainer or contact, only sameAs github.com/vendurepos.", "where": "tech.json lighthouse['/'].failing; home.desktop jsonLd"}
+  },
+  "overall_worst": {
+    "criterion": "C2",
+    "defect": "The site sells itself as MIT-licensed open source but never says who runs app.vendurepos.com, the hosted till that receives your Vendure admin login. The only alternative, building it yourself, needs an 'RxDB Premium licence token' whose price and commercial nature are never stated. A sceptic advising a client reads that as a free front door with a proprietary lock on the back one.",
+    "where": "home.desktop.02 'Setting up the store' + footer 'MIT licensed'; text/connect-a-till.txt 'Where your data goes'; text/limitations.txt",
+    "fix": "In 'Before you start' and Limitations, say in one line that RxDB Premium is a paid commercial licence (with a link to its pricing). Add one line naming who operates app.vendurepos.com and the ph.wcpos.com analytics server."
+  },
+  "mean": 8.0
+}

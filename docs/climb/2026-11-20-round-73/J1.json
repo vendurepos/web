@@ -1,0 +1,48 @@
+{
+  "judge": "J1",
+  "persona": "First-time visitor",
+  "scores": {
+    "C1": {
+      "score": 8,
+      "worst_defect": "The hero is clear, but the first feature card a skimmer reads, 'Keeps selling offline', spends most of its words on failure cases ('a reload needs the connection, and clearing that browser's data for the till loses them') before the proof, so the headline benefit gets buried under a caveat the page repeats again under 'Before you start'.",
+      "where": "home/desktop/01 'What it does today' first card; home/phone/02"
+    },
+    "C2": {
+      "score": 9,
+      "worst_defect": "The demo row says 'All it sends is anonymous usage events to ph.wcpos.com' without saying what wcpos.com is, so a visitor who has never heard of VendurePOS sees an unexplained second brand's domain receiving data. The explanation is only on Connect a till.",
+      "where": "home/desktop/02 'Live demo or your own store' table, last row; home/phone/04"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "Before step 1, the prerequisites are spread over three prose paragraphs and two callouts (Vendure 3.6+ and Postgres, the Node range, the email-plugin swap, 'Check your own code'), each pointing to another page, so there is no single checklist to tick off before starting. A leftover-looking collapsed note, 'If your store already allows vendurepos.vercel.app', also sits in step 5.",
+      "where": "quick-start/desktop/01 (intro and 'Before a sale on a live store'); quick-start/desktop/03 step 5"
+    },
+    "C4": {
+      "score": 8,
+      "worst_defect": "The Changelog, linked from the home footer, reads as internal developer notes ('ADR 0005', 'order.create v5', 'TALLY-CUSTOM-ITEM', 'tallyNeedsAdminCommands'). Only the 'In short:' lines are written for a store owner.",
+      "where": "changelog/desktop/01"
+    },
+    "C5": {
+      "score": 8,
+      "worst_defect": "After the two boxed cards, 'What it does today' becomes eight blocks of small grey body text with only bold headings, and 'Before you start' is two columns of dense bullets. The lower half of the home page reads as a wall of text with no visual anchors.",
+      "where": "home/desktop/01 bottom to home/desktop/02 'Before you start'"
+    },
+    "C6": {
+      "score": 8,
+      "worst_defect": "The phone hero screenshot is the till's narrow layout, mostly search bar, filter chips (with 'Gif' clipped at the edge) and two product tiles. The 'sale in progress' its caption promises shows only as a 'Cart (3) · €20.09' tab, so a phone visitor barely sees what the product looks like mid-sale.",
+      "where": "home/phone/01"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "The share card's till screenshot is cut off at the bottom edge mid-tile, through the price and 'In Stock' badges of the first product row, so the card ends on a half-visible row and not a framed image.",
+      "where": "og-image.png"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C1",
+    "defect": "A first-time visitor skimming for under a minute meets 'What it does today' with its first card spent on data-loss caveats, followed by eight unbroken grey paragraphs. What the till does well is hard to pick out at a glance, even though the hero is clear.",
+    "where": "home/desktop/01 'Keeps selling offline' card and the feature list below it; home/phone/02-03",
+    "fix": "Cut the 'Keeps selling offline' card to the claim plus the 25-sales proof, with a 'see Limitations' link for the reload and cleared-data caveats (already stated under 'Before you start'). Give the eight short features a scannable treatment, such as one-line summaries or icons."
+  },
+  "mean": 8.3
+}

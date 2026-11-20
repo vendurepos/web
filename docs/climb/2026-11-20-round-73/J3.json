@@ -1,0 +1,48 @@
+{
+  "judge": "J3",
+  "persona": "Developer evaluating it",
+  "scores": {
+    "C1": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; shots/home.desktop.01.jpg; shots/home.phone.01.jpg"
+    },
+    "C2": {
+      "score": 10,
+      "worst_defect": "none found",
+      "where": "text/home.txt; text/limitations.txt; text/connect-a-till.txt"
+    },
+    "C3": {
+      "score": 8,
+      "worst_defect": "The tax instructions prescribe different store-wide strategies for inclusive and exclusive channels, but tell a store mixing these modes only that it 'must account for the store-wide strategy', leaving the configuration choice unresolved.",
+      "where": "Quick start, step 6, 'Why these pairings'; text/endpoint_llms_full_txt.txt:851\u2013880"
+    },
+    "C4": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "text/plugin-setup.txt; text/connect-a-till.txt; text/troubleshooting.txt; text/endpoint_api_search_query_offline.txt"
+    },
+    "C5": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.desktop.01.jpg; shots/home.desktop.02.jpg; shots/home.desktop-dark.jpg; shots/plugin-setup.desktop.02.jpg"
+    },
+    "C6": {
+      "score": 9,
+      "worst_defect": "none found",
+      "where": "shots/home.phone.01.jpg through home.phone.05.jpg; shots/quick-start.phone.01.jpg through quick-start.phone.09.jpg; tech.json phone overflow fields"
+    },
+    "C7": {
+      "score": 9,
+      "worst_defect": "Recorded mobile Lighthouse results identify 53 KiB of unused JavaScript and an estimated 130 ms of render-blocking savings on the homepage.",
+      "where": "tech.json, lighthouse['/'].failing"
+    }
+  },
+  "overall_worst": {
+    "criterion": "C3",
+    "defect": "A developer maintaining channels with both tax-inclusive and tax-exclusive pricing must guess which store-wide tax strategy to use.",
+    "where": "Quick start, step 6, 'Why these pairings'; text/endpoint_llms_full_txt.txt:851\u2013880",
+    "fix": "Add an explicit recommendation or supported-configuration boundary for mixed pricing modes, explaining the rounding consequences. Include a receipt-versus-Vendure tax-total check for each mode."
+  },
+  "mean": 9.1
+}
