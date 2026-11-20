@@ -1,0 +1,20 @@
+{
+  "judge": "J2",
+  "persona": "Working shop owner",
+  "scores": {
+    "C1": {"score": 8, "worst_defect": "The home 'Before you start' block mixes my counter questions with developer requirements, so a shop owner reads 'Node ^20.19 || >=22.12' and 'RXDB_PREMIUM' right next to 'one tab per till'. On a phone, the hero screenshot is cropped to the product grid ('Gif' cut off), and the cart and checkout never show.", "where": "home.desktop.02 'Before you start'; home.phone.01 hero screenshot"},
+    "C2": {"score": 8, "worst_defect": "The proof behind the two headline claims ('Read the acceptance test', 'Read the 200-send test') links to raw test source files on GitHub (offline.spec.ts, replay.e2e.ts). A non-developer gets code, not a readable result such as a dated run or a pass record.", "where": "home.desktop.01 'Keeps selling offline' / 'Every sale lands once' cards"},
+    "C3": {"score": 8, "worst_defect": "A step that can break a live store sits in a callout above step 1 and is not one of the numbered steps: 'If your store uses @vendure/email-plugin, swap its order-confirmation handler first: see Set up email'. A developer working down steps 1-9 can skip it, and my till customers would then get web-shop confirmation emails.", "where": "quick-start.desktop.01 'Before a sale on a live store' callout"},
+    "C4": {"score": 7, "worst_defect": "Troubleshooting is where At the till sends cashiers for sync notices, but it mixes counter instructions with server-admin material ('match its errorCode', 'register_session_already_open', GraphQL tallyResolveNeedsAdmin mutations) and has no split by reader. Staff looking between customers for 'what do I do now' have to dig through it.", "where": "troubleshooting.desktop.01 'Till updates line' and 'Resolve a sale the store kept part-way'"},
+    "C5": {"score": 8, "worst_defect": "In 'What it does today', two features get boxed cards with buttons and the other eight are plain text pairs, so the section looks unfinished. The cashier-sheet and closure screenshots sit as a card inside a second framed box with wide empty padding.", "where": "home.desktop.01 'What it does today'; at-the-till.desktop.03 and .04 screenshots"},
+    "C6": {"score": 8, "worst_defect": "On a phone, the home header shows only 'Docs' and 'Live demo'. 'Quick start' and 'At the till' hide behind an unlabelled chevron, and the quick start is a 9-screen scroll (10,580 px) with no jump back to the step list except the top dropdown.", "where": "home.phone.01 header; quick-start.phone.01-09"},
+    "C7": {"score": 9, "worst_defect": "A docs search for 'offline' ranks Troubleshooting first. At the till's 'If the internet drops' section, the one a cashier needs, comes after Quick start's test-offline line.", "where": "text/endpoint_api_search_query_offline.txt"}
+  },
+  "overall_worst": {
+    "criterion": "C4",
+    "defect": "The page my staff are sent to when the till shows a sync warning is half written for whoever runs the Vendure server (errorCode lists, needs_admin GraphQL mutations, LAN http CSP options). The counter action ('leave the app open, don't reload, keep selling, keep the printed Z report') is buried among server instructions.",
+    "where": "troubleshooting.desktop.01-03 / troubleshooting.phone.01-07",
+    "fix": "Open Troubleshooting with a short 'At the counter' list: each header notice and the one thing a cashier does. Move the errorCode list, the GraphQL resolve steps and the LAN http note under a clearly labelled 'For whoever runs your Vendure server' section, or onto Plugin setup."
+  },
+  "mean": 8.0
+}
