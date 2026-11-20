@@ -482,3 +482,16 @@ test('troubleshooting does not name till refunds as lost when site data is clear
   assert.ok(html.includes("deletes this till's unsent sales and register records along with the refused update."));
   assert.ok(!html.includes('unsent sales, refunds'), 'no till refunds in the sentence');
 });
+
+test('the 0.3.0 In short links its migration step to Plugin setup (round 67, J5 C4)', () => {
+  const html = readFileSync(join('.next/server/app', 'docs/changelog.html'), 'utf8');
+  const start = html.indexOf('<strong>In short:</strong>');
+  assert.ok(start >= 0, 'an In short paragraph');
+  const para = html.slice(start, html.indexOf('</p>', start));
+  assert.ok(para.includes('Run the new migration when you upgrade; '), para);
+  const href = '/docs/plugin-setup#configure-the-plugin-and-migrations';
+  const link = /<a\b[^>]*\bhref="([^"]*)"[^>]*>([\s\S]*?)<\/a>/.exec(para);
+  assert.deepEqual(link && [link[1], link[2]], [href, 'Plugin setup'], para);
+  const setup = readFileSync(join('.next/server/app', 'docs/plugin-setup.html'), 'utf8');
+  assert.ok(setup.includes('id="configure-the-plugin-and-migrations"'), 'the anchor exists');
+});
