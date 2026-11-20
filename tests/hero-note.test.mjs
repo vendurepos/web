@@ -57,9 +57,7 @@ test('hero lede links Vendure to vendure.io', () => {
   const text = hero.replace(/<!-- -->/g, '').replace(/<[^>]+>/g, '').replace(/&#x27;/g, "'");
   // Round 15, C1: the hero says what Vendure is, in its own docs' terms (docs.vendure.io);
   // round 27, J4 C1: the definition is an appositive, not a parenthesis.
-  // Round 64, J1 C1: in plain words, not "headless commerce framework".
-  assert.ok(text.includes('VendurePOS is an open-source till for Vendure, open-source software for running an online shop.'));
-  assert.ok(!text.includes('headless'), 'round 64: no "headless" jargon in the hero');
+  assert.ok(text.includes('VendurePOS is an open-source till for Vendure, the open-source headless commerce framework.'));
   assert.ok(text.includes('It runs in the browser and keeps selling when the connection drops.'));
   assert.ok(!text.includes('Every sale lands in your Vendure store once'), 'round 43: the guarantee is on its card, not in the hero');
   const ledeStart = hero.indexOf('<p', hero.indexOf('</h1>'));
@@ -76,7 +74,7 @@ test('hero lede says who VendurePOS is for', () => {
   const hero = html.slice(h1, figure);
   const text = hero.replace(/<!-- -->/g, '').replace(/<[^>]+>/g, '').replace(/&#x27;/g, "'");
   const sentence =
-    'online shop. It is made for shops that sell online with Vendure and also sell in person. It runs in the browser';
+    'framework. It is made for shops that sell online with Vendure and also sell in person. It runs in the browser';
   assert.equal(text.split(sentence).length - 1, 1, text);
 });
 
