@@ -1,5 +1,6 @@
 import { getImageProps } from 'next/image';
 import type { ReactNode } from 'react';
+import { cn } from '@/lib/cn';
 
 // public/till/<name>-{light,dark}.png are live demo till captures (#62) at deviceScaleFactor 2 (sale 1440x866);
 // <name>-phone-{light,dark}.png are the same states at 390x844, deviceScaleFactor 2 (sale at 390x665 on the Products
@@ -44,9 +45,12 @@ export function TillFigure({ name, alt, sizes = '(max-width: 768px) 100vw, (max-
   name: string; alt: string; sizes?: string; eager?: boolean; className?: string; children?: ReactNode;
 }) {
   const caption = CAPTION[name];
+  // 2026-11-23 audit: Lighthouse image-aspect-ratio reads a display:none img's size from its width/height attributes
+  // (the wide capture) while the phone <source> file is loaded. The eager hero light picture is fetched in dark mode
+  // anyway, so it stays rendered but invisible; lazy shots keep display:none so the other scheme is never fetched.
   const pictures = (
     <>
-      <TillPicture name={name} scheme="light" alt={alt} sizes={sizes} eager={eager} className="block dark:hidden" />
+      <TillPicture name={name} scheme="light" alt={alt} sizes={sizes} eager={eager} className={eager ? 'block dark:invisible dark:absolute dark:inset-x-0 dark:top-0' : 'block dark:hidden'} />
       <TillPicture name={name} scheme="dark" alt={alt} sizes={sizes} className="hidden dark:block" />
     </>
   );
@@ -60,7 +64,7 @@ export function TillFigure({ name, alt, sizes = '(max-width: 768px) 100vw, (max-
   const hug = narrow ? { maxWidth: width / 2 } : undefined;
   // Round 37, J4 C5: a narrow shot's caption sat at the column's left edge, not under its panel.
   return (
-    <figure className={className}>
+    <figure className={eager ? cn(className, 'relative') : className}>
       {narrow ? <div className="sm:mx-auto sm:flex sm:justify-center" style={hug}>{pictures}</div> : pictures}
       {caption && <figcaption className={`mt-3 text-sm text-fd-muted-foreground${narrow ? ' sm:mx-auto' : ''}`} style={hug}>{caption}</figcaption>}
       {children}

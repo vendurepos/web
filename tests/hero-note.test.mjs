@@ -259,3 +259,11 @@ test('hero links cashiers to At the till as a quiet link (round 89, J2 C1)', () 
   const quickStart = hero.indexOf('>Quick start</a>');
   assert.ok(quickStart !== -1 && anchor.index > quickStart);
 });
+
+test('hero light till stays rendered in dark mode', () => {
+  // 2026-11-23 Lighthouse image-aspect-ratio failure: a display:none img reported its 2880x1732 attributes vs the 780x950 phone file.
+  const html = readFileSync(join('.next/server/app', 'index.html'), 'utf8');
+  const pictures = html.match(/<picture\b[^>]*>/g) ?? [];
+  assert.ok(pictures.some((tag) => tag.includes('dark:invisible') && !tag.includes('dark:hidden')));
+  assert.match(html, /<figure class="[^"]*\brelative\b[^"]*"><picture[^>]*dark:invisible/);
+});
